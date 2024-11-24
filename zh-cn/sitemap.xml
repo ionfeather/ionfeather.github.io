@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ionfeather.github.io/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-24T16:51:31+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -11,14 +11,12 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://ionfeather.github.io/ar/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh-cn"
                 href="https://ionfeather.github.io/"
                 />
+  </url><url>
+    <loc>https://ionfeather.github.io/post/</loc>
+    <lastmod>2024-11-24T16:51:31+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/categories/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
@@ -29,30 +27,12 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://ionfeather.github.io/ar/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh-cn"
                 href="https://ionfeather.github.io/categories/"
                 />
   </url><url>
     <loc>https://ionfeather.github.io/p/test-chinese/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ionfeather.github.io/post/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ionfeather.github.io/ar/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ionfeather.github.io/post/"
-                />
   </url><url>
     <loc>https://ionfeather.github.io/categories/test/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
@@ -90,11 +70,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ar"
-                href="https://ionfeather.github.io/ar/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh-cn"
                 href="https://ionfeather.github.io/tags/"
                 />
@@ -107,16 +82,6 @@
   </url><url>
     <loc>https://ionfeather.github.io/p/placeholder-text/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ar"
-                href="https://ionfeather.github.io/ar/p/%D9%85%D8%AB%D8%A7%D9%84-%D9%86%D8%B5/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://ionfeather.github.io/p/placeholder-text/"
-                />
   </url><url>
     <loc>https://ionfeather.github.io/tags/tag-with-whitespaces/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
