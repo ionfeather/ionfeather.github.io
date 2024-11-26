@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>PDF on ionfeather&#39;Log</title>
+        <link>https://ionfeather.github.io/tags/pdf/</link>
+        <description>Recent content in PDF on ionfeather&#39;Log</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ionfeather&#39;Log</copyright>
+        <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/pdf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>搭建PDF阅读器</title>
+        <link>https://ionfeather.github.io/p/bulid-pdfreader/</link>
+        <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/p/bulid-pdfreader/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/p/bulid-pdfreader/cover.png" alt="Featured image of post 搭建PDF阅读器" /&gt;&lt;h2 id=&#34;起因&#34;&gt;起因
+&lt;/h2&gt;&lt;p&gt;最近导师叫我做一个PDF阅读器。目前有两个技术路线：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接用别人的代码将PDF转为json，然后输入到LLM中；&lt;/li&gt;
+&lt;li&gt;构建RAG。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;pdf转json格式&#34;&gt;PDF转Json格式
+&lt;/h2&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

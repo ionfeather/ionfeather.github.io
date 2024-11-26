@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>技术</title>
+        <link>https://ionfeather.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
+        <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E6%8A%80%E6%9C%AF/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>故事</title>
         <link>https://ionfeather.github.io/categories/%E6%95%85%E4%BA%8B/</link>
         <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
@@ -21,7 +29,7 @@
         <pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/categories/%E6%A2%A6/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/categories/%E6%A2%A6/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post 梦" /&gt;</description>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E6%A2%A6/cloud.jpg" alt="Featured image of post 梦" /&gt;</description>
         </item>
         
     </channel>
