@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>LLM on ionfeather&#39;Log</title>
-        <link>https://ionfeather.github.io/tags/llm/</link>
+        <link>https://ionfeather.github.io/categories/llm/</link>
         <description>Recent content in LLM on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/llm/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>LangChain学习</title>
         <link>https://ionfeather.github.io/p/langchain-learning/</link>
         <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
