@@ -23,12 +23,12 @@
         <guid>https://ionfeather.github.io/%E5%85%B3%E4%BA%8E/</guid>
         <description>&lt;p&gt;这是一个自我介绍。&lt;/p&gt;
 &lt;p&gt;我现在还是有一些焦虑，因为感觉自己的工程能力太差，对比了网上和同学们，我感觉自己有很多不足。&lt;/p&gt;
-&lt;p&gt;我接下来要在这里更新我的所思所想还有我的日常！&lt;/p&gt;
+&lt;p&gt;我接下来要在这里更新我的所思所想还有我的技术日常！&lt;/p&gt;
 &lt;p&gt;目前仍然有的问题：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;搜索按钮搜索得到的是localhost中的网页；&lt;/li&gt;
-&lt;li&gt;评论系统没有解决；&lt;/li&gt;
-&lt;li&gt;左侧只有一个Github图标，希望再加点。&lt;/li&gt;
+&lt;li&gt;评论系统目前应该是损坏的，没有解决；&lt;/li&gt;
+&lt;li&gt;字体不够好看，到时候修改一下字体；&lt;/li&gt;
+&lt;li&gt;侧边栏想自定义好看点。&lt;/li&gt;
 &lt;/ol&gt;
 </description>
         </item>
