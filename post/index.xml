@@ -15,6 +15,226 @@
         <guid>https://ionfeather.github.io/p/langchain-learning/</guid>
         <description>&lt;img src="https://ionfeather.github.io/p/langchain-learning/cover.png" alt="Featured image of post LangChain学习" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够使用LangChain构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
+
+&lt;div class=&#34;chat --other&#34;&gt;
+    &lt;div class=&#34;chat__inner&#34;&gt;
+        &lt;div class=&#34;chat__meta&#34;&gt;导师&amp;nbsp;&amp;nbsp;&amp;nbsp;2023-09-12 14:30&lt;/div&gt;
+        &lt;div class=&#34;chat__text&#34;&gt;
+            
+做一个论文阅读的大模型。
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .chat {
+        margin: 10px;
+        padding: 10px;
+        position: relative;
+         
+        transition: transform 0.2s;
+         
+        max-width: 80%;
+        min-width: 15%;
+    }
+    
+    .chat:hover {
+        transform: scale(1.05);
+    }
+    
+    .chat.--self {
+        text-align: left;
+        background-color: #ecf5ff;
+        color: #000000;
+        border-radius: 15px;
+        width: fit-content;
+        margin-left: auto;
+    }
+     
+    
+    .chat.--self::before {
+        content: &#34;&#34;;
+        position: absolute;
+        right: -18px;
+         
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 0 0 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent #ecf5ff;
+         
+    }
+     
+    
+    .chat.--other {
+        text-align: left;
+        background-color: #ffecec;
+        color: #333;
+        border-radius: 15px;
+        position: relative;
+        width: fit-content;
+    }
+     
+    
+    .chat.--other::before {
+        content: &#34;&#34;;
+        position: absolute;
+        left: -18px;
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 20px 0 0;
+        border-style: solid;
+        border-color: transparent #ffecec transparent transparent;
+    }
+     
+    
+    .chat__meta {
+        font-weight: bold;
+        font-size: 0.67em;
+        color: #707070;
+        margin-bottom: 5px;
+    }
+     
+    
+    .chat__text {
+        font-size: 0.9em;
+        margin-left: 10px;
+        word-break: break-all;
+    }
+    
+    [data-scheme=&#34;dark&#34;] {
+        .chat.--self {
+            color: #fefefe;
+            background-color: #253958;
+        }
+        .chat.--self::before {
+            border-color: transparent transparent transparent #253958;
+        }
+        .chat.--other {
+            color: #fefefe;
+            background-color: #1a1a1a;
+        }
+        .chat.--other::before {
+            border-color: transparent #1a1a1a transparent transparent;
+        }
+        .chat__meta {
+            color: #b1b1b1;
+        }
+    }
+&lt;/style&gt;
+
+
+&lt;div class=&#34;chat --self&#34;&gt;
+    &lt;div class=&#34;chat__inner&#34;&gt;
+        &lt;div class=&#34;chat__meta&#34; style=&#34;text-align: right;&#34;&gt;2023-09-12 14:45&amp;nbsp;&amp;nbsp;&amp;nbsp;我&lt;/div&gt;
+        &lt;div class=&#34;chat__text&#34;&gt;
+             
+好的老师。
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    .chat {
+        margin: 10px;
+        padding: 10px;
+        position: relative;
+         
+        transition: transform 0.2s;
+         
+        max-width: 80%;
+        min-width: 15%;
+    }
+    
+    .chat:hover {
+        transform: scale(1.05);
+    }
+    
+    .chat.--self {
+        text-align: left;
+        background-color: #ecf5ff;
+        color: #000000;
+        border-radius: 15px;
+        width: fit-content;
+        margin-left: auto;
+    }
+     
+    
+    .chat.--self::before {
+        content: &#34;&#34;;
+        position: absolute;
+        right: -18px;
+         
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 0 0 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent #ecf5ff;
+         
+    }
+     
+    
+    .chat.--other {
+        text-align: left;
+        background-color: #ffecec;
+        color: #333;
+        border-radius: 15px;
+        position: relative;
+        width: fit-content;
+    }
+     
+    
+    .chat.--other::before {
+        content: &#34;&#34;;
+        position: absolute;
+        left: -18px;
+        bottom: 5px;
+        transform: translateY(-50%);
+        border-width: 15px 20px 0 0;
+        border-style: solid;
+        border-color: transparent #ffecec transparent transparent;
+    }
+     
+    
+    .chat__meta {
+        font-weight: bold;
+        font-size: 0.67em;
+        color: #707070;
+        margin-bottom: 5px;
+    }
+     
+    
+    .chat__text {
+        font-size: 0.9em;
+        margin-left: 10px;
+        word-break: break-all;
+    }
+    
+    [data-scheme=&#34;dark&#34;] {
+        .chat.--self {
+            color: #fefefe;
+            background-color: #253958;
+        }
+        .chat.--self::before {
+            border-color: transparent transparent transparent #253958;
+        }
+        .chat.--other {
+            color: #fefefe;
+            background-color: #1a1a1a;
+        }
+        .chat.--other::before {
+            border-color: transparent #1a1a1a transparent transparent;
+        }
+        .chat__meta {
+            color: #b1b1b1;
+        }
+    }
+&lt;/style&gt;
+
 &lt;h2 id=&#34;langchain是用来做什么的&#34;&gt;LangChain是用来做什么的？
 &lt;/h2&gt;&lt;p&gt;LangChain是一个用于开发由LLM驱动的应用程序的框架。也就是说我们可以把LLM作为内核，LangChain作为外壳，搭建一个程序出来。&lt;/p&gt;
 &lt;p&gt;LangChain提供了&lt;/p&gt;

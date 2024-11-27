@@ -21,7 +21,7 @@
         <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/categories/%E6%95%85%E4%BA%8B/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/categories/%E6%95%85%E4%BA%8B/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post 故事" /&gt;</description>
+        <description></description>
         </item>
         <item>
         <title>梦</title>
@@ -30,6 +30,22 @@
         
         <guid>https://ionfeather.github.io/categories/%E6%A2%A6/</guid>
         <description>&lt;img src="https://ionfeather.github.io/categories/%E6%A2%A6/cloud.jpg" alt="Featured image of post 梦" /&gt;</description>
+        </item>
+        <item>
+        <title>随笔</title>
+        <link>https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/cover.jpg" alt="Featured image of post 随笔" /&gt;</description>
+        </item>
+        <item>
+        <title>学习笔记</title>
+        <link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cover.jpg" alt="Featured image of post 学习笔记" /&gt;</description>
         </item>
         
     </channel>
