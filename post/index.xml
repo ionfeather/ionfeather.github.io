@@ -7,7 +7,124 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 15 Dec 2024 20:55:19 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>虚拟环境配置</title>
+        <link>https://ionfeather.github.io/p/virtualenvironmentconfig/</link>
+        <pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/p/virtualenvironmentconfig/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/p/virtualenvironmentconfig/cover.jpg" alt="Featured image of post 虚拟环境配置" /&gt;&lt;h2 id=&#34;虚拟环境配置&#34;&gt;虚拟环境配置
+&lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为vllm，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到vllm_requirements.txt文件中。&lt;/p&gt;
+&lt;p&gt;但是我一顿操作之后，原本配置好的环境现在也没办法使用了。此时我庆幸自己想到用requirements文件保存。但是在进行&lt;code&gt;pip install -r vllm_requirements.txt&lt;/code&gt;的时候，出现了报错的情况，竟然说里面有一个包的版本是yanked version（撤回版本），无法下载，给我气晕了。&lt;/p&gt;
+&lt;p&gt;吃一堑，长一智。配置好的环境就不要变了，应该另外复制一个环境，在复制的环境上进行修改。&lt;/p&gt;
+&lt;h2 id=&#34;配置环境的方法&#34;&gt;配置环境的方法
+&lt;/h2&gt;&lt;h3 id=&#34;使用conda配置虚拟环境&#34;&gt;使用conda配置虚拟环境
+&lt;/h3&gt;&lt;p&gt;使用Terminal创建新的环境。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda create -n &amp;lt;new_env_name&amp;gt; &lt;span class=&#34;nv&#34;&gt;python&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;3.10.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;激活虚拟环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;activate &amp;lt;new_env_name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install &amp;lt;package&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install &amp;lt;package&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这里特别注意，对于vllm这个包，最好使用pip进行安装，不要使用conda。&lt;/p&gt;
+&lt;h3 id=&#34;在conda中配置jupyter内核&#34;&gt;在conda中配置Jupyter内核
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;安装ipykernel。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install ipykernel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将虚拟内核添加到jupyter内核中。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python -m ipykernel install --user --name &amp;lt;your_env_name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;删除jupyter内核&#34;&gt;删除jupyter内核
+&lt;/h3&gt;&lt;p&gt;查看目前有的jupyter内核&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jupyter kernelspec list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;删除指定的jupyter内核&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jupyter kernelspec remove &amp;lt;your_kernel_name&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;删除虚拟环境&#34;&gt;删除虚拟环境
+&lt;/h3&gt;&lt;p&gt;查看目前有的虚拟环境列表&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda env list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;删除指定的虚拟环境&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda activate base
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda remove -n &amp;lt;env_name&amp;gt; --all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;照片&#34;&gt;照片
+&lt;/h2&gt;&lt;p&gt;照片是2024/12/07的时候同门团建的时候我拿大疆Pocket3拍的。拍的建筑是东郊民巷的圣弥厄尔大教堂。真是非常开心的一天。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>LangChain学习笔记（二）</title>
+        <link>https://ionfeather.github.io/p/langchain-learning-2/</link>
+        <pubDate>Fri, 06 Dec 2024 20:55:19 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/p/langchain-learning-2/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/p/langchain-learning-2/cover.png" alt="Featured image of post LangChain学习笔记（二）" /&gt;&lt;h2 id=&#34;langchain搭建带rag的llm&#34;&gt;LangChain搭建带RAG的LLM
+&lt;/h2&gt;</description>
+        </item>
+        <item>
         <title>LangChain学习笔记（一）</title>
         <link>https://ionfeather.github.io/p/langchain-learning-1/</link>
         <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
@@ -562,7 +679,8 @@
         <pubDate>Sun, 20 Oct 2024 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/p/dream/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/dream/cover.jpg" alt="Featured image of post 一个有趣的梦" /&gt;&lt;p&gt;这是一个英雄辈出的时代。所谓阴阳师，就是使用牌组与其他人对战来决定胜负的职业。在这里，国之阴阳师是一国中最强的阴阳师，中日韩三国每年都会选拔国之阴阳师，并且对战，决出最后的冠军。&lt;/p&gt;
+        <description>&lt;img src="https://ionfeather.github.io/p/dream/cover.jpg" alt="Featured image of post 一个有趣的梦" /&gt;&lt;h2 id=&#34;梦&#34;&gt;梦
+&lt;/h2&gt;&lt;p&gt;这是一个英雄辈出的时代。所谓阴阳师，就是使用牌组与其他人对战来决定胜负的职业。在这里，国之阴阳师是一国中最强的阴阳师，中日韩三国每年都会选拔国之阴阳师，并且对战，决出最后的冠军。&lt;/p&gt;
 &lt;p&gt;我和梦梦是青梅竹马，从小便展露了阴阳师的天赋。所谓“绕床弄青梅，郎骑竹马来”，我和梦梦那就是“绕床打牌组，郎打牌组来”。从小与其他人对战，胜利了之后可以选择是否获取一张新卡牌放进自己的卡组，最终打一个最强者之间的对战。这个对战从来都是我和梦梦之间的私人聊天与沟通时间。&lt;/p&gt;
 &lt;p&gt;随着我们渐渐长大，我和梦梦之间也互生情愫。但是，认真打牌，赢得中日韩三国之间的对战，获得至高无上的荣耀是我们的最大目标。儿女情长，英雄气短，阴阳师需要克制。&lt;/p&gt;
 &lt;p&gt;……&lt;/p&gt;
@@ -580,6 +698,8 @@
 &lt;blockquote&gt;
 &lt;p&gt;我尽量诚实地描述了我的梦境，可惜忘记了太多。我感觉里面有蛮多意象的。围棋中日韩会战、恋爱、谍战监视、杀戮尖塔烧牌循环、炉石传说对战&amp;hellip;很有意思的一个梦，醒来之后回味了很久。&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;h2 id=&#34;照片&#34;&gt;照片
+&lt;/h2&gt;&lt;p&gt;照片是我2024/11/03的时候在地坛拍的。我想那一天是北京秋天最美的一天。&lt;/p&gt;
 
 </description>
         </item>
