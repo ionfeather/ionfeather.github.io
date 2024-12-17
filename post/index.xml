@@ -17,6 +17,7 @@
 &lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为vllm，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到vllm_requirements.txt文件中。&lt;/p&gt;
 &lt;p&gt;但是我一顿操作之后，原本配置好的环境现在也没办法使用了。此时我庆幸自己想到用requirements文件保存。但是在进行&lt;code&gt;pip install -r vllm_requirements.txt&lt;/code&gt;的时候，出现了报错的情况，竟然说里面有一个包的版本是yanked version（撤回版本），无法下载，给我气晕了。&lt;/p&gt;
 &lt;p&gt;吃一堑，长一智。配置好的环境就不要变了，应该另外复制一个环境，在复制的环境上进行修改。&lt;/p&gt;
+&lt;p&gt;此外，我每次进行配置环境我都会忘记怎么配置和删除。是我最近记性变得太差了吗？总之我写一个文档，记不住就查一下。&lt;/p&gt;
 &lt;h2 id=&#34;配置环境的方法&#34;&gt;配置环境的方法
 &lt;/h2&gt;&lt;h3 id=&#34;使用conda配置虚拟环境&#34;&gt;使用conda配置虚拟环境
 &lt;/h3&gt;&lt;p&gt;使用Terminal创建新的环境。&lt;/p&gt;
