@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="LangChain搭建带RAG的LLM\r">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="LangChain构建智能体\r">
 <title>LangChain学习笔记（二）</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/p/langchain-learning-2/'>
 
 <link rel="stylesheet" href="/scss/style.min.c31258b9803d327f4fc2ddadeef2f99d6cfe56ed157edcc679636dde2f4d338d.css"><meta property='og:title' content="LangChain学习笔记（二）">
-<meta property='og:description' content="LangChain搭建带RAG的LLM\r">
+<meta property='og:description' content="LangChain构建智能体\r">
 <meta property='og:url' content='https://ionfeather.github.io/p/langchain-learning-2/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LangChain' /><meta property='article:tag' content='LLM' /><meta property='article:published_time' content='2024-12-06T20:55:19&#43;08:00'/><meta property='article:modified_time' content='2024-12-06T20:55:19&#43;08:00'/><meta property='og:image' content='https://ionfeather.github.io/p/langchain-learning-2/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LangChain' /><meta property='article:tag' content='LLM' /><meta property='article:tag' content='Agent' /><meta property='article:published_time' content='2024-12-17T20:24:19&#43;08:00'/><meta property='article:modified_time' content='2024-12-17T23:55:19&#43;08:00'/><meta property='og:image' content='https://ionfeather.github.io/p/langchain-learning-2/cover.jpg' />
 <meta name="twitter:title" content="LangChain学习笔记（二）">
-<meta name="twitter:description" content="LangChain搭建带RAG的LLM\r"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ionfeather.github.io/p/langchain-learning-2/cover.png' />
+<meta name="twitter:description" content="LangChain构建智能体\r"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://ionfeather.github.io/p/langchain-learning-2/cover.jpg' />
     <link rel="shortcut icon" href="/ion.ico" />
 
     </head>
@@ -256,7 +256,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#langchain搭建带rag的llm">LangChain搭建带RAG的LLM</a></li>
+    <li><a href="#langchain构建智能体">LangChain构建智能体</a></li>
   </ol>
 </nav>
         </div>
@@ -272,10 +272,10 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/langchain-learning-2/">
-                <img src="/p/langchain-learning-2/cover_hu15659216343497446802.png"
-                        srcset="/p/langchain-learning-2/cover_hu15659216343497446802.png 800w, /p/langchain-learning-2/cover_hu17865342867058448887.png 1600w"
+                <img src="/p/langchain-learning-2/cover_hu2904202568259967726.jpg"
+                        srcset="/p/langchain-learning-2/cover_hu2904202568259967726.jpg 800w, /p/langchain-learning-2/cover_hu11768981522205516602.jpg 1600w"
                         width="800" 
-                        height="383" 
+                        height="588" 
                         loading="lazy"
                         alt="Featured image of post LangChain学习笔记（二）" />
                 
@@ -318,7 +318,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 06, 2024</time>
+                <time class="article-time--published">Dec 17, 2024</time>
             </div>
         
 
@@ -348,7 +348,7 @@
     <section class="article-content">
     
     
-    <h2 id="langchain搭建带rag的llm">LangChain搭建带RAG的LLM
+    <h2 id="langchain构建智能体">LangChain构建智能体
 </h2>
 </section>
 
@@ -360,6 +360,8 @@
             <a href="/tags/langchain/">LangChain</a>
         
             <a href="/tags/llm/">LLM</a>
+        
+            <a href="/tags/agent/">Agent</a>
         
     </section>
 
@@ -376,7 +378,19 @@
 
         <span>Licensed under CC BY-NC-SA 4.0</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 Dec 17, 2024 23:55 CST
+        </span>
+    </section></footer>
 
 
     
@@ -417,47 +431,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/langchain-learning-1/">
+    <a href="/p/langchain-learning/">
         
         
             <div class="article-image">
-                <img src="/p/langchain-learning-1/cover.ddb755e13e74b4dc9c3215937020b858_hu5181855245339850833.png" 
+                <img src="/p/langchain-learning/cover.ddb755e13e74b4dc9c3215937020b858_hu5181855245339850833.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post LangChain学习笔记（一）"
-                        data-key="langchain-learning-1" 
+                        alt="Featured image of post LangChain学习笔记"
+                        data-key="langchain-learning" 
                         data-hash="md5-3bdV4T50tNycMhWTcCC4WA==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">LangChain学习笔记（一）</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/virtual-environment-config/">
-        
-        
-            <div class="article-image">
-                <img src="/p/virtual-environment-config/cover.6f4f3ab75271745006d3ce21d8aa1135_hu13003463521408539615.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 虚拟环境配置操作记录"
-                        data-key="virtual-environment-config" 
-                        data-hash="md5-b086t1JxdFAG084h2KoRNQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">虚拟环境配置操作记录</h2>
+            <h2 class="article-title">LangChain学习笔记</h2>
         </div>
     </a>
 </article>
