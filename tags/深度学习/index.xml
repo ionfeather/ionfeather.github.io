@@ -126,6 +126,34 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cumsum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;axis&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;点积&#34;&gt;点积
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;arange&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ones&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dtype&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;float32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;矩阵-向量积&#34;&gt;矩阵-向量积
+&lt;/h5&gt;&lt;p&gt;当我们为矩阵&lt;code&gt;A&lt;/code&gt;和向量&lt;code&gt;x&lt;/code&gt;调用&lt;code&gt;torch.mv(A, x)&lt;/code&gt;时，会执行矩阵-向量积。 注意，&lt;code&gt;A&lt;/code&gt;的列维数（沿轴1的长度）必须与&lt;code&gt;x&lt;/code&gt;的维数（其长度）相同。&lt;/p&gt;
+&lt;h5 id=&#34;矩阵-矩阵乘法&#34;&gt;矩阵-矩阵乘法
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;我们可以将矩阵-矩阵乘法AB看作简单地执行m次矩阵-向量积，并将结果拼接在一起，形成一个n×m矩阵&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在下面的代码中，我们在&lt;code&gt;A&lt;/code&gt;和&lt;code&gt;B&lt;/code&gt;上执行矩阵乘法。 这里的&lt;code&gt;A&lt;/code&gt;是一个5行4列的矩阵，&lt;code&gt;B&lt;/code&gt;是一个4行3列的矩阵。 两者相乘后，我们得到了一个5行3列的矩阵。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ones&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
 &lt;/div&gt;&lt;h4 id=&#34;张量连结&#34;&gt;张量连结
 &lt;/h4&gt;&lt;p&gt;在这里，&lt;code&gt;dim=0&lt;/code&gt;说明是第一个维度进行拼接；&lt;code&gt;dim=1&lt;/code&gt;说明是第二个维度进行拼接。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -173,6 +201,65 @@
 &lt;/div&gt;&lt;h4 id=&#34;转换为其他对象&#34;&gt;转换为其他对象
 &lt;/h4&gt;&lt;p&gt;转换为Numpy非常容易：&lt;code&gt;A = X.numpy()&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;转换为Python标量：&lt;code&gt;a.item()&lt;/code&gt;或者使用内置函数&lt;code&gt;float(a)&lt;/code&gt;等。&lt;/p&gt;
+&lt;h3 id=&#34;自动求导&#34;&gt;自动求导
+&lt;/h3&gt;&lt;p&gt;自动求导是计算一个函数在指定值上的导数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何实现？&lt;/li&gt;
+&lt;li&gt;计算图：将代码分解成操作子，将计算表示成一个无环图。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250108211452.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;将计算表示为一个无环图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;关于计算图，有&lt;strong&gt;显式构造 vs 隐式构造&lt;/strong&gt;两种构造方式。&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th&gt;显式构造&lt;/th&gt;
+          &lt;th&gt;隐式构造&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;计算图构建方式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;显式定义&lt;/td&gt;
+          &lt;td&gt;隐式定义&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;计算图类型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;静态图&lt;/td&gt;
+          &lt;td&gt;动态图&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;典型框架&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;TensorFlow 1.x, Theano&lt;/td&gt;
+          &lt;td&gt;PyTorch, TensorFlow 2.x (Eager)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/image-20250108212244270.png&#34;
+	width=&#34;1055&#34;
+	height=&#34;1019&#34;
+	srcset=&#34;https://ionfeather.github.io/p/d2l-01/image-20250108212244270_hu7977576403841564060.png 480w, https://ionfeather.github.io/p/d2l-01/image-20250108212244270_hu3367304968089988046.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20250108212244270&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;**在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。&lt;/p&gt;
 </description>
         </item>
         

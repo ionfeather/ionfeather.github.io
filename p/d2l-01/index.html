@@ -270,6 +270,7 @@
             <li><a href="#转换为其他对象">转换为其他对象</a></li>
           </ol>
         </li>
+        <li><a href="#自动求导">自动求导</a></li>
       </ol>
     </li>
   </ol>
@@ -348,7 +349,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -476,6 +477,34 @@
 </span></span><span class="line"><span class="cl"><span class="n">A</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><h5 id="点积">点积
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="矩阵-向量积">矩阵-向量积
+</h5><p>当我们为矩阵<code>A</code>和向量<code>x</code>调用<code>torch.mv(A, x)</code>时，会执行矩阵-向量积。 注意，<code>A</code>的列维数（沿轴1的长度）必须与<code>x</code>的维数（其长度）相同。</p>
+<h5 id="矩阵-矩阵乘法">矩阵-矩阵乘法
+</h5><p><strong>我们可以将矩阵-矩阵乘法AB看作简单地执行m次矩阵-向量积，并将结果拼接在一起，形成一个n×m矩阵</strong>。</p>
+<p>在下面的代码中，我们在<code>A</code>和<code>B</code>上执行矩阵乘法。 这里的<code>A</code>是一个5行4列的矩阵，<code>B</code>是一个4行3列的矩阵。 两者相乘后，我们得到了一个5行3列的矩阵。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div><h4 id="张量连结">张量连结
 </h4><p>在这里，<code>dim=0</code>说明是第一个维度进行拼接；<code>dim=1</code>说明是第二个维度进行拼接。</p>
 <div class="highlight"><div class="chroma">
@@ -523,6 +552,65 @@
 </div><h4 id="转换为其他对象">转换为其他对象
 </h4><p>转换为Numpy非常容易：<code>A = X.numpy()</code></p>
 <p>转换为Python标量：<code>a.item()</code>或者使用内置函数<code>float(a)</code>等。</p>
+<h3 id="自动求导">自动求导
+</h3><p>自动求导是计算一个函数在指定值上的导数。</p>
+<ul>
+<li>如何实现？</li>
+<li>计算图：将代码分解成操作子，将计算表示成一个无环图。</li>
+</ul>
+<p><img src="/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250108211452.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="将计算表示为一个无环图"
+	
+	
+></p>
+<p>关于计算图，有<strong>显式构造 vs 隐式构造</strong>两种构造方式。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>特性</th>
+          <th>显式构造</th>
+          <th>隐式构造</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>计算图构建方式</strong></td>
+          <td>显式定义</td>
+          <td>隐式定义</td>
+      </tr>
+      <tr>
+          <td><strong>计算图类型</strong></td>
+          <td>静态图</td>
+          <td>动态图</td>
+      </tr>
+      <tr>
+          <td><strong>典型框架</strong></td>
+          <td>TensorFlow 1.x, Theano</td>
+          <td>PyTorch, TensorFlow 2.x (Eager)</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。</p>
+<p><img src="/p/d2l-01/image-20250108212244270.png"
+	width="1055"
+	height="1019"
+	srcset="/p/d2l-01/image-20250108212244270_hu7977576403841564060.png 480w, /p/d2l-01/image-20250108212244270_hu3367304968089988046.png 1024w"
+	loading="lazy"
+	
+		alt="image-20250108212244270"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="248px"
+	
+></p>
+<p>**在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。</p>
 
 </section>
 
