@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on ionfeather&#39;Log</title>
+        <link>https://ionfeather.github.io/categories/</link>
+        <description>Recent content in Categories on ionfeather&#39;Log</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ionfeather&#39;Log</copyright>
+        <lastBuildDate>Wed, 12 Feb 2025 17:51:19 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>玛德莱娜蛋糕</title>
+        <link>https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/</link>
+        <pubDate>Wed, 12 Feb 2025 17:51:19 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/cover.jpg" alt="Featured image of post 玛德莱娜蛋糕" /&gt;</description>
+        </item>
+        <item>
+        <title>学习札记</title>
+        <link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+        <pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cover.jpg" alt="Featured image of post 学习札记" /&gt;</description>
+        </item>
+        <item>
+        <title>藕花无数满汀洲</title>
+        <link>https://ionfeather.github.io/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ionfeather.github.io/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/flower.jpg" alt="Featured image of post 藕花无数满汀洲" /&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
