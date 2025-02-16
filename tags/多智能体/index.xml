@@ -209,26 +209,34 @@
 &lt;h4 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：对论文提出创新性改进，探索论文的可能性&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;未定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;功能：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
-&lt;li&gt;实现方式
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;一般来说论文会自己说明。&lt;/li&gt;
+&lt;li&gt;用优点和创新点微调后的大模型。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;功能：批判性思考，找出论文的问题和不足。&lt;/li&gt;
-&lt;li&gt;实现方式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：批判性思考，找出论文的问题和不足。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;用批判性数据集微调后的大模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;红色思考帽&#34;&gt;红色思考帽
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;功能：主观感受和直觉判断。&lt;/li&gt;
-&lt;li&gt;实现方式
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：主观感受和直觉判断。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;让智能体多阅读论文，找到好的论文之间的共性和形成自己的「偏好」。&lt;/li&gt;
 &lt;/ul&gt;
@@ -236,9 +244,20 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;功能：控制评审流程。&lt;/li&gt;
-&lt;li&gt;实现方式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：控制评审流程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;未定。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;蓝色思考帽智能体应该如何控制&#34;&gt;蓝色思考帽智能体应该如何控制？
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;基于&lt;strong&gt;工作流管理&lt;/strong&gt;的集中式控制方法。蓝色智能体明确规定了其他智能体的工作顺序、时间和交互方式。&lt;/li&gt;
+&lt;li&gt;基于&lt;strong&gt;协商机制&lt;/strong&gt;的分布式控制方法。在评审开始时，蓝色智能体发起评审任务，各思考帽智能体根据自身能力和状态反馈可承担的工作及预计时间。比如白色告诉蓝色需要5分钟完成，绿色说在白色完成后需要10分钟&amp;hellip;通过这些反馈，蓝色智能体来制定计划。&lt;/li&gt;
+&lt;li&gt;基于&lt;strong&gt;事件驱动&lt;/strong&gt;的动态控制方法。不同的智能体换成之后会触发不同的事件，如白色完成后让绿色工作，黑色和黄色在辩论后无法达成共识，就再次进行辩论等。这个事件定义较难。&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         
