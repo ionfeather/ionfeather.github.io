@@ -7,6 +7,240 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate></lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Sat, 15 Feb 2025 21:58:31 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>多智能体框架</title>
+        <link>https://ionfeather.github.io/p/multiagentcollaboration/</link>
+        <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/p/multiagentcollaboration/</guid>
+        <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
+&lt;/h2&gt;&lt;p&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/p&gt;
+&lt;h3 id=&#34;摘要&#34;&gt;摘要
+&lt;/h3&gt;&lt;p&gt;随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。&lt;/p&gt;
+&lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
+&lt;p&gt;此外，本文还探讨了多智能体系统在不同领域的各种应用，包括5G/6G网络、工业5.0、问答系统、以及社会文化环境，展示了它们的广泛应用和更深远的影响。最后，我们总结了关键经验教训，分析了多智能体系统面临的开放挑战，并指出了朝着人工集体智能发展的潜在研究方向。&lt;/p&gt;
+&lt;h3 id=&#34;文章大纲&#34;&gt;文章大纲
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
+	width=&#34;1220&#34;
+	height=&#34;1316&#34;
+	srcset=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu6720109416329815600.png 480w, https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu18119963891352496561.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;文章大纲&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;92&#34;
+		data-flex-basis=&#34;222px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;应用&#34;&gt;应用
+&lt;/h3&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;方法&lt;/th&gt;
+          &lt;th&gt;领域&lt;/th&gt;
+          &lt;th&gt;主要贡献&lt;/th&gt;
+          &lt;th&gt;优点&lt;/th&gt;
+          &lt;th&gt;缺点&lt;/th&gt;
+          &lt;th&gt;参考文献&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LLM-SC&lt;/td&gt;
+          &lt;td&gt;物联网&lt;/td&gt;
+          &lt;td&gt;作为知识生成器增强语义解码器&lt;/td&gt;
+          &lt;td&gt;利用大语言模型，实现显著的编码增益&lt;/td&gt;
+          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+          &lt;td&gt;[130]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LaMoSC&lt;/td&gt;
+          &lt;td&gt;物联网&lt;/td&gt;
+          &lt;td&gt;提出一种大语言模型驱动的多模态融合语义通信&lt;/td&gt;
+          &lt;td&gt;在低信噪比条件下表现稳健&lt;/td&gt;
+          &lt;td&gt;由于使用大语言模型和视觉 Transformer，计算资源需求高&lt;/td&gt;
+          &lt;td&gt;[157]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LAM-MSC&lt;/td&gt;
+          &lt;td&gt;物联网&lt;/td&gt;
+          &lt;td&gt;为多模态数据设计联合编码器；大语言模型作为知识生成器&lt;/td&gt;
+          &lt;td&gt;一个编码器和解码器可处理多种类型的数据；实现更好的编码率和重建误差&lt;/td&gt;
+          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+          &lt;td&gt;[65]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GMAC&lt;/td&gt;
+          &lt;td&gt;物联网&lt;/td&gt;
+          &lt;td&gt;利用大语言模型实现观察状态与自然语言之间的语义对齐，并压缩语义信息&lt;/td&gt;
+          &lt;td&gt;提高收敛速度；实现无通信的多智能体协作&lt;/td&gt;
+          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+          &lt;td&gt;[160]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;LLM-Blender&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;采用多种大语言模型代理的集成方法进行候选排序&lt;/td&gt;
+          &lt;td&gt;能够生成比现有候选更好的输出&lt;/td&gt;
+          &lt;td&gt;为实现最优解，需要进行 O (n) 次推理，导致计算开销大&lt;/td&gt;
+          &lt;td&gt;[64]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SOT&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;并行生成每个答案框架；完成答案内容（需要规划结构）&lt;/td&gt;
+          &lt;td&gt;通过并行加速推理速度；适用于需要长结构答案的问题&lt;/td&gt;
+          &lt;td&gt;答案质量评估远非完美，由于提示集有限；不同代理的并行请求可能会影响服务吞吐量&lt;/td&gt;
+          &lt;td&gt;[95]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Meta-Prompting&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;构建高级元提示来指导大语言模型&lt;/td&gt;
+          &lt;td&gt;保持连贯的推理思路；挖掘各种专家角色&lt;/td&gt;
+          &lt;td&gt;多次模型调用成本较高；需要大量的规模和相当大的上下文窗口&lt;/td&gt;
+          &lt;td&gt;[119]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;MAD&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;两个代理表达各自的论点；一个评判者监控和管理辩论&lt;/td&gt;
+          &lt;td&gt;减少偏差和扭曲的认知；鼓励无限的外部反馈&lt;/td&gt;
+          &lt;td&gt;由于辩论时间长，计算成本高；大语言模型在长场景中难以保持连贯性和相关性&lt;/td&gt;
+          &lt;td&gt;[77]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;FORD&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;包括三个阶段的辩论：公平辩论、不匹配辩论、圆桌辩论&lt;/td&gt;
+          &lt;td&gt;通过辩论让大语言模型探索自身理解与他人概念化之间的差异&lt;/td&gt;
+          &lt;td&gt;除常识推理外，无法涵盖各种任务；严重依赖多项选择任务，限制了其泛化能力&lt;/td&gt;
+          &lt;td&gt;[140]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ChatDev&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;采用聊天链将每个阶段分解为更小的子任务，实现代理之间的多轮通信，以协作开发解决方案&lt;/td&gt;
+          &lt;td&gt;最大限度减少代码幻觉（提供的源代码缺失的情况）&lt;/td&gt;
+          &lt;td&gt;没有清晰、详细的要求时，代理难以理解任务想法；通用软件的自动化评估非常复杂；多个代理需要更多的令牌和时间，导致计算需求大&lt;/td&gt;
+          &lt;td&gt;[105]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AgentVerse&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;由专家招募、协作决策、行动执行、评估四个阶段组成&lt;/td&gt;
+          &lt;td&gt;提高大语言模型在不确定情况下的泛化能力；提高代理的适应性&lt;/td&gt;
+          &lt;td&gt;协作决策过程中代理之间的通信存在挑战&lt;/td&gt;
+          &lt;td&gt;[24]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AgentCoord&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;为协调策略提供结构化表示；采用三阶段方法将一般目标转化为可执行策略&lt;/td&gt;
+          &lt;td&gt;简化协调策略的表示和探索；最小化代理的重复实例&lt;/td&gt;
+          &lt;td&gt;仅支持在纯文本环境中协调代理协作；仅支持静态协调策略设计&lt;/td&gt;
+          &lt;td&gt;[97]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;OpenAI&amp;rsquo;s Swarm&lt;/td&gt;
+          &lt;td&gt;自然语言生成&lt;/td&gt;
+          &lt;td&gt;用于多智能体编排的例程和交接；轻量级协调与执行框架&lt;/td&gt;
+          &lt;td&gt;适用于需要可扩展性的应用；交接机制允许在专门代理之间实现无缝过渡&lt;/td&gt;
+          &lt;td&gt;主要关注基于角色的协议和集中式 / 分布式结构；尚未准备好投入生产&lt;/td&gt;
+          &lt;td&gt;见原文&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;TE&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;在主题研究中模拟人类参与者的代表性样本&lt;/td&gt;
+          &lt;td&gt;能够模拟不同的人类行为，并揭示模拟中的一致偏差&lt;/td&gt;
+          &lt;td&gt;需要研究更多的人类行为和额外的大语言模型，以确保关键发现的准确性&lt;/td&gt;
+          &lt;td&gt;[36]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;AgentInstruct&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;通过迭代的跨代理细化生成多样化的自然语言数据，包括文化数据&lt;/td&gt;
+          &lt;td&gt;能够通过工具使用、代理能力等从生成的数据中训练更强大的模型&lt;/td&gt;
+          &lt;td&gt;需要人工构建生成流程&lt;/td&gt;
+          &lt;td&gt;[88]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;SocialMind&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;整合言语、非言语和社交线索，通过增强现实眼镜生成现场建议&lt;/td&gt;
+          &lt;td&gt;设计并利用多模态、多层协作代理系统&lt;/td&gt;
+          &lt;td&gt;需要先进的边缘硬件来处理复杂系统&lt;/td&gt;
+          &lt;td&gt;[144]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;CulturePark&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;促使基于大语言模型的代理进行跨文化交流模拟&lt;/td&gt;
+          &lt;td&gt;生成的数据可用于训练具有不同文化背景的模型，减少偏差并实现民主化&lt;/td&gt;
+          &lt;td&gt;仍然依赖大语言模型对每种文化的了解，因此对资源较少的文化效果有限&lt;/td&gt;
+          &lt;td&gt;[73]&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;Mango&lt;/td&gt;
+          &lt;td&gt;社会与文化领域&lt;/td&gt;
+          &lt;td&gt;通过对概念和文化的提示，从基于大语言模型的代理中提取高质量知识&lt;/td&gt;
+          &lt;td&gt;自动化方法可生成大量资源&lt;/td&gt;
+          &lt;td&gt;人类评估需要来自更多样化的背景&lt;/td&gt;
+          &lt;td&gt;[94]&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;六个思考帽的设计&#34;&gt;六个思考帽的设计
+&lt;/h3&gt;&lt;h4 id=&#34;白色思考帽&#34;&gt;白色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：收集客观信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;对论文进行解析。&lt;/li&gt;
+&lt;li&gt;从论文文本中抽取结构化数据。&lt;/li&gt;
+&lt;li&gt;从网络中搜索作者之前的研究成果。&lt;/li&gt;
+&lt;li&gt;从网络中搜索同类研究的对比数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：对论文提出创新性改进，探索论文的可能性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;功能：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
+&lt;li&gt;实现方式
+&lt;ul&gt;
+&lt;li&gt;一般来说论文会自己说明。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;功能：批判性思考，找出论文的问题和不足。&lt;/li&gt;
+&lt;li&gt;实现方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;红色思考帽&#34;&gt;红色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;功能：主观感受和直觉判断。&lt;/li&gt;
+&lt;li&gt;实现方式
+&lt;ul&gt;
+&lt;li&gt;让智能体多阅读论文，找到好的论文之间的共性和形成自己的「偏好」。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;功能：控制评审流程。&lt;/li&gt;
+&lt;li&gt;实现方式&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
     </channel>
 </rss>
