@@ -14,7 +14,8 @@
         
         <guid>https://ionfeather.github.io/p/multiagentcollaboration/</guid>
         <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
-&lt;/h2&gt;&lt;p&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2306.03314&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;摘要&#34;&gt;摘要
 &lt;/h3&gt;&lt;p&gt;随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。&lt;/p&gt;
 &lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
@@ -193,9 +194,10 @@
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;六个思考帽的设计&#34;&gt;六个思考帽的设计
-&lt;/h3&gt;&lt;h4 id=&#34;白色思考帽&#34;&gt;白色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;六个思考帽的设计&#34;&gt;六个思考帽的设计
+&lt;/h2&gt;&lt;h3 id=&#34;白色思考帽&#34;&gt;白色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：收集客观信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -206,8 +208,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：对论文提出创新性改进，探索论文的可能性&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -215,8 +217,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -224,8 +226,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：批判性思考，找出论文的问题和不足。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -233,8 +235,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;红色思考帽&#34;&gt;红色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;红色思考帽&#34;&gt;红色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：主观感受和直觉判断。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -242,8 +244,8 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h3 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：控制评审流程。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
 &lt;ul&gt;
@@ -252,8 +254,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;蓝色思考帽智能体应该如何控制&#34;&gt;蓝色思考帽智能体应该如何控制？
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h2 id=&#34;蓝色思考帽智能体应该如何控制&#34;&gt;蓝色思考帽智能体应该如何控制？
+&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;基于&lt;strong&gt;工作流管理&lt;/strong&gt;的集中式控制方法。蓝色智能体明确规定了其他智能体的工作顺序、时间和交互方式。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;协商机制&lt;/strong&gt;的分布式控制方法。在评审开始时，蓝色智能体发起评审任务，各思考帽智能体根据自身能力和状态反馈可承担的工作及预计时间。比如白色告诉蓝色需要5分钟完成，绿色说在白色完成后需要10分钟&amp;hellip;通过这些反馈，蓝色智能体来制定计划。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;事件驱动&lt;/strong&gt;的动态控制方法。不同的智能体换成之后会触发不同的事件，如白色完成后让绿色工作，黑色和黄色在辩论后无法达成共识，就再次进行辩论等。这个事件定义较难。&lt;/li&gt;

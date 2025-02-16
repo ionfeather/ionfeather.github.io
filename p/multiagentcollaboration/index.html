@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="论文阅读 | 多智能体协作机制：大语言模型综述\rMulti-Agent Collaboration Mechanisms: A Survey of LLMs\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="论文阅读 | 多智能体协作机制：大语言模型综述\r[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
 <title>多智能体框架</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/p/multiagentcollaboration/'>
 
 <link rel="stylesheet" href="/scss/style.min.88cbe22610e8af6662ebc141a3cb9b2c4c943a3e5e88ba0747aa60a2d6e87380.css"><meta property='og:title' content="多智能体框架">
-<meta property='og:description' content="论文阅读 | 多智能体协作机制：大语言模型综述\rMulti-Agent Collaboration Mechanisms: A Survey of LLMs\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
+<meta property='og:description' content="论文阅读 | 多智能体协作机制：大语言模型综述\r[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
 <meta property='og:url' content='https://ionfeather.github.io/p/multiagentcollaboration/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='多智能体' /><meta property='article:published_time' content='2025-02-15T21:58:31&#43;08:00'/><meta property='article:modified_time' content='2025-02-15T21:58:31&#43;08:00'/>
 <meta name="twitter:title" content="多智能体框架">
-<meta name="twitter:description" content="论文阅读 | 多智能体协作机制：大语言模型综述\rMulti-Agent Collaboration Mechanisms: A Survey of LLMs\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
+<meta name="twitter:description" content="论文阅读 | 多智能体协作机制：大语言模型综述\r[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents\n摘要\r随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。\n">
     <link rel="shortcut icon" href="/ion.ico" />
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
@@ -271,19 +271,19 @@
         <li><a href="#摘要">摘要</a></li>
         <li><a href="#文章大纲">文章大纲</a></li>
         <li><a href="#应用">应用</a></li>
-        <li><a href="#六个思考帽的设计">六个思考帽的设计</a>
-          <ol>
-            <li><a href="#白色思考帽">白色思考帽</a></li>
-            <li><a href="#绿色思考帽">绿色思考帽</a></li>
-            <li><a href="#黄色思考帽">黄色思考帽</a></li>
-            <li><a href="#黑色思考帽">黑色思考帽</a></li>
-            <li><a href="#红色思考帽">红色思考帽</a></li>
-            <li><a href="#蓝色思考帽">蓝色思考帽</a></li>
-          </ol>
-        </li>
-        <li><a href="#蓝色思考帽智能体应该如何控制">蓝色思考帽智能体应该如何控制？</a></li>
       </ol>
     </li>
+    <li><a href="#六个思考帽的设计">六个思考帽的设计</a>
+      <ol>
+        <li><a href="#白色思考帽">白色思考帽</a></li>
+        <li><a href="#绿色思考帽">绿色思考帽</a></li>
+        <li><a href="#黄色思考帽">黄色思考帽</a></li>
+        <li><a href="#黑色思考帽">黑色思考帽</a></li>
+        <li><a href="#红色思考帽">红色思考帽</a></li>
+        <li><a href="#蓝色思考帽">蓝色思考帽</a></li>
+      </ol>
+    </li>
+    <li><a href="#蓝色思考帽智能体应该如何控制">蓝色思考帽智能体应该如何控制？</a></li>
   </ol>
 </nav>
         </div>
@@ -364,7 +364,8 @@
     
     
     <h2 id="论文阅读--多智能体协作机制大语言模型综述">论文阅读 | 多智能体协作机制：大语言模型综述
-</h2><p>Multi-Agent Collaboration Mechanisms: A Survey of LLMs</p>
+</h2><p><a class="link" href="https://arxiv.org/abs/2306.03314"  target="_blank" rel="noopener"
+    >[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents</a></p>
 <h3 id="摘要">摘要
 </h3><p>随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。</p>
 <p>本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。</p>
@@ -543,9 +544,10 @@
       </tr>
   </tbody>
 </table></div>
-<h3 id="六个思考帽的设计">六个思考帽的设计
-</h3><h4 id="白色思考帽">白色思考帽
-</h4><ul>
+<hr>
+<h2 id="六个思考帽的设计">六个思考帽的设计
+</h2><h3 id="白色思考帽">白色思考帽
+</h3><ul>
 <li><strong>功能</strong>：收集客观信息。</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -556,8 +558,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="绿色思考帽">绿色思考帽
-</h4><ul>
+<h3 id="绿色思考帽">绿色思考帽
+</h3><ul>
 <li><strong>功能</strong>：对论文提出创新性改进，探索论文的可能性</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -565,8 +567,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="黄色思考帽">黄色思考帽
-</h4><ul>
+<h3 id="黄色思考帽">黄色思考帽
+</h3><ul>
 <li><strong>功能</strong>：积极角度评估论文，找出论文的优点和贡献。</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -574,8 +576,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="黑色思考帽">黑色思考帽
-</h4><ul>
+<h3 id="黑色思考帽">黑色思考帽
+</h3><ul>
 <li><strong>功能</strong>：批判性思考，找出论文的问题和不足。</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -583,8 +585,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="红色思考帽">红色思考帽
-</h4><ul>
+<h3 id="红色思考帽">红色思考帽
+</h3><ul>
 <li><strong>功能</strong>：主观感受和直觉判断。</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -592,8 +594,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="蓝色思考帽">蓝色思考帽
-</h4><ul>
+<h3 id="蓝色思考帽">蓝色思考帽
+</h3><ul>
 <li><strong>功能</strong>：控制评审流程。</li>
 <li><strong>实现方式</strong>
 <ul>
@@ -602,8 +604,8 @@
 </li>
 </ul>
 <hr>
-<h3 id="蓝色思考帽智能体应该如何控制">蓝色思考帽智能体应该如何控制？
-</h3><ol>
+<h2 id="蓝色思考帽智能体应该如何控制">蓝色思考帽智能体应该如何控制？
+</h2><ol>
 <li>基于<strong>工作流管理</strong>的集中式控制方法。蓝色智能体明确规定了其他智能体的工作顺序、时间和交互方式。</li>
 <li>基于<strong>协商机制</strong>的分布式控制方法。在评审开始时，蓝色智能体发起评审任务，各思考帽智能体根据自身能力和状态反馈可承担的工作及预计时间。比如白色告诉蓝色需要5分钟完成，绿色说在白色完成后需要10分钟&hellip;通过这些反馈，蓝色智能体来制定计划。</li>
 <li>基于<strong>事件驱动</strong>的动态控制方法。不同的智能体换成之后会触发不同的事件，如白色完成后让绿色工作，黑色和黄色在辩论后无法达成共识，就再次进行辩论等。这个事件定义较难。</li>
