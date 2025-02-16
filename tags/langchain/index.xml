@@ -8,12 +8,12 @@
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/langchain/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>学习笔记 | LangChain学习笔记</title>
+        <title>LangChain学习笔记</title>
         <link>https://ionfeather.github.io/p/langchain-learning/</link>
         <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/p/langchain-learning/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/langchain-learning/cover.png" alt="Featured image of post 学习笔记 | LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
+        <description>&lt;img src="https://ionfeather.github.io/p/langchain-learning/cover.png" alt="Featured image of post LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 
 &lt;div class=&#34;chat --other&#34;&gt;
