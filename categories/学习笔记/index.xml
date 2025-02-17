@@ -7,7 +7,121 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Sat, 15 Feb 2025 21:58:31 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 17 Feb 2025 13:33:33 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>深入LLMs</title>
+        <link>https://ionfeather.github.io/p/deepdiveintollms/</link>
+        <pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/p/deepdiveintollms/</guid>
+        <description>&lt;h2 id=&#34;深入llms&#34;&gt;深入LLMs
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Deep dive into LLMs like ChatGPT by Andrej Karpathy (TL;DR) | Anfal Mushtaq&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;预训练&#34;&gt;预训练
+&lt;/h3&gt;&lt;h4 id=&#34;tokenization&#34;&gt;Tokenization
+&lt;/h4&gt;&lt;h4 id=&#34;naural-network-io&#34;&gt;Naural Network I/O
+&lt;/h4&gt;&lt;h4 id=&#34;open-base-models&#34;&gt;Open Base Models
+&lt;/h4&gt;&lt;h3 id=&#34;预训练到post-training&#34;&gt;预训练到Post-Training
+&lt;/h3&gt;&lt;h4 id=&#34;sft&#34;&gt;SFT
+&lt;/h4&gt;&lt;h5 id=&#34;data-conversations&#34;&gt;Data Conversations
+&lt;/h5&gt;&lt;h5 id=&#34;幻觉tool-use和记忆&#34;&gt;幻觉，Tool use和记忆
+&lt;/h5&gt;&lt;h6 id=&#34;如何解决幻觉&#34;&gt;如何解决幻觉？
+&lt;/h6&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提取一段训练数据。&lt;/li&gt;
+&lt;li&gt;使用 Llama 3 生成一个关于它的事实问题。&lt;/li&gt;
+&lt;li&gt;让 Llama 3 生成答案。&lt;/li&gt;
+&lt;li&gt;根据原始数据对答案进行评分。&lt;/li&gt;
+&lt;li&gt;如果不正确，则训练模型识别并拒绝不正确的答案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;方法二：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;教会模型在不知道的时候使用工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;|im_start|&amp;gt;user&amp;lt;|im_sep|&amp;gt;Who is Orson Kovacs?&amp;lt;|im_end|&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;|im_start|&amp;gt;assistant&amp;lt;|im_sep|&amp;gt;&amp;lt;SEARCH_START&amp;gt;Who is Orson Kovacs?&amp;lt;SEARCH_END&amp;gt;&amp;lt;|im_end|&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[...search results...]
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;|im_start|&amp;gt;assistant&amp;lt;|im_sep|&amp;gt;Orson Kovacs is ....&amp;lt;|im_end|&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模型会意识到在不了解一些事情的时候，应该查询而不是编造。&lt;/p&gt;
+&lt;p&gt;模型参数中存储着「模糊记忆」，那些记忆像是一个月前的事情；但是在上下文中的是「工作记忆」。这就是RAG为什么有效的原因。&lt;/p&gt;
+&lt;h5 id=&#34;自身的认知&#34;&gt;自身的认知
+&lt;/h5&gt;&lt;p&gt;模型会觉得自己是OpenAI。如何解决？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;训练集中加入自身定义。&lt;/li&gt;
+&lt;li&gt;使用System Messages。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;模型需要tokens来思考&#34;&gt;模型需要Tokens来思考
+&lt;/h5&gt;&lt;p&gt;模型并不像人类一样推理。它们需要顺序地生成tokens，所以他们需要结构化地生成来正确思考。&lt;/p&gt;
+&lt;p&gt;所以模型最好能够step-by-step来推理。&lt;/p&gt;
+&lt;p&gt;为什么？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果直接生成答案，那大概是猜的。&lt;/li&gt;
+&lt;li&gt;如果一步步生成，会更可靠。&lt;/li&gt;
+&lt;li&gt;将大问题分成小部分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于数学/逻辑任务，最好使用外部工具来生成，而非自己的推理。&lt;/p&gt;
+&lt;h4 id=&#34;强化学习&#34;&gt;强化学习
+&lt;/h4&gt;&lt;h5 id=&#34;强化学习是如何做到的&#34;&gt;强化学习是如何做到的
+&lt;/h5&gt;&lt;h5 id=&#34;从人类反馈中进行强化学习rlhf&#34;&gt;从人类反馈中进行强化学习（RLHF）
+&lt;/h5&gt;&lt;p&gt;在数学或者代码的地方，也就是可以验证的领域，LLMs可以自己给自己的表现打分。&lt;/p&gt;
+&lt;p&gt;但是对于无法验证的领域，我们需要人类参与进这个循环。&lt;/p&gt;
+&lt;p&gt;例如，对于「写一个关于鹈鹕的笑话」这个prompt，很难找到一种方法来自动判断笑话的质量。LLM 可以毫无问题地生成笑话，但无法大规模判断笑话的质量。&lt;/p&gt;
+&lt;p&gt;但是我们又不可能把人类的行为大规模地纳入这个过程。因此RLHF被提出。可以参考这篇论文&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/1909.08593&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Fine-Tuning Language Models from Human Preferences&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;为了实现大规模的 RLHF，基本上需要训练一个单独的奖励模型，这个模型可以是一层Transformer，而不需要额外的层。可以利用人类来判断基于它的回答的排名，然后利用这个奖励模型来训练奖励模型，直到对结果感到满意为止。训练完成后，就可以使用奖励模型来判断 LLM 生成的大规模响应的质量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RLHF 的优点
+&lt;ul&gt;
+&lt;li&gt;可在无法验证的领域（如笑话写作或总结）中使用 RL。&lt;/li&gt;
+&lt;li&gt;通常可以通过减少幻觉和使回答更像人类来改进模型。&lt;/li&gt;
+&lt;li&gt;利用 「辨别-生成的区别」——人类发现评价一个答案比生成一个答案更容易。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;RLHF 的缺点
+&lt;ul&gt;
+&lt;li&gt;奖励模型只是对人类偏好的模拟，而不是真实的人类。这可能会产生误导。&lt;/li&gt;
+&lt;li&gt;RL 可以与系统博弈，产生利用奖励模型弱点的对抗性示例。
+&lt;ul&gt;
+&lt;li&gt;举例说明： 经过 1,000 次更新后，模型的「关于鹈鹕的顶级笑话 」可能完全是无稽之谈（例如，“the the the the the the the”）。&lt;/li&gt;
+&lt;li&gt;这就是所谓的对抗式机器学习。由于有无数种方法可以与系统博弈，因此过滤掉不良响应并不简单。&lt;/li&gt;
+&lt;li&gt;为了防止这种情况，奖励模型训练的上限是几百次迭代——超过这个上限，模型就会开始过度优化，性能就会下降。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;一些接下来的领域&#34;&gt;一些接下来的领域
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;多模态模型能力&lt;/li&gt;
+&lt;li&gt;Agent-Based Model&lt;/li&gt;
+&lt;li&gt;普及并且无感的AI&lt;/li&gt;
+&lt;li&gt;与软件/计算机集成的AI&lt;/li&gt;
+&lt;li&gt;实时性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;继续关注llms&#34;&gt;继续关注LLMs
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://lmarena.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LM Arena&lt;/a&gt; → Benchmarking new language models.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://buttondown.com/ainews&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;AI News&lt;/a&gt; → A newsletter covering AI research.&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://x.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;X (Twitter)&lt;/a&gt; → Many researchers share updates here.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;哪里可以找到llms&#34;&gt;哪里可以找到LLMs
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;闭源模型Proprietary Models&lt;/strong&gt; → OpenAI (GPT-4), Google (Gemini), Anthropic (Claude), etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开放权重模型Open-Weight Models&lt;/strong&gt; → DeepSeek, Meta (Llama), etc. Try them via &lt;a class=&#34;link&#34; href=&#34;https://together.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Together.ai&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当地运行的模型Run Locally&lt;/strong&gt; → Use &lt;a class=&#34;link&#34; href=&#34;https://ollama.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ollama&lt;/a&gt; or &lt;a class=&#34;link&#34; href=&#34;https://lmstudio.ai/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;LM Studio&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基础模型Base Models&lt;/strong&gt; → Explore &lt;a class=&#34;link&#34; href=&#34;https://app.hyperbolic.xyz/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hyperbolic&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>论文阅读 | 多智能体协作机制：大语言模型综述</title>
         <link>https://ionfeather.github.io/p/multiagentcollaboration/</link>
         <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
