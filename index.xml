@@ -1202,12 +1202,13 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/%E5%85%B3%E4%BA%8E/</guid>
-        <description>&lt;h2 id=&#34;aloha&#34;&gt;Aloha!
-&lt;/h2&gt;&lt;p&gt;这里是ionfeather。&lt;/p&gt;
+        <description>&lt;h3 id=&#34;aloha&#34;&gt;Aloha!
+&lt;/h3&gt;&lt;p&gt;这里是ionfeather。&lt;/p&gt;
 &lt;p&gt;我在2024年末建立了这个网站，分享自己的所见所闻、所思所想，包括但不限于随笔、学习笔记和书影音。&lt;/p&gt;
 &lt;p&gt;有一个地方可以拿来自言自语、絮絮叨叨也挺好的，不是吗？&lt;/p&gt;
-&lt;h2 id=&#34;blog更新时间轴&#34;&gt;Blog更新时间轴
-&lt;/h2&gt;&lt;p&gt;&lt;div class=&#34;timeline__row&#34;&gt;
+&lt;!-- ## Blog更新时间轴
+
+&lt;div class=&#34;timeline__row&#34;&gt;
     &lt;div class=&#34;timeline__time&#34;&gt;
         &lt;div class=&#34;timeline__time&#34;&gt;2024-10-20&lt;/div&gt;
         &lt;div class=&#34;timeline__split-line&#34;&gt;&lt;/div&gt;
@@ -1725,8 +1726,7 @@
         }
     }
 &lt;/style&gt;
-&lt;/p&gt;
-</description>
+ --&gt;</description>
         </item>
         <item>
         <title>搜索</title>
