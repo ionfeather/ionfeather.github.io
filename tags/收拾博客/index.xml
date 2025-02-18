@@ -7,12 +7,128 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Wed, 12 Feb 2025 16:00:34 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E6%94%B6%E6%8B%BE%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E6%94%B6%E6%8B%BE%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Shortcodes测试</title>
+        <link>https://ionfeather.github.io/2025/shortcodes/</link>
+        <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/shortcodes/</guid>
+        <description>&lt;h2 id=&#34;shortcode测试&#34;&gt;Shortcode测试
+&lt;/h2&gt;&lt;p&gt;特别感谢：&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高斯模糊&#34;&gt;高斯模糊
+&lt;/h3&gt;&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;摘录引用&#34;&gt;摘录引用
+&lt;/h3&gt;
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+  
+
+
+&lt;blockquote&gt;
+  &lt;p&gt;这里写引用内容，实际使用记得换成双括号。&lt;/p&gt;
+  &lt;footer style=&#34;text-align:right&#34;&gt;
+    &lt;strong&gt;作者&lt;/strong&gt;
+    
+      
+        &lt;cite&gt;
+          &lt;a href=&#34;%e4%b9%9f%e5%8f%af%e4%bb%a5%e4%b8%8d%e5%8a%a0%e5%95%a6&#34; title=&#34;也可以不加啦&#34; rel=&#34;noopener noreferrer&#34;&gt;作品名&lt;/a&gt; 
+        &lt;/cite&gt;
+      
+    
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;图片滚动&#34;&gt;图片滚动
+&lt;/h3&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css&#34;&gt;
+    
+    &lt;div class=&#34;swiper-container&#34;&gt;
+        &lt;div class=&#34;swiper-wrapper&#34;&gt;
+            
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3245.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3248.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3304.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+        
+        &lt;div class=&#34;swiper-pagination&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js&#34;&gt;&lt;/script&gt;
+     
+     &lt;script&gt;
+        var swiper = new Swiper(&#39;.swiper-container&#39;, {
+            pagination: &#39;.swiper-pagination&#39;,
+            paginationClickable: true,
+        
+        autoHeight: true,
+        
+        keyboardControl : true,
+        
+        mousewheelControl : true,
+        
+        
+        
+        lazyLoading : true,
+		lazyLoadingInPrevNext : true,
+		
+		loop : true,
+        });
+        &lt;/script&gt;
+
+
+&lt;h3 id=&#34;bilibili&#34;&gt;Bilibili
+&lt;/h3&gt;
+
+
+
+
+
+    
+
+
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe src=&#34;https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1V7411d7iW&#34;
+            scrolling=&#34;no&#34;
+            frameborder=&#34;no&#34;
+            framespacing=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
         <title>使用Obsidian来写博客</title>
-        <link>https://ionfeather.github.io/p/obsidian/</link>
+        <link>https://ionfeather.github.io/2025/obsidian/</link>
         <pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/obsidian/</guid>
+        <guid>https://ionfeather.github.io/2025/obsidian/</guid>
         <description>&lt;p&gt;之前一直在用Typora来写文章，发现有的时候也太难用了，不仅插件少，还要付费。这个时候看到很多的博客都用Obsidian来写，不得不心动了。&lt;/p&gt;
 &lt;h2 id=&#34;obsidian的插件&#34;&gt;Obsidian的插件
 &lt;/h2&gt;&lt;h3 id=&#34;linter&#34;&gt;Linter
@@ -23,10 +139,10 @@
 &lt;p&gt;我不得不赞赏一下这个Linter，真的很好用，格式化目前的Markdown内容一直是我的心头痒，对于我这个强迫症来说，现在只需要按一下&lt;code&gt;Ctrl+S&lt;/code&gt;就可以让我的敲击的内容都非常规范化，这实在是伟大的发明。&lt;/p&gt;
 &lt;h3 id=&#34;excalidraw&#34;&gt;Excalidraw
 &lt;/h3&gt;&lt;p&gt;这个插件还挺好看的，可以绘制手绘风格的图像，我绘制一些想法会更加方便。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/obsidian/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/obsidian/image.png&#34;
 	width=&#34;536&#34;
 	height=&#34;371&#34;
-	srcset=&#34;https://ionfeather.github.io/p/obsidian/image_hu6476897796055694917.png 480w, https://ionfeather.github.io/p/obsidian/image_hu6467528668826359882.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu6476897796055694917.png 480w, https://ionfeather.github.io/2025/obsidian/image_hu6467528668826359882.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;学习时间和自信心之间的关系&#34;

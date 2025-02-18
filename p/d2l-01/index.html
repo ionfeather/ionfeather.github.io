@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n">
 <title>《动手学深度学习》</title>
 
-<link rel='canonical' href='https://ionfeather.github.io/p/d2l-01/'>
+<link rel='canonical' href='http://localhost:1313/p/d2l-01/'>
 
-<link rel="stylesheet" href="/scss/style.min.93b6eeefa971a8974f8dc69268d2f4b6a0340553ed0755d19be19be727a93949.css"><meta property='og:title' content="《动手学深度学习》">
+<link rel="stylesheet" href="/scss/style.min.e2a6614fb673f74c3ec41ed30e70c29551516d08e7abac87bee2ed37103dd584.css"><meta property='og:title' content="《动手学深度学习》">
 <meta property='og:description' content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n">
-<meta property='og:url' content='https://ionfeather.github.io/p/d2l-01/'>
+<meta property='og:url' content='http://localhost:1313/p/d2l-01/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='og:image' content='https://ionfeather.github.io/p/d2l-01/pics/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='og:image' content='http://localhost:1313/p/d2l-01/pics/cover.png' />
 <meta name="twitter:title" content="《动手学深度学习》">
 <meta name="twitter:description" content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ionfeather.github.io/p/d2l-01/pics/cover.png' />
+    <meta name="twitter:image" content='http://localhost:1313/p/d2l-01/pics/cover.png' />
     <link rel="shortcut icon" href="/ion.ico" />
 <head>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css" />
@@ -512,14 +512,18 @@
   </tbody>
 </table></div>
 <p>有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。</p>
-<p><img src="/pics/%e5%8f%8d%e5%90%91%e4%bc%a0%e9%80%92.png"
-	
-	
-	
+<p><img src="/p/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png"
+	width="1055"
+	height="1019"
+	srcset="/p/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, /p/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w"
 	loading="lazy"
 	
 		alt="反向传递"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="103"
+		data-flex-basis="248px"
 	
 ></p>
 <p>**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。</p>
@@ -589,6 +593,19 @@
             
                 
 <article class="">
+    <a href="/p/shortcodes/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Shortcodes测试</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/multiagentcollaboration/">
         
         
@@ -619,7 +636,7 @@
         
         
             <div class="article-image">
-                <img src="/p/virtual-environment-config/cover.6f4f3ab75271745006d3ce21d8aa1135_hu13003463521408539615.jpg" 
+                <img src="/p/virtual-environment-config/cover.6f4f3ab75271745006d3ce21d8aa1135.6f4f3ab75271745006d3ce21d8aa1135_hu13003463521408539615.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -643,7 +660,7 @@
         
         
             <div class="article-image">
-                <img src="/p/langchain-learning/cover.ddb755e13e74b4dc9c3215937020b858_hu5181855245339850833.png" 
+                <img src="/p/langchain-learning/cover.ddb755e13e74b4dc9c3215937020b858.ddb755e13e74b4dc9c3215937020b858_hu5181855245339850833.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -804,7 +821,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.a403682c4c41273387a898429bce182bf8aa3f7353bc9c0c34a58c0e67a26834.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

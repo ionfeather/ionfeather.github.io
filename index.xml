@@ -7,12 +7,128 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Mon, 17 Feb 2025 14:36:39 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Shortcodes测试</title>
+        <link>https://ionfeather.github.io/2025/shortcodes/</link>
+        <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/shortcodes/</guid>
+        <description>&lt;h2 id=&#34;shortcode测试&#34;&gt;Shortcode测试
+&lt;/h2&gt;&lt;p&gt;特别感谢：&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;高斯模糊&#34;&gt;高斯模糊
+&lt;/h3&gt;&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;摘录引用&#34;&gt;摘录引用
+&lt;/h3&gt;
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+
+  
+
+
+&lt;blockquote&gt;
+  &lt;p&gt;这里写引用内容，实际使用记得换成双括号。&lt;/p&gt;
+  &lt;footer style=&#34;text-align:right&#34;&gt;
+    &lt;strong&gt;作者&lt;/strong&gt;
+    
+      
+        &lt;cite&gt;
+          &lt;a href=&#34;%e4%b9%9f%e5%8f%af%e4%bb%a5%e4%b8%8d%e5%8a%a0%e5%95%a6&#34; title=&#34;也可以不加啦&#34; rel=&#34;noopener noreferrer&#34;&gt;作品名&lt;/a&gt; 
+        &lt;/cite&gt;
+      
+    
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&#34;图片滚动&#34;&gt;图片滚动
+&lt;/h3&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css&#34;&gt;
+    
+    &lt;div class=&#34;swiper-container&#34;&gt;
+        &lt;div class=&#34;swiper-wrapper&#34;&gt;
+            
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3245.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3248.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;DSC_3304.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+        
+        &lt;div class=&#34;swiper-pagination&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js&#34;&gt;&lt;/script&gt;
+     
+     &lt;script&gt;
+        var swiper = new Swiper(&#39;.swiper-container&#39;, {
+            pagination: &#39;.swiper-pagination&#39;,
+            paginationClickable: true,
+        
+        autoHeight: true,
+        
+        keyboardControl : true,
+        
+        mousewheelControl : true,
+        
+        
+        
+        lazyLoading : true,
+		lazyLoadingInPrevNext : true,
+		
+		loop : true,
+        });
+        &lt;/script&gt;
+
+
+&lt;h3 id=&#34;bilibili&#34;&gt;Bilibili
+&lt;/h3&gt;
+
+
+
+
+
+    
+
+
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe src=&#34;https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1V7411d7iW&#34;
+            scrolling=&#34;no&#34;
+            frameborder=&#34;no&#34;
+            framespacing=&#34;0&#34;
+            allowfullscreen=&#34;true&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+        </item>
+        <item>
         <title>论文阅读 | 多智能体协作机制：大语言模型综述</title>
-        <link>https://ionfeather.github.io/p/multiagentcollaboration/</link>
+        <link>https://ionfeather.github.io/2025/multiagentcollaboration/</link>
         <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/multiagentcollaboration/</guid>
+        <guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid>
         <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2306.03314&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
@@ -21,10 +137,10 @@
 &lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
 &lt;p&gt;此外，本文还探讨了多智能体系统在不同领域的各种应用，包括5G/6G网络、工业5.0、问答系统、以及社会文化环境，展示了它们的广泛应用和更深远的影响。最后，我们总结了关键经验教训，分析了多智能体系统面临的开放挑战，并指出了朝着人工集体智能发展的潜在研究方向。&lt;/p&gt;
 &lt;h3 id=&#34;文章大纲&#34;&gt;文章大纲
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
 	width=&#34;1220&#34;
 	height=&#34;1316&#34;
-	srcset=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu6720109416329815600.png 480w, https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu18119963891352496561.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu6720109416329815600.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu18119963891352496561.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;文章大纲&#34;
@@ -264,10 +380,10 @@
         </item>
         <item>
         <title>雨水 | 北京的「雨水」是艳阳高照</title>
-        <link>https://ionfeather.github.io/p/rainwater/</link>
+        <link>https://ionfeather.github.io/2025/rainwater/</link>
         <pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/rainwater/</guid>
+        <guid>https://ionfeather.github.io/2025/rainwater/</guid>
         <description>&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
 &lt;p&gt;北京最近的天气确实是这样。在北京能感受到24节气的准确，能感受到四季分明是什么感觉。&lt;/p&gt;
 &lt;p&gt;但是！！雨水，雨水，北京来点儿雨吧。自从去年的12月以来，我没有见过一滴雨落到北京的地表，这里的晴天就像是默认背景，太阳和月亮每天都是固定角色出现在地平线和天空中。北京的「雨水」是艳阳高照。&lt;/p&gt;
@@ -304,11 +420,11 @@
         </item>
         <item>
         <title>元宵节 | 东风夜放花千树，更吹落、星如雨</title>
-        <link>https://ionfeather.github.io/p/lanternfestival/</link>
+        <link>https://ionfeather.github.io/2025/lanternfestival/</link>
         <pubDate>Wed, 12 Feb 2025 17:51:19 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/lanternfestival/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/lanternfestival/cover.jpg" alt="Featured image of post 元宵节 | 东风夜放花千树，更吹落、星如雨" /&gt;&lt;p&gt;春节快乐！&lt;/p&gt;
+        <guid>https://ionfeather.github.io/2025/lanternfestival/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/2025/lanternfestival/cover.jpg" alt="Featured image of post 元宵节 | 东风夜放花千树，更吹落、星如雨" /&gt;&lt;p&gt;春节快乐！&lt;/p&gt;
 &lt;p&gt;工科研究生的假期有点短暂了。我已经回校了。&lt;/p&gt;
 &lt;p&gt;到学校了感觉自己好多东西需要购置。Apple Watch的表带现在明显太松了，但是官方太贵，第三方又有点儿硬，计划看一下Bilibili上的测评，进行一波购置。还有看上了影视飓风的一款帽子，上面可以贴上你的mbti，这对我这个enfp根本无法拒绝。&lt;/p&gt;
 &lt;p&gt;又来到了北方，又遇到了高铁上一望无际的平原，感觉是另一种大海，在这片海里，有冰封的河流，有枯黄的树枝，还有炊烟和蜗居的人们。有一种说法是南方人向往雪，北方人向往海，这么一看，我应该是个不那么彻底的南方人。我两个都很向往。&lt;/p&gt;
@@ -316,54 +432,14 @@
 &lt;p&gt;虽然现在天气还很冷，但是感觉春意渐浓，即便树梢仍然枯枝，阳光灿烂的时候也能把寒意给驱散。&lt;/p&gt;
 &lt;p&gt;我已经开始期待春天了。玉兰、银柳、山茶、樱花、樱桃花、木绣球、垂丝海棠。我要抄起我的相机，出门拍花拍鸟。&lt;/p&gt;
 &lt;p&gt;不管怎么说，虽然已经上了几年（学校一年，外界一天）班了，现在还是春节期间，我一会儿说不定可以出门，去颐和园旁边拍花灯。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/DSC_3239.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DSC_3239&#34;
-	
-	
-&gt;&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/DSC_3245.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DSC_3245&#34;
-	
-	
-&gt;&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/DSC_3248.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DSC_3248&#34;
-	
-	
-&gt;&lt;img src=&#34;https://ionfeather.github.io/DSC_3304.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;DSC_3304&#34;
-	
-	
-&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
         <title>使用Obsidian来写博客</title>
-        <link>https://ionfeather.github.io/p/obsidian/</link>
+        <link>https://ionfeather.github.io/2025/obsidian/</link>
         <pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/obsidian/</guid>
+        <guid>https://ionfeather.github.io/2025/obsidian/</guid>
         <description>&lt;p&gt;之前一直在用Typora来写文章，发现有的时候也太难用了，不仅插件少，还要付费。这个时候看到很多的博客都用Obsidian来写，不得不心动了。&lt;/p&gt;
 &lt;h2 id=&#34;obsidian的插件&#34;&gt;Obsidian的插件
 &lt;/h2&gt;&lt;h3 id=&#34;linter&#34;&gt;Linter
@@ -374,10 +450,10 @@
 &lt;p&gt;我不得不赞赏一下这个Linter，真的很好用，格式化目前的Markdown内容一直是我的心头痒，对于我这个强迫症来说，现在只需要按一下&lt;code&gt;Ctrl+S&lt;/code&gt;就可以让我的敲击的内容都非常规范化，这实在是伟大的发明。&lt;/p&gt;
 &lt;h3 id=&#34;excalidraw&#34;&gt;Excalidraw
 &lt;/h3&gt;&lt;p&gt;这个插件还挺好看的，可以绘制手绘风格的图像，我绘制一些想法会更加方便。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/obsidian/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/obsidian/image.png&#34;
 	width=&#34;536&#34;
 	height=&#34;371&#34;
-	srcset=&#34;https://ionfeather.github.io/p/obsidian/image_hu6476897796055694917.png 480w, https://ionfeather.github.io/p/obsidian/image_hu6467528668826359882.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu6476897796055694917.png 480w, https://ionfeather.github.io/2025/obsidian/image_hu6467528668826359882.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;学习时间和自信心之间的关系&#34;
@@ -397,15 +473,15 @@
         </item>
         <item>
         <title>《动手学深度学习》</title>
-        <link>https://ionfeather.github.io/p/d2l-01/</link>
+        <link>https://ionfeather.github.io/2025/d2l-01/</link>
         <pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/d2l-01/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/d2l-01/pics/cover.png" alt="Featured image of post 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/pics/image-20250108163545542.png&#34;
+        <guid>https://ionfeather.github.io/2025/d2l-01/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/pics/cover.png" alt="Featured image of post 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542.png&#34;
 	width=&#34;574&#34;
 	height=&#34;438&#34;
-	srcset=&#34;https://ionfeather.github.io/p/d2l-01/pics/image-20250108163545542_hu9992698032500227451.png 480w, https://ionfeather.github.io/p/d2l-01/pics/image-20250108163545542_hu847718125201535737.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542_hu9992698032500227451.png 480w, https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542_hu847718125201535737.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;全书结构&#34;
@@ -496,10 +572,10 @@
 &lt;li&gt;如何实现？&lt;/li&gt;
 &lt;li&gt;计算图：将代码分解成操作子，将计算表示成一个无环图。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
 	width=&#34;987&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;将计算表示为一个无环图&#34;
@@ -538,14 +614,18 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/pics/%e5%8f%8d%e5%90%91%e4%bc%a0%e9%80%92.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png&#34;
+	width=&#34;1055&#34;
+	height=&#34;1019&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;反向传递&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;103&#34;
+		data-flex-basis=&#34;248px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。&lt;/p&gt;
@@ -553,11 +633,11 @@
         </item>
         <item>
         <title>虚拟环境配置操作记录</title>
-        <link>https://ionfeather.github.io/p/virtual-environment-config/</link>
+        <link>https://ionfeather.github.io/2024/virtual-environment-config/</link>
         <pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/virtual-environment-config/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/virtual-environment-config/cover.jpg" alt="Featured image of post 虚拟环境配置操作记录" /&gt;&lt;h2 id=&#34;虚拟环境配置经历&#34;&gt;虚拟环境配置经历
+        <guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/2024/virtual-environment-config/cover.jpg" alt="Featured image of post 虚拟环境配置操作记录" /&gt;&lt;h2 id=&#34;虚拟环境配置经历&#34;&gt;虚拟环境配置经历
 &lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;
 &lt;p&gt;但是我一顿操作之后，原本配置好的环境现在也没办法使用了。此时我庆幸自己想到用&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件保存。但是在进行&lt;code&gt;pip install -r vllm_requirements.txt&lt;/code&gt;的时候，出现了报错的情况，竟然说里面有一个包的版本是yanked version（撤回版本），无法下载，给我气晕了。&lt;/p&gt;
 &lt;p&gt;吃一堑，长一智。配置好的环境就不要变了，应该另外复制一个环境，在复制的环境上进行修改。&lt;/p&gt;
@@ -606,11 +686,11 @@
         </item>
         <item>
         <title>LangChain学习笔记</title>
-        <link>https://ionfeather.github.io/p/langchain-learning/</link>
+        <link>https://ionfeather.github.io/2024/langchain-learning/</link>
         <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/langchain-learning/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/langchain-learning/cover.png" alt="Featured image of post LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
+        <guid>https://ionfeather.github.io/2024/langchain-learning/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 
 &lt;div class=&#34;chat --other&#34;&gt;
@@ -1080,11 +1160,11 @@
         </item>
         <item>
         <title>一个有趣的梦 | 三国阴阳师</title>
-        <link>https://ionfeather.github.io/p/dream/</link>
+        <link>https://ionfeather.github.io/2024/dream/</link>
         <pubDate>Sun, 20 Oct 2024 13:45:58 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/dream/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/p/dream/cover.jpg" alt="Featured image of post 一个有趣的梦 | 三国阴阳师" /&gt;&lt;h2 id=&#34;梦&#34;&gt;梦
+        <guid>https://ionfeather.github.io/2024/dream/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/2024/dream/cover.jpg" alt="Featured image of post 一个有趣的梦 | 三国阴阳师" /&gt;&lt;h2 id=&#34;梦&#34;&gt;梦
 &lt;/h2&gt;&lt;p&gt;这是一个英雄辈出的时代。所谓阴阳师，就是使用牌组与其他人对战来决定胜负的职业。在这里，国之阴阳师是一国中最强的阴阳师，中日韩三国每年都会选拔国之阴阳师，并且对战，决出最后的冠军。&lt;/p&gt;
 &lt;p&gt;我和梦梦是青梅竹马，从小便展露了阴阳师的天赋。所谓“绕床弄青梅，郎骑竹马来”，我和梦梦那就是“绕床打牌组，郎打牌组来”。从小与其他人对战，胜利了之后可以选择是否获取一张新卡&lt;br&gt;
 牌放进自己的卡组，最终打一个最强者之间的对战。这个对战从来都是我和梦梦之间的私人聊天与沟通时间。&lt;/p&gt;

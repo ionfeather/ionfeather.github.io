@@ -9,10 +9,10 @@
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Sat, 15 Feb 2025 21:58:31 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>论文阅读 | 多智能体协作机制：大语言模型综述</title>
-        <link>https://ionfeather.github.io/p/multiagentcollaboration/</link>
+        <link>https://ionfeather.github.io/2025/multiagentcollaboration/</link>
         <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/p/multiagentcollaboration/</guid>
+        <guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid>
         <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2306.03314&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
@@ -21,10 +21,10 @@
 &lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
 &lt;p&gt;此外，本文还探讨了多智能体系统在不同领域的各种应用，包括5G/6G网络、工业5.0、问答系统、以及社会文化环境，展示了它们的广泛应用和更深远的影响。最后，我们总结了关键经验教训，分析了多智能体系统面临的开放挑战，并指出了朝着人工集体智能发展的潜在研究方向。&lt;/p&gt;
 &lt;h3 id=&#34;文章大纲&#34;&gt;文章大纲
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
 	width=&#34;1220&#34;
 	height=&#34;1316&#34;
-	srcset=&#34;https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu6720109416329815600.png 480w, https://ionfeather.github.io/p/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu18119963891352496561.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu6720109416329815600.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu18119963891352496561.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;文章大纲&#34;
