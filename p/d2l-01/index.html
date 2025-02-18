@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/p/d2l-01/'>
 
-<link rel="stylesheet" href="/scss/style.min.88cbe22610e8af6662ebc141a3cb9b2c4c943a3e5e88ba0747aa60a2d6e87380.css"><meta property='og:title' content="《动手学深度学习》">
+<link rel="stylesheet" href="/scss/style.min.93b6eeefa971a8974f8dc69268d2f4b6a0340553ed0755d19be19be727a93949.css"><meta property='og:title' content="《动手学深度学习》">
 <meta property='og:description' content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n">
 <meta property='og:url' content='https://ionfeather.github.io/p/d2l-01/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -470,10 +470,10 @@
 <li>如何实现？</li>
 <li>计算图：将代码分解成操作子，将计算表示成一个无环图。</li>
 </ul>
-<p><img src="/p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg"
+<p><img src="/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg"
 	width="987"
 	height="476"
-	srcset="/p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, /p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w"
+	srcset="/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, /p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w"
 	loading="lazy"
 	
 		alt="将计算表示为一个无环图"
@@ -488,42 +488,38 @@
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th>特性</th>
+          <th style="text-align: center">特性</th>
           <th>显式构造</th>
           <th>隐式构造</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td><strong>计算图构建方式</strong></td>
+          <td style="text-align: center"><strong>计算图构建方式</strong></td>
           <td>显式定义</td>
           <td>隐式定义</td>
       </tr>
       <tr>
-          <td><strong>计算图类型</strong></td>
+          <td style="text-align: center"><strong>计算图类型</strong></td>
           <td>静态图</td>
           <td>动态图</td>
       </tr>
       <tr>
-          <td><strong>典型框架</strong></td>
+          <td style="text-align: center"><strong>典型框架</strong></td>
           <td>TensorFlow 1.x, Theano</td>
           <td>PyTorch, TensorFlow 2.x (Eager)</td>
       </tr>
   </tbody>
 </table></div>
 <p>有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。</p>
-<p><img src="/p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png"
-	width="1055"
-	height="1019"
-	srcset="/p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, /p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w"
+<p><img src="/pics/%e5%8f%8d%e5%90%91%e4%bc%a0%e9%80%92.png"
+	
+	
+	
 	loading="lazy"
 	
 		alt="反向传递"
 	
-	
-		class="gallery-image" 
-		data-flex-grow="103"
-		data-flex-basis="248px"
 	
 ></p>
 <p>**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。</p>

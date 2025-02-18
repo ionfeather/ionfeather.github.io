@@ -400,10 +400,10 @@
 &lt;li&gt;如何实现？&lt;/li&gt;
 &lt;li&gt;计算图：将代码分解成操作子，将计算表示成一个无环图。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
 	width=&#34;987&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/p/d2l-01/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/p/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;将计算表示为一个无环图&#34;
@@ -418,42 +418,38 @@
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
-          &lt;th&gt;特性&lt;/th&gt;
+          &lt;th style=&#34;text-align: center&#34;&gt;特性&lt;/th&gt;
           &lt;th&gt;显式构造&lt;/th&gt;
           &lt;th&gt;隐式构造&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;计算图构建方式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;计算图构建方式&lt;/strong&gt;&lt;/td&gt;
           &lt;td&gt;显式定义&lt;/td&gt;
           &lt;td&gt;隐式定义&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;计算图类型&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;计算图类型&lt;/strong&gt;&lt;/td&gt;
           &lt;td&gt;静态图&lt;/td&gt;
           &lt;td&gt;动态图&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;典型框架&lt;/strong&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;strong&gt;典型框架&lt;/strong&gt;&lt;/td&gt;
           &lt;td&gt;TensorFlow 1.x, Theano&lt;/td&gt;
           &lt;td&gt;PyTorch, TensorFlow 2.x (Eager)&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png&#34;
-	width=&#34;1055&#34;
-	height=&#34;1019&#34;
-	srcset=&#34;https://ionfeather.github.io/p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, https://ionfeather.github.io/p/d2l-01/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/pics/%e5%8f%8d%e5%90%91%e4%bc%a0%e9%80%92.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;反向传递&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;103&#34;
-		data-flex-basis=&#34;248px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。&lt;/p&gt;
