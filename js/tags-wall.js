@@ -127,11 +127,18 @@ const Style1 = (data, marks, $tags, $style, Config) => {
 
   // const Size = [2.5, 3.5, 4.3, 5.1, 5.8, 6.5, 7, 7.5, 8, 8.4, 8.8]
   const Size = [2.5, 3.2, 3.9, 4.5, 5.1, 5.6, 6.1, 6.5, 6.9, 7.3, 7.7]
+  // const Color = (Array.isArray(Config.color) ? Config.color : [
+  //   '93BB6D', '6D9C6D', 'D5E1A1', 'FEF4D8', 'CBE7FD', 'B7CFE2', 'DD8766', 'F6EEE1', 'E88C67', '65A9BE', 'F7C070', '636C8D', 'E2CBC4',
+  //   'BDA995', 'BBD2DB', 'C99B92', '9BB6C7', 'EAB196', 'F0C9AC', 'A2AA71', 'F8F5EE', 'D2CEC1', '8B958A', 'D9DAEE', 'B6BDD9', 'A2C1CB', 
+  //   'BED7DB', 'ABB4AB', 'EADCD0', 'EBA397', 'DEC152', 'CA677C', '9D89AD', 'B5CFE2', 'DDE8EB', 'F7F2EF', 'D2DEDA', '67787F', 'CFD4EE',
+  //   '#808080'
   const Color = (Array.isArray(Config.color) ? Config.color : [
-    '93BB6D', '6D9C6D', 'D5E1A1', 'FEF4D8', 'CBE7FD', 'B7CFE2', 'DD8766', 'F6EEE1', 'E88C67', '65A9BE', 'F7C070', '636C8D', 'E2CBC4',
-    'BDA995', 'BBD2DB', 'C99B92', '9BB6C7', 'EAB196', 'F0C9AC', 'A2AA71', 'F8F5EE', 'D2CEC1', '8B958A', 'D9DAEE', 'B6BDD9', 'A2C1CB', 
-    'BED7DB', 'ABB4AB', 'EADCD0', 'EBA397', 'DEC152', 'CA677C', '9D89AD', 'B5CFE2', 'DDE8EB', 'F7F2EF', 'D2DEDA', '67787F', 'CFD4EE',
-    '#808080'
+    '#E0CFEB', '#EDC8DF', '#F8D8CB', '#EDC8DF', '#F8D8CB',
+    '#FFFACC', '#C9EEC2', '#BDECE6', '#CDD9EE', '#5F9EA0',
+    '#F8DD9A', '#FBE999', '#D8E89B', '#98DE8D', '#8C5DAD',
+    '#B7418C', '#E16F41', '#3261AB', '#F8D436', '#FFEB33',
+    '#DFE83D', '#B5D145', '#45BD32', '#22A86B', '#24B2A2',
+    '#909090'
   ]).map(color => Utils.Color.format(color))
   const FontSize = (size) => size * 5 * Config.scale
 
@@ -215,7 +222,7 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     #my-tags { overflow-x: hidden; padding: 7%; text-align: center; width: 100%; height: 100%; position: relative; box-sizing: border-box; }
     #my-tags a::after { content: "➜"; }
     #my-tags a:hover::after { animation: move .3s linear infinite; position: relative; }
-    #my-tags mark { position: absolute; padding: .2em .3em; display: inline-block; border-radius: .3em; margin: .15em .1em; opacity: .8; transition: opacity .2s; }
+    #my-tags mark { position: absolute; padding: .2em .3em; display: inline-block; border-radius: .2em; margin: .15em .1em; opacity: .8; transition: opacity .2s; }
     @media (max-width: 1000px) {
       #my-tags mark { animation: none !important; }
     }
