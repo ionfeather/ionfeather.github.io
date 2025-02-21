@@ -8,7 +8,7 @@
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E6%94%B6%E6%8B%BE%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Shortcodes测试</title>
+        <title>搬运一些Shortcodes</title>
         <link>https://ionfeather.github.io/2025/shortcodes/</link>
         <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
         
@@ -16,14 +16,14 @@
         <description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。&lt;/p&gt;
 &lt;p&gt;特别感谢：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;眠于水月间 - Hugo | 在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xalaok.top/post/hugo-shortcodes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Naive Koala - 一些Hugo短代码&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xalaok.top/post/hugo-shortcodes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一些Hugo短代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2021/a08f1963/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo |另一篇Stack主题装修记录 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2021/cf2cf0fb/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 在文章中插入轮播图片 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;文字&#34;&gt;文字
 &lt;/h2&gt;&lt;h3 id=&#34;重点标记&#34;&gt;重点标记
@@ -44,9 +44,9 @@
 &lt;/h3&gt;&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;文本位置&#34;&gt;文本位置
 &lt;/h3&gt;&lt;p&gt;
-&lt;p style=&#34;text-align:left&#34;&gt;文字居左&lt;/p&gt;
+&lt;p style=&#34;text-align:left&#34;&gt;文字居左&lt;/p&gt;&lt;br&gt;
 
-&lt;p style=&#34;text-align:center&#34;&gt;文字居中&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;文字居中&lt;/p&gt;&lt;br&gt;
 
 &lt;p style=&#34;text-align:right&#34;&gt;文字居右&lt;/p&gt;&lt;/p&gt;
 &lt;!-- //实际使用记得换成双括号。 --&gt;
@@ -90,11 +90,9 @@
 &lt;/h3&gt;&lt;p&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/p&gt;
 &lt;h3 id=&#34;卡片&#34;&gt;卡片
 &lt;/h3&gt;&lt;div class=&#34;mycard&#34;&gt;
-      &lt;div class=&#34;content&#34;&gt; 可以在这里插入链接假装是卡片式链接。
-&lt;br&gt;
-好像不能插入图片？
-&lt;br&gt;
-换行需要空标签。实际使用需要双括号。 &lt;/div&gt;
+      &lt;div class=&#34;content&#34;&gt;&lt;p&gt;可以在这里插入链接假装是卡片式链接。&lt;/p&gt;
+&lt;p&gt;好像不能插入图片？&lt;/p&gt;
+&lt;p&gt;换行需要空标签。实际使用需要双括号。&lt;/p&gt;&lt;/div&gt;
     &lt;/div&gt;
 
 &lt;h3 id=&#34;标签块&#34;&gt;标签块
@@ -508,7 +506,7 @@
         }
     }
 &lt;/style&gt;
-
+&lt;br&gt;
 &lt;div class=&#34;timeline__row&#34;&gt;
     &lt;div class=&#34;timeline__time&#34;&gt;
         &lt;div class=&#34;timeline__time&#34;&gt;2024-11-04&lt;/div&gt;
@@ -681,7 +679,7 @@
         }
     }
 &lt;/style&gt;
-
+&lt;br&gt;
 &lt;div class=&#34;timeline__row&#34;&gt;
     &lt;div class=&#34;timeline__time&#34;&gt;
         &lt;div class=&#34;timeline__time&#34;&gt;2025-02-13&lt;/div&gt;
@@ -927,6 +925,16 @@
 &lt;/h2&gt;&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=100% height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=557578993&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
 
 &lt;!-- 歌曲的id;是否自动播放(1为自动播放，0为手动播放) --&gt;
+&lt;h3 id=&#34;标签墙&#34;&gt;标签墙
+&lt;/h3&gt;&lt;p&gt;其实这个不算是shortcodes，但是我不知道把这个放在哪里。所以这个犄角旮旯就不错！&lt;/p&gt;
+&lt;p&gt;特别感谢：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-first-build-furnish/#%E5%B0%86%E5%85%B3%E4%BA%8E%E9%A1%B5%E9%9D%A2%E6%94%B9%E4%B8%BA%E6%A0%87%E7%AD%BE%E5%A2%99&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 月球基地开发历程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2022/a-flower-upon-your-return/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blog | 主题重新施工，和书影游展示墙 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;标签墙最后放在了我的「关于」页面里。欢迎大家去看！&lt;/p&gt;
 </description>
         </item>
         <item>

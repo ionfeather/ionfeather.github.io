@@ -7,8 +7,8 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Shortcodes测试</title>
+        <lastBuildDate>Fri, 21 Feb 2025 14:36:39 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>搬运一些Shortcodes</title>
         <link>https://ionfeather.github.io/2025/shortcodes/</link>
         <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
         
@@ -16,14 +16,14 @@
         <description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。&lt;/p&gt;
 &lt;p&gt;特别感谢：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;眠于水月间 - Hugo | 在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xalaok.top/post/hugo-shortcodes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Naive Koala - 一些Hugo短代码&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;在 Stack 主题上可行的短代码们&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.xalaok.top/post/hugo-shortcodes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;一些Hugo短代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2021/a08f1963/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo |另一篇Stack主题装修记录 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2021/cf2cf0fb/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 在文章中插入轮播图片 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;文字&#34;&gt;文字
 &lt;/h2&gt;&lt;h3 id=&#34;重点标记&#34;&gt;重点标记
@@ -44,9 +44,9 @@
 &lt;/h3&gt;&lt;p&gt;&lt;span class=&#34;blur&#34;&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
 &lt;h3 id=&#34;文本位置&#34;&gt;文本位置
 &lt;/h3&gt;&lt;p&gt;
-&lt;p style=&#34;text-align:left&#34;&gt;文字居左&lt;/p&gt;
+&lt;p style=&#34;text-align:left&#34;&gt;文字居左&lt;/p&gt;&lt;br&gt;
 
-&lt;p style=&#34;text-align:center&#34;&gt;文字居中&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;文字居中&lt;/p&gt;&lt;br&gt;
 
 &lt;p style=&#34;text-align:right&#34;&gt;文字居右&lt;/p&gt;&lt;/p&gt;
 &lt;!-- //实际使用记得换成双括号。 --&gt;
@@ -90,11 +90,9 @@
 &lt;/h3&gt;&lt;p&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/p&gt;
 &lt;h3 id=&#34;卡片&#34;&gt;卡片
 &lt;/h3&gt;&lt;div class=&#34;mycard&#34;&gt;
-      &lt;div class=&#34;content&#34;&gt; 可以在这里插入链接假装是卡片式链接。
-&lt;br&gt;
-好像不能插入图片？
-&lt;br&gt;
-换行需要空标签。实际使用需要双括号。 &lt;/div&gt;
+      &lt;div class=&#34;content&#34;&gt;&lt;p&gt;可以在这里插入链接假装是卡片式链接。&lt;/p&gt;
+&lt;p&gt;好像不能插入图片？&lt;/p&gt;
+&lt;p&gt;换行需要空标签。实际使用需要双括号。&lt;/p&gt;&lt;/div&gt;
     &lt;/div&gt;
 
 &lt;h3 id=&#34;标签块&#34;&gt;标签块
@@ -508,7 +506,7 @@
         }
     }
 &lt;/style&gt;
-
+&lt;br&gt;
 &lt;div class=&#34;timeline__row&#34;&gt;
     &lt;div class=&#34;timeline__time&#34;&gt;
         &lt;div class=&#34;timeline__time&#34;&gt;2024-11-04&lt;/div&gt;
@@ -681,7 +679,7 @@
         }
     }
 &lt;/style&gt;
-
+&lt;br&gt;
 &lt;div class=&#34;timeline__row&#34;&gt;
     &lt;div class=&#34;timeline__time&#34;&gt;
         &lt;div class=&#34;timeline__time&#34;&gt;2025-02-13&lt;/div&gt;
@@ -927,6 +925,16 @@
 &lt;/h2&gt;&lt;iframe frameborder=&#34;no&#34; border=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; width=100% height=86 src=&#34;//music.163.com/outchain/player?type=2&amp;id=557578993&amp;auto=0&amp;height=66&#34;&gt;&lt;/iframe&gt;
 
 &lt;!-- 歌曲的id;是否自动播放(1为自动播放，0为手动播放) --&gt;
+&lt;h3 id=&#34;标签墙&#34;&gt;标签墙
+&lt;/h3&gt;&lt;p&gt;其实这个不算是shortcodes，但是我不知道把这个放在哪里。所以这个犄角旮旯就不错！&lt;/p&gt;
+&lt;p&gt;特别感谢：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.sleepymoon.cyou/2023/hugo-first-build-furnish/#%E5%B0%86%E5%85%B3%E4%BA%8E%E9%A1%B5%E9%9D%A2%E6%94%B9%E4%B8%BA%E6%A0%87%E7%AD%BE%E5%A2%99&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo | 月球基地开发历程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mantyke.icu/posts/2022/a-flower-upon-your-return/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blog | 主题重新施工，和书影游展示墙 | 小球飞鱼&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;标签墙最后放在了我的「关于」页面里。欢迎大家去看！&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1185,12 +1193,12 @@
 </description>
         </item>
         <item>
-        <title>雨水 | 北京的「雨水」是艳阳高照</title>
+        <title>二月 | 北京的「雨水」是艳阳高照</title>
         <link>https://ionfeather.github.io/2025/rainwater/</link>
         <pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/rainwater/</guid>
-        <description>&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
+        <description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 二月 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
 &lt;p&gt;北京最近的天气确实是这样。在北京能感受到24节气的准确，能感受到四季分明是什么感觉。&lt;/p&gt;
 &lt;p&gt;但是！！雨水，雨水，北京来点儿雨吧。自从去年的12月以来，我没有见过一滴雨落到北京的地表，这里的晴天就像是默认背景，太阳和月亮每天都是固定角色出现在地平线和天空中。北京的「雨水」是艳阳高照。&lt;/p&gt;
 &lt;h2 id=&#34;絮絮叨叨&#34;&gt;絮絮叨叨
@@ -1232,7 +1240,7 @@
 &lt;p&gt;走马观花地参观了一下中国电影博物馆的展厅，进门是主旋律正能量主题展厅。往里走，里面有一个巨大的环形的展厅，地板、墙壁都是LED屏幕，一共有四层楼高，有一个环形的缓缓上升的参观路线，绕着墙壁，通向其他二楼三楼的展厅。&lt;/p&gt;
 &lt;p&gt;在展厅里，对我这个电影盲来说，只能看到那些最脍炙人口的电影，比如《警察故事》《小蝌蚪找妈妈》，才会知道「啊！原来是它！」&lt;/p&gt;
 &lt;p&gt;有没有书的展览馆！搜了一下文学没有像是中国电影博物馆一样这种大而全的，但是专题类的很多：中国现代文学馆、北京鲁迅博物馆、老舍纪念馆、巴金故居、上海文学博物馆&amp;hellip;感觉又种草了不少。&lt;/p&gt;
-&lt;p&gt;不愧是IMAX GT屏幕，真的很壮观。我坐得特别前面，还有点儿偏，哪吒也并非最适合它的1.43:1的屏幕比例，因此上下还是有黑边，《奥本海默》和《沙丘》会更适合它。但，但是（申公豹式强调）这不妨碍我看电影的时候感慨画质和细节，云雾、锁链、粒子&amp;hellip;在我正前方130°范围里，全都是哪吒。真是一次美好的体验。&lt;/p&gt;
+&lt;p&gt;不愧是IMAX GT屏幕，真的很壮观。我坐得特别前面，还有点儿偏，哪吒也并非最适合它的1.43:1的屏幕比例，因此上下还是有黑边，《奥本海默》和《沙丘》会更适合它。但，但是（申公豹式强调）这不妨碍我看电影的时候感慨画质和细节，云雾、锁链、粒子&amp;hellip;在我正前方130°范围里，全都是哪吒。电影好！屏幕好！看电影的人好！真是一次美好的体验。&lt;/p&gt;
 &lt;p&gt;2025-02-21 21:30&lt;/p&gt;
 &lt;hr&gt;
 </description>
