@@ -10,10 +10,10 @@
 <meta property='og:description' content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/d2l-01/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='og:image' content='https://ionfeather.github.io/2025/d2l-01/pics/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='深度学习' /><meta property='article:published_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='article:modified_time' content='2025-01-08T16:00:34&#43;08:00'/><meta property='og:image' content='https://ionfeather.github.io/2025/d2l-01/assets/cover.png' />
 <meta name="twitter:title" content="《动手学深度学习》">
 <meta name="twitter:description" content="全书结构\r预备知识\r张量\r张量表示一个由数值组成的数组，这个数组可能有多个维度。\n具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）； 具有两个轴以上的张量没有特殊的数学名称。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://ionfeather.github.io/2025/d2l-01/pics/cover.png' />
+    <meta name="twitter:image" content='https://ionfeather.github.io/2025/d2l-01/assets/cover.png' />
     <link rel="shortcut icon" href="/ion.ico" />
 
 <head>
@@ -299,7 +299,11 @@
             <li><a href="#转换为其他对象">转换为其他对象</a></li>
           </ol>
         </li>
-        <li><a href="#自动求导">自动求导</a></li>
+        <li><a href="#自动求导">自动求导</a>
+          <ol>
+            <li><a href="#反向累积">反向累积</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -317,8 +321,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/2025/d2l-01/">
-                <img src="/2025/d2l-01/pics/cover_hu12426561695360853355.png"
-                        srcset="/2025/d2l-01/pics/cover_hu12426561695360853355.png 800w, /2025/d2l-01/pics/cover_hu4444460406149687439.png 1600w"
+                <img src="/2025/d2l-01/assets/cover_hu12426561695360853355.png"
+                        srcset="/2025/d2l-01/assets/cover_hu12426561695360853355.png 800w, /2025/d2l-01/assets/cover_hu4444460406149687439.png 1600w"
                         width="800" 
                         height="533" 
                         loading="lazy"
@@ -394,10 +398,10 @@
     
     
     <h2 id="全书结构">全书结构
-</h2><p><img src="/2025/d2l-01/pics/image-20250108163545542.png"
+</h2><p><img src="/2025/d2l-01/assets/image-20250108163545542.png"
 	width="574"
 	height="438"
-	srcset="/2025/d2l-01/pics/image-20250108163545542_hu9992698032500227451.png 480w, /2025/d2l-01/pics/image-20250108163545542_hu847718125201535737.png 1024w"
+	srcset="/2025/d2l-01/assets/image-20250108163545542_hu9992698032500227451.png 480w, /2025/d2l-01/assets/image-20250108163545542_hu847718125201535737.png 1024w"
 	loading="lazy"
 	
 		alt="全书结构"
@@ -488,10 +492,10 @@
 <li>如何实现？</li>
 <li>计算图：将代码分解成操作子，将计算表示成一个无环图。</li>
 </ul>
-<p><img src="/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg"
+<p><img src="/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg"
 	width="987"
 	height="476"
-	srcset="/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, /2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w"
+	srcset="/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, /2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w"
 	loading="lazy"
 	
 		alt="将计算表示为一个无环图"
@@ -527,13 +531,36 @@
           <td>TensorFlow 1.x, Theano</td>
           <td>PyTorch, TensorFlow 2.x (Eager)</td>
       </tr>
+      <tr>
+          <td style="text-align: center"></td>
+          <td></td>
+          <td></td>
+      </tr>
   </tbody>
 </table></div>
 <p>有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。</p>
-<p><img src="/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png"
+<p><strong>示例说明</strong></p>
+<p>以 \( y = (x_1 + 2x_2)^2 \) 为例：</p>
+<ul>
+<li><strong>反向传递</strong>：</li>
+</ul>
+<ol>
+<li>前向计算 \( z=11, y=121 \)。</li>
+<li>反向计算 \( \partial y/\partial z=22 \rightarrow \partial y/\partial x_1=22, \partial y/\partial x_2=44 \)。</li>
+</ol>
+<ul>
+<li><strong>正向传递</strong>：</li>
+</ul>
+<ol>
+<li>前向计算 \( z=11 \)，同时记录 \( \partial z/\partial x_1=1, \partial z/\partial x_2=2 \)。</li>
+<li>前向计算 \( y=121 \)，同时记录 \( \partial y/\partial z=22 \)。</li>
+<li>直接组合导数得到 \( \partial y/\partial x_1=22 \times 1=22 \)，\( \partial y/\partial x_2=22 \times 2=44 \)。</li>
+</ol>
+<h4 id="反向累积">反向累积
+</h4><p><img src="/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png"
 	width="1055"
 	height="1019"
-	srcset="/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, /2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w"
+	srcset="/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, /2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w"
 	loading="lazy"
 	
 		alt="反向传递"
@@ -544,7 +571,8 @@
 		data-flex-basis="248px"
 	
 ></p>
-<p>**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。</p>
+<p>使用反向传递的时候，在我们计算$y$关于$x$的梯度之前，需要一个地方来存储梯度。</p>
+<p>重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量$x$的梯度是向量，并且与$x$具有相同的形状。</p>
 
 </section>
 
@@ -612,6 +640,19 @@
             
                 
 <article class="">
+    <a href="/2025/ai-assist-drug-discovery/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">AI Assist Drug Discovery</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/2025/shortcodes/">
         
         
@@ -631,19 +672,6 @@
 
         <div class="article-details">
             <h2 class="article-title">论文阅读 | 多智能体协作机制：大语言模型综述</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/2025/obsidian/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">使用Obsidian来写博客</h2>
         </div>
     </a>
 </article>

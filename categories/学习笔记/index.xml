@@ -7,7 +7,58 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 26 Feb 2025 22:17:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI Assist Drug Discovery</title>
+        <link>https://ionfeather.github.io/2025/ai-assist-drug-discovery/</link>
+        <pubDate>Wed, 26 Feb 2025 22:17:58 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/ai-assist-drug-discovery/</guid>
+        <description>&lt;h2 id=&#34;ai-assist-drug-discovery&#34;&gt;AI-assist drug discovery
+&lt;/h2&gt;&lt;p&gt;开展一些AI-assist drug discovery 的方向探索，需要进行一些论文阅读和调研，形成调研报告。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhouh.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hao Zhou（周浩)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;regularized-molecular-conformation-fields--neurips-2022&#34;&gt;Regularized Molecular Conformation Fields | NeurIPS 2022
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openreview.net/forum?id=7XCFxnG8nGS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Regularized Molecular Conformation Fields | OpenReview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;从零开始阅读这个领域。先看一下文章的摘要：&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;英文摘要&lt;/summary&gt;
+    Predicting energetically favorable 3-dimensional conformations of organic molecules from molecular graph plays a fundamental role in computer-aided drug discovery research. However, effectively exploring the high-dimensional conformation space to identify (meta)stable conformers is anything but trivial. In this work, we introduce RMCF, a novel framework to generate a diverse set of lowenergy molecular conformations through sampling from a regularized molecular conformation field. We develop a data-driven molecular segmentation algorithm to automatically partition each molecule into several structural building blocks to reduce the modeling degrees of freedom. Then, we employ a Markov Random Field to learn the joint probability distribution of fragment configurations and interfragment dihedral angles, which enables us to sample from different low-energy regions of a conformation space. Our model constantly outperforms state-of-the-art models for the conformation generation task on the GEOM-Drugs dataset. We attribute the success of RMCF to modeling in a regularized feature space and learning a global fragment configuration distribution for effective sampling. The proposed method could be generalized to deal with larger biomolecular systems.
+&lt;/details&gt;
+
+&lt;p&gt;完全看不懂啊。问一下大模型好了。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下是对这段话的详细解释：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;details&gt;
+    &lt;summary&gt;模型输出&lt;/summary&gt;
+    &lt;p&gt;“Predicting energetically favorable 3-dimensional conformations of organic molecules from molecular graph plays a fundamental role in computer-aided drug discovery research.”&lt;br&gt;
+从分子图预测有机分子在能量上有利的三维构象，在计算机辅助药物发现研究中起着基础性的作用。这里 “energetically favorable” 指的是从能量角度来说更有利的，也就是说这种构象下分子的能量状态相对较低，更稳定；“3-dimensional conformations” 是三维构象，即分子中原子在三维空间中的排列方式；“molecular graph” 是分子图，一种用图结构来表示分子中原子和化学键的方式；“computer-aided drug discovery” 是计算机辅助药物发现，利用计算机技术来辅助药物的研发过程。&lt;/p&gt;
+&lt;p&gt;“However, effectively exploring the high-dimensional conformation space to identify (meta) stable conformers is anything but trivial.”&lt;br&gt;
+然而，有效地探索高维的构象空间以识别（亚）稳定的构象异构体绝非易事。“high-dimensional conformation space” 指的是由于分子中原子的多种可能排列方式所形成的高维度的空间；“(meta) stable conformers” 中 “stable” 是稳定的，“meta-stable” 是亚稳定的（一种相对稳定但不是绝对稳定的状态），“conformers” 就是构象异构体，即具有相同分子式但原子排列方式不同的分子；“anything but trivial” 意思是一点也不简单，绝非易事。&lt;/p&gt;
+&lt;p&gt;“In this work, we introduce RMCF, a novel framework to generate a diverse set of low-energy molecular conformations through sampling from a regularized molecular conformation field.”&lt;br&gt;
+在这项工作中，我们引入了 RMCF，这是一个新颖的框架，通过从正则化的分子构象场中采样来生成一系列多样的低能量分子构象。“RMCF” 是一个新提出的框架名称；“novel” 是新颖的；“framework” 是框架；“diverse set” 一系列多样的；“low-energy molecular conformations” 低能量分子构象；“sampling” 是采样；“regularized molecular conformation field” 正则化的分子构象场，“regularized” 在这里可以理解为经过某种规则化处理的，使得构象场更易于处理和分析。&lt;/p&gt;
+&lt;p&gt;“We develop a data-driven molecular segmentation algorithm to automatically partition each molecule into several structural building blocks to reduce the modeling degrees of freedom.”&lt;br&gt;
+我们开发了一种数据驱动的分子分割算法，以自动将每一个分子&lt;strong&gt;分割成&lt;/strong&gt;（应该是分割到）几个结构构建块，从而减少建模的自由度。“data-driven” 是数据驱动的，即基于数据来驱动算法的运行；“molecular segmentation algorithm” 分子分割算法；“automatically” 自动地；“partition…into…” 把…… 分割成……；“structural building blocks” 结构构建块，也就是把分子拆解成的一些基本的结构单元；“degrees of freedom” 自由度，在建模中表示可以变化的参数或变量的数量，减少自由度可以使模型更简单、更易于处理。&lt;/p&gt;
+&lt;p&gt;“Then, we employ a Markov Random Field to learn the joint probability distribution of fragment configurations and interfragment dihedral angles, which enables us to sample from different low-energy regions of a conformation space.”&lt;br&gt;
+然后，我们使用马尔可夫随机场来学习片段构型和片段间二面角的联合概率分布，这使我们能够从构象空间的不同低能量区域进行采样。“Markov Random Field”（马尔可夫随机场）是一种概率图模型，用于描述变量之间的概率关系；“joint probability distribution” 联合概率分布，即多个变量同时发生的概率分布；“fragment configurations” 片段构型，即分子被分割成的片段的原子排列方式；“interfragment dihedral angles” 片段间二面角，是描述两个片段之间相对取向的角度；“enables sb. to do sth.” 使某人能够做某事。&lt;/p&gt;
+&lt;p&gt;“Our model constantly outperforms state-of-the-art models for the conformation generation task on the GEOM-Drugs dataset.”&lt;br&gt;
+我们的模型在 GEOM-Drugs 数据集上的构象生成任务中一直优于最先进的模型。“constantly” 一直，持续地；“outperforms” 胜过，优于；“state-of-the-art models” 最先进的模型；“GEOM-Drugs dataset” 是一个用于构象生成任务的数据集名称。&lt;/p&gt;
+&lt;p&gt;“We attribute the success of RMCF to modeling in a regularized feature space and learning a global fragment configuration distribution for effective sampling.”&lt;br&gt;
+我们将 RMCF 的成功归因于在正则化特征空间中的建模以及为了有效采样而学习全局片段构型分布。“attribute…to…” 把…… 归因于……；“regularized feature space” 正则化特征空间；“global fragment configuration distribution” 全局片段构型分布，即对所有片段构型的一种整体的概率分布描述。&lt;/p&gt;
+&lt;p&gt;“The proposed method could be generalized to deal with larger biomolecular systems”&lt;br&gt;
+所提出的方法可以被推广应用于处理更大的生物分子系统。“proposed” 提出的；“generalized” 推广，使一般化；“biomolecular systems” 生物分子系统，比如蛋白质、核酸等生物大分子组成的系统。&lt;/p&gt;
+
+&lt;/details&gt;
+
+&lt;p&gt;好像看懂了一些。但是似懂非懂。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>搬运一些Shortcodes</title>
         <link>https://ionfeather.github.io/2025/shortcodes/</link>
         <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
@@ -1236,11 +1287,11 @@
         <pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/d2l-01/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/pics/cover.png" alt="Featured image of post 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542.png&#34;
+        <description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/cover.png" alt="Featured image of post 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542.png&#34;
 	width=&#34;574&#34;
 	height=&#34;438&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542_hu9992698032500227451.png 480w, https://ionfeather.github.io/2025/d2l-01/pics/image-20250108163545542_hu847718125201535737.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu9992698032500227451.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu847718125201535737.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;全书结构&#34;
@@ -1331,10 +1382,10 @@
 &lt;li&gt;如何实现？&lt;/li&gt;
 &lt;li&gt;计算图：将代码分解成操作子，将计算表示成一个无环图。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
 	width=&#34;987&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/2025/d2l-01/pics/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu739321202275296226.jpg 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu11225924700537350814.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;将计算表示为一个无环图&#34;
@@ -1370,13 +1421,36 @@
           &lt;td&gt;TensorFlow 1.x, Theano&lt;/td&gt;
           &lt;td&gt;PyTorch, TensorFlow 2.x (Eager)&lt;/td&gt;
       &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: center&#34;&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;有两种求导的方式，对于一个链式法则，我们可以采取正向累积和反向累积（也称反向传递）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png&#34;
+&lt;p&gt;&lt;strong&gt;示例说明&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以 \( y = (x_1 + 2x_2)^2 \) 为例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;反向传递&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;前向计算 \( z=11, y=121 \)。&lt;/li&gt;
+&lt;li&gt;反向计算 \( \partial y/\partial z=22 \rightarrow \partial y/\partial x_1=22, \partial y/\partial x_2=44 \)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;正向传递&lt;/strong&gt;：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;前向计算 \( z=11 \)，同时记录 \( \partial z/\partial x_1=1, \partial z/\partial x_2=2 \)。&lt;/li&gt;
+&lt;li&gt;前向计算 \( y=121 \)，同时记录 \( \partial y/\partial z=22 \)。&lt;/li&gt;
+&lt;li&gt;直接组合导数得到 \( \partial y/\partial x_1=22 \times 1=22 \)，\( \partial y/\partial x_2=22 \times 2=44 \)。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;反向累积&#34;&gt;反向累积
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png&#34;
 	width=&#34;1055&#34;
 	height=&#34;1019&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, https://ionfeather.github.io/2025/d2l-01/pics/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu7977576403841564060.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu3367304968089988046.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;反向传递&#34;
@@ -1387,7 +1461,8 @@
 		data-flex-basis=&#34;248px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;**使用反向传递的时候，在我们计算y关于x的梯度之前，需要一个地方来存储梯度。**重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量x的梯度是向量，并且与x具有相同的形状。&lt;/p&gt;
+&lt;p&gt;使用反向传递的时候，在我们计算$y$关于$x$的梯度之前，需要一个地方来存储梯度。&lt;/p&gt;
+&lt;p&gt;重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量$x$的梯度是向量，并且与$x$具有相同的形状。&lt;/p&gt;
 </description>
         </item>
         <item>
