@@ -8,18 +8,279 @@
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Wed, 26 Feb 2025 22:17:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>AI Assist Drug Discovery</title>
-        <link>https://ionfeather.github.io/2025/ai-assist-drug-discovery/</link>
+        <title>AI Assist Drug Design</title>
+        <link>https://ionfeather.github.io/2025/ai-assist-drug-design/</link>
         <pubDate>Wed, 26 Feb 2025 22:17:58 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/2025/ai-assist-drug-discovery/</guid>
-        <description>&lt;h2 id=&#34;ai-assist-drug-discovery&#34;&gt;AI-assist drug discovery
-&lt;/h2&gt;&lt;p&gt;开展一些AI-assist drug discovery 的方向探索，需要进行一些论文阅读和调研，形成调研报告。&lt;/p&gt;
-&lt;p&gt;参考：&lt;/p&gt;
+        <guid>https://ionfeather.github.io/2025/ai-assist-drug-design/</guid>
+        <description>&lt;h2 id=&#34;ai-assist-drug-design&#34;&gt;AI-assist Drug Design
+&lt;/h2&gt;&lt;p&gt;开展一些AI-assist Drug Design 的方向探索，需要进行一些论文阅读和调研，形成调研报告。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;参考&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2402.08703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2402.08703] A Survey of Generative AI for de novo Drug Design: New Frontiers in Molecule and Protein Generation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhouh.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hao Zhou（周浩)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;主要解决什么问题&lt;/li&gt;
+&lt;li&gt;挑战是什么&lt;/li&gt;
+&lt;li&gt;我们提出的核心方法，与同类问题比较的优势在哪&lt;/li&gt;
+&lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
+&lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation&#34;&gt;A Survey of Generative AI for &lt;em&gt;de novo&lt;/em&gt; Drug Design: New Frontiers in Molecule and Protein Generation
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2402.08703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2402.08703] A Survey of Generative AI for de novo Drug Design: New Frontiers in Molecule and Protein Generation&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;摘要&#34;&gt;摘要
+&lt;/h4&gt;&lt;p&gt;将从头药物设计（&lt;em&gt;de novo&lt;/em&gt; drug design）归纳为两大主题：小分子生成和蛋白质生成。在每个主题下，我们识别出多种子任务和应用，重点介绍重要的数据集、基准测试、模型架构，并比较顶尖模型的性能。&lt;/p&gt;
+&lt;h4 id=&#34;引言&#34;&gt;引言
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;并非是虚拟筛选/定向进化。而是从头开始的自然界中并未存在的新的生物实体的生成。&lt;/li&gt;
+&lt;li&gt;文章中分成两个部分来讲解。小分子和蛋白质。&lt;/li&gt;
+&lt;li&gt;文章将介绍
+&lt;ul&gt;
+&lt;li&gt;生成式模型的种类：Diffusion/VAE/Flow-Based/GAN&lt;/li&gt;
+&lt;li&gt;将文章分成小分子和蛋白质两个领域，分别介绍
+&lt;ul&gt;
+&lt;li&gt;一般背景/任务定义&lt;/li&gt;
+&lt;li&gt;用于训练和测试的常见数据集&lt;/li&gt;
+&lt;li&gt;常用的评估指标&lt;/li&gt;
+&lt;li&gt;对过去和当前的机器学习方法的概述&lt;/li&gt;
+&lt;li&gt;对SOTA方法的性能的对比分析&lt;/li&gt;
+&lt;li&gt;总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;相关研究&#34;&gt;相关研究
+&lt;/h4&gt;&lt;p&gt;其他的方法都太专业，而这篇文章对小分子和蛋白质生成进行宏观层面的分析，有助于那些想要对化学创新领域中新兴的生成式AI模型有一个高屋建瓴的了解的人。&lt;/p&gt;
+&lt;h4 id=&#34;前言生成式ai模型&#34;&gt;前言：生成式AI模型
+&lt;/h4&gt;&lt;p&gt;介绍了&lt;strong&gt;VAE、GAN、Flow-Based Models&lt;/strong&gt;和&lt;strong&gt;Diffusion&lt;/strong&gt;，还介绍了一些其他模型，比如GNN、EGNN等。&lt;/p&gt;
+&lt;h4 id=&#34;应用&#34;&gt;应用
+&lt;/h4&gt;&lt;h5 id=&#34;小分子&#34;&gt;小分子
+&lt;/h5&gt;&lt;h6 id=&#34;任务背景&#34;&gt;任务背景
+&lt;/h6&gt;&lt;p&gt;分子生成聚焦于为药物设计创造新的分子化合物。这些生成的分子旨在具有 &lt;strong&gt;（1）有效性、（2）稳定性和（3）独特性&lt;/strong&gt;，总体目标是具有药物适用性。“药物适用性” 是一个宽泛的术语，用于描述分子对各种生物靶标的结合亲和力。&lt;/p&gt;
+&lt;p&gt;虽然前三个任务可能看起来微不足道，但仅仅生成有效和稳定的分子就存在各种挑战。因此，&lt;strong&gt;与目标无关的分子生成领域&lt;/strong&gt;专注于生成有效的分子集合，而不考虑任何生物靶标。&lt;strong&gt;目标感知分子生成&lt;/strong&gt;（或配体生成）侧重于针对特定蛋白质结构生成分子，因此更关注药物成分。最后，&lt;strong&gt;3D 构象生成&lt;/strong&gt;涉及在给定 2D 连接的情况下生成各种 3D 构象。&lt;/p&gt;
+&lt;h6 id=&#34;无靶向分子设计&#34;&gt;无靶向分子设计
+&lt;/h6&gt;&lt;p&gt;必须满足前两个特点，也就是&lt;strong&gt;有效性&lt;/strong&gt;和&lt;strong&gt;稳定性&lt;/strong&gt;。需要满足很多的复杂的条件，所以其实还是挺难的。深度学习可以帮助人们更有效率地生成有更高可能性满足有效性的分子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任务&lt;/strong&gt;：无输入，输出为生成一组新的、有效的、稳定的分子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;：QM9和GEOM-Drug&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分子生成任务指标&lt;/strong&gt;：原子稳定性、分子稳定性、有效性、独特性、（新颖性）、药物相似性度量估计值QED。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型的评估方式&lt;/strong&gt;：通过在QM9数据集上的一部分训练属性分类网络，然后对模型生成的分子进行评估，计算目标和评估属性值之间的平均绝对误差。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分子在特定化学性质方面的指标&lt;/strong&gt;：极化率$α$、最高占据分子轨道能量 $\varepsilon_{HOMO}$、最低未占据分子轨道能量 $\varepsilon_{LUMO}$、$\varepsilon_{HOMO}$ 和 $\varepsilon_{LUMO}$ 的差值$\Delta_\varepsilon$、偶极矩 $\mu$、298.15K 下的摩尔热容 $C_v$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;过去几年间，分子生成任务的方法从一维的SMILES转变成二维的连接图，然后是三维的几何结构，最后到融合二维和三维信息的方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;1D SMILES字符串模型&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;早期方法&lt;/strong&gt;：如CVAE、GVAE直接处理，但是SMILES因为是一维的，存在问题：两个化学结构相似的分子图可能会得到非常不同的 SMILES 字符串，这使得模型更难学习到这些相似性和模式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;2D 图生成模型&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JTVAE&lt;/strong&gt;：首个直接生成 2D 分子图的模型，通过树状骨架迭代扩展并验证结构有效性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3D 结构模型&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;早期方法&lt;/strong&gt;：Flow-Based方法ENF和自回归方法G-SchNet。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;EDM&lt;/strong&gt;：基于Diffusion的 3D 点云模型，利用 E (3) 等变性提升性能，避免原子排序依赖。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GCDM&lt;/strong&gt;：结合几何深度学习与Diffusion，引入注意力机制优化消息传递。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;联合2D和3D&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JODO&lt;/strong&gt;：联合2D和3D的扩散模型，使用几何图形表示来捕获 3D 空间信息和连接信息，对这种联合表示应用分数随机微分方程，同时提出扩散图变换器来参数化数据预测模型，避免在每个独立通道独立添加噪声后相关性的丢失。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MiDi&lt;/strong&gt;：应用了DDPM，提出了「松弛」的图神经网络（EGNN）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里给出了三个表格。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;表格1&lt;/strong&gt;：生成模型在&lt;strong&gt;QM9数据集&lt;/strong&gt;上的&lt;strong&gt;条件无关的分子设计任务&lt;/strong&gt;上的性能表现。Diffusion方法比之前的方法好很多，但是在GEOM-Drugs上可能表现不佳。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表格2&lt;/strong&gt;：EDM、MDM、MiDi 等模型在&lt;strong&gt;GEOM-Drugs数据集&lt;/strong&gt;上的&lt;strong&gt;条件无关的分子设计任务&lt;/strong&gt;上性能表现。MiDi能生成更稳定的复杂分子，但是有效性较低。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表格3&lt;/strong&gt;：生成模型在&lt;strong&gt;条件分子生成任务&lt;/strong&gt;上的性能表现。MDM、GCDM生成表现不错，MDM前四项较好，GCDM后两项较好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;靶向分子设计&#34;&gt;靶向分子设计
+&lt;/h6&gt;&lt;p&gt;有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任务&lt;/strong&gt;：给定氨基酸序列/蛋白质的三维结构，生成对应的有高结合亲和力以及潜在相互作用的分子。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;：CrossDocked2020、ZINC20和Binding MOAD。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指标&lt;/strong&gt;：Vina Score、Vina Energy、高亲和力百分比High Affinity Percentage、合成可及性分数SAscore和多样性Diversity。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LBDD&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;结合了Transformer结构，例如DrugGPT，训练的时候输入为SMILES和蛋白质氨基酸序列，从而训练输出可行的SMILES配体。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SBDD&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;LiGAN&lt;/strong&gt;：三维目标感知分子输出的概念，将分子适配到网格格式，以便利用卷积神经网络（CNN）进行学习，并在变分自编码器（VAE）框架下训练模型&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TargetDiff模型&lt;/strong&gt;：基于EGNN进行Diffusion，在结构上和EDM相似，目标是学习条件分布。特别地，研究人员通过原子嵌入的熵来将原子类型的灵活性降低，从而提高结合亲和力。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DiffSBDD&lt;/strong&gt;：DiffSBDD-cond是一种DDPM，而在基准测试中，DiffSBDD-inpaint则进行了图像增强，使用掩蔽和替换等方法对配体-蛋白质的部分区域进行处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里给出了一个表格。展示了不同的模型的结果。&lt;/p&gt;
+&lt;h5 id=&#34;蛋白质&#34;&gt;蛋白质
+&lt;/h5&gt;&lt;h6 id=&#34;任务背景-1&#34;&gt;任务背景
+&lt;/h6&gt;&lt;p&gt;蛋白质可以通过其3D结构或者氨基酸序列来表示，氨基酸序列类似人类的语言，可以应用于自然语言模型。可以定义几个子任务：1）&lt;strong&gt;表示学习&lt;/strong&gt;。2）&lt;strong&gt;结构预测&lt;/strong&gt;。3）&lt;strong&gt;序列生成&lt;/strong&gt;。4）&lt;strong&gt;主干设计&lt;/strong&gt;。此外还讨论了&lt;strong&gt;抗体生成&lt;/strong&gt;和&lt;strong&gt;肽生成&lt;/strong&gt;。&lt;/p&gt;
+&lt;h6 id=&#34;蛋白质表示学习&#34;&gt;蛋白质表示学习
+&lt;/h6&gt;&lt;p&gt;使用氨基酸序列/原子坐标学习一个嵌入从而为其他生成模型创建更丰富的数据空间以供训练。类似于自然语言处理中的word2vec。&lt;/p&gt;
+&lt;h6 id=&#34;结构预测&#34;&gt;结构预测
+&lt;/h6&gt;&lt;p&gt;从氨基酸序列来预测结构是极具挑战性和重要的工作。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任务&lt;/strong&gt;：从氨基酸序列来预测蛋白质结构。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;：主要来自蛋白质结构预测的关键评估（CASP）。有PDB、CASP14和CAMEO。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指标&lt;/strong&gt;：均方根误差RMSD、全局距离测试总得分GDT-TS、模板建模得分TM-score和局部距离差异测试LDDT。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AlphaFold2&lt;/strong&gt;：里程碑模型。采用端到端的方式集成了多层Transformer，融合多序列比对和成对表示的信息。基于氨基酸之间的成对距离探索折叠空间、氨基酸的潜在取向和整体结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;trRosetta&lt;/strong&gt;：transform-restrained Rosetta。输入MSA之后，预测残基对之间的距离和取向，然后利用Rosetta协议构建3D结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RoseTTAFlod&lt;/strong&gt;：在CASP14上表现效果比肩AlphaFold2，特别是生成速度很快，仅需10分钟，相较AlphaFold2快了100倍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ESMFold&lt;/strong&gt;：利用ESM-2的输出嵌入到自注意力「折叠块」中，并通过以哦个具有SE（3）的transformer架构的结构模块生成最中国的结构预测。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;EigenFold&lt;/strong&gt;：应用Diffusion生成蛋白质结构的模型。它将蛋白质表示为一个谐振子系统，在正向过程中可以将结构投影到该系统的本征模式上，在反向过程中先采样粗糙的全局结构再细化局部细节。作为一种基于分数的模型，EigenFold 计算强度不高，但在准确性和范围方面仍不如其他模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;抗体结构预测&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;这里的MSA结构不能作为抗体的输入。因此通用的模型如AlphaFold2效率非常低。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;IgFlod&lt;/strong&gt;：使用来自AniBERTy的序列嵌入和不变点注意力机制来预测。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tFlodAb&lt;/strong&gt;：减少了对Rosetta能量函数等外部工具的依赖。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;序列生成&#34;&gt;序列生成
+&lt;/h6&gt;&lt;p&gt;序列生成，也被称为反向折叠或固定骨架设计，是结构预测的逆任务。生成能折叠成目标结构的氨基酸序列，对于设计具有期望结构和功能特性的蛋白质至关重要。由于有效序列的空间巨大，且蛋白质折叠过程复杂难以预测，因此需要多种深度学习方法来解决这些挑战&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任务&lt;/strong&gt;：给定固定的蛋白质骨架结构，生成能折叠成该结构的相应氨基酸序列。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;：模型主要使用 &lt;strong&gt;CATH&lt;/strong&gt; 进行训练，部分会利用 &lt;strong&gt;UniRef&lt;/strong&gt; 和 &lt;strong&gt;UniParc&lt;/strong&gt; 进行数据增强，评估时常用 CATH 和 &lt;strong&gt;TS500&lt;/strong&gt;。此外，Yu 等人创建了一组 14 个已知的从头蛋白质结构，用于避免数据污染。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AAR（氨基酸恢复率）&lt;/strong&gt;：生成序列与天然序列中匹配氨基酸的比例。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多样性（Diversity）&lt;/strong&gt;：通过 Clustalw2 测量生成序列对之间的平均差异。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RMSD（均方根偏差）&lt;/strong&gt;：将生成序列折叠成结构后，与天然骨架结构进行比较的结构差异指标。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;非极性损失（Nonpolar Loss）&lt;/strong&gt;：衡量折叠结构中极性氨基酸类型合理性的指标，表面非极性氨基酸含量越高，损失越大。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PPL（困惑度）&lt;/strong&gt;：交叉熵损失的指数化，代表天然序列出现在预测序列分布中的逆可能性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;初步的一类模型&lt;/strong&gt;在不考虑固定骨架目标的情况下生成蛋白质序列。但这些模型无法考虑关键的结构信息。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ProteinVAE&lt;/strong&gt; 利用 ProtBERT 将原始输入序列转化为潜表示；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProT-VAE&lt;/strong&gt; 使用不同的预训练语言模型 ProtT5NV；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProteinGAN&lt;/strong&gt; 则采用 GAN 架构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主要的模型&lt;/strong&gt;接收固定骨架目标作为输入来生成氨基酸序列。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ProteinSolver&lt;/strong&gt; 将生成骨架结构与解决数独问题联系起来，使用 GNN 架构；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PiFold&lt;/strong&gt; 引入更全面的特征表示；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anand&lt;/strong&gt; 等人设计 3D CNN 直接学习条件分布；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ABACUS-R&lt;/strong&gt; 结合预训练的 transformer 来推断残基的氨基酸类型；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProRefiner&lt;/strong&gt; 通过引入熵分数改进预测。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GPD&lt;/strong&gt; 使用 Graphormer 架构，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GVP-GNN&lt;/strong&gt; 采用新颖的几何表示，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ESM-IF1&lt;/strong&gt; 扩展表示并在扩展数据集上训练，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProteinMPNN&lt;/strong&gt; 实现了顺序无关的自回归方法。&lt;/li&gt;
+&lt;li&gt;在这些模型中，ProteinMPNN 在序列恢复、RMSD 和非极性损失方面表现最佳，GPD 则是最省时的方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;主干设计&#34;&gt;主干设计
+&lt;/h6&gt;&lt;p&gt;生成全新的蛋白质可以直接扩充蛋白质库，实现高度复杂和多样的功能，是从头设计的核心。蛋白质设计在结构和序列上存在差异，有的模型生成 1D 氨基酸序列，有的直接生成 3D 结构，还有的同时设计两者。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;任务&lt;/strong&gt;：从无输入或基于现有背景设计蛋白质骨干结构，即生成每个氨基酸的骨干原子（氮、$\alpha$ - 碳、羰基和氧原子）坐标，外部工具可用于侧链填充。包含上下文无关生成（生成多样的蛋白质结构）和上下文给定生成（根据天然蛋白质的基序填充缺失残基）两个子任务。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数据集&lt;/strong&gt;：常用的数据集有 PDB、AlphaFoldDB、SCOP（及其扩展 SCOPe）和 CATH。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;指标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;scTM（自洽 TM 分数）&lt;/strong&gt;：通过将提议的结构输入序列预测模型（通常是 ProteinMPNN）生成相应氨基酸序列，再将其输入结构预测模型（通常是 AlphaFold2）生成样本结构，计算生成结构与样本结构之间的 TM 分数。分数大于 0.5 的结构通常被认为是可设计的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;scRMSD（自洽 RMSD）&lt;/strong&gt;：与 scTM 类似，但使用 RMSD 进行评估，分数小于 2 通常作为截止值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AAR（氨基酸恢复率）&lt;/strong&gt;：比较生成的氨基酸序列与真实序列的相似程度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RMSD（均方根偏差）&lt;/strong&gt;：衡量生成的残基坐标与真实值之间的距离。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;较短蛋白质&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ProtDiff&lt;/strong&gt; 使用 3D 笛卡尔坐标表示每个残基和粒子滤波扩散方法，但 3D 笛卡尔点云不能反映蛋白质折叠过程；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FoldingDiff&lt;/strong&gt; 则使用角度表示，更接近蛋白质折叠过程中的旋转能量优化，通过 DDPM 和 BERT 架构从随机未折叠状态去噪到折叠结构；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LatentDiff&lt;/strong&gt; 先使用带 GNN 的等变蛋白质自动编码器将蛋白质嵌入潜在空间，再用等变扩散模型学习潜在分布，在潜在空间采样比在原始蛋白质空间快十倍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;长蛋白结构&lt;/strong&gt;：基于框架的构建方法
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Genie&lt;/strong&gt; 使用由平移和旋转元素确定的框架云进行离散时间扩散来生成骨干结构；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FrameDiff&lt;/strong&gt; 基于框架流形参数化骨干结构，使用基于分数的生成模型；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RFDiffusion&lt;/strong&gt; 结合 RoseTTAFold 的强大结构预测方法和扩散模型，通过微调 RoseTTAFold 权重并输入掩码输入序列和随机噪声坐标来迭代生成骨干结构，还进行自我条件约束，性能优异；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GPDL&lt;/strong&gt; 使用 ESMFold 代替 RoseTTAFold 作为基础结构预测模型，并结合 ESM2 语言模型提取进化信息，生成骨干结构速度比 RFDiffusion 快 10 - 20 倍。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;同时设计蛋白质序列和结构&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GeoPro&lt;/strong&gt; 使用 EGNN 编码和预测 3D 蛋白质结构，并设计单独的解码器解码蛋白质序列；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protpardelle&lt;/strong&gt; 在反向扩散过程中对可能的侧链状态进行 “叠加” 并在每次迭代更新时进行塌缩；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ProtSeed&lt;/strong&gt; 使用三角函数感知编码器计算约束和相互作用，并通过等变解码器更新序列和结构；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Anand&lt;/strong&gt; 等人使用 IPA 在框架空间中进行扩散，高效生成蛋白质序列和结构 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;抗体CDR-H3生成&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;特别地，抗体生成聚焦于一个被称为 CDR-H3 区域的生成。最开始使用的是&lt;strong&gt;LSTM&lt;/strong&gt;方法，后来转变为&lt;strong&gt;RefineGNN&lt;/strong&gt;方法。此外，一些模型超越了CDR-H3生成任务，而是一次性处理抗体生成的多个环节。&lt;strong&gt;dyMEAN&lt;/strong&gt;是一种端到端的方法将结构预测、对接和CDR-H3生成整合到一个模型中。&lt;/p&gt;
+&lt;h6 id=&#34;多肽设计&#34;&gt;多肽设计
+&lt;/h6&gt;&lt;p&gt;虽然已经有在蛋白质生成方面的重要、强大的模型，但是由于多肽结构的复杂和依赖于上下文已经下游应用的多样性，因此有必要为多肽的需求来定制模型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多肽生成&lt;/strong&gt;：从头生成新型多肽&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MMCD&lt;/strong&gt;：基于Diffusion的治疗性多肽生成模型，它联合设计多肽序列和结构（骨干坐标），采用Transformer编码器处理序列，EGNN 处理结构，并运用对比学习策略对齐序列和结构嵌入，区分治疗性和非治疗性多肽嵌入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;多肽-蛋白质互相作用&lt;/strong&gt;：预测提议的多肽 - 蛋白质对的物理结合位点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PepGB：基于GNN的模型。它利用图注意力神经网络学习多肽和蛋白质之间的相互作用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;多肽表示学习&lt;/strong&gt;：将原始多肽序列转换为能捕获有价值信息的潜在表示&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PepHarmony&lt;/strong&gt;：使用序列编码器（ESM）和结构编码器（GearNet），多视图对比学习模型，集成序列和结构信息以增强多肽表示学习。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;多肽测序&lt;/strong&gt;：解决质谱分析中从含噪数据提取氨基酸序列的挑战&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;AdaNovo&lt;/strong&gt;：从头多肽测序模型，由质谱编码器和两个受Transformer架构启发的多肽解码器组成。它利用条件互信息和自适应训练策略，在多种物种的多肽水平和氨基酸水平精度上显著优于之前的模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;最近趋势&#34;&gt;最近趋势
+&lt;/h4&gt;&lt;p&gt;生成式AI正在深刻地改变药物设计。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;生成式AI领域&lt;/strong&gt;：&lt;strong&gt;GNN&lt;/strong&gt;和&lt;strong&gt;基于图的方法&lt;/strong&gt;的出现，推动了从基于序列的方法向基于结构的方法的转变，最终促使在生成任务中实现了序列和结构的整合。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分子生成领域&lt;/strong&gt;：&lt;strong&gt;基于图的Diffusion模型&lt;/strong&gt;作为主导。利用E（3）等变形来实现最先进的性能。
+&lt;ul&gt;
+&lt;li&gt;GeoLDM、MiDi——无靶点分子设计&lt;/li&gt;
+&lt;li&gt;TargetDiff、Pocket2Mol、DiffSBDD——有靶点分子设计&lt;/li&gt;
+&lt;li&gt;Torsional Diffusion——分子构象生成&lt;/li&gt;
+&lt;li&gt;此外，有靶点分子设计中也出现了从基于序列的方法到基于结构的方法的出现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;蛋白质生成领域&lt;/strong&gt;：也出现了从序列到结构的转变。
+&lt;ul&gt;
+&lt;li&gt;GearNET：基于结构的表示学习模型&lt;/li&gt;
+&lt;li&gt;ESM-1B、UniRep：3D结构的重要性&lt;/li&gt;
+&lt;li&gt;AlphaFold2：结构预测的最先进模型&lt;/li&gt;
+&lt;li&gt;一些Diffusion方法也致力于蛋白质骨架构建。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;挑战&#34;&gt;挑战
+&lt;/h4&gt;&lt;p&gt;分子生成领域：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;复杂性&lt;/li&gt;
+&lt;li&gt;适用性&lt;/li&gt;
+&lt;li&gt;可解释性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;蛋白质生成领域：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基准测试&lt;/li&gt;
+&lt;li&gt;性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;结论&#34;&gt;结论
+&lt;/h4&gt;&lt;p&gt;介绍了生成式AI在从头开始的药物设计上的全貌，特别关注分子和蛋白质生成。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;regularized-molecular-conformation-fields--neurips-2022&#34;&gt;Regularized Molecular Conformation Fields | NeurIPS 2022
 &lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openreview.net/forum?id=7XCFxnG8nGS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -43,11 +304,11 @@
 &lt;p&gt;“In this work, we introduce RMCF, a novel framework to generate a diverse set of low-energy molecular conformations through sampling from a regularized molecular conformation field.”&lt;br&gt;
 在这项工作中，我们引入了 RMCF，这是一个新颖的框架，通过从正则化的分子构象场中采样来生成一系列多样的低能量分子构象。“RMCF” 是一个新提出的框架名称；“novel” 是新颖的；“framework” 是框架；“diverse set” 一系列多样的；“low-energy molecular conformations” 低能量分子构象；“sampling” 是采样；“regularized molecular conformation field” 正则化的分子构象场，“regularized” 在这里可以理解为经过某种规则化处理的，使得构象场更易于处理和分析。&lt;/p&gt;
 &lt;p&gt;“We develop a data-driven molecular segmentation algorithm to automatically partition each molecule into several structural building blocks to reduce the modeling degrees of freedom.”&lt;br&gt;
-我们开发了一种数据驱动的分子分割算法，以自动将每一个分子&lt;strong&gt;分割成&lt;/strong&gt;（应该是分割到）几个结构构建块，从而减少建模的自由度。“data-driven” 是数据驱动的，即基于数据来驱动算法的运行；“molecular segmentation algorithm” 分子分割算法；“automatically” 自动地；“partition…into…” 把…… 分割成……；“structural building blocks” 结构构建块，也就是把分子拆解成的一些基本的结构单元；“degrees of freedom” 自由度，在建模中表示可以变化的参数或变量的数量，减少自由度可以使模型更简单、更易于处理。&lt;/p&gt;
+我们开发了一种数据驱动的分子分割算法，以自动将每一个分子分割成（应该是&lt;strong&gt;分割到&lt;/strong&gt;）几个结构构建块，从而减少建模的自由度。“data-driven” 是数据驱动的，即基于数据来驱动算法的运行；“molecular segmentation algorithm” 分子分割算法；“automatically” 自动地；“partition…into…” 把…… 分割成……；“structural building blocks” 结构构建块，也就是把分子拆解成的一些基本的结构单元；“degrees of freedom” 自由度，在建模中表示可以变化的参数或变量的数量，减少自由度可以使模型更简单、更易于处理。&lt;/p&gt;
 &lt;p&gt;“Then, we employ a Markov Random Field to learn the joint probability distribution of fragment configurations and interfragment dihedral angles, which enables us to sample from different low-energy regions of a conformation space.”&lt;br&gt;
 然后，我们使用马尔可夫随机场来学习片段构型和片段间二面角的联合概率分布，这使我们能够从构象空间的不同低能量区域进行采样。“Markov Random Field”（马尔可夫随机场）是一种概率图模型，用于描述变量之间的概率关系；“joint probability distribution” 联合概率分布，即多个变量同时发生的概率分布；“fragment configurations” 片段构型，即分子被分割成的片段的原子排列方式；“interfragment dihedral angles” 片段间二面角，是描述两个片段之间相对取向的角度；“enables sb. to do sth.” 使某人能够做某事。&lt;/p&gt;
 &lt;p&gt;“Our model constantly outperforms state-of-the-art models for the conformation generation task on the GEOM-Drugs dataset.”&lt;br&gt;
-我们的模型在 GEOM-Drugs 数据集上的构象生成任务中一直优于最先进的模型。“constantly” 一直，持续地；“outperforms” 胜过，优于；“state-of-the-art models” 最先进的模型；“GEOM-Drugs dataset” 是一个用于构象生成任务的数据集名称。&lt;/p&gt;
+我们的模型在 GEOM-Drugs 数据集上的构象生成任务中一直优于最先进的模型。&lt;/p&gt;
 &lt;p&gt;“We attribute the success of RMCF to modeling in a regularized feature space and learning a global fragment configuration distribution for effective sampling.”&lt;br&gt;
 我们将 RMCF 的成功归因于在正则化特征空间中的建模以及为了有效采样而学习全局片段构型分布。“attribute…to…” 把…… 归因于……；“regularized feature space” 正则化特征空间；“global fragment configuration distribution” 全局片段构型分布，即对所有片段构型的一种整体的概率分布描述。&lt;/p&gt;
 &lt;p&gt;“The proposed method could be generalized to deal with larger biomolecular systems”&lt;br&gt;
@@ -56,6 +317,60 @@
 &lt;/details&gt;
 
 &lt;p&gt;好像看懂了一些。但是似懂非懂。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;主要解决什么问题&lt;/li&gt;
+&lt;li&gt;挑战是什么&lt;/li&gt;
+&lt;li&gt;我们提出的核心方法，与同类问题比较的优势在哪&lt;/li&gt;
+&lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
+&lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;解决的问题&#34;&gt;解决的问题
+&lt;/h4&gt;&lt;p&gt;属于上面综述文章里里面的分子生成里面的3D构象生成的部分。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决了&lt;/strong&gt;：给定分子图，预测有机分子能量最有利的3D构象。&lt;/p&gt;
+&lt;h4 id=&#34;挑战-1&#34;&gt;挑战
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;分子在三维欧氏空间的 SE (3) 变换下具有不变性，&lt;strong&gt;同一分子的构象在刚性运动下有无限可能&lt;/strong&gt;，增加了建模难度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分子在环境条件下存在多种动力学，导致高维且复杂的势能面&lt;/strong&gt;，使得机器学习模型难以识别局部最小值来生成能量有利的构象&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;现有方法使用的不变特征可能冗余、相互依赖&lt;/strong&gt;，导致数值不稳定和不合理的构象预测，且专门的等变层可能降低神经网络的表达能力，部分模型处理环状图存在困难&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;核心方法和优势&#34;&gt;核心方法和优势
+&lt;/h4&gt;&lt;h5 id=&#34;核心方法&#34;&gt;核心方法
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419.png&#34;
+	width=&#34;696&#34;
+	height=&#34;322&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu18351550403094909478.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu9993291082936917791.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;从二维分子如何生成三维分子&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;216&#34;
+		data-flex-basis=&#34;518px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;构建正则化构象场&lt;/strong&gt;。依据&lt;strong&gt;最少内部自由度&lt;/strong&gt;（DoF）原则将分子分割。蓝色圆圈代表片段构型，一般来说是低内部柔性的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;利用MRF建模&lt;/strong&gt;。红色圆圈是二面角构型，黑色方块是相邻构型之间的相互作用。利用&lt;strong&gt;马尔可夫随机场&lt;/strong&gt;（MRF）对片段构型和二面角构型的联合概率分布进行建模。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;推理和采样&lt;/strong&gt;。推理时无环RMCF采用多年&lt;strong&gt;动态规划进行最大后验解码&lt;/strong&gt;，有环使用&lt;strong&gt;LBP算法&lt;/strong&gt;。采样使用&lt;strong&gt;Gibbs采样&lt;/strong&gt;，每次采样后固定其他节点。采样后用特定距离度量样本差异，通过 &lt;strong&gt;K-means 聚类&lt;/strong&gt;，从每个聚类中随机抽取样本，提升生成构象的多样性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;构象组装&lt;/strong&gt;。将片段和二面角进行组装。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;优势&#34;&gt;优势
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;通过&lt;strong&gt;分子切割&lt;/strong&gt;减少了构象空间维度，避免生产许多无关变量对模型的影响&lt;/li&gt;
+&lt;li&gt;MRF更好地捕捉相邻片段间的关系并对构象不确定性进行建模&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据集&#34;&gt;数据集
+&lt;/h4&gt;&lt;p&gt;GEOM-QM9和GEOM-Drugs数据集。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GEOM-QM9&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;评测方式&#34;&gt;评测方式
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分子构象的质量和多样性&lt;/strong&gt;：覆盖分数（COV-R）和匹配分数（MAT-R）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预测精度&lt;/strong&gt;：COV-P和MAT-P。&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
