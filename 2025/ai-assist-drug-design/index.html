@@ -284,29 +284,45 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#ai-assist-drug-design">AI-assist Drug Design</a>
+    <li><a href="#a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation">A Survey of Generative AI for <em>de novo</em> Drug Design: New Frontiers in Molecule and Protein Generation</a>
       <ol>
-        <li><a href="#a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation">A Survey of Generative AI for <em>de novo</em> Drug Design: New Frontiers in Molecule and Protein Generation</a>
+        <li><a href="#摘要">摘要</a></li>
+        <li><a href="#引言">引言</a></li>
+        <li><a href="#相关研究">相关研究</a></li>
+        <li><a href="#前言生成式ai模型">前言：生成式AI模型</a></li>
+        <li><a href="#应用">应用</a>
           <ol>
-            <li><a href="#摘要">摘要</a></li>
-            <li><a href="#引言">引言</a></li>
-            <li><a href="#相关研究">相关研究</a></li>
-            <li><a href="#前言生成式ai模型">前言：生成式AI模型</a></li>
-            <li><a href="#应用">应用</a></li>
-            <li><a href="#最近趋势">最近趋势</a></li>
-            <li><a href="#挑战">挑战</a></li>
-            <li><a href="#结论">结论</a></li>
+            <li><a href="#小分子">小分子</a></li>
+            <li><a href="#蛋白质">蛋白质</a></li>
           </ol>
         </li>
-        <li><a href="#regularized-molecular-conformation-fields--neurips-2022">Regularized Molecular Conformation Fields | NeurIPS 2022</a>
+        <li><a href="#最近趋势">最近趋势</a></li>
+        <li><a href="#挑战">挑战</a></li>
+        <li><a href="#结论">结论</a></li>
+      </ol>
+    </li>
+    <li><a href="#regularized-molecular-conformation-fields--neurips-2022">Regularized Molecular Conformation Fields | NeurIPS 2022</a>
+      <ol>
+        <li><a href="#解决的问题">解决的问题</a></li>
+        <li><a href="#挑战-1">挑战</a></li>
+        <li><a href="#核心方法和优势">核心方法和优势</a>
           <ol>
-            <li><a href="#解决的问题">解决的问题</a></li>
-            <li><a href="#挑战-1">挑战</a></li>
-            <li><a href="#核心方法和优势">核心方法和优势</a></li>
-            <li><a href="#数据集">数据集</a></li>
-            <li><a href="#评测方式">评测方式</a></li>
+            <li><a href="#核心方法">核心方法</a></li>
+            <li><a href="#优势">优势</a></li>
           </ol>
         </li>
+        <li><a href="#数据集">数据集</a></li>
+        <li><a href="#评测方式">评测方式</a></li>
+      </ol>
+    </li>
+    <li><a href="#zero-shot-3d-drug-design-by-sketching-and-generating--neurips-2022">Zero-Shot 3D Drug Design by Sketching and Generating | NeurIPS 2022</a>
+      <ol>
+        <li><a href="#解决的问题-1">解决的问题</a></li>
+        <li><a href="#挑战是什么">挑战是什么</a></li>
+        <li><a href="#核心方法-1">核心方法</a></li>
+        <li><a href="#优势-1">优势</a></li>
+        <li><a href="#数据集-1">数据集</a></li>
+        <li><a href="#评测方式-1">评测方式</a></li>
       </ol>
     </li>
   </ol>
@@ -377,7 +393,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 19 分钟
+                    阅读时长: 21 分钟
                 </time>
             </div>
         
@@ -392,8 +408,7 @@
     <section class="article-content">
     
     
-    <h2 id="ai-assist-drug-design">AI-assist Drug Design
-</h2><p>开展一些AI-assist Drug Design 的方向探索，需要进行一些论文阅读和调研，形成调研报告。</p>
+    <p>开展一些AI-assist Drug Design 的方向探索，需要进行一些论文阅读和调研，形成调研报告。</p>
 <p><strong>参考</strong>：</p>
 <ul>
 <li><a class="link" href="https://arxiv.org/abs/2402.08703"  target="_blank" rel="noopener"
@@ -410,13 +425,13 @@
 <li>评测方式是什么，有无数据集</li>
 </ol>
 <hr>
-<h3 id="a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation">A Survey of Generative AI for <em>de novo</em> Drug Design: New Frontiers in Molecule and Protein Generation
-</h3><p><a class="link" href="https://arxiv.org/abs/2402.08703"  target="_blank" rel="noopener"
+<h2 id="a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation">A Survey of Generative AI for <em>de novo</em> Drug Design: New Frontiers in Molecule and Protein Generation
+</h2><p><a class="link" href="https://arxiv.org/abs/2402.08703"  target="_blank" rel="noopener"
     >[2402.08703] A Survey of Generative AI for de novo Drug Design: New Frontiers in Molecule and Protein Generation</a></p>
-<h4 id="摘要">摘要
-</h4><p>将从头药物设计（<em>de novo</em> drug design）归纳为两大主题：小分子生成和蛋白质生成。在每个主题下，我们识别出多种子任务和应用，重点介绍重要的数据集、基准测试、模型架构，并比较顶尖模型的性能。</p>
-<h4 id="引言">引言
-</h4><ul>
+<h3 id="摘要">摘要
+</h3><p>将从头药物设计（<em>de novo</em> drug design）归纳为两大主题：小分子生成和蛋白质生成。在每个主题下，我们识别出多种子任务和应用，重点介绍重要的数据集、基准测试、模型架构，并比较顶尖模型的性能。</p>
+<h3 id="引言">引言
+</h3><ul>
 <li>并非是虚拟筛选/定向进化。而是从头开始的自然界中并未存在的新的生物实体的生成。</li>
 <li>文章中分成两个部分来讲解。小分子和蛋白质。</li>
 <li>文章将介绍
@@ -435,17 +450,17 @@
 </ul>
 </li>
 </ul>
-<h4 id="相关研究">相关研究
-</h4><p>其他的方法都太专业，而这篇文章对小分子和蛋白质生成进行宏观层面的分析，有助于那些想要对化学创新领域中新兴的生成式AI模型有一个高屋建瓴的了解的人。</p>
-<h4 id="前言生成式ai模型">前言：生成式AI模型
-</h4><p>介绍了<strong>VAE、GAN、Flow-Based Models</strong>和<strong>Diffusion</strong>，还介绍了一些其他模型，比如GNN、EGNN等。</p>
-<h4 id="应用">应用
-</h4><h5 id="小分子">小分子
-</h5><h6 id="任务背景">任务背景
-</h6><p>分子生成聚焦于为药物设计创造新的分子化合物。这些生成的分子旨在具有 <strong>（1）有效性、（2）稳定性和（3）独特性</strong>，总体目标是具有药物适用性。“药物适用性” 是一个宽泛的术语，用于描述分子对各种生物靶标的结合亲和力。</p>
+<h3 id="相关研究">相关研究
+</h3><p>其他的方法都太专业，而这篇文章对小分子和蛋白质生成进行宏观层面的分析，有助于那些想要对化学创新领域中新兴的生成式AI模型有一个高屋建瓴的了解的人。</p>
+<h3 id="前言生成式ai模型">前言：生成式AI模型
+</h3><p>介绍了<strong>VAE、GAN、Flow-Based Models</strong>和<strong>Diffusion</strong>，还介绍了一些其他模型，比如GNN、EGNN等。</p>
+<h3 id="应用">应用
+</h3><h4 id="小分子">小分子
+</h4><h5 id="任务背景">任务背景
+</h5><p>分子生成聚焦于为药物设计创造新的分子化合物。这些生成的分子旨在具有 <strong>（1）有效性、（2）稳定性和（3）独特性</strong>，总体目标是具有药物适用性。“药物适用性” 是一个宽泛的术语，用于描述分子对各种生物靶标的结合亲和力。</p>
 <p>虽然前三个任务可能看起来微不足道，但仅仅生成有效和稳定的分子就存在各种挑战。因此，<strong>与目标无关的分子生成领域</strong>专注于生成有效的分子集合，而不考虑任何生物靶标。<strong>目标感知分子生成</strong>（或配体生成）侧重于针对特定蛋白质结构生成分子，因此更关注药物成分。最后，<strong>3D 构象生成</strong>涉及在给定 2D 连接的情况下生成各种 3D 构象。</p>
-<h6 id="无靶向分子设计">无靶向分子设计
-</h6><p>必须满足前两个特点，也就是<strong>有效性</strong>和<strong>稳定性</strong>。需要满足很多的复杂的条件，所以其实还是挺难的。深度学习可以帮助人们更有效率地生成有更高可能性满足有效性的分子。</p>
+<h5 id="无靶向分子设计">无靶向分子设计
+</h5><p>必须满足前两个特点，也就是<strong>有效性</strong>和<strong>稳定性</strong>。需要满足很多的复杂的条件，所以其实还是挺难的。深度学习可以帮助人们更有效率地生成有更高可能性满足有效性的分子。</p>
 <p><strong>任务</strong>：无输入，输出为生成一组新的、有效的、稳定的分子。</p>
 <p><strong>数据集</strong>：QM9和GEOM-Drug</p>
 <p><strong>指标</strong>：</p>
@@ -487,8 +502,8 @@
 <li><strong>表格2</strong>：EDM、MDM、MiDi 等模型在<strong>GEOM-Drugs数据集</strong>上的<strong>条件无关的分子设计任务</strong>上性能表现。MiDi能生成更稳定的复杂分子，但是有效性较低。</li>
 <li><strong>表格3</strong>：生成模型在<strong>条件分子生成任务</strong>上的性能表现。MDM、GCDM生成表现不错，MDM前四项较好，GCDM后两项较好。</li>
 </ul>
-<h6 id="靶向分子设计">靶向分子设计
-</h6><p>有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。</p>
+<h5 id="靶向分子设计">靶向分子设计
+</h5><p>有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。</p>
 <p><strong>任务</strong>：给定氨基酸序列/蛋白质的三维结构，生成对应的有高结合亲和力以及潜在相互作用的分子。</p>
 <p><strong>数据集</strong>：CrossDocked2020、ZINC20和Binding MOAD。</p>
 <p><strong>指标</strong>：Vina Score、Vina Energy、高亲和力百分比High Affinity Percentage、合成可及性分数SAscore和多样性Diversity。</p>
@@ -508,13 +523,13 @@
 </li>
 </ul>
 <p>这里给出了一个表格。展示了不同的模型的结果。</p>
-<h5 id="蛋白质">蛋白质
-</h5><h6 id="任务背景-1">任务背景
-</h6><p>蛋白质可以通过其3D结构或者氨基酸序列来表示，氨基酸序列类似人类的语言，可以应用于自然语言模型。可以定义几个子任务：1）<strong>表示学习</strong>。2）<strong>结构预测</strong>。3）<strong>序列生成</strong>。4）<strong>主干设计</strong>。此外还讨论了<strong>抗体生成</strong>和<strong>肽生成</strong>。</p>
-<h6 id="蛋白质表示学习">蛋白质表示学习
-</h6><p>使用氨基酸序列/原子坐标学习一个嵌入从而为其他生成模型创建更丰富的数据空间以供训练。类似于自然语言处理中的word2vec。</p>
-<h6 id="结构预测">结构预测
-</h6><p>从氨基酸序列来预测结构是极具挑战性和重要的工作。</p>
+<h4 id="蛋白质">蛋白质
+</h4><h5 id="任务背景-1">任务背景
+</h5><p>蛋白质可以通过其3D结构或者氨基酸序列来表示，氨基酸序列类似人类的语言，可以应用于自然语言模型。可以定义几个子任务：1）<strong>表示学习</strong>。2）<strong>结构预测</strong>。3）<strong>序列生成</strong>。4）<strong>主干设计</strong>。此外还讨论了<strong>抗体生成</strong>和<strong>肽生成</strong>。</p>
+<h5 id="蛋白质表示学习">蛋白质表示学习
+</h5><p>使用氨基酸序列/原子坐标学习一个嵌入从而为其他生成模型创建更丰富的数据空间以供训练。类似于自然语言处理中的word2vec。</p>
+<h5 id="结构预测">结构预测
+</h5><p>从氨基酸序列来预测结构是极具挑战性和重要的工作。</p>
 <p><strong>任务</strong>：从氨基酸序列来预测蛋白质结构。</p>
 <p><strong>数据集</strong>：主要来自蛋白质结构预测的关键评估（CASP）。有PDB、CASP14和CAMEO。</p>
 <p><strong>指标</strong>：均方根误差RMSD、全局距离测试总得分GDT-TS、模板建模得分TM-score和局部距离差异测试LDDT。</p>
@@ -532,8 +547,8 @@
 <li><strong>IgFlod</strong>：使用来自AniBERTy的序列嵌入和不变点注意力机制来预测。</li>
 <li><strong>tFlodAb</strong>：减少了对Rosetta能量函数等外部工具的依赖。</li>
 </ul>
-<h6 id="序列生成">序列生成
-</h6><p>序列生成，也被称为反向折叠或固定骨架设计，是结构预测的逆任务。生成能折叠成目标结构的氨基酸序列，对于设计具有期望结构和功能特性的蛋白质至关重要。由于有效序列的空间巨大，且蛋白质折叠过程复杂难以预测，因此需要多种深度学习方法来解决这些挑战</p>
+<h5 id="序列生成">序列生成
+</h5><p>序列生成，也被称为反向折叠或固定骨架设计，是结构预测的逆任务。生成能折叠成目标结构的氨基酸序列，对于设计具有期望结构和功能特性的蛋白质至关重要。由于有效序列的空间巨大，且蛋白质折叠过程复杂难以预测，因此需要多种深度学习方法来解决这些挑战</p>
 <p><strong>任务</strong>：给定固定的蛋白质骨架结构，生成能折叠成该结构的相应氨基酸序列。</p>
 <p><strong>数据集</strong>：模型主要使用 <strong>CATH</strong> 进行训练，部分会利用 <strong>UniRef</strong> 和 <strong>UniParc</strong> 进行数据增强，评估时常用 CATH 和 <strong>TS500</strong>。此外，Yu 等人创建了一组 14 个已知的从头蛋白质结构，用于避免数据污染。</p>
 <p><strong>指标</strong>：</p>
@@ -568,8 +583,8 @@
 </ul>
 </li>
 </ul>
-<h6 id="主干设计">主干设计
-</h6><p>生成全新的蛋白质可以直接扩充蛋白质库，实现高度复杂和多样的功能，是从头设计的核心。蛋白质设计在结构和序列上存在差异，有的模型生成 1D 氨基酸序列，有的直接生成 3D 结构，还有的同时设计两者。</p>
+<h5 id="主干设计">主干设计
+</h5><p>生成全新的蛋白质可以直接扩充蛋白质库，实现高度复杂和多样的功能，是从头设计的核心。蛋白质设计在结构和序列上存在差异，有的模型生成 1D 氨基酸序列，有的直接生成 3D 结构，还有的同时设计两者。</p>
 <p><strong>任务</strong>：从无输入或基于现有背景设计蛋白质骨干结构，即生成每个氨基酸的骨干原子（氮、$\alpha$ - 碳、羰基和氧原子）坐标，外部工具可用于侧链填充。包含上下文无关生成（生成多样的蛋白质结构）和上下文给定生成（根据天然蛋白质的基序填充缺失残基）两个子任务。</p>
 <p><strong>数据集</strong>：常用的数据集有 PDB、AlphaFoldDB、SCOP（及其扩展 SCOPe）和 CATH。</p>
 <p><strong>指标</strong>：</p>
@@ -607,8 +622,8 @@
 </ul>
 <p><strong>抗体CDR-H3生成</strong>：</p>
 <p>特别地，抗体生成聚焦于一个被称为 CDR-H3 区域的生成。最开始使用的是<strong>LSTM</strong>方法，后来转变为<strong>RefineGNN</strong>方法。此外，一些模型超越了CDR-H3生成任务，而是一次性处理抗体生成的多个环节。<strong>dyMEAN</strong>是一种端到端的方法将结构预测、对接和CDR-H3生成整合到一个模型中。</p>
-<h6 id="多肽设计">多肽设计
-</h6><p>虽然已经有在蛋白质生成方面的重要、强大的模型，但是由于多肽结构的复杂和依赖于上下文已经下游应用的多样性，因此有必要为多肽的需求来定制模型。</p>
+<h5 id="多肽设计">多肽设计
+</h5><p>虽然已经有在蛋白质生成方面的重要、强大的模型，但是由于多肽结构的复杂和依赖于上下文已经下游应用的多样性，因此有必要为多肽的需求来定制模型。</p>
 <p><strong>多肽生成</strong>：从头生成新型多肽</p>
 <ul>
 <li><strong>MMCD</strong>：基于Diffusion的治疗性多肽生成模型，它联合设计多肽序列和结构（骨干坐标），采用Transformer编码器处理序列，EGNN 处理结构，并运用对比学习策略对齐序列和结构嵌入，区分治疗性和非治疗性多肽嵌入。</li>
@@ -625,8 +640,8 @@
 <ul>
 <li><strong>AdaNovo</strong>：从头多肽测序模型，由质谱编码器和两个受Transformer架构启发的多肽解码器组成。它利用条件互信息和自适应训练策略，在多种物种的多肽水平和氨基酸水平精度上显著优于之前的模型。</li>
 </ul>
-<h4 id="最近趋势">最近趋势
-</h4><p>生成式AI正在深刻地改变药物设计。</p>
+<h3 id="最近趋势">最近趋势
+</h3><p>生成式AI正在深刻地改变药物设计。</p>
 <ul>
 <li><strong>生成式AI领域</strong>：<strong>GNN</strong>和<strong>基于图的方法</strong>的出现，推动了从基于序列的方法向基于结构的方法的转变，最终促使在生成任务中实现了序列和结构的整合。</li>
 <li><strong>分子生成领域</strong>：<strong>基于图的Diffusion模型</strong>作为主导。利用E（3）等变形来实现最先进的性能。
@@ -646,8 +661,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="挑战">挑战
-</h4><p>分子生成领域：</p>
+<h3 id="挑战">挑战
+</h3><p>分子生成领域：</p>
 <ul>
 <li>复杂性</li>
 <li>适用性</li>
@@ -658,11 +673,11 @@
 <li>基准测试</li>
 <li>性能</li>
 </ul>
-<h4 id="结论">结论
-</h4><p>介绍了生成式AI在从头开始的药物设计上的全貌，特别关注分子和蛋白质生成。</p>
+<h3 id="结论">结论
+</h3><p>介绍了生成式AI在从头开始的药物设计上的全貌，特别关注分子和蛋白质生成。</p>
 <hr>
-<h3 id="regularized-molecular-conformation-fields--neurips-2022">Regularized Molecular Conformation Fields | NeurIPS 2022
-</h3><p><a class="link" href="https://openreview.net/forum?id=7XCFxnG8nGS"  target="_blank" rel="noopener"
+<h2 id="regularized-molecular-conformation-fields--neurips-2022">Regularized Molecular Conformation Fields | NeurIPS 2022
+</h2><p><a class="link" href="https://openreview.net/forum?id=7XCFxnG8nGS"  target="_blank" rel="noopener"
     >Regularized Molecular Conformation Fields | OpenReview</a></p>
 <p>从零开始阅读这个领域。先看一下文章的摘要：</p>
 <details>
@@ -704,18 +719,18 @@
 <li>数据集是什么，是否公开</li>
 <li>评测方式是什么，有无数据集</li>
 </ol>
-<h4 id="解决的问题">解决的问题
-</h4><p>属于上面综述文章里里面的分子生成里面的3D构象生成的部分。</p>
+<h3 id="解决的问题">解决的问题
+</h3><p>属于上面综述文章里里面的分子生成里面的3D构象生成的部分。</p>
 <p><strong>解决了</strong>：给定分子图，预测有机分子能量最有利的3D构象。</p>
-<h4 id="挑战-1">挑战
-</h4><ul>
+<h3 id="挑战-1">挑战
+</h3><ul>
 <li>分子在三维欧氏空间的 SE (3) 变换下具有不变性，<strong>同一分子的构象在刚性运动下有无限可能</strong>，增加了建模难度</li>
 <li><strong>分子在环境条件下存在多种动力学，导致高维且复杂的势能面</strong>，使得机器学习模型难以识别局部最小值来生成能量有利的构象</li>
 <li><strong>现有方法使用的不变特征可能冗余、相互依赖</strong>，导致数值不稳定和不合理的构象预测，且专门的等变层可能降低神经网络的表达能力，部分模型处理环状图存在困难</li>
 </ul>
-<h4 id="核心方法和优势">核心方法和优势
-</h4><h5 id="核心方法">核心方法
-</h5><p><img src="/2025/ai-assist-drug-design/assets/20250302164419.png"
+<h3 id="核心方法和优势">核心方法和优势
+</h3><h4 id="核心方法">核心方法
+</h4><p><img src="/2025/ai-assist-drug-design/assets/20250302164419.png"
 	width="696"
 	height="322"
 	srcset="/2025/ai-assist-drug-design/assets/20250302164419_hu18351550403094909478.png 480w, /2025/ai-assist-drug-design/assets/20250302164419_hu9993291082936917791.png 1024w"
@@ -735,20 +750,107 @@
 <li><strong>推理和采样</strong>。推理时无环RMCF采用多年<strong>动态规划进行最大后验解码</strong>，有环使用<strong>LBP算法</strong>。采样使用<strong>Gibbs采样</strong>，每次采样后固定其他节点。采样后用特定距离度量样本差异，通过 <strong>K-means 聚类</strong>，从每个聚类中随机抽取样本，提升生成构象的多样性。</li>
 <li><strong>构象组装</strong>。将片段和二面角进行组装。</li>
 </ol>
-<h5 id="优势">优势
-</h5><ul>
+<h4 id="优势">优势
+</h4><ul>
 <li>通过<strong>分子切割</strong>减少了构象空间维度，避免生产许多无关变量对模型的影响</li>
 <li>MRF更好地捕捉相邻片段间的关系并对构象不确定性进行建模</li>
 </ul>
-<h4 id="数据集">数据集
-</h4><p>GEOM-QM9和GEOM-Drugs数据集。</p>
+<h3 id="数据集">数据集
+</h3><p>GEOM-QM9和GEOM-Drugs数据集。</p>
 <ul>
 <li>GEOM-QM9</li>
 </ul>
-<h4 id="评测方式">评测方式
-</h4><ul>
+<h3 id="评测方式">评测方式
+</h3><ul>
 <li><strong>分子构象的质量和多样性</strong>：覆盖分数（COV-R）和匹配分数（MAT-R）</li>
 <li><strong>预测精度</strong>：COV-P和MAT-P。</li>
+</ul>
+<hr>
+<h2 id="zero-shot-3d-drug-design-by-sketching-and-generating--neurips-2022">Zero-Shot 3D Drug Design by Sketching and Generating | NeurIPS 2022
+</h2><p><a class="link" href="https://arxiv.org/abs/2209.13865"  target="_blank" rel="noopener"
+    >[2209.13865] Zero-Shot 3D Drug Design by Sketching and Generating</a></p>
+<p>文章属于综述里面的分子生成任务下的<strong>靶向分子设计</strong>的内容。提出<strong>零样本3D药物设计方法DESERT（Drug dEsign by SkEtching and geneRaTing）</strong>。</p>
+<p><strong>目标</strong>：</p>
+<ol>
+<li>主要解决什么问题</li>
+<li>挑战是什么</li>
+<li>我们提出的核心方法，与同类问题比较的优势在哪</li>
+<li>数据集是什么，是否公开</li>
+<li>评测方式是什么，有无数据集</li>
+</ol>
+<h3 id="解决的问题-1">解决的问题
+</h3><p>目前的药物设计中传统方法和深度学习方法都有很多局限性。</p>
+<h3 id="挑战是什么">挑战是什么
+</h3><p>目前的方法都有一些局限性。</p>
+<ul>
+<li>传统方法遍历大规模药物库，耗时且难以产生新的候选药物</li>
+<li>现有的深度学习方法依赖稀缺的实验数据，但是蛋白质口袋的生物活性数据大多缺乏，另一些依赖对接模拟，但是这个非常耗时，且准确性不够会影响模型的泛化能力</li>
+</ul>
+<h3 id="核心方法-1">核心方法
+</h3><p><img src="/2025/ai-assist-drug-design/assets/20250303131737.png"
+	width="928"
+	height="270"
+	srcset="/2025/ai-assist-drug-design/assets/20250303131737_hu8051220150717452146.png 480w, /2025/ai-assist-drug-design/assets/20250303131737_hu6176498962329562933.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="343"
+		data-flex-basis="824px"
+	
+></p>
+<p>这里提出的方法是DESERT。把药物设计分成草图绘制和生成两个阶段。</p>
+<ul>
+<li><strong>草图绘制阶段</strong>：获取与目标口袋互补的合理的分子形状。
+<ul>
+<li><strong>有参考配体时</strong>，直接使用配体形状</li>
+<li><strong>在无参考配体时</strong>，基于生物学观察从蛋白质口袋中采样合理形状<br>
+<img src="/2025/ai-assist-drug-design/assets/20250303134557.png"
+	width="726"
+	height="273"
+	srcset="/2025/ai-assist-drug-design/assets/20250303134557_hu5862395023633336902.png 480w, /2025/ai-assist-drug-design/assets/20250303134557_hu3364523869838845425.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="265"
+		data-flex-basis="638px"
+	
+></li>
+</ul>
+</li>
+<li><strong>生成阶段</strong>：通过预训练的SHAPE2MOL模型将形状转换为具体的3D分子。</li>
+</ul>
+<p><img src="/2025/ai-assist-drug-design/assets/20250303132757.png"
+	width="779"
+	height="555"
+	srcset="/2025/ai-assist-drug-design/assets/20250303132757_hu17658367537735169804.png 480w, /2025/ai-assist-drug-design/assets/20250303132757_hu16928247782667485400.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="140"
+		data-flex-basis="336px"
+	
+></p>
+<blockquote>
+<p>这里SHAPE2MOL将问题形状到分子的生成问题转换为了图像到序列的生成问题。也就是输入3D图像，给出一个序列，表示3D分子。</p>
+<p>内部结构是3D拓展后的ViT结构。</p>
+</blockquote>
+<h3 id="优势-1">优势
+</h3><ul>
+<li><strong>减少数据和模拟依赖</strong>：DESERT 不严重依赖对接模拟，仅在后期可选使用对接进行后处理，同时抛弃了昂贵的实验数据，通过在大规模分子数据库（如 ZINC 数据库）上训练模型，降低了对实验数据的需求，避免了过拟合问题。</li>
+<li><strong>高效快速</strong>：相比基于 MCMC 的 GEKO 模型，DESERT 利用生物知识修剪搜索空间，能更快速地找到较好的解决方案，生成速度比 GEKO 快约 20 倍。</li>
+<li><strong>生成高质量分子</strong>：基于形状的设计方式使 DESERT 能够生成质量更高的分子。</li>
+</ul>
+<h3 id="数据集-1">数据集
+</h3><p><strong>训练</strong>：使用了<a class="link" href="https://zinc.docking.org/"  target="_blank" rel="noopener"
+    >ZINC</a>数据中的数据对SHAPE2MOL模型进行训练，包含了10亿对分子及其相应形状的数据。</p>
+<p><strong>评估模型性能</strong>：12 种蛋白质（PDB IDs: 1FKG, 2RD6, 3H7W, 3VRJ, 4CG9, 4OQ3, 4PS7, 5E19, 5MKU, 3FI2, 4J71）相关的数据</p>
+<h3 id="评测方式-1">评测方式
+</h3><ul>
+<li><strong>设计结果覆盖的分子空间</strong>：唯一性（Uniqueness）、新颖性（Novelty）、多样性（Diversity）、成功率（Success rate）和乘积（Product）</li>
+<li><strong>高活性分子的能力</strong>：通过比较Vina评分的分布，使用 Median Vina Score（Median）来量化分布。</li>
 </ul>
 
 </section>
