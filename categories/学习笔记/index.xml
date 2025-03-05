@@ -458,7 +458,7 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;on-pre-trained-language-models-for-antibody--iclr-2023&#34;&gt;On Pre-trained Language Models for Antibody | ICLR 2023
-&lt;/h2&gt;&lt;p&gt;文章属于综述里面的蛋白质生成里面的抗体生成部分。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;文章属于综述里面的&lt;strong&gt;蛋白质生成里面的抗体生成部分&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;主要解决什么问题&lt;/li&gt;
@@ -609,11 +609,111 @@
 &lt;h3 id=&#34;数据集-3&#34;&gt;数据集
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://springernature.figshare.com/ndownloader/files/3195389&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;QM9&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;配体结合口袋数据集&lt;/li&gt;
-&lt;li&gt;刚性蛋白质对接数据集。&lt;/li&gt;
+    &gt;QM9&lt;/a&gt;：小分子性质回归任务&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://zenodo.org/record/2625420&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;配体结合口袋数据集&lt;/a&gt;，数据划分方式参考&lt;a class=&#34;link&#34; href=&#34;https://github.com/LPDI-EPFL/masif/tree/master/data/masif_ligand/lists&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/BioinfoMachineLearning/DIPS-Plus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;刚性蛋白质对接数据集&lt;/a&gt;作为训练集，&lt;a class=&#34;link&#34; href=&#34;https://github.com/bjornwallner/DockQ/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Docking Benchmark 5.5&lt;/a&gt;作为测试集。&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;h3 id=&#34;评测方式-3&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;QM9 小分子性质回归&lt;/strong&gt;：通过计算预测结果与真实值的平均绝对误差（MAE）来评估模型性能，对比其他不变性和等变网络模型，如 SchNet、NMP 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配体结合口袋分类&lt;/strong&gt;：使用平衡准确率评估模型预测蛋白质口袋结合配体类型的能力，与 MaSIF-ligand 模型对比。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;刚性蛋白质对接&lt;/strong&gt;：采用 Complex RMSD、Interface RMSD、DockQ 和成功率等指标评估对接性能。Complex RMSD 和 Interface RMSD 衡量预测结构与真实结构的偏差；DockQ 是基于多个标准化标准的综合评分；成功率表示预测结果达到 “可接受” 或更高水平的比例 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;coarse-to-fine-a-hierarchical-diffusion-model-for-molecule-generation-in-3d--icml-2023&#34;&gt;Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D | ICML 2023
+&lt;/h2&gt;&lt;p&gt;文章属于综述里面的&lt;strong&gt;分子生成&lt;/strong&gt;中的&lt;strong&gt;3D构象生成&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-4&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;现有的3D分子生成方法在生成大尺寸分子的时候存在结构质量差的问题。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-4&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;自回归模型&lt;/strong&gt;：按照人工设定的顺序逐个生成原子，如同语言生成过程。但分子在 3D 空间具有自然的几何结构，这种方法引入的人为顺序与分子的自然结构不匹配，并且会产生规模和误差累积问题。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;非自回归模型&lt;/strong&gt;：&lt;strong&gt;原先的原子级生成方法&lt;/strong&gt;虽然灵活性较高，但是在片段级生成时，由于化学价态限制，片段冲突常见，且避免片段冲突的复杂度高，随着结构尺寸增加，复杂度呈指数上升，难以获得可靠的分子结构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-4&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出基于分层Diffusion的分子生成方法Hierarchical Diffusion-based 模型（HierDiff）。&lt;/p&gt;
+&lt;p&gt;将3D分子生成问题看作约束生成问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先通过等变Diffusion过程生成粗粒度分子几何结构，其中每个粗粒度节点反映分子中的一个片段&lt;/li&gt;
+&lt;li&gt;通过消息传递过程和一个新设计的迭代细化采样模块，将粗粒度节点解码为细粒度片段&lt;/li&gt;
+&lt;li&gt;将细粒度片段组装起来，得到完整的原子分子结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;details&gt;
+    &lt;summary&gt;详细解释&lt;/summary&gt;
+    &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;粗粒度片段扩散&lt;/strong&gt;：HierDiff 将 3D 分子生成视为约束生成问题，首先定义粗粒度节点的表示，包括不变化学特征和等变位置特征。通过精心设计化学特征（如基于属性和元素的特征）和位置特征（使用中心坐标），利用扩散模型生成粗粒度片段表示及其笛卡尔坐标。在这个过程中，通过特殊设计的初始分布和转移核，保证模型的 SE (3) 不变性，从而有效生成合理的粗粒度分子几何结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;细粒度片段生成&lt;/strong&gt;：基于生成的粗粒度节点，通过一系列步骤生成细粒度片段类型和边。具体包括选择焦点节点、预测新边、确定细粒度片段类型以及迭代细化。利用消息传递神经网络和迭代细化模块，不断纠正细粒度节点中的偏差，提高生成分子的真实性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;组装成原子构象&lt;/strong&gt;：根据细粒度生成过程确定的节点和链接关系，选择合适的原子合并方式构建原子级构象。利用 RDkit 生成局部构象，并通过 Kabsch 算法计算旋转矩阵和平移向量，将局部构象对齐到采样的中心位置，逐步生成完整的原子构象。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/details&gt;
+
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;优势-4&#34;&gt;优势
+&lt;/h3&gt;&lt;p&gt;与同类方法相比，HierDiff 能保持非自回归方法的全局建模特性，显著降低寻找可连接片段的复杂度，有效避免片段冲突，生成的分子更具现实性和药物样属性，在多个评估指标上优于现有方法。&lt;/p&gt;
+&lt;h3 id=&#34;数据集-4&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;使用GEOM-Drugs和CrossDocked2020数据集。&lt;/p&gt;
+&lt;h3 id=&#34;评测方式-4&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;药物相似性
+&lt;ul&gt;
+&lt;li&gt;QED&lt;/li&gt;
+&lt;li&gt;逆向合成可及性RA&lt;/li&gt;
+&lt;li&gt;药物化学过滤器MCF&lt;/li&gt;
+&lt;li&gt;合成可及性分数SAS&lt;/li&gt;
+&lt;li&gt;LogP&lt;/li&gt;
+&lt;li&gt;$\Delta$LogP&lt;/li&gt;
+&lt;li&gt;分子重量MW&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;构象质量
+&lt;ul&gt;
+&lt;li&gt;计算覆盖度Cov&lt;/li&gt;
+&lt;li&gt;匹配度Mat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;accelerating-antimicrobial-peptide-discovery-with-latent-structure--sigkdd-2023&#34;&gt;Accelerating Antimicrobial Peptide Discovery with Latent Structure | SIGKDD 2023
+&lt;/h2&gt;&lt;p&gt;这篇文章属于综述下面的&lt;strong&gt;蛋白质生成&lt;/strong&gt;下的&lt;strong&gt;肽设计&lt;/strong&gt;部分。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-5&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;加速抗菌肽（AMP）的发现。现有的深度学习模型只考虑序列属性，但是忽略了结构对于活性的关系。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-5&#34;&gt;挑战
+&lt;/h3&gt;&lt;p&gt;目前深度学习模型只考虑序列特征，忽略结构-活性关系。结构对于肽的活性具有重要影响，但是却没有应用。&lt;/p&gt;
+&lt;h3 id=&#34;核心方法-5&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出 Latent Sequence-Structure 模型（LSSAMP）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将序列特征和二级结构映射到潜空间中。&lt;/li&gt;
+&lt;li&gt;采用VQ-VAE为每个位置分配一个潜在变量&lt;/li&gt;
+&lt;li&gt;通过在潜空间采样生成理想序列组成和结构的肽&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-5&#34;&gt;优势
+&lt;/h3&gt;&lt;p&gt;考虑了序列和结构信息，肽的抗菌性更强&lt;/p&gt;
+&lt;h3 id=&#34;数据集-5&#34;&gt;数据集
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Universal Protein Resource（UniProt）中的蛋白质序列和通过ProSPr预测的二级结构&lt;/li&gt;
+&lt;li&gt;Antimicrobial Peptide Database中的抗菌肽数据集&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;评测方式-5&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;自动评估指标&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用开源的AMP预测工具估计生成序列的AMP概率。&lt;/li&gt;
+&lt;li&gt;依据电荷、疏水性、疏水矩这三个对AMP机制至关重要的序列属性评估生成性能。&lt;/li&gt;
+&lt;li&gt;通过唯一性、多样性和相似性来衡量生成的肽的新颖性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;湿实验室实验&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;通过上面的自动评估指标从5000个肽中筛选出21个肽进行合成实验&lt;/li&gt;
+&lt;li&gt;合成了之后在培养皿中采用肉汤微量稀释法测定最小抑菌浓度（MIC）,从而验证。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;heading&#34;&gt;
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>搬运一些Shortcodes</title>
