@@ -458,7 +458,9 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;on-pre-trained-language-models-for-antibody--iclr-2023&#34;&gt;On Pre-trained Language Models for Antibody | ICLR 2023
-&lt;/h2&gt;&lt;p&gt;文章属于综述里面的&lt;strong&gt;蛋白质生成里面的抗体生成部分&lt;/strong&gt;。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2301.12112&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2301.12112] On Pre-trained Language Models for Antibody&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文章属于综述里面的&lt;strong&gt;蛋白质生成里面的抗体生成部分&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;主要解决什么问题&lt;/li&gt;
@@ -574,8 +576,11 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;评测方式-2&#34;&gt;评测方式
 &lt;/h3&gt;&lt;p&gt;对于不同任务，分别进行评估：准确度ACC、马修斯相关系数MCC、F1值、AUC。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;learning-harmonic-molecular-representations-on-riemannian-manifold--iclr-2023&#34;&gt;Learning Harmonic Molecular Representations on Riemannian Manifold | ICLR 2023
-&lt;/h2&gt;&lt;p&gt;这篇文章所属的领域属于&lt;strong&gt;分子生成领域&lt;/strong&gt;中的&lt;strong&gt;表示学习&lt;/strong&gt;。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2303.15520&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2303.15520] Learning Harmonic Molecular Representations on Riemannian Manifold&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章所属的领域属于&lt;strong&gt;分子生成领域&lt;/strong&gt;中的&lt;strong&gt;表示学习&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-3&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;现在的基于欧几里得空间的分子表示方法需要借助等变网络保证分子在表示旋转和平移的时候的一致性，这里的等距变换群就是E(3)/SE(3)。&lt;/li&gt;
@@ -623,8 +628,11 @@
 &lt;li&gt;&lt;strong&gt;配体结合口袋分类&lt;/strong&gt;：使用平衡准确率评估模型预测蛋白质口袋结合配体类型的能力，与 MaSIF-ligand 模型对比。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;刚性蛋白质对接&lt;/strong&gt;：采用 Complex RMSD、Interface RMSD、DockQ 和成功率等指标评估对接性能。Complex RMSD 和 Interface RMSD 衡量预测结构与真实结构的偏差；DockQ 是基于多个标准化标准的综合评分；成功率表示预测结果达到 “可接受” 或更高水平的比例 。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;coarse-to-fine-a-hierarchical-diffusion-model-for-molecule-generation-in-3d--icml-2023&#34;&gt;Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D | ICML 2023
-&lt;/h2&gt;&lt;p&gt;文章属于综述里面的&lt;strong&gt;分子生成&lt;/strong&gt;中的&lt;strong&gt;3D构象生成&lt;/strong&gt;。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2305.13266&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2305.13266] Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文章属于综述里面的&lt;strong&gt;分子生成&lt;/strong&gt;中的&lt;strong&gt;3D构象生成&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-4&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;现有的3D分子生成方法在生成大尺寸分子的时候存在结构质量差的问题。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-4&#34;&gt;挑战
@@ -676,8 +684,11 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;accelerating-antimicrobial-peptide-discovery-with-latent-structure--sigkdd-2023&#34;&gt;Accelerating Antimicrobial Peptide Discovery with Latent Structure | SIGKDD 2023
-&lt;/h2&gt;&lt;p&gt;这篇文章属于综述下面的&lt;strong&gt;蛋白质生成&lt;/strong&gt;下的&lt;strong&gt;肽设计&lt;/strong&gt;部分。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2212.09450&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;[2212.09450] Accelerating Antimicrobial Peptide Discovery with Latent Structure&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这篇文章属于综述下面的&lt;strong&gt;蛋白质生成&lt;/strong&gt;下的&lt;strong&gt;肽设计&lt;/strong&gt;部分。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-5&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;加速抗菌肽（AMP）的发现。现有的深度学习模型只考虑序列属性，但是忽略了结构对于活性的关系。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-5&#34;&gt;挑战
