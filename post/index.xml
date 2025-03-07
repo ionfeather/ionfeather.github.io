@@ -292,7 +292,7 @@
 &lt;h3 id=&#34;结论&#34;&gt;结论
 &lt;/h3&gt;&lt;p&gt;介绍了生成式AI在从头开始的药物设计上的全貌，特别关注分子和蛋白质生成。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;regularized-molecular-conformation-fields--neurips-2022&#34;&gt;Regularized Molecular Conformation Fields | NeurIPS 2022
+&lt;h2 id=&#34;regularized-molecular-conformation-fields--neurips-2022&#34;&gt;Regularized Molecular Conformation Fields | &lt;em&gt;NeurIPS 2022&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openreview.net/forum?id=7XCFxnG8nGS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Regularized Molecular Conformation Fields | OpenReview&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;从零开始阅读这个领域。先看一下文章的摘要：&lt;/p&gt;
@@ -381,7 +381,7 @@
 &lt;li&gt;&lt;strong&gt;预测精度&lt;/strong&gt;：COV-P和MAT-P。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;zero-shot-3d-drug-design-by-sketching-and-generating--neurips-2022&#34;&gt;Zero-Shot 3D Drug Design by Sketching and Generating | NeurIPS 2022
+&lt;h2 id=&#34;zero-shot-3d-drug-design-by-sketching-and-generating--neurips-2022&#34;&gt;Zero-Shot 3D Drug Design by Sketching and Generating | &lt;em&gt;NeurIPS 2022&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2209.13865&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2209.13865] Zero-Shot 3D Drug Design by Sketching and Generating&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;文章属于综述里面的分子生成任务下的&lt;strong&gt;靶向分子设计&lt;/strong&gt;的内容。提出&lt;strong&gt;零样本3D药物设计方法DESERT（Drug dEsign by SkEtching and geneRaTing）&lt;/strong&gt;。&lt;/p&gt;
@@ -468,7 +468,7 @@
 &lt;li&gt;&lt;strong&gt;高活性分子的能力&lt;/strong&gt;：通过比较Vina评分的分布，使用 Median Vina Score（Median）来量化分布。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;on-pre-trained-language-models-for-antibody--iclr-2023&#34;&gt;On Pre-trained Language Models for Antibody | ICLR 2023
+&lt;h2 id=&#34;on-pre-trained-language-models-for-antibody--iclr-2023&#34;&gt;On Pre-trained Language Models for Antibody | &lt;em&gt;ICLR 2023&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2301.12112&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2301.12112] On Pre-trained Language Models for Antibody&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;文章属于综述里面的&lt;strong&gt;蛋白质生成里面的抗体生成部分&lt;/strong&gt;。&lt;/p&gt;
@@ -588,7 +588,7 @@
 &lt;h3 id=&#34;评测方式-2&#34;&gt;评测方式
 &lt;/h3&gt;&lt;p&gt;对于不同任务，分别进行评估：准确度ACC、马修斯相关系数MCC、F1值、AUC。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;learning-harmonic-molecular-representations-on-riemannian-manifold--iclr-2023&#34;&gt;Learning Harmonic Molecular Representations on Riemannian Manifold | ICLR 2023
+&lt;h2 id=&#34;learning-harmonic-molecular-representations-on-riemannian-manifold--iclr-2023&#34;&gt;Learning Harmonic Molecular Representations on Riemannian Manifold | &lt;em&gt;ICLR 2023&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2303.15520&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2303.15520] Learning Harmonic Molecular Representations on Riemannian Manifold&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这篇文章所属的领域属于&lt;strong&gt;分子生成领域&lt;/strong&gt;中的&lt;strong&gt;表示学习&lt;/strong&gt;。&lt;/p&gt;
@@ -640,10 +640,10 @@
 &lt;li&gt;&lt;strong&gt;刚性蛋白质对接&lt;/strong&gt;：采用 Complex RMSD、Interface RMSD、DockQ 和成功率等指标评估对接性能。Complex RMSD 和 Interface RMSD 衡量预测结构与真实结构的偏差；DockQ 是基于多个标准化标准的综合评分；成功率表示预测结果达到 “可接受” 或更高水平的比例 。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;coarse-to-fine-a-hierarchical-diffusion-model-for-molecule-generation-in-3d--icml-2023&#34;&gt;Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D | ICML 2023
+&lt;h2 id=&#34;coarse-to-fine-a-hierarchical-diffusion-model-for-molecule-generation-in-3d--icml-2023&#34;&gt;Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D | &lt;em&gt;ICML 2023&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2305.13266&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2305.13266] Coarse-to-Fine: a Hierarchical Diffusion Model for Molecule Generation in 3D&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;文章属于综述里面的&lt;strong&gt;分子生成&lt;/strong&gt;中的&lt;strong&gt;3D构象生成&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;文章属于综述里面的&lt;strong&gt;分子生成&lt;/strong&gt;中的&lt;strong&gt;3D分子生成&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-4&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;现有的3D分子生成方法在生成大尺寸分子的时候存在结构质量差的问题。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-4&#34;&gt;挑战
@@ -734,8 +734,455 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;heading&#34;&gt;
-&lt;/h3&gt;</description>
+&lt;h2 id=&#34;equivariant-flow-matching-with-hybrid-probability-transport-for-3d-molecule-generation--neurips-2023&#34;&gt;Equivariant Flow Matching with Hybrid Probability Transport for 3D Molecule Generation | &lt;em&gt;NeurIPS 2023&lt;/em&gt;
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;3D分子生成&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-6&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;3D 分子生成需要同时确定原子类型和坐标。&lt;/p&gt;
+&lt;p&gt;目前的模型，特别是Diffusion方法存在采样速度低和概率动力学不稳定的问题。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-6&#34;&gt;挑战
+&lt;/h3&gt;&lt;p&gt;现在的扩散模型存在概率动力学不稳定和采样速度低的问题。&lt;/p&gt;
+&lt;h3 id=&#34;核心方法-6&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出&lt;strong&gt;等变流匹配&lt;/strong&gt;（EquiFM）框架。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;引入&lt;strong&gt;等变最优传输&lt;/strong&gt;（Equivariant Optimal-Transport）引导原子坐标的生成概率路径。这方法蕴含最小化坐标变化的先验，能稳定训练并提升生成性能。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基于信息量构建混合生成路径解决模态不一致问题&lt;/strong&gt;：根据不同组件的信息量差异，设计不同的生成概率路径，形成混合生成路径。
+&lt;ul&gt;
+&lt;li&gt;原子特征空间包含多种数据模态，如电荷、原子类型和坐标分别属于离散、整数和连续变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;利用 ODE 参数化模型提升推理效率&lt;/strong&gt;：模型基于连续归一化流，由 ODE 参数化。相比Diffusion使用的SDE提高了推理效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-6&#34;&gt;优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;稳定&lt;/li&gt;
+&lt;li&gt;效率高&lt;/li&gt;
+&lt;li&gt;生成分子质量更好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-6&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;QM9、GEOM-DRUG数据集&lt;/p&gt;
+&lt;h3 id=&#34;评测方式-6&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分子建模与生成&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;通过预测键类型评估生成分子的化学可行性，计算原子稳定性、分子稳定性、有效性、唯一性等指标衡量生成质量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;条件分子生成&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;在 QM9 数据集上测试模型根据给定属性生成分子的能力，通过计算生成分子属性值与目标属性值的平均绝对误差（MAE）来评估性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;unified-generative-modeling-of-3d-molecules-with-bayesian-flow-networks--iclr-2024&#34;&gt;Unified Generative Modeling of 3D Molecules with Bayesian Flow Networks | ICLR 2024
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;3D分子生成&lt;/strong&gt;部分。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-7&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;生成模型在应用于3D分子几何生成时面临的挑战，尤其是多模态和噪声敏感性问题。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-7&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;多模态
+&lt;ul&gt;
+&lt;li&gt;分子几何的原子级描述依赖多种数据形式，不同模态数据的统一处理较为困难。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;噪声敏感性
+&lt;ul&gt;
+&lt;li&gt;微小的坐标噪声就可能导致分子层面的信号急剧下降，影响模型性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-7&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出GeoBFN。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;贝叶斯流网络BFNs&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假设：数据样本的信息应沿着潜变量的马尔科夫链逐步增加，且信息变化尽可能平滑。&lt;/li&gt;
+&lt;li&gt;基于&lt;strong&gt;引入噪声变量的潜变量模型&lt;/strong&gt;，通过优化变分下界学习概率分布，在&lt;strong&gt;参数空间&lt;/strong&gt;操作以保证信息变化平滑&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统一概率建模&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用统一的概率建模公式处理分子几何中的不同模态。&lt;/li&gt;
+&lt;li&gt;将3D分子表示为$g=&amp;lt;x,h&amp;gt;$，其中$x$为原子坐标矩阵，$h$包含原子类型和原子电荷等节点信息。&lt;/li&gt;
+&lt;li&gt;通过EGNN对输出分布进行参数化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;保持SE(3)不变性&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;零质心空间约束下，通过设计满足特定条件的概率模型，使似然函数 \(p_{\phi}\) 具有平移和旋转不变性，&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;克服噪声敏感性&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;GeoBFN 在参数空间中通过贝叶斯更新过程来降低方差。在更新中，噪声程度较低的样本会被赋予更小的权重。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化离散变量采样&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;code&gt;NEAREST_CENTER&lt;/code&gt;函数将输入和中心桶进行比较，并为每个输入值返回值返回最近的中心。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-7&#34;&gt;优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;生成质量上表现卓越。&lt;/li&gt;
+&lt;li&gt;可以在任意采样步数下达到效率和质量的最优平衡&lt;/li&gt;
+&lt;li&gt;采样效率较高&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-7&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;QM9和GEOM-Drugs&lt;/p&gt;
+&lt;h3 id=&#34;评测方式-7&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;无条件分子生成&lt;/li&gt;
+&lt;li&gt;条件分子生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multimodal-molecular-pretraining-via-modality-blending--iclr-2024&#34;&gt;Multimodal Molecular Pretraining via Modality Blending | ICLR 2024
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;多模态分子表示学习方向&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-8&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;现在的多模态分子预训练方法在对齐2D和3D模态时，仅进行粗粒度分子级对齐，未充分挖掘内在关系。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-8&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;准确捕捉2D和3D分子中原子关系的内在联系&lt;/li&gt;
+&lt;li&gt;充分整合多模态信息的模型架构和训练方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-8&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出blend-then-predict自监督学习方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将不同模态的源自关系混合成同意局长进行联合编码&lt;/li&gt;
+&lt;li&gt;再恢复特定模态信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-8&#34;&gt;优势
+&lt;/h3&gt;&lt;p&gt;能在细粒度原子级别对齐和整合2D和3D模态，全面描绘分子&lt;/p&gt;
+&lt;h3 id=&#34;数据集-8&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;预训练使用 PCQM4Mv2 数据集，来自 OGB Large - Scale Challenge.&lt;/p&gt;
+&lt;p&gt;评估在多个公开数据集上进行&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MoleculeNet（用于 2D 分子性质预测，涵盖多种分子性质相关数据集）&lt;/li&gt;
+&lt;li&gt;QM9 量子性质数据集（包含 13.4 万个小有机分子，用于 3D 任务评估）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;评测方式-8&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;2D任务：使用支架分割（scaffold split）方式划分数据集
+&lt;ul&gt;
+&lt;li&gt;分类任务以ROC-AUC分数为指标&lt;/li&gt;
+&lt;li&gt;回归任务以RMSE为指标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;3D任务：随机划分验证集和测试集
+&lt;ul&gt;
+&lt;li&gt;以MAE为评估指标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;learning-multi-view-molecular-representations-with-structured-and-unstructured-knowledge&#34;&gt;Learning Multi-view Molecular Representations with Structured and Unstructured Knowledge
+&lt;/h2&gt;&lt;p&gt;这篇文章属于分子生成领域的表示学习方向。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-9&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;现有分子表示学习（MRL）模型在学习多视图分子表示时存在不足&lt;/strong&gt;。难以从化学结构、生物医学文本和知识图谱等异构源中有效捕捉分子知识，且无法充分利用不同视图间的共识和互补信息，不能很好地适应不同应用场景。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;挑战-9&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;现有分子表示学习（MRL） 模型需将视图信息&lt;strong&gt;显式&lt;/strong&gt;融入表示中，以适应广泛应用，但此前模型多通过 “包装文本” 或微调隐式整合，影响对不同视图知识关系的理解&lt;/li&gt;
+&lt;li&gt;要处理分子结构、生物医学文本和知识图谱等质量和数量各异的信息源的异质性，以往将知识图谱转换为文本的方法可能因预训练数据分布不均衡引入偏差。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-9&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852.png&#34;
+	width=&#34;1548&#34;
+	height=&#34;738&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu14974698368279454845.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu3392788445757651834.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;提出 MV-Mol 模型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MV-Mol 模型架构
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;(a) 基于视图的分子编码器&lt;/strong&gt;：此编码器是获取视图相关分子信息的关键组件，输入为分子结构和文本提示。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;（b）分子分支&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;结构由\(M=(V, E, C)\)表示，利用预训练的 Uni-Mol 进行编码，将其转化为原子的特征表示\(z(a)\)。&lt;/li&gt;
+&lt;li&gt;Q-Former 的分子分支以 K 个可训练的查询向量作为输入嵌入，借助跨注意力机制，在每隔一个 Transformer 层时，从原子表示\(z(a)\)中提取关键信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;（c）文本分支&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;提示\(T=[x_{1}, x_{2}, \cdots, x_{L}]\)代表不同的分子视图。&lt;/li&gt;
+&lt;li&gt;Q-Former 的文本分支对文本提示T进行处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Q-Former 两个分支的自注意力层共享，使分子表示能够融合不同视图的信息，最终输出基于视图的分子表示。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;（d）模态对齐&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;通过跨模态对比和跨模态匹配进行模态对齐。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨模态对比损失&lt;/strong&gt;用于最大化分子结构与文本表示间的互信息，&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨模态匹配损失&lt;/strong&gt;则通过预测分子结构和文本是否对应同一分子，来培养模型对两者的细粒度理解&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;（e）多视图知识融合&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;将关系建模为一种文本提示，从特定视图约束分子知识。&lt;/li&gt;
+&lt;li&gt;设计知识图谱嵌入和知识图谱不全目标来实现多视图知识融合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多模态解码器&lt;/strong&gt;：采用 BioT5 的解码器作为多模态解码器。
+&lt;ul&gt;
+&lt;li&gt;输入是基于视图的分子编码器输出。&lt;/li&gt;
+&lt;li&gt;通过因果生成，将输入转化为自然语言文本，实现对分子表示的自然语言解释 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-9&#34;&gt;优势
+&lt;/h3&gt;&lt;p&gt;MV-Mol 能更好地捕捉不同视图的分子知识。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在分子属性预测任务上，比最先进的 Uni-Mol 模型平均绝对增益 1.24%&lt;/li&gt;
+&lt;li&gt;在跨模态检索任务中，相比最佳基线模型，top-1 检索准确率平均提高 12.9%&lt;/li&gt;
+&lt;li&gt;在跨模态生成任务中预测也更准确。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-9&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;预训练采用&lt;strong&gt;大规模分子-文本对和知识图谱&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分子 - 文本对通过对 350 万篇科学出版物进行命名实体识别和实体链接获得&lt;/li&gt;
+&lt;li&gt;知识图谱由多个公共数据库合并构建。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下游实验使用多个数据集&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用于分子属性预测的 MoleculeNet 中的 8 个分类数据集&lt;/li&gt;
+&lt;li&gt;用于跨模态检索的 PCdes 和 MVST 数据集&lt;/li&gt;
+&lt;li&gt;用于跨模态生成的 ChEBI-20 数据集等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;代码和数据可在&lt;a class=&#34;link&#34; href=&#34;https://github.com/PharMolix/OpenBioMed&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PharMolix/OpenBioMed&lt;/a&gt;获取。&lt;/p&gt;
+&lt;h3 id=&#34;评测方式-9&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;在&lt;strong&gt;分子属性预测&lt;/strong&gt;中
+&lt;ol&gt;
+&lt;li&gt;采用 Scaffold split 划分数据集&lt;/li&gt;
+&lt;li&gt;在多个数据集上微调模型并报告 AUROC 分数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨模态检索&lt;/strong&gt;包含结构到文本和文本到结构检索两个子任务，
+&lt;ol&gt;
+&lt;li&gt;使用 PCdes 和 MVST 数据集&lt;/li&gt;
+&lt;li&gt;按 Scaffold split 划分&lt;/li&gt;
+&lt;li&gt;报告 MRR（平均倒数排名）和 Recall at 1/5/10&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨模态生成&lt;/strong&gt;包括结构到文本生成和文本到结构生成
+&lt;ol&gt;
+&lt;li&gt;在 ChEBI-20 数据集上按原始划分进行实验&lt;/li&gt;
+&lt;li&gt;采用 BLEU、ROUGE、METEOR 等指标评估分子字幕任务&lt;/li&gt;
+&lt;li&gt;用精确率、有效率等指标评估文本到分子生成任务&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;molcraft-structure-based-drug-design-in-continuous-parameter-space&#34;&gt;MolCRAFT: Structure-Based Drug Design in Continuous Parameter Space
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;靶向药物分子设计&lt;/strong&gt;方向中的&lt;strong&gt;基于结构的药物设计（SBDD）&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-10&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;当前基于SBDD生成模型在生成分子时，常出现不符合要求的情况。&lt;/p&gt;
+&lt;p&gt;生成的分子不能同时满足高亲和力、良好的类药性质和合理的 3D 构象这几个关键标准，产生假阳性结果，阻碍了 SBDD 模型在实际中的应用 。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-10&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分子模式坍塌&lt;/strong&gt;：自回归模型在生成分子时倾向于产生有限数量的特定（子）结构，从化学和几何角度来看，其生成的独特分子比例较低，对某些环结构存在偏好，且在模拟不同键类型的键长时表现不佳，无法有效捕捉参考分布的多模态特征。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;混合连续 - 离散空间&lt;/strong&gt;：Diffusion模型虽然通过非自回归生成在一定程度上缓解了模式坍塌问题，但&lt;strong&gt;混合连续 - 离散空间使得模型难以准确捕获分子的复杂数据流形&lt;/strong&gt;。在这个空间中进行去噪时，不同模态之间的不一致性会导致生成的分子存在高应变和不可行的情况，中间噪声潜在值容易超出流形范围。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-10&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出&lt;strong&gt;MolCRAFT模型&lt;/strong&gt;，是首个在连续空间运行的SBDD模型。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;特点
+&lt;ul&gt;
+&lt;li&gt;统一的 SE-(3) 等变生成模型&lt;/li&gt;
+&lt;li&gt;在连续参数空间中进行分子生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;实现
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统一参数化&lt;/strong&gt;：将连续原子坐标和离散原子类型分别进行参数化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不同模态噪声处理&lt;/strong&gt;：由于参数的连续性，即使对于离散原子类型也能应用连续噪声。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SE(3)等变网络&lt;/strong&gt;：使用 SE-(3) 等变网络对蛋白质 - 分子复合物的相互作用进行建模，确保模型在平移和旋转下的不变性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;噪声减少采样策略&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;传统的采样方式在每个时间步都对连续原子坐标和离散原子类型进行采样，易引入过多噪声。&lt;/li&gt;
+&lt;li&gt;MolCRAFT 设计了在参数空间内的噪声减少采样策略，用估计的\(\hat{m}=[\hat{x},\hat{v}]\)（\(\hat{v}\)直接采用连续输出的类别值而不采样）直接更新下一步的参数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-10&#34;&gt;优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;结合亲和力。
+&lt;ul&gt;
+&lt;li&gt;能达到参考水平的 Vina 评分（-6.59 kcal/mol），远超其他强基线模型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;构象稳定性
+&lt;ul&gt;
+&lt;li&gt;在模拟局部模式时表现出色，在键长和角度分布上排名第一，且生成的配体 - 蛋白质复合物中的冲突更少，重新对接后的 RMSD 表现最佳，46% 的生成分子在无需力场优化或重新对接的情况下就接近准确的对接姿势&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;采样效率更高
+&lt;ul&gt;
+&lt;li&gt;速度更快&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-10&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;使用 &lt;strong&gt;CrossDocked 数据集&lt;/strong&gt;，经过基于 RMSD 的过滤和 30% 序列同一性拆分后，得到 100,000 个训练对和 100 个测试蛋白质。&lt;/p&gt;
+&lt;h3 id=&#34;评测方式-10&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;结合亲和力&lt;/li&gt;
+&lt;li&gt;构象稳定性&lt;/li&gt;
+&lt;li&gt;类药性质
+&lt;ul&gt;
+&lt;li&gt;QED&lt;/li&gt;
+&lt;li&gt;合成可及性SA&lt;/li&gt;
+&lt;li&gt;多样性Div&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;整体评估
+&lt;ul&gt;
+&lt;li&gt;结合可行性（合理亲和力+构象稳定的分子比例）&lt;/li&gt;
+&lt;li&gt;成功率（满足Vina Dock、QED和SA阈值）&lt;/li&gt;
+&lt;li&gt;生成效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;esm-all-atom-multi-scale-protein-language-model-for-unified-molecular-modeling&#34;&gt;ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling
+&lt;/h2&gt;&lt;h3 id=&#34;解决的问题-11&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;p&gt;当前蛋白质语言模型主要在残基尺度运行，无法提供原子尺度信息。&lt;/p&gt;
+&lt;h3 id=&#34;挑战-11&#34;&gt;挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统一分子建模难题&lt;/strong&gt;：残基和原子尺度使用的词汇表不兼容，直接在原子尺度对蛋白质进行表示和预训练效率低下，难以实现有效的统一分子建模。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位置编码设计困难&lt;/strong&gt;：设计合适的位置编码来准确描述同一蛋白质中残基和原子之间的关系颇具挑战，涉及残基与残基、残基与原子、原子与原子之间的多种关系，而现有蛋白质语言模型的编码方法无法满足需求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;核心方法-11&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;提出ESMAA（ESM All-Atom），实现原子尺度和残基尺度统一分子建模的新方法。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在多尺度代码转换蛋白质序列上进行预训练&lt;/li&gt;
+&lt;li&gt;利用多尺度位置编码来捕捉残基和原子之间的关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-11&#34;&gt;优势
+&lt;/h3&gt;&lt;p&gt;ESM-AA 能同时处理残基和原子尺度信息&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在蛋白质 - 分子任务上表现更优。
+&lt;ul&gt;
+&lt;li&gt;如在酶 - 底物亲和力回归、药物 - 靶点亲和力回归等任务中超越了其他模型，实现了最先进的结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在蛋白质任务和分子基准测试中也有良好表现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-11&#34;&gt;数据集
+&lt;/h3&gt;&lt;p&gt;预训练数据集&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;蛋白质
+&lt;ul&gt;
+&lt;li&gt;AlphaFold DB 数据集： 800 万个由 AlphaFold2 预测的高置信度（PLDDT &amp;gt; 90）蛋白质序列和结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;小分子
+&lt;ul&gt;
+&lt;li&gt;使用 Zhou 等人提供的数据集：含有 1900 万个分子和 2.09 亿个由 ETKGD 和默克分子力场生成的构象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;评测方式-11&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;蛋白质 - 分子任务&lt;/strong&gt;：在酶 - 底物亲和力回归、药物 - 靶点亲和力回归和酶 - 底物对分类任务上进行微调评估，将模型预测结果与实验数据对比，使用均方误差（MSE）、决定系数（R²）、皮尔逊相关系数、准确率（ACC）、马修斯相关系数（MCC）、受试者工作特征曲线下面积（ROC-AUC）等指标衡量性能。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;蛋白质任务&lt;/strong&gt;：通过二级结构预测和无监督接触预测任务测试模型对蛋白质结构的理解能力，使用准确率等指标评估，且模型输入为纯残基序列。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分子任务&lt;/strong&gt;：利用标准分子基准测试 MoleculeNet 中的任务，如分子性质分类和回归任务，使用平均绝对误差（MAE）、AUC 等指标评估模型性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mol-ae-auto-encoder-based-molecular-representation-learning-with-3d-cloze-test-objective&#34;&gt;Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;3D分子表示学习&lt;/strong&gt;方向。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-12&#34;&gt;解决的问题
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;encoder-only model在预训练和下游任务目标之间存在不一致性，导致预训练学到的特征在下游任务中迁移性差&lt;/li&gt;
+&lt;li&gt;坐标去噪目标会引发训练不稳定以及引入不真实噪声，同时原子坐标在该过程中作为内容和标识符的双重角色产生冲突，影响模型性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;挑战-12&#34;&gt;挑战
+&lt;/h3&gt;&lt;p&gt;一方面，要克服预训练和下游任务目标不一致带来的难题，使模型在不同阶段学到的特征能有效应用于实际任务；另一方面，需要解决坐标去噪导致的训练不稳定和原子标识符混乱问题，让模型能够稳定训练并准确学习分子结构信息。&lt;/p&gt;
+&lt;h3 id=&#34;核心方法-12&#34;&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620.png&#34;
+	width=&#34;1494&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu7411098140690200758.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu10126237101038066221.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;MOL-AE框架&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;287&#34;
+		data-flex-basis=&#34;689px&#34;
+	
+&gt;&lt;br&gt;
+提出 MOL-AE 模型，核心包含基于 Transformer 的 3D 信息感知自编码器结构以及 3D Cloze Test 目标。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;整体架构：
+&lt;ul&gt;
+&lt;li&gt;MOL-AE 模型处理 3D 分子时，主要聚焦 3D 结构和原子类型信息。
+&lt;ul&gt;
+&lt;li&gt;原子类型建模：可借助原子 MLM 目标轻松实现&lt;/li&gt;
+&lt;li&gt;3D 结构的建模：模型由编码器\(q_{\phi}\)、解码器\(p_{\theta}\)构成，且二者均以 Transformer 架构为基础。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3D 信息感知自编码器&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Transformer Block&lt;/strong&gt;：Transformer 由多个 Transformer 块组成，每个块包含多头自注意力层和前馈层。此过程能有效捕捉分子信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3D 感知成对特征&lt;/strong&gt;：因普通 Transformer 难以处理 3D 信息，MOL-AE 采用将&lt;strong&gt;原子对之间的欧几里得距离编码&lt;/strong&gt;为额外成对特征的方法。帮助模型更好地理解分子的3D结构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码器和解码器&lt;/strong&gt;：编码器\(q_{\phi}\)由\(L^{enc}\)层 Transformer 块构成，3D 坐标信息C经其处理后编码为\(X^{L^{enc}}\) ，并将其作为潜在表示Z 。解码器\(p_{\theta}\)由\(L^{dec}\)层 Transformer 块组成，由于 3D 结构已编码在Z中，其输入成对特征初始化为零。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;3D Cloze Test 目标&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;添加位置编码（PE）到解码器&lt;/strong&gt;：为&lt;strong&gt;解决坐标去噪中原子标识符混乱问题&lt;/strong&gt;，MOL-AE 在解码器中添加 PE。
+&lt;ul&gt;
+&lt;li&gt;在打乱坐标时，PE 作为稳定的标识符，帮助模型区分不同原子。同时，仅在解码器添加 PE 可避免引入的顺序信息对编码器学习分子高质量表示产生影响。&lt;/li&gt;
+&lt;li&gt;这里可以类比GPT会添加位置编码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;原子丢弃&lt;/strong&gt;：传统去噪目标可能使模型学习不可靠的噪声分布，MOL-AE 通过&lt;strong&gt;随机丢弃部分原子及其坐标&lt;/strong&gt;（如从输入坐标C中随机移除k行得到\(D(C)\) ）来干扰数据，使模型专注于剩余无噪声的子结构，从而更好地学习原子空间关系。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;优势-12&#34;&gt;优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;缓解了预训练和下游任务目标不一致的问题，提升了特征的迁移能力&lt;/li&gt;
+&lt;li&gt;解决了坐标去噪带来的不稳定训练和原子标识符混乱问题，使模型训练更稳定&lt;/li&gt;
+&lt;li&gt;在多个分子理解任务中性能显著优于当前最先进的 3D 分子建模方法，在分子分类和回归任务的基准测试中取得了优异成绩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集-12&#34;&gt;数据集
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预训练数据集&lt;/strong&gt;：使用 Zhou 等人提供的大规模分子数据集，包含 1900 万个分子和 2.09 亿个构象，由 ETKGD 和 Merck 分子力场生成，每个分子有 11 个随机生成的构象，为提高计算效率，预训练时去除了氢原子，未明确该数据集是否公开。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;微调数据集&lt;/strong&gt;：采用广泛使用的 MoleculeNet 基准数据集，包括 9 个分类数据集和 6 个回归数据集，该数据集公开。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;评测方式-12&#34;&gt;评测方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;分子分类任务&lt;/strong&gt;：使用 ROC-AUC 作为评估指标，在 9 个分类数据集上进行实验，数据集为 MoleculeNet 中的相关分类数据集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分子回归任务&lt;/strong&gt;：采用平均绝对误差（MAE）和均方根误差（RMSE）作为评估指标，在 6 个回归数据集上进行实验，数据集为 MoleculeNet 中的相关回归数据集。通过与多个监督和预训练方法的对比，评估 MOL-AE 的性能。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
         <title>搬运一些Shortcodes</title>
