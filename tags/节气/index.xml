@@ -13,7 +13,7 @@
         <pubDate>Sat, 22 Mar 2025 14:39:56 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/the-spring-equinox/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/cover.png" alt="Featured image of post 春分 | 拍堤春水四垂天，红墙白塔，小花杨柳" /&gt;</description>
+        <description>&lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/cover.jpg" alt="Featured image of post 春分 | 拍堤春水四垂天，红墙白塔，小花杨柳" /&gt;</description>
         </item>
         <item>
         <title>惊蛰 | 漫长的冬天终于到达了尾声</title>
@@ -21,7 +21,7 @@
         <pubDate>Wed, 05 Mar 2025 14:37:00 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/the-waking-of-insects/</guid>
-        <description>&lt;p&gt;盼望着，盼望着，春天的脚步近了。飞快，羽绒服已经太热，食堂门口的桃花准备抽枝，路过图书馆时望见乌鸦「哇——哇——」地向北飞。&lt;/p&gt;
+        <description>&lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/cover.jpg" alt="Featured image of post 惊蛰 | 漫长的冬天终于到达了尾声" /&gt;&lt;p&gt;盼望着，盼望着，春天的脚步近了。飞快，羽绒服已经太热，食堂门口的桃花准备抽枝，路过图书馆时望见乌鸦「哇——哇——」地向北飞。&lt;/p&gt;
 &lt;p&gt;已经摸上我的相机，快乐地订好了出游计划。&lt;/p&gt;
 &lt;p&gt;万物复苏，只期待一场春日游。春日游。杏花吹满头。陌上谁家年少，足风流——说不定是我。&lt;/p&gt;
 &lt;hr&gt;
@@ -40,33 +40,55 @@
 &lt;/ul&gt;
 &lt;p&gt;2025-03-16 17:00&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;春天肆意地清洗冬天的肃杀氛围。&lt;/p&gt;
-&lt;p&gt;首先被春天派遣的先行部队是山桃花、迎春花和玉兰花三位大将。&lt;/p&gt;
-&lt;p&gt;请看：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/pic%20%282%29.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/pic%20%281%29.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/pic%20%283%29.jpg&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;春天肆意地驱散冬天的肃杀氛围。首先被春天派遣的先行部队是山桃花、迎春花和玉兰花三位大将。请看：&lt;/p&gt;
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css&#34;&gt;
+    
+    &lt;div class=&#34;swiper-container&#34;&gt;
+        &lt;div class=&#34;swiper-wrapper&#34;&gt;
+            
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;pic2.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;pic1.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;swiper-slide&#34;&gt;
+                &lt;img src=&#34;pic3.jpg&#34; alt=&#34;&#34;&gt;
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+        
+        &lt;div class=&#34;swiper-pagination&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js&#34;&gt;&lt;/script&gt;
+     
+     &lt;script&gt;
+        var swiper = new Swiper(&#39;.swiper-container&#39;, {
+            pagination: &#39;.swiper-pagination&#39;,
+            paginationClickable: true,
+        
+        autoHeight: true,
+        
+        keyboardControl : true,
+        
+        mousewheelControl : true,
+        
+        
+        
+        lazyLoading : true,
+		lazyLoadingInPrevNext : true,
+		
+		loop : true,
+        });
+        &lt;/script&gt;
+
+
+&lt;p&gt;花儿不知道这是早春，用尽全身力气绽放。&lt;/p&gt;
 &lt;p&gt;2025-03-20&lt;/p&gt;
 </description>
         </item>
@@ -79,8 +101,8 @@
         <description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 雨水 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
 &lt;p&gt;北京最近的天气确实是这样。在北京能感受到24节气的准确，能感受到四季分明是什么感觉。&lt;/p&gt;
 &lt;p&gt;但是！！雨水，雨水，北京来点儿雨吧。自从去年的12月以来，我没有见过一滴雨落到北京的地表，这里的晴天就像是默认背景，太阳和月亮每天都是固定角色出现在地平线和天空中。北京的「雨水」是艳阳高照。&lt;/p&gt;
-&lt;h2 id=&#34;絮絮叨叨&#34;&gt;絮絮叨叨
-&lt;/h2&gt;&lt;p&gt;上了研究生学术没有做多少，兴趣爱好培养了不少——台球、博客、摄影、健身…可能还打算学个吉他和乒乓球。忙不过来，实在是忙不过来了。还是得多放点时间在学习上呀。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;上了研究生学术没有做多少，兴趣爱好培养了不少——台球、博客、摄影、健身…可能还打算学个吉他和乒乓球。忙不过来，实在是忙不过来了。还是得多放点时间在学习上呀。&lt;/p&gt;
 &lt;p&gt;今天是情人节，这么一想，晚上的健身房应该会比较空，可惜昨天跑步跑太狠，把脚掌磨出了一个水泡，走路都有点儿疼，今晚回去可以做做力量训练，就先不做有氧了。&lt;/p&gt;
 &lt;p&gt;好羡慕甜甜的爱情。&lt;/p&gt;
 &lt;p&gt;2025-02-14 15:02&lt;/p&gt;
