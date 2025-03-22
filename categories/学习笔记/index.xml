@@ -29,6 +29,18 @@
 &lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
 &lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign.png&#34;
+	width=&#34;3096&#34;
+	height=&#34;2108&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu2137512081721432146.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu925266332075865825.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;352px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;a-survey-of-generative-ai-for-de-novo-drug-design-new-frontiers-in-molecule-and-protein-generation&#34;&gt;A Survey of Generative AI for &lt;em&gt;de novo&lt;/em&gt; Drug Design: New Frontiers in Molecule and Protein Generation
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2402.08703&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -284,48 +296,9 @@
 &lt;h2 id=&#34;regularized-molecular-conformation-fields--neurips-2022&#34;&gt;Regularized Molecular Conformation Fields | &lt;em&gt;NeurIPS 2022&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openreview.net/forum?id=7XCFxnG8nGS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Regularized Molecular Conformation Fields | OpenReview&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;从零开始阅读这个领域。先看一下文章的摘要：&lt;/p&gt;
-&lt;details&gt;
-    &lt;summary&gt;英文摘要&lt;/summary&gt;
-    Predicting energetically favorable 3-dimensional conformations of organic molecules from molecular graph plays a fundamental role in computer-aided drug discovery research. However, effectively exploring the high-dimensional conformation space to identify (meta)stable conformers is anything but trivial. In this work, we introduce RMCF, a novel framework to generate a diverse set of lowenergy molecular conformations through sampling from a regularized molecular conformation field. We develop a data-driven molecular segmentation algorithm to automatically partition each molecule into several structural building blocks to reduce the modeling degrees of freedom. Then, we employ a Markov Random Field to learn the joint probability distribution of fragment configurations and interfragment dihedral angles, which enables us to sample from different low-energy regions of a conformation space. Our model constantly outperforms state-of-the-art models for the conformation generation task on the GEOM-Drugs dataset. We attribute the success of RMCF to modeling in a regularized feature space and learning a global fragment configuration distribution for effective sampling. The proposed method could be generalized to deal with larger biomolecular systems.
-&lt;/details&gt;
-
-&lt;p&gt;完全看不懂啊。问一下大模型好了。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;以下是对这段话的详细解释：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;details&gt;
-    &lt;summary&gt;模型输出&lt;/summary&gt;
-    &lt;p&gt;“Predicting energetically favorable 3-dimensional conformations of organic molecules from molecular graph plays a fundamental role in computer-aided drug discovery research.”&lt;br&gt;
-从分子图预测有机分子在能量上有利的三维构象，在计算机辅助药物发现研究中起着基础性的作用。这里 “energetically favorable” 指的是从能量角度来说更有利的，也就是说这种构象下分子的能量状态相对较低，更稳定；“3-dimensional conformations” 是三维构象，即分子中原子在三维空间中的排列方式；“molecular graph” 是分子图，一种用图结构来表示分子中原子和化学键的方式；“computer-aided drug discovery” 是计算机辅助药物发现，利用计算机技术来辅助药物的研发过程。&lt;/p&gt;
-&lt;p&gt;“However, effectively exploring the high-dimensional conformation space to identify (meta) stable conformers is anything but trivial.”&lt;br&gt;
-然而，有效地探索高维的构象空间以识别（亚）稳定的构象异构体绝非易事。“high-dimensional conformation space” 指的是由于分子中原子的多种可能排列方式所形成的高维度的空间；“(meta) stable conformers” 中 “stable” 是稳定的，“meta-stable” 是亚稳定的（一种相对稳定但不是绝对稳定的状态），“conformers” 就是构象异构体，即具有相同分子式但原子排列方式不同的分子；“anything but trivial” 意思是一点也不简单，绝非易事。&lt;/p&gt;
-&lt;p&gt;“In this work, we introduce RMCF, a novel framework to generate a diverse set of low-energy molecular conformations through sampling from a regularized molecular conformation field.”&lt;br&gt;
-在这项工作中，我们引入了 RMCF，这是一个新颖的框架，通过从正则化的分子构象场中采样来生成一系列多样的低能量分子构象。“RMCF” 是一个新提出的框架名称；“novel” 是新颖的；“framework” 是框架；“diverse set” 一系列多样的；“low-energy molecular conformations” 低能量分子构象；“sampling” 是采样；“regularized molecular conformation field” 正则化的分子构象场，“regularized” 在这里可以理解为经过某种规则化处理的，使得构象场更易于处理和分析。&lt;/p&gt;
-&lt;p&gt;“We develop a data-driven molecular segmentation algorithm to automatically partition each molecule into several structural building blocks to reduce the modeling degrees of freedom.”&lt;br&gt;
-我们开发了一种数据驱动的分子分割算法，以自动将每一个分子分割成（应该是&lt;strong&gt;分割到&lt;/strong&gt;）几个结构构建块，从而减少建模的自由度。“data-driven” 是数据驱动的，即基于数据来驱动算法的运行；“molecular segmentation algorithm” 分子分割算法；“automatically” 自动地；“partition…into…” 把…… 分割成……；“structural building blocks” 结构构建块，也就是把分子拆解成的一些基本的结构单元；“degrees of freedom” 自由度，在建模中表示可以变化的参数或变量的数量，减少自由度可以使模型更简单、更易于处理。&lt;/p&gt;
-&lt;p&gt;“Then, we employ a Markov Random Field to learn the joint probability distribution of fragment configurations and interfragment dihedral angles, which enables us to sample from different low-energy regions of a conformation space.”&lt;br&gt;
-然后，我们使用马尔可夫随机场来学习片段构型和片段间二面角的联合概率分布，这使我们能够从构象空间的不同低能量区域进行采样。“Markov Random Field”（马尔可夫随机场）是一种概率图模型，用于描述变量之间的概率关系；“joint probability distribution” 联合概率分布，即多个变量同时发生的概率分布；“fragment configurations” 片段构型，即分子被分割成的片段的原子排列方式；“interfragment dihedral angles” 片段间二面角，是描述两个片段之间相对取向的角度；“enables sb. to do sth.” 使某人能够做某事。&lt;/p&gt;
-&lt;p&gt;“Our model constantly outperforms state-of-the-art models for the conformation generation task on the GEOM-Drugs dataset.”&lt;br&gt;
-我们的模型在 GEOM-Drugs 数据集上的构象生成任务中一直优于最先进的模型。&lt;/p&gt;
-&lt;p&gt;“We attribute the success of RMCF to modeling in a regularized feature space and learning a global fragment configuration distribution for effective sampling.”&lt;br&gt;
-我们将 RMCF 的成功归因于在正则化特征空间中的建模以及为了有效采样而学习全局片段构型分布。“attribute…to…” 把…… 归因于……；“regularized feature space” 正则化特征空间；“global fragment configuration distribution” 全局片段构型分布，即对所有片段构型的一种整体的概率分布描述。&lt;/p&gt;
-&lt;p&gt;“The proposed method could be generalized to deal with larger biomolecular systems”&lt;br&gt;
-所提出的方法可以被推广应用于处理更大的生物分子系统。“proposed” 提出的；“generalized” 推广，使一般化；“biomolecular systems” 生物分子系统，比如蛋白质、核酸等生物大分子组成的系统。&lt;/p&gt;
-
-&lt;/details&gt;
-
-&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;主要解决什么问题&lt;/li&gt;
-&lt;li&gt;挑战是什么&lt;/li&gt;
-&lt;li&gt;我们提出的核心方法，与同类问题比较的优势在哪&lt;/li&gt;
-&lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
-&lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;属于上面综述文章里里面的分子生成里面的3D构象生成的部分。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题&#34;&gt;解决的问题
-&lt;/h3&gt;&lt;p&gt;属于上面综述文章里里面的分子生成里面的3D构象生成的部分。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;解决了&lt;/strong&gt;：给定分子图，预测有机分子能量最有利的3D构象。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;给定2D分子图，预测有机分子能量最有利的3D构象。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-1&#34;&gt;挑战
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;分子在三维欧氏空间的 SE (3) 变换下具有不变性，&lt;strong&gt;同一分子的构象在刚性运动下有无限可能&lt;/strong&gt;，增加了建模难度&lt;/li&gt;
@@ -499,6 +472,18 @@
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;核心方法-2&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;提出了&lt;strong&gt;抗体理解评估（AnTibody Understanding Evaluation，ATUE）基准&lt;/strong&gt;和包含特定进化信息的&lt;strong&gt;EATLM模型&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648.png&#34;
+	width=&#34;1535&#34;
+	height=&#34;477&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu1490668859908342193.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu8321713985693931372.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;321&#34;
+		data-flex-basis=&#34;772px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;创建了一个全面的&lt;strong&gt;抗体基准测试工具ATUE&lt;/strong&gt;。
 &lt;ul&gt;
@@ -642,11 +627,23 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;核心方法-4&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;提出基于分层Diffusion的分子生成方法Hierarchical Diffusion-based 模型（HierDiff）。&lt;/p&gt;
-&lt;p&gt;将3D分子生成问题看作约束生成问题。&lt;/p&gt;
+&lt;p&gt;将3D分子生成问题看作约束生成问题。&lt;br&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443.png&#34;
+	width=&#34;1211&#34;
+	height=&#34;231&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu4963354309737042357.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu6852598334630450467.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;524&#34;
+		data-flex-basis=&#34;1258px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;先通过等变Diffusion过程生成粗粒度分子几何结构，其中每个粗粒度节点反映分子中的一个片段&lt;/li&gt;
-&lt;li&gt;通过消息传递过程和一个新设计的迭代细化采样模块，将粗粒度节点解码为细粒度片段&lt;/li&gt;
-&lt;li&gt;将细粒度片段组装起来，得到完整的原子分子结构&lt;/li&gt;
+&lt;li&gt;先通过&lt;strong&gt;等变Diffusion过程&lt;/strong&gt;生成粗粒度分子几何结构，其中每个粗粒度节点反映分子中的一个片段&lt;/li&gt;
+&lt;li&gt;通过&lt;strong&gt;消息传递过程&lt;/strong&gt;和一个新设计的&lt;strong&gt;迭代细化采样模块&lt;/strong&gt;，将粗粒度节点解码为细粒度片段&lt;/li&gt;
+&lt;li&gt;将&lt;strong&gt;细粒度片段组装起来&lt;/strong&gt;，得到完整的原子分子结构&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;details&gt;
@@ -685,7 +682,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;accelerating-antimicrobial-peptide-discovery-with-latent-structure--sigkdd-2023&#34;&gt;Accelerating Antimicrobial Peptide Discovery with Latent Structure | SIGKDD 2023
+&lt;h2 id=&#34;accelerating-antimicrobial-peptide-discovery-with-latent-structure--sigkdd-2023&#34;&gt;Accelerating Antimicrobial Peptide Discovery with Latent Structure | &lt;em&gt;SIGKDD 2023&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2212.09450&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;[2212.09450] Accelerating Antimicrobial Peptide Discovery with Latent Structure&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这篇文章属于综述下面的&lt;strong&gt;蛋白质生成&lt;/strong&gt;下的&lt;strong&gt;肽设计&lt;/strong&gt;部分。&lt;/p&gt;
@@ -696,9 +693,9 @@
 &lt;h3 id=&#34;核心方法-5&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;提出 Latent Sequence-Structure 模型（LSSAMP）。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;将序列特征和二级结构映射到潜空间中。&lt;/li&gt;
-&lt;li&gt;采用VQ-VAE为每个位置分配一个潜在变量&lt;/li&gt;
-&lt;li&gt;通过在潜空间采样生成理想序列组成和结构的肽&lt;/li&gt;
+&lt;li&gt;将&lt;strong&gt;序列特征&lt;/strong&gt;和&lt;strong&gt;二级结构&lt;/strong&gt;映射到潜空间中&lt;/li&gt;
+&lt;li&gt;采用&lt;strong&gt;VQ-VAE&lt;/strong&gt;为每个位置分配一个潜在变量&lt;/li&gt;
+&lt;li&gt;通过在&lt;strong&gt;潜空间采样&lt;/strong&gt;生成理想序列组成和结构的肽&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;优势-5&#34;&gt;优势
 &lt;/h3&gt;&lt;p&gt;考虑了序列和结构信息，肽的抗菌性更强&lt;/p&gt;
@@ -763,7 +760,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;unified-generative-modeling-of-3d-molecules-with-bayesian-flow-networks--iclr-2024&#34;&gt;Unified Generative Modeling of 3D Molecules with Bayesian Flow Networks | ICLR 2024
+&lt;h2 id=&#34;unified-generative-modeling-of-3d-molecules-with-bayesian-flow-networks--iclr-2024&#34;&gt;Unified Generative Modeling of 3D Molecules with Bayesian Flow Networks | &lt;em&gt;ICLR 2024&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;3D分子生成&lt;/strong&gt;部分。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-7&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;生成模型在应用于3D分子几何生成时面临的挑战，尤其是多模态和噪声敏感性问题。&lt;/p&gt;
@@ -827,8 +824,8 @@
 &lt;li&gt;条件分子生成&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;multimodal-molecular-pretraining-via-modality-blending--iclr-2024&#34;&gt;Multimodal Molecular Pretraining via Modality Blending | ICLR 2024
-&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;多模态分子表示学习方向&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;multimodal-molecular-pretraining-via-modality-blending--iclr-2024&#34;&gt;Multimodal Molecular Pretraining via Modality Blending | &lt;em&gt;ICLR 2024&lt;/em&gt;
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;表示学习方向&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-8&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;现在的多模态分子预训练方法在对齐2D和3D模态时，仅进行粗粒度分子级对齐，未充分挖掘内在关系。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-8&#34;&gt;挑战
@@ -837,9 +834,21 @@
 &lt;li&gt;充分整合多模态信息的模型架构和训练方法&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;核心方法-8&#34;&gt;核心方法
-&lt;/h3&gt;&lt;p&gt;提出blend-then-predict自监督学习方法。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;提出blend-then-predict自监督学习方法。&lt;br&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720.png&#34;
+	width=&#34;1062&#34;
+	height=&#34;672&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu17978642908914668322.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu6704770744939440755.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;379px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;将不同模态的源自关系混合成同意局长进行联合编码&lt;/li&gt;
+&lt;li&gt;将&lt;strong&gt;不同模态的原子关系混合成统一矩阵&lt;/strong&gt;进行联合编码，注入到Transformer的自注意力模块中&lt;/li&gt;
 &lt;li&gt;再恢复特定模态信息&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;优势-8&#34;&gt;优势
@@ -866,7 +875,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;learning-multi-view-molecular-representations-with-structured-and-unstructured-knowledge&#34;&gt;Learning Multi-view Molecular Representations with Structured and Unstructured Knowledge
+&lt;h2 id=&#34;learning-multi-view-molecular-representations-with-structured-and-unstructured-knowledge--sigkdd-2024&#34;&gt;Learning Multi-view Molecular Representations with Structured and Unstructured Knowledge | &lt;em&gt;SIGKDD 2024&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;这篇文章属于分子生成领域的表示学习方向。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-9&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;现有分子表示学习（MRL）模型在学习多视图分子表示时存在不足&lt;/strong&gt;。难以从化学结构、生物医学文本和知识图谱等异构源中有效捕捉分子知识，且无法充分利用不同视图间的共识和互补信息，不能很好地适应不同应用场景。&lt;/p&gt;
@@ -979,7 +988,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;molcraft-structure-based-drug-design-in-continuous-parameter-space&#34;&gt;MolCRAFT: Structure-Based Drug Design in Continuous Parameter Space
+&lt;h2 id=&#34;molcraft-structure-based-drug-design-in-continuous-parameter-space--icml-2024&#34;&gt;MolCRAFT: Structure-Based Drug Design in Continuous Parameter Space | &lt;em&gt;ICML 2024&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;靶向药物分子设计&lt;/strong&gt;方向中的&lt;strong&gt;基于结构的药物设计（SBDD）&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-10&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;blockquote&gt;
@@ -1055,8 +1064,9 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;esm-all-atom-multi-scale-protein-language-model-for-unified-molecular-modeling&#34;&gt;ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling
-&lt;/h2&gt;&lt;h3 id=&#34;解决的问题-11&#34;&gt;解决的问题
+&lt;h2 id=&#34;esm-all-atom-multi-scale-protein-language-model-for-unified-molecular-modeling--icml-2024&#34;&gt;ESM All-Atom: Multi-scale Protein Language Model for Unified Molecular Modeling | &lt;em&gt;ICML 2024&lt;/em&gt;
+&lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;蛋白质生成领域&lt;/strong&gt;中的&lt;strong&gt;表示学习&lt;/strong&gt;领域。&lt;/p&gt;
+&lt;h3 id=&#34;解决的问题-11&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;当前蛋白质语言模型主要在残基尺度运行，无法提供原子尺度信息。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-11&#34;&gt;挑战
 &lt;/h3&gt;&lt;ul&gt;
@@ -1100,7 +1110,7 @@
 &lt;li&gt;&lt;strong&gt;分子任务&lt;/strong&gt;：利用标准分子基准测试 MoleculeNet 中的任务，如分子性质分类和回归任务，使用平均绝对误差（MAE）、AUC 等指标评估模型性能。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;mol-ae-auto-encoder-based-molecular-representation-learning-with-3d-cloze-test-objective&#34;&gt;Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective
+&lt;h2 id=&#34;mol-ae-auto-encoder-based-molecular-representation-learning-with-3d-cloze-test-objective--icml-2024&#34;&gt;Mol-AE: Auto-Encoder Based Molecular Representation Learning With 3D Cloze Test Objective | &lt;em&gt;ICML 2024&lt;/em&gt;
 &lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域中的&lt;strong&gt;3D分子表示学习&lt;/strong&gt;方向。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-12&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;ul&gt;
@@ -1108,7 +1118,10 @@
 &lt;li&gt;坐标去噪目标会引发训练不稳定以及引入不真实噪声，同时原子坐标在该过程中作为内容和标识符的双重角色产生冲突，影响模型性能。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;挑战-12&#34;&gt;挑战
-&lt;/h3&gt;&lt;p&gt;一方面，要克服预训练和下游任务目标不一致带来的难题，使模型在不同阶段学到的特征能有效应用于实际任务；另一方面，需要解决坐标去噪导致的训练不稳定和原子标识符混乱问题，让模型能够稳定训练并准确学习分子结构信息。&lt;/p&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;克服预训练和下游任务目标不一致带来的难题，使模型在不同阶段学到的特征能有效应用于实际任务&lt;/li&gt;
+&lt;li&gt;解决坐标去噪导致的训练不稳定和原子标识符混乱问题，让模型能够稳定训练并准确学习分子结构信息。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;核心方法-12&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620.png&#34;
 	width=&#34;1494&#34;
@@ -1171,7 +1184,12 @@
 &lt;li&gt;&lt;strong&gt;分子分类任务&lt;/strong&gt;：使用 ROC-AUC 作为评估指标，在 9 个分类数据集上进行实验，数据集为 MoleculeNet 中的相关分类数据集。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;分子回归任务&lt;/strong&gt;：采用平均绝对误差（MAE）和均方根误差（RMSE）作为评估指标，在 6 个回归数据集上进行实验，数据集为 MoleculeNet 中的相关回归数据集。通过与多个监督和预训练方法的对比，评估 MOL-AE 的性能。&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;hr&gt;
+&lt;h2 id=&#34;ai-driven-drug-repurposing-uncovering-hidden-potentials-ofestablished-medications-for-rare-disease-treatment&#34;&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment
+&lt;/h2&gt;&lt;h2 id=&#34;structure-based-drug-repurposing-traditional-and-advanced-aiml-aided-methods&#34;&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods
+&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-for-drug-repurposing-against-infectious-diseases--_artificial-intelligence-chemistry-2024_&#34;&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-in-covid-19-drug-repurposing--the-lancet-digital-health&#34;&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>搬运一些Shortcodes</title>
