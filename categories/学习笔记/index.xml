@@ -7,7 +7,19 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Mon, 03 Mar 2025 22:17:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Mar 2025 17:15:44 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Molecule Repurposing</title>
+        <link>https://ionfeather.github.io/2025/moleculerepurposing/</link>
+        <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
+        <description>&lt;img src="https://ionfeather.github.io/cover.png" alt="Featured image of post Molecule Repurposing" /&gt;&lt;h2 id=&#34;ai-driven-drug-repurposing-uncovering-hidden-potentials-ofestablished-medications-for-rare-disease-treatment&#34;&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment
+&lt;/h2&gt;&lt;h2 id=&#34;structure-based-drug-repurposing-traditional-and-advanced-aiml-aided-methods&#34;&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods
+&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-for-drug-repurposing-against-infectious-diseases--_artificial-intelligence-chemistry-2024_&#34;&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-in-covid-19-drug-repurposing--the-lancet-digital-health&#34;&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;
+&lt;/h2&gt;</description>
+        </item>
+        <item>
         <title>AI Assist Drug Design</title>
         <link>https://ionfeather.github.io/2025/ai-assist-drug-design/</link>
         <pubDate>Wed, 26 Feb 2025 22:17:58 +0800</pubDate>
@@ -29,11 +41,14 @@
 &lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
 &lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;思维导图&lt;/strong&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign.png&#34;
 	width=&#34;3096&#34;
 	height=&#34;2108&#34;
 	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu2137512081721432146.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu925266332075865825.png 1024w&#34;
 	loading=&#34;lazy&#34;
+	
+		alt=&#34;AI Assist Drug Design&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -1184,12 +1199,7 @@
 &lt;li&gt;&lt;strong&gt;分子分类任务&lt;/strong&gt;：使用 ROC-AUC 作为评估指标，在 9 个分类数据集上进行实验，数据集为 MoleculeNet 中的相关分类数据集。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;分子回归任务&lt;/strong&gt;：采用平均绝对误差（MAE）和均方根误差（RMSE）作为评估指标，在 6 个回归数据集上进行实验，数据集为 MoleculeNet 中的相关回归数据集。通过与多个监督和预训练方法的对比，评估 MOL-AE 的性能。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;ai-driven-drug-repurposing-uncovering-hidden-potentials-ofestablished-medications-for-rare-disease-treatment&#34;&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment
-&lt;/h2&gt;&lt;h2 id=&#34;structure-based-drug-repurposing-traditional-and-advanced-aiml-aided-methods&#34;&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods
-&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-for-drug-repurposing-against-infectious-diseases--_artificial-intelligence-chemistry-2024_&#34;&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;
-&lt;/h2&gt;&lt;h2 id=&#34;artificial-intelligence-in-covid-19-drug-repurposing--the-lancet-digital-health&#34;&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;
-&lt;/h2&gt;</description>
+</description>
         </item>
         <item>
         <title>搬运一些Shortcodes</title>
