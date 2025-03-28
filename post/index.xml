@@ -39,6 +39,10 @@
     &gt;ChEMBL - ChEMBL&lt;/a&gt;：ChEMBL是欧洲生物信息研究所（European Bioinformatics Institute，EBI）开发的一个靶点与生物活性药物数据库，收集的是药物研究和开发过程中的药物化学数据和知识，比如临床实验药物和批准药物的治疗靶标和适应症，这是一个非常便利的查询靶点或化合物的生物活性数据的平台。截至2019年10月29日，该数据库共收集了12482个靶点，1,961,462个不同的化合物和13,382个靶标信息。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctdbase.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Comparative Toxicogenomics Database | CTD&lt;/a&gt;：CTD提供了有关化学暴露（环境和药物），基因和蛋白质，表型和疾病之间复杂相互作用的信息，是一个有关基因－化合物相互反应数据的资料库。CTD包括超过230万种化学药物，46689个基因，4340个表型和7212种疾病的基因，化学表型，药物相关疾病，基因相关疾病和药物相互作用，与其他数据集集成后，产生的药物基因组关联超过3800万。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TTD: Therapeutic Target Database&lt;/a&gt;：专注于药物 - 基因相互作用信息的整合。收集了来自多个资源的药物 - 基因相互作用数据，有助于研究人员了解药物对基因的影响以及基因变异对药物反应的作用，为精准医疗和药物研发提供支持。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/index.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Binding Database Home&lt;/a&gt;：公开的数据库，主要存储生物分子间的结合数据，特别是药物与靶点的结合亲和力数据。研究人员可以利用这些数据评估药物与靶点结合的强度，为药物设计和优化提供重要依据，在药物研发的早期阶段筛选潜在的先导化合物。&lt;/p&gt;
 &lt;h2 id=&#34;可用的模型&#34;&gt;可用的模型
 &lt;/h2&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
 &lt;h2 id=&#34;例子&#34;&gt;例子
