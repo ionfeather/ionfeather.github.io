@@ -13,13 +13,72 @@
         <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
-        <description>&lt;ul&gt;
+        <description>&lt;h2 id=&#34;阅读综述&#34;&gt;阅读综述
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
 &lt;li&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods&lt;/li&gt;
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+&lt;p&gt;&lt;strong&gt;目标：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;主要解决什么问题&lt;/li&gt;
+&lt;li&gt;挑战是什么&lt;/li&gt;
+&lt;li&gt;我们提出的核心方法，与同类问题比较的优势在哪&lt;/li&gt;
+&lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
+&lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;可用的数据库&#34;&gt;可用的数据库
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubchem.ncbi.nlm.nih.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PubChem&lt;/a&gt;：PubChem是一个有机小分子生物活性数据，是一个生环化材中应用分子的数据模型库。这里面包含了大量分子材料的理化性能介绍，对应每个有机分子的应用都能够追根溯源到较为全面的文献报道。可以按名称，分子式，结构和其他标识符搜索化学物质来查找化学和物理性质，生物活性，安全性和毒性信息，专利，文献引用等等。可供检索的化合物有11100万种，物质28700万种，生物活性27300万种、相关文献3200万篇、专利250万种。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dgidb.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DGIdb&lt;/a&gt;：DGIdb是一个药物-基因相互作用数据库，提供了基因与其已知或潜在药物关联信息。里面的基因主要是癌基因，但是也有一些其他疾病（例如阿尔兹海默病、心脏病、糖尿病等）的相关基因。DGIdb一共有超过14000种药物-基因的相互作用，涉及2600个基因和6300中靶向这些基因的药物，还包括了6700个其他的基因，这些基因很有可能成为未来药物的靶标。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/drugs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Browsing Drugs | DrugBank Online&lt;/a&gt;：DrugBank是阿尔伯塔大学将药物实验数据和药物目标信息结合起来的生物信息学和化学信息学数据库，也是目前最大的综合性药物数据库。DrugBank包含13791种药物条目，其中包括2653种经批准的小分子药物、1417种经批准的生物技术(蛋白质/肽)药物、131种营养品和6451种实验药物。5236个非冗余蛋白(即药物靶标/酶/转运体/载体)序列与这些药物条目相关联。每个DrugCard条目包含200多个数据字段，其中一半用于药物/化学数据，另一半用于药物靶标或蛋白质数据。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ebi.ac.uk/chembl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChEMBL - ChEMBL&lt;/a&gt;：ChEMBL是欧洲生物信息研究所（European Bioinformatics Institute，EBI）开发的一个靶点与生物活性药物数据库，收集的是药物研究和开发过程中的药物化学数据和知识，比如临床实验药物和批准药物的治疗靶标和适应症，这是一个非常便利的查询靶点或化合物的生物活性数据的平台。截至2019年10月29日，该数据库共收集了12482个靶点，1,961,462个不同的化合物和13,382个靶标信息。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctdbase.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;The Comparative Toxicogenomics Database | CTD&lt;/a&gt;：CTD提供了有关化学暴露（环境和药物），基因和蛋白质，表型和疾病之间复杂相互作用的信息，是一个有关基因－化合物相互反应数据的资料库。CTD包括超过230万种化学药物，46689个基因，4340个表型和7212种疾病的基因，化学表型，药物相关疾病，基因相关疾病和药物相互作用，与其他数据集集成后，产生的药物基因组关联超过3800万。&lt;/p&gt;
+&lt;h2 id=&#34;可用的模型&#34;&gt;可用的模型
+&lt;/h2&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
+&lt;h2 id=&#34;例子&#34;&gt;例子
+&lt;/h2&gt;&lt;h3 id=&#34;in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha&#34;&gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/34944476/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;摘要&#34;&gt;摘要
+&lt;/h4&gt;&lt;p&gt;炎症与多种疾病相关，caspase-1 和 TNF-alpha 在炎症发展中起关键作用，针对二者的双重抑制剂有望治疗多种炎症性疾病。本文构建了基于定量构效关系和多层感知器神经网络的多条件模型（mtc-QSAR-MLP）用于虚拟筛选抗炎药物。经数据集处理、模型开发与评估，该模型准确性超 88%。利用此模型筛选出如 linagliptin、icariin 和 rolipram 等潜在的 caspase-1 和 TNF-alpha 双重抑制剂，为抗炎治疗提供新方向，有望用于自身免疫疾病、癌症及 COVID-19 等疾病的治疗。&lt;/p&gt;
+&lt;h4 id=&#34;解决的问题&#34;&gt;解决的问题
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;caspase-1 和 TNF-alpha&lt;/strong&gt;是炎症发展中的关键蛋白，针对它们的双重抑制剂有望治疗多种炎症性疾病。&lt;/p&gt;
+&lt;h4 id=&#34;挑战是什么&#34;&gt;挑战是什么
+&lt;/h4&gt;&lt;p&gt;通过药物再利用的方式来加速抗炎药物的发现。&lt;/p&gt;
+&lt;h4 id=&#34;核心方法&#34;&gt;核心方法
+&lt;/h4&gt;&lt;p&gt;构建基于定量结构 - 活性关系（QSAR）和多层感知器神经网络（MLP）的多条件模型（mtc-QSAR-MLP），用于虚拟筛选 caspase-1 和 TNF-alpha 的双重抑制剂。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据处理与分子描述符计算&lt;/strong&gt;：从 &lt;a class=&#34;link&#34; href=&#34;https://chembl.gitbook.io/chembl-interface-documentation/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChEMBL&lt;/a&gt;数据库获取 caspase-1 和 TNF-alpha 的化学及抑制数据，经筛选得到 1476 个分子案例。用&lt;a class=&#34;link&#34; href=&#34;https://insilicomoleculardesign.com/modeslab/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;code&gt;MODESLAB v1.5&lt;/code&gt;&lt;/a&gt;软件计算多种分子描述符，包括拓扑指数等。还通过 Box-Jenkins 方法融合化学和生物信息，得到能反映分子结构与实验条件关系的\(D[GTI]cj\)描述符，为模型构建提供丰富数据支持。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mtc-QSAR-MLP 模型构建&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据集划分&lt;/strong&gt;：将数据集按 3:1 随机分为训练集（1111 个分子案例，占 75.27%）和测试集（365 个分子案例，占 24.73%） 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;描述符筛选&lt;/strong&gt;：在训练集中，用信息增益比（IGR）对\(D[GTI]cj\)描述符排序，通过两两 Pearson 相关系数（PCC）筛选出相关性在\(-0.6 &lt; PCC &lt; 0.6\)的描述符，减少信息冗余。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型训练与选择&lt;/strong&gt;：以 MLP 神经网络为基础构建模型，利用 &lt;code&gt;STATISTICA v13.5.0.17&lt;/code&gt; 软件分析不同 MLP 网络，依据敏感性（Sn (%)）、特异性（Sp (%)）、准确性（Acc (%)）和马修斯相关系数（MCC）等指标，选择性能最佳的 MLP 网络作为 mtc-QSAR-MLP 模型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模型评估&lt;/strong&gt;：采用 Bounding Box 方法确定模型适用性域，计算描述符的局部适用性域分数（\(LSAD_D [GTI] cj\)）和总分数（TSAD），判断分子是否在适用性域内。通过分析模型在训练集和测试集上的性能指标，如准确率、敏感性、特异性和 MCC 等，验证模型对不同实验条件下化学物质抑制活性的分类和预测能力。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟筛选与结果验证&lt;/strong&gt;：使用构建好的 mtc-QSAR-MLP 模型对 8922 种机构监管化学品数据库进行虚拟筛选，考虑 8 种实验条件，计算每个分子的 FA (%)（分子在 8 种实验条件下被预测为活性的频率）和 S (TSAD)（考虑 8 种实验条件下分子的总适用性域分数）指标，筛选潜在双重抑制剂。对筛选结果，通过在科学文献中搜索相关信息，结合实验证据验证其抑制 caspase-1 和 TNF-alpha 的可能性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;优势&#34;&gt;优势
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;整合多源数据&lt;/strong&gt;：基于扰动理论和机器学习构建模型，能够整合不同类型的化学和生物数据。通过 Box-Jenkins 方法对传统分子描述符进行处理，得到融合化学结构与实验条件信息的描述符，使模型能综合考虑多种因素。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多靶点多终点预测&lt;/strong&gt;：可同时预测多个生物终点（如活性、毒性、药代动力学性质），并针对多个不同靶点（如 caspase-1 和 TNF-alpha）进行预测。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高预测准确性&lt;/strong&gt;：模型在训练集和测试集上都表现出较高的准确性。训练集准确率达 92.44%，测试集准确率为 88.49%，马修斯相关系数（MCC）在训练集和测试集分别为 0.844 和 0.764。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提供理化和结构解释&lt;/strong&gt;：通过对分子描述符的分析，能够从物理化学和结构层面解释模型的预测结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据集&#34;&gt;数据集
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chembl.gitbook.io/chembl-interface-documentation/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChEMBL&lt;/a&gt;开放数据库。&lt;/p&gt;
+&lt;h3 id=&#34;heading&#34;&gt;
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>春分 | 拍堤春水四垂天，红墙白塔，小花杨柳</title>
