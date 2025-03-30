@@ -289,7 +289,8 @@
     <li><a href="#可用的模型">可用的模型</a></li>
     <li><a href="#例子">例子</a>
       <ol>
-        <li><a href="#in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha">In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha</a>
+        <li><a href="#artificial-intelligence-in-drug-development--nature-medicine">Artificial intelligence in drug development | <em>nature medicine</em></a></li>
+        <li><a href="#a-foundation-model-for-clinician-centered-drug-repurposing--nature-medicine">A foundation model for clinician-centered drug repurposing | <em>nature medicine</em></a>
           <ol>
             <li><a href="#摘要">摘要</a></li>
             <li><a href="#解决的问题">解决的问题</a></li>
@@ -297,6 +298,16 @@
             <li><a href="#核心方法">核心方法</a></li>
             <li><a href="#优势">优势</a></li>
             <li><a href="#数据集">数据集</a></li>
+          </ol>
+        </li>
+        <li><a href="#in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha">In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha</a>
+          <ol>
+            <li><a href="#摘要-1">摘要</a></li>
+            <li><a href="#解决的问题-1">解决的问题</a></li>
+            <li><a href="#挑战是什么-1">挑战是什么</a></li>
+            <li><a href="#核心方法-1">核心方法</a></li>
+            <li><a href="#优势-1">优势</a></li>
+            <li><a href="#数据集-1">数据集</a></li>
           </ol>
         </li>
         <li><a href="#heading"></a></li>
@@ -370,7 +381,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -418,16 +429,72 @@
 <h2 id="可用的模型">可用的模型
 </h2><p>目前的再利用方法的实例主要集中在<strong>网络医学和大规模的患者数据分析</strong>上。这里有<strong>CoV-KGE、BenevolentAI、异质有向生物医学图</strong>等。</p>
 <h2 id="例子">例子
-</h2><h3 id="in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha">In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha
+</h2><h3 id="artificial-intelligence-in-drug-development--nature-medicine">Artificial intelligence in drug development | <em>nature medicine</em>
+</h3><p>这是一篇综述，讲解了人工智能在药物发现中的应用取得了显著进展，特别是在靶点识别、虚拟筛选、新药设计（de novo design）、ADMET预测和合成规划等方面。</p>
+<p>这里主要关注他讲的AI在药物重定位中的作用。</p>
+<h3 id="a-foundation-model-for-clinician-centered-drug-repurposing--nature-medicine">A foundation model for clinician-centered drug repurposing | <em>nature medicine</em>
+</h3><h4 id="摘要">摘要
+</h4><p>文章介绍了药物再利用人工智能模型在临床应用中的局限性，并提出了本研究的核心——TxGNN模型。</p>
+<h4 id="解决的问题">解决的问题
+</h4><p>目前的模型过于依赖<strong>已有疗法</strong>和<strong>关于此疾病详细的分子机制</strong>，对于多疾病、零样本情境下的药物再利用没有好用的模型。</p>
+<h4 id="挑战是什么">挑战是什么
+</h4><ul>
+<li><strong>现有计算方法假设待预测疾病已有可用药物</strong>，然而大量疾病（研究中 92% 的 17,080 种疾病）缺乏已知适应症，罕见病中约 95% 无 FDA 批准药物，85% 甚至无有潜力的治疗药物，</li>
+<li><strong>药物重利用的适应症可能与最初研究的适应症无关</strong>，现有机器学习模型对数据不完整、稀疏且无已知疗法的疾病，识别治疗候选药物的能力大幅下降。</li>
+</ul>
+<h4 id="核心方法">核心方法
+</h4><p>TxGNN。图基础模型，在医学知识图谱上训练，利用图神经网络和度量学习模块，将药物再利用问题转化为零样本预测问题。
+<img src="/2025/moleculerepurposing/assets/20250330192550.png"
+	width="1362"
+	height="918"
+	srcset="/2025/moleculerepurposing/assets/20250330192550_hu6854319863143776960.png 480w, /2025/moleculerepurposing/assets/20250330192550_hu11871542122080258708.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="148"
+		data-flex-basis="356px"
+	
+></p>
+<p>TxGNN模型主要由两个模块组成：TxGNN Predictor（预测模块）和TxGNN Explainer（解释模块）。</p>
+<ol>
+<li><strong>TxGNN Predictor（预测模块）</strong>：
+<ul>
+<li><strong>功能</strong>：预测药物的适应症（indications）和禁忌症（contraindications）。</li>
+<li><strong>架构</strong>：该模块基于图神经网络（GNN）构建，优化了医学知识图谱（KG）中的关系。通过大规模、自监督的<strong>预训练</strong>，GNN为KG中的所有概念生成有意义的表示。然后，通过<strong>微调</strong>，该预训练模型被适应于处理治疗任务，并预测跨多种疾病的药物候选适应症和禁忌症。</li>
+<li><strong>度量学习模块</strong>：用于零样本预测，利用疾病可以共享疾病相关的遗传和基因组网络这一见解，<strong>从可治疗的疾病向无治疗方法的疾病转移知识</strong>。</li>
+</ul>
+</li>
+<li><strong>TxGNN Explainer（解释模块）</strong>：
+<ul>
+<li><strong>功能</strong>：解析KG，提取并简洁地表示相关医学知识，以生成<strong>多跳可解释的路径</strong>，这些路径解释了模型预测背后的逻辑。</li>
+<li><strong>架构</strong>：使用名为<strong>GraphMask</strong>的自我解释性方法，生成一个稀疏但充分的医学概念子图，这些概念被认为是TxGNN预测的关键。它为KG中的每条边生成一个0到1之间的重要性分数，并通过组合药物-疾病子图和边重要性分数，产生多跳可解释的路径，将疾病与预测药物联系起来。</li>
+</ul>
+</li>
+</ol>
+<h4 id="优势">优势
+</h4><p>在零样本条件下，TxGNN预测效果相比别的模型体现出了广泛的泛化性和准确性。</p>
+<h4 id="数据集">数据集
+</h4><p>医学知识图谱公开，包含 10 种类型的节点和 29 种类型的无向边，共有 123,527 个节点和 8,063,026 条边，涵盖 17,080 种疾病（92% 缺乏 FDA 批准药物）和 7,957 种潜在药物重利用候选药物，还包含生物过程、分子功能、蛋白质、表型等多种生物医学概念信息。</p>
+<ul>
+<li>知识图谱下载地址：<a class="link" href="https://doi.org/10.7910/DVN/IXA7BM"  target="_blank" rel="noopener"
+    >PrimeKG</a></li>
+<li>演示界面：<a class="link" href="http://txgnn.org/"  target="_blank" rel="noopener"
+    >TxGNN Explorer</a></li>
+<li>Github仓库：<a class="link" href="https://github.com/mims-harvard/TxGNN"  target="_blank" rel="noopener"
+    >mims-harvard/TxGNN</a></li>
+</ul>
+<hr>
+<h3 id="in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha">In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha
 </h3><p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/34944476/"  target="_blank" rel="noopener"
     >In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha - PubMed</a></p>
-<h4 id="摘要">摘要
+<h4 id="摘要-1">摘要
 </h4><p>炎症与多种疾病相关，caspase-1 和 TNF-alpha 在炎症发展中起关键作用，针对二者的双重抑制剂有望治疗多种炎症性疾病。本文构建了基于定量构效关系和多层感知器神经网络的多条件模型（mtc-QSAR-MLP）用于虚拟筛选抗炎药物。经数据集处理、模型开发与评估，该模型准确性超 88%。利用此模型筛选出如 linagliptin、icariin 和 rolipram 等潜在的 caspase-1 和 TNF-alpha 双重抑制剂，为抗炎治疗提供新方向，有望用于自身免疫疾病、癌症及 COVID-19 等疾病的治疗。</p>
-<h4 id="解决的问题">解决的问题
+<h4 id="解决的问题-1">解决的问题
 </h4><p><strong>caspase-1 和 TNF-alpha</strong>是炎症发展中的关键蛋白，针对它们的双重抑制剂有望治疗多种炎症性疾病。</p>
-<h4 id="挑战是什么">挑战是什么
+<h4 id="挑战是什么-1">挑战是什么
 </h4><p>通过药物再利用的方式来加速抗炎药物的发现。</p>
-<h4 id="核心方法">核心方法
+<h4 id="核心方法-1">核心方法
 </h4><p>构建基于定量结构 - 活性关系（QSAR）和多层感知器神经网络（MLP）的多条件模型（mtc-QSAR-MLP），用于虚拟筛选 caspase-1 和 TNF-alpha 的双重抑制剂。</p>
 <ol>
 <li><strong>数据处理与分子描述符计算</strong>：从 <a class="link" href="https://chembl.gitbook.io/chembl-interface-documentation/downloads"  target="_blank" rel="noopener"
@@ -443,14 +510,14 @@
 <li><strong>模型评估</strong>：采用 Bounding Box 方法确定模型适用性域，计算描述符的局部适用性域分数（\(LSAD_D [GTI] cj\)）和总分数（TSAD），判断分子是否在适用性域内。通过分析模型在训练集和测试集上的性能指标，如准确率、敏感性、特异性和 MCC 等，验证模型对不同实验条件下化学物质抑制活性的分类和预测能力。</li>
 <li><strong>虚拟筛选与结果验证</strong>：使用构建好的 mtc-QSAR-MLP 模型对 8922 种机构监管化学品数据库进行虚拟筛选，考虑 8 种实验条件，计算每个分子的 FA (%)（分子在 8 种实验条件下被预测为活性的频率）和 S (TSAD)（考虑 8 种实验条件下分子的总适用性域分数）指标，筛选潜在双重抑制剂。对筛选结果，通过在科学文献中搜索相关信息，结合实验证据验证其抑制 caspase-1 和 TNF-alpha 的可能性。</li>
 </ol>
-<h4 id="优势">优势
+<h4 id="优势-1">优势
 </h4><ul>
 <li><strong>整合多源数据</strong>：基于扰动理论和机器学习构建模型，能够整合不同类型的化学和生物数据。通过 Box-Jenkins 方法对传统分子描述符进行处理，得到融合化学结构与实验条件信息的描述符，使模型能综合考虑多种因素。</li>
 <li><strong>多靶点多终点预测</strong>：可同时预测多个生物终点（如活性、毒性、药代动力学性质），并针对多个不同靶点（如 caspase-1 和 TNF-alpha）进行预测。</li>
 <li><strong>高预测准确性</strong>：模型在训练集和测试集上都表现出较高的准确性。训练集准确率达 92.44%，测试集准确率为 88.49%，马修斯相关系数（MCC）在训练集和测试集分别为 0.844 和 0.764。</li>
 <li><strong>提供理化和结构解释</strong>：通过对分子描述符的分析，能够从物理化学和结构层面解释模型的预测结果。</li>
 </ul>
-<h4 id="数据集">数据集
+<h4 id="数据集-1">数据集
 </h4><p><a class="link" href="https://chembl.gitbook.io/chembl-interface-documentation/downloads"  target="_blank" rel="noopener"
     >ChEMBL</a>开放数据库。</p>
 <h3 id="heading">
