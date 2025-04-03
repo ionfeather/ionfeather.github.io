@@ -14,12 +14,26 @@
         
         <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
         <description>&lt;h2 id=&#34;数据库&#34;&gt;数据库
-&lt;/h2&gt;&lt;h3 id=&#34;ttd&#34;&gt;TTD
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
+	width=&#34;2502&#34;
+	height=&#34;3180&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu2638686459450584990.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu2423326594759818142.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;数据库概览&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;78&#34;
+		data-flex-basis=&#34;188px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ttd&#34;&gt;TTD
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;TTD&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;治疗靶点数据库。它是一个专门收集和整理与治疗靶点相关信息的数据库。&lt;/li&gt;
+&lt;li&gt;治疗靶点数据库。它是一个专门收集和整理与&lt;strong&gt;治疗靶点&lt;/strong&gt;相关信息的数据库。&lt;/li&gt;
 &lt;li&gt;下载地址：&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/full-data-download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Full Data Download | Therapeutic Target Database&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;数据库比较大，这里筛选了药物-靶点-疾病关联数据：
@@ -144,7 +158,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubchem.ncbi.nlm.nih.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;PubChem&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;PubChem是美国国立卫生研究院的一个开放化学数据库。这个数据库非常大。&lt;/li&gt;
+&lt;li&gt;PubChem是美国国立卫生研究院的一个开放化学数据库。&lt;strong&gt;化合物信息数据库&lt;/strong&gt;，收录大量化合物的结构、生物活性等信息，为科研、药物研发等提供数据支持，也用于化学知识普及和教学。这个数据库非常大。&lt;/li&gt;
 &lt;li&gt;用途参考：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rys-1FXn5ZmqilTz1iD-pQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Nucleic Acids Research | 疗效药物靶标的比较性研究与数据平台构建&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;FTP下载：&lt;a class=&#34;link&#34; href=&#34;https://ftp.ncbi.nlm.nih.gov/pubchem/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -334,6 +348,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dgidb.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;DGIdb&lt;/a&gt;
 &lt;ul&gt;
+&lt;li&gt;药物基因相互作用数据库，主要收集和整理&lt;strong&gt;药物与基因之间相互作用&lt;/strong&gt;的相关信息。&lt;/li&gt;
 &lt;li&gt;这个数据库一共就四个表格，分别存储药物-基因相互作用、基因、药物和分类相关信息，使用&lt;code&gt;tsv&lt;/code&gt;格式进行存储。数据大小约为24.9MB。
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;interactions.tsv&lt;/strong&gt;：存储所有药物-基因相互作用声明数据，包含不同药物与基因之间相互作用的信息。&lt;/li&gt;
@@ -522,6 +537,7 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/drugs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;DrugBank&lt;/a&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;综合药物信息数据库&lt;/strong&gt;，整合了药物的化学、药理、毒理等多方面信息。&lt;/li&gt;
 &lt;li&gt;一个巨大的数据库。这个数据库免费开放给学术用户，但商业使用收费。可以在网页上进行学生/老师认证注册。药物再利用在其中是很小的一个板块，可以在&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/data_packages/drug_repurposing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;下载。&lt;/li&gt;
 &lt;li&gt;学生身份目前正在审核状态，无法下载。&lt;/li&gt;
@@ -534,7 +550,8 @@
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ebi.ac.uk/chembl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ChEMBL&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;ChEMBL数据包含化合物、化合物记录、活性数据、分析方法、靶点和文献。数据大小大约2GB。有不同的版本，提供FTP方式下载，可以在这里下载&lt;a class=&#34;link&#34; href=&#34;https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_35/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;li&gt;ChEMBL 是一个开源的生物活性分子数据库，&lt;strong&gt;专注于小分子化合物与生物靶点之间的相互作用信息。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;数据大小大约2GB。有不同的版本，提供FTP方式下载，可以在这里下载&lt;a class=&#34;link&#34; href=&#34;https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_35/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;最新的版本ChEMBL_35&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;目录中的内容可以参考README文件。主要的部分可以见下图，组织时FASTA文件、SDF文件、HTML文件和TXT文件都有使用。数据可以加载到MySQL、PostgreSQL等数据库中。&lt;/li&gt;
 &lt;li&gt;有官方的数据库结构图如下，主要分成
