@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Sun, 23 Mar 2025 17:15:44 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>论文阅读 | Molecule Repurposing</title>
-        <link>https://ionfeather.github.io/2025/moleculerepurposing/</link>
-        <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
+        <lastBuildDate>Fri, 04 Apr 2025 01:42:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>04 03 MoleculeRepurposing 2</title>
+        <link>https://ionfeather.github.io/2025/04-03-moleculerepurposing-2/</link>
+        <pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
+        <guid>https://ionfeather.github.io/2025/04-03-moleculerepurposing-2/</guid>
         <description>&lt;h2 id=&#34;阅读综述&#34;&gt;阅读综述
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
@@ -20,29 +20,6 @@
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;目标：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;主要解决什么问题&lt;/li&gt;
-&lt;li&gt;挑战是什么&lt;/li&gt;
-&lt;li&gt;我们提出的核心方法，与同类问题比较的优势在哪&lt;/li&gt;
-&lt;li&gt;数据集是什么，是否公开&lt;/li&gt;
-&lt;li&gt;评测方式是什么，有无数据集&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;可用的数据库&#34;&gt;可用的数据库
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubchem.ncbi.nlm.nih.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PubChem&lt;/a&gt;：PubChem是一个有机小分子生物活性数据，是一个生环化材中应用分子的数据模型库。这里面包含了大量分子材料的理化性能介绍，对应每个有机分子的应用都能够追根溯源到较为全面的文献报道。可以按名称，分子式，结构和其他标识符搜索化学物质来查找化学和物理性质，生物活性，安全性和毒性信息，专利，文献引用等等。可供检索的化合物有11100万种，物质28700万种，生物活性27300万种、相关文献3200万篇、专利250万种。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dgidb.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DGIdb&lt;/a&gt;：DGIdb是一个药物-基因相互作用数据库，提供了基因与其已知或潜在药物关联信息。里面的基因主要是癌基因，但是也有一些其他疾病（例如阿尔兹海默病、心脏病、糖尿病等）的相关基因。DGIdb一共有超过14000种药物-基因的相互作用，涉及2600个基因和6300中靶向这些基因的药物，还包括了6700个其他的基因，这些基因很有可能成为未来药物的靶标。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/drugs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Browsing Drugs | DrugBank Online&lt;/a&gt;：DrugBank是阿尔伯塔大学将药物实验数据和药物目标信息结合起来的生物信息学和化学信息学数据库，也是目前最大的综合性药物数据库。DrugBank包含13791种药物条目，其中包括2653种经批准的小分子药物、1417种经批准的生物技术(蛋白质/肽)药物、131种营养品和6451种实验药物。5236个非冗余蛋白(即药物靶标/酶/转运体/载体)序列与这些药物条目相关联。每个DrugCard条目包含200多个数据字段，其中一半用于药物/化学数据，另一半用于药物靶标或蛋白质数据。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ebi.ac.uk/chembl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ChEMBL - ChEMBL&lt;/a&gt;：ChEMBL是欧洲生物信息研究所（European Bioinformatics Institute，EBI）开发的一个靶点与生物活性药物数据库，收集的是药物研究和开发过程中的药物化学数据和知识，比如临床实验药物和批准药物的治疗靶标和适应症，这是一个非常便利的查询靶点或化合物的生物活性数据的平台。截至2019年10月29日，该数据库共收集了12482个靶点，1,961,462个不同的化合物和13,382个靶标信息。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ctdbase.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The Comparative Toxicogenomics Database | CTD&lt;/a&gt;：CTD提供了有关化学暴露（环境和药物），基因和蛋白质，表型和疾病之间复杂相互作用的信息，是一个有关基因－化合物相互反应数据的资料库。CTD包括超过230万种化学药物，46689个基因，4340个表型和7212种疾病的基因，化学表型，药物相关疾病，基因相关疾病和药物相互作用，与其他数据集集成后，产生的药物基因组关联超过3800万。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;TTD: Therapeutic Target Database&lt;/a&gt;：专注于药物 - 基因相互作用信息的整合。收集了来自多个资源的药物 - 基因相互作用数据，有助于研究人员了解药物对基因的影响以及基因变异对药物反应的作用，为精准医疗和药物研发提供支持。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/index.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Binding Database Home&lt;/a&gt;：公开的数据库，主要存储生物分子间的结合数据，特别是药物与靶点的结合亲和力数据。研究人员可以利用这些数据评估药物与靶点结合的强度，为药物设计和优化提供重要依据，在药物研发的早期阶段筛选潜在的先导化合物。&lt;/p&gt;
 &lt;h2 id=&#34;可用的模型&#34;&gt;可用的模型
 &lt;/h2&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
 &lt;h2 id=&#34;例子&#34;&gt;例子
@@ -61,16 +38,12 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;核心方法&#34;&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;TxGNN。图基础模型，在医学知识图谱上训练，利用图神经网络和度量学习模块，将药物再利用问题转化为零样本预测问题。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/20250330192550.png&#34;
-	width=&#34;1362&#34;
-	height=&#34;918&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/20250330192550_hu6854319863143776960.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/20250330192550_hu11871542122080258708.png 1024w&#34;
+&lt;img src=&#34;https://ionfeather.github.io/assets/20250330192550.png&#34;
+	
+	
+	
 	loading=&#34;lazy&#34;
 	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;148&#34;
-		data-flex-basis=&#34;356px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;TxGNN模型主要由两个模块组成：TxGNN Predictor（预测模块）和TxGNN Explainer（解释模块）。&lt;/p&gt;
@@ -143,6 +116,598 @@
 </description>
         </item>
         <item>
+        <title>论文阅读 | Molecule Repurposing</title>
+        <link>https://ionfeather.github.io/2025/moleculerepurposing/</link>
+        <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
+        <description>&lt;h2 id=&#34;数据库&#34;&gt;数据库
+&lt;/h2&gt;&lt;h3 id=&#34;ttd&#34;&gt;TTD
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TTD&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;治疗靶点数据库。它是一个专门收集和整理与治疗靶点相关信息的数据库。&lt;/li&gt;
+&lt;li&gt;下载地址：&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/full-data-download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Full Data Download | Therapeutic Target Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;数据库比较大，这里筛选了药物-靶点-疾病关联数据：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Target to drug mapping with mode of action&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TargetID&lt;/code&gt;：靶点的唯一标识符。可以在数据库中找到靶点的详细信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DrugID&lt;/code&gt;：药物的唯一标识符。可以获取该药物的相关信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Highest_status&lt;/code&gt;：表示药物在研发或临床应用中的最高阶段或状态，&lt;code&gt;Approved&lt;/code&gt;说明该药物已经通过了相关监管机构的审批，被批准用于临床治疗。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MOA&lt;/code&gt;：即&lt;code&gt;Mode of Action&lt;/code&gt;，作用模式的缩写，&lt;code&gt;Modulator&lt;/code&gt;表明该药物对靶点的作用方式是作为调节剂。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drug to disease mapping with ICD identifiers&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TTDDRUID&lt;/code&gt;：表示 TTD 药物 ID，即该药物的唯一标识。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DRUGNAME&lt;/code&gt;：药物名称。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;INDICATI&lt;/code&gt;：适应症，即药物被用于治疗的病症。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Disease entry&lt;/code&gt;：疾病条目，这里使用了 ICD-11 编码来表示具体的疾病。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态，指药物在临床试验或临床应用中的阶段或情况，如已批准、处于某一阶段的临床试验等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Target to disease mapping with ICD identifiers&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TARGETID&lt;/code&gt;：代表 TTD 靶点 ID，为靶点在数据库内的唯一识别编号。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TARGNAME&lt;/code&gt;：靶点的具体名称。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;INDICATI&lt;/code&gt;：适应症，即药物被用于治疗的病症。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Disease entry&lt;/code&gt;：疾病条目，这里使用了 ICD-11 编码来表示具体的疾病。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;表一target-to-drug-mapping-with-mode-of-action&#34;&gt;表一：Target to drug mapping with mode of action
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;TargetID&lt;/th&gt;
+          &lt;th&gt;DrugID&lt;/th&gt;
+          &lt;th&gt;Highest_status&lt;/th&gt;
+          &lt;th&gt;MOA&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;T87024&lt;/td&gt;
+          &lt;td&gt;D00RRU&lt;/td&gt;
+          &lt;td&gt;Approved&lt;/td&gt;
+          &lt;td&gt;Modulator&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这个表格表示：ID为D00RRU的药物能够以调节剂的方式作用ID为T87024的疾病，并且已经被批准。&lt;/p&gt;
+&lt;h4 id=&#34;表二drug-to-disease-mapping-with-icd-identifiers&#34;&gt;表二：Drug to disease mapping with ICD identifiers
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;TTDDRUID&lt;/th&gt;
+          &lt;th&gt;DRUGNAME&lt;/th&gt;
+          &lt;th&gt;INDICATI&lt;/th&gt;
+          &lt;th&gt;ICD-11&lt;/th&gt;
+          &lt;th&gt;Clinical status&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DZB84T&lt;/td&gt;
+          &lt;td&gt;Maralixibat&lt;/td&gt;
+          &lt;td&gt;Pruritus&lt;/td&gt;
+          &lt;td&gt;EC90&lt;/td&gt;
+          &lt;td&gt;Approved&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DZB84T&lt;/td&gt;
+          &lt;td&gt;Maralixibat&lt;/td&gt;
+          &lt;td&gt;Progressive familial intrahepatic cholestasis&lt;/td&gt;
+          &lt;td&gt;5C58.03&lt;/td&gt;
+          &lt;td&gt;Phase 3&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;DZB84T&lt;/td&gt;
+          &lt;td&gt;Maralixibat&lt;/td&gt;
+          &lt;td&gt;Alagille syndrome&lt;/td&gt;
+          &lt;td&gt;LB20.0Y&lt;/td&gt;
+          &lt;td&gt;Phase 2&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这个表格表示ID为DZB84T的药物，名为Maralixibat，有对应几种适应症：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;适应症为&lt;code&gt;Pruritus&lt;/code&gt;（瘙痒症），ICD-11 编码是&lt;code&gt;EC90&lt;/code&gt;，临床状态为&lt;code&gt;Approved&lt;/code&gt;（已批准）。&lt;/li&gt;
+&lt;li&gt;适应症为&lt;code&gt;Progressive familial intrahepatic cholestasis&lt;/code&gt;（进行性家族性肝内胆汁淤积症），ICD-11 编码是&lt;code&gt;5C58.03&lt;/code&gt;，临床状态为&lt;code&gt;Phase 3&lt;/code&gt;（三期临床试验）。&lt;/li&gt;
+&lt;li&gt;适应症为&lt;code&gt;Alagille syndrome&lt;/code&gt;（阿拉基综合征），ICD-11 编码是&lt;code&gt;LB20.0Y&lt;/code&gt;，临床状态为&lt;code&gt;Phase 2&lt;/code&gt;（二期临床试验）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;表三target-to-disease-mapping-with-icd-identifiers&#34;&gt;表三：Target to disease mapping with ICD identifiers
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;TARGETID&lt;/th&gt;
+          &lt;th&gt;TARGNAME&lt;/th&gt;
+          &lt;th&gt;INDICATI&lt;/th&gt;
+          &lt;th&gt;INDICATI&lt;/th&gt;
+          &lt;th&gt;INDICATI&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;T00033&lt;/td&gt;
+          &lt;td&gt;Transforming growth factor alpha (TGFA)&lt;/td&gt;
+          &lt;td&gt;Phase 1/2&lt;/td&gt;
+          &lt;td&gt;Chronic kidney disease&lt;/td&gt;
+          &lt;td&gt;[ICD-11: GB61]&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这个表格表示 ID 为 T00033 的靶点，名为 Transforming growth factor alpha (TGFA)，有对应的临床关联信息：关联的疾病适应症为&lt;code&gt;Chronic kidney disease&lt;/code&gt;（慢性肾脏病），ICD-11 编码是&lt;code&gt;GB61&lt;/code&gt;，临床状态为&lt;code&gt;Phase 1/2&lt;/code&gt;（一期 / 二期临床试验 ）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;pubchem&#34;&gt;PubChem
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubchem.ncbi.nlm.nih.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PubChem&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;PubChem是美国国立卫生研究院的一个开放化学数据库。这个数据库非常大。&lt;/li&gt;
+&lt;li&gt;用途参考：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rys-1FXn5ZmqilTz1iD-pQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nucleic Acids Research | 疗效药物靶标的比较性研究与数据平台构建&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;FTP下载：&lt;a class=&#34;link&#34; href=&#34;https://ftp.ncbi.nlm.nih.gov/pubchem/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Index of /pubchem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;药物-疾病关联数据
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;./Bioassay&lt;/code&gt;：生物测定数据，包含大量药物对不同生物靶点或细胞系的活性测试结果&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./Target&lt;/code&gt;：靶标数据，涵盖蛋白质、基因、通路和分类学等信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./Commpound&lt;/code&gt;和&lt;code&gt;./Compound_3D&lt;/code&gt;：化合物的数据信息包含结构信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./Other&lt;/code&gt;：&lt;code&gt;GooglePatents&lt;/code&gt;和&lt;code&gt;IBM&lt;/code&gt;中包含专利信息。寻找专利即将过期/已过期的药物，并对这些药物进行再利用评估。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面以&lt;code&gt;./Bioassay&lt;/code&gt;数据为例。&lt;/p&gt;
+&lt;h4 id=&#34;表-1pubchem的bioassay的csv文件的标题行的分类和标签说明&#34;&gt;表 1：PubChem的&lt;code&gt;./Bioassay&lt;/code&gt;的CSV文件的标题行的分类和标签说明
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;分类&lt;/th&gt;
+          &lt;th&gt;标签名称&lt;/th&gt;
+          &lt;th&gt;说明&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_RESULT_TAG&lt;/td&gt;
+          &lt;td&gt;行ID&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_SID&lt;/td&gt;
+          &lt;td&gt;PubChem SID&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_CID&lt;/td&gt;
+          &lt;td&gt;PubChem CID&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/td&gt;
+          &lt;td&gt;PubChem活性结果（即，Inactive, Active, Inconclusive, Unspecified, or Probe）&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_ACTIVITY_SCORE&lt;/td&gt;
+          &lt;td&gt;PubChem活性得分，值越高表示活性越强&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_ACTIVITY_URL&lt;/td&gt;
+          &lt;td&gt;测试结果特定的url&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行&lt;/td&gt;
+          &lt;td&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/td&gt;
+          &lt;td&gt;测试结果特定的注释&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行（可选）&lt;/td&gt;
+          &lt;td&gt;测试结果名称1（如：name of test result 1）&lt;/td&gt;
+          &lt;td&gt;测试结果1的数据&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;数据行（可选）&lt;/td&gt;
+          &lt;td&gt;测试结果名称2（如：name of test result 2）&lt;/td&gt;
+          &lt;td&gt;测试结果2的数据&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+          &lt;td&gt;RESULT_UNIT&lt;/td&gt;
+          &lt;td&gt;单位（e.g. MICROMOLAR, NANOMOLAR和其他PubChem上传系统使用的标签）&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+          &lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION&lt;/td&gt;
+          &lt;td&gt;如果测试结果表示有效浓度则为TRUE&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+          &lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION_QUALIFIER&lt;/td&gt;
+          &lt;td&gt;如果测试结果表示与有效浓度相关的终点限定词（e.g. &amp;lt;, &amp;lt;=, =, &amp;gt;, &amp;gt;=）则为TRUE&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+          &lt;td&gt;RESULT_ATTR_CONC_MICROMOL&lt;/td&gt;
+          &lt;td&gt;以微摩尔为单位的测试浓度&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;表二pubchem-csvdata0000001_00010001csv文件&#34;&gt;表二：PubChem CSV/Data/0000001_0001000/1.csv文件
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;PUBCHEM_RESULT_TAG&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_SID&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_CID&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_EXT_DATASOURCE_SMILES&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_ACTIVITY_SCORE&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_ACTIVITY_URL&lt;/th&gt;
+          &lt;th&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/th&gt;
+          &lt;th&gt;LogGI50_M&lt;/th&gt;
+          &lt;th&gt;LogGI50_u&lt;/th&gt;
+          &lt;th&gt;LogGI50_V&lt;/th&gt;
+          &lt;th&gt;IndnGI50&lt;/th&gt;
+          &lt;th&gt;StddevGI50&lt;/th&gt;
+          &lt;th&gt;LogTGI_M&lt;/th&gt;
+          &lt;th&gt;LogTGI_u&lt;/th&gt;
+          &lt;th&gt;LogTGI_V&lt;/th&gt;
+          &lt;th&gt;IndnTGI&lt;/th&gt;
+          &lt;th&gt;StddevTGI&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;66954&lt;/td&gt;
+          &lt;td&gt;11122&lt;/td&gt;
+          &lt;td&gt;CC1=CC(=O)C=CC1=O&lt;/td&gt;
+          &lt;td&gt;Inactive&lt;/td&gt;
+          &lt;td&gt;10&lt;/td&gt;
+          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;searchlist=1&amp;systemname=NCI+Cancer&amp;idn1=1&amp;idn2=1&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;-4.5753&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;0&lt;/td&gt;
+          &lt;td&gt;-4&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;1&lt;/td&gt;
+          &lt;td&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这个表格表示数据行 ID 为 1 的记录，其中涉及的 PubChem SID 为 66954，PubChem CID 为 11122，化合物的 SMILES 表示形式为&lt;code&gt;CC1=CC(=O)C=CC1=O&lt;/code&gt;，有对应的生物活性关联信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PubChem 活性结果为&lt;code&gt;Inactive&lt;/code&gt;（无活性），PubChem 活性得分为 10，表明在此次生物测定中该化合物活性较低。&lt;/li&gt;
+&lt;li&gt;测试结果特定的 url 为&lt;a class=&#34;link&#34; href=&#34;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;dtp.cancer.gov/services/nci60data/colordoseresponse/pdf/1&lt;/a&gt;，可通过该链接获取更多相关测试结果信息。&lt;/li&gt;
+&lt;li&gt;测试结果特定的注释为空。&lt;/li&gt;
+&lt;li&gt;关于 GI50（半数生长抑制浓度）的相关数据：
+&lt;ul&gt;
+&lt;li&gt;以摩尔为单位的 GI50 结果的对数&lt;code&gt;LogGI50_M&lt;/code&gt;为 - 4.5753。&lt;/li&gt;
+&lt;li&gt;测试次数平均数量&lt;code&gt;IndnGI50&lt;/code&gt;为 1。&lt;/li&gt;
+&lt;li&gt;对所有测试的 GI50 结果的对数（Log10）的标准偏差&lt;code&gt;StddevGI50&lt;/code&gt;为 0，说明该测量值较为稳定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;关于 TGI（总生长抑制）的相关数据：
+&lt;ul&gt;
+&lt;li&gt;以摩尔为单位的 TGI 结果的对数&lt;code&gt;LogTGI_M&lt;/code&gt;为 - 4。&lt;/li&gt;
+&lt;li&gt;测试次数平均数量&lt;code&gt;IndnTGI&lt;/code&gt;为 1。&lt;/li&gt;
+&lt;li&gt;对所有测试的 TGI 结果的对数（Log10）的标准偏差&lt;code&gt;StddevTGI&lt;/code&gt;为 0，表明该测量值稳定性较好 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他的如&lt;code&gt;./Target&lt;/code&gt;等数据也呈现如此结构。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;dgidb&#34;&gt;DGIdb
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dgidb.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DGIdb&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;这个数据库一共就四个表格，分别存储药物-基因相互作用、基因、药物和分类相关信息，使用&lt;code&gt;tsv&lt;/code&gt;格式进行存储。数据大小约为24.9MB。
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;interactions.tsv&lt;/strong&gt;：存储所有药物-基因相互作用声明数据，包含不同药物与基因之间相互作用的信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;genes.tsv&lt;/strong&gt;：记录了基因声明相关数据，可能涵盖基因的基本信息，如基因名称、基因 ID、基因功能注释等内容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;drugs.tsv&lt;/strong&gt;：存放药物声明数据，包括药物的名称、药物 ID、药物的基本属性、药理作用等信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;categories.tsv&lt;/strong&gt;：用于存储与数据分类相关的信息。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;表一interactionstsv&#34;&gt;表一：interactions.tsv
+&lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;gene_claim_name&lt;/strong&gt;：基因的声明名称。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;gene_concept_id&lt;/strong&gt;：基因的唯一标识代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;gene_name&lt;/strong&gt;：基因的标准正式名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;interaction_source_db_name&lt;/strong&gt;：基因与药物相互作用数据的来源数据库名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;interaction_source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;interaction_type&lt;/strong&gt;：基因和药物间相互作用的类别。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;interaction_score&lt;/strong&gt;：体现基因与药物相互作用强度的数值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;drug_claim_name&lt;/strong&gt;：药物的特定称谓。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;drug_concept_id&lt;/strong&gt;：药物的唯一标识代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;drug_name&lt;/strong&gt;：药物的标准正式名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;approved&lt;/strong&gt;：药物是否已获批上市的标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;immunotherapy&lt;/strong&gt;：药物是否属于免疫治疗药物的标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;anti_neoplastic&lt;/strong&gt;：药物是否具有抗肿瘤作用的标识。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;gene_claim_name&lt;/th&gt;
+          &lt;th&gt;gene_concept_id&lt;/th&gt;
+          &lt;th&gt;gene_name&lt;/th&gt;
+          &lt;th&gt;interaction_source_db_name&lt;/th&gt;
+          &lt;th&gt;interaction_source_db_version&lt;/th&gt;
+          &lt;th&gt;interaction_type&lt;/th&gt;
+          &lt;th&gt;interaction_score&lt;/th&gt;
+          &lt;th&gt;drug_claim_name&lt;/th&gt;
+          &lt;th&gt;drug_concept_id&lt;/th&gt;
+          &lt;th&gt;drug_name&lt;/th&gt;
+          &lt;th&gt;approved&lt;/th&gt;
+          &lt;th&gt;immunotherapy&lt;/th&gt;
+          &lt;th&gt;anti_neoplastic&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;CYP2D6&lt;/td&gt;
+          &lt;td&gt;hgnc:2625&lt;/td&gt;
+          &lt;td&gt;CYP2D6&lt;/td&gt;
+          &lt;td&gt;DTC&lt;/td&gt;
+          &lt;td&gt;9/2/20&lt;/td&gt;
+          &lt;td&gt;NULL&lt;/td&gt;
+          &lt;td&gt;0.017709164&lt;/td&gt;
+          &lt;td&gt;RACLOPRIDE&lt;/td&gt;
+          &lt;td&gt;ncit:C152139&lt;/td&gt;
+          &lt;td&gt;RACLOPRIDE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;PPARG&lt;/td&gt;
+          &lt;td&gt;hgnc:9236&lt;/td&gt;
+          &lt;td&gt;PPARG&lt;/td&gt;
+          &lt;td&gt;DTC&lt;/td&gt;
+          &lt;td&gt;9/2/20&lt;/td&gt;
+          &lt;td&gt;NULL&lt;/td&gt;
+          &lt;td&gt;0.84012274&lt;/td&gt;
+          &lt;td&gt;KALOPANAX-SAPONIN F&lt;/td&gt;
+          &lt;td&gt;chembl:CHEMBL1833984&lt;/td&gt;
+          &lt;td&gt;CHEMBL:CHEMBL1833984&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这个表格有两列，这里只对第一列进行解释：基因声明名称为&lt;code&gt;CYP2D6&lt;/code&gt;，基因概念 ID 是&lt;code&gt;hgnc:2625&lt;/code&gt;，基因名称同样为&lt;code&gt;CYP2D6&lt;/code&gt;。相互作用来源数据库名称是&lt;code&gt;DTC&lt;/code&gt;，数据库版本为&lt;code&gt;9/2/20&lt;/code&gt;，相互作用类型为空（&lt;code&gt;NULL&lt;/code&gt;），相互作用得分为&lt;code&gt;0.017709164&lt;/code&gt;。药物声明名称是&lt;code&gt;RACLOPRIDE&lt;/code&gt;，药物概念 ID 为&lt;code&gt;ncit:C152139&lt;/code&gt;，药物名称是&lt;code&gt;RACLOPRIDE&lt;/code&gt;。该药物未被批准（&lt;code&gt;approved&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），不是免疫疗法（&lt;code&gt;immunotherapy&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），也不是抗肿瘤药物（&lt;code&gt;anti_neoplastic&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;） 。&lt;/p&gt;
+&lt;h4 id=&#34;表二drugstsv&#34;&gt;表二：drugs.tsv
+&lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;drug_claim_name&lt;/strong&gt;：药物的特定称谓。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nomenclature&lt;/strong&gt;：药物命名法类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;concept_id&lt;/strong&gt;：药物的唯一标识代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;drug_name&lt;/strong&gt;：药物的标准正式名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;approved&lt;/strong&gt;：药物是否已获批上市的标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;immunotherapy&lt;/strong&gt;：药物是否属于免疫治疗药物的标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;anti_neoplastic&lt;/strong&gt;：药物是否具有抗肿瘤作用的标识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_name&lt;/strong&gt;：药物数据的来源数据库名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;drug_claim_name&lt;/th&gt;
+          &lt;th&gt;nomenclature&lt;/th&gt;
+          &lt;th&gt;concept_id&lt;/th&gt;
+          &lt;th&gt;drug_name&lt;/th&gt;
+          &lt;th&gt;approved&lt;/th&gt;
+          &lt;th&gt;immunotherapy&lt;/th&gt;
+          &lt;th&gt;anti_neoplastic&lt;/th&gt;
+          &lt;th&gt;source_db_name&lt;/th&gt;
+          &lt;th&gt;source_db_version&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;BRAF(V600E) Kinase Inhibitor RO5212054&lt;/td&gt;
+          &lt;td&gt;Primary Drug Name&lt;/td&gt;
+          &lt;td&gt;ncit:C92591&lt;/td&gt;
+          &lt;td&gt;BRAF(V600E) KINASE INHIBITOR RO5212054&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;FALSE&lt;/td&gt;
+          &lt;td&gt;TRUE&lt;/td&gt;
+          &lt;td&gt;NCIt&lt;/td&gt;
+          &lt;td&gt;24.02d&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;药物声明名称为&lt;code&gt;BRAF(V600E) Kinase Inhibitor RO5212054&lt;/code&gt;，药物命名法类型是&lt;code&gt;Primary Drug Name&lt;/code&gt;，药物概念 ID 是&lt;code&gt;ncit:C92591&lt;/code&gt;，药物名称为&lt;code&gt;BRAF(V600E) KINASE INHIBITOR RO5212054&lt;/code&gt;。该药物未被批准（&lt;code&gt;approved&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），不是免疫疗法（&lt;code&gt;immunotherapy&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），是抗肿瘤药物（&lt;code&gt;anti_neoplastic&lt;/code&gt;为&lt;code&gt;TRUE&lt;/code&gt;） 。药物数据的来源数据库名称是&lt;code&gt;NCIt&lt;/code&gt;，数据库版本为&lt;code&gt;24.02d&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;表三genetsv&#34;&gt;表三：gene.tsv
+&lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;gene_claim_name&lt;/strong&gt;：基因的声明名称。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nomenclature&lt;/strong&gt;：基因命名法类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;concept_id&lt;/strong&gt;：基因的唯一标识代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;gene_name&lt;/strong&gt;：基因的标准正式名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_name&lt;/strong&gt;：基因数据的来源数据库名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;gene_claim_name&lt;/th&gt;
+          &lt;th&gt;nomenclature&lt;/th&gt;
+          &lt;th&gt;concept_id&lt;/th&gt;
+          &lt;th&gt;gene_name&lt;/th&gt;
+          &lt;th&gt;source_db_name&lt;/th&gt;
+          &lt;th&gt;source_db_version&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;NGFIBA&lt;/td&gt;
+          &lt;td&gt;NCBI Gene Name&lt;/td&gt;
+          &lt;td&gt;NULL&lt;/td&gt;
+          &lt;td&gt;NULL&lt;/td&gt;
+          &lt;td&gt;BaderLab&lt;/td&gt;
+          &lt;td&gt;Feb-14&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;基因声明名称为&lt;code&gt;NGFIBA&lt;/code&gt;，基因命名法类型是&lt;code&gt;NCBI Gene Name&lt;/code&gt;，基因概念 ID 是&lt;code&gt;NULL&lt;/code&gt;，基因名称同样为&lt;code&gt;NULL&lt;/code&gt;。基因数据的来源数据库名称是&lt;code&gt;BaderLab&lt;/code&gt;，数据库版本为&lt;code&gt;Feb-14&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;表四categoriestsv&#34;&gt;表四：categories.tsv
+&lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;：某实体的名称（这里可能是基因或其他生物相关实体名称）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;name-2&lt;/strong&gt;：该实体的另一个相关名称或描述。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_name&lt;/strong&gt;：数据的来源数据库名。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;name-2&lt;/th&gt;
+          &lt;th&gt;source_db_name&lt;/th&gt;
+          &lt;th&gt;source_db_version&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;PXR&lt;/td&gt;
+          &lt;td&gt;NUCLEAR HORMONE RECEPTOR&lt;/td&gt;
+          &lt;td&gt;BaderLab&lt;/td&gt;
+          &lt;td&gt;Feb-14&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;名称为&lt;code&gt;PXR&lt;/code&gt;，另一个相关名称或描述是&lt;code&gt;NUCLEAR HORMONE RECEPTOR&lt;/code&gt;。数据的来源数据库名称是&lt;code&gt;BaderLab&lt;/code&gt;，数据库版本为&lt;code&gt;Feb-14&lt;/code&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;drugbank&#34;&gt;DrugBank
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/drugs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DrugBank&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;一个巨大的数据库。这个数据库免费开放给学术用户，但商业使用收费。可以在网页上进行学生/老师认证注册。药物再利用在其中是很小的一个板块，可以在&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/data_packages/drug_repurposing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;这里&lt;/a&gt;下载。&lt;/li&gt;
+&lt;li&gt;学生身份目前正在审核状态，无法下载。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;chembl&#34;&gt;ChEMBL
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ebi.ac.uk/chembl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ChEMBL&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;ChEMBL数据包含化合物、化合物记录、活性数据、分析方法、靶点和文献。数据大小大约2GB。有不同的版本，提供FTP方式下载，可以在这里下载&lt;a class=&#34;link&#34; href=&#34;https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_35/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;最新的版本ChEMBL_35&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;目录中的内容可以参考README文件。主要的部分可以见下图，组织时FASTA文件、SDF文件、HTML文件和TXT文件都有使用。数据可以加载到MySQL、PostgreSQL等数据库中。&lt;/li&gt;
+&lt;li&gt;有官方的数据库结构图如下，主要分成
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;化合物信息&lt;/strong&gt;：主要以&lt;strong&gt;蓝色&lt;/strong&gt;区域呈现，记录了化合物的结构、理化性质等，像分子式、分子量和二维结构这些数据，让我们能快速了解化合物基本特征，是药物研发的基础。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实验数据&lt;/strong&gt;：用&lt;strong&gt;紫色&lt;/strong&gt;区域表示，包含化合物与靶点相互作用的活性数据，还有实验条件，比如不同化合物对特定靶点的结合亲和力数值，以及实验采用的检测方法等，这对于评估化合物生物活性和作用机制很关键。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;靶点和结合位点信息&lt;/strong&gt;：&lt;strong&gt;红色&lt;/strong&gt;区域代表这部分内容。靶点信息涉及蛋白质靶点的氨基酸序列、三维结构和功能分类，能帮我们确定药物研发方向；结合位点信息聚焦靶点与化合物结合的区域，包括氨基酸组成、空间结构和相互作用模式，对设计高亲和力和特异性的药物很有帮助。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;药物代谢数据&lt;/strong&gt;：&lt;strong&gt;浅绿色&lt;/strong&gt;区域涵盖这部分，记录了药物在体内的代谢途径、产物和酶，通过这些数据，我们可以预测药物疗效、毒性以及药物之间的相互作用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作用机制 / 药物注释&lt;/strong&gt;：&lt;strong&gt;浅蓝色&lt;/strong&gt;区域负责注释药物作用机制，关联化合物、靶点和生物效应，为药物研发和临床应用提供理论支持。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;来源和已批准药物 / 农药数据&lt;/strong&gt;：&lt;strong&gt;灰色&lt;/strong&gt;区域中，来源信息保证数据可追溯，已批准药物 / 农药数据包含批准文号、适应症和生产厂家等，可用于药物监管、市场分析和对比研究。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常规信息&lt;/strong&gt;：&lt;strong&gt;浅黄色&lt;/strong&gt;区域存放数据库的版本号、更新时间等基础信息，方便我们了解数据库整体情况。&lt;br&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema.png&#34;
+	width=&#34;6139&#34;
+	height=&#34;7557&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu9420762593170210785.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu12075595515165570555.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;81&#34;
+		data-flex-basis=&#34;194px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;bindingdb&#34;&gt;BindingDB
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/index.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BindingDB&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;主要收集药物靶点蛋白质和类药小分子之间的相互作用亲和力数据&lt;/strong&gt;。数据库大小为484.07 MB（&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/chemsearch/marvin/SDFdownload.jsp?download_file=/rwd/bind/downloads/BindingDB_All_202504_tsv.zip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;TSV&lt;/a&gt;版本）。&lt;/li&gt;
+&lt;li&gt;该数据文件只有一个表格，该表总共包含117列。
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;配体标识与结构（7 列）&lt;/strong&gt;：如 “BindingDB MonomerID” 等，用于确定和描述配体，包括多种结构表示方式和自定义名称。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;靶点基础信息（2 列）&lt;/strong&gt;：“Target Name” 和 “Target Source Organism According to Curator or DataSource”，明确靶点名称及所属生物。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;结合活性数据（6 列）&lt;/strong&gt;：“Ki (nM)” 等，反映配体与靶点结合的强度和速率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实验环境参数（2 列）&lt;/strong&gt;：“pH” 和 “Temp (°C)”，体现结合数据测量时的环境条件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据与文献来源（7 列）&lt;/strong&gt;：“Curation/DataSource” 及各类文献标识符，用于追溯数据出处和原始研究。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据库交叉引用（14 列）&lt;/strong&gt;：含 “PubChem CID” 等多个数据库的配体标识，方便数据整合查询。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;蛋白质链详情（80 列）&lt;/strong&gt;：先以 “Number of Protein Chains in Target” 记录链数量，后续多列针对每条链，涵盖序列、结构 ID、UniProt 相关名称和 ID 等信息。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;表格中的信息以第一条记录（数据行 ID 为 1）为例，大概描述了：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;配体相关信息：BindingDB MonomerID 为 &lt;code&gt;608734&lt;/code&gt;，Ligand SMILES 为 “O [C@@H] 1C@@HC@@HN (CCCCCC (O)=O) C (=O) N (CCCCCC (O)=O)[C@@H] 1Cc1ccccc1”，其对应的 BindingDB Ligand Name 是 “6-[(4R,5S,6S,7R)-4,7 - 二苄基 - 3-(5 - 羧基戊基)-5,6 - 二羟基 - 2 - 氧代 - 1,3 - 二氮杂环庚烷 - 1 - 基] 己酸::DMPC 环脲 1”。&lt;/li&gt;
+&lt;li&gt;靶点相关信息：Target Name 为 “Dimer of Gag-Pol polyprotein [501 - 599]”，表明靶点是 Gag-Pol 多聚蛋白二聚体的 501 - 599 区域；Target Source Organism 为 “Human immunodeficiency virus 1”，即靶点来源于人类免疫缺陷病毒 1。&lt;/li&gt;
+&lt;li&gt;结合活性数据：Ki (nM) 为 0.24 ，显示配体与靶点的结合亲和力较强。&lt;/li&gt;
+&lt;li&gt;实验条件：测量时 pH 为 5.5，温度为 37°C。&lt;/li&gt;
+&lt;li&gt;数据来源：由 BindingDB 从文献整理而来，相关文献的 DOI 是 10.1021/jm9602571，PMID 为 8784449，可据此追溯原始研究。&lt;/li&gt;
+&lt;li&gt;数据库交叉引用：PubChem CID 为 3009304，PubChem SID 为 483500124，方便在 PubChem 数据库中查找该配体更多信息。&lt;/li&gt;
+&lt;li&gt;蛋白质链信息：靶点含 1 条蛋白质链，其序列为 “PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNF”，相关 PDB ID 有 “1W5Y”“1W5X” 等多个，UniProt（SwissProt）相关信息显示，其推荐名称是 “Gag-Pol polyprotein”，Entry Name 为 “POL_HV1BR”，Primary ID 为 “P03367”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+        </item>
+        <item>
         <title>春分 | 拍堤春水四垂天，红墙白塔，小花杨柳</title>
         <link>https://ionfeather.github.io/2025/the-spring-equinox/</link>
         <pubDate>Sat, 22 Mar 2025 14:39:56 +0800</pubDate>
@@ -160,9 +725,8 @@
 &lt;p&gt;2025-03-29 23:46&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;玉渊潭的春天真的好美。天空蓝得清澈，白云懒洋洋地漂浮在上面——冬天是绝对见不到这样的景色的，受到西伯利亚高压控制的北京在冬天干燥而又晴朗。&lt;/p&gt;
-&lt;p&gt;柳条刚刚抽出，还透着稚嫩，樱花却已经开得烂漫了。玉渊潭里的鸟儿不怕人，在我们面前随意踱步、游泳、起飞。远处的白桥和中央电视塔在这样清澈湛蓝的湖水的衬托下显得格外熠熠生光。&lt;/p&gt;
-&lt;p&gt;公园里的coser很多，看到了芙莉莲和勇者，看到了好多粉色的头发的女生——有些我已经不认识了，我已经是个上古时代的二次元了，逐渐迈入现充了（）&lt;/p&gt;
-&lt;p&gt;我也拿起我的相机，我们同门四人的一张张照片也在一声声快门声中拍出来。在今天的玉渊潭的景色的衬托下，穿什么都青春洋溢。世界仿佛被蒙上了一层名为鲜艳青春的蒙版或者滤镜，湖蓝、天清、云白、树绿。&lt;/p&gt;
+&lt;p&gt;柳条刚刚抽出，还透着稚嫩，樱花却已经开得烂漫了。玉渊潭里的鸟儿不怕人，在我们面前随意踱步、游泳、起飞。远处的白桥和中央电视塔在这样清澈湛蓝的湖水的衬托下熠熠生光。公园里的coser很多，看到了芙莉莲和勇者，看到了好多粉色的头发的女生——有些我已经不认识了，我感觉我也没多大呀，但好像已经是个上古时代的二次元了。我逐渐迈入现充了（）&lt;/p&gt;
+&lt;p&gt;我也拿起我的相机，我们同门四人的一张张照片也在一声声快门声中被记录。在今天的玉渊潭的景色的衬托下，拍什么都明媚可人、青春洋溢。世界仿佛被蒙上了一层名为鲜艳青春的蒙版或者滤镜，湖蓝、天清、云白、树绿。&lt;/p&gt;
 
     &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css&#34;&gt;
     
