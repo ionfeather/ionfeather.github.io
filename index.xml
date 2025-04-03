@@ -123,17 +123,15 @@
         <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
         <description>&lt;h2 id=&#34;数据库&#34;&gt;数据库
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
-	width=&#34;2502&#34;
+	width=&#34;2352&#34;
 	height=&#34;3180&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu2638686459450584990.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu2423326594759818142.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu18234758191414288310.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu7155851171311699735.png 1024w&#34;
 	loading=&#34;lazy&#34;
-	
-		alt=&#34;数据库概览&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;78&#34;
-		data-flex-basis=&#34;188px&#34;
+		data-flex-grow=&#34;73&#34;
+		data-flex-basis=&#34;177px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;ttd&#34;&gt;TTD
@@ -169,7 +167,19 @@
 &lt;li&gt;&lt;code&gt;TARGNAME&lt;/code&gt;：靶点的具体名称。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;INDICATI&lt;/code&gt;：适应症，即药物被用于治疗的病症。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Disease entry&lt;/code&gt;：疾病条目，这里使用了 ICD-11 编码来表示具体的疾病。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态。&lt;br&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
+	width=&#34;2302&#34;
+	height=&#34;1356&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu7937312810054811596.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu14142116934737909694.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;407px&#34;
+	
+&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -449,7 +459,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;其他的如&lt;code&gt;./Target&lt;/code&gt;等数据也呈现如此结构。&lt;/p&gt;
+&lt;p&gt;其他的如&lt;code&gt;./Target&lt;/code&gt;、&lt;code&gt;./Commpound&lt;/code&gt;和&lt;code&gt;./Compound_3D&lt;/code&gt;等数据也呈现如此结构。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;dgidb&#34;&gt;DGIdb
 &lt;/h3&gt;&lt;ul&gt;
@@ -462,7 +472,19 @@
 &lt;li&gt;&lt;strong&gt;interactions.tsv&lt;/strong&gt;：存储所有药物-基因相互作用声明数据，包含不同药物与基因之间相互作用的信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;genes.tsv&lt;/strong&gt;：记录了基因声明相关数据，可能涵盖基因的基本信息，如基因名称、基因 ID、基因功能注释等内容。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;drugs.tsv&lt;/strong&gt;：存放药物声明数据，包括药物的名称、药物 ID、药物的基本属性、药理作用等信息。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;categories.tsv&lt;/strong&gt;：用于存储与数据分类相关的信息。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;categories.tsv&lt;/strong&gt;：用于存储与数据分类相关的信息。&lt;br&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.png&#34;
+	width=&#34;1636&#34;
+	height=&#34;632&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu11855892570173143832.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu12449518479273810901.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;258&#34;
+		data-flex-basis=&#34;621px&#34;
+	
+&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
