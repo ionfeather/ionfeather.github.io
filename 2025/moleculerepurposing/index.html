@@ -938,18 +938,20 @@
 <li>目录中的内容可以参考README文件。主要的部分可以见下图，组织时FASTA文件、SDF文件、HTML文件和TXT文件都有使用。数据可以加载到MySQL、PostgreSQL等数据库中。</li>
 <li>有官方的数据库结构图如下，主要分成
 <ul>
-<li><strong>化合物信息</strong>：主要以<strong>蓝色</strong>区域呈现，记录了化合物的结构、理化性质等，像分子式、分子量和二维结构这些数据，让我们能快速了解化合物基本特征，是药物研发的基础。</li>
-<li><strong>实验数据</strong>：用<strong>紫色</strong>区域表示，包含化合物与靶点相互作用的活性数据，还有实验条件，比如不同化合物对特定靶点的结合亲和力数值，以及实验采用的检测方法等，这对于评估化合物生物活性和作用机制很关键。</li>
-<li><strong>靶点和结合位点信息</strong>：<strong>红色</strong>区域代表这部分内容。靶点信息涉及蛋白质靶点的氨基酸序列、三维结构和功能分类，能帮我们确定药物研发方向；结合位点信息聚焦靶点与化合物结合的区域，包括氨基酸组成、空间结构和相互作用模式，对设计高亲和力和特异性的药物很有帮助。</li>
-<li><strong>药物代谢数据</strong>：<strong>浅绿色</strong>区域涵盖这部分，记录了药物在体内的代谢途径、产物和酶，通过这些数据，我们可以预测药物疗效、毒性以及药物之间的相互作用。</li>
-<li><strong>作用机制 / 药物注释</strong>：<strong>浅蓝色</strong>区域负责注释药物作用机制，关联化合物、靶点和生物效应，为药物研发和临床应用提供理论支持。</li>
-<li><strong>来源和已批准药物 / 农药数据</strong>：<strong>灰色</strong>区域中，来源信息保证数据可追溯，已批准药物 / 农药数据包含批准文号、适应症和生产厂家等，可用于药物监管、市场分析和对比研究。</li>
-<li><strong>常规信息</strong>：<strong>浅黄色</strong>区域存放数据库的版本号、更新时间等基础信息，方便我们了解数据库整体情况。<br>
+<li><strong>化合物信息</strong>：主要以<strong>蓝色</strong>区域呈现，记录了化合物的结构、理化性质等，像分子式、分子量和二维结构这些</li>
+<li><strong>实验数据</strong>：用<strong>紫色</strong>区域表示，包含化合物与靶点相互作用的活性数据，还有实验条件，比如不同化合物对特定靶点的结合亲和力数值，以及实验采用的检测方法等</li>
+<li><strong>靶点和结合位点信息</strong>：<strong>红色</strong>区域代表这部分内容。靶点信息涉及蛋白质靶点的氨基酸序列、三维结构和功能分类；结合位点信息聚焦靶点与化合物结合的区域，包括氨基酸组成、空间结构和相互作用模式</li>
+<li><strong>药物代谢数据</strong>：<strong>浅绿色</strong>区域涵盖这部分，记录了药物在体内的代谢途径、产物和酶——我们可以通过这部分预测药物疗效、毒性以及药物之间的相互作用。</li>
+<li><strong>作用机制 / 药物注释</strong>：<strong>浅蓝色</strong>区域负责注释药物作用机制，关联化合物、靶点和生物效应。</li>
+<li><strong>来源和已批准药物数据</strong>：<strong>灰色</strong>区域中，来源信息保证数据可追溯，已批准药物 数据包含批准文号、适应症和生产厂家等，这个应该是用来避免专利壁垒的，可以查看专利即将到期的药物。</li>
+<li><strong>常规信息</strong>：<strong>浅黄色</strong>区域存放数据库的版本号、更新时间等基础信息。<br>
 <img src="/2025/moleculerepurposing/assets/chembl_35_schema.png"
 	width="6139"
 	height="7557"
 	srcset="/2025/moleculerepurposing/assets/chembl_35_schema_hu9420762593170210785.png 480w, /2025/moleculerepurposing/assets/chembl_35_schema_hu12075595515165570555.png 1024w"
 	loading="lazy"
+	
+		alt="ChEMBL整体情况"
 	
 	
 		class="gallery-image" 
