@@ -1931,7 +1931,7 @@
 </description>
         </item>
         <item>
-        <title>搬运一些Shortcodes</title>
+        <title>博客探索 | 搬运一些Shortcodes</title>
         <link>https://ionfeather.github.io/2025/shortcodes/</link>
         <pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate>
         
@@ -3117,7 +3117,7 @@
 </description>
         </item>
         <item>
-        <title>使用Obsidian来写博客</title>
+        <title>博客探索 | 使用Obsidian来写博客</title>
         <link>https://ionfeather.github.io/2025/obsidian/</link>
         <pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate>
         
@@ -3154,12 +3154,12 @@
 </description>
         </item>
         <item>
-        <title>《动手学深度学习》</title>
+        <title>学习笔记 | 《动手学深度学习》</title>
         <link>https://ionfeather.github.io/2025/d2l-01/</link>
         <pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/d2l-01/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/cover.png" alt="Featured image of post 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
+        <description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/cover.png" alt="Featured image of post 学习笔记 | 《动手学深度学习》" /&gt;&lt;h2 id=&#34;全书结构&#34;&gt;全书结构
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542.png&#34;
 	width=&#34;574&#34;
 	height=&#34;438&#34;
@@ -3338,12 +3338,12 @@
 </description>
         </item>
         <item>
-        <title>虚拟环境配置操作记录</title>
+        <title>操作记录 | 虚拟环境配置操作记录</title>
         <link>https://ionfeather.github.io/2024/virtual-environment-config/</link>
         <pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2024/virtual-environment-config/cover.jpg" alt="Featured image of post 虚拟环境配置操作记录" /&gt;&lt;h2 id=&#34;虚拟环境配置经历&#34;&gt;虚拟环境配置经历
+        <description>&lt;img src="https://ionfeather.github.io/2024/virtual-environment-config/cover.jpg" alt="Featured image of post 操作记录 | 虚拟环境配置操作记录" /&gt;&lt;h2 id=&#34;虚拟环境配置经历&#34;&gt;虚拟环境配置经历
 &lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;
 &lt;p&gt;但是我一顿操作之后，原本配置好的环境现在也没办法使用了。此时我庆幸自己想到用&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件保存。但是在进行&lt;code&gt;pip install -r vllm_requirements.txt&lt;/code&gt;的时候，出现了报错的情况，竟然说里面有一个包的版本是yanked version（撤回版本），无法下载，给我气晕了。&lt;/p&gt;
 &lt;p&gt;吃一堑，长一智。配置好的环境就不要变了，应该另外复制一个环境，在复制的环境上进行修改。&lt;/p&gt;
@@ -3391,12 +3391,12 @@
 </description>
         </item>
         <item>
-        <title>LangChain学习笔记</title>
+        <title>学习笔记 | LangChain学习笔记</title>
         <link>https://ionfeather.github.io/2024/langchain-learning/</link>
         <pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2024/langchain-learning/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
+        <description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post 学习笔记 | LangChain学习笔记" /&gt;&lt;h2 id=&#34;为什么要学习langchain&#34;&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 
 &lt;div class=&#34;chat --other&#34;&gt;
