@@ -20,9 +20,9 @@
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;可用的模型&#34;&gt;可用的模型
-&lt;/h2&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
-&lt;h2 id=&#34;例子&#34;&gt;例子
+&lt;h3 id=&#34;可用的模型&#34;&gt;可用的模型
+&lt;/h3&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
+&lt;h2 id=&#34;阅读论文&#34;&gt;阅读论文
 &lt;/h2&gt;&lt;h3 id=&#34;artificial-intelligence-in-drug-development--nature-medicine&#34;&gt;Artificial intelligence in drug development | &lt;em&gt;nature medicine&lt;/em&gt;
 &lt;/h3&gt;&lt;p&gt;这是一篇综述，讲解了人工智能在药物发现中的应用取得了显著进展，特别是在靶点识别、虚拟筛选、新药设计（de novo design）、ADMET预测和合成规划等方面。&lt;/p&gt;
 &lt;p&gt;这里主要关注他讲的AI在药物重定位中的作用。&lt;/p&gt;
@@ -110,8 +110,12 @@
 &lt;h4 id=&#34;数据集-1&#34;&gt;数据集
 &lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chembl.gitbook.io/chembl-interface-documentation/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ChEMBL&lt;/a&gt;开放数据库。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;machine-learningenabled-virtual-screening-indicates-the-anti-tuberculosis-activity-of-aldoxorubicin-and-quarfloxin-with-verification-by-molecular-docking-molecular-dynamics-simulations-and-biological-evaluations--briefings-bioinf&#34;&gt;Machine learning–enabled virtual screening indicates the anti-tuberculosis activity of aldoxorubicin and quarfloxin with verification by molecular docking, molecular dynamics simulations, and biological evaluations | &lt;em&gt;Briefings Bioinf&lt;/em&gt;
-&lt;/h3&gt;&lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
+&lt;/h3&gt;&lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
+&lt;/h4&gt;&lt;p&gt;目前的抗结核药物一定程度上控制了结核病的传播，但耐药结核病的出现使得这些药物的疗效大打折扣。&lt;/p&gt;
+&lt;p&gt;虚拟筛选技术，为快速识别潜在的抗结核药物候选物提供了一种有效的手段。研究旨在通过结合多种机器学习和深度学习模型，开发一种虚拟筛选工作流程，以重新利用现有药物来对抗结核分枝杆菌，从而加速抗结核药物的发现进程。&lt;/p&gt;
+&lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;研究者首先从ChEMBL数据库中收集了大量已知的抗结核药物的生物活性数据，用于训练和验证多种机器学习和深度学习模型。这些模型包括XGBoost和图神经网络（GNNs），用于预测化合物的最小抑制浓度（MIC）。接着，研究者使用这些模型对DrugBank数据库中的11,576种化合物进行虚拟筛选，筛选出具有潜在抗结核活性的化合物。通过多步过滤和实验验证，最终确定了两种具有显著抗结核活性的化合物：aldoxorubicin和quarfloxi，为了进一步验证作用机制，研究者通过分子对接、分子动力学模拟和表面等离子共振实验，确认了它们与结核分枝杆菌DNA gyrase的直接结合。&lt;/p&gt;
 </description>
         </item>
@@ -125,7 +129,7 @@
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2352&#34;
 	height=&#34;3180&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu18234758191414288310.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu7155851171311699735.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_b2cef0980ff4ec10.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_1df85dd03c34786e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -171,7 +175,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2302&#34;
 	height=&#34;1356&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu7937312810054811596.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu14142116934737909694.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a04d204c9ca12156.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_dd48b28dfd14cd7c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -476,7 +480,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.png&#34;
 	width=&#34;1636&#34;
 	height=&#34;632&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu11855892570173143832.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu12449518479273810901.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_b5be2c0fe63c7eb8.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_46d8fe200a45204e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -696,7 +700,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema.png&#34;
 	width=&#34;6139&#34;
 	height=&#34;7557&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu9420762593170210785.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu12075595515165570555.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_12cf40ea010e7f50.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_5ff664ef9b0568fe.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ChEMBL整体情况&#34;
@@ -744,8 +748,7 @@
 &lt;li&gt;数据来源：由 BindingDB 从文献整理而来，相关文献的 DOI 是 10.1021/jm9602571，PMID 为 8784449，可据此追溯原始研究。&lt;/li&gt;
 &lt;li&gt;数据库交叉引用：PubChem CID 为 3009304，PubChem SID 为 483500124，方便在 PubChem 数据库中查找该配体更多信息。&lt;/li&gt;
 &lt;li&gt;蛋白质链信息：靶点含 1 条蛋白质链，其序列为 “PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNF”，相关 PDB ID 有 “1W5Y”“1W5X” 等多个，UniProt（SwissProt）相关信息显示，其推荐名称是 “Gag-Pol polyprotein”，Entry Name 为 “POL_HV1BR”，Primary ID 为 “P03367”。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -774,7 +777,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign.png&#34;
 	width=&#34;3096&#34;
 	height=&#34;2108&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu2137512081721432146.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu925266332075865825.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_7c5a69c7fd0a71dc.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_19797f0e34281d11.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AI Assist Drug Design&#34;
@@ -1054,7 +1057,7 @@
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419.png&#34;
 	width=&#34;696&#34;
 	height=&#34;322&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu18351550403094909478.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu9993291082936917791.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_47c88580c721a8de.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_5733e9ac51df3b82.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;从二维分子如何生成三维分子&#34;
@@ -1111,7 +1114,7 @@
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737.png&#34;
 	width=&#34;928&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu8051220150717452146.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu6176498962329562933.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_7e48d2963d2d3ff2.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_17ab1f6ed7d43097.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1129,7 +1132,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557.png&#34;
 	width=&#34;726&#34;
 	height=&#34;273&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu5862395023633336902.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu3364523869838845425.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_6c67092b4982dd19.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_6895cd912f11c2f3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1145,7 +1148,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757.png&#34;
 	width=&#34;779&#34;
 	height=&#34;555&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu17658367537735169804.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu16928247782667485400.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_fc4ad200fb0cf1f3.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_7688132e18b037f2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1156,8 +1159,7 @@
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这里SHAPE2MOL将问题形状到分子的生成问题转换为了图像到序列的生成问题。也就是输入3D图像，给出一个序列，表示3D分子。&lt;/p&gt;
-&lt;p&gt;内部结构是3D拓展后的ViT结构。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;内部结构是3D拓展后的ViT结构。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-1&#34;&gt;优势
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;减少数据和模拟依赖&lt;/strong&gt;：DESERT 不严重依赖对接模拟，仅在后期可选使用对接进行后处理，同时抛弃了昂贵的实验数据，通过在大规模分子数据库（如 ZINC 数据库）上训练模型，降低了对实验数据的需求，避免了过拟合问题。&lt;/li&gt;
@@ -1204,22 +1206,20 @@
 &lt;ul&gt;
 &lt;li&gt;如ProtTrans和ESM-1b将单个蛋白质序列作为输入，使用Transformer架构进行预训练。&lt;/li&gt;
 &lt;li&gt;MSA-Transformer/MSA-1b模型通过多序列比对（MSA）作为输入。在结构预测方面，该模型优于 ESM-1b，这表明进化信息有助于蛋白质表征学习。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;预训练抗体语言模型PALMs：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;AntiBERTy：提出首个抗体特异性语言模型，对在OAS数据库中的5.58亿条天然抗体序列使用Transformer架构进行预训练。&lt;/li&gt;
 &lt;li&gt;Abalang-H/L：恢复抗体序列中缺失的残基上的迁移学习。&lt;/li&gt;
 &lt;li&gt;AntiBERTa：在OAS数据库上预训练，并进行微调以用于抗原结合位点位置预测。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;核心方法-2&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;提出了&lt;strong&gt;抗体理解评估（AnTibody Understanding Evaluation，ATUE）基准&lt;/strong&gt;和包含特定进化信息的&lt;strong&gt;EATLM模型&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648.png&#34;
 	width=&#34;1535&#34;
 	height=&#34;477&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu1490668859908342193.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu8321713985693931372.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_c03e2673fa3ed9e6.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_d17a54524050df16.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1332,7 +1332,6 @@
 &lt;/ol&gt;
 
 &lt;/details&gt;
-
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-3&#34;&gt;优势
 &lt;/h3&gt;&lt;ul&gt;
@@ -1375,7 +1374,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443.png&#34;
 	width=&#34;1211&#34;
 	height=&#34;231&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu4963354309737042357.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu6852598334630450467.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_eb530aaafa37be71.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_ceb7df11a1227dd5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1399,7 +1398,6 @@
 &lt;/ul&gt;
 
 &lt;/details&gt;
-
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-4&#34;&gt;优势
 &lt;/h3&gt;&lt;p&gt;与同类方法相比，HierDiff 能保持非自回归方法的全局建模特性，显著降低寻找可连接片段的复杂度，有效避免片段冲突，生成的分子更具现实性和药物样属性，在多个评估指标上优于现有方法。&lt;/p&gt;
@@ -1528,8 +1526,7 @@
 &lt;ul&gt;
 &lt;li&gt;假设：数据样本的信息应沿着潜变量的马尔科夫链逐步增加，且信息变化尽可能平滑。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;引入噪声变量的潜变量模型&lt;/strong&gt;，通过优化变分下界学习概率分布，在&lt;strong&gt;参数空间&lt;/strong&gt;操作以保证信息变化平滑&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;统一概率建模&lt;/strong&gt;
 &lt;ul&gt;
@@ -1582,7 +1579,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720.png&#34;
 	width=&#34;1062&#34;
 	height=&#34;672&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu17978642908914668322.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu6704770744939440755.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_1b902d3b0bdb3a25.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_da52288dde63f8c1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1624,8 +1621,7 @@
 &lt;h3 id=&#34;解决的问题-9&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;现有分子表示学习（MRL）模型在学习多视图分子表示时存在不足&lt;/strong&gt;。难以从化学结构、生物医学文本和知识图谱等异构源中有效捕捉分子知识，且无法充分利用不同视图间的共识和互补信息，不能很好地适应不同应用场景。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;挑战-9&#34;&gt;挑战
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;现有分子表示学习（MRL） 模型需将视图信息&lt;strong&gt;显式&lt;/strong&gt;融入表示中，以适应广泛应用，但此前模型多通过 “包装文本” 或微调隐式整合，影响对不同视图知识关系的理解&lt;/li&gt;
@@ -1635,7 +1631,7 @@
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852.png&#34;
 	width=&#34;1548&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu14974698368279454845.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu3392788445757651834.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_22d4773d0f4f744c.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_5677115ae1a6f8b9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1736,8 +1732,7 @@
 &lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;靶向药物分子设计&lt;/strong&gt;方向中的&lt;strong&gt;基于结构的药物设计（SBDD）&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-10&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;当前基于SBDD生成模型在生成分子时，常出现不符合要求的情况。&lt;/p&gt;
 &lt;p&gt;生成的分子不能同时满足高亲和力、良好的类药性质和合理的 3D 构象这几个关键标准，产生假阳性结果，阻碍了 SBDD 模型在实际中的应用 。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-10&#34;&gt;挑战
@@ -1870,7 +1865,7 @@
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620.png&#34;
 	width=&#34;1494&#34;
 	height=&#34;520&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu7411098140690200758.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu10126237101038066221.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_3841c968d52cfb5c.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_657a213ac5e44cb1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;MOL-AE框架&#34;

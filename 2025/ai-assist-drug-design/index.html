@@ -87,7 +87,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu5957396180509793543.jpg" width="300"
+                        <img src="/img/avatar_hu_7d702df343b40e37.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -538,7 +538,7 @@
 <p><img src="/2025/ai-assist-drug-design/assets/AIAssistDrugDesign.png"
 	width="3096"
 	height="2108"
-	srcset="/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu2137512081721432146.png 480w, /2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu925266332075865825.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_7c5a69c7fd0a71dc.png 480w, /2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_19797f0e34281d11.png 1024w"
 	loading="lazy"
 	
 		alt="AI Assist Drug Design"
@@ -818,7 +818,7 @@
 </h4><p><img src="/2025/ai-assist-drug-design/assets/20250302164419.png"
 	width="696"
 	height="322"
-	srcset="/2025/ai-assist-drug-design/assets/20250302164419_hu18351550403094909478.png 480w, /2025/ai-assist-drug-design/assets/20250302164419_hu9993291082936917791.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250302164419_hu_47c88580c721a8de.png 480w, /2025/ai-assist-drug-design/assets/20250302164419_hu_5733e9ac51df3b82.png 1024w"
 	loading="lazy"
 	
 		alt="从二维分子如何生成三维分子"
@@ -875,7 +875,7 @@
 </h3><p><img src="/2025/ai-assist-drug-design/assets/20250303131737.png"
 	width="928"
 	height="270"
-	srcset="/2025/ai-assist-drug-design/assets/20250303131737_hu8051220150717452146.png 480w, /2025/ai-assist-drug-design/assets/20250303131737_hu6176498962329562933.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250303131737_hu_7e48d2963d2d3ff2.png 480w, /2025/ai-assist-drug-design/assets/20250303131737_hu_17ab1f6ed7d43097.png 1024w"
 	loading="lazy"
 	
 	
@@ -893,7 +893,7 @@
 <img src="/2025/ai-assist-drug-design/assets/20250303134557.png"
 	width="726"
 	height="273"
-	srcset="/2025/ai-assist-drug-design/assets/20250303134557_hu5862395023633336902.png 480w, /2025/ai-assist-drug-design/assets/20250303134557_hu3364523869838845425.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250303134557_hu_6c67092b4982dd19.png 480w, /2025/ai-assist-drug-design/assets/20250303134557_hu_6895cd912f11c2f3.png 1024w"
 	loading="lazy"
 	
 	
@@ -909,7 +909,7 @@
 <p><img src="/2025/ai-assist-drug-design/assets/20250303132757.png"
 	width="779"
 	height="555"
-	srcset="/2025/ai-assist-drug-design/assets/20250303132757_hu17658367537735169804.png 480w, /2025/ai-assist-drug-design/assets/20250303132757_hu16928247782667485400.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250303132757_hu_fc4ad200fb0cf1f3.png 480w, /2025/ai-assist-drug-design/assets/20250303132757_hu_7688132e18b037f2.png 1024w"
 	loading="lazy"
 	
 	
@@ -920,8 +920,7 @@
 ></p>
 <blockquote>
 <p>这里SHAPE2MOL将问题形状到分子的生成问题转换为了图像到序列的生成问题。也就是输入3D图像，给出一个序列，表示3D分子。</p>
-<p>内部结构是3D拓展后的ViT结构。</p>
-</blockquote>
+<p>内部结构是3D拓展后的ViT结构。</p></blockquote>
 <h3 id="优势-1">优势
 </h3><ul>
 <li><strong>减少数据和模拟依赖</strong>：DESERT 不严重依赖对接模拟，仅在后期可选使用对接进行后处理，同时抛弃了昂贵的实验数据，通过在大规模分子数据库（如 ZINC 数据库）上训练模型，降低了对实验数据的需求，避免了过拟合问题。</li>
@@ -968,22 +967,20 @@
 <ul>
 <li>如ProtTrans和ESM-1b将单个蛋白质序列作为输入，使用Transformer架构进行预训练。</li>
 <li>MSA-Transformer/MSA-1b模型通过多序列比对（MSA）作为输入。在结构预测方面，该模型优于 ESM-1b，这表明进化信息有助于蛋白质表征学习。</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <blockquote>
 <p><strong>预训练抗体语言模型PALMs：</strong></p>
 <ul>
 <li>AntiBERTy：提出首个抗体特异性语言模型，对在OAS数据库中的5.58亿条天然抗体序列使用Transformer架构进行预训练。</li>
 <li>Abalang-H/L：恢复抗体序列中缺失的残基上的迁移学习。</li>
 <li>AntiBERTa：在OAS数据库上预训练，并进行微调以用于抗原结合位点位置预测。</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <h3 id="核心方法-2">核心方法
 </h3><p>提出了<strong>抗体理解评估（AnTibody Understanding Evaluation，ATUE）基准</strong>和包含特定进化信息的<strong>EATLM模型</strong>。</p>
 <p><img src="/2025/ai-assist-drug-design/assets/20250307170648.png"
 	width="1535"
 	height="477"
-	srcset="/2025/ai-assist-drug-design/assets/20250307170648_hu1490668859908342193.png 480w, /2025/ai-assist-drug-design/assets/20250307170648_hu8321713985693931372.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250307170648_hu_c03e2673fa3ed9e6.png 480w, /2025/ai-assist-drug-design/assets/20250307170648_hu_d17a54524050df16.png 1024w"
 	loading="lazy"
 	
 	
@@ -1096,7 +1093,6 @@
 </ol>
 
 </details>
-
 </blockquote>
 <h3 id="优势-3">优势
 </h3><ul>
@@ -1139,7 +1135,7 @@
 <img src="/2025/ai-assist-drug-design/assets/20250307201443.png"
 	width="1211"
 	height="231"
-	srcset="/2025/ai-assist-drug-design/assets/20250307201443_hu4963354309737042357.png 480w, /2025/ai-assist-drug-design/assets/20250307201443_hu6852598334630450467.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250307201443_hu_eb530aaafa37be71.png 480w, /2025/ai-assist-drug-design/assets/20250307201443_hu_ceb7df11a1227dd5.png 1024w"
 	loading="lazy"
 	
 	
@@ -1163,7 +1159,6 @@
 </ul>
 
 </details>
-
 </blockquote>
 <h3 id="优势-4">优势
 </h3><p>与同类方法相比，HierDiff 能保持非自回归方法的全局建模特性，显著降低寻找可连接片段的复杂度，有效避免片段冲突，生成的分子更具现实性和药物样属性，在多个评估指标上优于现有方法。</p>
@@ -1292,8 +1287,7 @@
 <ul>
 <li>假设：数据样本的信息应沿着潜变量的马尔科夫链逐步增加，且信息变化尽可能平滑。</li>
 <li>基于<strong>引入噪声变量的潜变量模型</strong>，通过优化变分下界学习概率分布，在<strong>参数空间</strong>操作以保证信息变化平滑</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <ul>
 <li><strong>统一概率建模</strong>
 <ul>
@@ -1346,7 +1340,7 @@
 <img src="/2025/ai-assist-drug-design/assets/20250307214720.png"
 	width="1062"
 	height="672"
-	srcset="/2025/ai-assist-drug-design/assets/20250307214720_hu17978642908914668322.png 480w, /2025/ai-assist-drug-design/assets/20250307214720_hu6704770744939440755.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250307214720_hu_1b902d3b0bdb3a25.png 480w, /2025/ai-assist-drug-design/assets/20250307214720_hu_da52288dde63f8c1.png 1024w"
 	loading="lazy"
 	
 	
@@ -1388,8 +1382,7 @@
 <h3 id="解决的问题-9">解决的问题
 </h3><p><strong>现有分子表示学习（MRL）模型在学习多视图分子表示时存在不足</strong>。难以从化学结构、生物医学文本和知识图谱等异构源中有效捕捉分子知识，且无法充分利用不同视图间的共识和互补信息，不能很好地适应不同应用场景。</p>
 <blockquote>
-<p>多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。</p>
-</blockquote>
+<p>多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。</p></blockquote>
 <h3 id="挑战-9">挑战
 </h3><ul>
 <li>现有分子表示学习（MRL） 模型需将视图信息<strong>显式</strong>融入表示中，以适应广泛应用，但此前模型多通过 “包装文本” 或微调隐式整合，影响对不同视图知识关系的理解</li>
@@ -1399,7 +1392,7 @@
 </h3><p><img src="/2025/ai-assist-drug-design/assets/20250306231852.png"
 	width="1548"
 	height="738"
-	srcset="/2025/ai-assist-drug-design/assets/20250306231852_hu14974698368279454845.png 480w, /2025/ai-assist-drug-design/assets/20250306231852_hu3392788445757651834.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250306231852_hu_22d4773d0f4f744c.png 480w, /2025/ai-assist-drug-design/assets/20250306231852_hu_5677115ae1a6f8b9.png 1024w"
 	loading="lazy"
 	
 	
@@ -1500,8 +1493,7 @@
 </h2><p>这篇文章属于<strong>分子生成</strong>领域的<strong>靶向药物分子设计</strong>方向中的<strong>基于结构的药物设计（SBDD）</strong>。</p>
 <h3 id="解决的问题-10">解决的问题
 </h3><blockquote>
-<p>靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。</p>
-</blockquote>
+<p>靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。</p></blockquote>
 <p>当前基于SBDD生成模型在生成分子时，常出现不符合要求的情况。</p>
 <p>生成的分子不能同时满足高亲和力、良好的类药性质和合理的 3D 构象这几个关键标准，产生假阳性结果，阻碍了 SBDD 模型在实际中的应用 。</p>
 <h3 id="挑战-10">挑战
@@ -1634,7 +1626,7 @@
 </h3><p><img src="/2025/ai-assist-drug-design/assets/20250307133620.png"
 	width="1494"
 	height="520"
-	srcset="/2025/ai-assist-drug-design/assets/20250307133620_hu7411098140690200758.png 480w, /2025/ai-assist-drug-design/assets/20250307133620_hu10126237101038066221.png 1024w"
+	srcset="/2025/ai-assist-drug-design/assets/20250307133620_hu_3841c968d52cfb5c.png 480w, /2025/ai-assist-drug-design/assets/20250307133620_hu_657a213ac5e44cb1.png 1024w"
 	loading="lazy"
 	
 		alt="MOL-AE框架"
