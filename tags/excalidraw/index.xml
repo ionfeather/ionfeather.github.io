@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Excalidraw on ionfeather&#39;Log</title>
+        <link>http://localhost:1313/tags/excalidraw/</link>
+        <description>Recent content in Excalidraw on ionfeather&#39;Log</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>ionfeather&#39;Log</copyright>
+        <lastBuildDate>Thu, 05 Jun 2025 21:24:53 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/excalidraw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AIDD | 基于网络的方法</title>
+        <link>http://localhost:1313/2025/aidd-net/</link>
+        <pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate>
+        
+        <guid>http://localhost:1313/2025/aidd-net/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

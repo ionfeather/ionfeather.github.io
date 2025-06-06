@@ -7,12 +7,93 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Fri, 23 May 2025 22:56:23 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>AIDD | Drug Repurposing调研</title>
-        <link>https://ionfeather.github.io/2025/aidd-drug-repurposing/</link>
+        <lastBuildDate>Thu, 05 Jun 2025 21:24:53 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AIDR | 基于网络的方法</title>
+        <link>https://ionfeather.github.io/2025/aidr-network-method/</link>
+        <pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/aidr-network-method/</guid>
+        <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
+&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class=&#34;link&#34; href=&#34;https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;表示图&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777.png&#34;
+	width=&#34;788&#34;
+	height=&#34;788&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_ad0870a71572a414.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_eae782122bf3141.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;异构网络表示图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;其中，绿色节点表示蛋白质、红色节点表示药物、蓝色节点表示疾病。这可以看成一个三层架构。网络可以具有多种类型的节点和多层架构。同类型节点之间的实线表示它们之间存在一定的关系。以药物层为例，关系类型可以如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;药物之间的结构相似性&lt;/li&gt;
+&lt;li&gt;两种药物共享一个相同的靶点&lt;/li&gt;
+&lt;li&gt;两种药物有协同作用或副作用&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;虚线的双箭头线表示两种不同类型的节点之间的交互关系。同样的原理也适用于药物层以外的其他层。而右边的黑色实线箭头指的是三种类型节点的大概图。&lt;/p&gt;
+&lt;p&gt;许多机器学习算法和神经网络算法都可以以这种异构网络作为数据的载体，例如随机游走、图神经网络等。异构网络将药物重定位任务带到了另一个层次，可以更高效地提取输入实体的特征并将其固定在一定维度上。&lt;/p&gt;
+&lt;p&gt;对于基于网络的AIDR方法，参考&lt;a class=&#34;link&#34; href=&#34;https://pmc.ncbi.nlm.nih.gov/articles/PMC9599692/#sec2-biomolecules-12-01497&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Drug-Disease Association Prediction Using Heterogeneous Networks for Computational Drug Repositioning&lt;/a&gt;，将基于网络的AIDR方法分成三种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图挖掘&lt;/li&gt;
+&lt;li&gt;矩阵分解/填充&lt;/li&gt;
+&lt;li&gt;深度学习&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543.png&#34;
+	width=&#34;1425&#34;
+	height=&#34;823&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_7324ec1f3e8ee78d.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_52415c25218cdf2e.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;基于网络的方法预测药物-疾病关联的一般过程的示意图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;173&#34;
+		data-flex-basis=&#34;415px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里有一个简单的思维导图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431.png&#34;
+	width=&#34;2000&#34;
+	height=&#34;954&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_dbdb1e5dbbfafc86.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_296037e0f01ea1a7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;基于网络的方法&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;503px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;图挖掘算法&#34;&gt;图挖掘算法
+&lt;/h2&gt;&lt;h2 id=&#34;矩阵分解填充&#34;&gt;矩阵分解/填充
+&lt;/h2&gt;&lt;h2 id=&#34;深度学习&#34;&gt;深度学习
+&lt;/h2&gt;</description>
+        </item>
+        <item>
+        <title>芒种 | 时间像是仓鼠轮子越跑越快</title>
+        <link>https://ionfeather.github.io/2025/grain-in-beard/</link>
+        <pubDate>Tue, 03 Jun 2025 12:41:41 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/grain-in-beard/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>AIDR | 方向调研</title>
+        <link>https://ionfeather.github.io/2025/aidr/</link>
         <pubDate>Fri, 23 May 2025 22:56:23 +0800</pubDate>
         
-        <guid>https://ionfeather.github.io/2025/aidd-drug-repurposing/</guid>
+        <guid>https://ionfeather.github.io/2025/aidr/</guid>
         <description>&lt;h2 id=&#34;综述&#34;&gt;综述
 &lt;/h2&gt;&lt;p&gt;打算先看一下有哪些综述，先了解一下整个工作的图景。&lt;/p&gt;
 &lt;h2 id=&#34;会议&#34;&gt;会议
@@ -22,10 +103,10 @@
 &lt;p&gt;我大概介绍了一下我阅读的 &lt;a class=&#34;link&#34; href=&#34;https://www.intechopen.com/books/1003850&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Repurposed Drugs - Current State and Future Perspectives | IntechOpen&lt;/a&gt;，这是一本书，其中的&lt;a class=&#34;link&#34; href=&#34;https://www.intechopen.com/chapters/1193584&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;第三章&lt;/a&gt;感觉非常有借鉴意义。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221515243.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243.png&#34;
 	width=&#34;1310&#34;
 	height=&#34;1125&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_cf6751d684ada54a.png 480w, https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_43cb91797f949dfd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_cf6751d684ada54a.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_43cb91797f949dfd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AIDD的主要数据库&#34;
@@ -36,10 +117,10 @@
 		data-flex-basis=&#34;279px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221559913.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913.png&#34;
 	width=&#34;1784&#34;
 	height=&#34;887&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_b046c09ba9266aba.png 480w, https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_92e21c7a619529c1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_b046c09ba9266aba.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_92e21c7a619529c1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AIDD的主要方法&#34;
@@ -60,7 +141,7 @@
 &lt;/h3&gt;&lt;p&gt;阅读的文献为：&lt;a class=&#34;link&#34; href=&#34;https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/advs.202411325&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Applications of Artificial Intelligence in Drug Repurposing - Wan - 2025 - Advanced Science - Wiley Online Library&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;这是师妹做的思维导图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidd-drug-repurposing/assets/2025/05-24-AIDD/index/IMG-20250524215614766.svg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524215614766.svg&#34;
 	
 	
 	
@@ -85,12 +166,12 @@
 </description>
         </item>
         <item>
-        <title>小满 | 时间一晃而过，夏天已然到来</title>
+        <title>小满 | 春天一晃而过，夏天已然到来</title>
         <link>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</link>
         <pubDate>Wed, 21 May 2025 20:34:06 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2025/lesser-fullness-of-grain/cover.jpg" alt="Featured image of post 小满 | 时间一晃而过，夏天已然到来" /&gt;&lt;p&gt;好久没写博客了，错过了立夏和谷雨。沉迷拍照和发朋友圈，博客大业被落下了——仔细看一下照片目录里：郁金香、济南旅游、运动会、国家植物园、雁栖湖、广东旅游、蔷薇花、China P&amp;amp;E展览&amp;hellip;事情好像变得不妙，博客写完这些好像有点费劲。&lt;/p&gt;
+        <description>&lt;img src="https://ionfeather.github.io/2025/lesser-fullness-of-grain/cover.jpg" alt="Featured image of post 小满 | 春天一晃而过，夏天已然到来" /&gt;&lt;p&gt;好久没写博客了，错过了立夏和谷雨。沉迷拍照和发朋友圈，博客大业被落下了——仔细看一下照片目录里：郁金香、济南旅游、运动会、国家植物园、雁栖湖、广东旅游、蔷薇花、China P&amp;amp;E展览&amp;hellip;事情好像变得不妙，博客写完这些好像有点费劲。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -216,7 +297,7 @@
 </description>
         </item>
         <item>
-        <title>论文阅读 | Molecule Repurposing-2</title>
+        <title>AIDR | 综述与论文</title>
         <link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link>
         <pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate>
         
@@ -328,7 +409,7 @@
 </description>
         </item>
         <item>
-        <title>论文阅读 | Molecule Repurposing</title>
+        <title>AIDR | 数据库探索</title>
         <link>https://ionfeather.github.io/2025/moleculerepurposing/</link>
         <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
         
