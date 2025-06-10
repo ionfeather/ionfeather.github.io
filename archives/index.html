@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/archives/'>
 
-<link rel="stylesheet" href="/scss/style.min.efcb83c785a39c3dcb78eea2ff74783bafaaac3e95c5277b0f95de30826b14ba.css"><meta property='og:title' content="归档">
+<link rel="stylesheet" href="/scss/style.min.0a3cf2626c3cbf1fc500b5d1c816af098ddc5800f824ef5c8cee932597e961c7.css"><meta property='og:title' content="归档">
 <meta property='og:description' content="">
 <meta property='og:url' content='https://ionfeather.github.io/archives/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -268,10 +268,10 @@
             
 
                 
-                    <div id="dark-mode-toggle">
+                    <span id="dark-mode-toggle">
                         <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left"   width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
                         <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-toggle-right"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
-                    </div>
+                    </span>
                 
                 
             </ol>
@@ -386,6 +386,81 @@
         
     </header>
 
+
+    
+    <div class="cafe-status-wrapper">
+        <div class="note__item">
+ <div class="note__day">一些碎碎念</div>
+ <div class="note__list" style="font-size: 80%;">
+ 
+ <details open class="mumble">
+     <summary>叽里咕噜，歪比巴卜</summary>
+
+
+
+ <div id="feed-reader"></div>
+ <script>
+     
+             const feedURL = 'https://status.cafe/users/ionfeather.atom';
+
+             function timeAgo(publishedDate) {
+                 const now = new Date();
+                 const published = new Date(publishedDate);
+                 const diff = now - published;
+
+                 const seconds = Math.floor(diff / 1000);
+                 const minutes = Math.floor(seconds / 60);
+                 const hours = Math.floor(minutes / 60);
+                 const days = Math.floor(hours / 24);
+
+                 if (days > 0) {
+                     return `${days} day${days > 1 ? 's' : ''} ago`;
+                 } else if (hours > 0) {
+                     return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+                 } else if (minutes > 0) {
+                     return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+                 } else {
+                     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+                 }
+             }
+
+             fetch(feedURL)
+                 .then(response => response.text())
+                 .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+                 .then(data => {
+                     const entries = data.querySelectorAll("entry");
+                     let html = ``;
+                     entries.forEach(el => {
+                         let rawTitle = el.querySelector("title").textContent.trim();
+                         let emojiMatch = rawTitle.match(/[\p{Emoji}]/gu);
+                         let emoji = emojiMatch ? emojiMatch.join('').replace(/[0-9]+$/, '') : '';
+
+
+                         let content = el.querySelector("content").textContent.trim();
+                         let publishedDate = el.querySelector("published").innerHTML;
+                         let relativeTime = timeAgo(publishedDate);
+
+                         html += `
+                             <div class="statuscafe-entry">
+                                 <p class="statuscafe-username">
+                                     <span class="status-meta">
+                                     <span class="mumble-time">${relativeTime}</span>
+                                     <span class="mumble-title">${emoji} </span>
+                                   </span>
+                                   </p>
+                                 <p class="statuscafe-content">${content}</p>
+
+                             </div>
+                         `;
+                     });
+                     document.getElementById("feed-reader").innerHTML = html;
+                 });
+         </script>
+ </details>
+ </div>
+ </div>
+    </div>
+    
     
     
     
@@ -395,6 +470,17 @@
     <div class="archives-group" id="2025">
         <h2 class="archives-date section-title"><a href="/archives/#2025">2025</a></h2>
         <div class="article-list--compact">
+            
+                <article>
+    <a href="/2025/rbdr/">
+        <div class="article-details">
+            <h2 class="article-title">AIDR | Reasoning Based Drug Repurposing</h2>
+            <footer class="article-time">
+                <time datetime='2025-06-10T14:24:22&#43;08:00'>2025-06-10</time>
+            </footer>
+        </div>
+    </a>
+</article>
             
                 <article>
     <a href="/2025/aidr-network-method/">
