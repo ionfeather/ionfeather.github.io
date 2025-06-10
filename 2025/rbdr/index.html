@@ -312,6 +312,25 @@
     <li><a href="#相关论文调研">相关论文调研</a>
       <ol>
         <li><a href="#drugrealign">DrugReAlign</a></li>
+        <li><a href="#llm-dda">LLM-DDA</a>
+          <ol>
+            <li><a href="#解决的问题">解决的问题</a></li>
+            <li><a href="#面临挑战">面临挑战</a></li>
+            <li><a href="#核心方法">核心方法</a></li>
+            <li><a href="#数据集">数据集</a></li>
+            <li><a href="#结果">结果</a></li>
+          </ol>
+        </li>
+        <li><a href="#llm进行阴性数据标注">LLM进行阴性数据标注</a>
+          <ol>
+            <li><a href="#解决的问题-1">解决的问题</a></li>
+            <li><a href="#面临的挑战">面临的挑战</a></li>
+            <li><a href="#核心方法-1">核心方法</a></li>
+            <li><a href="#研究结果">研究结果</a></li>
+            <li><a href="#1-训练集表现图-a">1. 训练集表现（图 A）：</a></li>
+            <li><a href="#2-测试集表现图-b">2. 测试集表现（图 B）：</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -378,7 +397,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -397,8 +416,10 @@
 </h2><h3 id="创新点">创新点
 </h3><p>传统方法基于已有知识库和药物/病理知识，存在严重的数据稀疏问题，基于大模型推理，形成新的药物知识和关联，从而缓解数据稀疏问题，提升repurpose的效果</p>
 <h3 id="action">Action
-</h3><p><strong>week1:</strong> 相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，<strong>找出可复现的工作</strong></p>
-<p><strong>week2:</strong> <strong>找出可复现的工作（上周遗留）</strong>， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？</p>
+</h3><p>week1</p>
+<p>相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，<strong>找出可复现的工作</strong>。</p>
+<p>week2</p>
+<p><strong>找出可复现的工作（上周遗留）</strong>， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？</p>
 <h2 id="相关论文调研">相关论文调研
 </h2><p>调研的时候，应该有这么几个目标：</p>
 <ol>
@@ -411,6 +432,270 @@
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/"  target="_blank" rel="noopener"
     >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p></blockquote>
+<h3 id="llm-dda">LLM-DDA
+</h3><blockquote>
+<p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/"  target="_blank" rel="noopener"
+    >Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed</a></p></blockquote>
+<h4 id="解决的问题">解决的问题
+</h4><p>现有图神经网络（GNN）方法过度依赖网络拓扑结构，受限于不完整、含噪声的网络数据，且忽略生物医学领域丰富知识的问题。通过整合大语言模型（LLM）推断的知识表示，提升 DDA 预测的准确性和可靠性。</p>
+<h4 id="面临挑战">面临挑战
+</h4><ul>
+<li>数据层面：传统GNN方法以来药物-疾病异构网络存在稀疏性和标签不平衡的问题</li>
+<li>模型层面：现有方法难以捕捉复杂关联</li>
+<li>知识利用：LLM生成的离散文本如何转化为适合GNN推理的连续数值表示，并设计高效融合架构</li>
+</ul>
+<h4 id="核心方法">核心方法
+</h4><p><img src="/2025/rbdr/assets/20250610205120.png"
+	width="6581"
+	height="4831"
+	srcset="/2025/rbdr/assets/20250610205120_hu_6c6d8334202a82d6.png 480w, /2025/rbdr/assets/20250610205120_hu_c9f818906ad62097.png 1024w"
+	loading="lazy"
+	
+		alt="流程图"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
+	
+></p>
+<blockquote>
+<p>TL;DR：关键在于<strong>知识挖掘（LLM 提示）→ 语义编码（嵌入生成）→ 图模型融合（关联预测）</strong></p>
+<p>Step1：构建异质网络</p>
+<p>Step2：利用LLM的知识来拓展潜在知识</p>
+<p>Step3：基于LLM的嵌入生成</p>
+<p>Step4：构建LLM-DDA模型</p></blockquote>
+<p><strong>一、药物 - 疾病异质网络构建（Drug - disease heterogeneous network construction）</strong></p>
+<ul>
+<li><strong>数据来源</strong>：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。</li>
+<li><strong>构建逻辑</strong>：
+<ul>
+<li>先计算 <strong>药物 - 药物、疾病 - 疾病的成对相似度（Pairwise similarities）</strong>（如化学结构、基因功能相似性 ）。</li>
+<li>再结合已知 <strong>药物 - 疾病关联（Drug - disease associations）</strong> ，构建成包含药物、疾病节点，以及相似度、关联关系边的<strong>异质图网络</strong> ，为后续分析提供拓扑结构基础。</li>
+</ul>
+</li>
+</ul>
+<p><strong>二、零样本提示工程（Zero - shot prompt engineering）</strong></p>
+<ul>
+<li><strong>核心动作</strong>：设计 <strong>基于化学生物特征的提示模板（Chemobiomedical characteristics - based prompt template design）</strong> ，把药物 / 疾病的专业属性（如靶点、作用通路、临床特征等 ）转化为大语言模型（LLM）可理解的指令。</li>
+<li><strong>功能价值</strong>：借助 GPT - 4 强大的知识推理能力，<strong>生成目标药物 / 疾病的详细描述（Generated description for query drug/disease entity）</strong> ，挖掘数据库外的潜在知识关联，弥补传统数据驱动方法的知识缺口。</li>
+</ul>
+<p><strong>三、基于 LLM 的嵌入生成（LLM - based embedding generation）</strong></p>
+<ul>
+<li><strong>双模型进行嵌入生成</strong>：
+<ul>
+<li>用 <strong>ChatGPT - 4 Turbo</strong>（通用大模型 ）、<strong>BioBERTpt</strong>（生物医学专用预训练模型 ），对 GPT - 4 生成的文本描述做编码。</li>
+<li>输出 <strong>LLM 嵌入（LLM embeddings）</strong> ，把生物医学语义信息转化为数值向量，让后续图模型能 “读懂” 语言知识。</li>
+</ul>
+</li>
+</ul>
+<p><strong>四、LLM - DDA 模型构建（LLM - DDA model construction）</strong></p>
+<ul>
+<li><strong>多架构覆盖</strong>：提供 3 种融合策略，适配不同场景需求：
+<ul>
+<li><strong>LLM - DDA (node feat)</strong>：直接把 LLM 嵌入作为节点特征，融入传统图神经网络，轻量且易部署。</li>
+<li><strong>LLM - DDA (graph - graph)</strong>：双图网络并行，分别处理 LLM 嵌入图与原始异质图，再融合结果，强化多源信息互补。</li>
+<li><strong>LLM - DDA (graph - ae)</strong>：结合图自动编码器（Graph - AE ），优化嵌入特征与拓扑结构的融合，适合挖掘深层关联。</li>
+</ul>
+</li>
+<li><strong>输入衔接</strong>：模型输入关联两部分：
+<ul>
+<li><strong>Similarity features</strong>（相似度特征 ）：来自第一步异质网络的拓扑计算。</li>
+<li><strong>Adjacency matrix</strong>（邻接矩阵 ）：刻画药物 - 疾病的关联结构，让模型同时学习知识语义（LLM 嵌入 ）和网络拓扑（图结构 ），提升药物 - 疾病关联预测精度。</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据集">数据集
+</h4><p>四个药物-疾病的基准数据集</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Dataset</th>
+          <th>Drugs</th>
+          <th>Diseases</th>
+          <th>Drug-disease Associations</th>
+          <th>Pos-Neg Ratio</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>B-dataset</td>
+          <td>269</td>
+          <td>598</td>
+          <td>18,416</td>
+          <td>11.45%</td>
+      </tr>
+      <tr>
+          <td>C-dataset</td>
+          <td>663</td>
+          <td>409</td>
+          <td>2,532</td>
+          <td>1.57%</td>
+      </tr>
+      <tr>
+          <td>F-dataset</td>
+          <td>593</td>
+          <td>313</td>
+          <td>1,933</td>
+          <td>1.05%</td>
+      </tr>
+      <tr>
+          <td>R-dataset</td>
+          <td>894</td>
+          <td>454</td>
+          <td>2,704</td>
+          <td>0.67%</td>
+      </tr>
+  </tbody>
+</table></div>
+<ul>
+<li><a class="link" href="https://github.com/xiangyue9607/SCMFDD"  target="_blank" rel="noopener"
+    >B-dataset</a>：来自于<a class="link" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4"  target="_blank" rel="noopener"
+    >Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text</a>，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了SCMFDD-S和SCMFDD-L数据集，其中的前者是这里的B-dataset，适用于常规场景。</li>
+<li>C-dataset：来自于<a class="link" href="https://academic.oup.com/bioinformatics/article/32/17/2664/2450730"  target="_blank" rel="noopener"
+    >Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic</a>，由Dndataset和F-dataset整合而成，结合了药物的ATC编码和疾病的DO术语。适用于多源数据融合场景。</li>
+<li>F-dataset：来自于<a class="link" href="https://www.embopress.org/doi/full/10.1038/msb.2011.26"  target="_blank" rel="noopener"
+    >PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology</a>，侧重于模型对文本知识的分析能力。</li>
+<li>R-dataset：本文自己提出。整合C-dataset、F-dataset和KEGG数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。</li>
+</ul>
+<h4 id="结果">结果
+</h4><ul>
+<li>AUC、AUPR、F1和五折交叉验证结果<br>
+<img src="/2025/rbdr/assets/20250610223319.png"
+	width="1506"
+	height="988"
+	srcset="/2025/rbdr/assets/20250610223319_hu_75ab593fb94ec12.png 480w, /2025/rbdr/assets/20250610223319_hu_9c85fcc86562cfbc.png 1024w"
+	loading="lazy"
+	
+		alt="四个数据集下的三种不同方法的效果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="152"
+		data-flex-basis="365px"
+	
+></li>
+<li>与下面四种baseline进行比较
+<ol>
+<li><strong>机器学习方法</strong>：DDA-SKF、NIMCGCN；</li>
+<li><strong>矩阵分解方法</strong>：SCPMF、DRWBNCF；</li>
+<li><strong>深度学习/GNN方法</strong>：REDDA、LAGCN、HDGAT</li>
+<li><strong>LLM</strong> <strong>直接预测</strong>DirectPred</li>
+</ol>
+</li>
+</ul>
+<p><img src="/2025/rbdr/assets/20250610223616.png"
+	width="944"
+	height="792"
+	srcset="/2025/rbdr/assets/20250610223616_hu_a1df0349a4cb82ee.png 480w, /2025/rbdr/assets/20250610223616_hu_b6a9867fa2330ad1.png 1024w"
+	loading="lazy"
+	
+		alt="最优模型为粗体，次优为下划线"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="286px"
+	
+><br>
+<img src="/2025/rbdr/assets/20250610224129.png"
+	width="469"
+	height="359"
+	srcset="/2025/rbdr/assets/20250610224129_hu_32afd63a86e7361.png 480w, /2025/rbdr/assets/20250610224129_hu_253c0f489a0df0dd.png 1024w"
+	loading="lazy"
+	
+		alt="最终平均结果"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="313px"
+	
+></p>
+<h3 id="llm进行阴性数据标注">LLM进行阴性数据标注
+</h3><blockquote>
+<p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/"  target="_blank" rel="noopener"
+    >Improving drug repositioning with negative data labeling using large language models - PubMed</a></p></blockquote>
+<h4 id="解决的问题-1">解决的问题
+</h4><p>在药物重新定位中，监督机器学习模型因缺乏可靠的<strong>阴性数据</strong>（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。</p>
+<h4 id="面临的挑战">面临的挑战
+</h4><ul>
+<li><strong>阴性数据获取困难</strong>：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。</li>
+<li><strong>PU学习方法的局限性</strong>：随机采样未标记数据作为阴性会引入分类偏差，而基于聚类等策略的阴性筛选假设正负样本边界清晰，与真实场景不符，导致模型泛化能力差。</li>
+<li><strong>临床数据处理复杂性</strong>：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。</li>
+</ul>
+<h4 id="核心方法-1">核心方法
+</h4><p><img src="/2025/rbdr/assets/20250610231108.png"
+	width="1056"
+	height="314"
+	srcset="/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, /2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w"
+	loading="lazy"
+	
+		alt="临床试验药物标注流程"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="336"
+		data-flex-basis="807px"
+	
+></p>
+<ul>
+<li><strong>临床数据获取</strong>：从 AACT 数据库获取 2539 个前列腺癌相关临床试验，排除未公布结果和因非疗效原因终止的试验后，剩余 1442 个试验由 GPT-4 分析。</li>
+<li><strong>GPT-4的训练和验证</strong>：使用 22 个手动策划的试验对 GPT-4 进行验证，其中包括 14 个无关试验、4 个阳性试验和 4 个阴性试验，GPT-4 成功正确分类所有试验。</li>
+<li><strong>特征构建</strong>：
+<ul>
+<li><strong>知识 - based 特征</strong>：从 DrugBank 获取药物 - 基因、药物 - 靶点、药物 - 通路相互作用、结构特性和靶点类别等，转换为独热编码。</li>
+<li><strong>network-based 特征</strong>：构建包含药物 - 药物相似性、蛋白质 - 蛋白质相互作用和基因本体论的多层生物网络，提取拓扑特征。</li>
+</ul>
+</li>
+<li><strong>对比策略</strong>：
+<ul>
+<li><strong>GPT-4 标注</strong>：使用 GPT-4 识别的 26 个阳性和 54 个阴性药物。</li>
+<li><strong>无采样 PU</strong>：将所有未标记药物视为阴性，导致类别不平衡。</li>
+<li><strong>下采样 PU</strong>：从未标记药物中随机采样 43 个阴性，重复 100 次以控制类别不平衡。<br>
+<img src="/2025/rbdr/assets/20250610234019.png"
+	width="720"
+	height="650"
+	srcset="/2025/rbdr/assets/20250610234019_hu_da1098ceace0f516.png 480w, /2025/rbdr/assets/20250610234019_hu_cabf59ededa6f174.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="110"
+		data-flex-basis="265px"
+	
+></li>
+</ul>
+</li>
+</ul>
+<p>训练集和测试集来自于作者自己收集和整理。</p>
+<h4 id="研究结果">研究结果
+</h4><p>使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。</p>
+<p><img src="/2025/rbdr/assets/20250610232517.png"
+	width="1442"
+	height="600"
+	srcset="/2025/rbdr/assets/20250610232517_hu_88b2c5cdb4fef3fe.png 480w, /2025/rbdr/assets/20250610232517_hu_ebaa126e63836e49.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="240"
+		data-flex-basis="576px"
+	
+></p>
+<h4 id="1-训练集表现图-a">1. 训练集表现（图 A）：
+</h4><ul>
+<li><strong>GPT-4（🔴）</strong>：多数算法（如 LogL1、RF、SVM ）平衡准确率接近 0.9，说明用 GPT-4 标注的高质量数据，模型在训练集上 “学的好”，分类稳定。</li>
+<li><strong>No sampling（🟢）</strong>：部分算法（如 ANN、NB ）准确率暴跌，因阴性样本太多，学不到有效模式。</li>
+<li><strong>Under sampling（🔵）</strong>：表现居中，虽平衡了类别，但随机丢数据，训练效果不如 GPT-4 标注。</li>
+</ul>
+<h4 id="2-测试集表现图-b">2. 测试集表现（图 B）：
+</h4><ul>
+<li><strong>GPT-4（🔴）</strong>：多数算法（如 LogL1、RF、SVM ）MCC 显著高于其他策略，尤其是 LogL1、RF，说明模型泛化能力强，用 GPT-4 标注数据训练的模型，在真实测试集上 “预测准”。</li>
+<li><strong>No sampling（🟢）</strong>：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。</li>
+<li><strong>Under sampling（🔵）</strong>：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。</li>
+</ul>
+<p>首次用 GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
 
 </section>
 
