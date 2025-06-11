@@ -306,22 +306,29 @@
     <li><a href="#reasoning-based-drug-repurposing">Reasoning based drug repurposing</a>
       <ol>
         <li><a href="#创新点">创新点</a></li>
-        <li><a href="#action">Action</a></li>
+        <li><a href="#action">Action</a>
+          <ol>
+            <li><a href="#week">Week</a></li>
+            <li><a href="#问题">问题</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#相关论文调研">相关论文调研</a>
       <ol>
         <li><a href="#llm-dda">LLM-DDA</a>
           <ol>
+            <li><a href="#问题与回答">问题与回答</a></li>
             <li><a href="#解决的问题">解决的问题</a></li>
             <li><a href="#面临挑战">面临挑战</a></li>
             <li><a href="#核心方法">核心方法</a></li>
             <li><a href="#数据集">数据集</a></li>
-            <li><a href="#结果">结果</a></li>
+            <li><a href="#指标结果">指标结果</a></li>
           </ol>
         </li>
         <li><a href="#lbmff">LBMFF</a>
           <ol>
+            <li><a href="#问题与回答-1">问题与回答</a></li>
             <li><a href="#解决的问题-1">解决的问题</a></li>
             <li><a href="#面临的挑战">面临的挑战</a></li>
             <li><a href="#核心方法-1">核心方法</a></li>
@@ -330,6 +337,7 @@
         </li>
         <li><a href="#llm进行阴性数据标注">LLM进行阴性数据标注</a>
           <ol>
+            <li><a href="#问题与回答-2">问题与回答</a></li>
             <li><a href="#解决的问题-2">解决的问题</a></li>
             <li><a href="#面临的挑战-1">面临的挑战</a></li>
             <li><a href="#核心方法-2">核心方法</a></li>
@@ -410,7 +418,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 11 分钟
+                    阅读时长: 13 分钟
                 </time>
             </div>
         
@@ -429,22 +437,48 @@
 </h2><h3 id="创新点">创新点
 </h3><p>传统方法基于已有知识库和药物/病理知识，存在严重的数据稀疏问题，基于大模型推理，形成新的药物知识和关联，从而缓解数据稀疏问题，提升repurpose的效果</p>
 <h3 id="action">Action
-</h3><p>week1</p>
+</h3><h4 id="week">Week
+</h4><p>week1</p>
 <p>相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，<strong>找出可复现的工作</strong>。</p>
 <p>week2</p>
 <p><strong>找出可复现的工作（上周遗留）</strong>， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？</p>
-<h2 id="相关论文调研">相关论文调研
-</h2><p>调研的时候，应该有这么几个目标：</p>
-<ol>
-<li>测试集是什么？</li>
-<li>准确率是多少？</li>
-<li>具体方法是什么？</li>
-<li>能否复现？</li>
+<h4 id="问题">问题
+</h4><ol>
+<li>LLM在Repurposing中的应用情况</li>
+<li>是否有基于文本结构，引入大模型知识作为一部分特征？</li>
+<li>测试集是什么</li>
+<li>传统模型的准确率</li>
+<li>基于网络的模型的准确率</li>
 </ol>
-<h3 id="llm-dda">LLM-DDA
+<hr>
+<h2 id="相关论文调研">相关论文调研
+</h2><h3 id="llm-dda">LLM-DDA
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/"  target="_blank" rel="noopener"
     >Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed</a></p></blockquote>
+<h4 id="问题与回答">问题与回答
+</h4><blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>LLM的推理信息在这里被引入了GNN中作为一部分特征</p>
+<blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>文本结构经过LLM编码后的向量，引入到GNN网络中</p>
+<blockquote>
+<p>Q3. 测试集是什么</p></blockquote>
+<p>见下面的数据集部分。一共使用了四个数据集。</p>
+<blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<ul>
+<li>与下面四种baseline进行比较
+<ol>
+<li><strong>机器学习方法</strong>：DDA-SKF、NIMCGCN；</li>
+<li><strong>矩阵分解方法</strong>：SCPMF、DRWBNCF；</li>
+<li><strong>深度学习/GNN方法</strong>：REDDA、LAGCN、HDGAT</li>
+<li><strong>LLM</strong> <strong>直接预测</strong>DirectPred</li>
+</ol>
+</li>
+</ul>
+<p>这里的前三种就是传统模型等其他方法。在下方的结果处说明了AUC、AUPR、F1-score和Precision的值。</p>
 <h4 id="解决的问题">解决的问题
 </h4><p>现有图神经网络（GNN）方法过度依赖网络拓扑结构，受限于不完整、含噪声的网络数据，且忽略生物医学领域丰富知识的问题。通过整合大语言模型（LLM）推断的知识表示，提升 DDA 预测的准确性和可靠性。</p>
 <h4 id="面临挑战">面临挑战
@@ -567,7 +601,7 @@
     >PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology</a>，侧重于模型对文本知识的分析能力。</li>
 <li>R-dataset：本文自己提出。整合C-dataset、F-dataset和KEGG数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。</li>
 </ul>
-<h4 id="结果">结果
+<h4 id="指标结果">指标结果
 </h4><ul>
 <li>AUC、AUPR、F1和五折交叉验证结果<br>
 <img src="/2025/rbdr/assets/20250610223319.png"
@@ -593,6 +627,7 @@
 </ol>
 </li>
 </ul>
+<p>分别通过AUC、AUPR、F1-score和Precision来判断效果。</p>
 <p><img src="/2025/rbdr/assets/20250610223616.png"
 	width="944"
 	height="792"
@@ -621,10 +656,31 @@
 		data-flex-basis="313px"
 	
 ></p>
+<hr>
 <h3 id="lbmff">LBMFF
 </h3><blockquote>
 <p><a class="link" href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full"  target="_blank" rel="noopener"
     >Frontiers | Drug–disease association prediction with literature based multi-feature fusion</a></p></blockquote>
+<h4 id="问题与回答-1">问题与回答
+</h4><blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>这里使用了BERT来挖掘文献中的关联关系。</p>
+<blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含<strong>语义关联信息的向量表示</strong>，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。</p>
+<blockquote>
+<p>Q3. 测试集是什么</p></blockquote>
+<p>见下面的数据集部分。一共使用了两个数据集。</p>
+<blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<p>对比的模型分为如下部分，都是各自领域的SOTA模型。</p>
+<ol>
+<li><strong>图神经网络（GNN）</strong>：DRHGCN、LAGCN、REDDA</li>
+<li><strong>矩阵分解与正则化</strong>：BNNR、DRWBNCF</li>
+<li><strong>矩阵补全与神经归纳</strong>：NIMCGCN</li>
+<li><strong>核融合与传统机器学习</strong>：DDA-SKF</li>
+</ol>
+<p>对比结果如研究结果部分所示。</p>
 <h4 id="解决的问题-1">解决的问题
 </h4><p><strong>药物重定位中的关联预测问题</strong></p>
 <h4 id="面临的挑战">面临的挑战
@@ -761,7 +817,14 @@
     >Drug repositioning by integrating target information through a heterogeneous network model | Bioinformatics | Oxford Academic</a>。包含963种药物、1263种疾病和54921个药物-疾病关系。同样地，也进行了信息填充来进行相似性度量。</li>
 </ul>
 <h5 id="指标表现">指标表现
-</h5><p>在所有指标上都体现出了领先。</p>
+</h5><p>和SOTA模型进行比较，分别是</p>
+<ol>
+<li><strong>图神经网络（GNN）</strong>：DRHGCN、LAGCN、REDDA</li>
+<li><strong>矩阵分解与正则化</strong>：BNNR、DRWBNCF</li>
+<li><strong>矩阵补全与神经归纳</strong>：NIMCGCN</li>
+<li><strong>核融合与传统机器学习</strong>：DDA-SKF</li>
+</ol>
+<p>LBMFF在所有指标上都体现出了领先。</p>
 <p><img src="/2025/rbdr/assets/20250611153556.png"
 	width="1620"
 	height="603"
@@ -774,7 +837,7 @@
 		data-flex-basis="644px"
 	
 ></p>
-<p>此外，在TL-HGBI在多数指标上仍优于对比方法，证明方法在<strong>大规模数据集上的泛化能力</strong>。</p>
+<p>此外，LBMFF在TL-HGBI在多数指标上仍优于对比方法，证明方法在<strong>大规模数据集上的泛化能力</strong>。</p>
 <p><img src="/2025/rbdr/assets/20250611154234.png"
 	width="1659"
 	height="589"
@@ -787,12 +850,28 @@
 		data-flex-basis="675px"
 	
 ></p>
+<hr>
 <h3 id="llm进行阴性数据标注">LLM进行阴性数据标注
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/"  target="_blank" rel="noopener"
     >Improving drug repositioning with negative data labeling using large language models - PubMed</a></p></blockquote>
+<h4 id="问题与回答-2">问题与回答
+</h4><blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>LLM引入了自己的推理能力来修改训练数据。</p>
+<blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。</p>
+<blockquote>
+<p>Q3. 测试集是什么</p></blockquote>
+<p>测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。</p>
+<blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<p>见研究结果。本文通过<strong>提升数据集中真阴性数据的质量</strong>来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。</p>
 <h4 id="解决的问题-2">解决的问题
-</h4><p>在药物重新定位中，监督机器学习模型因缺乏可靠的<strong>阴性数据</strong>（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。</p>
+</h4><p>在药物重新定位中，监督机器学习模型因缺乏可靠的<strong>阴性数据</strong>（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。</p>
+<p>传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。</p>
+<p><strong>LLM通过进行分析文献和数据，系统挖掘真阴性数据，提升了阴性数据的质量。</strong></p>
 <h4 id="面临的挑战-1">面临的挑战
 </h4><ul>
 <li><strong>阴性数据获取困难</strong>：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。</li>
@@ -800,7 +879,7 @@
 <li><strong>临床数据处理复杂性</strong>：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。</li>
 </ul>
 <h4 id="核心方法-2">核心方法
-</h4><p>GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
+</h4><p><strong>GPT-4 系统性挖掘真阴性数据</strong>，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
 <p><img src="/2025/rbdr/assets/20250610231108.png"
 	width="1056"
 	height="314"
@@ -871,6 +950,7 @@
 <li><strong>No sampling（🟢）</strong>：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。</li>
 <li><strong>Under sampling（🔵）</strong>：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。</li>
 </ul>
+<hr>
 <h3 id="其他">其他
 </h3><h4 id="druggen">DrugGen
 </h4><blockquote>

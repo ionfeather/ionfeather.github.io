@@ -17,22 +17,48 @@
 &lt;/h2&gt;&lt;h3 id=&#34;创新点&#34;&gt;创新点
 &lt;/h3&gt;&lt;p&gt;传统方法基于已有知识库和药物/病理知识，存在严重的数据稀疏问题，基于大模型推理，形成新的药物知识和关联，从而缓解数据稀疏问题，提升repurpose的效果&lt;/p&gt;
 &lt;h3 id=&#34;action&#34;&gt;Action
-&lt;/h3&gt;&lt;p&gt;week1&lt;/p&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;week&#34;&gt;Week
+&lt;/h4&gt;&lt;p&gt;week1&lt;/p&gt;
 &lt;p&gt;相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，&lt;strong&gt;找出可复现的工作&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;week2&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;找出可复现的工作（上周遗留）&lt;/strong&gt;， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？&lt;/p&gt;
-&lt;h2 id=&#34;相关论文调研&#34;&gt;相关论文调研
-&lt;/h2&gt;&lt;p&gt;调研的时候，应该有这么几个目标：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;测试集是什么？&lt;/li&gt;
-&lt;li&gt;准确率是多少？&lt;/li&gt;
-&lt;li&gt;具体方法是什么？&lt;/li&gt;
-&lt;li&gt;能否复现？&lt;/li&gt;
+&lt;h4 id=&#34;问题&#34;&gt;问题
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;LLM在Repurposing中的应用情况&lt;/li&gt;
+&lt;li&gt;是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/li&gt;
+&lt;li&gt;测试集是什么&lt;/li&gt;
+&lt;li&gt;传统模型的准确率&lt;/li&gt;
+&lt;li&gt;基于网络的模型的准确率&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
+&lt;hr&gt;
+&lt;h2 id=&#34;相关论文调研&#34;&gt;相关论文调研
+&lt;/h2&gt;&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39325266/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;问题与回答&#34;&gt;问题与回答
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;LLM的推理信息在这里被引入了GNN中作为一部分特征&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;文本结构经过LLM编码后的向量，引入到GNN网络中&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;见下面的数据集部分。一共使用了四个数据集。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;与下面四种baseline进行比较
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;机器学习方法&lt;/strong&gt;：DDA-SKF、NIMCGCN；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;矩阵分解方法&lt;/strong&gt;：SCPMF、DRWBNCF；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;深度学习/GNN方法&lt;/strong&gt;：REDDA、LAGCN、HDGAT&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM&lt;/strong&gt; &lt;strong&gt;直接预测&lt;/strong&gt;DirectPred&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这里的前三种就是传统模型等其他方法。在下方的结果处说明了AUC、AUPR、F1-score和Precision的值。&lt;/p&gt;
 &lt;h4 id=&#34;解决的问题&#34;&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;现有图神经网络（GNN）方法过度依赖网络拓扑结构，受限于不完整、含噪声的网络数据，且忽略生物医学领域丰富知识的问题。通过整合大语言模型（LLM）推断的知识表示，提升 DDA 预测的准确性和可靠性。&lt;/p&gt;
 &lt;h4 id=&#34;面临挑战&#34;&gt;面临挑战
@@ -155,7 +181,7 @@
     &gt;PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology&lt;/a&gt;，侧重于模型对文本知识的分析能力。&lt;/li&gt;
 &lt;li&gt;R-dataset：本文自己提出。整合C-dataset、F-dataset和KEGG数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;结果&#34;&gt;结果
+&lt;h4 id=&#34;指标结果&#34;&gt;指标结果
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;AUC、AUPR、F1和五折交叉验证结果&lt;br&gt;
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319.png&#34;
@@ -181,6 +207,7 @@
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;分别通过AUC、AUPR、F1-score和Precision来判断效果。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616.png&#34;
 	width=&#34;944&#34;
 	height=&#34;792&#34;
@@ -209,10 +236,31 @@
 		data-flex-basis=&#34;313px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;lbmff&#34;&gt;LBMFF
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;问题与回答-1&#34;&gt;问题与回答
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这里使用了BERT来挖掘文献中的关联关系。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;见下面的数据集部分。一共使用了两个数据集。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;对比的模型分为如下部分，都是各自领域的SOTA模型。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;矩阵分解与正则化&lt;/strong&gt;：BNNR、DRWBNCF&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;矩阵补全与神经归纳&lt;/strong&gt;：NIMCGCN&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核融合与传统机器学习&lt;/strong&gt;：DDA-SKF&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对比结果如研究结果部分所示。&lt;/p&gt;
 &lt;h4 id=&#34;解决的问题-1&#34;&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;药物重定位中的关联预测问题&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;面临的挑战&#34;&gt;面临的挑战
@@ -349,7 +397,14 @@
     &gt;Drug repositioning by integrating target information through a heterogeneous network model | Bioinformatics | Oxford Academic&lt;/a&gt;。包含963种药物、1263种疾病和54921个药物-疾病关系。同样地，也进行了信息填充来进行相似性度量。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;指标表现&#34;&gt;指标表现
-&lt;/h5&gt;&lt;p&gt;在所有指标上都体现出了领先。&lt;/p&gt;
+&lt;/h5&gt;&lt;p&gt;和SOTA模型进行比较，分别是&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;矩阵分解与正则化&lt;/strong&gt;：BNNR、DRWBNCF&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;矩阵补全与神经归纳&lt;/strong&gt;：NIMCGCN&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核融合与传统机器学习&lt;/strong&gt;：DDA-SKF&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;LBMFF在所有指标上都体现出了领先。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556.png&#34;
 	width=&#34;1620&#34;
 	height=&#34;603&#34;
@@ -362,7 +417,7 @@
 		data-flex-basis=&#34;644px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;此外，在TL-HGBI在多数指标上仍优于对比方法，证明方法在&lt;strong&gt;大规模数据集上的泛化能力&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;此外，LBMFF在TL-HGBI在多数指标上仍优于对比方法，证明方法在&lt;strong&gt;大规模数据集上的泛化能力&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234.png&#34;
 	width=&#34;1659&#34;
 	height=&#34;589&#34;
@@ -375,12 +430,28 @@
 		data-flex-basis=&#34;675px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Improving drug repositioning with negative data labeling using large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;问题与回答-2&#34;&gt;问题与回答
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;LLM引入了自己的推理能力来修改训练数据。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;见研究结果。本文通过&lt;strong&gt;提升数据集中真阴性数据的质量&lt;/strong&gt;来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。&lt;/p&gt;
 &lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
-&lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。&lt;/p&gt;
+&lt;p&gt;传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM通过进行分析文献和数据，系统挖掘真阴性数据，提升了阴性数据的质量。&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;面临的挑战-1&#34;&gt;面临的挑战
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;阴性数据获取困难&lt;/strong&gt;：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。&lt;/li&gt;
@@ -388,7 +459,7 @@
 &lt;li&gt;&lt;strong&gt;临床数据处理复杂性&lt;/strong&gt;：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;GPT-4 系统性挖掘真阴性数据&lt;/strong&gt;，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;314&#34;
@@ -459,6 +530,7 @@
 &lt;li&gt;&lt;strong&gt;No sampling（🟢）&lt;/strong&gt;：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Under sampling（🔵）&lt;/strong&gt;：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;其他&#34;&gt;其他
 &lt;/h3&gt;&lt;h4 id=&#34;druggen&#34;&gt;DrugGen
 &lt;/h4&gt;&lt;blockquote&gt;
