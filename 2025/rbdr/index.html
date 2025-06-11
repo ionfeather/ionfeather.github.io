@@ -311,7 +311,6 @@
     </li>
     <li><a href="#相关论文调研">相关论文调研</a>
       <ol>
-        <li><a href="#drugrealign">DrugReAlign</a></li>
         <li><a href="#llm-dda">LLM-DDA</a>
           <ol>
             <li><a href="#解决的问题">解决的问题</a></li>
@@ -321,14 +320,28 @@
             <li><a href="#结果">结果</a></li>
           </ol>
         </li>
-        <li><a href="#llm进行阴性数据标注">LLM进行阴性数据标注</a>
+        <li><a href="#lbmff">LBMFF</a>
           <ol>
             <li><a href="#解决的问题-1">解决的问题</a></li>
             <li><a href="#面临的挑战">面临的挑战</a></li>
             <li><a href="#核心方法-1">核心方法</a></li>
             <li><a href="#研究结果">研究结果</a></li>
-            <li><a href="#1-训练集表现图-a">1. 训练集表现（图 A）：</a></li>
-            <li><a href="#2-测试集表现图-b">2. 测试集表现（图 B）：</a></li>
+          </ol>
+        </li>
+        <li><a href="#llm进行阴性数据标注">LLM进行阴性数据标注</a>
+          <ol>
+            <li><a href="#解决的问题-2">解决的问题</a></li>
+            <li><a href="#面临的挑战-1">面临的挑战</a></li>
+            <li><a href="#核心方法-2">核心方法</a></li>
+            <li><a href="#研究结果-1">研究结果</a></li>
+          </ol>
+        </li>
+        <li><a href="#其他">其他</a>
+          <ol>
+            <li><a href="#druggen">DrugGen</a></li>
+            <li><a href="#drugrealign">DrugReAlign</a></li>
+            <li><a href="#benchmarkllm在八项化学任务中的表现">Benchmark：LLM在八项化学任务中的表现</a></li>
+            <li><a href="#biobert">BioBERT</a></li>
           </ol>
         </li>
       </ol>
@@ -397,7 +410,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 7 分钟
+                    阅读时长: 11 分钟
                 </time>
             </div>
         
@@ -428,10 +441,6 @@
 <li>具体方法是什么？</li>
 <li>能否复现？</li>
 </ol>
-<h3 id="drugrealign">DrugReAlign
-</h3><blockquote>
-<p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/"  target="_blank" rel="noopener"
-    >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p></blockquote>
 <h3 id="llm-dda">LLM-DDA
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/"  target="_blank" rel="noopener"
@@ -612,20 +621,187 @@
 		data-flex-basis="313px"
 	
 ></p>
+<h3 id="lbmff">LBMFF
+</h3><blockquote>
+<p><a class="link" href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full"  target="_blank" rel="noopener"
+    >Frontiers | Drug–disease association prediction with literature based multi-feature fusion</a></p></blockquote>
+<h4 id="解决的问题-1">解决的问题
+</h4><p><strong>药物重定位中的关联预测问题</strong></p>
+<h4 id="面临的挑战">面临的挑战
+</h4><ul>
+<li>文献信息利用不够充分：现在大多数计算方法都是依赖结构化数据库，但是科学文献中有很多未被充分挖掘的药物-疾病关联关系。</li>
+<li>多特征难以有效融合：药物和疾病的特征具有异质性。</li>
+</ul>
+<h4 id="核心方法-1">核心方法
+</h4><p>提出了LBMFF（基于文献的多特征融合方法）。</p>
+<ul>
+<li><strong>多源融合</strong>：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物 - 疾病关联。</li>
+<li><strong>图网络 + 注意力</strong>：用 GCN 处理 “药物 - 疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。</li>
+</ul>
+<p><img src="/2025/rbdr/assets/20250611145238.png"
+	width="1014"
+	height="778"
+	srcset="/2025/rbdr/assets/20250611145238_hu_a0419756e480ffda.png 480w, /2025/rbdr/assets/20250611145238_hu_790c8b92f59e5590.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="312px"
+	
+></p>
+<ol>
+<li>相似性计算
+<ul>
+<li>从<strong>多源数据</strong>提取特征，计算药物、疾病的相似性，构建关联矩阵</li>
+<li><strong>药物相似性</strong>（Drug - Drug）：<br>
+整合 3 类结构化数据 + 文献语义：
+<ul>
+<li>化学结构（Drugbank 数据库，药物分子结构）</li>
+<li>副作用（SIDER 数据库，药物 - 副作用关联）</li>
+<li>靶点（Drugbank 数据库，药物 - 靶点关联）</li>
+<li>文献语义（BERT 模型处理文献，挖掘药物间语义关联）<br>
+最终加权融合（α、β、γ 为权重），输出<strong>药物相似性矩阵</strong>。</li>
+</ul>
+</li>
+<li><strong>疾病相似性</strong>（Disease - Disease）：<br>
+整合 2 类数据：
+<ul>
+<li>MeSH 数据库（疾病树编号，疾病分类体系）</li>
+<li>文献语义（BERT 模型处理文献，挖掘疾病间语义关联）<br>
+输出<strong>疾病相似性矩阵</strong>。</li>
+</ul>
+</li>
+<li><strong>药物 - 疾病关联</strong>（Drug - Disease）：<br>
+直接从 CTD 数据库（比较毒理学数据库）获取<strong>已知关联矩阵</strong>，标记已验证的药物 - 疾病对。</li>
+</ul>
+</li>
+<li>特征表示
+<ul>
+<li>将上一步得到的 <strong>药物相似性矩阵、疾病相似性矩阵、已知关联矩阵</strong> 拼接，形成模型输入的<strong>融合特征矩阵</strong>，统一表征药物和疾病的多源信息。</li>
+</ul>
+</li>
+<li>编码器
+<ul>
+<li>用<strong>带注意力机制的图卷积网络（GCN）</strong> 学习药物、疾病的嵌入表示：</li>
+<li>两层 GCN（Graph Convolution Encoder Layer）逐层提取特征，ReLU 激活增加非线性。</li>
+<li>注意力机制（Attention mechanism）动态分配权重，突出关键特征（比如强关联的药物 - 疾病对）。</li>
+<li>最终输出 <strong>药物 + 疾病的嵌入向量</strong>（维度 (m + n)×d ，m 是药物数，n 是疾病数，d 是嵌入维度 ）。</li>
+</ul>
+</li>
+<li>解码器
+<ul>
+<li>通过<strong>矩阵乘法</strong>还原关联预测：
+<ul>
+<li>药物嵌入（$Eₘₓ×d$ ）、权重矩阵（$W_d×d$ ）、疾病嵌入（$Eₙₓ×d $）相乘，重建药物 - 疾病关联得分。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>预测输出<strong>潜在关联</strong>
+<ul>
+<li>实线：已知关联（来自 CTD 数据库）。</li>
+<li>虚线：模型预测的<strong>潜在关联</strong>（未被验证，但算法判定有高可能性的药物 - 疾病对 ），可辅助药物重定位研究。</li>
+</ul>
+</li>
+</ol>
+<h5 id="bert在文中">BERT在文中
+</h5><p><img src="/2025/rbdr/assets/20250611151737.png"
+	width="1010"
+	height="482"
+	srcset="/2025/rbdr/assets/20250611151737_hu_78901334681f4864.png 480w, /2025/rbdr/assets/20250611151737_hu_989e86a68a8680fd.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="209"
+		data-flex-basis="502px"
+	
+></p>
+<p><strong>预训练</strong></p>
+<ul>
+<li><strong>数据准备</strong>
+<ul>
+<li>筛选包含药物、疾病名称的科学文献（如从 PubMed 获取，文中提到的 673,665 篇相关文献 ），这些文献包含药物 - 疾病关联的语义描述（如治疗、关联、机制等表述 ）。</li>
+<li>将文献中疾病、药物相关文本构建为“药物文本 - 疾病文本” 对作为输入序列。</li>
+</ul>
+</li>
+<li><strong>Masked LM</strong>
+<ul>
+<li>让BERT预测被遮盖内容，如[MASK]可以治疗糖尿病，需要推断出是药物X。</li>
+</ul>
+</li>
+<li><strong>NSP</strong>
+<ul>
+<li>真实对：药物A[SEP]疾病B</li>
+<li>虚假对：药物C[SEP] 疾病D</li>
+<li>需要判断文本对是否是真实对</li>
+</ul>
+</li>
+</ul>
+<p><strong>模型微调</strong></p>
+<ul>
+<li><strong>数据</strong>
+<ul>
+<li>使用CTD等数据库中已知的药物-疾病关联对。存在关联为正例，无关联为负例</li>
+</ul>
+</li>
+<li><strong>输出语义特征</strong>
+<ul>
+<li>经过预训练 + 微调后，BERT 对输入的 “药物 - 疾病文本对”，会输出包含<strong>语义关联信息的向量表示</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="研究结果">研究结果
+</h4><h5 id="测试集">测试集
+</h5><ul>
+<li>Zhang（SCMFDD-S）：来自于<a class="link" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4"  target="_blank" rel="noopener"
+    >Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text</a>，在上面被称为B-dataset。包含269种药物、598种疾病和18416个药物-疾病关系。本文中还从其他数据库中填充了化学结构、药物-靶点关系和药物副作用、疾病树作为药物-药物相似性度量的数据。</li>
+<li>TL-HGBI：来自于<a class="link" href="https://academic.oup.com/bioinformatics/article/30/20/2923/2422178"  target="_blank" rel="noopener"
+    >Drug repositioning by integrating target information through a heterogeneous network model | Bioinformatics | Oxford Academic</a>。包含963种药物、1263种疾病和54921个药物-疾病关系。同样地，也进行了信息填充来进行相似性度量。</li>
+</ul>
+<h5 id="指标表现">指标表现
+</h5><p>在所有指标上都体现出了领先。</p>
+<p><img src="/2025/rbdr/assets/20250611153556.png"
+	width="1620"
+	height="603"
+	srcset="/2025/rbdr/assets/20250611153556_hu_9a785be424d4ae99.png 480w, /2025/rbdr/assets/20250611153556_hu_c4246ac65e7a8d75.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="268"
+		data-flex-basis="644px"
+	
+></p>
+<p>此外，在TL-HGBI在多数指标上仍优于对比方法，证明方法在<strong>大规模数据集上的泛化能力</strong>。</p>
+<p><img src="/2025/rbdr/assets/20250611154234.png"
+	width="1659"
+	height="589"
+	srcset="/2025/rbdr/assets/20250611154234_hu_8a504edeb9650d6c.png 480w, /2025/rbdr/assets/20250611154234_hu_237ef5a787bfd481.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="281"
+		data-flex-basis="675px"
+	
+></p>
 <h3 id="llm进行阴性数据标注">LLM进行阴性数据标注
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/"  target="_blank" rel="noopener"
     >Improving drug repositioning with negative data labeling using large language models - PubMed</a></p></blockquote>
-<h4 id="解决的问题-1">解决的问题
+<h4 id="解决的问题-2">解决的问题
 </h4><p>在药物重新定位中，监督机器学习模型因缺乏可靠的<strong>阴性数据</strong>（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。</p>
-<h4 id="面临的挑战">面临的挑战
+<h4 id="面临的挑战-1">面临的挑战
 </h4><ul>
 <li><strong>阴性数据获取困难</strong>：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。</li>
 <li><strong>PU学习方法的局限性</strong>：随机采样未标记数据作为阴性会引入分类偏差，而基于聚类等策略的阴性筛选假设正负样本边界清晰，与真实场景不符，导致模型泛化能力差。</li>
 <li><strong>临床数据处理复杂性</strong>：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。</li>
 </ul>
-<h4 id="核心方法-1">核心方法
-</h4><p><img src="/2025/rbdr/assets/20250610231108.png"
+<h4 id="核心方法-2">核心方法
+</h4><p>GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
+<p><img src="/2025/rbdr/assets/20250610231108.png"
 	width="1056"
 	height="314"
 	srcset="/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, /2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w"
@@ -669,7 +845,7 @@
 </li>
 </ul>
 <p>训练集和测试集来自于作者自己收集和整理。</p>
-<h4 id="研究结果">研究结果
+<h4 id="研究结果-1">研究结果
 </h4><p>使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。</p>
 <p><img src="/2025/rbdr/assets/20250610232517.png"
 	width="1442"
@@ -683,19 +859,51 @@
 		data-flex-basis="576px"
 	
 ></p>
-<h4 id="1-训练集表现图-a">1. 训练集表现（图 A）：
-</h4><ul>
+<h5 id="1-训练集表现图-a">1. 训练集表现（图 A）：
+</h5><ul>
 <li><strong>GPT-4（🔴）</strong>：多数算法（如 LogL1、RF、SVM ）平衡准确率接近 0.9，说明用 GPT-4 标注的高质量数据，模型在训练集上 “学的好”，分类稳定。</li>
 <li><strong>No sampling（🟢）</strong>：部分算法（如 ANN、NB ）准确率暴跌，因阴性样本太多，学不到有效模式。</li>
 <li><strong>Under sampling（🔵）</strong>：表现居中，虽平衡了类别，但随机丢数据，训练效果不如 GPT-4 标注。</li>
 </ul>
-<h4 id="2-测试集表现图-b">2. 测试集表现（图 B）：
-</h4><ul>
+<h5 id="2-测试集表现图-b">2. 测试集表现（图 B）：
+</h5><ul>
 <li><strong>GPT-4（🔴）</strong>：多数算法（如 LogL1、RF、SVM ）MCC 显著高于其他策略，尤其是 LogL1、RF，说明模型泛化能力强，用 GPT-4 标注数据训练的模型，在真实测试集上 “预测准”。</li>
 <li><strong>No sampling（🟢）</strong>：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。</li>
 <li><strong>Under sampling（🔵）</strong>：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。</li>
 </ul>
-<p>首次用 GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
+<h3 id="其他">其他
+</h3><h4 id="druggen">DrugGen
+</h4><blockquote>
+<p><a class="link" href="https://www.nature.com/articles/s41598-025-98629-1"  target="_blank" rel="noopener"
+    >DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports</a></p></blockquote>
+<p>这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。</p>
+<h4 id="drugrealign">DrugReAlign
+</h4><blockquote>
+<p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/"  target="_blank" rel="noopener"
+    >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p></blockquote>
+<p>提出了一个多源提示的LLM药物重定位框架。</p>
+<p><img src="/2025/rbdr/assets/20250611164032.png"
+	width="1944"
+	height="1430"
+	srcset="/2025/rbdr/assets/20250611164032_hu_20997968172a8920.png 480w, /2025/rbdr/assets/20250611164032_hu_f551cf6e5e853017.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="326px"
+	
+></p>
+<h4 id="benchmarkllm在八项化学任务中的表现">Benchmark：LLM在八项化学任务中的表现
+</h4><blockquote>
+<p><a class="link" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf"  target="_blank" rel="noopener"
+    >What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks</a></p></blockquote>
+<p>评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。</p>
+<h4 id="biobert">BioBERT
+</h4><blockquote>
+<p><a class="link" href="https://academic.oup.com/bioinformatics/article/36/4/1234/5566506"  target="_blank" rel="noopener"
+    >BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic</a></p></blockquote>
+<p>介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。</p>
 
 </section>
 

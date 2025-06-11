@@ -29,10 +29,6 @@
 &lt;li&gt;具体方法是什么？&lt;/li&gt;
 &lt;li&gt;能否复现？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;drugrealign&#34;&gt;DrugReAlign
-&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39379930/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39325266/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -213,20 +209,187 @@
 		data-flex-basis=&#34;313px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h3 id=&#34;lbmff&#34;&gt;LBMFF
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;解决的问题-1&#34;&gt;解决的问题
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;药物重定位中的关联预测问题&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;面临的挑战&#34;&gt;面临的挑战
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;文献信息利用不够充分：现在大多数计算方法都是依赖结构化数据库，但是科学文献中有很多未被充分挖掘的药物-疾病关联关系。&lt;/li&gt;
+&lt;li&gt;多特征难以有效融合：药物和疾病的特征具有异质性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;核心方法-1&#34;&gt;核心方法
+&lt;/h4&gt;&lt;p&gt;提出了LBMFF（基于文献的多特征融合方法）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多源融合&lt;/strong&gt;：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物 - 疾病关联。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图网络 + 注意力&lt;/strong&gt;：用 GCN 处理 “药物 - 疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238.png&#34;
+	width=&#34;1014&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_a0419756e480ffda.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_790c8b92f59e5590.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;相似性计算
+&lt;ul&gt;
+&lt;li&gt;从&lt;strong&gt;多源数据&lt;/strong&gt;提取特征，计算药物、疾病的相似性，构建关联矩阵&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;药物相似性&lt;/strong&gt;（Drug - Drug）：&lt;br&gt;
+整合 3 类结构化数据 + 文献语义：
+&lt;ul&gt;
+&lt;li&gt;化学结构（Drugbank 数据库，药物分子结构）&lt;/li&gt;
+&lt;li&gt;副作用（SIDER 数据库，药物 - 副作用关联）&lt;/li&gt;
+&lt;li&gt;靶点（Drugbank 数据库，药物 - 靶点关联）&lt;/li&gt;
+&lt;li&gt;文献语义（BERT 模型处理文献，挖掘药物间语义关联）&lt;br&gt;
+最终加权融合（α、β、γ 为权重），输出&lt;strong&gt;药物相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;疾病相似性&lt;/strong&gt;（Disease - Disease）：&lt;br&gt;
+整合 2 类数据：
+&lt;ul&gt;
+&lt;li&gt;MeSH 数据库（疾病树编号，疾病分类体系）&lt;/li&gt;
+&lt;li&gt;文献语义（BERT 模型处理文献，挖掘疾病间语义关联）&lt;br&gt;
+输出&lt;strong&gt;疾病相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;药物 - 疾病关联&lt;/strong&gt;（Drug - Disease）：&lt;br&gt;
+直接从 CTD 数据库（比较毒理学数据库）获取&lt;strong&gt;已知关联矩阵&lt;/strong&gt;，标记已验证的药物 - 疾病对。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;特征表示
+&lt;ul&gt;
+&lt;li&gt;将上一步得到的 &lt;strong&gt;药物相似性矩阵、疾病相似性矩阵、已知关联矩阵&lt;/strong&gt; 拼接，形成模型输入的&lt;strong&gt;融合特征矩阵&lt;/strong&gt;，统一表征药物和疾病的多源信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;编码器
+&lt;ul&gt;
+&lt;li&gt;用&lt;strong&gt;带注意力机制的图卷积网络（GCN）&lt;/strong&gt; 学习药物、疾病的嵌入表示：&lt;/li&gt;
+&lt;li&gt;两层 GCN（Graph Convolution Encoder Layer）逐层提取特征，ReLU 激活增加非线性。&lt;/li&gt;
+&lt;li&gt;注意力机制（Attention mechanism）动态分配权重，突出关键特征（比如强关联的药物 - 疾病对）。&lt;/li&gt;
+&lt;li&gt;最终输出 &lt;strong&gt;药物 + 疾病的嵌入向量&lt;/strong&gt;（维度 (m + n)×d ，m 是药物数，n 是疾病数，d 是嵌入维度 ）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;解码器
+&lt;ul&gt;
+&lt;li&gt;通过&lt;strong&gt;矩阵乘法&lt;/strong&gt;还原关联预测：
+&lt;ul&gt;
+&lt;li&gt;药物嵌入（$Eₘₓ×d$ ）、权重矩阵（$W_d×d$ ）、疾病嵌入（$Eₙₓ×d $）相乘，重建药物 - 疾病关联得分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;预测输出&lt;strong&gt;潜在关联&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;实线：已知关联（来自 CTD 数据库）。&lt;/li&gt;
+&lt;li&gt;虚线：模型预测的&lt;strong&gt;潜在关联&lt;/strong&gt;（未被验证，但算法判定有高可能性的药物 - 疾病对 ），可辅助药物重定位研究。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;bert在文中&#34;&gt;BERT在文中
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;482&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_78901334681f4864.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_989e86a68a8680fd.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;209&#34;
+		data-flex-basis=&#34;502px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;预训练&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据准备&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;筛选包含药物、疾病名称的科学文献（如从 PubMed 获取，文中提到的 673,665 篇相关文献 ），这些文献包含药物 - 疾病关联的语义描述（如治疗、关联、机制等表述 ）。&lt;/li&gt;
+&lt;li&gt;将文献中疾病、药物相关文本构建为“药物文本 - 疾病文本” 对作为输入序列。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Masked LM&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;让BERT预测被遮盖内容，如[MASK]可以治疗糖尿病，需要推断出是药物X。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;NSP&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;真实对：药物A[SEP]疾病B&lt;/li&gt;
+&lt;li&gt;虚假对：药物C[SEP] 疾病D&lt;/li&gt;
+&lt;li&gt;需要判断文本对是否是真实对&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;模型微调&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用CTD等数据库中已知的药物-疾病关联对。存在关联为正例，无关联为负例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出语义特征&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;经过预训练 + 微调后，BERT 对输入的 “药物 - 疾病文本对”，会输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;研究结果&#34;&gt;研究结果
+&lt;/h4&gt;&lt;h5 id=&#34;测试集&#34;&gt;测试集
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;Zhang（SCMFDD-S）：来自于&lt;a class=&#34;link&#34; href=&#34;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text&lt;/a&gt;，在上面被称为B-dataset。包含269种药物、598种疾病和18416个药物-疾病关系。本文中还从其他数据库中填充了化学结构、药物-靶点关系和药物副作用、疾病树作为药物-药物相似性度量的数据。&lt;/li&gt;
+&lt;li&gt;TL-HGBI：来自于&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/30/20/2923/2422178&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Drug repositioning by integrating target information through a heterogeneous network model | Bioinformatics | Oxford Academic&lt;/a&gt;。包含963种药物、1263种疾病和54921个药物-疾病关系。同样地，也进行了信息填充来进行相似性度量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;指标表现&#34;&gt;指标表现
+&lt;/h5&gt;&lt;p&gt;在所有指标上都体现出了领先。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556.png&#34;
+	width=&#34;1620&#34;
+	height=&#34;603&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_9a785be424d4ae99.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_c4246ac65e7a8d75.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;268&#34;
+		data-flex-basis=&#34;644px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;此外，在TL-HGBI在多数指标上仍优于对比方法，证明方法在&lt;strong&gt;大规模数据集上的泛化能力&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234.png&#34;
+	width=&#34;1659&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_8a504edeb9650d6c.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_237ef5a787bfd481.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;281&#34;
+		data-flex-basis=&#34;675px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Improving drug repositioning with negative data labeling using large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
-&lt;h4 id=&#34;解决的问题-1&#34;&gt;解决的问题
+&lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。&lt;/p&gt;
-&lt;h4 id=&#34;面临的挑战&#34;&gt;面临的挑战
+&lt;h4 id=&#34;面临的挑战-1&#34;&gt;面临的挑战
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;阴性数据获取困难&lt;/strong&gt;：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;PU学习方法的局限性&lt;/strong&gt;：随机采样未标记数据作为阴性会引入分类偏差，而基于聚类等策略的阴性筛选假设正负样本边界清晰，与真实场景不符，导致模型泛化能力差。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;临床数据处理复杂性&lt;/strong&gt;：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;核心方法-1&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108.png&#34;
+&lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
+&lt;/h4&gt;&lt;p&gt;GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;314&#34;
 	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w&#34;
@@ -270,7 +433,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;训练集和测试集来自于作者自己收集和整理。&lt;/p&gt;
-&lt;h4 id=&#34;研究结果&#34;&gt;研究结果
+&lt;h4 id=&#34;研究结果-1&#34;&gt;研究结果
 &lt;/h4&gt;&lt;p&gt;使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517.png&#34;
 	width=&#34;1442&#34;
@@ -284,19 +447,51 @@
 		data-flex-basis=&#34;576px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;1-训练集表现图-a&#34;&gt;1. 训练集表现（图 A）：
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h5 id=&#34;1-训练集表现图-a&#34;&gt;1. 训练集表现（图 A）：
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;GPT-4（🔴）&lt;/strong&gt;：多数算法（如 LogL1、RF、SVM ）平衡准确率接近 0.9，说明用 GPT-4 标注的高质量数据，模型在训练集上 “学的好”，分类稳定。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;No sampling（🟢）&lt;/strong&gt;：部分算法（如 ANN、NB ）准确率暴跌，因阴性样本太多，学不到有效模式。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Under sampling（🔵）&lt;/strong&gt;：表现居中，虽平衡了类别，但随机丢数据，训练效果不如 GPT-4 标注。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;2-测试集表现图-b&#34;&gt;2. 测试集表现（图 B）：
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h5 id=&#34;2-测试集表现图-b&#34;&gt;2. 测试集表现（图 B）：
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;GPT-4（🔴）&lt;/strong&gt;：多数算法（如 LogL1、RF、SVM ）MCC 显著高于其他策略，尤其是 LogL1、RF，说明模型泛化能力强，用 GPT-4 标注数据训练的模型，在真实测试集上 “预测准”。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;No sampling（🟢）&lt;/strong&gt;：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Under sampling（🔵）&lt;/strong&gt;：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;首次用 GPT-4 系统性挖掘真阴性数据，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
+&lt;h3 id=&#34;其他&#34;&gt;其他
+&lt;/h3&gt;&lt;h4 id=&#34;druggen&#34;&gt;DrugGen
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nature.com/articles/s41598-025-98629-1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。&lt;/p&gt;
+&lt;h4 id=&#34;drugrealign&#34;&gt;DrugReAlign
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39379930/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;提出了一个多源提示的LLM药物重定位框架。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032.png&#34;
+	width=&#34;1944&#34;
+	height=&#34;1430&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_20997968172a8920.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_f551cf6e5e853017.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;benchmarkllm在八项化学任务中的表现&#34;&gt;Benchmark：LLM在八项化学任务中的表现
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。&lt;/p&gt;
+&lt;h4 id=&#34;biobert&#34;&gt;BioBERT
+&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/36/4/1234/5566506&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。&lt;/p&gt;
 </description>
         </item>
         <item>
