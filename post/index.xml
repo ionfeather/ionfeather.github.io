@@ -8,28 +8,44 @@
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 10 Jun 2025 14:24:22 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>AIDR | Reasoning Based Drug Repurposing</title>
+        <title>AIDR | Reasoning-based Drug Repurposing</title>
         <link>https://ionfeather.github.io/2025/rbdr/</link>
         <pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/rbdr/</guid>
-        <description>&lt;h2 id=&#34;reasoning-based-drug-repurposing&#34;&gt;Reasoning based drug repurposing
-&lt;/h2&gt;&lt;h3 id=&#34;创新点&#34;&gt;创新点
-&lt;/h3&gt;&lt;p&gt;传统方法基于已有知识库和药物/病理知识，存在严重的数据稀疏问题，基于大模型推理，形成新的药物知识和关联，从而缓解数据稀疏问题，提升repurpose的效果&lt;/p&gt;
+        <description>&lt;h2 id=&#34;reasoning-based-drug-repurposing&#34;&gt;Reasoning-based drug repurposing
+&lt;/h2&gt;&lt;h3 id=&#34;问题回答&#34;&gt;问题&amp;amp;回答
+&lt;/h3&gt;&lt;h4 id=&#34;问题&#34;&gt;问题
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;LLM在Repurposing中的应用情况&lt;/li&gt;
+&lt;li&gt;是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/li&gt;
+&lt;li&gt;测试集是什么&lt;/li&gt;
+&lt;li&gt;传统模型/基于网络的模型的准确率&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;回答&#34;&gt;回答
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。&lt;/li&gt;
+&lt;li&gt;有的。将文本以特定的形式组织，如&amp;quot;药物A[SEP]疾病B&amp;quot;，然后将其变成向量，嵌入到GNN中。&lt;/li&gt;
+&lt;li&gt;阅读了几篇，测试集有
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xiangyue9607/SCMFDD&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;B-dataset&lt;/a&gt;（SCMFDD-S/L）：来自于 &lt;a class=&#34;link&#34; href=&#34;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text&lt;/a&gt;，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。&lt;/li&gt;
+&lt;li&gt;C-dataset：来自于 &lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/32/17/2664/2450730&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic&lt;/a&gt;，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。&lt;/li&gt;
+&lt;li&gt;F-dataset：来自于 &lt;a class=&#34;link&#34; href=&#34;https://www.embopress.org/doi/full/10.1038/msb.2011.26&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology&lt;/a&gt;，侧重于模型对文本知识的分析能力。&lt;/li&gt;
+&lt;li&gt;R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h3 id=&#34;action&#34;&gt;Action
 &lt;/h3&gt;&lt;h4 id=&#34;week&#34;&gt;Week
 &lt;/h4&gt;&lt;p&gt;week1&lt;/p&gt;
 &lt;p&gt;相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，&lt;strong&gt;找出可复现的工作&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;week2&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;找出可复现的工作（上周遗留）&lt;/strong&gt;， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？&lt;/p&gt;
-&lt;h4 id=&#34;问题&#34;&gt;问题
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;LLM在Repurposing中的应用情况&lt;/li&gt;
-&lt;li&gt;是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/li&gt;
-&lt;li&gt;测试集是什么&lt;/li&gt;
-&lt;li&gt;传统模型的准确率&lt;/li&gt;
-&lt;li&gt;基于网络的模型的准确率&lt;/li&gt;
-&lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;相关论文调研&#34;&gt;相关论文调研
 &lt;/h2&gt;&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
@@ -88,43 +104,43 @@
 &lt;p&gt;Step2：利用LLM的知识来拓展潜在知识&lt;/p&gt;
 &lt;p&gt;Step3：基于LLM的嵌入生成&lt;/p&gt;
 &lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一、药物 - 疾病异质网络构建（Drug - disease heterogeneous network construction）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、药物-疾病异质网络构建（Drug-disease heterogeneous network construction）&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据来源&lt;/strong&gt;：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;构建逻辑&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;先计算 &lt;strong&gt;药物 - 药物、疾病 - 疾病的成对相似度（Pairwise similarities）&lt;/strong&gt;（如化学结构、基因功能相似性 ）。&lt;/li&gt;
-&lt;li&gt;再结合已知 &lt;strong&gt;药物 - 疾病关联（Drug - disease associations）&lt;/strong&gt; ，构建成包含药物、疾病节点，以及相似度、关联关系边的&lt;strong&gt;异质图网络&lt;/strong&gt; ，为后续分析提供拓扑结构基础。&lt;/li&gt;
+&lt;li&gt;先计算 &lt;strong&gt;药物-药物、疾病-疾病的成对相似度（Pairwise similarities）&lt;/strong&gt;（如化学结构、基因功能相似性 ）。&lt;/li&gt;
+&lt;li&gt;再结合已知 &lt;strong&gt;药物-疾病关联（Drug-disease associations）&lt;/strong&gt; ，构建成包含药物、疾病节点，以及相似度、关联关系边的&lt;strong&gt;异质图网络&lt;/strong&gt; ，为后续分析提供拓扑结构基础。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;二、零样本提示工程（Zero - shot prompt engineering）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二、零样本提示工程（Zero-shot prompt engineering）&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;核心动作&lt;/strong&gt;：设计 &lt;strong&gt;基于化学生物特征的提示模板（Chemobiomedical characteristics - based prompt template design）&lt;/strong&gt; ，把药物 / 疾病的专业属性（如靶点、作用通路、临床特征等 ）转化为大语言模型（LLM）可理解的指令。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;功能价值&lt;/strong&gt;：借助 GPT - 4 强大的知识推理能力，&lt;strong&gt;生成目标药物 / 疾病的详细描述（Generated description for query drug/disease entity）&lt;/strong&gt; ，挖掘数据库外的潜在知识关联，弥补传统数据驱动方法的知识缺口。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心动作&lt;/strong&gt;：设计 &lt;strong&gt;基于化学生物特征的提示模板（Chemobiomedical characteristics-based prompt template design）&lt;/strong&gt; ，把药物 / 疾病的专业属性（如靶点、作用通路、临床特征等 ）转化为大语言模型（LLM）可理解的指令。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能价值&lt;/strong&gt;：借助 GPT-4 的知识推理能力，&lt;strong&gt;生成目标药物 / 疾病的详细描述&lt;/strong&gt; ，挖掘数据库外的潜在知识关联，引入LLM知识。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;三、基于 LLM 的嵌入生成（LLM - based embedding generation）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三、基于 LLM 的嵌入生成&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;双模型进行嵌入生成&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;用 &lt;strong&gt;ChatGPT - 4 Turbo&lt;/strong&gt;（通用大模型 ）、&lt;strong&gt;BioBERTpt&lt;/strong&gt;（生物医学专用预训练模型 ），对 GPT - 4 生成的文本描述做编码。&lt;/li&gt;
-&lt;li&gt;输出 &lt;strong&gt;LLM 嵌入（LLM embeddings）&lt;/strong&gt; ，把生物医学语义信息转化为数值向量，让后续图模型能 “读懂” 语言知识。&lt;/li&gt;
+&lt;li&gt;用 &lt;strong&gt;ChatGPT-4 Turbo&lt;/strong&gt;（通用大模型）、&lt;strong&gt;BioBERTpt&lt;/strong&gt;（生物医学专用预训练模型 ），对 GPT-4 生成的文本描述做编码。&lt;/li&gt;
+&lt;li&gt;输出 &lt;strong&gt;LLM 嵌入&lt;/strong&gt;，把生物医学语义信息转化为数值向量，让后续图模型能 理解语言知识。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;四、LLM - DDA 模型构建（LLM - DDA model construction）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四、LLM-DDA 模型构建（LLM-DDA model construction）&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;多架构覆盖&lt;/strong&gt;：提供 3 种融合策略，适配不同场景需求：
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;LLM - DDA (node feat)&lt;/strong&gt;：直接把 LLM 嵌入作为节点特征，融入传统图神经网络，轻量且易部署。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM - DDA (graph - graph)&lt;/strong&gt;：双图网络并行，分别处理 LLM 嵌入图与原始异质图，再融合结果，强化多源信息互补。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM - DDA (graph - ae)&lt;/strong&gt;：结合图自动编码器（Graph - AE ），优化嵌入特征与拓扑结构的融合，适合挖掘深层关联。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM-DDA (node feat)&lt;/strong&gt;：直接把 LLM 嵌入作为节点特征，融入传统图神经网络，轻量且易部署。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM-DDA (graph-graph)&lt;/strong&gt;：双图网络并行，分别处理 LLM 嵌入图与原始异质图，再融合结果，强化多源信息互补。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM-DDA (graph-ae)&lt;/strong&gt;：结合图自动编码器（Graph-AE），优化嵌入特征与拓扑结构的融合，适合挖掘深层关联。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输入衔接&lt;/strong&gt;：模型输入关联两部分：
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Similarity features&lt;/strong&gt;（相似度特征 ）：来自第一步异质网络的拓扑计算。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Adjacency matrix&lt;/strong&gt;（邻接矩阵 ）：刻画药物 - 疾病的关联结构，让模型同时学习知识语义（LLM 嵌入 ）和网络拓扑（图结构 ），提升药物 - 疾病关联预测精度。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Adjacency matrix&lt;/strong&gt;（邻接矩阵）：刻画药物-疾病的关联结构，让模型同时学习知识语义（LLM 嵌入）和网络拓扑（图结构），提升药物-疾病关联预测精度。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -271,8 +287,8 @@
 &lt;h4 id=&#34;核心方法-1&#34;&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;提出了LBMFF（基于文献的多特征融合方法）。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;多源融合&lt;/strong&gt;：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物 - 疾病关联。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;图网络 + 注意力&lt;/strong&gt;：用 GCN 处理 “药物 - 疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多源融合&lt;/strong&gt;：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物-疾病关联。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图网络 + 注意力&lt;/strong&gt;：用 GCN 处理 “药物-疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238.png&#34;
 	width=&#34;1014&#34;
@@ -290,26 +306,26 @@
 &lt;li&gt;相似性计算
 &lt;ul&gt;
 &lt;li&gt;从&lt;strong&gt;多源数据&lt;/strong&gt;提取特征，计算药物、疾病的相似性，构建关联矩阵&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;药物相似性&lt;/strong&gt;（Drug - Drug）：&lt;br&gt;
+&lt;li&gt;&lt;strong&gt;药物相似性&lt;/strong&gt;（Drug-Drug）：&lt;br&gt;
 整合 3 类结构化数据 + 文献语义：
 &lt;ul&gt;
 &lt;li&gt;化学结构（Drugbank 数据库，药物分子结构）&lt;/li&gt;
-&lt;li&gt;副作用（SIDER 数据库，药物 - 副作用关联）&lt;/li&gt;
-&lt;li&gt;靶点（Drugbank 数据库，药物 - 靶点关联）&lt;/li&gt;
+&lt;li&gt;副作用（SIDER 数据库，药物-副作用关联）&lt;/li&gt;
+&lt;li&gt;靶点（Drugbank 数据库，药物-靶点关联）&lt;/li&gt;
 &lt;li&gt;文献语义（BERT 模型处理文献，挖掘药物间语义关联）&lt;br&gt;
 最终加权融合（α、β、γ 为权重），输出&lt;strong&gt;药物相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;疾病相似性&lt;/strong&gt;（Disease - Disease）：&lt;br&gt;
+&lt;li&gt;&lt;strong&gt;疾病相似性&lt;/strong&gt;（Disease-Disease）：&lt;br&gt;
 整合 2 类数据：
+-MeSH 数据库（疾病树编号，疾病分类体系）
 &lt;ul&gt;
-&lt;li&gt;MeSH 数据库（疾病树编号，疾病分类体系）&lt;/li&gt;
 &lt;li&gt;文献语义（BERT 模型处理文献，挖掘疾病间语义关联）&lt;br&gt;
 输出&lt;strong&gt;疾病相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;药物 - 疾病关联&lt;/strong&gt;（Drug - Disease）：&lt;br&gt;
-直接从 CTD 数据库（比较毒理学数据库）获取&lt;strong&gt;已知关联矩阵&lt;/strong&gt;，标记已验证的药物 - 疾病对。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;药物-疾病关联&lt;/strong&gt;（Drug-Disease）：&lt;br&gt;
+直接从 CTD 数据库（比较毒理学数据库）获取&lt;strong&gt;已知关联矩阵&lt;/strong&gt;，标记已验证的药物-疾病对。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;特征表示
@@ -321,7 +337,7 @@
 &lt;ul&gt;
 &lt;li&gt;用&lt;strong&gt;带注意力机制的图卷积网络（GCN）&lt;/strong&gt; 学习药物、疾病的嵌入表示：&lt;/li&gt;
 &lt;li&gt;两层 GCN（Graph Convolution Encoder Layer）逐层提取特征，ReLU 激活增加非线性。&lt;/li&gt;
-&lt;li&gt;注意力机制（Attention mechanism）动态分配权重，突出关键特征（比如强关联的药物 - 疾病对）。&lt;/li&gt;
+&lt;li&gt;注意力机制（Attention mechanism）动态分配权重，突出关键特征（比如强关联的药物-疾病对）。&lt;/li&gt;
 &lt;li&gt;最终输出 &lt;strong&gt;药物 + 疾病的嵌入向量&lt;/strong&gt;（维度 (m + n)×d ，m 是药物数，n 是疾病数，d 是嵌入维度 ）。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -329,7 +345,7 @@
 &lt;ul&gt;
 &lt;li&gt;通过&lt;strong&gt;矩阵乘法&lt;/strong&gt;还原关联预测：
 &lt;ul&gt;
-&lt;li&gt;药物嵌入（$Eₘₓ×d$ ）、权重矩阵（$W_d×d$ ）、疾病嵌入（$Eₙₓ×d $）相乘，重建药物 - 疾病关联得分。&lt;/li&gt;
+&lt;li&gt;药物嵌入（$Eₘₓ×d$ ）、权重矩阵（$W_d×d$ ）、疾病嵌入（$Eₙₓ×d $）相乘，重建药物-疾病关联得分。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -337,7 +353,7 @@
 &lt;li&gt;预测输出&lt;strong&gt;潜在关联&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;实线：已知关联（来自 CTD 数据库）。&lt;/li&gt;
-&lt;li&gt;虚线：模型预测的&lt;strong&gt;潜在关联&lt;/strong&gt;（未被验证，但算法判定有高可能性的药物 - 疾病对 ），可辅助药物重定位研究。&lt;/li&gt;
+&lt;li&gt;虚线：模型预测的&lt;strong&gt;潜在关联&lt;/strong&gt;（未被验证，但算法判定有高可能性的药物-疾病对 ），可辅助药物重定位研究。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -358,8 +374,8 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据准备&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;筛选包含药物、疾病名称的科学文献（如从 PubMed 获取，文中提到的 673,665 篇相关文献 ），这些文献包含药物 - 疾病关联的语义描述（如治疗、关联、机制等表述 ）。&lt;/li&gt;
-&lt;li&gt;将文献中疾病、药物相关文本构建为“药物文本 - 疾病文本” 对作为输入序列。&lt;/li&gt;
+&lt;li&gt;筛选包含药物、疾病名称的科学文献（如从 PubMed 获取，文中提到的 673,665 篇相关文献 ），这些文献包含药物-疾病关联的语义描述（如治疗、关联、机制等表述 ）。&lt;/li&gt;
+&lt;li&gt;将文献中疾病、药物相关文本构建为“药物文本-疾病文本” 对作为输入序列。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Masked LM&lt;/strong&gt;
@@ -384,7 +400,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;输出语义特征&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;经过预训练 + 微调后，BERT 对输入的 “药物 - 疾病文本对”，会输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;经过预训练 + 微调后，BERT 对输入的 “药物-疾病文本对”，会输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -434,7 +450,7 @@
 &lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Improving drug repositioning with negative data labeling using large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答-2&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
@@ -479,8 +495,8 @@
 &lt;li&gt;&lt;strong&gt;GPT-4的训练和验证&lt;/strong&gt;：使用 22 个手动策划的试验对 GPT-4 进行验证，其中包括 14 个无关试验、4 个阳性试验和 4 个阴性试验，GPT-4 成功正确分类所有试验。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;特征构建&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;知识 - based 特征&lt;/strong&gt;：从 DrugBank 获取药物 - 基因、药物 - 靶点、药物 - 通路相互作用、结构特性和靶点类别等，转换为独热编码。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;network-based 特征&lt;/strong&gt;：构建包含药物 - 药物相似性、蛋白质 - 蛋白质相互作用和基因本体论的多层生物网络，提取拓扑特征。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;知识-based 特征&lt;/strong&gt;：从 DrugBank 获取药物-基因、药物-靶点、药物-通路相互作用、结构特性和靶点类别等，转换为独热编码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;network-based 特征&lt;/strong&gt;：构建包含药物-药物相似性、蛋白质-蛋白质相互作用和基因本体论的多层生物网络，提取拓扑特征。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;对比策略&lt;/strong&gt;：
