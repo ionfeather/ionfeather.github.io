@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/rbdr/'>
 
-<link rel="stylesheet" href="/scss/style.min.0a3cf2626c3cbf1fc500b5d1c816af098ddc5800f824ef5c8cee932597e961c7.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
+<link rel="stylesheet" href="/scss/style.min.cdd95828ca8971b17ccb14112222a60d19d84ea3f4e5b525c8c68fb4d2a4535d.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
 <meta property='og:description' content="Reasoning-based drug repurposing\r问题&amp;回答\r问题\rLLM在Repurposing中的应用情况 是否有基于文本结构，引入大模型知识作为一部分特征？ 测试集是什么 传统模型/基于网络的模型的准确率 回答\r有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。 有的。将文本以特定的形式组织，如&quot;药物A[SEP]疾病B&quot;，然后将其变成向量，嵌入到GNN中。 阅读了几篇，测试集有 B-dataset（SCMFDD-S/L）：来自于 Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。 C-dataset：来自于 Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。 F-dataset：来自于 PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology，侧重于模型对文本知识的分析能力。 R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。 模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。 Action\rWeek\rweek1\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/rbdr/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
