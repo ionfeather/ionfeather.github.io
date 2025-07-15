@@ -125,13 +125,6 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     overflowX: 'hidden'
   })
 
-  // const Size = [2.5, 3.5, 4.3, 5.1, 5.8, 6.5, 7, 7.5, 8, 8.4, 8.8]
-  const Size = [2.5, 3.2, 3.9, 4.5, 5.1, 5.6, 6.1, 6.5, 6.9, 7.3, 7.7]
-  // const Color = (Array.isArray(Config.color) ? Config.color : [
-  //   '93BB6D', '6D9C6D', 'D5E1A1', 'FEF4D8', 'CBE7FD', 'B7CFE2', 'DD8766', 'F6EEE1', 'E88C67', '65A9BE', 'F7C070', '636C8D', 'E2CBC4',
-  //   'BDA995', 'BBD2DB', 'C99B92', '9BB6C7', 'EAB196', 'F0C9AC', 'A2AA71', 'F8F5EE', 'D2CEC1', '8B958A', 'D9DAEE', 'B6BDD9', 'A2C1CB', 
-  //   'BED7DB', 'ABB4AB', 'EADCD0', 'EBA397', 'DEC152', 'CA677C', '9D89AD', 'B5CFE2', 'DDE8EB', 'F7F2EF', 'D2DEDA', '67787F', 'CFD4EE',
-  //   '#808080'
   const Color = (Array.isArray(Config.color) ? Config.color : [
     '#E0CFEB', '#EDC8DF', '#F8D8CB', '#EDC8DF', '#F8D8CB',
     '#FFFACC', '#C9EEC2', '#BDECE6', '#CDD9EE', '#5F9EA0',
@@ -140,6 +133,8 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     '#DFE83D', '#B5D145', '#45BD32', '#22A86B', '#24B2A2',
     '#909090'
   ]).map(color => Utils.Color.format(color))
+  
+  const Size = [2.5, 3.2, 3.9, 4.5, 5.1, 5.6, 6.1, 6.5, 6.9, 7.3, 7.7]
   const FontSize = (size) => size * 5 * Config.scale
 
   const getIntFromRand = (rand, end) => Math.floor(parseFloat(rand) * end)
@@ -177,14 +172,16 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     Utils.DOM.setStyle($e, {
       backgroundColor: bgColor,
       color: genFontColor(bgColor),
-      top: getIntFromRand(Math.random(), 90, Math.random()) + '%',
+      top: getIntFromRand(Math.random(), 90) + '%',
       left: getIntFromRand(Math.random(), 85) + '%',
-      zIndex: (11 - $e.dataset.score).toString()
+      zIndex: (11 - $e.dataset.score).toString(),
+      boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
     })
     Utils.DOM.setStyle($e.getElementsByTagName('a')[0], {
       color: genFontColor(bgColor),
       textDecoration: 'none'
     })
+    
     if (Config.animation) {
       setTimeout(() => {
         Utils.DOM.setStyle($e, {
@@ -192,6 +189,7 @@ const Style1 = (data, marks, $tags, $style, Config) => {
         })
       }, 5000 * Math.random())
     }
+    
     $e.onmouseover = () => {
       debounce.exec(() => {
         const curType = $e.dataset.type
