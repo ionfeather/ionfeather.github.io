@@ -7,7 +7,156 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 10 Jun 2025 14:24:22 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 28 Aug 2025 19:28:49 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>书籍阅读 | Speech and Language Processing</title>
+        <link>https://ionfeather.github.io/2025/speech-and-language-processing/</link>
+        <pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid>
+        <description>&lt;h2 id=&#34;words-and-tokens&#34;&gt;Words and Tokens
+&lt;/h2&gt;&lt;p&gt;我们需要一个元素来建模语言，下面是我们的选择：&lt;/p&gt;
+&lt;h3 id=&#34;words&#34;&gt;Words
+&lt;/h3&gt;&lt;p&gt;为什么不用词？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有些语言没有orthographic words&lt;/li&gt;
+&lt;li&gt;词的数量会随着文章增长，词汇表永远都会覆盖不足&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;morphemes&#34;&gt;Morphemes
+&lt;/h3&gt;&lt;p&gt;语素类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;屈折语素：inflectional morphemes&lt;/li&gt;
+&lt;li&gt;派生语素：derivational morphemes&lt;/li&gt;
+&lt;li&gt;附着语素：clitic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;语言类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Analytic&lt;/li&gt;
+&lt;li&gt;polysynthetic&lt;/li&gt;
+&lt;li&gt;fusional&lt;/li&gt;
+&lt;li&gt;agglutinative&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为什么不用语素？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语素很复杂，很难定义&lt;/li&gt;
+&lt;li&gt;不同语言不同且难以统一&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;unicode&#34;&gt;Unicode
+&lt;/h3&gt;&lt;p&gt;Unicode的历史&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ASCII&lt;/li&gt;
+&lt;li&gt;CJKV&lt;/li&gt;
+&lt;li&gt;不断更新中，越来越多，Unicode 16.0已经包含超过150000个字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;code-points&#34;&gt;Code Points
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;U+：表示接下来要用Unicode十六进制表示一个code point&lt;/li&gt;
+&lt;li&gt;U+0061：0x0061一个意思，也就小写字母a。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;utf-8&#34;&gt;UTF-8
+&lt;/h4&gt;&lt;p&gt;目前最常用的encoding字符的方式。中文字符 “中” 的 Unicode 码点是&lt;code&gt;U+4E2D&lt;/code&gt;，UTF-8 编码后为 3 个字节：&lt;code&gt;0xE4 0xB8 0xAD&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;UTF-8是一种变长编码，兼容ASCII。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如「世」，UTF-8 编码是&lt;code&gt;0xE4 B8 96&lt;/code&gt;，其中E4的二进制为&lt;code&gt;11100110H&lt;/code&gt;，开头的&lt;code&gt;1110H&lt;/code&gt;表示这是一个3字节字符的第一个字节。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;subword-tokenization-byte-pair-encoding&#34;&gt;Subword Tokenization: Byte-Pair Encoding
+&lt;/h3&gt;&lt;p&gt;上面的三个候选都不行，word和morpheme难以规范定义，character可以通过unicode来定义，但又对于作为tokens来说太小了。&lt;/p&gt;
+&lt;p&gt;为什么要tokenize输入？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将输入转换为一组确定的、固定的单元（Token），能让不同的算法和系统在一些简单问题上达成共识。例如困惑度的计算。&lt;/li&gt;
+&lt;li&gt;对可复现很重要&lt;/li&gt;
+&lt;li&gt;为了消除unknown words的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了消除unknown words问题，现代tokenizers自动引入了token包含那些比words小的token，叫subword。&lt;/p&gt;
+&lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://platform.openai.com/tokenizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Tokenizer - OpenAI API&lt;/a&gt;中的&lt;code&gt;GPT-4o &amp;amp;  GPT-4o mini&lt;/code&gt;来分词下面这一大段话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;最终得到的是
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982.png&#34;
+	width=&#34;711&#34;
+	height=&#34;279&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b760c9dcae731844.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_3812253da13ed9c0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;254&#34;
+		data-flex-basis=&#34;611px&#34;
+	
+&gt;
+现在最流行的tokenization algorithm有两个：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Byte-Pair Encoding(BPE)&lt;/li&gt;
+&lt;li&gt;Unigram Language modeling(ULM)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bpe&#34;&gt;BPE
+&lt;/h4&gt;&lt;p&gt;通过分析训练语料，自动学习出一套子词集合（词汇表），使得高频出现的字符 / 子词组合被合并为更大的子词单位。&lt;/p&gt;
+&lt;p&gt;训练方法介绍。&lt;/p&gt;
+&lt;h4 id=&#34;bpe-encoder&#34;&gt;BPE encoder
+&lt;/h4&gt;&lt;h4 id=&#34;bpe-in-practice&#34;&gt;BPE in practice
+&lt;/h4&gt;&lt;p&gt;通常，我们会对 UTF-8 编码文本的&lt;strong&gt;单个字节&lt;/strong&gt;执行 BPE 操作。BPE 处理 “中” 时，输入并非&lt;code&gt;U+4E2D&lt;/code&gt;这个码点，而是&lt;code&gt;E4&lt;/code&gt;、&lt;code&gt;B8&lt;/code&gt;、&lt;code&gt;AD&lt;/code&gt;这三个独立字节。&lt;/p&gt;
+&lt;p&gt;仅在&lt;strong&gt;预先切分出的单词内部&lt;/strong&gt;执行 BPE 操作，有助于避免潜在问题。&lt;/p&gt;
+&lt;p&gt;一些英语里的小发现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大多数单词的tokens是他们自己，包含词前空格。这样可以避免独立单词和单词内部的subword。&lt;/li&gt;
+&lt;li&gt;附着语素Clitics在名字后面分开单独成token，但在常见的词语后面会是token的一部分&lt;/li&gt;
+&lt;li&gt;数字通常三位一组&lt;/li&gt;
+&lt;li&gt;一些词，如Anyhow和anyhow会有不同的分割方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个和预处理有关系。&lt;/p&gt;
+&lt;p&gt;SuperBPE会合并常规的BPE子词分词，效率更高。&lt;/p&gt;
+&lt;p&gt;特别地，低资源语言的tokens更碎，就会输出边长，最终LLM的效率变低。&lt;/p&gt;
+&lt;h3 id=&#34;rule-based-tokenization&#34;&gt;Rule-based tokenization
+&lt;/h3&gt;&lt;p&gt;Penn Treebank Tokenization Standard）：事实性规范。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分开附着语素&lt;/li&gt;
+&lt;li&gt;保留连字符连接的词&lt;/li&gt;
+&lt;li&gt;分开所有的标点符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;sentence-segmentation&#34;&gt;Sentence Segmentation
+&lt;/h4&gt;&lt;p&gt;sentence tokenization可以和word tokenization联合处理。&lt;/p&gt;
+&lt;h3 id=&#34;corpora&#34;&gt;Corpora
+&lt;/h3&gt;&lt;p&gt;语料库和语言数量、使用者的特征都有关。&lt;/p&gt;
+&lt;p&gt;code switching：在一次持续的交流）中，说话者或作者交替使用两种或多种 “语码”的现象。&lt;/p&gt;
+&lt;p&gt;datasheet：存储一句话的特征，如时间、说话人性格、阶级&amp;hellip;&lt;/p&gt;
+&lt;h3 id=&#34;regular-expressions&#34;&gt;Regular Expressions
+&lt;/h3&gt;&lt;p&gt;正则表达式的具体实现。包含字符析取、计数、可选性、通配符、锚点和边界、替换和捕获组、前向断言等。&lt;/p&gt;
+&lt;h3 id=&#34;simple-unix-tools-for-word-tokenization&#34;&gt;Simple Unix Tools for Word Tokenization
+&lt;/h3&gt;&lt;p&gt;可以在Unix、Linux系统中使用正则表达式。如&lt;code&gt;tr -sc &#39;A-Za-z&#39; &#39;\n&#39; &amp;lt; sh.txt&lt;/code&gt;表示从 &lt;code&gt;sh.txt&lt;/code&gt; 文件中提取所有英文字母，并将非字母字符替换为换行符，同时压缩连续的非字母字符为单个换行符。&lt;/p&gt;
+&lt;h3 id=&#34;minimum-edit-distance&#34;&gt;Minimum Edit Distance
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;最小编辑距离&lt;/strong&gt;：将一个字符串通过 “插入”“删除”“替换” 三种基本操作转换为另一个字符串所需的最少操作次数&lt;/p&gt;
+&lt;h4 id=&#34;the-minimum-edit-distance-algorithm&#34;&gt;The Minimum Edit Distance Algorithm
+&lt;/h4&gt;&lt;p&gt;一个经典的动态规划问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;字符对齐&lt;/strong&gt;：通过回溯编辑距离矩阵中的 “最优路径”，反向推导出将一个字符串转换为另一个字符串的具体操作序列。也就是&lt;strong&gt;路径可视化&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;exercies&#34;&gt;Exercies
+&lt;/h3&gt;&lt;h5 id=&#34;21&#34;&gt;2.1
+&lt;/h5&gt;&lt;p&gt;Write regular expressions for the following languages.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The set of all alphabetic strings.&lt;/li&gt;
+&lt;li&gt;The set of all lowercase alphabetic strings ending in &amp;ldquo;b&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;The set of all strings from the alphabet {a, b} such that each &amp;ldquo;a&amp;rdquo; is immediately preceded by and immediately followed by a &amp;ldquo;b&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;22&#34;&gt;2.2
+&lt;/h5&gt;&lt;p&gt;Write regular expressions for the following languages. By &amp;ldquo;word&amp;rdquo;, we mean an alphabetic string separated from other words by whitespace, relevant punctuation, line breaks, etc.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The set of all strings with two consecutive repeated words (e.g., &amp;ldquo;Humbert Humbert&amp;rdquo; and &amp;ldquo;the the&amp;rdquo; but not &amp;ldquo;the bug&amp;rdquo; or &amp;ldquo;the big bug&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;All strings that start at the beginning of the line with an integer and end at the end of the line with a word.&lt;/li&gt;
+&lt;li&gt;All strings that have both the word &amp;ldquo;grotto&amp;rdquo; and the word &amp;ldquo;raven&amp;rdquo; in them (but not, e.g., words like &amp;ldquo;grottos&amp;rdquo; that merely contain &amp;ldquo;grotto&amp;rdquo;).&lt;/li&gt;
+&lt;li&gt;Write a pattern that places the first word of an English sentence in a register. Deal with punctuation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;23&#34;&gt;2.3
+&lt;/h5&gt;&lt;p&gt;Implement an ELIZA-like program, using substitutions such as those described on page 27. You might want to choose a different domain than a Rogerian psychologist, although keep in mind that you would need a domain in which your program can legitimately engage in a lot of simple repetition.&lt;/p&gt;
+&lt;h5 id=&#34;24&#34;&gt;2.4
+&lt;/h5&gt;&lt;p&gt;Compute the edit distance (using insertion cost 1, deletion cost 1, substitution cost 1) of &amp;ldquo;leda&amp;rdquo; to &amp;ldquo;deal&amp;rdquo;. Show your work (using the edit distance grid).&lt;/p&gt;
+&lt;h5 id=&#34;25&#34;&gt;2.5
+&lt;/h5&gt;&lt;p&gt;Figure out whether &amp;ldquo;drive&amp;rdquo; is closer to &amp;ldquo;brief&amp;rdquo; or to &amp;ldquo;divers&amp;rdquo; and what the edit distance is to each. You may use any version of distance that you like.&lt;/p&gt;
+&lt;h5 id=&#34;26&#34;&gt;2.6
+&lt;/h5&gt;&lt;p&gt;Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.&lt;/p&gt;
+&lt;h5 id=&#34;27&#34;&gt;2.7
+&lt;/h5&gt;&lt;p&gt;Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>AIDR | Reasoning-based Drug Repurposing</title>
         <link>https://ionfeather.github.io/2025/rbdr/</link>
         <pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
 <title>书籍阅读 | Speech and Language Processing</title>
 
-<link rel='canonical' href='http://localhost:1313/2025/08-28-speech-and-language-processing/'>
+<link rel='canonical' href='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 
 <link rel="stylesheet" href="/scss/style.min.cdd95828ca8971b17ccb14112222a60d19d84ea3f4e5b525c8c68fb4d2a4535d.css"><meta property='og:title' content="书籍阅读 | Speech and Language Processing">
-<meta property='og:description' content="">
-<meta property='og:url' content='http://localhost:1313/2025/08-28-speech-and-language-processing/'>
+<meta property='og:description' content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<meta property='og:url' content='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LLM' /><meta property='article:published_time' content='2025-08-28T19:28:49&#43;08:00'/><meta property='article:modified_time' content='2025-08-28T19:28:49&#43;08:00'/>
 <meta name="twitter:title" content="书籍阅读 | Speech and Language Processing">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
     <link rel="shortcut icon" href="/ion.ico" />
 
 <head>
@@ -281,7 +281,74 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#words-and-tokens">Words and Tokens</a>
+      <ol>
+        <li><a href="#words">Words</a></li>
+        <li><a href="#morphemes">Morphemes</a></li>
+        <li><a href="#unicode">Unicode</a>
+          <ol>
+            <li><a href="#code-points">Code Points</a></li>
+            <li><a href="#utf-8">UTF-8</a></li>
+          </ol>
+        </li>
+        <li><a href="#subword-tokenization-byte-pair-encoding">Subword Tokenization: Byte-Pair Encoding</a>
+          <ol>
+            <li><a href="#bpe">BPE</a></li>
+            <li><a href="#bpe-encoder">BPE encoder</a></li>
+            <li><a href="#bpe-in-practice">BPE in practice</a></li>
+          </ol>
+        </li>
+        <li><a href="#rule-based-tokenization">Rule-based tokenization</a>
+          <ol>
+            <li><a href="#sentence-segmentation">Sentence Segmentation</a></li>
+          </ol>
+        </li>
+        <li><a href="#corpora">Corpora</a></li>
+        <li><a href="#regular-expressions">Regular Expressions</a></li>
+        <li><a href="#simple-unix-tools-for-word-tokenization">Simple Unix Tools for Word Tokenization</a></li>
+        <li><a href="#minimum-edit-distance">Minimum Edit Distance</a>
+          <ol>
+            <li><a href="#the-minimum-edit-distance-algorithm">The Minimum Edit Distance Algorithm</a></li>
+          </ol>
+        </li>
+        <li><a href="#exercies">Exercies</a>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -300,7 +367,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/2025/08-28-speech-and-language-processing/">书籍阅读 | Speech and Language Processing</a>
+            <a href="/2025/speech-and-language-processing/">书籍阅读 | Speech and Language Processing</a>
         </h2>
     
         
@@ -337,7 +404,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 0 分钟
+                    阅读时长: 4 分钟
                 </time>
             </div>
         
@@ -352,7 +419,148 @@
     <section class="article-content">
     
     
-    
+    <h2 id="words-and-tokens">Words and Tokens
+</h2><p>我们需要一个元素来建模语言，下面是我们的选择：</p>
+<h3 id="words">Words
+</h3><p>为什么不用词？</p>
+<ul>
+<li>有些语言没有orthographic words</li>
+<li>词的数量会随着文章增长，词汇表永远都会覆盖不足</li>
+</ul>
+<h3 id="morphemes">Morphemes
+</h3><p>语素类型</p>
+<ul>
+<li>屈折语素：inflectional morphemes</li>
+<li>派生语素：derivational morphemes</li>
+<li>附着语素：clitic</li>
+</ul>
+<p>语言类型</p>
+<ul>
+<li>Analytic</li>
+<li>polysynthetic</li>
+<li>fusional</li>
+<li>agglutinative</li>
+</ul>
+<p>为什么不用语素？</p>
+<ul>
+<li>语素很复杂，很难定义</li>
+<li>不同语言不同且难以统一</li>
+</ul>
+<h3 id="unicode">Unicode
+</h3><p>Unicode的历史</p>
+<ul>
+<li>ASCII</li>
+<li>CJKV</li>
+<li>不断更新中，越来越多，Unicode 16.0已经包含超过150000个字符</li>
+</ul>
+<h4 id="code-points">Code Points
+</h4><ul>
+<li>U+：表示接下来要用Unicode十六进制表示一个code point</li>
+<li>U+0061：0x0061一个意思，也就小写字母a。</li>
+</ul>
+<h4 id="utf-8">UTF-8
+</h4><p>目前最常用的encoding字符的方式。中文字符 “中” 的 Unicode 码点是<code>U+4E2D</code>，UTF-8 编码后为 3 个字节：<code>0xE4 0xB8 0xAD</code></p>
+<p>UTF-8是一种变长编码，兼容ASCII。</p>
+<ul>
+<li>如「世」，UTF-8 编码是<code>0xE4 B8 96</code>，其中E4的二进制为<code>11100110H</code>，开头的<code>1110H</code>表示这是一个3字节字符的第一个字节。</li>
+</ul>
+<h3 id="subword-tokenization-byte-pair-encoding">Subword Tokenization: Byte-Pair Encoding
+</h3><p>上面的三个候选都不行，word和morpheme难以规范定义，character可以通过unicode来定义，但又对于作为tokens来说太小了。</p>
+<p>为什么要tokenize输入？</p>
+<ul>
+<li>将输入转换为一组确定的、固定的单元（Token），能让不同的算法和系统在一些简单问题上达成共识。例如困惑度的计算。</li>
+<li>对可复现很重要</li>
+<li>为了消除unknown words的问题</li>
+</ul>
+<p>为了消除unknown words问题，现代tokenizers自动引入了token包含那些比words小的token，叫subword。</p>
+<p>使用<a class="link" href="https://platform.openai.com/tokenizer"  target="_blank" rel="noopener"
+    >Tokenizer - OpenAI API</a>中的<code>GPT-4o &amp;  GPT-4o mini</code>来分词下面这一大段话：</p>
+<blockquote>
+<p>For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.</p></blockquote>
+<p>最终得到的是
+<img src="/2025/speech-and-language-processing/assets/IMG-20250828205105982.png"
+	width="711"
+	height="279"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b760c9dcae731844.png 480w, /2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_3812253da13ed9c0.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="254"
+		data-flex-basis="611px"
+	
+>
+现在最流行的tokenization algorithm有两个：</p>
+<ul>
+<li>Byte-Pair Encoding(BPE)</li>
+<li>Unigram Language modeling(ULM)</li>
+</ul>
+<h4 id="bpe">BPE
+</h4><p>通过分析训练语料，自动学习出一套子词集合（词汇表），使得高频出现的字符 / 子词组合被合并为更大的子词单位。</p>
+<p>训练方法介绍。</p>
+<h4 id="bpe-encoder">BPE encoder
+</h4><h4 id="bpe-in-practice">BPE in practice
+</h4><p>通常，我们会对 UTF-8 编码文本的<strong>单个字节</strong>执行 BPE 操作。BPE 处理 “中” 时，输入并非<code>U+4E2D</code>这个码点，而是<code>E4</code>、<code>B8</code>、<code>AD</code>这三个独立字节。</p>
+<p>仅在<strong>预先切分出的单词内部</strong>执行 BPE 操作，有助于避免潜在问题。</p>
+<p>一些英语里的小发现：</p>
+<ul>
+<li>大多数单词的tokens是他们自己，包含词前空格。这样可以避免独立单词和单词内部的subword。</li>
+<li>附着语素Clitics在名字后面分开单独成token，但在常见的词语后面会是token的一部分</li>
+<li>数字通常三位一组</li>
+<li>一些词，如Anyhow和anyhow会有不同的分割方法</li>
+</ul>
+<p>这个和预处理有关系。</p>
+<p>SuperBPE会合并常规的BPE子词分词，效率更高。</p>
+<p>特别地，低资源语言的tokens更碎，就会输出边长，最终LLM的效率变低。</p>
+<h3 id="rule-based-tokenization">Rule-based tokenization
+</h3><p>Penn Treebank Tokenization Standard）：事实性规范。</p>
+<ul>
+<li>分开附着语素</li>
+<li>保留连字符连接的词</li>
+<li>分开所有的标点符号</li>
+</ul>
+<h4 id="sentence-segmentation">Sentence Segmentation
+</h4><p>sentence tokenization可以和word tokenization联合处理。</p>
+<h3 id="corpora">Corpora
+</h3><p>语料库和语言数量、使用者的特征都有关。</p>
+<p>code switching：在一次持续的交流）中，说话者或作者交替使用两种或多种 “语码”的现象。</p>
+<p>datasheet：存储一句话的特征，如时间、说话人性格、阶级&hellip;</p>
+<h3 id="regular-expressions">Regular Expressions
+</h3><p>正则表达式的具体实现。包含字符析取、计数、可选性、通配符、锚点和边界、替换和捕获组、前向断言等。</p>
+<h3 id="simple-unix-tools-for-word-tokenization">Simple Unix Tools for Word Tokenization
+</h3><p>可以在Unix、Linux系统中使用正则表达式。如<code>tr -sc 'A-Za-z' '\n' &lt; sh.txt</code>表示从 <code>sh.txt</code> 文件中提取所有英文字母，并将非字母字符替换为换行符，同时压缩连续的非字母字符为单个换行符。</p>
+<h3 id="minimum-edit-distance">Minimum Edit Distance
+</h3><p><strong>最小编辑距离</strong>：将一个字符串通过 “插入”“删除”“替换” 三种基本操作转换为另一个字符串所需的最少操作次数</p>
+<h4 id="the-minimum-edit-distance-algorithm">The Minimum Edit Distance Algorithm
+</h4><p>一个经典的动态规划问题。</p>
+<p><strong>字符对齐</strong>：通过回溯编辑距离矩阵中的 “最优路径”，反向推导出将一个字符串转换为另一个字符串的具体操作序列。也就是<strong>路径可视化</strong>。</p>
+<h3 id="exercies">Exercies
+</h3><h5 id="21">2.1
+</h5><p>Write regular expressions for the following languages.</p>
+<ol>
+<li>The set of all alphabetic strings.</li>
+<li>The set of all lowercase alphabetic strings ending in &ldquo;b&rdquo;.</li>
+<li>The set of all strings from the alphabet {a, b} such that each &ldquo;a&rdquo; is immediately preceded by and immediately followed by a &ldquo;b&rdquo;.</li>
+</ol>
+<h5 id="22">2.2
+</h5><p>Write regular expressions for the following languages. By &ldquo;word&rdquo;, we mean an alphabetic string separated from other words by whitespace, relevant punctuation, line breaks, etc.</p>
+<ol>
+<li>The set of all strings with two consecutive repeated words (e.g., &ldquo;Humbert Humbert&rdquo; and &ldquo;the the&rdquo; but not &ldquo;the bug&rdquo; or &ldquo;the big bug&rdquo;).</li>
+<li>All strings that start at the beginning of the line with an integer and end at the end of the line with a word.</li>
+<li>All strings that have both the word &ldquo;grotto&rdquo; and the word &ldquo;raven&rdquo; in them (but not, e.g., words like &ldquo;grottos&rdquo; that merely contain &ldquo;grotto&rdquo;).</li>
+<li>Write a pattern that places the first word of an English sentence in a register. Deal with punctuation.</li>
+</ol>
+<h5 id="23">2.3
+</h5><p>Implement an ELIZA-like program, using substitutions such as those described on page 27. You might want to choose a different domain than a Rogerian psychologist, although keep in mind that you would need a domain in which your program can legitimately engage in a lot of simple repetition.</p>
+<h5 id="24">2.4
+</h5><p>Compute the edit distance (using insertion cost 1, deletion cost 1, substitution cost 1) of &ldquo;leda&rdquo; to &ldquo;deal&rdquo;. Show your work (using the edit distance grid).</p>
+<h5 id="25">2.5
+</h5><p>Figure out whether &ldquo;drive&rdquo; is closer to &ldquo;brief&rdquo; or to &ldquo;divers&rdquo; and what the edit distance is to each. You may use any version of distance that you like.</p>
+<h5 id="26">2.6
+</h5><p>Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.</p>
+<h5 id="27">2.7
+</h5><p>Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.</p>
+
 </section>
 
 
@@ -589,7 +797,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.216ff4dd3c9693356fd5d0e2524970aa93a4d770c978da5c66fa4b7698ea942f.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
