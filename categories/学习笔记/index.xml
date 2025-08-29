@@ -13,8 +13,11 @@
         <pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid>
-        <description>&lt;h2 id=&#34;words-and-tokens&#34;&gt;Words and Tokens
-&lt;/h2&gt;&lt;p&gt;我们需要一个元素来建模语言，下面是我们的选择：&lt;/p&gt;
+        <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
+&lt;/h2&gt;&lt;p&gt;阅读&lt;a class=&#34;link&#34; href=&#34;https://web.stanford.edu/~jurafsky/slp3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记，以供后来的自己参考。&lt;/p&gt;
+&lt;h2 id=&#34;words-and-tokens&#34;&gt;Words and Tokens
+&lt;/h2&gt;&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
 &lt;h3 id=&#34;words&#34;&gt;Words
 &lt;/h3&gt;&lt;p&gt;为什么不用词？&lt;/p&gt;
 &lt;ul&gt;
@@ -154,6 +157,101 @@
 &lt;/h5&gt;&lt;p&gt;Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.&lt;/p&gt;
 &lt;h5 id=&#34;27&#34;&gt;2.7
 &lt;/h5&gt;&lt;p&gt;Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.&lt;/p&gt;
+&lt;h2 id=&#34;n-gram-language-models&#34;&gt;N-gram Language Models
+&lt;/h2&gt;&lt;p&gt;本章介绍最简单的语言模型：&lt;strong&gt;N元语法语言模型&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;n-grams&#34;&gt;N-Grams
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;概率链式法则&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;how-to-estimate-probabilities&#34;&gt;How to estimate probabilities
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;马尔科夫假设&lt;/strong&gt;：假设一个单词的出现概率只和前面的一个单词有关。那么n-gram即只和前面的$n-1$个单词有关。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最大似然估计&lt;/strong&gt;：已知前一个词$w_{n−1}$​时，当前词$w_n$​的概率&lt;/p&gt;
+&lt;p&gt;终止符号（end-symbol）：所有可能句子的概率总和为 1，否则是特定长度的所有句子概率之和为 1。&lt;/p&gt;
+&lt;h4 id=&#34;dealing-with-scale-in-large-n-gram-models&#34;&gt;Dealing with scale in large n-gram models
+&lt;/h4&gt;&lt;p&gt;Log probabilities&lt;/p&gt;
+&lt;p&gt;N元语法的计算现在甚至能达到无限元。&lt;/p&gt;
+&lt;p&gt;对N元语法模型进行修剪也是很重要的。&lt;/p&gt;
+&lt;h4 id=&#34;evaluating-language-models-training-and-test-sets&#34;&gt;Evaluating Language Models: Training and Test Sets
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;内部评估&lt;/strong&gt;和外部评估。&lt;/p&gt;
+&lt;p&gt;训练集、开发集和测试集。&lt;/p&gt;
+&lt;h4 id=&#34;evaluating-language-models-perplexity&#34;&gt;Evaluating Language Models: Perplexity
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Perplexity（PPL）&lt;/strong&gt;：困惑度越低，说明模型对文本的预测越准确（即模型越 “不困惑”）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;具体来说，是“联合概率倒数的几何平均值”。&lt;/li&gt;
+&lt;li&gt;在计算的时候常常会取对数来将求乘积变为求和，避免数值问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;perplexity-as-weighted-average-branching-factor&#34;&gt;Perplexity as Weighted Average Branching Factor
+&lt;/h5&gt;&lt;p&gt;困惑度也可以理解为&lt;strong&gt;加权平均分支系数&lt;/strong&gt;。其中，语言的 “分支系数”指的是 “任何一个词之后可能出现的下一个词的数量”。&lt;/p&gt;
+&lt;h3 id=&#34;sampling-sentences-from-a-language-model&#34;&gt;Sampling sentences from a language model
+&lt;/h3&gt;&lt;p&gt;“0-1 数轴 + 区间映射”来理解采样的基本原理。&lt;/p&gt;
+&lt;h3 id=&#34;generalizing-vs-overfitting-the-training-set&#34;&gt;Generalizing vs. overfitting the training set
+&lt;/h3&gt;&lt;p&gt;对于莎士比亚文本和华尔街日报的文本，两者差异过大以至于不能分别作为训练集和测试集。&lt;/p&gt;
+&lt;p&gt;所以说要确保训练集和测试集的领域要相似。&lt;/p&gt;
+&lt;h3 id=&#34;smoothing-interpolation-and-backoff&#34;&gt;Smoothing, Interpolation, and Backoff
+&lt;/h3&gt;&lt;p&gt;zero probability n-grams有两个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;低估了词语序可能出现的可能性，导致最终的性能变差&lt;/li&gt;
+&lt;li&gt;困惑度无法计算，因为无法除以0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此需要Smoothing或者discounting&lt;/p&gt;
+&lt;h4 id=&#34;laplace-smoothing&#34;&gt;Laplace Smoothing
+&lt;/h4&gt;&lt;p&gt;其实也就是add one smoothing，就是对于所有的N元语法都加一。&lt;/p&gt;
+&lt;p&gt;对于语言模型来说，结果并不是很好。对文本分类有效。&lt;/p&gt;
+&lt;h4 id=&#34;add-k-smoothing&#34;&gt;Add-k Smoothing
+&lt;/h4&gt;&lt;p&gt;也就是对所有的都加K。&lt;/p&gt;
+&lt;p&gt;对语言模型来说仍然效果一般。&lt;/p&gt;
+&lt;h4 id=&#34;language-model-interpolation&#34;&gt;Language Model Interpolation
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;n 元语法插值法：加权融合不同阶数 n 元语法的概率&lt;/strong&gt;，避免高阶的n元语法零概率导致的预测失效。&lt;/p&gt;
+&lt;p&gt;加权的$\lambda$应该设置成多少呢？可以从预留集held-out corpus中学习。使用EM（期望最大化）算法来学习。&lt;/p&gt;
+&lt;h4 id=&#34;stupid-backoff&#34;&gt;Stupid Backoff
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;回退模型&lt;/strong&gt;：高阶n阶的模型无法使用的时候，回退到低阶模型。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Discount&lt;/strong&gt;：要让回退模型（backoff model）输出合理的概率分布，我们必须对高阶 n 元语法的概率进行 “折扣处理”（discount），从而预留出部分概率余量（probability mass），供低阶 n 元语法使用。但在实际应用中，人们常使用一种更简单的 “无折扣回退算法”—— 即名为&lt;strong&gt;Stupid Backoff&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;advanced-perplexitys-relation-to-entropy&#34;&gt;Advanced: Perplexity&amp;rsquo;s Relation to Entropy
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;熵&lt;/strong&gt;：不确定性的度量方式。可以理解是编码某个决策或某条信息所需的最小平均比特数。越不确定，熵越大。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;熵率&lt;/strong&gt;：平均的不确定性。自然语言的熵率定义为 “&lt;strong&gt;无限长序列中，每个词的平均熵&lt;/strong&gt;”，反映语言的长期不确定性。例如，英文的熵率约 1-2 比特 / 词，意味着平均每个词需要 1-2 比特来编码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;平稳性&lt;/strong&gt;：序列概率不随着时间改变。自然语言不是，但是N元语法是平稳的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;遍历性&lt;/strong&gt;：长序列中包含了所有的短序列。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Shannon-McMillan-Breiman theorem&lt;/strong&gt;：如果语言满足某些正则条件（准确地说，是平稳且遍历的），&lt;strong&gt;序列长度趋近于无穷大时，“序列的平均对数概率的负值” ，即经验熵率会以概率1收敛敛到该过程的理论熵率&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;交叉熵（Cross-Entropy）&lt;/strong&gt;：我们虽然不知道数据的真实概率分布p，但是可以用模型m来近似p。（即我们虽然不知道自然语言的真实情况，但是可以用N元语法来近似。）&lt;strong&gt;交叉熵越小，模型越接近真实分布&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;困惑度&lt;/strong&gt;：&lt;strong&gt;困惑度是熵的指数形式&lt;/strong&gt;。比较直观。&lt;/p&gt;
+&lt;h3 id=&#34;excercies&#34;&gt;Excercies
+&lt;/h3&gt;&lt;h5 id=&#34;31&#34;&gt;3.1
+&lt;/h5&gt;&lt;p&gt;Write out the equation for trigram probability estimation (modifying Eq. 3.11). Now write out all the non-zero trigram probabilities for the I am Sam corpus on page 40.&lt;/p&gt;
+&lt;h5 id=&#34;32&#34;&gt;3.2
+&lt;/h5&gt;&lt;p&gt;Calculate the probability of the sentence &lt;code&gt;i want chinese food&lt;/code&gt;. Give two probabilities, one using Fig. 3.2 and the ‘useful probabilities’ just below it on page 42, and another using the add-1 smoothed table in Fig. 3.7. Assume the additional add-1 smoothed probabilities $P(i|&amp;lt;s&amp;gt;) = 0.19$ and $P(&amp;lt;/s&amp;gt;|food) = 0.40$.&lt;/p&gt;
+&lt;h5 id=&#34;33&#34;&gt;3.3
+&lt;/h5&gt;&lt;p&gt;Which of the two probabilities you computed in the previous exercise is higher, unsmoothed or smoothed? Explain why.&lt;/p&gt;
+&lt;h5 id=&#34;34&#34;&gt;3.4
+&lt;/h5&gt;&lt;p&gt;We are given the following corpus, modified from the one in the chapter:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I am Sam &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; Sam I am &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I am Sam &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I do not like green eggs and Sam &amp;lt;/s&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Using a bigram language model with add-one smoothing, what is $P(Sam | am)$? Include $&amp;lt;s&amp;gt;$ and $&amp;lt;/s&amp;gt;$ in your counts just like any other token.&lt;/p&gt;
+&lt;h5 id=&#34;35&#34;&gt;3.5
+&lt;/h5&gt;&lt;p&gt;Suppose we didn’t use the end-symbol $&amp;lt;/s&amp;gt;$. Train an unsmoothed bigram grammar on the following training corpus without using the end-symbol $&amp;lt;/s&amp;gt;$:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; a b  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; b b  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; b a  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; a a
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Demonstrate that your bigram model does not assign a single probability distribution across all sentence lengths by showing that the sum of the probability of the four possible 2 word sentences over the alphabet a,b is 1.0, and the sum of the probability of all possible 3 word sentences over the alphabet a,b is also 1.0.&lt;/p&gt;
+&lt;h5 id=&#34;36&#34;&gt;3.6
+&lt;/h5&gt;&lt;p&gt;Suppose we train a trigram language model with add-one smoothing on a given corpus. The corpus contains V word types. Express a formula for estimating $P(w3|w1,w2)$, where $w3$ is a word which follows the bigram$ (w1,w2)$, in terms of various n-gram counts and V. Use the notation $c(w1,w2,w3)$ to denote the number of times that trigram $(w1,w2,w3)$ occurs in the corpus, and so on for bigrams and unigrams.&lt;/p&gt;
+&lt;h5 id=&#34;37&#34;&gt;3.7
+&lt;/h5&gt;&lt;p&gt;We are given the following corpus, modified from the one in the chapter:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I am Sam &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; Sam I am &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I am Sam &amp;lt;/s&amp;gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;s&amp;gt; I do not like green eggs and Sam &amp;lt;/s&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we use linear interpolation smoothing between a maximum-likelihood bigram model and a maximum-likelihood unigram model with $λ₁ = 1/2$ and $λ₂ = 1/2,$ what is $P(Sam|am)$? Include $&amp;lt;s&amp;gt;$ and $&amp;lt;/s&amp;gt;$ in your counts just like any other token.&lt;/p&gt;
+&lt;h5 id=&#34;38&#34;&gt;3.8
+&lt;/h5&gt;&lt;p&gt;Write a program to compute unsmoothed unigrams and bigrams.&lt;/p&gt;
+&lt;h5 id=&#34;39&#34;&gt;3.9
+&lt;/h5&gt;&lt;p&gt;Run your n-gram program on two different small corpora of your choice (you might use email text or newsgroups). Now compare the statistics of the two corpora. What are the differences in the most common unigrams between the two? How about interesting differences in bigrams?&lt;/p&gt;
+&lt;h5 id=&#34;310&#34;&gt;3.10
+&lt;/h5&gt;&lt;p&gt;Add an option to your program to generate random sentences.&lt;/p&gt;
+&lt;h5 id=&#34;311&#34;&gt;3.11
+&lt;/h5&gt;&lt;p&gt;Add an option to your program to compute the perplexity of a test set.&lt;/p&gt;
+&lt;h5 id=&#34;312&#34;&gt;3.12
+&lt;/h5&gt;&lt;p&gt;You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?&lt;/p&gt;
 </description>
         </item>
         <item>

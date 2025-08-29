@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\r阅读Speech and Language Processing这本书的一些笔记，以供后来的自己参考。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
 <title>书籍阅读 | Speech and Language Processing</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 
 <link rel="stylesheet" href="/scss/style.min.cdd95828ca8971b17ccb14112222a60d19d84ea3f4e5b525c8c68fb4d2a4535d.css"><meta property='og:title' content="书籍阅读 | Speech and Language Processing">
-<meta property='og:description' content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<meta property='og:description' content="Introduction\r阅读Speech and Language Processing这本书的一些笔记，以供后来的自己参考。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LLM' /><meta property='article:published_time' content='2025-08-28T19:28:49&#43;08:00'/><meta property='article:modified_time' content='2025-08-28T19:28:49&#43;08:00'/>
 <meta name="twitter:title" content="书籍阅读 | Speech and Language Processing">
-<meta name="twitter:description" content="Words and Tokens\r我们需要一个元素来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<meta name="twitter:description" content="Introduction\r阅读Speech and Language Processing这本书的一些笔记，以供后来的自己参考。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
     <link rel="shortcut icon" href="/ion.ico" />
 
 <head>
@@ -303,6 +303,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#introduction">Introduction</a></li>
     <li><a href="#words-and-tokens">Words and Tokens</a>
       <ol>
         <li><a href="#words">Words</a></li>
@@ -334,6 +335,34 @@
           </ol>
         </li>
         <li><a href="#exercies">Exercies</a>
+          <ol>
+            <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#n-gram-language-models">N-gram Language Models</a>
+      <ol>
+        <li><a href="#n-grams">N-Grams</a>
+          <ol>
+            <li><a href="#how-to-estimate-probabilities">How to estimate probabilities</a></li>
+            <li><a href="#dealing-with-scale-in-large-n-gram-models">Dealing with scale in large n-gram models</a></li>
+            <li><a href="#evaluating-language-models-training-and-test-sets">Evaluating Language Models: Training and Test Sets</a></li>
+            <li><a href="#evaluating-language-models-perplexity">Evaluating Language Models: Perplexity</a></li>
+          </ol>
+        </li>
+        <li><a href="#sampling-sentences-from-a-language-model">Sampling sentences from a language model</a></li>
+        <li><a href="#generalizing-vs-overfitting-the-training-set">Generalizing vs. overfitting the training set</a></li>
+        <li><a href="#smoothing-interpolation-and-backoff">Smoothing, Interpolation, and Backoff</a>
+          <ol>
+            <li><a href="#laplace-smoothing">Laplace Smoothing</a></li>
+            <li><a href="#add-k-smoothing">Add-k Smoothing</a></li>
+            <li><a href="#language-model-interpolation">Language Model Interpolation</a></li>
+            <li><a href="#stupid-backoff">Stupid Backoff</a></li>
+          </ol>
+        </li>
+        <li><a href="#advanced-perplexitys-relation-to-entropy">Advanced: Perplexity&rsquo;s Relation to Entropy</a></li>
+        <li><a href="#excercies">Excercies</a>
           <ol>
             <li></li>
           </ol>
@@ -404,7 +433,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -419,8 +448,11 @@
     <section class="article-content">
     
     
-    <h2 id="words-and-tokens">Words and Tokens
-</h2><p>我们需要一个元素来建模语言，下面是我们的选择：</p>
+    <h2 id="introduction">Introduction
+</h2><p>阅读<a class="link" href="https://web.stanford.edu/~jurafsky/slp3/"  target="_blank" rel="noopener"
+    >Speech and Language Processing</a>这本书的一些笔记，以供后来的自己参考。</p>
+<h2 id="words-and-tokens">Words and Tokens
+</h2><p>我们需要一个东西来建模语言，下面是我们的选择：</p>
 <h3 id="words">Words
 </h3><p>为什么不用词？</p>
 <ul>
@@ -560,6 +592,101 @@
 </h5><p>Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.</p>
 <h5 id="27">2.7
 </h5><p>Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.</p>
+<h2 id="n-gram-language-models">N-gram Language Models
+</h2><p>本章介绍最简单的语言模型：<strong>N元语法语言模型</strong>。</p>
+<h3 id="n-grams">N-Grams
+</h3><p><strong>概率链式法则</strong></p>
+<h4 id="how-to-estimate-probabilities">How to estimate probabilities
+</h4><p><strong>马尔科夫假设</strong>：假设一个单词的出现概率只和前面的一个单词有关。那么n-gram即只和前面的$n-1$个单词有关。</p>
+<p><strong>最大似然估计</strong>：已知前一个词$w_{n−1}$​时，当前词$w_n$​的概率</p>
+<p>终止符号（end-symbol）：所有可能句子的概率总和为 1，否则是特定长度的所有句子概率之和为 1。</p>
+<h4 id="dealing-with-scale-in-large-n-gram-models">Dealing with scale in large n-gram models
+</h4><p>Log probabilities</p>
+<p>N元语法的计算现在甚至能达到无限元。</p>
+<p>对N元语法模型进行修剪也是很重要的。</p>
+<h4 id="evaluating-language-models-training-and-test-sets">Evaluating Language Models: Training and Test Sets
+</h4><p><strong>内部评估</strong>和外部评估。</p>
+<p>训练集、开发集和测试集。</p>
+<h4 id="evaluating-language-models-perplexity">Evaluating Language Models: Perplexity
+</h4><p><strong>Perplexity（PPL）</strong>：困惑度越低，说明模型对文本的预测越准确（即模型越 “不困惑”）。</p>
+<ul>
+<li>具体来说，是“联合概率倒数的几何平均值”。</li>
+<li>在计算的时候常常会取对数来将求乘积变为求和，避免数值问题</li>
+</ul>
+<h5 id="perplexity-as-weighted-average-branching-factor">Perplexity as Weighted Average Branching Factor
+</h5><p>困惑度也可以理解为<strong>加权平均分支系数</strong>。其中，语言的 “分支系数”指的是 “任何一个词之后可能出现的下一个词的数量”。</p>
+<h3 id="sampling-sentences-from-a-language-model">Sampling sentences from a language model
+</h3><p>“0-1 数轴 + 区间映射”来理解采样的基本原理。</p>
+<h3 id="generalizing-vs-overfitting-the-training-set">Generalizing vs. overfitting the training set
+</h3><p>对于莎士比亚文本和华尔街日报的文本，两者差异过大以至于不能分别作为训练集和测试集。</p>
+<p>所以说要确保训练集和测试集的领域要相似。</p>
+<h3 id="smoothing-interpolation-and-backoff">Smoothing, Interpolation, and Backoff
+</h3><p>zero probability n-grams有两个问题：</p>
+<ul>
+<li>低估了词语序可能出现的可能性，导致最终的性能变差</li>
+<li>困惑度无法计算，因为无法除以0</li>
+</ul>
+<p>因此需要Smoothing或者discounting</p>
+<h4 id="laplace-smoothing">Laplace Smoothing
+</h4><p>其实也就是add one smoothing，就是对于所有的N元语法都加一。</p>
+<p>对于语言模型来说，结果并不是很好。对文本分类有效。</p>
+<h4 id="add-k-smoothing">Add-k Smoothing
+</h4><p>也就是对所有的都加K。</p>
+<p>对语言模型来说仍然效果一般。</p>
+<h4 id="language-model-interpolation">Language Model Interpolation
+</h4><p><strong>n 元语法插值法：加权融合不同阶数 n 元语法的概率</strong>，避免高阶的n元语法零概率导致的预测失效。</p>
+<p>加权的$\lambda$应该设置成多少呢？可以从预留集held-out corpus中学习。使用EM（期望最大化）算法来学习。</p>
+<h4 id="stupid-backoff">Stupid Backoff
+</h4><p><strong>回退模型</strong>：高阶n阶的模型无法使用的时候，回退到低阶模型。</p>
+<p><strong>Discount</strong>：要让回退模型（backoff model）输出合理的概率分布，我们必须对高阶 n 元语法的概率进行 “折扣处理”（discount），从而预留出部分概率余量（probability mass），供低阶 n 元语法使用。但在实际应用中，人们常使用一种更简单的 “无折扣回退算法”—— 即名为<strong>Stupid Backoff</strong>。</p>
+<h3 id="advanced-perplexitys-relation-to-entropy">Advanced: Perplexity&rsquo;s Relation to Entropy
+</h3><p><strong>熵</strong>：不确定性的度量方式。可以理解是编码某个决策或某条信息所需的最小平均比特数。越不确定，熵越大。</p>
+<p><strong>熵率</strong>：平均的不确定性。自然语言的熵率定义为 “<strong>无限长序列中，每个词的平均熵</strong>”，反映语言的长期不确定性。例如，英文的熵率约 1-2 比特 / 词，意味着平均每个词需要 1-2 比特来编码。</p>
+<p><strong>平稳性</strong>：序列概率不随着时间改变。自然语言不是，但是N元语法是平稳的。</p>
+<p><strong>遍历性</strong>：长序列中包含了所有的短序列。</p>
+<p><strong>Shannon-McMillan-Breiman theorem</strong>：如果语言满足某些正则条件（准确地说，是平稳且遍历的），<strong>序列长度趋近于无穷大时，“序列的平均对数概率的负值” ，即经验熵率会以概率1收敛敛到该过程的理论熵率</strong>。</p>
+<p><strong>交叉熵（Cross-Entropy）</strong>：我们虽然不知道数据的真实概率分布p，但是可以用模型m来近似p。（即我们虽然不知道自然语言的真实情况，但是可以用N元语法来近似。）<strong>交叉熵越小，模型越接近真实分布</strong>。</p>
+<p><strong>困惑度</strong>：<strong>困惑度是熵的指数形式</strong>。比较直观。</p>
+<h3 id="excercies">Excercies
+</h3><h5 id="31">3.1
+</h5><p>Write out the equation for trigram probability estimation (modifying Eq. 3.11). Now write out all the non-zero trigram probabilities for the I am Sam corpus on page 40.</p>
+<h5 id="32">3.2
+</h5><p>Calculate the probability of the sentence <code>i want chinese food</code>. Give two probabilities, one using Fig. 3.2 and the ‘useful probabilities’ just below it on page 42, and another using the add-1 smoothed table in Fig. 3.7. Assume the additional add-1 smoothed probabilities $P(i|&lt;s&gt;) = 0.19$ and $P(&lt;/s&gt;|food) = 0.40$.</p>
+<h5 id="33">3.3
+</h5><p>Which of the two probabilities you computed in the previous exercise is higher, unsmoothed or smoothed? Explain why.</p>
+<h5 id="34">3.4
+</h5><p>We are given the following corpus, modified from the one in the chapter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; Sam I am &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I do not like green eggs and Sam &lt;/s&gt;
+</span></span></code></pre></div><p>Using a bigram language model with add-one smoothing, what is $P(Sam | am)$? Include $&lt;s&gt;$ and $&lt;/s&gt;$ in your counts just like any other token.</p>
+<h5 id="35">3.5
+</h5><p>Suppose we didn’t use the end-symbol $&lt;/s&gt;$. Train an unsmoothed bigram grammar on the following training corpus without using the end-symbol $&lt;/s&gt;$:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; a b  
+</span></span><span class="line"><span class="cl">&lt;s&gt; b b  
+</span></span><span class="line"><span class="cl">&lt;s&gt; b a  
+</span></span><span class="line"><span class="cl">&lt;s&gt; a a
+</span></span></code></pre></div><p>Demonstrate that your bigram model does not assign a single probability distribution across all sentence lengths by showing that the sum of the probability of the four possible 2 word sentences over the alphabet a,b is 1.0, and the sum of the probability of all possible 3 word sentences over the alphabet a,b is also 1.0.</p>
+<h5 id="36">3.6
+</h5><p>Suppose we train a trigram language model with add-one smoothing on a given corpus. The corpus contains V word types. Express a formula for estimating $P(w3|w1,w2)$, where $w3$ is a word which follows the bigram$ (w1,w2)$, in terms of various n-gram counts and V. Use the notation $c(w1,w2,w3)$ to denote the number of times that trigram $(w1,w2,w3)$ occurs in the corpus, and so on for bigrams and unigrams.</p>
+<h5 id="37">3.7
+</h5><p>We are given the following corpus, modified from the one in the chapter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; Sam I am &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I do not like green eggs and Sam &lt;/s&gt;
+</span></span></code></pre></div><p>If we use linear interpolation smoothing between a maximum-likelihood bigram model and a maximum-likelihood unigram model with $λ₁ = 1/2$ and $λ₂ = 1/2,$ what is $P(Sam|am)$? Include $&lt;s&gt;$ and $&lt;/s&gt;$ in your counts just like any other token.</p>
+<h5 id="38">3.8
+</h5><p>Write a program to compute unsmoothed unigrams and bigrams.</p>
+<h5 id="39">3.9
+</h5><p>Run your n-gram program on two different small corpora of your choice (you might use email text or newsgroups). Now compare the statistics of the two corpora. What are the differences in the most common unigrams between the two? How about interesting differences in bigrams?</p>
+<h5 id="310">3.10
+</h5><p>Add an option to your program to generate random sentences.</p>
+<h5 id="311">3.11
+</h5><p>Add an option to your program to compute the perplexity of a test set.</p>
+<h5 id="312">3.12
+</h5><p>You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?</p>
 
 </section>
 
