@@ -485,7 +485,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 14 分钟
+                    阅读时长: 15 分钟
                 </time>
             </div>
         
@@ -778,6 +778,7 @@
 <li>第二步：<strong>通过 Sigmoid 函数转换为概率</strong>：  将线性得分 z 映射到 $[0,1] $区间</li>
 </ul>
 <p>$z$常常被称作Logit（对数几率）。Logit就是Sigmoid的反函数。可以提醒我们后续要加上Sigmoid进行转换，因为$z$并不是一个真实的值。</p>
+<p>特别地，<strong>“正类的对数几率” 与特征呈线性关系</strong>。也就是当其他条件不变时，特征$x_1$每增加1，Logit就增加$w_1$。这非常有可解释性。</p>
 <h3 id="classification-with-logistic-regression">Classification with Logistic Regression
 </h3><p>当概率大于0.5的时候，就把它分类到正类里。</p>
 <h4 id="sentiment-classification">Sentiment Classification
@@ -1023,6 +1024,30 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 </h4><p>使用余弦计算相似度。适用于稀疏长向量。</p>
 <h4 id="word2vec">Word2vec
 </h4><p>embeddings要区别于原来的稀疏长向量，通常指短而稠密的向量。</p>
+<ul>
+<li>学习的权重变少，学习更快</li>
+<li>有助于泛化和避免过拟合</li>
+<li>能够更好捕捉同义性</li>
+</ul>
+<p>skip-gram with negative sampling（SGNS）是word2vec两种方法的一种。word2vec是一种<strong>静态embedding</strong>方法，区别于动态embedding，如BERT表示。</p>
+<p>这里有一个极具创新性的想法 ——<strong>不直接计算 “词与词的关联”（共现矩阵），而是通过一个 “预测任务” 让模型自动学习这种关联，再将学习成果（权重）作为词嵌入</strong>。</p>
+<ul>
+<li>这被称为<strong>自监督方法</strong></li>
+</ul>
+<p>Skip-gram 模型的核心思路如下：</p>
+<ol>
+<li>将目标词与其相邻的语境词视为<strong>正例</strong>。</li>
+<li>从词汇表中随机选取其他词语，作为<strong>负例</strong>。</li>
+<li>利用<strong>逻辑回归训练一个分类器，使其能够区分上述两种情况</strong>（即区分 “目标词与语境词是相邻关系” 和 “目标词与随机词无相邻关系”）。</li>
+<li>将训练过程中学到的权重作为embedding。</li>
+</ol>
+<h5 id="the-classifier">The Classifier
+</h5><p>Skip-gram目标是训练一个分类器，计算这个地方填这个词的概率。</p>
+<ul>
+<li>核心思路：<strong>一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似</strong>。</li>
+<li>相似度计算：点积</li>
+<li>点积结果并非概率值，还需要经过Sigmoid函数运算</li>
+</ul>
 
 </section>
 

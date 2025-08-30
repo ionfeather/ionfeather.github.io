@@ -291,6 +291,7 @@
 &lt;li&gt;第二步：&lt;strong&gt;通过 Sigmoid 函数转换为概率&lt;/strong&gt;：  将线性得分 z 映射到 $[0,1] $区间&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;$z$常常被称作Logit（对数几率）。Logit就是Sigmoid的反函数。可以提醒我们后续要加上Sigmoid进行转换，因为$z$并不是一个真实的值。&lt;/p&gt;
+&lt;p&gt;特别地，&lt;strong&gt;“正类的对数几率” 与特征呈线性关系&lt;/strong&gt;。也就是当其他条件不变时，特征$x_1$每增加1，Logit就增加$w_1$。这非常有可解释性。&lt;/p&gt;
 &lt;h3 id=&#34;classification-with-logistic-regression&#34;&gt;Classification with Logistic Regression
 &lt;/h3&gt;&lt;p&gt;当概率大于0.5的时候，就把它分类到正类里。&lt;/p&gt;
 &lt;h4 id=&#34;sentiment-classification&#34;&gt;Sentiment Classification
@@ -536,6 +537,30 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;/h4&gt;&lt;p&gt;使用余弦计算相似度。适用于稀疏长向量。&lt;/p&gt;
 &lt;h4 id=&#34;word2vec&#34;&gt;Word2vec
 &lt;/h4&gt;&lt;p&gt;embeddings要区别于原来的稀疏长向量，通常指短而稠密的向量。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;学习的权重变少，学习更快&lt;/li&gt;
+&lt;li&gt;有助于泛化和避免过拟合&lt;/li&gt;
+&lt;li&gt;能够更好捕捉同义性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;skip-gram with negative sampling（SGNS）是word2vec两种方法的一种。word2vec是一种&lt;strong&gt;静态embedding&lt;/strong&gt;方法，区别于动态embedding，如BERT表示。&lt;/p&gt;
+&lt;p&gt;这里有一个极具创新性的想法 ——&lt;strong&gt;不直接计算 “词与词的关联”（共现矩阵），而是通过一个 “预测任务” 让模型自动学习这种关联，再将学习成果（权重）作为词嵌入&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这被称为&lt;strong&gt;自监督方法&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Skip-gram 模型的核心思路如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将目标词与其相邻的语境词视为&lt;strong&gt;正例&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;从词汇表中随机选取其他词语，作为&lt;strong&gt;负例&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;利用&lt;strong&gt;逻辑回归训练一个分类器，使其能够区分上述两种情况&lt;/strong&gt;（即区分 “目标词与语境词是相邻关系” 和 “目标词与随机词无相邻关系”）。&lt;/li&gt;
+&lt;li&gt;将训练过程中学到的权重作为embedding。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;the-classifier&#34;&gt;The Classifier
+&lt;/h5&gt;&lt;p&gt;Skip-gram目标是训练一个分类器，计算这个地方填这个词的概率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;核心思路：&lt;strong&gt;一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;相似度计算：点积&lt;/li&gt;
+&lt;li&gt;点积结果并非概率值，还需要经过Sigmoid函数运算&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
