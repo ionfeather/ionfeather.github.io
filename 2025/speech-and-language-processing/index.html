@@ -409,6 +409,18 @@
         <li><a href="#advanced-regularization">Advanced: Regularization</a></li>
       </ol>
     </li>
+    <li><a href="#embeddings">Embeddings</a>
+      <ol>
+        <li><a href="#lexical-semantics">Lexical Semantics</a></li>
+        <li><a href="#vector-semantics-the-intuition">Vector Semantics: The Intuition</a>
+          <ol>
+            <li><a href="#simple-count-based-embeddings">Simple Count-based Embeddings</a></li>
+            <li><a href="#cosine-for-measuring-similarity">Cosine for Measuring Similarity</a></li>
+            <li><a href="#word2vec">Word2vec</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -473,7 +485,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 13 分钟
+                    阅读时长: 14 分钟
                 </time>
             </div>
         
@@ -948,6 +960,69 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <li>lasso</li>
 <li>ridge</li>
 </ul>
+<h2 id="embeddings">Embeddings
+</h2><p>分布假说：相似的上下文总会表现出相似的意思。</p>
+<p>Embeddings分类</p>
+<ul>
+<li>static embeddings</li>
+<li>contextualized embeddings</li>
+</ul>
+<p>学习embeddings和它的意义的理论称为向量语义。</p>
+<ul>
+<li>自监督模型</li>
+<li>representation learning的一种</li>
+<li>无需通过特征工程的人工制造representations</li>
+</ul>
+<h3 id="lexical-semantics">Lexical Semantics
+</h3><ul>
+<li>lemma：citation form，词元，引用形式，一个词的基本形式。</li>
+<li>wordform：词形，一个词的具体使用形态。</li>
+<li>word sense：词义。</li>
+<li>synonymy：同义关系。</li>
+<li>word similarity：词语相似度。
+<ul>
+<li><a class="link" href="https://arxiv.org/abs/1408.3456"  target="_blank" rel="noopener"
+    >SimLex-999</a>中就让人们给一个词和另一个词的相似度打分。</li>
+</ul>
+</li>
+<li>word relatedness/association：词汇关联性，所有能让词汇有关联感的关系。
+<ul>
+<li>semantic fields</li>
+<li>topic models：特别地有Latent Dirichlet Allocation，LDA</li>
+<li>最常见的关系
+<ul>
+<li>hypernymy or IS-A</li>
+<li>antonymy</li>
+<li>mernoymy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>connotation</li>
+</ul>
+<h3 id="vector-semantics-the-intuition">Vector Semantics: The Intuition
+</h3><p>一个单词可以表示为<strong>多维语义空间中的一个点</strong>。而这个多维语义空间是从单词邻居的分布规律中推导而来的。</p>
+<ul>
+<li>tf-idf</li>
+<li>word2vec</li>
+<li>cosine</li>
+</ul>
+<h4 id="simple-count-based-embeddings">Simple Count-based Embeddings
+</h4><ul>
+<li>词汇表一般在1-5万之间</li>
+<li>稀疏向量表示：多数数值为0，目前有有效算法来有效存储和计算</li>
+<li>权重函数
+<ul>
+<li>计数的时候可以用权重函数</li>
+<li>目前最流行的方法是tf-idf</li>
+<li>还有一些历史权重方式</li>
+</ul>
+</li>
+</ul>
+<h4 id="cosine-for-measuring-similarity">Cosine for Measuring Similarity
+</h4><p>使用余弦计算相似度。适用于稀疏长向量。</p>
+<h4 id="word2vec">Word2vec
+</h4><p>embeddings要区别于原来的稀疏长向量，通常指短而稠密的向量。</p>
 
 </section>
 

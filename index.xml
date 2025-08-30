@@ -473,6 +473,69 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;lasso&lt;/li&gt;
 &lt;li&gt;ridge&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;embeddings&#34;&gt;Embeddings
+&lt;/h2&gt;&lt;p&gt;分布假说：相似的上下文总会表现出相似的意思。&lt;/p&gt;
+&lt;p&gt;Embeddings分类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;static embeddings&lt;/li&gt;
+&lt;li&gt;contextualized embeddings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;学习embeddings和它的意义的理论称为向量语义。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自监督模型&lt;/li&gt;
+&lt;li&gt;representation learning的一种&lt;/li&gt;
+&lt;li&gt;无需通过特征工程的人工制造representations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;lexical-semantics&#34;&gt;Lexical Semantics
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;lemma：citation form，词元，引用形式，一个词的基本形式。&lt;/li&gt;
+&lt;li&gt;wordform：词形，一个词的具体使用形态。&lt;/li&gt;
+&lt;li&gt;word sense：词义。&lt;/li&gt;
+&lt;li&gt;synonymy：同义关系。&lt;/li&gt;
+&lt;li&gt;word similarity：词语相似度。
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/1408.3456&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SimLex-999&lt;/a&gt;中就让人们给一个词和另一个词的相似度打分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;word relatedness/association：词汇关联性，所有能让词汇有关联感的关系。
+&lt;ul&gt;
+&lt;li&gt;semantic fields&lt;/li&gt;
+&lt;li&gt;topic models：特别地有Latent Dirichlet Allocation，LDA&lt;/li&gt;
+&lt;li&gt;最常见的关系
+&lt;ul&gt;
+&lt;li&gt;hypernymy or IS-A&lt;/li&gt;
+&lt;li&gt;antonymy&lt;/li&gt;
+&lt;li&gt;mernoymy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;connotation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;vector-semantics-the-intuition&#34;&gt;Vector Semantics: The Intuition
+&lt;/h3&gt;&lt;p&gt;一个单词可以表示为&lt;strong&gt;多维语义空间中的一个点&lt;/strong&gt;。而这个多维语义空间是从单词邻居的分布规律中推导而来的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tf-idf&lt;/li&gt;
+&lt;li&gt;word2vec&lt;/li&gt;
+&lt;li&gt;cosine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;simple-count-based-embeddings&#34;&gt;Simple Count-based Embeddings
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;词汇表一般在1-5万之间&lt;/li&gt;
+&lt;li&gt;稀疏向量表示：多数数值为0，目前有有效算法来有效存储和计算&lt;/li&gt;
+&lt;li&gt;权重函数
+&lt;ul&gt;
+&lt;li&gt;计数的时候可以用权重函数&lt;/li&gt;
+&lt;li&gt;目前最流行的方法是tf-idf&lt;/li&gt;
+&lt;li&gt;还有一些历史权重方式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;cosine-for-measuring-similarity&#34;&gt;Cosine for Measuring Similarity
+&lt;/h4&gt;&lt;p&gt;使用余弦计算相似度。适用于稀疏长向量。&lt;/p&gt;
+&lt;h4 id=&#34;word2vec&#34;&gt;Word2vec
+&lt;/h4&gt;&lt;p&gt;embeddings要区别于原来的稀疏长向量，通常指短而稠密的向量。&lt;/p&gt;
 </description>
         </item>
         <item>
