@@ -252,6 +252,227 @@
 &lt;/h5&gt;&lt;p&gt;Add an option to your program to compute the perplexity of a test set.&lt;/p&gt;
 &lt;h5 id=&#34;312&#34;&gt;3.12
 &lt;/h5&gt;&lt;p&gt;You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?&lt;/p&gt;
+&lt;h2 id=&#34;logistic-regression-and-text-classification&#34;&gt;Logistic Regression and Text Classification
+&lt;/h2&gt;&lt;p&gt;经典任务：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sentiment analysis&lt;/li&gt;
+&lt;li&gt;spam detection&lt;/li&gt;
+&lt;li&gt;language id&lt;/li&gt;
+&lt;li&gt;authorship attribution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;machine-learning-and-classification&#34;&gt;Machine Learning and Classification
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;人工规则很脆弱，数据一变化就无法使用&lt;/li&gt;
+&lt;li&gt;LLM的弱点：幻觉、无法解释。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此最常见的分类方法是&lt;strong&gt;有监督机器学习&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;概率分类器：输出&lt;strong&gt;样本属于每个类别的概率&lt;/strong&gt;而不是类别标签，保证在合并的系统里不过早地输出结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;分类器的核心组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A feature representation of the input&lt;/li&gt;
+&lt;li&gt;A classificaition function that computes $\hat{y}$&lt;/li&gt;
+&lt;li&gt;An objective funcion that we want to potimize for learning
+&lt;ul&gt;
+&lt;li&gt;loss function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;An algorithm for optimizing the objective function
+&lt;ul&gt;
+&lt;li&gt;stochastic gradient descent algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-sigmoid-function&#34;&gt;The Sigmoid Function
+&lt;/h3&gt;&lt;p&gt;二分类逻辑回归的目标是：计算样本属于正类的概率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一步：计算线性得分$z=w⋅x+b$，值域为$[-\infty, +\infty ]$&lt;/li&gt;
+&lt;li&gt;第二步：&lt;strong&gt;通过 Sigmoid 函数转换为概率&lt;/strong&gt;：  将线性得分 z 映射到 $[0,1] $区间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$z$常常被称作Logit（对数几率）。Logit就是Sigmoid的反函数。可以提醒我们后续要加上Sigmoid进行转换，因为$z$并不是一个真实的值。&lt;/p&gt;
+&lt;h3 id=&#34;classification-with-logistic-regression&#34;&gt;Classification with Logistic Regression
+&lt;/h3&gt;&lt;p&gt;当概率大于0.5的时候，就把它分类到正类里。&lt;/p&gt;
+&lt;h4 id=&#34;sentiment-classification&#34;&gt;Sentiment Classification
+&lt;/h4&gt;&lt;p&gt;举了一个例子。&lt;/p&gt;
+&lt;h4 id=&#34;other-classification-tasks-and-features&#34;&gt;Other Classification Tasks and Features
+&lt;/h4&gt;&lt;p&gt;Period disambiguation：确定句号是EOS还是其他。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Designing v.s. Learning features：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;刚刚的例子，特征都是人工设计的。此外还有：
+&lt;ul&gt;
+&lt;li&gt;feaure interactions：基础特征组合成的复杂特征&lt;/li&gt;
+&lt;li&gt;feature templates：抽象的特征规范来定义特征。这里的特征空间是稀疏的，此外特征一般是字符串描述的Hash值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;人工设计太复杂了。因此现代的NLP系统都是用Representation Learning来解决。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;standardize和normalize。&lt;/p&gt;
+&lt;h4 id=&#34;processing-many-examples-at-once&#34;&gt;Processing many examples at once
+&lt;/h4&gt;&lt;p&gt;如果有许多的值要计算，可以使用matrix arithmetic来一次计算完。&lt;/p&gt;
+&lt;h3 id=&#34;multinomial-logistic-regression&#34;&gt;Multinomial Logistic Regression
+&lt;/h3&gt;&lt;p&gt;多项逻辑回归也称softmax regression，老的教材上也叫maxent clasifier。&lt;/p&gt;
+&lt;p&gt;在多项逻辑回归中，直接输出结果而不是一个概率值。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;hard classification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;softmax&#34;&gt;Softmax
+&lt;/h4&gt;&lt;p&gt;Sigmoid函数在多分类情况下的推广。&lt;/p&gt;
+&lt;h4 id=&#34;applying-softmax-in-logistic-regression&#34;&gt;Applying Softmax in Logistic Regression
+&lt;/h4&gt;&lt;p&gt;可以使用矩阵运算方式加快计算。&lt;/p&gt;
+$$\hat{y}=softmax(Wx+b)$$&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2506.11035&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Doumbouya et al., 2025&lt;/a&gt;是这么认为的：逻辑回归将矩阵的每一行 $w_k$视为&lt;strong&gt;第 $k$ 类的原型（prototype）&lt;/strong&gt;，由于两个向量的相似度越高，它们的点积（dot product）值就越大，因此点积可作为衡量向量相似度的函数。模型最终将输入分配给相似度最高的类别。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;features-in-multinomial-logistic-regression&#34;&gt;Features in Multinomial Logistic Regression
+&lt;/h4&gt;&lt;p&gt;特征权重同时依赖于输入文本和输出类别。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597.png&#34;
+	width=&#34;744&#34;
+	height=&#34;837&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_dcd37b06fe097e65.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_87f8d0d9a05a6baf.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;88&#34;
+		data-flex-basis=&#34;213px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;learning-in-logistic-regression&#34;&gt;Learning in Logistic Regression
+&lt;/h3&gt;&lt;p&gt;逻辑回归是如何实现学习的？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使system output（classifier output）和gold output（correct output）越接近越好。两者之间的距离可以称作&lt;strong&gt;损失函数&lt;/strong&gt;或者&lt;strong&gt;代价函数&lt;/strong&gt;。下面介绍交叉熵。&lt;/li&gt;
+&lt;li&gt;需要一个算法来最小化损失函数。下面介绍随机梯度下降算法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-cross-entropy-loss-function&#34;&gt;The Cross-entropy Loss Function
+&lt;/h3&gt;&lt;p&gt;条件最大似然估计：在给定$x$下，选择参数$w$和$b$使得$y$的对数概率最大。&lt;/p&gt;
+&lt;p&gt;这里损失函数是&lt;strong&gt;负对数似然损失（negative log likelihood loss）&lt;/strong&gt;，通常也被称为&lt;strong&gt;交叉熵损失（cross-entropy loss）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;介绍了一下为什么&lt;strong&gt;最小化交叉熵损失可以使得真实分布和预测分布更加接近&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;gradient-descent&#34;&gt;Gradient Descent
+&lt;/h3&gt;&lt;p&gt;梯度下降算法的原理。介绍了梯度、学习率。&lt;/p&gt;
+&lt;h4 id=&#34;the-gradient-for-logistic-regression&#34;&gt;The Gradient for Logistic Regression
+&lt;/h4&gt;&lt;p&gt;逻辑回归的梯度就是
+&lt;/p&gt;
+$$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$&lt;p&gt;
+也就是预测值$\hat{y}$和实际值$y$之间的差乘输入值$x_j$。&lt;/p&gt;
+&lt;h4 id=&#34;the-stochastic-gradient-descent-algorithm&#34;&gt;The Stochastic Gradient Descent Algorithm
+&lt;/h4&gt;&lt;p&gt;随机梯度下降算法是一种在线算法，可以边接收数据边学习。&lt;/p&gt;
+&lt;p&gt;SGD每次用&lt;strong&gt;单个随机样本&lt;/strong&gt;计算梯度。&lt;/p&gt;
+&lt;h4 id=&#34;mini-batch-training&#34;&gt;Mini-batch Training
+&lt;/h4&gt;&lt;p&gt;batch training和mini-batch training的区别。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;batch gradient：所有的随机样本计算梯度。&lt;/li&gt;
+&lt;li&gt;mini-batch gradient：小批量梯度下降算法。每次选择&lt;strong&gt;一小批随机样本&lt;/strong&gt;计算梯度。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;learning-in-multinomial-logistic-regression&#34;&gt;Learning in Multinomial Logistic Regression
+&lt;/h3&gt;&lt;p&gt;多项式逻辑回归其实和二项式逻辑回归差不多。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本质是使用独热标签+概率向量的形式进行计算。&lt;/li&gt;
+&lt;li&gt;核心是 “对正确类别的预测概率取负对数”，得到交叉熵损失，其越小则预测概率越高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;evaluation-precision-recall-f-measure&#34;&gt;Evaluation: Precision, Recall, F-measure
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;confusion matrix&lt;/li&gt;
+&lt;li&gt;accuracy&lt;/li&gt;
+&lt;li&gt;precision&lt;/li&gt;
+&lt;li&gt;recall&lt;/li&gt;
+&lt;li&gt;F-measure
+&lt;ul&gt;
+&lt;li&gt;F1&lt;/li&gt;
+&lt;li&gt;a weighted harmonic mean of precision and recall.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893.png&#34;
+	width=&#34;928&#34;
+	height=&#34;394&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_5b835770261a7097.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_9163edd8010643ed.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;565px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;microaveraging v.s. macroaveraging&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;微观平均：更关注 “整体样本的预测准确性”，&lt;strong&gt;少数类错判代价低于多数类&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;宏观平均：更关注所有的类的错判代价的公平，&lt;strong&gt;少数类和多数类的代价相等&lt;/strong&gt;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005.png&#34;
+	width=&#34;1084&#34;
+	height=&#34;468&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bca6ffdfb72f8971.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_899e55b55133737a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;231&#34;
+		data-flex-basis=&#34;555px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;test-sets-and-cross-validation&#34;&gt;Test sets and Cross-validation
+&lt;/h3&gt;&lt;p&gt;Cross-validation：解决测试集不足的问题。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;固定训练集和测试集。&lt;/li&gt;
+&lt;li&gt;训练集中进行分割。
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382.png&#34;
+	width=&#34;895&#34;
+	height=&#34;462&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_4558bdf3b4166cbe.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_e53d98bd5ba967c8.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;464px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;statistical-significance-testing&#34;&gt;Statistical Significance Testing
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;统计显著性检验&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不只是简单地检查A在测试集上的结果$M(A,x)$好于B在测试集上的结果$M(B,x)$。如果差很小的话，其实不一定能证明A的结果比B小，不具有统计学上的显著性。&lt;/li&gt;
+&lt;li&gt;设计一个效应量$\delta (x)=M(A,x)-M(B,x)$，原假设是$H_0 :\delta (x)\leq 0$。这样计算p值是否小于阈值可以得出是否显著性地A比B要好。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在NLP中，一般不用ANOVAs或者t检验，而是使用非参数检验：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;近似随机化检验&lt;/strong&gt;（Approximate Randomization Test）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bootstrap 检验&lt;/strong&gt;（Bootstrap Test）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;方差分析和t检验都需要有假设：方差齐性或数据服从正态分布。所以只能用非参数检验。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h4 id=&#34;the-paired-bootstrap-test&#34;&gt;The Paired Bootstrap Test
+&lt;/h4&gt;&lt;p&gt;Bootstrap 检验的核心是 “重抽样”—— 从原始测试集&lt;code&gt;x&lt;/code&gt;中&lt;strong&gt;有放回地随机抽取&lt;/strong&gt;生成新的测试集。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970.png&#34;
+	width=&#34;1097&#34;
+	height=&#34;490&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8f406568f15b6414.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_c48413deb765f0e1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;223&#34;
+		data-flex-basis=&#34;537px&#34;
+	
+&gt;
+在新的测试集上，P 值等于 “重抽样测试集中，$d(x^{(i)})≥2d(x)$的数量占总重抽样次数b的比例”。&lt;strong&gt;判断此时的p值是否低于阈值就可以判断出是否是数据集本身的偏差导致了A比B要结果好。&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LLM的解释：Bootstrap 重抽样，就是在 “不改变天平初始倾斜（测试集偏向）” 的前提下，反复放 “随机重量（重抽样的样本）”，看左边会比右边多低多少格 —— 如果只是天平本身歪了，随机放重量时，左边最多低 2 格左右（常规波动）；如果左边真的更重，就可能低 4 格以上（极端情况）。这种极端情况多了，超过了阈值，我们就更相信是天平本身的问题。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;avoiding-harms-in-classification&#34;&gt;Avoiding Harms in Classification
+&lt;/h3&gt;&lt;p&gt;representational harms：由于对特定社会群体的贬低或刻板印象导致的伤害。&lt;/p&gt;
+&lt;p&gt;toxic detection&lt;/p&gt;
+&lt;p&gt;model card&lt;/p&gt;
+&lt;h3 id=&#34;interpereting-models&#34;&gt;Interpereting Models
+&lt;/h3&gt;&lt;p&gt;模型的可解释性也是很重要的。逻辑回归就是比较好的可解释的模型。&lt;/p&gt;
+&lt;h3 id=&#34;advanced-regularization&#34;&gt;Advanced: Regularization
+&lt;/h3&gt;&lt;p&gt;regularization来解决过拟合的问题，提高模型泛化能力。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;L2 regulaization&lt;/li&gt;
+&lt;li&gt;L1 regulaization&lt;/li&gt;
+&lt;li&gt;lasso&lt;/li&gt;
+&lt;li&gt;ridge&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
