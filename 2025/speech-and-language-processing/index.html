@@ -247,25 +247,6 @@
             </a>
         </li>
         
-        
-        <li >
-            <a href='/%E5%8F%8B%E9%93%BE/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
-  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
-</svg>
-
-
-
-                
-                <span>友链</span>
-            </a>
-        </li>
-        
         <li class="menu-bottom-section">
             
 
@@ -417,8 +398,18 @@
             <li><a href="#simple-count-based-embeddings">Simple Count-based Embeddings</a></li>
             <li><a href="#cosine-for-measuring-similarity">Cosine for Measuring Similarity</a></li>
             <li><a href="#word2vec">Word2vec</a></li>
+            <li><a href="#learning-skip-gram-embeddings">Learning Skip-gram Embeddings</a></li>
+            <li><a href="#other-kinds-of-static-embeddings">Other kinds of static embeddings</a></li>
           </ol>
         </li>
+        <li><a href="#visualizing-embeddings">Visualizing Embeddings</a></li>
+        <li><a href="#semantic-properites-of-embeddings">Semantic Properites of Embeddings</a>
+          <ol>
+            <li><a href="#embeddings-and-historical-semantics">Embeddings and Historical Semantics</a></li>
+          </ol>
+        </li>
+        <li><a href="#bias-and-embeddings">Bias and Embeddings</a></li>
+        <li><a href="#evaluating-vector-models">Evaluating Vector Models</a></li>
       </ol>
     </li>
   </ol>
@@ -485,7 +476,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 15 分钟
+                    阅读时长: 17 分钟
                 </time>
             </div>
         
@@ -1044,10 +1035,121 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <h5 id="the-classifier">The Classifier
 </h5><p>Skip-gram目标是训练一个分类器，计算这个地方填这个词的概率。</p>
 <ul>
-<li>核心思路：<strong>一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似</strong>。</li>
-<li>相似度计算：点积</li>
-<li>点积结果并非概率值，还需要经过Sigmoid函数运算</li>
+<li><strong>核心思路</strong>：一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似。</li>
+<li><strong>相似度计算</strong>：点积</li>
+<li>点积结果并非概率值，还需要经过Sigmoid函数运算‘</li>
 </ul>
+<p>Skip-gram模型其实是存储了每个单词的两个embeddings，一个作为目标词，一个作为上下文。分别从target matrix W和context matrix C矩阵中学习。</p>
+<h4 id="learning-skip-gram-embeddings">Learning Skip-gram Embeddings
+</h4><p><strong>positive examples</strong>：上下文滑动窗口</p>
+<p><strong>negative examples</strong>：词汇表中随机抽取，一般是positive examples的k倍，由目标词$w$和噪声词组成。</p>
+<p>在抽样的时候，会设置一个权重系数$\alpha =0.75$来调整概率$P(w)$避免总是选择高频词。</p>
+<p>学习目标：</p>
+<ul>
+<li>最大化positive examples中学习的相似度</li>
+<li>最小化negative examples中的相似度</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831142750258.png"
+	width="880"
+	height="558"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b96cde190aab3329.png 480w, /2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_1050abc09f7158b.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+>
+如图，目标是使得apricot和jam的点积更大，和matrix、Tolstoy的点积更小。</p>
+<p>在学习完了之后，一般只使用W来表示。</p>
+<h4 id="other-kinds-of-static-embeddings">Other kinds of static embeddings
+</h4><p>fasttext</p>
+<ul>
+<li>解决了word2vec的未知词问题</li>
+<li>subword models</li>
+</ul>
+<p>GloVe</p>
+<ul>
+<li>Global Vectors</li>
+<li>基于词词共现矩阵的概率</li>
+</ul>
+<p>word2vec可以看成<strong>间接优化一个 “带PPMI（Positive Pointwise Mutual Information）权重的共现矩阵” 的函数</strong>。</p>
+<blockquote>
+<p>我的一些想法：GNN是否也可以做类似的工作？GNN目前的方法就是直接处理图结构，进行局部图结构学习。不专门训练一个模型进行预测，而是把这个训练的模型的参数直接作为一个向量使用，反而能够更好地捕捉到隐含关系。</p>
+<p>这种想法是否可以将LLM和GNN更好地连接起来？</p></blockquote>
+<h3 id="visualizing-embeddings">Visualizing Embeddings
+</h3><ul>
+<li>直接列出最相似的单词</li>
+<li>聚类算法</li>
+<li>t-SNE：让低维空间中 “点与点的相似概率”，尽量和高维空间中 “点与点的相似概率” 一致</li>
+</ul>
+<h3 id="semantic-properites-of-embeddings">Semantic Properites of Embeddings
+</h3><p>关联和相似的区别：越短的上下文得到的向量，相似越好找，关联越难；越长正好相反。</p>
+<ul>
+<li>一阶共现：组合关系，一起组合出现，如write和poem</li>
+<li>二阶共享：聚合关系，直接相关，如write和say</li>
+</ul>
+<p>类比关系：平行四边形模型
+<img src="/2025/speech-and-language-processing/assets/IMG-20250831150132974.png"
+	width="1134"
+	height="469"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_363723ff4c0d8ebb.png 480w, /2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_327a3c1c3636cedb.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="580px"
+	
+>
+问题是只能用在明确的关系、短的距离和频繁的单词上。</p>
+<h4 id="embeddings-and-historical-semantics">Embeddings and Historical Semantics
+</h4><p>嵌入的应用。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831150603967.png"
+	width="839"
+	height="505"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_baa0cb87e66ee17e.png 480w, /2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_76e49fbca324cd4d.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="398px"
+	
+></p>
+<p>很有意思。</p>
+<ul>
+<li>gay：愉悦的-&gt;明亮的-&gt;男同性恋</li>
+<li>broadcast：散播-&gt;报纸-&gt;BBC</li>
+<li>awful：庄严的-&gt;可怕的</li>
+</ul>
+<h3 id="bias-and-embeddings">Bias and Embeddings
+</h3><p>allocational harm</p>
+<p>embedding不仅反映输入，还放大偏见。</p>
+<h3 id="evaluating-vector-models">Evaluating Vector Models
+</h3><p>相似度度量：</p>
+<ul>
+<li>不含上下文
+<ul>
+<li>WordSim-353</li>
+<li>SimLex-999</li>
+<li>TOEFL dataset</li>
+</ul>
+</li>
+<li>含上下文
+<ul>
+<li>SCWS</li>
+<li>WiC</li>
+<li>semantic textual similarity task</li>
+</ul>
+</li>
+</ul>
+<p>类比度量：</p>
+<ul>
+<li>SemEval-2012 Task 2 dataset</li>
+</ul>
+<p>所有的Embedding算法都会存在固有的变异性。建议使用bootstrap采样后的文档中训练多个embeddings并平均。</p>
 
 </section>
 

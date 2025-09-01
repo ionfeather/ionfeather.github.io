@@ -557,10 +557,121 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;h5 id=&#34;the-classifier&#34;&gt;The Classifier
 &lt;/h5&gt;&lt;p&gt;Skip-gram目标是训练一个分类器，计算这个地方填这个词的概率。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;核心思路：&lt;strong&gt;一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;相似度计算：点积&lt;/li&gt;
-&lt;li&gt;点积结果并非概率值，还需要经过Sigmoid函数运算&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心思路&lt;/strong&gt;：一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;相似度计算&lt;/strong&gt;：点积&lt;/li&gt;
+&lt;li&gt;点积结果并非概率值，还需要经过Sigmoid函数运算‘&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Skip-gram模型其实是存储了每个单词的两个embeddings，一个作为目标词，一个作为上下文。分别从target matrix W和context matrix C矩阵中学习。&lt;/p&gt;
+&lt;h4 id=&#34;learning-skip-gram-embeddings&#34;&gt;Learning Skip-gram Embeddings
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;positive examples&lt;/strong&gt;：上下文滑动窗口&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;negative examples&lt;/strong&gt;：词汇表中随机抽取，一般是positive examples的k倍，由目标词$w$和噪声词组成。&lt;/p&gt;
+&lt;p&gt;在抽样的时候，会设置一个权重系数$\alpha =0.75$来调整概率$P(w)$避免总是选择高频词。&lt;/p&gt;
+&lt;p&gt;学习目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最大化positive examples中学习的相似度&lt;/li&gt;
+&lt;li&gt;最小化negative examples中的相似度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258.png&#34;
+	width=&#34;880&#34;
+	height=&#34;558&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b96cde190aab3329.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_1050abc09f7158b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;157&#34;
+		data-flex-basis=&#34;378px&#34;
+	
+&gt;
+如图，目标是使得apricot和jam的点积更大，和matrix、Tolstoy的点积更小。&lt;/p&gt;
+&lt;p&gt;在学习完了之后，一般只使用W来表示。&lt;/p&gt;
+&lt;h4 id=&#34;other-kinds-of-static-embeddings&#34;&gt;Other kinds of static embeddings
+&lt;/h4&gt;&lt;p&gt;fasttext&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;解决了word2vec的未知词问题&lt;/li&gt;
+&lt;li&gt;subword models&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GloVe&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Global Vectors&lt;/li&gt;
+&lt;li&gt;基于词词共现矩阵的概率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;word2vec可以看成&lt;strong&gt;间接优化一个 “带PPMI（Positive Pointwise Mutual Information）权重的共现矩阵” 的函数&lt;/strong&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的一些想法：GNN是否也可以做类似的工作？GNN目前的方法就是直接处理图结构，进行局部图结构学习。不专门训练一个模型进行预测，而是把这个训练的模型的参数直接作为一个向量使用，反而能够更好地捕捉到隐含关系。&lt;/p&gt;
+&lt;p&gt;这种想法是否可以将LLM和GNN更好地连接起来？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;visualizing-embeddings&#34;&gt;Visualizing Embeddings
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;直接列出最相似的单词&lt;/li&gt;
+&lt;li&gt;聚类算法&lt;/li&gt;
+&lt;li&gt;t-SNE：让低维空间中 “点与点的相似概率”，尽量和高维空间中 “点与点的相似概率” 一致&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;semantic-properites-of-embeddings&#34;&gt;Semantic Properites of Embeddings
+&lt;/h3&gt;&lt;p&gt;关联和相似的区别：越短的上下文得到的向量，相似越好找，关联越难；越长正好相反。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一阶共现：组合关系，一起组合出现，如write和poem&lt;/li&gt;
+&lt;li&gt;二阶共享：聚合关系，直接相关，如write和say&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;类比关系：平行四边形模型
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974.png&#34;
+	width=&#34;1134&#34;
+	height=&#34;469&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_363723ff4c0d8ebb.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_327a3c1c3636cedb.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;580px&#34;
+	
+&gt;
+问题是只能用在明确的关系、短的距离和频繁的单词上。&lt;/p&gt;
+&lt;h4 id=&#34;embeddings-and-historical-semantics&#34;&gt;Embeddings and Historical Semantics
+&lt;/h4&gt;&lt;p&gt;嵌入的应用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967.png&#34;
+	width=&#34;839&#34;
+	height=&#34;505&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_baa0cb87e66ee17e.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_76e49fbca324cd4d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;398px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;很有意思。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gay：愉悦的-&amp;gt;明亮的-&amp;gt;男同性恋&lt;/li&gt;
+&lt;li&gt;broadcast：散播-&amp;gt;报纸-&amp;gt;BBC&lt;/li&gt;
+&lt;li&gt;awful：庄严的-&amp;gt;可怕的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bias-and-embeddings&#34;&gt;Bias and Embeddings
+&lt;/h3&gt;&lt;p&gt;allocational harm&lt;/p&gt;
+&lt;p&gt;embedding不仅反映输入，还放大偏见。&lt;/p&gt;
+&lt;h3 id=&#34;evaluating-vector-models&#34;&gt;Evaluating Vector Models
+&lt;/h3&gt;&lt;p&gt;相似度度量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不含上下文
+&lt;ul&gt;
+&lt;li&gt;WordSim-353&lt;/li&gt;
+&lt;li&gt;SimLex-999&lt;/li&gt;
+&lt;li&gt;TOEFL dataset&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;含上下文
+&lt;ul&gt;
+&lt;li&gt;SCWS&lt;/li&gt;
+&lt;li&gt;WiC&lt;/li&gt;
+&lt;li&gt;semantic textual similarity task&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;类比度量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SemEval-2012 Task 2 dataset&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所有的Embedding算法都会存在固有的变异性。建议使用bootstrap采样后的文档中训练多个embeddings并平均。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -6162,14 +6273,6 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/search/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>友链</title>
-        <link>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</guid>
         <description></description>
         </item>
         
