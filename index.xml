@@ -15,7 +15,7 @@
         <guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid>
         <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction
 &lt;/h2&gt;&lt;p&gt;阅读&lt;a class=&#34;link&#34; href=&#34;https://web.stanford.edu/~jurafsky/slp3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记，以供后来的自己参考。&lt;/p&gt;
+    &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记。&lt;/p&gt;
 &lt;h2 id=&#34;words-and-tokens&#34;&gt;Words and Tokens
 &lt;/h2&gt;&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
 &lt;h3 id=&#34;words&#34;&gt;Words
@@ -672,6 +672,253 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;SemEval-2012 Task 2 dataset&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;所有的Embedding算法都会存在固有的变异性。建议使用bootstrap采样后的文档中训练多个embeddings并平均。&lt;/p&gt;
+&lt;h2 id=&#34;neural-networks&#34;&gt;Neural Networks
+&lt;/h2&gt;&lt;p&gt;McCulloch-Pitts neuron&lt;/p&gt;
+&lt;p&gt;feedforward&lt;/p&gt;
+&lt;p&gt;deep learning&lt;/p&gt;
+&lt;h3 id=&#34;units&#34;&gt;Units
+&lt;/h3&gt;&lt;p&gt;bias term&lt;/p&gt;
+&lt;p&gt;activation：使用non-linear functions，如sigmoid、tanh、ReLU等&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978.png&#34;
+	width=&#34;833&#34;
+	height=&#34;422&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_e98d5b59e57b93ca.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_75d0b4b410c52d3a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;473px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sigmoid和tanh的问题：特别容易出现饱和的现象，如当特别靠近1的时候，此时的导数接近于0，输入的微小改变将无法引起输出的任何变化。这种现象称为&lt;strong&gt;梯度消失&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-xor-problem&#34;&gt;The XOR Problem
+&lt;/h3&gt;&lt;p&gt;Minsky and Papert：一层神经元无法解决异或问题。如感知机。&lt;/p&gt;
+&lt;h4 id=&#34;the-solution-neural-networks&#34;&gt;The Solution: Neural Networks
+&lt;/h4&gt;&lt;p&gt;包含隐藏层的多层感知机MLP解决了这个问题。&lt;/p&gt;
+&lt;p&gt;下面这个图，不管对于原来的[0,1]还是[1,0]都会将他们在隐含层里转化为[1,0]。而原来的[0,0]和[1,1]则变为[2,1]，此时便线性可分。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265.png&#34;
+	width=&#34;762&#34;
+	height=&#34;337&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_820ad2365c82284f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_8ed92ef255ef500a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;226&#34;
+		data-flex-basis=&#34;542px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068.png&#34;
+	width=&#34;686&#34;
+	height=&#34;446&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_a56fa62e2362e855.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_c12f6c72632725f1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;153&#34;
+		data-flex-basis=&#34;369px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;feedforward-neural-networks&#34;&gt;Feedforward Neural Networks
+&lt;/h3&gt;&lt;p&gt;与RNN对应，前馈神经网络（FNN）不带有循环。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由于历史原因，FNN也称为多层感知机，MLPs，事实上现在的多层网络中已经不是感知机了。&lt;/li&gt;
+&lt;li&gt;感知机使用阶跃函数，现在的神经网络用的是多种非线性的单元如ReLUs或者Sigmoid等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;前馈神经网络的标准结构是全连接的。
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223.png&#34;
+	width=&#34;726&#34;
+	height=&#34;429&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_28bfdb5ad0f61a8a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d4c96ab1783e2a89.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;169&#34;
+		data-flex-basis=&#34;406px&#34;
+	
+&gt;
+在这里，W作为输入层到隐含层的权重矩阵，U则是隐含层到输出层的权重矩阵。
+&lt;/p&gt;
+$$h=\sigma(Wx+b)$$&lt;p&gt;
+&lt;/p&gt;
+$$z=Uh$$&lt;p&gt;
+在得到输出结果$z$之后，由于$z$是一个实数值向量（其实就是logits），而分类需要的是概率分布向量，所以要对其进行归一化（normalizing）。这里使用的是softmax函数。
+&lt;/p&gt;
+$$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有许多层&lt;/li&gt;
+&lt;li&gt;中间层的激活函数不只使用sigmoid&lt;/li&gt;
+&lt;li&gt;特征可以不只是由人工的特征模板设计，而可以由网络自身得到&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;逻辑回归可以理解成一层的神经网络。&lt;/p&gt;
+&lt;h4 id=&#34;more-details-on-feedforward-networks&#34;&gt;More Details on Feedforward Networks
+&lt;/h4&gt;&lt;p&gt;为什么激活函数要非线性&lt;/p&gt;
+&lt;p&gt;替换偏置项：使用dummy node来代替原来的偏置项。也就是下图中把b换成一个新的固定为1的$x_0$。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344.png&#34;
+	width=&#34;692&#34;
+	height=&#34;372&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_22233632699e1e11.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_f917792a9f3a40e1.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;446px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;feedforward-networks-for-nlp-classification&#34;&gt;Feedforward Networks for NLP: Classification
+&lt;/h3&gt;&lt;p&gt;嵌入矩阵、表示池化、表示学习先不讲，先学一下用前馈神经网络解决分类问题。&lt;/p&gt;
+&lt;h4 id=&#34;neural-net-classifiers-with-hand-built-features&#34;&gt;Neural Net Classifiers with Hand-built Features
+&lt;/h4&gt;&lt;p&gt;人工设计的特征，除了把MLP换成FNN之外没变化。
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826.png&#34;
+	width=&#34;688&#34;
+	height=&#34;399&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_e7290fd892ec1524.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_7954655261211383.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;vectorizing-for-parallelizing-inference&#34;&gt;Vectorizing for Parallelizing Inference
+&lt;/h4&gt;&lt;p&gt;单个样本特征维度是d，有m个样本，就可以将输入写成一个矩阵X为m×d维。&lt;/p&gt;
+&lt;p&gt;其他的偏置项等也可以写成矩阵的形式，有助于最后的运算。此时有
+&lt;/p&gt;
+$$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquote&gt;
+&lt;p&gt;这里的X中行向量表示一个样本的完整特征。有的时候会写成$WX+b$，有的时候是$XW+b$。注意X的形状有所不同。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;embeddings-as-the-input-to-neural-net-classifiers&#34;&gt;Embeddings as the Input to Neural Net Classifiers
+&lt;/h3&gt;&lt;p&gt;static embeddings代替hand-designed features。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储static embeddings的词典称为embedding matrix &lt;strong&gt;E&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;one-hot vector：从embedding matrix选取token embedding的方法
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608.png&#34;
+	width=&#34;688&#34;
+	height=&#34;215&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_35c57fe6c6d3b00d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_c416dc54a98e3898.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;320&#34;
+		data-flex-basis=&#34;768px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;分类器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;concatenation：适合对token顺序和细节敏感的任务，如语言建模&lt;/li&gt;
+&lt;li&gt;pooling：适合对整体语义敏感的任务，如情感分析
+&lt;ul&gt;
+&lt;li&gt;mean-pooling&lt;/li&gt;
+&lt;li&gt;max-pooling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076.png&#34;
+	width=&#34;807&#34;
+	height=&#34;712&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_e6ec73621f005a0d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_c30b59ad826afcc3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;前馈神经网络用于情感分析，带有池化层的结构&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;272px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;神经语言模型和N元语法模型的区别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以处理更多的上下文，更加泛化，预测更准确；速度更慢，训练更麻烦&lt;/li&gt;
+&lt;li&gt;使用embeddings表示词而不是word identity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335.png&#34;
+	width=&#34;717&#34;
+	height=&#34;645&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_aab9c40f89390eef.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_98641d26ebbce7c.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;embedding layer e这里是拼接起来的&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;266px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;training-neural-nets&#34;&gt;Training Neural Nets
+&lt;/h3&gt;&lt;p&gt;损失函数、交叉熵&lt;/p&gt;
+&lt;p&gt;误差反向传播/反向微分&lt;/p&gt;
+&lt;h4 id=&#34;loss-function&#34;&gt;Loss Function
+&lt;/h4&gt;&lt;p&gt;交叉熵损失函数：负对数似然损失。用于&lt;strong&gt;输出为 “类别概率” 的任务&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;computing-the-gradient&#34;&gt;Computing the Gradient
+&lt;/h4&gt;&lt;p&gt;一层的时候可以用损失的导数，但是多层的时候需要用反向传播算法。&lt;/p&gt;
+&lt;h4 id=&#34;computation-graphs&#34;&gt;Computation Graphs
+&lt;/h4&gt;&lt;p&gt;介绍了什么是计算图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848.png&#34;
+	width=&#34;697&#34;
+	height=&#34;263&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_9525e3130f2a9740.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_d15c38716a3d7624.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;265&#34;
+		data-flex-basis=&#34;636px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;backward-differentiation-on-computation-graphs&#34;&gt;Backward Differentiation on Computation Graphs
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;反向传播&lt;/strong&gt;：用链式法则一次性计算出所有参数的梯度。
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406.png&#34;
+	width=&#34;829&#34;
+	height=&#34;432&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_aea55f690f9591d7.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_e6e577c00244a646.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;460px&#34;
+	
+&gt;
+先正向传播一次，然后反向传播计算。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正向传播是为了得到损失值&lt;/li&gt;
+&lt;li&gt;反向传播是为了得到梯度，从而进行参数优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当然在真正的神经网络中，计算会更加复杂。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628.png&#34;
+	width=&#34;851&#34;
+	height=&#34;528&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_86b4e3d87a5a98fe.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_508ea0186fde9736.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;161&#34;
+		data-flex-basis=&#34;386px&#34;
+	
+&gt;
+但是方法万变不离其宗。&lt;/p&gt;
+&lt;h4 id=&#34;more-details-on-learning&#34;&gt;More Details on Learning
+&lt;/h4&gt;&lt;p&gt;神经网络优化问题是一个非凸优化问题。目前有了很多好的正则化方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始值不设为0，而是随机的一些小的数&lt;/li&gt;
+&lt;li&gt;dropout&lt;/li&gt;
+&lt;li&gt;超参数：Adam等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GPUs等计算加速&lt;/p&gt;
+&lt;h2 id=&#34;large-language-models&#34;&gt;Large Language Models
+&lt;/h2&gt;&lt;p&gt;ELIZA&lt;/p&gt;
+&lt;p&gt;pretraining&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -680,7 +927,9 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
         <pubDate>Tue, 26 Aug 2025 19:08:55 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2025/the-end-of-heat/</guid>
-        <description>&lt;img src="https://ionfeather.github.io/2025/the-end-of-heat/cover.jpg" alt="Featured image of post 处暑 | 江南好，风景旧曾谙" /&gt;</description>
+        <description>&lt;img src="https://ionfeather.github.io/2025/the-end-of-heat/cover.jpg" alt="Featured image of post 处暑 | 江南好，风景旧曾谙" /&gt;&lt;p&gt;江南好，风景旧曾谙。日出江花红胜火，春来江水绿如蓝。能不忆江南？&lt;/p&gt;
+&lt;p&gt;在离开浙江之前，我没有想过我会思念它那炙热的夏天，寒冷的冬天，无休止的蝉鸣或者是家旁边平平无奇的山。这次回家是边旅游边回家，从北京一路向南（离开有你的季节），第一站是湖南长沙，第二站是江西南昌，第三站才是家。&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>大暑 | Shall I compare thee to a summer&#39;s day?</title>
@@ -6273,6 +6522,14 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/search/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>友链</title>
+        <link>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</guid>
         <description></description>
         </item>
         
