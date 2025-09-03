@@ -1005,22 +1005,30 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;他们都是基于神经网络构建的。&lt;/p&gt;
 &lt;h3 id=&#34;conditional-generation-of-text-the-intuition&#34;&gt;Conditional Generation of Text: The Intuition
 &lt;/h3&gt;&lt;p&gt;不管什么任务，都可以简化为给定prompt的下一个词的预测任务。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221522.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606.png&#34;
+	width=&#34;813&#34;
+	height=&#34;346&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_b84c5560c85d0ad0.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_e5d863ff7f7b20c8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;234&#34;
+		data-flex-basis=&#34;563px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;prompting&#34;&gt;Prompting
 &lt;/h3&gt;&lt;p&gt;指令微调&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221532.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947.png&#34;
+	width=&#34;815&#34;
+	height=&#34;386&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6ad9dfc9690a84c8.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_8595ec17a22bd37b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;506px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;prompt&lt;/p&gt;
@@ -1038,56 +1046,77 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/ul&gt;
 &lt;h3 id=&#34;generation-and-sampling&#34;&gt;Generation and Sampling
 &lt;/h3&gt;&lt;p&gt;语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221559.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152.png&#34;
+	width=&#34;812&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_16ad1c8697e23a8f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_fff46d8496576fff.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;246&#34;
+		data-flex-basis=&#34;592px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;decoding：基于概率选择token生成的过程常称为decoding&lt;/p&gt;
-&lt;p&gt;自回归生成&lt;/p&gt;
+&lt;p&gt;自回归生成
+D&lt;/p&gt;
 &lt;h4 id=&#34;greedy-decoding&#34;&gt;Greedy decoding
 &lt;/h4&gt;&lt;p&gt;贪心解码：选择概率最高的那个token生成（argmax）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221610.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008.png&#34;
+	width=&#34;830&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_98ac761f730aacb7.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_49ef26f8c34a2658.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;596px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;效果不好——输入文本如果相同，结果是固定的。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;束搜索&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;random-sampling&#34;&gt;Random Sampling
 &lt;/h4&gt;&lt;p&gt;按照分布采样，直到采样到EOS。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221651.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629.png&#34;
+	width=&#34;811&#34;
+	height=&#34;326&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_11963dc8db1e3582.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_4629a2f05c285dce.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;597px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪&lt;/p&gt;
 &lt;h4 id=&#34;temperature-sampling&#34;&gt;Temperature Sampling
 &lt;/h4&gt;&lt;p&gt;logits转化为probability的时候用带有temperature的softmax计算。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221700.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977.png&#34;
+	width=&#34;958&#34;
+	height=&#34;388&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_3596e2556cd62f8b.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_41d0f2085c2134bd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;246&#34;
+		data-flex-basis=&#34;592px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221710.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906.png&#34;
+	width=&#34;799&#34;
+	height=&#34;603&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bf742fb76c7ff9ec.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bfff8415c93c103b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;training-large-language-models&#34;&gt;Training Large Language Models
@@ -1097,23 +1126,31 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;指令微调&lt;/li&gt;
 &lt;li&gt;偏好对齐&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221718.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929.png&#34;
+	width=&#34;800&#34;
+	height=&#34;514&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_25e107b931e1b56a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bf627f72fb75e27d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;155&#34;
+		data-flex-basis=&#34;373px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;self-supervised-training-algorithm-for-pretraining&#34;&gt;Self-supervised Training Algorithm for Pretraining
 &lt;/h4&gt;&lt;p&gt;Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词&lt;/p&gt;
 &lt;p&gt;如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/Pasted%20image%2020250903221730.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965.png&#34;
+	width=&#34;808&#34;
+	height=&#34;469&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_571b6370d9971e97.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_b722f8598f57cfd6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;172&#34;
+		data-flex-basis=&#34;413px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;这些权重包括嵌入矩阵 E。由此学习到的嵌入，将能最有效地预测后续词语。&lt;/p&gt;

@@ -1562,22 +1562,30 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <p>他们都是基于神经网络构建的。</p>
 <h3 id="conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition
 </h3><p>不管什么任务，都可以简化为给定prompt的下一个词的预测任务。</p>
-<p><img src="/assets/Pasted%20image%2020250903221522.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222035606.png"
+	width="813"
+	height="346"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_b84c5560c85d0ad0.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_e5d863ff7f7b20c8.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="234"
+		data-flex-basis="563px"
 	
 ></p>
 <h3 id="prompting">Prompting
 </h3><p>指令微调</p>
-<p><img src="/assets/Pasted%20image%2020250903221532.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222047947.png"
+	width="815"
+	height="386"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6ad9dfc9690a84c8.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_8595ec17a22bd37b.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="506px"
 	
 ></p>
 <p>prompt</p>
@@ -1595,56 +1603,77 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </ul>
 <h3 id="generation-and-sampling">Generation and Sampling
 </h3><p>语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。</p>
-<p><img src="/assets/Pasted%20image%2020250903221559.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222105152.png"
+	width="812"
+	height="329"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_16ad1c8697e23a8f.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_fff46d8496576fff.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="246"
+		data-flex-basis="592px"
 	
 ></p>
 <p>decoding：基于概率选择token生成的过程常称为decoding</p>
-<p>自回归生成</p>
+<p>自回归生成
+D</p>
 <h4 id="greedy-decoding">Greedy decoding
 </h4><p>贪心解码：选择概率最高的那个token生成（argmax）</p>
-<p><img src="/assets/Pasted%20image%2020250903221610.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222114008.png"
+	width="830"
+	height="334"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_98ac761f730aacb7.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_49ef26f8c34a2658.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="596px"
 	
 ></p>
 <p>效果不好——输入文本如果相同，结果是固定的。</p>
 <p><strong>束搜索</strong></p>
 <h4 id="random-sampling">Random Sampling
 </h4><p>按照分布采样，直到采样到EOS。</p>
-<p><img src="/assets/Pasted%20image%2020250903221651.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222124629.png"
+	width="811"
+	height="326"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_11963dc8db1e3582.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_4629a2f05c285dce.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="597px"
 	
 ></p>
 <p>效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪</p>
 <h4 id="temperature-sampling">Temperature Sampling
 </h4><p>logits转化为probability的时候用带有temperature的softmax计算。</p>
-<p><img src="/assets/Pasted%20image%2020250903221700.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222132977.png"
+	width="958"
+	height="388"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_3596e2556cd62f8b.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_41d0f2085c2134bd.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="246"
+		data-flex-basis="592px"
 	
 ></p>
 <p>当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。</p>
-<p><img src="/assets/Pasted%20image%2020250903221710.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222140906.png"
+	width="799"
+	height="603"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bf742fb76c7ff9ec.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bfff8415c93c103b.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
 	
 ></p>
 <h3 id="training-large-language-models">Training Large Language Models
@@ -1654,23 +1683,31 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <li>指令微调</li>
 <li>偏好对齐</li>
 </ul>
-<p><img src="/assets/Pasted%20image%2020250903221718.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222151929.png"
+	width="800"
+	height="514"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_25e107b931e1b56a.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bf627f72fb75e27d.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
 	
 ></p>
 <h4 id="self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining
 </h4><p>Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词</p>
 <p>如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。</p>
-<p><img src="/assets/Pasted%20image%2020250903221730.png"
-	
-	
-	
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222201965.png"
+	width="808"
+	height="469"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_571b6370d9971e97.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_b722f8598f57cfd6.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
 	
 ></p>
 <p>这些权重包括嵌入矩阵 E。由此学习到的嵌入，将能最有效地预测后续词语。</p>
