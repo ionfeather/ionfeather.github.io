@@ -462,7 +462,35 @@
         </li>
       </ol>
     </li>
-    <li><a href="#large-language-models">Large Language Models</a></li>
+    <li><a href="#large-language-models">Large Language Models</a>
+      <ol>
+        <li><a href="#three-architecture-for-language-models">Three Architecture for Language Models</a></li>
+        <li><a href="#conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition</a></li>
+        <li><a href="#prompting">Prompting</a></li>
+        <li><a href="#generation-and-sampling">Generation and Sampling</a>
+          <ol>
+            <li><a href="#greedy-decoding">Greedy decoding</a></li>
+            <li><a href="#random-sampling">Random Sampling</a></li>
+            <li><a href="#temperature-sampling">Temperature Sampling</a></li>
+          </ol>
+        </li>
+        <li><a href="#training-large-language-models">Training Large Language Models</a>
+          <ol>
+            <li><a href="#self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining</a></li>
+            <li><a href="#pretraining-corpora-for-large-language-models">Pretraining Corpora for Large Language Models</a></li>
+            <li><a href="#finetuning">Finetuning</a></li>
+          </ol>
+        </li>
+        <li><a href="#evaluating-large-language-models">Evaluating Large Language Models</a>
+          <ol>
+            <li><a href="#perplexity">Perplexity</a></li>
+            <li><a href="#downstream-tasks-reasoniong-and-world-knowledge">Downstream Tasks: Reasoniong and World Knowledge</a></li>
+            <li><a href="#other-factors-for-evaluating-language-models">Other Factors for Evaluating Language Models</a></li>
+          </ol>
+        </li>
+        <li><a href="#ethical-and-safety-issues-with-language-models">Ethical and Safety Issues with Language Models</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -527,7 +555,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 20 分钟
+                    阅读时长: 23 分钟
                 </time>
             </div>
         
@@ -1447,7 +1475,283 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <p>GPUs等计算加速</p>
 <h2 id="large-language-models">Large Language Models
 </h2><p>ELIZA</p>
-<p>pretraining</p>
+<p>Distributional hypothesis</p>
+<p>Pretraining</p>
+<p>语言模型：依据前文预测下一个词的分布</p>
+<p>发展：</p>
+<ul>
+<li>N元语法</li>
+<li>LSA/LSI，隐含语义分析，开始用向量表示词</li>
+<li>神经网络语言模型neural language model</li>
+<li>RNN语言模型</li>
+<li>word2vec</li>
+<li>预训练技术</li>
+<li>Transformer提出</li>
+<li>掩码语言模型</li>
+<li>自回归语言模型</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221442377.png"
+	width="817"
+	height="367"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_625cc627b168f68a.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_9ee53070fd85a32c.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="534px"
+	
+></p>
+<p>如果可以预测下一个词的概率分布，那么就可以从概率分布中进行采样，从而生成下一个词。这样就从预测模型变成了生成模型。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221449983.png"
+	width="800"
+	height="551"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_3354a2ee29195159.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_38463e6c14e8a47d.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="348px"
+	
+></p>
+<ul>
+<li>因果语言模型/自回归语言模型：从左到右依次生成</li>
+<li>掩码语言模型：BERT等，可以同时利用左右两侧的信息</li>
+</ul>
+<p>生成式AI</p>
+<h3 id="three-architecture-for-language-models">Three Architecture for Language Models
+</h3><p>三种结构：</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221500783.png"
+	width="842"
+	height="383"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_5e7d45143603e021.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_756c75157cc64aa.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="527px"
+	
+></p>
+<ul>
+<li>
+<p>decoder：上文中的架构。输入为一系列的token，<strong>依次迭代</strong>生成输出的token。用于自回归语言模型。</p>
+<ul>
+<li>生成文本等，如GPT</li>
+</ul>
+</li>
+<li>
+<p>encoder：用于掩码语言模型。输入为文本，输出为标签。</p>
+<ul>
+<li>分类文本等，如BERT</li>
+</ul>
+</li>
+<li>
+<p>encoder-decoder：输入为一串token，输出也是一串token。</p>
+<ul>
+<li>
+<p>相比decoder来说，和输入输出token的关系更不紧密，这类模型用于在不同类型的标记之间进行映射</p>
+</li>
+<li>
+<p>机器翻译等</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>他们都是基于神经网络构建的。</p>
+<h3 id="conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition
+</h3><p>不管什么任务，都可以简化为给定prompt的下一个词的预测任务。</p>
+<p><img src="/assets/Pasted%20image%2020250903221522.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="prompting">Prompting
+</h3><p>指令微调</p>
+<p><img src="/assets/Pasted%20image%2020250903221532.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>prompt</p>
+<ul>
+<li>Demonstrations</li>
+<li>Few-shot prompting</li>
+<li>Zero-shot prompting</li>
+</ul>
+<blockquote>
+<p>这种Demonstrations可以手动筛选，也可以由优化器如DSPy来自动选择。此外，Demonstrations似乎并不是一定要给正确的问题和答案，错误的也行，主要作用是格式。</p></blockquote>
+<p>prompt：可以看做一个学习信号。<strong>提示词不会更新模型的权重，其改变的仅仅是模型的上下文信息以及网络中的激活状态。</strong></p>
+<ul>
+<li>in-context learning：参数没有改变的学习</li>
+<li>System prompt：影响全局的一个文本prompt，被添加到所有用户prompt或查询的前面</li>
+</ul>
+<h3 id="generation-and-sampling">Generation and Sampling
+</h3><p>语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。</p>
+<p><img src="/assets/Pasted%20image%2020250903221559.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>decoding：基于概率选择token生成的过程常称为decoding</p>
+<p>自回归生成</p>
+<h4 id="greedy-decoding">Greedy decoding
+</h4><p>贪心解码：选择概率最高的那个token生成（argmax）</p>
+<p><img src="/assets/Pasted%20image%2020250903221610.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>效果不好——输入文本如果相同，结果是固定的。</p>
+<p><strong>束搜索</strong></p>
+<h4 id="random-sampling">Random Sampling
+</h4><p>按照分布采样，直到采样到EOS。</p>
+<p><img src="/assets/Pasted%20image%2020250903221651.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪</p>
+<h4 id="temperature-sampling">Temperature Sampling
+</h4><p>logits转化为probability的时候用带有temperature的softmax计算。</p>
+<p><img src="/assets/Pasted%20image%2020250903221700.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。</p>
+<p><img src="/assets/Pasted%20image%2020250903221710.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h3 id="training-large-language-models">Training Large Language Models
+</h3><p>一般分为三个阶段：</p>
+<ul>
+<li>预训练</li>
+<li>指令微调</li>
+<li>偏好对齐</li>
+</ul>
+<p><img src="/assets/Pasted%20image%2020250903221718.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h4 id="self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining
+</h4><p>Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词</p>
+<p>如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。</p>
+<p><img src="/assets/Pasted%20image%2020250903221730.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>这些权重包括嵌入矩阵 E。由此学习到的嵌入，将能最有效地预测后续词语。</p>
+<h4 id="pretraining-corpora-for-large-language-models">Pretraining Corpora for Large Language Models
+</h4><p>训练数据可以用网络数据，并且加上一些精心筛选的数据。</p>
+<ul>
+<li>common crawl</li>
+<li>Colossal CLean Crawled Corpus</li>
+<li>The Pile</li>
+<li>Dolma</li>
+</ul>
+<p>避免个人信息PII，去重，安全筛选，toxicity detection。注意版权、数据同意、隐私和偏差等问题。</p>
+<h4 id="finetuning">Finetuning
+</h4><p>对已经与训练过的模型加入一些新的知识进行微调。如果新的数据是预训练的后面，也可以叫continued pretraining。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903194702282.png"
+	width="704"
+	height="363"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_ef5bfaca2f0c0697.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5326aa4cc5696be2.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<h3 id="evaluating-large-language-models">Evaluating Large Language Models
+</h3><h4 id="perplexity">Perplexity
+</h4><p>由于链式法则，使用<strong>对数似然</strong>来作为衡量语言模型性能的指标的话，测试集的概率大小会受到token数量的影响。文本越长，测试集的概率越小。</p>
+<p>Perplexity：困惑度，长度归一化的指标。困惑度的具体公式是测试集概率的倒数，再按标记数量进行归一化。
+</p>
+$$\begin{aligned}
+\text{Perplexity}_{\boldsymbol{\theta}}(w_{1:n}) & =P_{\boldsymbol{\theta}}(w_{1:n})^{-\frac{1}{n}} \\
+ & =\sqrt[n]{\frac{1}{P_{\boldsymbol{\theta}}(w_{1:n})}}
+\end{aligned}$$<p>
+<strong>困惑度越低，模型越好。</strong></p>
+<blockquote>
+<p>困惑度非常依赖tokens的数量，因此不能对两个使用不同tokenizer的模型进行比较，而是只能对使用同一个tokenizer的模型比较。</p></blockquote>
+<h4 id="downstream-tasks-reasoniong-and-world-knowledge">Downstream Tasks: Reasoniong and World Knowledge
+</h4><p>准确率：可以直接使用下游任务来衡量。</p>
+<ul>
+<li>MMLU
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214854478.png"
+	width="805"
+	height="289"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f3db381a926f2221.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_7d93c033b6db94ba.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="278"
+		data-flex-basis="668px"
+	
+>
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214915252.png"
+	width="806"
+	height="475"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_101f6843eda66160.png 480w, /2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_d2314743aaea0c7f.png 1024w"
+	loading="lazy"
+	
+		alt="一个2-shot prompt的MMLU高中数学题"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+></li>
+</ul>
+<p>但是问题是<strong>数据泄露</strong>。</p>
+<h4 id="other-factors-for-evaluating-language-models">Other Factors for Evaluating Language Models
+</h4><p>模型大小，训练时间，推理时间，GPU数量</p>
+<p>公平</p>
+<p>leaderboards</p>
+<h3 id="ethical-and-safety-issues-with-language-models">Ethical and Safety Issues with Language Models
+</h3><p>大模型幻觉问题：RAG</p>
+<p>安全问题：安全微调和对齐</p>
+<p>representational harms</p>
+<p>隐私问题</p>
+<p>情感依赖</p>
+<p>增长谎言、宣传、虚假信息等文本生成</p>
 
 </section>
 
