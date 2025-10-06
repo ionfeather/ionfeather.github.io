@@ -247,6 +247,25 @@
             </a>
         </li>
         
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
         <li class="menu-bottom-section">
             
 
@@ -315,11 +334,7 @@
             <li><a href="#the-minimum-edit-distance-algorithm">The Minimum Edit Distance Algorithm</a></li>
           </ol>
         </li>
-        <li><a href="#exercies">Exercies</a>
-          <ol>
-            <li></li>
-          </ol>
-        </li>
+        <li><a href="#exercies">Exercies</a></li>
       </ol>
     </li>
     <li><a href="#n-gram-language-models">N-gram Language Models</a>
@@ -343,11 +358,7 @@
           </ol>
         </li>
         <li><a href="#advanced-perplexitys-relation-to-entropy">Advanced: Perplexity&rsquo;s Relation to Entropy</a></li>
-        <li><a href="#excercies">Excercies</a>
-          <ol>
-            <li></li>
-          </ol>
-        </li>
+        <li><a href="#excercies">Excercies</a></li>
       </ol>
     </li>
     <li><a href="#logistic-regression-and-text-classification">Logistic Regression and Text Classification</a>
@@ -670,7 +681,9 @@
 </h4><p>一个经典的动态规划问题。</p>
 <p><strong>字符对齐</strong>：通过回溯编辑距离矩阵中的 “最优路径”，反向推导出将一个字符串转换为另一个字符串的具体操作序列。也就是<strong>路径可视化</strong>。</p>
 <h3 id="exercies">Exercies
-</h3><h5 id="21">2.1
+</h3><details>
+    <summary>点击展开</summary>
+    <h5 id="21">2.1
 </h5><p>Write regular expressions for the following languages.</p>
 <ol>
 <li>The set of all alphabetic strings.</li>
@@ -695,6 +708,9 @@
 </h5><p>Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.</p>
 <h5 id="27">2.7
 </h5><p>Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.</p>
+
+</details>
+
 <h2 id="n-gram-language-models">N-gram Language Models
 </h2><p>本章介绍最简单的语言模型：<strong>N元语法语言模型</strong>。</p>
 <h3 id="n-grams">N-Grams
@@ -751,7 +767,9 @@
 <p><strong>交叉熵（Cross-Entropy）</strong>：我们虽然不知道数据的真实概率分布p，但是可以用模型m来近似p。（即我们虽然不知道自然语言的真实情况，但是可以用N元语法来近似。）<strong>交叉熵越小，模型越接近真实分布</strong>。</p>
 <p><strong>困惑度</strong>：<strong>困惑度是熵的指数形式</strong>。比较直观。</p>
 <h3 id="excercies">Excercies
-</h3><h5 id="31">3.1
+</h3><details>
+    <summary>点击展开</summary>
+    <h5 id="31">3.1
 </h5><p>Write out the equation for trigram probability estimation (modifying Eq. 3.11). Now write out all the non-zero trigram probabilities for the I am Sam corpus on page 40.</p>
 <h5 id="32">3.2
 </h5><p>Calculate the probability of the sentence <code>i want chinese food</code>. Give two probabilities, one using Fig. 3.2 and the ‘useful probabilities’ just below it on page 42, and another using the add-1 smoothed table in Fig. 3.7. Assume the additional add-1 smoothed probabilities $P(i|&lt;s&gt;) = 0.19$ and $P(&lt;/s&gt;|food) = 0.40$.</p>
@@ -790,6 +808,9 @@
 </h5><p>Add an option to your program to compute the perplexity of a test set.</p>
 <h5 id="312">3.12
 </h5><p>You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?</p>
+
+</details>
+
 <h2 id="logistic-regression-and-text-classification">Logistic Regression and Text Classification
 </h2><p>经典任务：</p>
 <ul>

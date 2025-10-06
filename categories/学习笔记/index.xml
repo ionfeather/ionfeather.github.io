@@ -140,7 +140,9 @@
 &lt;/h4&gt;&lt;p&gt;一个经典的动态规划问题。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;字符对齐&lt;/strong&gt;：通过回溯编辑距离矩阵中的 “最优路径”，反向推导出将一个字符串转换为另一个字符串的具体操作序列。也就是&lt;strong&gt;路径可视化&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;exercies&#34;&gt;Exercies
-&lt;/h3&gt;&lt;h5 id=&#34;21&#34;&gt;2.1
+&lt;/h3&gt;&lt;details&gt;
+    &lt;summary&gt;点击展开&lt;/summary&gt;
+    &lt;h5 id=&#34;21&#34;&gt;2.1
 &lt;/h5&gt;&lt;p&gt;Write regular expressions for the following languages.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;The set of all alphabetic strings.&lt;/li&gt;
@@ -165,6 +167,9 @@
 &lt;/h5&gt;&lt;p&gt;Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.&lt;/p&gt;
 &lt;h5 id=&#34;27&#34;&gt;2.7
 &lt;/h5&gt;&lt;p&gt;Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.&lt;/p&gt;
+
+&lt;/details&gt;
+
 &lt;h2 id=&#34;n-gram-language-models&#34;&gt;N-gram Language Models
 &lt;/h2&gt;&lt;p&gt;本章介绍最简单的语言模型：&lt;strong&gt;N元语法语言模型&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;n-grams&#34;&gt;N-Grams
@@ -221,7 +226,9 @@
 &lt;p&gt;&lt;strong&gt;交叉熵（Cross-Entropy）&lt;/strong&gt;：我们虽然不知道数据的真实概率分布p，但是可以用模型m来近似p。（即我们虽然不知道自然语言的真实情况，但是可以用N元语法来近似。）&lt;strong&gt;交叉熵越小，模型越接近真实分布&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;困惑度&lt;/strong&gt;：&lt;strong&gt;困惑度是熵的指数形式&lt;/strong&gt;。比较直观。&lt;/p&gt;
 &lt;h3 id=&#34;excercies&#34;&gt;Excercies
-&lt;/h3&gt;&lt;h5 id=&#34;31&#34;&gt;3.1
+&lt;/h3&gt;&lt;details&gt;
+    &lt;summary&gt;点击展开&lt;/summary&gt;
+    &lt;h5 id=&#34;31&#34;&gt;3.1
 &lt;/h5&gt;&lt;p&gt;Write out the equation for trigram probability estimation (modifying Eq. 3.11). Now write out all the non-zero trigram probabilities for the I am Sam corpus on page 40.&lt;/p&gt;
 &lt;h5 id=&#34;32&#34;&gt;3.2
 &lt;/h5&gt;&lt;p&gt;Calculate the probability of the sentence &lt;code&gt;i want chinese food&lt;/code&gt;. Give two probabilities, one using Fig. 3.2 and the ‘useful probabilities’ just below it on page 42, and another using the add-1 smoothed table in Fig. 3.7. Assume the additional add-1 smoothed probabilities $P(i|&amp;lt;s&amp;gt;) = 0.19$ and $P(&amp;lt;/s&amp;gt;|food) = 0.40$.&lt;/p&gt;
@@ -260,6 +267,9 @@
 &lt;/h5&gt;&lt;p&gt;Add an option to your program to compute the perplexity of a test set.&lt;/p&gt;
 &lt;h5 id=&#34;312&#34;&gt;3.12
 &lt;/h5&gt;&lt;p&gt;You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?&lt;/p&gt;
+
+&lt;/details&gt;
+
 &lt;h2 id=&#34;logistic-regression-and-text-classification&#34;&gt;Logistic Regression and Text Classification
 &lt;/h2&gt;&lt;p&gt;经典任务：&lt;/p&gt;
 &lt;ul&gt;
