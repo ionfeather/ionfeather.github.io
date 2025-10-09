@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="MCTS\rMC-DML\r[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents\n主要解决的问题\r解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。\n面临挑战\r游戏环境很复杂 传统的MCTS有局限性 LLM难以将规划转化成可执行动作，且无法平衡探索与利用 ">
 <title>论文阅读| MCTS</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/mcts/'>
 
 <link rel="stylesheet" href="/scss/style.min.cdd95828ca8971b17ccb14112222a60d19d84ea3f4e5b525c8c68fb4d2a4535d.css"><meta property='og:title' content="论文阅读| MCTS">
-<meta property='og:description' content="">
+<meta property='og:description' content="MCTS\rMC-DML\r[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents\n主要解决的问题\r解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。\n面临挑战\r游戏环境很复杂 传统的MCTS有局限性 LLM难以将规划转化成可执行动作，且无法平衡探索与利用 ">
 <meta property='og:url' content='https://ionfeather.github.io/2025/mcts/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LLM' /><meta property='article:published_time' content='2025-09-23T17:22:57&#43;08:00'/><meta property='article:modified_time' content='2025-09-23T17:22:57&#43;08:00'/>
 <meta name="twitter:title" content="论文阅读| MCTS">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="MCTS\rMC-DML\r[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents\n主要解决的问题\r解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。\n面临挑战\r游戏环境很复杂 传统的MCTS有局限性 LLM难以将规划转化成可执行动作，且无法平衡探索与利用 ">
     <link rel="shortcut icon" href="/ion.ico" />
 
 <head>
@@ -281,7 +281,45 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#mcts">MCTS</a></li>
+    <li><a href="#mc-dml">MC-DML</a>
+      <ol>
+        <li><a href="#主要解决的问题">主要解决的问题</a></li>
+        <li><a href="#面临挑战">面临挑战</a></li>
+        <li><a href="#核心方法">核心方法</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -337,7 +375,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 0 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -352,7 +390,45 @@
     <section class="article-content">
     
     
-    
+    <h2 id="mcts">MCTS
+</h2><h2 id="mc-dml">MC-DML
+</h2><p><a class="link" href="https://arxiv.org/abs/2504.16855"  target="_blank" rel="noopener"
+    >[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents</a></p>
+<h3 id="主要解决的问题">主要解决的问题
+</h3><p>解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。</p>
+<h3 id="面临挑战">面临挑战
+</h3><ul>
+<li>游戏环境很复杂</li>
+<li>传统的MCTS有局限性</li>
+<li>LLM难以将规划转化成可执行动作，且无法平衡探索与利用</li>
+</ul>
+<p><img src="/2025/mcts/assets/IMG-20251008192705223.png"
+	width="890"
+	height="250"
+	srcset="/2025/mcts/assets/IMG-20251008192705223_hu_93a9abd9d704c198.png 480w, /2025/mcts/assets/IMG-20251008192705223_hu_f511625d83e9b034.png 1024w"
+	loading="lazy"
+	
+		alt="Zork1游戏。这种游戏需要的不能只是短期决策，而是需要长远规划。"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="356"
+		data-flex-basis="854px"
+	
+></p>
+<h3 id="核心方法">核心方法
+</h3><p>MC-DML（Monte Carlo planning with Dynamic Memory-guided Large language model）</p>
+<ul>
+<li><strong>四阶段规划流程</strong>：沿用 MCTS 的Selection, Expansion, Simulation, Backpropagation四阶段。在扩展阶段引入 LLM 作为先验策略，让 LLM 基于场景文本为可选动作分配非均匀搜索优先级；模拟阶段通过多轮推演评估动作结果，回溯阶段更新节点价值与访问次数。</li>
+<li><strong>双动态记忆机制</strong>：
+<ul>
+<li>「 trial 内记忆（$M_i$）」：存储当前轨迹历史（如 “前一观测 - 动作 - 当前观测”），帮 LLM 结合当下语境生成动作概率分布；</li>
+<li>「 trial 间记忆（$M_c$）」：存储过去失败轨迹的反思（如 “无光源时勿入黑暗区域”），动态调整动作价值评估，避免重复犯错。</li>
+</ul>
+</li>
+<li><strong>动作选择公式优化</strong>：在 PUCT（改进型 MCTS）公式基础上，将 LLM 生成的动作概率（结合双记忆）融入计算，确保选择既符合语言逻辑又兼顾探索-利用平衡。</li>
+</ul>
+
 </section>
 
 
