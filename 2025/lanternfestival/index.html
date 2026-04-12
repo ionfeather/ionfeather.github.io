@@ -506,6 +506,28 @@
      
     
         
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="b8b1665c-90db-4b78-905a-6a00dd4ec9c9"
+    data-page-id="e308487a125b8598501897d8a84c08a3"
+    data-page-url="https://ionfeather.github.io/2025/lanternfestival/"
+    data-page-title="元宵节 | 东风夜放花千树，更吹落、星如雨"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
     
 
     <footer class="site-footer">

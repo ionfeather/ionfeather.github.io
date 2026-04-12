@@ -515,6 +515,28 @@
      
     
         
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="b8b1665c-90db-4b78-905a-6a00dd4ec9c9"
+    data-page-id="0cc2f7e741bc16ddd9ba5337e675a9d7"
+    data-page-url="https://ionfeather.github.io/2025/obsidian/"
+    data-page-title="博客探索 | 使用Obsidian来写博客"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
     
 
     <footer class="site-footer">

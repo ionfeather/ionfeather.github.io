@@ -515,6 +515,28 @@
      
     
         
+    <div id="cusdis_thread"
+    data-host="https://cusdis.com"
+    data-app-id="b8b1665c-90db-4b78-905a-6a00dd4ec9c9"
+    data-page-id="26bb37529c64d63ae0f983f226ffc8e8"
+    data-page-url="https://ionfeather.github.io/2025/white-dew/"
+    data-page-title="白露 | 露从今夜白，月是故乡明"></div>
+<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+<script>
+    function setCusdisTheme(theme) {
+        let cusdis = document.querySelector('#cusdis_thread iframe');
+        if (cusdis) {
+            window.CUSDIS.setTheme(theme)
+        }
+    }
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        setCusdisTheme(e.detail)
+    })
+</script>
+
+
     
 
     <footer class="site-footer">
