@@ -15,35 +15,190 @@
 <meta name="twitter:description" content="\r春未老，风细柳斜斜。 试上超然台上看，半壕春水一城花。 烟雨暗千家。\n寒食后，酒醒却咨嗟。 休对故人思故国，且将新火试新茶。 诗酒趁年华。\n苏轼\r《望江南·春未老》 ">
     <link rel="shortcut icon" href="/ion.ico" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
-    onload="this.media='all'" onError="this.media='none'">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
-    onload="this.media='all'" onError="this.media='none'">
 
-  <style>
-     
-    :root {
-      --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --code-font-family: 'Consolas', monospace; 
-      --article-font-family: 'Noto Serif SC', serif; 
-      --heading-font-family: 'LXGW WenKai', serif; 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  onload="this.media='all'" onError="this.media='none'">
+
+<style>
+   
+  :root {
+    --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --code-font-family: 'Consolas', monospace; 
+    --article-font-family: 'Noto Serif SC', serif; 
+    --heading-font-family: 'LXGW WenKai', serif; 
+  }
+
+   
+  body {
+    font-family: var(--base-font-family);
+    font-weight: normal;
+  }
+
+   
+  #cusdis_thread {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-separator-color);
+  }
+
+  #cusdis_thread iframe {
+    border-radius: var(--card-border-radius) !important;
+    box-shadow: var(--shadow-l1) !important;
+    border: 1px solid var(--card-border-color) !important;
+    background: var(--card-background) !important;
+  }
+
+   
+  #cusdis_thread .cds-title {
+    color: var(--card-text-color-main) !important;
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+  }
+
+   
+  #cusdis_thread .cds-comment {
+    background: var(--card-background) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-l1) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  #cusdis_thread .cds-comment:hover {
+    box-shadow: var(--shadow-l2) !important;
+    transform: translateY(-2px) !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-author {
+    color: var(--card-text-color-main) !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-time {
+    color: var(--card-text-color-secondary) !important;
+    font-size: 0.9rem !important;
+    opacity: 0.8 !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-content {
+    color: var(--card-text-color-main) !important;
+    line-height: 1.6 !important;
+    font-size: 1.05rem !important;
+  }
+
+   
+  #cusdis_thread .cds-form {
+    background: var(--card-background) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-l1) !important;
+    margin-top: 2rem !important;
+  }
+
+   
+  #cusdis_thread .cds-input,
+  #cusdis_thread .cds-textarea {
+    background: var(--body-background) !important;
+    border: 1px solid var(--card-border-color) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--card-text-color-main) !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #cusdis_thread .cds-input:focus,
+  #cusdis_thread .cds-textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1) !important;
+    outline: none !important;
+  }
+
+   
+  #cusdis_thread .cds-submit-btn {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    margin-top: 1rem !important;
+  }
+
+  #cusdis_thread .cds-submit-btn:hover {
+    background: var(--primary-color-dark) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-l2) !important;
+  }
+
+   
+  #cusdis_thread .cds-empty {
+    text-align: center !important;
+    color: var(--card-text-color-secondary) !important;
+    padding: 3rem 1rem !important;
+    font-size: 1.1rem !important;
+    opacity: 0.7 !important;
+  }
+
+  #cusdis_thread .cds-empty:before {
+    content: "💬";
+    font-size: 2rem !important;
+    display: block !important;
+    margin-bottom: 1rem !important;
+    opacity: 0.5 !important;
+  }
+
+   
+  @media (max-width: 768px) {
+    #cusdis_thread .cds-comment {
+      padding: 1rem !important;
     }
-
-     
-    body {
-      font-family: var(--base-font-family);
-      font-weight: normal;
+    
+    #cusdis_thread .cds-form {
+      padding: 1rem !important;
     }
-  </style>
-</head>
+    
+    #cusdis_thread .cds-title {
+      font-size: 1.5rem !important;
+    }
+  }
 
+   
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #cusdis_thread .cds-comment {
+    animation: fadeIn 0.3s ease-out;
+  }
+</style>
     </head>
     <body class="
     article-page

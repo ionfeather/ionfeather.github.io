@@ -15,35 +15,190 @@
 <meta name="twitter:description" content="Reasoning-based drug repurposing\r问题&amp;回答\r问题\rLLM在Repurposing中的应用情况 是否有基于文本结构，引入大模型知识作为一部分特征？ 测试集是什么 传统模型/基于网络的模型的准确率 回答\r有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。 有的。将文本以特定的形式组织，如&quot;药物A[SEP]疾病B&quot;，然后将其变成向量，嵌入到GNN中。 阅读了几篇，测试集有 B-dataset（SCMFDD-S/L）：来自于 Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。 C-dataset：来自于 Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。 F-dataset：来自于 PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology，侧重于模型对文本知识的分析能力。 R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。 模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。 Action\rWeek\rweek1\n">
     <link rel="shortcut icon" href="/ion.ico" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
-    onload="this.media='all'" onError="this.media='none'">
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
-    onload="this.media='all'" onError="this.media='none'">
 
-  <style>
-     
-    :root {
-      --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
-      --code-font-family: 'Consolas', monospace; 
-      --article-font-family: 'Noto Serif SC', serif; 
-      --heading-font-family: 'LXGW WenKai', serif; 
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  onload="this.media='all'" onError="this.media='none'">
+
+<style>
+   
+  :root {
+    --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --code-font-family: 'Consolas', monospace; 
+    --article-font-family: 'Noto Serif SC', serif; 
+    --heading-font-family: 'LXGW WenKai', serif; 
+  }
+
+   
+  body {
+    font-family: var(--base-font-family);
+    font-weight: normal;
+  }
+
+   
+  #cusdis_thread {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--card-separator-color);
+  }
+
+  #cusdis_thread iframe {
+    border-radius: var(--card-border-radius) !important;
+    box-shadow: var(--shadow-l1) !important;
+    border: 1px solid var(--card-border-color) !important;
+    background: var(--card-background) !important;
+  }
+
+   
+  #cusdis_thread .cds-title {
+    color: var(--card-text-color-main) !important;
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+  }
+
+   
+  #cusdis_thread .cds-comment {
+    background: var(--card-background) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-l1) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  #cusdis_thread .cds-comment:hover {
+    box-shadow: var(--shadow-l2) !important;
+    transform: translateY(-2px) !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-author {
+    color: var(--card-text-color-main) !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-time {
+    color: var(--card-text-color-secondary) !important;
+    font-size: 0.9rem !important;
+    opacity: 0.8 !important;
+  }
+
+   
+  #cusdis_thread .cds-comment-content {
+    color: var(--card-text-color-main) !important;
+    line-height: 1.6 !important;
+    font-size: 1.05rem !important;
+  }
+
+   
+  #cusdis_thread .cds-form {
+    background: var(--card-background) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    border: 1px solid var(--card-border-color) !important;
+    box-shadow: var(--shadow-l1) !important;
+    margin-top: 2rem !important;
+  }
+
+   
+  #cusdis_thread .cds-input,
+  #cusdis_thread .cds-textarea {
+    background: var(--body-background) !important;
+    border: 1px solid var(--card-border-color) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--card-text-color-main) !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #cusdis_thread .cds-input:focus,
+  #cusdis_thread .cds-textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1) !important;
+    outline: none !important;
+  }
+
+   
+  #cusdis_thread .cds-submit-btn {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    margin-top: 1rem !important;
+  }
+
+  #cusdis_thread .cds-submit-btn:hover {
+    background: var(--primary-color-dark) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-l2) !important;
+  }
+
+   
+  #cusdis_thread .cds-empty {
+    text-align: center !important;
+    color: var(--card-text-color-secondary) !important;
+    padding: 3rem 1rem !important;
+    font-size: 1.1rem !important;
+    opacity: 0.7 !important;
+  }
+
+  #cusdis_thread .cds-empty:before {
+    content: "💬";
+    font-size: 2rem !important;
+    display: block !important;
+    margin-bottom: 1rem !important;
+    opacity: 0.5 !important;
+  }
+
+   
+  @media (max-width: 768px) {
+    #cusdis_thread .cds-comment {
+      padding: 1rem !important;
     }
-
-     
-    body {
-      font-family: var(--base-font-family);
-      font-weight: normal;
+    
+    #cusdis_thread .cds-form {
+      padding: 1rem !important;
     }
-  </style>
-</head>
+    
+    #cusdis_thread .cds-title {
+      font-size: 1.5rem !important;
+    }
+  }
 
+   
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #cusdis_thread .cds-comment {
+    animation: fadeIn 0.3s ease-out;
+  }
+</style>
     </head>
     <body class="
     article-page
