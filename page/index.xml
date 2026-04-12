@@ -5,7 +5,7 @@
         <link>https://ionfeather.github.io/page/</link>
         <description>Recent content in Pages on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ionfeather.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>归档</title>
@@ -554,6 +554,14 @@
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://ionfeather.github.io/search/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>友链</title>
+        <link>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</guid>
         <description></description>
         </item>
         

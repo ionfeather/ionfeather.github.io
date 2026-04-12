@@ -3,37 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ionfeather.github.io/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/categories/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/post/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/tags/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
-  </url><url>
-    <loc>https://ionfeather.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
-  </url><url>
-    <loc>https://ionfeather.github.io/2026/intern/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
-  </url><url>
-    <loc>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2026-01-08T17:14:41+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/tags/%E8%8A%82%E6%B0%94/</loc>
-    <lastmod>2026-01-04T22:13:17+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/categories/%E9%9A%8F%E7%AC%94/</loc>
-    <lastmod>2026-01-04T22:13:17+08:00</lastmod>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/2026/pure-brightness/</loc>
+    <lastmod>2026-04-12T23:36:49+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/tags/llm/</loc>
+    <lastmod>2026-04-12T18:15:00+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/2026/automated-peer-review/</loc>
+    <lastmod>2026-04-12T17:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</loc>
+    <lastmod>2026-04-12T18:15:00+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-04-12T18:15:00+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/tags/%E5%AE%9E%E4%B9%A0/</loc>
+    <lastmod>2026-04-12T18:15:00+08:00</lastmod>
+  </url><url>
+    <loc>https://ionfeather.github.io/2026/intern/</loc>
+    <lastmod>2026-04-12T18:15:00+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/2026/lesser-cold/</loc>
     <lastmod>2026-01-04T22:13:17+08:00</lastmod>
-  </url><url>
-    <loc>https://ionfeather.github.io/tags/llm/</loc>
-    <lastmod>2025-12-11T18:59:53+08:00</lastmod>
   </url><url>
     <loc>https://ionfeather.github.io/tags/rag/</loc>
     <lastmod>2025-12-11T18:59:53+08:00</lastmod>
@@ -119,9 +128,6 @@
     <loc>https://ionfeather.github.io/2025/deepdiveintollms/</loc>
     <lastmod>2025-02-17T13:33:33+08:00</lastmod>
   </url><url>
-    <loc>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</loc>
-    <lastmod>2025-02-15T21:58:31+08:00</lastmod>
-  </url><url>
     <loc>https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</loc>
     <lastmod>2025-02-15T21:58:31+08:00</lastmod>
   </url><url>
@@ -170,10 +176,14 @@
     <loc>https://ionfeather.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://ionfeather.github.io/tags/excalidraw/</loc>
+  </url><url>
     <loc>https://ionfeather.github.io/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
     <loc>https://ionfeather.github.io/categories/%E4%B9%A6%E5%BD%B1%E9%9F%B3/</loc>
   </url><url>
     <loc>https://ionfeather.github.io/search/</loc>
+  </url><url>
+    <loc>https://ionfeather.github.io/%E5%8F%8B%E9%93%BE/</loc>
   </url>
 </urlset>

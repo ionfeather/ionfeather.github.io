@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Reasoning-based drug repurposing\r问题&amp;回答\r问题\rLLM在Repurposing中的应用情况 是否有基于文本结构，引入大模型知识作为一部分特征？ 测试集是什么 传统模型/基于网络的模型的准确率 回答\r有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。 有的。将文本以特定的形式组织，如&quot;药物A[SEP]疾病B&quot;，然后将其变成向量，嵌入到GNN中。 阅读了几篇，测试集有 B-dataset（SCMFDD-S/L）：来自于 Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。 C-dataset：来自于 Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。 F-dataset：来自于 PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology，侧重于模型对文本知识的分析能力。 R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。 模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。 Action\rWeek\rweek1\n">
 <title>AIDR | Reasoning-based Drug Repurposing</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/rbdr/'>
 
-<link rel="stylesheet" href="/scss/style.min.e708bfeedb92bd4395e5c70cae1dc231ea28ff7d84ef1af4536f00e4191e9384.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
+<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
 <meta property='og:description' content="Reasoning-based drug repurposing\r问题&amp;回答\r问题\rLLM在Repurposing中的应用情况 是否有基于文本结构，引入大模型知识作为一部分特征？ 测试集是什么 传统模型/基于网络的模型的准确率 回答\r有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。 有的。将文本以特定的形式组织，如&quot;药物A[SEP]疾病B&quot;，然后将其变成向量，嵌入到GNN中。 阅读了几篇，测试集有 B-dataset（SCMFDD-S/L）：来自于 Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。 C-dataset：来自于 Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。 F-dataset：来自于 PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology，侧重于模型对文本知识的分析能力。 R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。 模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。 Action\rWeek\rweek1\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/rbdr/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -87,7 +87,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_7d702df343b40e37.jpg" width="300"
+                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -244,6 +244,25 @@
 
                 
                 <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
             </a>
         </li>
         
@@ -456,19 +475,24 @@
 </h2><h3 id="llm-dda">LLM-DDA
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/"  target="_blank" rel="noopener"
-    >Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed</a></p></blockquote>
+    >Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed</a></p>
+</blockquote>
 <h4 id="问题与回答">问题与回答
 </h4><blockquote>
-<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p>
+</blockquote>
 <p>LLM的推理信息在这里被引入了GNN中作为一部分特征</p>
 <blockquote>
-<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p>
+</blockquote>
 <p>文本结构经过LLM编码后的向量，引入到GNN网络中</p>
 <blockquote>
-<p>Q3. 测试集是什么</p></blockquote>
+<p>Q3. 测试集是什么</p>
+</blockquote>
 <p>见下面的数据集部分。一共使用了四个数据集。</p>
 <blockquote>
-<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p>
+</blockquote>
 <ul>
 <li>与下面四种baseline进行比较
 <ol>
@@ -492,7 +516,7 @@
 </h4><p><img src="/2025/rbdr/assets/20250610205120.png"
 	width="6581"
 	height="4831"
-	srcset="/2025/rbdr/assets/20250610205120_hu_6c6d8334202a82d6.png 480w, /2025/rbdr/assets/20250610205120_hu_c9f818906ad62097.png 1024w"
+	srcset="/2025/rbdr/assets/20250610205120_hu_8c128144866a5a98.png 480w, /2025/rbdr/assets/20250610205120_hu_7610c93b623bab45.png 1024w"
 	loading="lazy"
 	
 		alt="流程图"
@@ -508,7 +532,8 @@
 <p>Step1：构建异质网络</p>
 <p>Step2：利用LLM的知识来拓展潜在知识</p>
 <p>Step3：基于LLM的嵌入生成</p>
-<p>Step4：构建LLM-DDA模型</p></blockquote>
+<p>Step4：构建LLM-DDA模型</p>
+</blockquote>
 <p><strong>一、药物-疾病异质网络构建（Drug-disease heterogeneous network construction）</strong></p>
 <ul>
 <li><strong>数据来源</strong>：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。</li>
@@ -608,7 +633,7 @@
 <img src="/2025/rbdr/assets/20250610223319.png"
 	width="1506"
 	height="988"
-	srcset="/2025/rbdr/assets/20250610223319_hu_75ab593fb94ec12.png 480w, /2025/rbdr/assets/20250610223319_hu_9c85fcc86562cfbc.png 1024w"
+	srcset="/2025/rbdr/assets/20250610223319_hu_c601f19e321ef2d4.png 480w, /2025/rbdr/assets/20250610223319_hu_ca0e03a074febc3c.png 1024w"
 	loading="lazy"
 	
 		alt="四个数据集下的三种不同方法的效果"
@@ -632,7 +657,7 @@
 <p><img src="/2025/rbdr/assets/20250610223616.png"
 	width="944"
 	height="792"
-	srcset="/2025/rbdr/assets/20250610223616_hu_a1df0349a4cb82ee.png 480w, /2025/rbdr/assets/20250610223616_hu_b6a9867fa2330ad1.png 1024w"
+	srcset="/2025/rbdr/assets/20250610223616_hu_a3d42dc14d46d5b3.png 480w, /2025/rbdr/assets/20250610223616_hu_516cae77ceddaee.png 1024w"
 	loading="lazy"
 	
 		alt="最优模型为粗体，次优为下划线"
@@ -646,7 +671,7 @@
 <img src="/2025/rbdr/assets/20250610224129.png"
 	width="469"
 	height="359"
-	srcset="/2025/rbdr/assets/20250610224129_hu_32afd63a86e7361.png 480w, /2025/rbdr/assets/20250610224129_hu_253c0f489a0df0dd.png 1024w"
+	srcset="/2025/rbdr/assets/20250610224129_hu_df7bd82805af3cb1.png 480w, /2025/rbdr/assets/20250610224129_hu_c9a04da46fa0512e.png 1024w"
 	loading="lazy"
 	
 		alt="最终平均结果"
@@ -661,19 +686,24 @@
 <h3 id="lbmff">LBMFF
 </h3><blockquote>
 <p><a class="link" href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full"  target="_blank" rel="noopener"
-    >Frontiers | Drug–disease association prediction with literature based multi-feature fusion</a></p></blockquote>
+    >Frontiers | Drug–disease association prediction with literature based multi-feature fusion</a></p>
+</blockquote>
 <h4 id="问题与回答-1">问题与回答
 </h4><blockquote>
-<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p>
+</blockquote>
 <p>这里使用了BERT来挖掘文献中的关联关系。</p>
 <blockquote>
-<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p>
+</blockquote>
 <p>BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含<strong>语义关联信息的向量表示</strong>，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。</p>
 <blockquote>
-<p>Q3. 测试集是什么</p></blockquote>
+<p>Q3. 测试集是什么</p>
+</blockquote>
 <p>见下面的数据集部分。一共使用了两个数据集。</p>
 <blockquote>
-<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p>
+</blockquote>
 <p>对比的模型分为如下部分，都是各自领域的SOTA模型。</p>
 <ol>
 <li><strong>图神经网络（GNN）</strong>：DRHGCN、LAGCN、REDDA</li>
@@ -698,7 +728,7 @@
 <p><img src="/2025/rbdr/assets/20250611145238.png"
 	width="1014"
 	height="778"
-	srcset="/2025/rbdr/assets/20250611145238_hu_a0419756e480ffda.png 480w, /2025/rbdr/assets/20250611145238_hu_790c8b92f59e5590.png 1024w"
+	srcset="/2025/rbdr/assets/20250611145238_hu_6c0216083b70bc7e.png 480w, /2025/rbdr/assets/20250611145238_hu_f3b0d6957ab36fb5.png 1024w"
 	loading="lazy"
 	
 	
@@ -766,7 +796,7 @@
 </h5><p><img src="/2025/rbdr/assets/20250611151737.png"
 	width="1010"
 	height="482"
-	srcset="/2025/rbdr/assets/20250611151737_hu_78901334681f4864.png 480w, /2025/rbdr/assets/20250611151737_hu_989e86a68a8680fd.png 1024w"
+	srcset="/2025/rbdr/assets/20250611151737_hu_372735f5fde4db70.png 480w, /2025/rbdr/assets/20250611151737_hu_989418c5d578ef62.png 1024w"
 	loading="lazy"
 	
 	
@@ -829,7 +859,7 @@
 <p><img src="/2025/rbdr/assets/20250611153556.png"
 	width="1620"
 	height="603"
-	srcset="/2025/rbdr/assets/20250611153556_hu_9a785be424d4ae99.png 480w, /2025/rbdr/assets/20250611153556_hu_c4246ac65e7a8d75.png 1024w"
+	srcset="/2025/rbdr/assets/20250611153556_hu_ab5ca657995371ff.png 480w, /2025/rbdr/assets/20250611153556_hu_f0d6ddfd1e5b86b4.png 1024w"
 	loading="lazy"
 	
 	
@@ -842,7 +872,7 @@
 <p><img src="/2025/rbdr/assets/20250611154234.png"
 	width="1659"
 	height="589"
-	srcset="/2025/rbdr/assets/20250611154234_hu_8a504edeb9650d6c.png 480w, /2025/rbdr/assets/20250611154234_hu_237ef5a787bfd481.png 1024w"
+	srcset="/2025/rbdr/assets/20250611154234_hu_fde5f97312a21ba.png 480w, /2025/rbdr/assets/20250611154234_hu_954bb5356fde18bd.png 1024w"
 	loading="lazy"
 	
 	
@@ -855,19 +885,24 @@
 <h3 id="llm进行阴性数据标注">LLM进行阴性数据标注
 </h3><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/"  target="_blank" rel="noopener"
-    >Improving drug repositioning with negative data labeling using large language models-PubMed</a></p></blockquote>
+    >Improving drug repositioning with negative data labeling using large language models-PubMed</a></p>
+</blockquote>
 <h4 id="问题与回答-2">问题与回答
 </h4><blockquote>
-<p>Q1. LLM在Repurposing中的应用情况</p></blockquote>
+<p>Q1. LLM在Repurposing中的应用情况</p>
+</blockquote>
 <p>LLM引入了自己的推理能力来修改训练数据。</p>
 <blockquote>
-<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p></blockquote>
+<p>Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？</p>
+</blockquote>
 <p>没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。</p>
 <blockquote>
-<p>Q3. 测试集是什么</p></blockquote>
+<p>Q3. 测试集是什么</p>
+</blockquote>
 <p>测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。</p>
 <blockquote>
-<p>Q4. 传统模型/基于网络的模型的准确率</p></blockquote>
+<p>Q4. 传统模型/基于网络的模型的准确率</p>
+</blockquote>
 <p>见研究结果。本文通过<strong>提升数据集中真阴性数据的质量</strong>来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。</p>
 <h4 id="解决的问题-2">解决的问题
 </h4><p>在药物重新定位中，监督机器学习模型因缺乏可靠的<strong>阴性数据</strong>（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。</p>
@@ -884,7 +919,7 @@
 <p><img src="/2025/rbdr/assets/20250610231108.png"
 	width="1056"
 	height="314"
-	srcset="/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, /2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w"
+	srcset="/2025/rbdr/assets/20250610231108_hu_4ab58ad9c38b9005.png 480w, /2025/rbdr/assets/20250610231108_hu_75777e09f06352c6.png 1024w"
 	loading="lazy"
 	
 		alt="临床试验药物标注流程"
@@ -912,7 +947,7 @@
 <img src="/2025/rbdr/assets/20250610234019.png"
 	width="720"
 	height="650"
-	srcset="/2025/rbdr/assets/20250610234019_hu_da1098ceace0f516.png 480w, /2025/rbdr/assets/20250610234019_hu_cabf59ededa6f174.png 1024w"
+	srcset="/2025/rbdr/assets/20250610234019_hu_9d609af827d7456a.png 480w, /2025/rbdr/assets/20250610234019_hu_f0f3e0fe123a2e38.png 1024w"
 	loading="lazy"
 	
 	
@@ -930,7 +965,7 @@
 <p><img src="/2025/rbdr/assets/20250610232517.png"
 	width="1442"
 	height="600"
-	srcset="/2025/rbdr/assets/20250610232517_hu_88b2c5cdb4fef3fe.png 480w, /2025/rbdr/assets/20250610232517_hu_ebaa126e63836e49.png 1024w"
+	srcset="/2025/rbdr/assets/20250610232517_hu_6cabe3a3c654a075.png 480w, /2025/rbdr/assets/20250610232517_hu_6e0053c2114cef1c.png 1024w"
 	loading="lazy"
 	
 	
@@ -956,17 +991,19 @@
 </h3><h4 id="druggen">DrugGen
 </h4><blockquote>
 <p><a class="link" href="https://www.nature.com/articles/s41598-025-98629-1"  target="_blank" rel="noopener"
-    >DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports</a></p></blockquote>
+    >DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports</a></p>
+</blockquote>
 <p>这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。</p>
 <h4 id="drugrealign">DrugReAlign
 </h4><blockquote>
 <p><a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/"  target="_blank" rel="noopener"
-    >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p></blockquote>
+    >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p>
+</blockquote>
 <p>提出了一个多源提示的LLM药物重定位框架。</p>
 <p><img src="/2025/rbdr/assets/20250611164032.png"
 	width="1944"
 	height="1430"
-	srcset="/2025/rbdr/assets/20250611164032_hu_20997968172a8920.png 480w, /2025/rbdr/assets/20250611164032_hu_f551cf6e5e853017.png 1024w"
+	srcset="/2025/rbdr/assets/20250611164032_hu_ceeee9f998d08aa8.png 480w, /2025/rbdr/assets/20250611164032_hu_cf8de9d3dc7e3772.png 1024w"
 	loading="lazy"
 	
 	
@@ -978,12 +1015,14 @@
 <h4 id="benchmarkllm在八项化学任务中的表现">Benchmark：LLM在八项化学任务中的表现
 </h4><blockquote>
 <p><a class="link" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf"  target="_blank" rel="noopener"
-    >What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks</a></p></blockquote>
+    >What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks</a></p>
+</blockquote>
 <p>评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。</p>
 <h4 id="biobert">BioBERT
 </h4><blockquote>
 <p><a class="link" href="https://academic.oup.com/bioinformatics/article/36/4/1234/5566506"  target="_blank" rel="noopener"
-    >BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic</a></p></blockquote>
+    >BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic</a></p>
+</blockquote>
 <p>介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。</p>
 
 </section>

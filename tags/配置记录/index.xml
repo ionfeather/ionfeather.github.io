@@ -5,7 +5,7 @@
         <link>https://ionfeather.github.io/tags/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/</link>
         <description>Recent content in 配置记录 on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Sun, 15 Dec 2024 20:55:19 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>操作记录 | 虚拟环境配置操作记录</title>
@@ -45,7 +45,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;在conda中配置jupyter内核&#34;&gt;在conda中配置Jupyter内核
 &lt;/h3&gt;&lt;h4 id=&#34;安装jupyter内核&#34;&gt;安装Jupyter内核
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;安装ipykernel。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install ipykernel
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将虚拟内核添加到jupyter内核中。&lt;/p&gt;

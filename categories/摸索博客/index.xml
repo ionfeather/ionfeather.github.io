@@ -5,7 +5,7 @@
         <link>https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/</link>
         <description>Recent content in 工作台 on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>博客探索 | 搬运一些Shortcodes</title>
@@ -949,14 +949,15 @@
 &lt;/h2&gt;&lt;h3 id=&#34;linter&#34;&gt;Linter
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/662183315&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Obsidian Linter插件：打造统一、美观的笔记环境 - 知乎&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Obsidian Linter插件：打造统一、美观的笔记环境 - 知乎&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;我不得不赞赏一下这个Linter，真的很好用，格式化目前的Markdown内容一直是我的心头痒，对于我这个强迫症来说，现在只需要按一下&lt;code&gt;Ctrl+S&lt;/code&gt;就可以让我的敲击的内容都非常规范化，这实在是伟大的发明。&lt;/p&gt;
 &lt;h3 id=&#34;excalidraw&#34;&gt;Excalidraw
 &lt;/h3&gt;&lt;p&gt;这个插件还挺好看的，可以绘制手绘风格的图像，我绘制一些想法会更加方便。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/obsidian/image.png&#34;
 	width=&#34;536&#34;
 	height=&#34;371&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_5044d69ddd73faf9.png 480w, https://ionfeather.github.io/2025/obsidian/image_hu_aba23acb1e8a836d.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_e25c69975160c931.png 480w, https://ionfeather.github.io/2025/obsidian/image_hu_d6fcd24165823591.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;学习时间和自信心之间的关系&#34;

@@ -5,167 +5,532 @@
         <link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
         <description>Recent content in 学习札记 on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Thu, 08 Jan 2026 17:14:41 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Apr 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PeerReview | 论文自动评阅</title>
+        <link>https://ionfeather.github.io/2026/automated-peer-review/</link>
+        <pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2026/automated-peer-review/</guid>
+        <description>&lt;h2 id=&#34;论文自动评阅llm-based学术评审研究综述&#34;&gt;论文自动评阅：LLM-based学术评审研究综述
+&lt;/h2&gt;&lt;p&gt;随着大语言模型（LLM）技术的快速发展，自动化论文评审已成为学术界和工业界关注的热点。本文系统梳理了2024-2025年LLM-based学术评审的最新研究进展，涵盖基准数据集、主流方法、技术框架以及未来研究方向。&lt;/p&gt;
+&lt;h3 id=&#34;核心内容概览&#34;&gt;核心内容概览
+&lt;/h3&gt;&lt;p&gt;本文主要分为三个部分：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;最新研究进展（2024-2025）&lt;/strong&gt;：重点介绍DeepReview、ReviewAgents、Agent Reviewers、OpenReviewer等前沿工作，分析其技术路线和性能表现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;关键技术框架&lt;/strong&gt;：对比结构化评审流程、多智能体系统、专门化评审模型等不同技术路径的优劣。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实践思考与创新&lt;/strong&gt;：结合最新研究，提出细粒度Review→Point→RAG数据构建方法，探讨蓝色智能体的本地部署方案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;研究意义&#34;&gt;研究意义
+&lt;/h3&gt;&lt;p&gt;自动化论文评审不仅能够缓解学术同行评审的压力，还能提供更一致、更高效的评审体验。然而，当前研究仍面临基准不统一、评估指标碎片化、跨领域泛化能力不足等挑战。本文旨在为相关研究者提供一个全面的技术图谱和研究方向参考。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2024-2025年最新研究进展&#34;&gt;2024-2025年最新研究进展
+&lt;/h2&gt;&lt;h3 id=&#34;基准与数据集&#34;&gt;基准与数据集
+&lt;/h3&gt;&lt;h4 id=&#34;peerreadnaacl-2018&#34;&gt;PeerRead（NAACL 2018）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;包含 14.7K 篇论文草稿及 accept/reject 决策，其中一部分还配有 10.7K 条评审文本&lt;/li&gt;
+&lt;li&gt;在 ICLR 2017 的接收分类任务上，简单模型达到 65.3% accuracy，高于 57.6% 的多数类基线&lt;/li&gt;
+&lt;li&gt;更像是&amp;quot;历史基线&amp;quot;和&amp;quot;数据来源&amp;quot;，不是现代 LLM reviewer 的上限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;thelwall--yaghiscientometrics-2025&#34;&gt;Thelwall &amp;amp; Yaghi（Scientometrics 2025）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在 ICLR 上，ChatGPT 对人类评分的 Spearman 相关只有 0.38（题目+摘要）到 0.46（全文）&lt;/li&gt;
+&lt;li&gt;在 F1000Research 上几乎失效，相关从 0.00 到 0.09&lt;/li&gt;
+&lt;li&gt;结论：跨平台、跨评审制度之后，paper-only 预测并不稳&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;mmreview2025&#34;&gt;★MMReview（2025）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;收集了 240 篇论文、17 个研究领域、4 大学科门类、13 个任务&lt;/li&gt;
+&lt;li&gt;纳入 figures、tables 和 PDF page image&lt;/li&gt;
+&lt;li&gt;回应了此前研究&amp;quot;任务碎片化、数据不统一&amp;quot;的问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;主流方法&#34;&gt;主流方法
+&lt;/h3&gt;&lt;h4 id=&#34;deepreviewacl-2025&#34;&gt;★DeepReview（ACL 2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;结构化评审流程&lt;/strong&gt;，走&amp;quot;human-like deep thinking process + 专门训练 reviewer 模型&amp;quot;的路线。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三个阶段：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;新颖性评估&lt;/strong&gt;：抽取核心问题，检索相关工作，对比得到novelty判断+证据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多维度评估&lt;/strong&gt;：novelty、soundness、clarity、significance、experiment quality，每个维度都需要打分&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可靠性评估&lt;/strong&gt;：对所有结论进行反查&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;性能：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ICLR 2024：DeepReviewer-14B 达到 1.3137 的 rating MSE、0.9102 的 MAE、64.06% decision accuracy&lt;/li&gt;
+&lt;li&gt;ICLR 2025：decision accuracy 进一步到 68.78%，F1 为 0.6227&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reviewagents2025&#34;&gt;★ReviewAgents（2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;结构化评审思维链（Review-CoT）&lt;/strong&gt;，将评审拆解为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Summary&lt;/li&gt;
+&lt;li&gt;Related work&lt;/li&gt;
+&lt;li&gt;Strengths&lt;/li&gt;
+&lt;li&gt;Weaknesses&lt;/li&gt;
+&lt;li&gt;Questions&lt;/li&gt;
+&lt;li&gt;Final recommendation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过显式结构约束，提高了生成评审的逻辑一致性与可读性。&lt;/p&gt;
+&lt;h4 id=&#34;agent-reviewersicml-2025&#34;&gt;★Agent Reviewers（ICML 2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;多智能体评审系统&lt;/strong&gt;，使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Domain-specific reviewer agents&lt;/li&gt;
+&lt;li&gt;Multimodal reviewer（专门看图表、公式和实验结果）&lt;/li&gt;
+&lt;li&gt;Shared memory pool&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;流程：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Meta-reviewer初始化评审并构建初始记忆&lt;/li&gt;
+&lt;li&gt;多个reviewer agents给出评审意见&lt;/li&gt;
+&lt;li&gt;Discussion阶段，各agent基于彼此意见进行修订&lt;/li&gt;
+&lt;li&gt;AC进行集中决策&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;关键发现：&lt;/strong&gt; 多智能体的收益不一定表现在raw accuracy，也可能体现在类别平衡、拒稿识别和决策校准上。&lt;/p&gt;
+&lt;h4 id=&#34;openreviewer2025&#34;&gt;★OpenReviewer（2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;专门训练的reviewer模型&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用大规模专家评审数据（约79,000条）进行微调&lt;/li&gt;
+&lt;li&gt;得到专门生成&amp;quot;critical scientific paper reviews&amp;quot;的 reviewer LLM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;关键改进：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;人类 reviewer 的平均推荐分是 5.4/10，OpenReviewer 也是 5.4&lt;/li&gt;
+&lt;li&gt;GPT-4o 和 Claude-3.5 的平均推荐分分别是 7.7 和 7.6，明显偏乐观&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通用 LLM 往往&amp;quot;收稿偏高&amp;quot;，而更强的 reviewer 模型变得更像人类那样会挑毛病、会压分&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reviewevalemnlp-2025&#34;&gt;★ReviewEval（EMNLP 2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;多维评审质量评估框架：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Human alignment（像不像人）&lt;/li&gt;
+&lt;li&gt;Factual accuracy（事实正确）&lt;/li&gt;
+&lt;li&gt;Analytical depth（分析深度）&lt;/li&gt;
+&lt;li&gt;Constructiveness（是否有帮助）&lt;/li&gt;
+&lt;li&gt;Guideline adherence（是否符合规范）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reviewrlemnlp-2025&#34;&gt;ReviewRL（EMNLP 2025）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;检索、SFT 和 RL 结合&lt;/strong&gt;的 review generation 与 rating prediction。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reward包括：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Accuracy：与真实得分接近、MSE/Ranking Accuracy&lt;/li&gt;
+&lt;li&gt;Helpfulness：是不是具体、是否有帮助、是否覆盖关键问题&lt;/li&gt;
+&lt;li&gt;Human alignment：像不像人类reviewer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;支撑性研究&#34;&gt;支撑性研究
+&lt;/h3&gt;&lt;h4 id=&#34;marg-multi-agent-review-generation-2024&#34;&gt;MARG: Multi-Agent Review Generation (2024)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;让多个GPT-4实例读论文、内部讨论，按照评论类型专门分工&lt;/li&gt;
+&lt;li&gt;平均每篇产生 &lt;strong&gt;3.7 条 good comments&lt;/strong&gt;，高于最佳单体基线的 &lt;strong&gt;1.7&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Generic comments 比例从 &lt;strong&gt;60%&lt;/strong&gt; 降到 &lt;strong&gt;29%&lt;/strong&gt;，且 &lt;strong&gt;71%&lt;/strong&gt; 的评论被评为 specific / very specific&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;is-llm-a-reliable-reviewerlrec-coling-2024&#34;&gt;★Is LLM a Reliable Reviewer?（LREC-COLING 2024）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;关键发现：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;给 GPT-3.5 看&lt;strong&gt;人类已写好的 review&lt;/strong&gt;时，最好能做到 0.353 的 exact accuracy&lt;/li&gt;
+&lt;li&gt;如果只给&lt;strong&gt;论文内容&lt;/strong&gt;，效果明显下降：只看摘要是 0.237，看整篇论文反而只有 0.138&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不一定需要输入整篇论文，而是只给筛选后的section也能提升对于aspect score prediction分数预测的效果&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;数据集构建方法对比&#34;&gt;数据集构建方法对比
+&lt;/h3&gt;&lt;h4 id=&#34;deepreview&#34;&gt;DeepReview
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;用ICLR2024-2025的paper+review&lt;/li&gt;
+&lt;li&gt;构建三个中间的reasoning：新颖性评估、多维度评估、可靠性评估&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reviewrl&#34;&gt;ReviewRL
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;DeepReview的数据集中的ICLR 2024部分作为cold start&lt;/li&gt;
+&lt;li&gt;长CoT部分作为warm-up&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reviewagents&#34;&gt;ReviewAgents
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;先把Review输入LLM，变成CoT格式&lt;/li&gt;
+&lt;li&gt;将&lt;strong&gt;相关工作显式地放进了训练中&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;openreviewer&#34;&gt;OpenReviewer
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Paper + ICLR的Reviewer Guide + review template + review&lt;/li&gt;
+&lt;li&gt;不对review进行处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;details&gt;
+    &lt;summary&gt;点击查看早期SEA框架内容（2024年研究）&lt;/summary&gt;
+    &lt;h3 id=&#34;生成式评审智能体&#34;&gt;生成式评审智能体
+&lt;/h3&gt;&lt;h4 id=&#34;sea框架&#34;&gt;SEA框架
+&lt;/h4&gt;&lt;p&gt;论文：&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2407.12857&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SEA框架&lt;/a&gt;
+视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1EFCZY3E5j/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=def42f0229df2650994ec2dc4854c7b4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;自动化同行评审框架（EMNLP 2024）_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;背景介绍&#34;&gt;背景介绍
+&lt;/h5&gt;&lt;p&gt;目前的自动化审稿的方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于Prompt方式。由于LLM训练时需要与人类偏好对齐，导致其倾向于讨好人类。&lt;/li&gt;
+&lt;li&gt;基于SFT。使用对应一篇文章的Review进行微调，导致结果存在片面性，且不同的会议的格式和标准也不同。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;method&#34;&gt;Method
+&lt;/h5&gt;&lt;p&gt;SEA架构：&lt;strong&gt;S&lt;/strong&gt;tandardization, &lt;strong&gt;E&lt;/strong&gt;valuation and &lt;strong&gt;A&lt;/strong&gt;nalysis&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111203658358.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h6 id=&#34;standardization&#34;&gt;Standardization
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111203755562.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;统一标准&lt;/strong&gt;：作者希望整合一篇文章的所有评审意见，消除冗余和错误，集中关注文章的优点和缺点。具体来说，作者使用了训练集20%的数据，并借助GPT-4对这些评审意见进行整合，形成统一的格式和标准。这构成了一个特定微调的数据集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;微调模型&lt;/strong&gt;：作者对一个适应长文本的开源模型Mistral-7B进行微调，以蒸馏GPT-4的数据整合能力，最终得到数据标准化模型SEA-S。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;值得一提的是，SEA-S提供了一种泛化范式，可以应用于其他领域以获得标准化的评审意见。&lt;/p&gt;
+&lt;h6 id=&#34;evaluation&#34;&gt;Evaluation
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205140718.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用Nougat将PDF论文都转换为text或者LaTex代码&lt;/li&gt;
+&lt;li&gt;将转换后的论文、从SEA-S输出的标准评审意见和人工Prompt放到一起，生成一个指令dataset&lt;/li&gt;
+&lt;li&gt;微调另一个Mistral-7B模型为SEA-E&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;经过以上处理后，SEA-E可以生成规范且高质量的评审意见。&lt;/p&gt;
+&lt;h6 id=&#34;analysis&#34;&gt;Analysis
+&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205558622.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;加入一个新的度量标准：不匹配分数。具体来说，就是用置信度（confidence）和分数（score）计算出一个值，然后将评审的评分减去加权平均分，说明这个评审意见和论文偏离比较大，可能质量不高。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205949784.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算了论文和评审之间的相互注意力，并训练了一个回归模型SEA-A来估计不匹配度分数。&lt;/li&gt;
+&lt;li&gt;在训练完模型后，实施了一个自我矫正机制：如果SEA-E生成的评审超过了一定的阈值，则重新生成该评审，加入新的提示以提高其与论文的一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;最终作者展示了一些生成的示例，这些示例主要分为六个部分：总结（summary）、优点（strengths）、缺点（weaknesses）、问题（questions）、四个评分以及对论文的决定（接受或拒绝）和相应的理由。&lt;strong&gt;这些生成的评审意见与作者在实际投稿过程中收到的评审意见高度一致。&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;实验&#34;&gt;实验
+&lt;/h5&gt;&lt;p&gt;使用NIPS2023和ICLR2024的80%作为训练集，20%作为测试集。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;评审结果最优&lt;/li&gt;
+&lt;li&gt;SEA-S的标准化水平最高，完全按照格式遵循&lt;/li&gt;
+&lt;li&gt;不匹配度最低，与论文一致性最高&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/details&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2407.12857&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;SEA框架&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2025.acl-long.1420.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DeepReview (ACL 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2411.09763v1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ReviewAgents (2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2411.00816v1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Agent Reviewers (ICML 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2508.14146&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenReviewer (2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2025.emnlp-main.70.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ReviewEval (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2412.11948&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ReviewRL (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2024.lrec-main.816.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Is LLM a Reliable Reviewer? (LREC-COLING 2024)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2310.01783.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;MARG: Multi-Agent Review Generation (2024)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/N18-1149/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PeerRead (NAACL 2018)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;最后更新：2026年4月12日&lt;/em&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>实习 | 兽人永不为奴，但偶尔可以</title>
         <link>https://ionfeather.github.io/2026/intern/</link>
         <pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate>
         
         <guid>https://ionfeather.github.io/2026/intern/</guid>
-        <description>&lt;p&gt;终于编好了实习的简历。这个帖子记录一下我准备的可能的问题以及面试中的问题。&lt;/p&gt;
+        <description>&lt;h2 id=&#34;实习准备与经验总结&#34;&gt;实习准备与经验总结
+&lt;/h2&gt;&lt;p&gt;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
+&lt;h3 id=&#34;最新项目经验&#34;&gt;最新项目经验
+&lt;/h3&gt;&lt;h4 id=&#34;1-基于思考帽认知模型的多智能体学术评审系统202505---至今&#34;&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心技术&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据集构建&lt;/strong&gt;：采集并处理OpenReview等开源评审数据，构建基于[论文片段-亮点/缺陷识别-维度归因]思维链的训练集&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能体定制&lt;/strong&gt;：基于LLaMA-Factory框架，使用LoRA技术对开源模型进行指令微调（SFT）得到多个角色智能体（白/黄/黑/绿帽）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态辩论协议&lt;/strong&gt;：设计并实现动态权重感知共识多智能体动态辩论协议，引入蓝帽（裁判智能体）进行多维度实时评估&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;闭环验证&lt;/strong&gt;：集成事实性校验模块，对低置信度或矛盾信息自动触发检索与重评估循环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实验成果&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统评分与专家加权分平均绝对误差仅为0.42&lt;/li&gt;
+&lt;li&gt;语义重合度F1相比单模型Zero-shot评审提升28%&lt;/li&gt;
+&lt;li&gt;结论逻辑矛盾性减少38%，实现100%证据可溯源&lt;/li&gt;
+&lt;li&gt;在盲测评审中针对专家意见的覆盖率达88%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508&#34;&gt;2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：基于85篇AI顶会论文的PDF版本，回答人工标注的多选题，考察模型的长文本理解、多跳推理、实验数据解析及逻辑严谨性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技术方案&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多模态解析&lt;/strong&gt;：对PDF论文进行精细标注，分离文本、表格与图像区域，采用Qwen-VL-OCR/Qwen2.5-VL提取图表深层语义&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG优化&lt;/strong&gt;：使用Latechunk等技术进行智能分块，构建Qdrant向量数据库，使用Qwen3-Reranker模型进行精排序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;鲁棒决策&lt;/strong&gt;：开发rerank驱动的选项支持度判定算法，通过独立计算各选项证据分及Top-K补偿策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;项目成果&lt;/strong&gt;：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;微调&#34;&gt;微调
-&lt;/h3&gt;&lt;p&gt;LoRA：Low-Rank Adaptation of LLM&lt;/p&gt;
+&lt;h2 id=&#34;技术深度微调与agent系统&#34;&gt;技术深度：微调与Agent系统
+&lt;/h2&gt;&lt;h3 id=&#34;微调技术详解&#34;&gt;微调技术详解
+&lt;/h3&gt;&lt;h4 id=&#34;loralow-rank-adaptation-of-llm&#34;&gt;LoRA：Low-Rank Adaptation of LLM
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心优势&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;优点是什么？
+&lt;li&gt;&lt;strong&gt;参数效率&lt;/strong&gt;：仅需调整0.1%-0.01%的参数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;训练速度&lt;/strong&gt;：显著减少训练和部署时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模块化设计&lt;/strong&gt;：不影响原始模型，避免灾难性遗忘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数学原理&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;参数少：0.1%-0.01%&lt;/li&gt;
-&lt;li&gt;速度快：训练和部署&lt;/li&gt;
-&lt;li&gt;模块化：不影响原始模型
+&lt;li&gt;基于奇异值分解（SVD），大部分信息集中在少量奇异值上&lt;/li&gt;
+&lt;li&gt;LoRA论文中GPT-3上的$\Delta W$的前10-20个奇异值可保留90%以上信息&lt;/li&gt;
+&lt;li&gt;参数更新：$W&amp;rsquo;=W+\Delta W=W+A\times B$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;训练流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;初始化&lt;/strong&gt;：$A$用小的随机值初始化，$B$初始化为全0&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前向传播&lt;/strong&gt;：$Y_{pred}=(W+A\times B)\times X$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;损失计算&lt;/strong&gt;：$L=Loss(Y_{true},Y_{pred})$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反向传播&lt;/strong&gt;：计算损失对$A$和$B$的梯度并更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;迭代优化&lt;/strong&gt;：重复直到收敛&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;应用位置&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;避免灾难性遗忘&lt;/li&gt;
-&lt;li&gt;存储效率高&lt;/li&gt;
-&lt;li&gt;快速切换&lt;/li&gt;
-&lt;li&gt;兼容性强&lt;/li&gt;
+&lt;li&gt;主要应用于注意力层中的$W_q$和$W_v$&lt;/li&gt;
+&lt;li&gt;前馈层的LoRA在较大模型上可能有收益&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;为什么可以进行低秩分解？
-&lt;ul&gt;
-&lt;li&gt;奇异值分解&lt;/li&gt;
-&lt;li&gt;大部分信息集中在了少量的奇异值上。&lt;/li&gt;
-&lt;li&gt;LoRA论文中GPT-3上的$\Delta W$的前10-20个奇异值就可以保留90%以上的信息&lt;/li&gt;
-&lt;li&gt;由于$\Delta W$的秩很低，可以用A和B直接构造，不需要完整的SVD计算，更加高效&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;一个$512\times 512$的权重矩阵，全微调可能需要$512\times 512$的调整参数量，LoRA如果r=8，只需要$512\times 8$和$8\times 512$的参数变化。&lt;/p&gt;&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;LoRA如何更新参数？
-&lt;ul&gt;
-&lt;li&gt;反向传播算法。具体来说是$W&amp;rsquo;=W+\Delta W=W+A\times B$。&lt;/li&gt;
-&lt;li&gt;Step1：初始化
-&lt;ul&gt;
-&lt;li&gt;$W$是预训练好的权重&lt;/li&gt;
-&lt;li&gt;$A$通常用小的随机值初始化&lt;/li&gt;
-&lt;li&gt;$B$初始可以设置为全0，这样$\Delta W$=0，不干扰原始模型&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Step2：计算损失
-&lt;ul&gt;
-&lt;li&gt;对于输入X，前向传播计算得到输出$Y_{pred}=(W+A\times B)\times X$。&lt;/li&gt;
-&lt;li&gt;根据任务定义损失函数$L=Loss(Y_{true},Y_{pred})$。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Step3：反向传播更新
-&lt;ul&gt;
-&lt;li&gt;计算损失$L$对$A$和$B$的梯度&lt;/li&gt;
-&lt;li&gt;梯度下降更新&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Step4：迭代优化
-&lt;ul&gt;
-&lt;li&gt;重复Step2和Step3，直到损失收敛或者达到预定训练轮次&lt;/li&gt;
-&lt;li&gt;最终得到$A$和$B$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;用在Transformer的哪个层？
-&lt;ul&gt;
-&lt;li&gt;注意力层中的$W_q$和$W_v$较多，其他的收益有限&lt;/li&gt;
-&lt;li&gt;前馈层的LoRA可能会用在较大模型上&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;LoRA改进版本
-&lt;ul&gt;
-&lt;li&gt;LoRA+：加速
-&lt;ul&gt;
-&lt;li&gt;靠近输出的权重B应该对梯度变化更敏感，需要更大调整。所以调整得B比A的学习率高&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;DoRA：稳定高性能
-&lt;ul&gt;
-&lt;li&gt;把预训练权重矩阵分解为幅度和方向$W=m\times V$&lt;/li&gt;
-&lt;li&gt;微调的时候调整方向$V$，幅度单独训练&lt;/li&gt;
-&lt;li&gt;训练量增加，性能高&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;rsLoRA：稳定
-&lt;ul&gt;
-&lt;li&gt;引入动态秩调整和稳定化因子优化训练&lt;/li&gt;
-&lt;li&gt;$W&amp;rsquo;=W+\Delta W=W+(\frac{\alpha}{\sqrt{r}})A\times B$。&lt;/li&gt;
-&lt;li&gt;训练更稳定&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;PiSSA：收敛快
-&lt;ul&gt;
-&lt;li&gt;优化初始化，把A和B矩阵初始化使用SVD分解&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;GaLore：内存极低&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;LoRA需要的超参数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以下是 LLaMA Factory 微调中最重要的超参数及其核心作用的总结表格。这些参数直接决定了微调的成功与否、效率以及资源消耗。&lt;/p&gt;
-&lt;table&gt;
+&lt;h4 id=&#34;lora改进版本对比&#34;&gt;LoRA改进版本对比
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;方法&lt;/th&gt;
+          &lt;th&gt;核心改进&lt;/th&gt;
+          &lt;th&gt;适用场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LoRA+&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;加速训练，调整B比A的学习率更高&lt;/td&gt;
+          &lt;td&gt;需要快速迭代的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;DoRA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;权重分解为幅度和方向，分别调整&lt;/td&gt;
+          &lt;td&gt;追求高性能的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;rsLoRA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;引入动态秩调整和稳定化因子&lt;/td&gt;
+          &lt;td&gt;训练稳定性要求高的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;PiSSA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;优化初始化，使用SVD分解初始化A和B&lt;/td&gt;
+          &lt;td&gt;需要快速收敛的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GaLore&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;内存占用极低&lt;/td&gt;
+          &lt;td&gt;资源受限的环境&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;llama-factory微调关键参数&#34;&gt;LLaMA Factory微调关键参数
+&lt;/h4&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
           &lt;th&gt;参数类别&lt;/th&gt;
           &lt;th&gt;参数名&lt;/th&gt;
           &lt;th&gt;核心作用&lt;/th&gt;
-          &lt;th&gt;关键建议与说明&lt;/th&gt;
+          &lt;th&gt;建议值&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
       &lt;tr&gt;
-          &lt;td&gt;训练核心​&lt;/td&gt;
-          &lt;td&gt;学习率​&lt;/td&gt;
-          &lt;td&gt;控制模型参数更新的步长，是影响收敛速度和稳定性的最关键参数。&lt;/td&gt;
-          &lt;td&gt;LoRA/QLoRA：可稍大，常用 &lt;code&gt;1e-4&lt;/code&gt;到 &lt;code&gt;5e-4&lt;/code&gt;。  &lt;br&gt;全量微调：需谨慎，常用 &lt;code&gt;1e-5&lt;/code&gt;到 &lt;code&gt;3e-5&lt;/code&gt;。&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;训练核心&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;学习率&lt;/td&gt;
+          &lt;td&gt;控制参数更新步长&lt;/td&gt;
+          &lt;td&gt;LoRA: 1e-4到5e-4&lt;br&gt;全量: 1e-5到3e-5&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;per_device_train_batch_size&lt;/code&gt;​  &lt;br&gt;&lt;code&gt;gradient_accumulation_steps&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;共同决定有效批处理大小，影响训练稳定性和显存占用。&lt;/td&gt;
-          &lt;td&gt;有效批大小 = 批大小 × 累积步数。建议将此值保持在 16 或以上以获得稳定训练。批大小受显存限制，多用累积步数来补偿。&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;per_device_train_batch_size&lt;/code&gt;&lt;br&gt;&lt;code&gt;gradient_accumulation_steps&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;决定有效批处理大小&lt;/td&gt;
+          &lt;td&gt;有效批大小 ≥ 16&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;LoRA核心​&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;lora_rank&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;决定LoRA适配器的能力与参数数量。秩越高，拟合能力越强，但也更易过拟合。&lt;/td&gt;
-          &lt;td&gt;通用任务从 8、16 或 32​ 开始尝试。复杂任务可尝试 64 或更高。&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;LoRA核心&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;lora_rank&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;决定适配器能力&lt;/td&gt;
+          &lt;td&gt;通用任务: 8/16/32&lt;br&gt;复杂任务: 64+&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;lora_alpha&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;控制LoRA适配器输出的缩放因子，与 &lt;code&gt;lora_rank&lt;/code&gt;配合调节更新强度。&lt;/td&gt;
-          &lt;td&gt;一个稳定的经验法则是设置为 &lt;code&gt;lora_rank&lt;/code&gt;的两倍（例如 rank=16, alpha=32）。&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;lora_alpha&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;控制适配器输出缩放&lt;/td&gt;
+          &lt;td&gt;通常设为&lt;code&gt;lora_rank&lt;/code&gt;的2倍&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;流程控制​&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;num_train_epochs&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;控制整个数据集训练的遍数，直接影响是否过拟合。&lt;/td&gt;
-          &lt;td&gt;指令微调通常 1-3 个 epoch​ 足够。务必监视验证集损失，考虑启用早停。&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;流程控制&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;num_train_epochs&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;控制训练遍数&lt;/td&gt;
+          &lt;td&gt;指令微调: 1-3个epoch&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;数据格式​&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;template&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;指定数据格式模板，将数据转化为模型熟知的对话格式。选错会导致模型无法理解指令。&lt;/td&gt;
-          &lt;td&gt;如果不确定，优先使用 &lt;code&gt;default&lt;/code&gt;​ 或与预训练模型对应的模板（如 &lt;code&gt;qwen&lt;/code&gt;, &lt;code&gt;llama3&lt;/code&gt;）。这是最易忽略但致命的一环。&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;数据格式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定数据格式模板&lt;/td&gt;
+          &lt;td&gt;优先使用&lt;code&gt;default&lt;/code&gt;或模型对应模板&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;资源与长度​&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;cutoff_len&lt;/code&gt;​&lt;/td&gt;
-          &lt;td&gt;设置单条训练数据的最大长度，直接影响显存占用。&lt;/td&gt;
-          &lt;td&gt;在显存允许下，根据任务实际需要的上下文长度设置。过短会丢失信息，过长浪费资源。&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;资源与长度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;cutoff_len&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;设置训练数据最大长度&lt;/td&gt;
+          &lt;td&gt;根据任务实际需要设置&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h3 id=&#34;agent系统设计&#34;&gt;Agent系统设计
+&lt;/h3&gt;&lt;h4 id=&#34;记忆系统架构&#34;&gt;记忆系统架构
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;短期工作记忆&lt;/strong&gt;（当前评审会话）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储当前论文的评审进度、已识别问题点&lt;/li&gt;
+&lt;li&gt;保留最近3-5轮Agent间的对话上下文&lt;/li&gt;
+&lt;li&gt;实现方式：内存中的字典结构，会话结束时清空&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;中期项目记忆&lt;/strong&gt;（单篇论文评审全流程）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储各思考帽Agent的评审意见、置信度分数&lt;/li&gt;
+&lt;li&gt;记录评审过程中的冲突检测与解决历史&lt;/li&gt;
+&lt;li&gt;实现方式：Redis缓存，设置24小时过期时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;长期知识记忆&lt;/strong&gt;（跨论文评审经验）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储历史评审模式、常见问题类型&lt;/li&gt;
+&lt;li&gt;积累各思考帽Agent的准确率统计数据&lt;/li&gt;
+&lt;li&gt;实现方式：向量数据库（FAISS）+ 关系型数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;动态辩论协议设计&#34;&gt;动态辩论协议设计
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;多维度评估&lt;/strong&gt;：蓝帽智能体对论点进行逻辑性、证据链完整性等多维度实时测度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;激励约束&lt;/strong&gt;：基于零和博弈的奖励信号分配，奖励正确见解，惩罚无效或误导性批判&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权重演化&lt;/strong&gt;：根据博弈演化后的智能体权重，通过动态加权机制生成最终结论&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;技术实现&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用LangChain/LangGraph框架构建Agent工作流&lt;/li&gt;
+&lt;li&gt;集成CoT（思维链）和ReAct（推理-行动）思想&lt;/li&gt;
+&lt;li&gt;设计可扩展的插件系统支持不同评审场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;面试准备要点&#34;&gt;面试准备要点
+&lt;/h2&gt;&lt;h3 id=&#34;常见技术问题&#34;&gt;常见技术问题
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LoRA原理与实现&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么低秩分解有效？&lt;/li&gt;
+&lt;li&gt;如何选择rank和alpha参数？&lt;/li&gt;
+&lt;li&gt;与传统微调相比的优缺点？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAG系统优化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分块策略如何影响检索效果？&lt;/li&gt;
+&lt;li&gt;如何处理长文档的多跳推理？&lt;/li&gt;
+&lt;li&gt;如何评估RAG系统的性能？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多智能体系统&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何设计Agent间的通信协议？&lt;/li&gt;
+&lt;li&gt;如何解决Agent间的冲突？&lt;/li&gt;
+&lt;li&gt;如何评估多智能体系统的整体性能？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;模型评估&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;学术评审场景的特殊评估指标？&lt;/li&gt;
+&lt;li&gt;如何平衡自动化评审与人工评审？&lt;/li&gt;
+&lt;li&gt;如何处理领域特异性问题？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;项目经验阐述&#34;&gt;项目经验阐述
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;STAR法则应用&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Situation&lt;/strong&gt;：清晰描述项目背景和问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Task&lt;/strong&gt;：明确个人承担的具体任务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Action&lt;/strong&gt;：详细说明采取的技术方案和实现细节&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Result&lt;/strong&gt;：量化展示项目成果和影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;技术深度展示&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不仅说明&amp;quot;做了什么&amp;quot;，更要解释&amp;quot;为什么这么做&amp;quot;&lt;/li&gt;
+&lt;li&gt;展示对技术选型的思考和权衡&lt;/li&gt;
+&lt;li&gt;分享遇到的问题和解决方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;技能总结&#34;&gt;技能总结
+&lt;/h2&gt;&lt;h3 id=&#34;核心技术栈&#34;&gt;核心技术栈
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型架构&lt;/strong&gt;：熟悉Transformer原理，了解GPT、Qwen、DeepSeek等主流模型差异&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大模型微调&lt;/strong&gt;：掌握Qwen、Llama等模型的LoRA/QLoRA微调经验&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检索增强生成&lt;/strong&gt;：具备RAG项目经验，熟悉Embedding、Chunking和Reranking策略&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent工程&lt;/strong&gt;：熟悉多智能体系统设计，掌握LangChain/LangGraph框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;综合素质&#34;&gt;综合素质
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;良好的沟通表达能力，常担任项目负责人协调团队&lt;/li&gt;
+&lt;li&gt;丰富的竞赛经验（数学建模美赛M奖、国赛省级二等奖等）&lt;/li&gt;
+&lt;li&gt;快速学习和技术调研能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;未来方向&#34;&gt;未来方向
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
+&lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
+&lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -189,7 +554,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223.png&#34;
 	width=&#34;890&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_93a9abd9d704c198.png 480w, https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_f511625d83e9b034.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_3eed26f46f306815.png 480w, https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_da1236ed52942f9e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Zork1游戏。这种游戏需要的不能只是短期决策，而是需要长远规划。&#34;
@@ -280,12 +645,13 @@
 &lt;p&gt;使用&lt;a class=&#34;link&#34; href=&#34;https://platform.openai.com/tokenizer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Tokenizer - OpenAI API&lt;/a&gt;中的&lt;code&gt;GPT-4o &amp;amp;  GPT-4o mini&lt;/code&gt;来分词下面这一大段话：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;最终得到的是
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982.png&#34;
 	width=&#34;711&#34;
 	height=&#34;279&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b760c9dcae731844.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_3812253da13ed9c0.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_d0be61d242f36670.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_9fe171ac5532dca0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -540,13 +906,14 @@
 &lt;/h4&gt;&lt;p&gt;可以使用矩阵运算方式加快计算。&lt;/p&gt;
 $$\hat{y}=softmax(Wx+b)$$&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2506.11035&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Doumbouya et al., 2025&lt;/a&gt;是这么认为的：逻辑回归将矩阵的每一行 $w_k$视为&lt;strong&gt;第 $k$ 类的原型（prototype）&lt;/strong&gt;，由于两个向量的相似度越高，它们的点积（dot product）值就越大，因此点积可作为衡量向量相似度的函数。模型最终将输入分配给相似度最高的类别。&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Doumbouya et al., 2025&lt;/a&gt;是这么认为的：逻辑回归将矩阵的每一行 $w_k$视为&lt;strong&gt;第 $k$ 类的原型（prototype）&lt;/strong&gt;，由于两个向量的相似度越高，它们的点积（dot product）值就越大，因此点积可作为衡量向量相似度的函数。模型最终将输入分配给相似度最高的类别。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;features-in-multinomial-logistic-regression&#34;&gt;Features in Multinomial Logistic Regression
 &lt;/h4&gt;&lt;p&gt;特征权重同时依赖于输入文本和输出类别。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597.png&#34;
 	width=&#34;744&#34;
 	height=&#34;837&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_dcd37b06fe097e65.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_87f8d0d9a05a6baf.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_1ea207e39bf60c3d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_63b2a504b2d09954.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -603,7 +970,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893.png&#34;
 	width=&#34;928&#34;
 	height=&#34;394&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_5b835770261a7097.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_9163edd8010643ed.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_8bd2860561d6f14d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_33033955e8a5ef15.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -619,7 +986,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005.png&#34;
 	width=&#34;1084&#34;
 	height=&#34;468&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bca6ffdfb72f8971.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_899e55b55133737a.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_9ad340817df4173.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_496a27a1eca07d9a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -637,7 +1004,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382.png&#34;
 	width=&#34;895&#34;
 	height=&#34;462&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_4558bdf3b4166cbe.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_e53d98bd5ba967c8.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_874da6586f6876.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_5815518b6e438250.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -659,13 +1026,14 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;&lt;strong&gt;bootstrap 检验&lt;/strong&gt;（Bootstrap Test）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;方差分析和t检验都需要有假设：方差齐性或数据服从正态分布。所以只能用非参数检验。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;方差分析和t检验都需要有假设：方差齐性或数据服从正态分布。所以只能用非参数检验。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;the-paired-bootstrap-test&#34;&gt;The Paired Bootstrap Test
 &lt;/h4&gt;&lt;p&gt;Bootstrap 检验的核心是 “重抽样”—— 从原始测试集&lt;code&gt;x&lt;/code&gt;中&lt;strong&gt;有放回地随机抽取&lt;/strong&gt;生成新的测试集。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970.png&#34;
 	width=&#34;1097&#34;
 	height=&#34;490&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8f406568f15b6414.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_c48413deb765f0e1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_a98c09c0580db2c1.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_f88a575256532373.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -676,7 +1044,8 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &gt;
 在新的测试集上，P 值等于 “重抽样测试集中，$d(x^{(i)})≥2d(x)$的数量占总重抽样次数b的比例”。&lt;strong&gt;判断此时的p值是否低于阈值就可以判断出是否是数据集本身的偏差导致了A比B要结果好。&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;LLM的解释：Bootstrap 重抽样，就是在 “不改变天平初始倾斜（测试集偏向）” 的前提下，反复放 “随机重量（重抽样的样本）”，看左边会比右边多低多少格 —— 如果只是天平本身歪了，随机放重量时，左边最多低 2 格左右（常规波动）；如果左边真的更重，就可能低 4 格以上（极端情况）。这种极端情况多了，超过了阈值，我们就更相信是天平本身的问题。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;LLM的解释：Bootstrap 重抽样，就是在 “不改变天平初始倾斜（测试集偏向）” 的前提下，反复放 “随机重量（重抽样的样本）”，看左边会比右边多低多少格 —— 如果只是天平本身歪了，随机放重量时，左边最多低 2 格左右（常规波动）；如果左边真的更重，就可能低 4 格以上（极端情况）。这种极端情况多了，超过了阈值，我们就更相信是天平本身的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;avoiding-harms-in-classification&#34;&gt;Avoiding Harms in Classification
 &lt;/h3&gt;&lt;p&gt;representational harms：由于对特定社会群体的贬低或刻板印象导致的伤害。&lt;/p&gt;
 &lt;p&gt;toxic detection&lt;/p&gt;
@@ -791,7 +1160,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258.png&#34;
 	width=&#34;880&#34;
 	height=&#34;558&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b96cde190aab3329.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_1050abc09f7158b.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_680426a0986e4e0b.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_acf6695bc5c23fce.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -816,7 +1185,8 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;word2vec可以看成&lt;strong&gt;间接优化一个 “带PPMI（Positive Pointwise Mutual Information）权重的共现矩阵” 的函数&lt;/strong&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我的一些想法：GNN是否也可以做类似的工作？GNN目前的方法就是直接处理图结构，进行局部图结构学习。不专门训练一个模型进行预测，而是把这个训练的模型的参数直接作为一个向量使用，反而能够更好地捕捉到隐含关系。&lt;/p&gt;
-&lt;p&gt;这种想法是否可以将LLM和GNN更好地连接起来？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这种想法是否可以将LLM和GNN更好地连接起来？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;visualizing-embeddings&#34;&gt;Visualizing Embeddings
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;直接列出最相似的单词&lt;/li&gt;
@@ -833,7 +1203,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974.png&#34;
 	width=&#34;1134&#34;
 	height=&#34;469&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_363723ff4c0d8ebb.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_327a3c1c3636cedb.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_ef4f864588b82670.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_91cea8be8012785a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -848,7 +1218,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967.png&#34;
 	width=&#34;839&#34;
 	height=&#34;505&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_baa0cb87e66ee17e.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_76e49fbca324cd4d.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_e39c914c65dd9a10.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_afd064c0b52a922e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -899,7 +1269,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978.png&#34;
 	width=&#34;833&#34;
 	height=&#34;422&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_e98d5b59e57b93ca.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_75d0b4b410c52d3a.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_f243aa4d16e73412.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_74608c6965daab0a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -919,7 +1289,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265.png&#34;
 	width=&#34;762&#34;
 	height=&#34;337&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_820ad2365c82284f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_8ed92ef255ef500a.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_561f2656dc21b591.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_b1ce3c0bbcc6f69c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -931,7 +1301,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068.png&#34;
 	width=&#34;686&#34;
 	height=&#34;446&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_a56fa62e2362e855.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_c12f6c72632725f1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_4d5ca01fc3711c57.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_426894fd1aa3b6d1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -950,7 +1320,7 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223.png&#34;
 	width=&#34;726&#34;
 	height=&#34;429&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_28bfdb5ad0f61a8a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d4c96ab1783e2a89.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_8ff709790a89e852.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_236baef201d1498b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -979,7 +1349,7 @@ $$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344.png&#34;
 	width=&#34;692&#34;
 	height=&#34;372&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_22233632699e1e11.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_f917792a9f3a40e1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_4d5339ff5fb481aa.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_90d2c2140aefa4cf.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -995,7 +1365,7 @@ $$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826.png&#34;
 	width=&#34;688&#34;
 	height=&#34;399&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_e7290fd892ec1524.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_7954655261211383.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_a509f83e18a9c6a2.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_9e4bd5e76a1e3186.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1009,7 +1379,8 @@ $$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&
 &lt;p&gt;其他的偏置项等也可以写成矩阵的形式，有助于最后的运算。此时有
 &lt;/p&gt;
 $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquote&gt;
-&lt;p&gt;这里的X中行向量表示一个样本的完整特征。有的时候会写成$WX+b$，有的时候是$XW+b$。注意X的形状有所不同。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这里的X中行向量表示一个样本的完整特征。有的时候会写成$WX+b$，有的时候是$XW+b$。注意X的形状有所不同。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;embeddings-as-the-input-to-neural-net-classifiers&#34;&gt;Embeddings as the Input to Neural Net Classifiers
 &lt;/h3&gt;&lt;p&gt;static embeddings代替hand-designed features。&lt;/p&gt;
 &lt;ul&gt;
@@ -1019,7 +1390,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608.png&#34;
 	width=&#34;688&#34;
 	height=&#34;215&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_35c57fe6c6d3b00d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_c416dc54a98e3898.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_4eb7c19abca1bd9f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_54e1cd0aaedd9fe9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1041,7 +1412,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076.png&#34;
 	width=&#34;807&#34;
 	height=&#34;712&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_e6ec73621f005a0d.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_c30b59ad826afcc3.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_d22c7b97d631ac29.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_906fd5cb01870d6d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;前馈神经网络用于情感分析，带有池化层的结构&#34;
@@ -1060,7 +1431,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335.png&#34;
 	width=&#34;717&#34;
 	height=&#34;645&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_aab9c40f89390eef.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_98641d26ebbce7c.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_3776f2e04ffa9644.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_f2f0bc91846050f4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;embedding layer e这里是拼接起来的&#34;
@@ -1083,7 +1454,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848.png&#34;
 	width=&#34;697&#34;
 	height=&#34;263&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_9525e3130f2a9740.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_d15c38716a3d7624.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_8e81e99e944ae085.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_ccd5a530852bb366.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1097,7 +1468,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406.png&#34;
 	width=&#34;829&#34;
 	height=&#34;432&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_aea55f690f9591d7.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_e6e577c00244a646.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_5453e9b6deff1469.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_fe89cd42934c3987.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1115,7 +1486,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628.png&#34;
 	width=&#34;851&#34;
 	height=&#34;528&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_86b4e3d87a5a98fe.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_508ea0186fde9736.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_4a3f7e2c9efb642e.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_9bf269e8f14d4e13.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1153,7 +1524,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377.png&#34;
 	width=&#34;817&#34;
 	height=&#34;367&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_625cc627b168f68a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_9ee53070fd85a32c.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_72b6cfdfd8b998e5.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_7db59d2411df01cc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1166,7 +1537,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983.png&#34;
 	width=&#34;800&#34;
 	height=&#34;551&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_3354a2ee29195159.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_38463e6c14e8a47d.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_246b36246d80ad0f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_da3bb1cce9b0dd31.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1185,7 +1556,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783.png&#34;
 	width=&#34;842&#34;
 	height=&#34;383&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_5e7d45143603e021.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_756c75157cc64aa.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_96ede2dd127299a5.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4c2476f32740b14d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1225,7 +1596,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606.png&#34;
 	width=&#34;813&#34;
 	height=&#34;346&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_b84c5560c85d0ad0.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_e5d863ff7f7b20c8.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_fbc337cb135edf30.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_aa40dcc422585dd5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1239,7 +1610,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947.png&#34;
 	width=&#34;815&#34;
 	height=&#34;386&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6ad9dfc9690a84c8.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_8595ec17a22bd37b.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_8c4572bb1db4ac58.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_95f5e673c2d24c0a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1255,7 +1626,8 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;Zero-shot prompting&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;这种Demonstrations可以手动筛选，也可以由优化器如DSPy来自动选择。此外，Demonstrations似乎并不是一定要给正确的问题和答案，错误的也行，主要作用是格式。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;这种Demonstrations可以手动筛选，也可以由优化器如DSPy来自动选择。此外，Demonstrations似乎并不是一定要给正确的问题和答案，错误的也行，主要作用是格式。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;prompt：可以看做一个学习信号。&lt;strong&gt;提示词不会更新模型的权重，其改变的仅仅是模型的上下文信息以及网络中的激活状态。&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;in-context learning：参数没有改变的学习&lt;/li&gt;
@@ -1266,7 +1638,7 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152.png&#34;
 	width=&#34;812&#34;
 	height=&#34;329&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_16ad1c8697e23a8f.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_fff46d8496576fff.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_dbca814bc0327c43.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_700963decdfdff35.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1283,7 +1655,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008.png&#34;
 	width=&#34;830&#34;
 	height=&#34;334&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_98ac761f730aacb7.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_49ef26f8c34a2658.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_666e905675dee232.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_8dc0c906489eb227.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1299,7 +1671,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629.png&#34;
 	width=&#34;811&#34;
 	height=&#34;326&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_11963dc8db1e3582.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_4629a2f05c285dce.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_ef18eb4990c24e24.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_43e96ff519ed2812.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1314,7 +1686,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977.png&#34;
 	width=&#34;958&#34;
 	height=&#34;388&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_3596e2556cd62f8b.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_41d0f2085c2134bd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_6d002365537be8ee.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_f9e87e0df1e82323.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1327,7 +1699,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906.png&#34;
 	width=&#34;799&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bf742fb76c7ff9ec.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_bfff8415c93c103b.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_fdf21f0ae469bfdb.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_efb27fd30b2a56f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1346,7 +1718,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929.png&#34;
 	width=&#34;800&#34;
 	height=&#34;514&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_25e107b931e1b56a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bf627f72fb75e27d.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_9e140fae36423876.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_eb56944f3776eced.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1361,7 +1733,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965.png&#34;
 	width=&#34;808&#34;
 	height=&#34;469&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_571b6370d9971e97.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_b722f8598f57cfd6.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_8b1fde340213d17a.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_52e436ac0184cd77.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1385,7 +1757,7 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282.png&#34;
 	width=&#34;704&#34;
 	height=&#34;363&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_ef5bfaca2f0c0697.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5326aa4cc5696be2.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_683b7d777403194c.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5b7b60dea1ca9328.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1405,7 +1777,8 @@ $$\begin{aligned}
 \end{aligned}$$&lt;p&gt;
 &lt;strong&gt;困惑度越低，模型越好。&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;困惑度非常依赖tokens的数量，因此不能对两个使用不同tokenizer的模型进行比较，而是只能对使用同一个tokenizer的模型比较。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;困惑度非常依赖tokens的数量，因此不能对两个使用不同tokenizer的模型进行比较，而是只能对使用同一个tokenizer的模型比较。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;downstream-tasks-reasoniong-and-world-knowledge&#34;&gt;Downstream Tasks: Reasoniong and World Knowledge
 &lt;/h4&gt;&lt;p&gt;准确率：可以直接使用下游任务来衡量。&lt;/p&gt;
 &lt;ul&gt;
@@ -1413,7 +1786,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478.png&#34;
 	width=&#34;805&#34;
 	height=&#34;289&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f3db381a926f2221.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_7d93c033b6db94ba.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_32ddbb19f24c5ece.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_9c52dc3eeab2672d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1425,7 +1798,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252.png&#34;
 	width=&#34;806&#34;
 	height=&#34;475&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_101f6843eda66160.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_d2314743aaea0c7f.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_1c72c987f9bf9a92.png 480w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_e1a02cde3eea9851.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一个2-shot prompt的MMLU高中数学题&#34;
@@ -1495,19 +1868,24 @@ $$\begin{aligned}
 &lt;/h2&gt;&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39325266/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;LLM的推理信息在这里被引入了GNN中作为一部分特征&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;文本结构经过LLM编码后的向量，引入到GNN网络中&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见下面的数据集部分。一共使用了四个数据集。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;与下面四种baseline进行比较
 &lt;ol&gt;
@@ -1531,7 +1909,7 @@ $$\begin{aligned}
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120.png&#34;
 	width=&#34;6581&#34;
 	height=&#34;4831&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_6c6d8334202a82d6.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_c9f818906ad62097.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_8c128144866a5a98.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_7610c93b623bab45.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;流程图&#34;
@@ -1547,7 +1925,8 @@ $$\begin{aligned}
 &lt;p&gt;Step1：构建异质网络&lt;/p&gt;
 &lt;p&gt;Step2：利用LLM的知识来拓展潜在知识&lt;/p&gt;
 &lt;p&gt;Step3：基于LLM的嵌入生成&lt;/p&gt;
-&lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;一、药物-疾病异质网络构建（Drug-disease heterogeneous network construction）&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据来源&lt;/strong&gt;：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。&lt;/li&gt;
@@ -1647,7 +2026,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319.png&#34;
 	width=&#34;1506&#34;
 	height=&#34;988&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_75ab593fb94ec12.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_9c85fcc86562cfbc.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_c601f19e321ef2d4.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ca0e03a074febc3c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;四个数据集下的三种不同方法的效果&#34;
@@ -1671,7 +2050,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616.png&#34;
 	width=&#34;944&#34;
 	height=&#34;792&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_a1df0349a4cb82ee.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_b6a9867fa2330ad1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_a3d42dc14d46d5b3.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_516cae77ceddaee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最优模型为粗体，次优为下划线&#34;
@@ -1685,7 +2064,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129.png&#34;
 	width=&#34;469&#34;
 	height=&#34;359&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_32afd63a86e7361.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_253c0f489a0df0dd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_df7bd82805af3cb1.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_c9a04da46fa0512e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最终平均结果&#34;
@@ -1700,19 +2079,24 @@ $$\begin{aligned}
 &lt;h3 id=&#34;lbmff&#34;&gt;LBMFF
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答-1&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这里使用了BERT来挖掘文献中的关联关系。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见下面的数据集部分。一共使用了两个数据集。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;对比的模型分为如下部分，都是各自领域的SOTA模型。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
@@ -1737,7 +2121,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238.png&#34;
 	width=&#34;1014&#34;
 	height=&#34;778&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_a0419756e480ffda.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_790c8b92f59e5590.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_6c0216083b70bc7e.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_f3b0d6957ab36fb5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1805,7 +2189,7 @@ $$\begin{aligned}
 &lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737.png&#34;
 	width=&#34;1010&#34;
 	height=&#34;482&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_78901334681f4864.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_989e86a68a8680fd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_372735f5fde4db70.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_989418c5d578ef62.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1868,7 +2252,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556.png&#34;
 	width=&#34;1620&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_9a785be424d4ae99.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_c4246ac65e7a8d75.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_ab5ca657995371ff.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_f0d6ddfd1e5b86b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1881,7 +2265,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234.png&#34;
 	width=&#34;1659&#34;
 	height=&#34;589&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_8a504edeb9650d6c.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_237ef5a787bfd481.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_fde5f97312a21ba.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_954bb5356fde18bd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1894,19 +2278,24 @@ $$\begin{aligned}
 &lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答-2&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;LLM引入了自己的推理能力来修改训练数据。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见研究结果。本文通过&lt;strong&gt;提升数据集中真阴性数据的质量&lt;/strong&gt;来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。&lt;/p&gt;
 &lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。&lt;/p&gt;
@@ -1923,7 +2312,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;314&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_4ab58ad9c38b9005.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_75777e09f06352c6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;临床试验药物标注流程&#34;
@@ -1951,7 +2340,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019.png&#34;
 	width=&#34;720&#34;
 	height=&#34;650&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_da1098ceace0f516.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_cabf59ededa6f174.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_9d609af827d7456a.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_f0f3e0fe123a2e38.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1969,7 +2358,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517.png&#34;
 	width=&#34;1442&#34;
 	height=&#34;600&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_88b2c5cdb4fef3fe.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_ebaa126e63836e49.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_6cabe3a3c654a075.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_6e0053c2114cef1c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1995,17 +2384,19 @@ $$\begin{aligned}
 &lt;/h3&gt;&lt;h4 id=&#34;druggen&#34;&gt;DrugGen
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nature.com/articles/s41598-025-98629-1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。&lt;/p&gt;
 &lt;h4 id=&#34;drugrealign&#34;&gt;DrugReAlign
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39379930/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;提出了一个多源提示的LLM药物重定位框架。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032.png&#34;
 	width=&#34;1944&#34;
 	height=&#34;1430&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_20997968172a8920.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_f551cf6e5e853017.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_ceeee9f998d08aa8.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_cf8de9d3dc7e3772.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2017,12 +2408,14 @@ $$\begin{aligned}
 &lt;h4 id=&#34;benchmarkllm在八项化学任务中的表现&#34;&gt;Benchmark：LLM在八项化学任务中的表现
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。&lt;/p&gt;
 &lt;h4 id=&#34;biobert&#34;&gt;BioBERT
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/36/4/1234/5566506&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。&lt;/p&gt;
 </description>
         </item>
@@ -2038,7 +2431,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777.png&#34;
 	width=&#34;788&#34;
 	height=&#34;788&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_ad0870a71572a414.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_eae782122bf3141.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_c26b126ab47215c0.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_52630d4da3294444.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;异构网络表示图&#34;
@@ -2068,7 +2461,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543.png&#34;
 	width=&#34;1425&#34;
 	height=&#34;823&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_7324ec1f3e8ee78d.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_52415c25218cdf2e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_d76d9471eaf943b8.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_5c4d67cb329ba33c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法预测药物-疾病关联的一般过程的示意图&#34;
@@ -2083,7 +2476,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431.png&#34;
 	width=&#34;2000&#34;
 	height=&#34;954&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_dbdb1e5dbbfafc86.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_296037e0f01ea1a7.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_2b1ab8e458c11117.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_7a98a989edb77d33.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法&#34;
@@ -2117,7 +2510,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243.png&#34;
 	width=&#34;1310&#34;
 	height=&#34;1125&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_cf6751d684ada54a.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_43cb91797f949dfd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_8a2e038baa72c958.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221515243_hu_cd67bd240f59a9a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AIDD的主要数据库&#34;
@@ -2131,7 +2524,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913.png&#34;
 	width=&#34;1784&#34;
 	height=&#34;887&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_b046c09ba9266aba.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_92e21c7a619529c1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_f332bb1a851a141c.png 480w, https://ionfeather.github.io/2025/aidr/assets/2025/05-24-AIDD/index/IMG-20250524221559913_hu_882e22e77933528d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AIDD的主要方法&#34;
@@ -2298,7 +2691,7 @@ $$\begin{aligned}
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2352&#34;
 	height=&#34;3180&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_b2cef0980ff4ec10.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_1df85dd03c34786e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_7dd995bdc1fcc000.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_7c4f265a9c2f5f2c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2344,7 +2737,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2302&#34;
 	height=&#34;1356&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a04d204c9ca12156.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_dd48b28dfd14cd7c.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a3e5bae9a8ea7125.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_457930547dda39e9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2649,7 +3042,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.png&#34;
 	width=&#34;1636&#34;
 	height=&#34;632&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_b5be2c0fe63c7eb8.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_46d8fe200a45204e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_c88292e12d84560b.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_79a075913e9eb4c5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2869,7 +3262,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema.png&#34;
 	width=&#34;6139&#34;
 	height=&#34;7557&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_12cf40ea010e7f50.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_5ff664ef9b0568fe.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_c22ae38629437496.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_3b744142a5493327.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ChEMBL整体情况&#34;
@@ -2917,7 +3310,8 @@ $$\begin{aligned}
 &lt;li&gt;数据来源：由 BindingDB 从文献整理而来，相关文献的 DOI 是 10.1021/jm9602571，PMID 为 8784449，可据此追溯原始研究。&lt;/li&gt;
 &lt;li&gt;数据库交叉引用：PubChem CID 为 3009304，PubChem SID 为 483500124，方便在 PubChem 数据库中查找该配体更多信息。&lt;/li&gt;
 &lt;li&gt;蛋白质链信息：靶点含 1 条蛋白质链，其序列为 “PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNF”，相关 PDB ID 有 “1W5Y”“1W5X” 等多个，UniProt（SwissProt）相关信息显示，其推荐名称是 “Gag-Pol polyprotein”，Entry Name 为 “POL_HV1BR”，Primary ID 为 “P03367”。&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         <item>
@@ -2946,7 +3340,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign.png&#34;
 	width=&#34;3096&#34;
 	height=&#34;2108&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_7c5a69c7fd0a71dc.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_19797f0e34281d11.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_4f1a4ae709245404.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/AIAssistDrugDesign_hu_639029ea7d91d27d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;AI Assist Drug Design&#34;
@@ -3226,7 +3620,7 @@ $$\begin{aligned}
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419.png&#34;
 	width=&#34;696&#34;
 	height=&#34;322&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_47c88580c721a8de.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_5733e9ac51df3b82.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_da8873f6f056a64d.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250302164419_hu_4d6927bbfbc6a5db.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;从二维分子如何生成三维分子&#34;
@@ -3283,7 +3677,7 @@ $$\begin{aligned}
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737.png&#34;
 	width=&#34;928&#34;
 	height=&#34;270&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_7e48d2963d2d3ff2.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_17ab1f6ed7d43097.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_3135f973abe870eb.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303131737_hu_477c3ef68b860486.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3301,7 +3695,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557.png&#34;
 	width=&#34;726&#34;
 	height=&#34;273&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_6c67092b4982dd19.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_6895cd912f11c2f3.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_743a409b1ca9db5f.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303134557_hu_f8b60746bf34a03c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3317,7 +3711,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757.png&#34;
 	width=&#34;779&#34;
 	height=&#34;555&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_fc4ad200fb0cf1f3.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_7688132e18b037f2.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_ff3e7ac2aadb982c.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250303132757_hu_91065ef83ace6e48.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3328,7 +3722,8 @@ $$\begin{aligned}
 &gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这里SHAPE2MOL将问题形状到分子的生成问题转换为了图像到序列的生成问题。也就是输入3D图像，给出一个序列，表示3D分子。&lt;/p&gt;
-&lt;p&gt;内部结构是3D拓展后的ViT结构。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;内部结构是3D拓展后的ViT结构。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-1&#34;&gt;优势
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;减少数据和模拟依赖&lt;/strong&gt;：DESERT 不严重依赖对接模拟，仅在后期可选使用对接进行后处理，同时抛弃了昂贵的实验数据，通过在大规模分子数据库（如 ZINC 数据库）上训练模型，降低了对实验数据的需求，避免了过拟合问题。&lt;/li&gt;
@@ -3375,20 +3770,22 @@ $$\begin{aligned}
 &lt;ul&gt;
 &lt;li&gt;如ProtTrans和ESM-1b将单个蛋白质序列作为输入，使用Transformer架构进行预训练。&lt;/li&gt;
 &lt;li&gt;MSA-Transformer/MSA-1b模型通过多序列比对（MSA）作为输入。在结构预测方面，该模型优于 ESM-1b，这表明进化信息有助于蛋白质表征学习。&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;预训练抗体语言模型PALMs：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;AntiBERTy：提出首个抗体特异性语言模型，对在OAS数据库中的5.58亿条天然抗体序列使用Transformer架构进行预训练。&lt;/li&gt;
 &lt;li&gt;Abalang-H/L：恢复抗体序列中缺失的残基上的迁移学习。&lt;/li&gt;
 &lt;li&gt;AntiBERTa：在OAS数据库上预训练，并进行微调以用于抗原结合位点位置预测。&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;核心方法-2&#34;&gt;核心方法
 &lt;/h3&gt;&lt;p&gt;提出了&lt;strong&gt;抗体理解评估（AnTibody Understanding Evaluation，ATUE）基准&lt;/strong&gt;和包含特定进化信息的&lt;strong&gt;EATLM模型&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648.png&#34;
 	width=&#34;1535&#34;
 	height=&#34;477&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_c03e2673fa3ed9e6.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_d17a54524050df16.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_85c7e8343cea4b95.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307170648_hu_d368e25787e06610.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3501,6 +3898,7 @@ $$\begin{aligned}
 &lt;/ol&gt;
 
 &lt;/details&gt;
+
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-3&#34;&gt;优势
 &lt;/h3&gt;&lt;ul&gt;
@@ -3543,7 +3941,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443.png&#34;
 	width=&#34;1211&#34;
 	height=&#34;231&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_eb530aaafa37be71.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_ceb7df11a1227dd5.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_140cdcc99f688eb5.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307201443_hu_7235fc15a1010041.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3567,6 +3965,7 @@ $$\begin{aligned}
 &lt;/ul&gt;
 
 &lt;/details&gt;
+
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;优势-4&#34;&gt;优势
 &lt;/h3&gt;&lt;p&gt;与同类方法相比，HierDiff 能保持非自回归方法的全局建模特性，显著降低寻找可连接片段的复杂度，有效避免片段冲突，生成的分子更具现实性和药物样属性，在多个评估指标上优于现有方法。&lt;/p&gt;
@@ -3695,7 +4094,8 @@ $$\begin{aligned}
 &lt;ul&gt;
 &lt;li&gt;假设：数据样本的信息应沿着潜变量的马尔科夫链逐步增加，且信息变化尽可能平滑。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;引入噪声变量的潜变量模型&lt;/strong&gt;，通过优化变分下界学习概率分布，在&lt;strong&gt;参数空间&lt;/strong&gt;操作以保证信息变化平滑&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;统一概率建模&lt;/strong&gt;
 &lt;ul&gt;
@@ -3748,7 +4148,7 @@ $$\begin{aligned}
 &lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720.png&#34;
 	width=&#34;1062&#34;
 	height=&#34;672&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_1b902d3b0bdb3a25.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_da52288dde63f8c1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_2124a3d275d23937.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307214720_hu_150e3276879e5823.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3790,7 +4190,8 @@ $$\begin{aligned}
 &lt;h3 id=&#34;解决的问题-9&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;现有分子表示学习（MRL）模型在学习多视图分子表示时存在不足&lt;/strong&gt;。难以从化学结构、生物医学文本和知识图谱等异构源中有效捕捉分子知识，且无法充分利用不同视图间的共识和互补信息，不能很好地适应不同应用场景。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;多视图分子表示指的是从不同角度捕捉分子信息，如从微观角度，分子有原子、化学键等；从宏观角度，分子的晶体结构、物理状态等。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;挑战-9&#34;&gt;挑战
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;现有分子表示学习（MRL） 模型需将视图信息&lt;strong&gt;显式&lt;/strong&gt;融入表示中，以适应广泛应用，但此前模型多通过 “包装文本” 或微调隐式整合，影响对不同视图知识关系的理解&lt;/li&gt;
@@ -3800,7 +4201,7 @@ $$\begin{aligned}
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852.png&#34;
 	width=&#34;1548&#34;
 	height=&#34;738&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_22d4773d0f4f744c.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_5677115ae1a6f8b9.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_cfcf0fc75aaf4440.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250306231852_hu_976bb178a7e66e9d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3901,7 +4302,8 @@ $$\begin{aligned}
 &lt;/h2&gt;&lt;p&gt;这篇文章属于&lt;strong&gt;分子生成&lt;/strong&gt;领域的&lt;strong&gt;靶向药物分子设计&lt;/strong&gt;方向中的&lt;strong&gt;基于结构的药物设计（SBDD）&lt;/strong&gt;。&lt;/p&gt;
 &lt;h3 id=&#34;解决的问题-10&#34;&gt;解决的问题
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;靶向分子设计有两种，一种是基于配体的药物设计（LBDD），另一种是基于结构的药物设计（SBDD）。LBDD利用目标蛋白质的氨基酸序列，借助已知的配体特征来构建；SBDD利用目标蛋白质的三维结构来设计。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;当前基于SBDD生成模型在生成分子时，常出现不符合要求的情况。&lt;/p&gt;
 &lt;p&gt;生成的分子不能同时满足高亲和力、良好的类药性质和合理的 3D 构象这几个关键标准，产生假阳性结果，阻碍了 SBDD 模型在实际中的应用 。&lt;/p&gt;
 &lt;h3 id=&#34;挑战-10&#34;&gt;挑战
@@ -4034,7 +4436,7 @@ $$\begin{aligned}
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620.png&#34;
 	width=&#34;1494&#34;
 	height=&#34;520&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_3841c968d52cfb5c.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_657a213ac5e44cb1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_a0f0a59f459068dd.png 480w, https://ionfeather.github.io/2025/ai-assist-drug-design/assets/20250307133620_hu_592480640b195e3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;MOL-AE框架&#34;
@@ -4111,7 +4513,7 @@ $$\begin{aligned}
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
 	width=&#34;1220&#34;
 	height=&#34;1316&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_2cc66a817e01abcc.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_565ccef7cbcd2d53.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ab095e826aa53589.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_2b68c987842d07e3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;文章大纲&#34;
@@ -4359,7 +4761,7 @@ $$\begin{aligned}
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542.png&#34;
 	width=&#34;574&#34;
 	height=&#34;438&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_2c7ff3921dd865ae.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_89d09c9d201057b1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_6e6403cd23a33a0d.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_51a8eb86df355109.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;全书结构&#34;
@@ -4453,7 +4855,7 @@ $$\begin{aligned}
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE.jpg&#34;
 	width=&#34;987&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu_369313ef0052026b.jpg 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu_2ac197cd817af25b.jpg 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu_2bae039e6269158e.jpg 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E6%97%A0%E7%8E%AF%E5%9B%BE_hu_8748dc399ed02e51.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;将计算表示为一个无环图&#34;
@@ -4518,7 +4920,7 @@ $$\begin{aligned}
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92.png&#34;
 	width=&#34;1055&#34;
 	height=&#34;1019&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu_fc5fe943b796734d.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu_2f08d5ae5db2873d.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu_82dd459b6779db25.png 480w, https://ionfeather.github.io/2025/d2l-01/assets/%E5%8F%8D%E5%90%91%E4%BC%A0%E9%80%92_hu_61f109a44eea3d57.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;反向传递&#34;
@@ -4571,7 +4973,8 @@ $$\begin{aligned}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;在conda中配置jupyter内核&#34;&gt;在conda中配置Jupyter内核
 &lt;/h3&gt;&lt;h4 id=&#34;安装jupyter内核&#34;&gt;安装Jupyter内核
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;安装ipykernel。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install ipykernel
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将虚拟内核添加到jupyter内核中。&lt;/p&gt;
@@ -4836,11 +5239,13 @@ $$\begin{aligned}
 &lt;h2 id=&#34;构造一个语义搜索引擎&#34;&gt;构造一个语义搜索引擎
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://python.langchain.com/docs/tutorials/retrievers/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;读取pdf&#34;&gt;读取PDF
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://python.langchain.com/docs/how_to/document_loader_pdf/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这里，文档中推荐使用了pypdf库。这里&lt;/p&gt;
 &lt;p&gt;在实际应用中可以使用其他提取效果更好的库。LangChain支持的PDF格式很多，可以选择一下。&lt;/p&gt;
 &lt;table&gt;
@@ -4914,7 +5319,8 @@ $$\begin{aligned}
     &lt;summary&gt;pypdf的介绍&lt;/summary&gt;
     &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypdf.readthedocs.io/en/stable/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Welcome to pypdf — pypdf 5.1.0 documentation&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Welcome to pypdf — pypdf 5.1.0 documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;PyPDF 是一个用于处理 PDF 文件的 Python库。它提供了一组工具和功能，用于读取、解析和操作 PDF 文件的内容。&lt;/p&gt;
 
 &lt;/details&gt;

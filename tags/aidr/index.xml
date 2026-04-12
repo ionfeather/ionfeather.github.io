@@ -5,7 +5,7 @@
         <link>https://ionfeather.github.io/tags/aidr/</link>
         <description>Recent content in AIDR on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 10 Jun 2025 14:24:22 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/aidr/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>AIDR | Reasoning-based Drug Repurposing</title>
@@ -51,19 +51,24 @@
 &lt;/h2&gt;&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39325266/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;LLM的推理信息在这里被引入了GNN中作为一部分特征&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;文本结构经过LLM编码后的向量，引入到GNN网络中&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见下面的数据集部分。一共使用了四个数据集。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;与下面四种baseline进行比较
 &lt;ol&gt;
@@ -87,7 +92,7 @@
 &lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120.png&#34;
 	width=&#34;6581&#34;
 	height=&#34;4831&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_6c6d8334202a82d6.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_c9f818906ad62097.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_8c128144866a5a98.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_7610c93b623bab45.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;流程图&#34;
@@ -103,7 +108,8 @@
 &lt;p&gt;Step1：构建异质网络&lt;/p&gt;
 &lt;p&gt;Step2：利用LLM的知识来拓展潜在知识&lt;/p&gt;
 &lt;p&gt;Step3：基于LLM的嵌入生成&lt;/p&gt;
-&lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;一、药物-疾病异质网络构建（Drug-disease heterogeneous network construction）&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据来源&lt;/strong&gt;：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。&lt;/li&gt;
@@ -203,7 +209,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319.png&#34;
 	width=&#34;1506&#34;
 	height=&#34;988&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_75ab593fb94ec12.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_9c85fcc86562cfbc.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_c601f19e321ef2d4.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ca0e03a074febc3c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;四个数据集下的三种不同方法的效果&#34;
@@ -227,7 +233,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616.png&#34;
 	width=&#34;944&#34;
 	height=&#34;792&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_a1df0349a4cb82ee.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_b6a9867fa2330ad1.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_a3d42dc14d46d5b3.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_516cae77ceddaee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最优模型为粗体，次优为下划线&#34;
@@ -241,7 +247,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129.png&#34;
 	width=&#34;469&#34;
 	height=&#34;359&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_32afd63a86e7361.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_253c0f489a0df0dd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_df7bd82805af3cb1.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_c9a04da46fa0512e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最终平均结果&#34;
@@ -256,19 +262,24 @@
 &lt;h3 id=&#34;lbmff&#34;&gt;LBMFF
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答-1&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这里使用了BERT来挖掘文献中的关联关系。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见下面的数据集部分。一共使用了两个数据集。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;对比的模型分为如下部分，都是各自领域的SOTA模型。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
@@ -293,7 +304,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238.png&#34;
 	width=&#34;1014&#34;
 	height=&#34;778&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_a0419756e480ffda.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_790c8b92f59e5590.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_6c0216083b70bc7e.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_f3b0d6957ab36fb5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -361,7 +372,7 @@
 &lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737.png&#34;
 	width=&#34;1010&#34;
 	height=&#34;482&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_78901334681f4864.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_989e86a68a8680fd.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_372735f5fde4db70.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_989418c5d578ef62.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -424,7 +435,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556.png&#34;
 	width=&#34;1620&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_9a785be424d4ae99.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_c4246ac65e7a8d75.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_ab5ca657995371ff.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_f0d6ddfd1e5b86b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -437,7 +448,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234.png&#34;
 	width=&#34;1659&#34;
 	height=&#34;589&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_8a504edeb9650d6c.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_237ef5a787bfd481.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_fde5f97312a21ba.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_954bb5356fde18bd.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -450,19 +461,24 @@
 &lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h4 id=&#34;问题与回答-2&#34;&gt;问题与回答
 &lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;LLM引入了自己的推理能力来修改训练数据。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;见研究结果。本文通过&lt;strong&gt;提升数据集中真阴性数据的质量&lt;/strong&gt;来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。&lt;/p&gt;
 &lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。&lt;/p&gt;
@@ -479,7 +495,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;314&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_bb6cc8baf67ab024.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_52714faad2411ffc.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_4ab58ad9c38b9005.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_75777e09f06352c6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;临床试验药物标注流程&#34;
@@ -507,7 +523,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019.png&#34;
 	width=&#34;720&#34;
 	height=&#34;650&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_da1098ceace0f516.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_cabf59ededa6f174.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_9d609af827d7456a.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_f0f3e0fe123a2e38.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -525,7 +541,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517.png&#34;
 	width=&#34;1442&#34;
 	height=&#34;600&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_88b2c5cdb4fef3fe.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_ebaa126e63836e49.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_6cabe3a3c654a075.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_6e0053c2114cef1c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -551,17 +567,19 @@
 &lt;/h3&gt;&lt;h4 id=&#34;druggen&#34;&gt;DrugGen
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nature.com/articles/s41598-025-98629-1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。&lt;/p&gt;
 &lt;h4 id=&#34;drugrealign&#34;&gt;DrugReAlign
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39379930/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;提出了一个多源提示的LLM药物重定位框架。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032.png&#34;
 	width=&#34;1944&#34;
 	height=&#34;1430&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_20997968172a8920.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_f551cf6e5e853017.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_ceeee9f998d08aa8.png 480w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_cf8de9d3dc7e3772.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -573,12 +591,14 @@
 &lt;h4 id=&#34;benchmarkllm在八项化学任务中的表现&#34;&gt;Benchmark：LLM在八项化学任务中的表现
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。&lt;/p&gt;
 &lt;h4 id=&#34;biobert&#34;&gt;BioBERT
 &lt;/h4&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/36/4/1234/5566506&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。&lt;/p&gt;
 </description>
         </item>
@@ -594,7 +614,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777.png&#34;
 	width=&#34;788&#34;
 	height=&#34;788&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_ad0870a71572a414.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_eae782122bf3141.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_c26b126ab47215c0.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_52630d4da3294444.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;异构网络表示图&#34;
@@ -624,7 +644,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543.png&#34;
 	width=&#34;1425&#34;
 	height=&#34;823&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_7324ec1f3e8ee78d.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_52415c25218cdf2e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_d76d9471eaf943b8.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_5c4d67cb329ba33c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法预测药物-疾病关联的一般过程的示意图&#34;
@@ -639,7 +659,7 @@
 &lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431.png&#34;
 	width=&#34;2000&#34;
 	height=&#34;954&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_dbdb1e5dbbfafc86.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_296037e0f01ea1a7.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_2b1ab8e458c11117.png 480w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_7a98a989edb77d33.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法&#34;
@@ -777,7 +797,7 @@
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2352&#34;
 	height=&#34;3180&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_b2cef0980ff4ec10.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_1df85dd03c34786e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_7dd995bdc1fcc000.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_7c4f265a9c2f5f2c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -823,7 +843,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93.png&#34;
 	width=&#34;2302&#34;
 	height=&#34;1356&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a04d204c9ca12156.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_dd48b28dfd14cd7c.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a3e5bae9a8ea7125.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_457930547dda39e9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1128,7 +1148,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB.png&#34;
 	width=&#34;1636&#34;
 	height=&#34;632&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_b5be2c0fe63c7eb8.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_46d8fe200a45204e.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_c88292e12d84560b.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_79a075913e9eb4c5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1348,7 +1368,7 @@
 &lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema.png&#34;
 	width=&#34;6139&#34;
 	height=&#34;7557&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_12cf40ea010e7f50.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_5ff664ef9b0568fe.png 1024w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_c22ae38629437496.png 480w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_3b744142a5493327.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ChEMBL整体情况&#34;
@@ -1396,7 +1416,8 @@
 &lt;li&gt;数据来源：由 BindingDB 从文献整理而来，相关文献的 DOI 是 10.1021/jm9602571，PMID 为 8784449，可据此追溯原始研究。&lt;/li&gt;
 &lt;li&gt;数据库交叉引用：PubChem CID 为 3009304，PubChem SID 为 483500124，方便在 PubChem 数据库中查找该配体更多信息。&lt;/li&gt;
 &lt;li&gt;蛋白质链信息：靶点含 1 条蛋白质链，其序列为 “PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNF”，相关 PDB ID 有 “1W5Y”“1W5X” 等多个，UniProt（SwissProt）相关信息显示，其推荐名称是 “Gag-Pol polyprotein”，Entry Name 为 “POL_HV1BR”，Primary ID 为 “P03367”。&lt;/li&gt;
-&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 </description>
         </item>
         

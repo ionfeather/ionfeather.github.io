@@ -5,7 +5,7 @@
         <link>https://ionfeather.github.io/tags/langchain/</link>
         <description>Recent content in LangChain on ionfeather&#39;Log</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
+        <language>en-us</language>
         <copyright>ionfeather&#39;Log</copyright>
         <lastBuildDate>Tue, 26 Nov 2024 13:45:58 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/langchain/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>学习笔记 | LangChain学习笔记</title>
@@ -258,11 +258,13 @@
 &lt;h2 id=&#34;构造一个语义搜索引擎&#34;&gt;构造一个语义搜索引擎
 &lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://python.langchain.com/docs/tutorials/retrievers/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;读取pdf&#34;&gt;读取PDF
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://python.langchain.com/docs/how_to/document_loader_pdf/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;这里，文档中推荐使用了pypdf库。这里&lt;/p&gt;
 &lt;p&gt;在实际应用中可以使用其他提取效果更好的库。LangChain支持的PDF格式很多，可以选择一下。&lt;/p&gt;
 &lt;table&gt;
@@ -336,7 +338,8 @@
     &lt;summary&gt;pypdf的介绍&lt;/summary&gt;
     &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypdf.readthedocs.io/en/stable/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Welcome to pypdf — pypdf 5.1.0 documentation&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+    &gt;Welcome to pypdf — pypdf 5.1.0 documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;PyPDF 是一个用于处理 PDF 文件的 Python库。它提供了一组工具和功能，用于读取、解析和操作 PDF 文件的内容。&lt;/p&gt;
 
 &lt;/details&gt;

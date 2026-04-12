@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
+<html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="终于编好了实习的简历。这个帖子记录一下我准备的可能的问题以及面试中的问题。\n微调\rLoRA：Low-Rank Adaptation of LLM\n优点是什么？ 参数少：0.1%-0.01% 速度快：训练和部署 模块化：不影响原始模型 避免灾难性遗忘 存储效率高 快速切换 兼容性强 为什么可以进行低秩分解？ 奇异值分解 大部分信息集中在了少量的奇异值上。 LoRA论文中GPT-3上的$\\Delta W$的前10-20个奇异值就可以保留90%以上的信息 由于$\\Delta W$的秩很低，可以用A和B直接构造，不需要完整的SVD计算，更加高效 一个$512\\times 512$的权重矩阵，全微调可能需要$512\\times 512$的调整参数量，LoRA如果r=8，只需要$512\\times 8$和$8\\times 512$的参数变化。\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实习准备与经验总结\r本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。\n最新项目经验\r1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）\r项目背景：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。\n">
 <title>实习 | 兽人永不为奴，但偶尔可以</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/2026/intern/'>
 
-<link rel="stylesheet" href="/scss/style.min.e708bfeedb92bd4395e5c70cae1dc231ea28ff7d84ef1af4536f00e4191e9384.css"><meta property='og:title' content="实习 | 兽人永不为奴，但偶尔可以">
-<meta property='og:description' content="终于编好了实习的简历。这个帖子记录一下我准备的可能的问题以及面试中的问题。\n微调\rLoRA：Low-Rank Adaptation of LLM\n优点是什么？ 参数少：0.1%-0.01% 速度快：训练和部署 模块化：不影响原始模型 避免灾难性遗忘 存储效率高 快速切换 兼容性强 为什么可以进行低秩分解？ 奇异值分解 大部分信息集中在了少量的奇异值上。 LoRA论文中GPT-3上的$\\Delta W$的前10-20个奇异值就可以保留90%以上的信息 由于$\\Delta W$的秩很低，可以用A和B直接构造，不需要完整的SVD计算，更加高效 一个$512\\times 512$的权重矩阵，全微调可能需要$512\\times 512$的调整参数量，LoRA如果r=8，只需要$512\\times 8$和$8\\times 512$的参数变化。\n">
+<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="实习 | 兽人永不为奴，但偶尔可以">
+<meta property='og:description' content="实习准备与经验总结\r本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。\n最新项目经验\r1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）\r项目背景：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。\n">
 <meta property='og:url' content='https://ionfeather.github.io/2026/intern/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='实习' /><meta property='article:published_time' content='2026-01-08T17:14:41&#43;08:00'/><meta property='article:modified_time' content='2026-01-08T17:14:41&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='实习' /><meta property='article:tag' content='LLM' /><meta property='article:tag' content='多智能体' /><meta property='article:published_time' content='2026-01-08T17:14:41&#43;08:00'/><meta property='article:modified_time' content='2026-04-12T18:15:00&#43;08:00'/>
 <meta name="twitter:title" content="实习 | 兽人永不为奴，但偶尔可以">
-<meta name="twitter:description" content="终于编好了实习的简历。这个帖子记录一下我准备的可能的问题以及面试中的问题。\n微调\rLoRA：Low-Rank Adaptation of LLM\n优点是什么？ 参数少：0.1%-0.01% 速度快：训练和部署 模块化：不影响原始模型 避免灾难性遗忘 存储效率高 快速切换 兼容性强 为什么可以进行低秩分解？ 奇异值分解 大部分信息集中在了少量的奇异值上。 LoRA论文中GPT-3上的$\\Delta W$的前10-20个奇异值就可以保留90%以上的信息 由于$\\Delta W$的秩很低，可以用A和B直接构造，不需要完整的SVD计算，更加高效 一个$512\\times 512$的权重矩阵，全微调可能需要$512\\times 512$的调整参数量，LoRA如果r=8，只需要$512\\times 8$和$8\\times 512$的参数变化。\n">
+<meta name="twitter:description" content="实习准备与经验总结\r本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。\n最新项目经验\r1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）\r项目背景：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。\n">
     <link rel="shortcut icon" href="/ion.ico" />
 
 <head>
@@ -87,7 +87,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu_7d702df343b40e37.jpg" width="300"
+                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -247,6 +247,25 @@
             </a>
         </li>
         
+        
+        <li >
+            <a href='/%E5%8F%8B%E9%93%BE/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友链</span>
+            </a>
+        </li>
+        
         <li class="menu-bottom-section">
             
 
@@ -284,9 +303,44 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
+    <li><a href="#实习准备与经验总结">实习准备与经验总结</a>
       <ol>
-        <li><a href="#微调">微调</a></li>
+        <li><a href="#最新项目经验">最新项目经验</a>
+          <ol>
+            <li><a href="#1-基于思考帽认知模型的多智能体学术评审系统202505---至今">1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）</a></li>
+            <li><a href="#2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508">2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#技术深度微调与agent系统">技术深度：微调与Agent系统</a>
+      <ol>
+        <li><a href="#微调技术详解">微调技术详解</a>
+          <ol>
+            <li><a href="#loralow-rank-adaptation-of-llm">LoRA：Low-Rank Adaptation of LLM</a></li>
+            <li><a href="#lora改进版本对比">LoRA改进版本对比</a></li>
+            <li><a href="#llama-factory微调关键参数">LLaMA Factory微调关键参数</a></li>
+          </ol>
+        </li>
+        <li><a href="#agent系统设计">Agent系统设计</a>
+          <ol>
+            <li><a href="#记忆系统架构">记忆系统架构</a></li>
+            <li><a href="#动态辩论协议设计">动态辩论协议设计</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#面试准备要点">面试准备要点</a>
+      <ol>
+        <li><a href="#常见技术问题">常见技术问题</a></li>
+        <li><a href="#项目经验阐述">项目经验阐述</a></li>
+      </ol>
+    </li>
+    <li><a href="#技能总结">技能总结</a>
+      <ol>
+        <li><a href="#核心技术栈">核心技术栈</a></li>
+        <li><a href="#综合素质">综合素质</a></li>
+        <li><a href="#未来方向">未来方向</a></li>
       </ol>
     </li>
   </ol>
@@ -353,7 +407,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 4 分钟
+                    阅读时长: 6 分钟
                 </time>
             </div>
         
@@ -368,159 +422,260 @@
     <section class="article-content">
     
     
-    <p>终于编好了实习的简历。这个帖子记录一下我准备的可能的问题以及面试中的问题。</p>
+    <h2 id="实习准备与经验总结">实习准备与经验总结
+</h2><p>本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。</p>
+<h3 id="最新项目经验">最新项目经验
+</h3><h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---至今">1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+</h4><p><strong>项目背景</strong>：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。</p>
+<p><strong>核心技术</strong>：</p>
+<ul>
+<li><strong>数据集构建</strong>：采集并处理OpenReview等开源评审数据，构建基于[论文片段-亮点/缺陷识别-维度归因]思维链的训练集</li>
+<li><strong>智能体定制</strong>：基于LLaMA-Factory框架，使用LoRA技术对开源模型进行指令微调（SFT）得到多个角色智能体（白/黄/黑/绿帽）</li>
+<li><strong>动态辩论协议</strong>：设计并实现动态权重感知共识多智能体动态辩论协议，引入蓝帽（裁判智能体）进行多维度实时评估</li>
+<li><strong>闭环验证</strong>：集成事实性校验模块，对低置信度或矛盾信息自动触发检索与重评估循环</li>
+</ul>
+<p><strong>实验成果</strong>：</p>
+<ul>
+<li>系统评分与专家加权分平均绝对误差仅为0.42</li>
+<li>语义重合度F1相比单模型Zero-shot评审提升28%</li>
+<li>结论逻辑矛盾性减少38%，实现100%证据可溯源</li>
+<li>在盲测评审中针对专家意见的覆盖率达88%</li>
+</ul>
+<h4 id="2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508">2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）
+</h4><p><strong>项目背景</strong>：基于85篇AI顶会论文的PDF版本，回答人工标注的多选题，考察模型的长文本理解、多跳推理、实验数据解析及逻辑严谨性。</p>
+<p><strong>技术方案</strong>：</p>
+<ul>
+<li><strong>多模态解析</strong>：对PDF论文进行精细标注，分离文本、表格与图像区域，采用Qwen-VL-OCR/Qwen2.5-VL提取图表深层语义</li>
+<li><strong>RAG优化</strong>：使用Latechunk等技术进行智能分块，构建Qdrant向量数据库，使用Qwen3-Reranker模型进行精排序</li>
+<li><strong>鲁棒决策</strong>：开发rerank驱动的选项支持度判定算法，通过独立计算各选项证据分及Top-K补偿策略</li>
+</ul>
+<p><strong>项目成果</strong>：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%</p>
 <hr>
-<h3 id="微调">微调
-</h3><p>LoRA：Low-Rank Adaptation of LLM</p>
+<h2 id="技术深度微调与agent系统">技术深度：微调与Agent系统
+</h2><h3 id="微调技术详解">微调技术详解
+</h3><h4 id="loralow-rank-adaptation-of-llm">LoRA：Low-Rank Adaptation of LLM
+</h4><p><strong>核心优势</strong>：</p>
 <ul>
-<li>优点是什么？
+<li><strong>参数效率</strong>：仅需调整0.1%-0.01%的参数</li>
+<li><strong>训练速度</strong>：显著减少训练和部署时间</li>
+<li><strong>模块化设计</strong>：不影响原始模型，避免灾难性遗忘</li>
+</ul>
+<p><strong>数学原理</strong>：</p>
 <ul>
-<li>参数少：0.1%-0.01%</li>
-<li>速度快：训练和部署</li>
-<li>模块化：不影响原始模型
+<li>基于奇异值分解（SVD），大部分信息集中在少量奇异值上</li>
+<li>LoRA论文中GPT-3上的$\Delta W$的前10-20个奇异值可保留90%以上信息</li>
+<li>参数更新：$W&rsquo;=W+\Delta W=W+A\times B$</li>
+</ul>
+<p><strong>训练流程</strong>：</p>
+<ol>
+<li><strong>初始化</strong>：$A$用小的随机值初始化，$B$初始化为全0</li>
+<li><strong>前向传播</strong>：$Y_{pred}=(W+A\times B)\times X$</li>
+<li><strong>损失计算</strong>：$L=Loss(Y_{true},Y_{pred})$</li>
+<li><strong>反向传播</strong>：计算损失对$A$和$B$的梯度并更新</li>
+<li><strong>迭代优化</strong>：重复直到收敛</li>
+</ol>
+<p><strong>应用位置</strong>：</p>
 <ul>
-<li>避免灾难性遗忘</li>
-<li>存储效率高</li>
-<li>快速切换</li>
-<li>兼容性强</li>
+<li>主要应用于注意力层中的$W_q$和$W_v$</li>
+<li>前馈层的LoRA在较大模型上可能有收益</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>为什么可以进行低秩分解？
-<ul>
-<li>奇异值分解</li>
-<li>大部分信息集中在了少量的奇异值上。</li>
-<li>LoRA论文中GPT-3上的$\Delta W$的前10-20个奇异值就可以保留90%以上的信息</li>
-<li>由于$\Delta W$的秩很低，可以用A和B直接构造，不需要完整的SVD计算，更加高效</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>一个$512\times 512$的权重矩阵，全微调可能需要$512\times 512$的调整参数量，LoRA如果r=8，只需要$512\times 8$和$8\times 512$的参数变化。</p></blockquote>
-<ul>
-<li>LoRA如何更新参数？
-<ul>
-<li>反向传播算法。具体来说是$W&rsquo;=W+\Delta W=W+A\times B$。</li>
-<li>Step1：初始化
-<ul>
-<li>$W$是预训练好的权重</li>
-<li>$A$通常用小的随机值初始化</li>
-<li>$B$初始可以设置为全0，这样$\Delta W$=0，不干扰原始模型</li>
-</ul>
-</li>
-<li>Step2：计算损失
-<ul>
-<li>对于输入X，前向传播计算得到输出$Y_{pred}=(W+A\times B)\times X$。</li>
-<li>根据任务定义损失函数$L=Loss(Y_{true},Y_{pred})$。</li>
-</ul>
-</li>
-<li>Step3：反向传播更新
-<ul>
-<li>计算损失$L$对$A$和$B$的梯度</li>
-<li>梯度下降更新</li>
-</ul>
-</li>
-<li>Step4：迭代优化
-<ul>
-<li>重复Step2和Step3，直到损失收敛或者达到预定训练轮次</li>
-<li>最终得到$A$和$B$</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>用在Transformer的哪个层？
-<ul>
-<li>注意力层中的$W_q$和$W_v$较多，其他的收益有限</li>
-<li>前馈层的LoRA可能会用在较大模型上</li>
-</ul>
-</li>
-<li>LoRA改进版本
-<ul>
-<li>LoRA+：加速
-<ul>
-<li>靠近输出的权重B应该对梯度变化更敏感，需要更大调整。所以调整得B比A的学习率高</li>
-</ul>
-</li>
-<li>DoRA：稳定高性能
-<ul>
-<li>把预训练权重矩阵分解为幅度和方向$W=m\times V$</li>
-<li>微调的时候调整方向$V$，幅度单独训练</li>
-<li>训练量增加，性能高</li>
-</ul>
-</li>
-<li>rsLoRA：稳定
-<ul>
-<li>引入动态秩调整和稳定化因子优化训练</li>
-<li>$W&rsquo;=W+\Delta W=W+(\frac{\alpha}{\sqrt{r}})A\times B$。</li>
-<li>训练更稳定</li>
-</ul>
-</li>
-<li>PiSSA：收敛快
-<ul>
-<li>优化初始化，把A和B矩阵初始化使用SVD分解</li>
-</ul>
-</li>
-<li>GaLore：内存极低</li>
-</ul>
-</li>
-<li>LoRA需要的超参数</li>
-</ul>
-<p>以下是 LLaMA Factory 微调中最重要的超参数及其核心作用的总结表格。这些参数直接决定了微调的成功与否、效率以及资源消耗。</p>
-<div class="table-wrapper"><table>
+<h4 id="lora改进版本对比">LoRA改进版本对比
+</h4><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>核心改进</th>
+          <th>适用场景</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>LoRA+</strong></td>
+          <td>加速训练，调整B比A的学习率更高</td>
+          <td>需要快速迭代的场景</td>
+      </tr>
+      <tr>
+          <td><strong>DoRA</strong></td>
+          <td>权重分解为幅度和方向，分别调整</td>
+          <td>追求高性能的场景</td>
+      </tr>
+      <tr>
+          <td><strong>rsLoRA</strong></td>
+          <td>引入动态秩调整和稳定化因子</td>
+          <td>训练稳定性要求高的场景</td>
+      </tr>
+      <tr>
+          <td><strong>PiSSA</strong></td>
+          <td>优化初始化，使用SVD分解初始化A和B</td>
+          <td>需要快速收敛的场景</td>
+      </tr>
+      <tr>
+          <td><strong>GaLore</strong></td>
+          <td>内存占用极低</td>
+          <td>资源受限的环境</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="llama-factory微调关键参数">LLaMA Factory微调关键参数
+</h4><div class="table-wrapper"><table>
   <thead>
       <tr>
           <th>参数类别</th>
           <th>参数名</th>
           <th>核心作用</th>
-          <th>关键建议与说明</th>
+          <th>建议值</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>训练核心​</td>
-          <td>学习率​</td>
-          <td>控制模型参数更新的步长，是影响收敛速度和稳定性的最关键参数。</td>
-          <td>LoRA/QLoRA：可稍大，常用 <code>1e-4</code>到 <code>5e-4</code>。  <br>全量微调：需谨慎，常用 <code>1e-5</code>到 <code>3e-5</code>。</td>
+          <td><strong>训练核心</strong></td>
+          <td>学习率</td>
+          <td>控制参数更新步长</td>
+          <td>LoRA: 1e-4到5e-4<br>全量: 1e-5到3e-5</td>
       </tr>
       <tr>
           <td></td>
-          <td><code>per_device_train_batch_size</code>​  <br><code>gradient_accumulation_steps</code>​</td>
-          <td>共同决定有效批处理大小，影响训练稳定性和显存占用。</td>
-          <td>有效批大小 = 批大小 × 累积步数。建议将此值保持在 16 或以上以获得稳定训练。批大小受显存限制，多用累积步数来补偿。</td>
+          <td><code>per_device_train_batch_size</code><br><code>gradient_accumulation_steps</code></td>
+          <td>决定有效批处理大小</td>
+          <td>有效批大小 ≥ 16</td>
       </tr>
       <tr>
-          <td>LoRA核心​</td>
-          <td><code>lora_rank</code>​</td>
-          <td>决定LoRA适配器的能力与参数数量。秩越高，拟合能力越强，但也更易过拟合。</td>
-          <td>通用任务从 8、16 或 32​ 开始尝试。复杂任务可尝试 64 或更高。</td>
+          <td><strong>LoRA核心</strong></td>
+          <td><code>lora_rank</code></td>
+          <td>决定适配器能力</td>
+          <td>通用任务: 8/16/32<br>复杂任务: 64+</td>
       </tr>
       <tr>
           <td></td>
-          <td><code>lora_alpha</code>​</td>
-          <td>控制LoRA适配器输出的缩放因子，与 <code>lora_rank</code>配合调节更新强度。</td>
-          <td>一个稳定的经验法则是设置为 <code>lora_rank</code>的两倍（例如 rank=16, alpha=32）。</td>
+          <td><code>lora_alpha</code></td>
+          <td>控制适配器输出缩放</td>
+          <td>通常设为<code>lora_rank</code>的2倍</td>
       </tr>
       <tr>
-          <td>流程控制​</td>
-          <td><code>num_train_epochs</code>​</td>
-          <td>控制整个数据集训练的遍数，直接影响是否过拟合。</td>
-          <td>指令微调通常 1-3 个 epoch​ 足够。务必监视验证集损失，考虑启用早停。</td>
+          <td><strong>流程控制</strong></td>
+          <td><code>num_train_epochs</code></td>
+          <td>控制训练遍数</td>
+          <td>指令微调: 1-3个epoch</td>
       </tr>
       <tr>
-          <td>数据格式​</td>
-          <td><code>template</code>​</td>
-          <td>指定数据格式模板，将数据转化为模型熟知的对话格式。选错会导致模型无法理解指令。</td>
-          <td>如果不确定，优先使用 <code>default</code>​ 或与预训练模型对应的模板（如 <code>qwen</code>, <code>llama3</code>）。这是最易忽略但致命的一环。</td>
+          <td><strong>数据格式</strong></td>
+          <td><code>template</code></td>
+          <td>指定数据格式模板</td>
+          <td>优先使用<code>default</code>或模型对应模板</td>
       </tr>
       <tr>
-          <td>资源与长度​</td>
-          <td><code>cutoff_len</code>​</td>
-          <td>设置单条训练数据的最大长度，直接影响显存占用。</td>
-          <td>在显存允许下，根据任务实际需要的上下文长度设置。过短会丢失信息，过长浪费资源。</td>
+          <td><strong>资源与长度</strong></td>
+          <td><code>cutoff_len</code></td>
+          <td>设置训练数据最大长度</td>
+          <td>根据任务实际需要设置</td>
       </tr>
   </tbody>
 </table></div>
+<h3 id="agent系统设计">Agent系统设计
+</h3><h4 id="记忆系统架构">记忆系统架构
+</h4><p><strong>短期工作记忆</strong>（当前评审会话）：</p>
+<ul>
+<li>存储当前论文的评审进度、已识别问题点</li>
+<li>保留最近3-5轮Agent间的对话上下文</li>
+<li>实现方式：内存中的字典结构，会话结束时清空</li>
+</ul>
+<p><strong>中期项目记忆</strong>（单篇论文评审全流程）：</p>
+<ul>
+<li>存储各思考帽Agent的评审意见、置信度分数</li>
+<li>记录评审过程中的冲突检测与解决历史</li>
+<li>实现方式：Redis缓存，设置24小时过期时间</li>
+</ul>
+<p><strong>长期知识记忆</strong>（跨论文评审经验）：</p>
+<ul>
+<li>存储历史评审模式、常见问题类型</li>
+<li>积累各思考帽Agent的准确率统计数据</li>
+<li>实现方式：向量数据库（FAISS）+ 关系型数据库</li>
+</ul>
+<h4 id="动态辩论协议设计">动态辩论协议设计
+</h4><p><strong>核心机制</strong>：</p>
+<ol>
+<li><strong>多维度评估</strong>：蓝帽智能体对论点进行逻辑性、证据链完整性等多维度实时测度</li>
+<li><strong>激励约束</strong>：基于零和博弈的奖励信号分配，奖励正确见解，惩罚无效或误导性批判</li>
+<li><strong>权重演化</strong>：根据博弈演化后的智能体权重，通过动态加权机制生成最终结论</li>
+</ol>
+<p><strong>技术实现</strong>：</p>
+<ul>
+<li>使用LangChain/LangGraph框架构建Agent工作流</li>
+<li>集成CoT（思维链）和ReAct（推理-行动）思想</li>
+<li>设计可扩展的插件系统支持不同评审场景</li>
+</ul>
+<hr>
+<h2 id="面试准备要点">面试准备要点
+</h2><h3 id="常见技术问题">常见技术问题
+</h3><ol>
+<li>
+<p><strong>LoRA原理与实现</strong></p>
+<ul>
+<li>为什么低秩分解有效？</li>
+<li>如何选择rank和alpha参数？</li>
+<li>与传统微调相比的优缺点？</li>
+</ul>
+</li>
+<li>
+<p><strong>RAG系统优化</strong></p>
+<ul>
+<li>分块策略如何影响检索效果？</li>
+<li>如何处理长文档的多跳推理？</li>
+<li>如何评估RAG系统的性能？</li>
+</ul>
+</li>
+<li>
+<p><strong>多智能体系统</strong></p>
+<ul>
+<li>如何设计Agent间的通信协议？</li>
+<li>如何解决Agent间的冲突？</li>
+<li>如何评估多智能体系统的整体性能？</li>
+</ul>
+</li>
+<li>
+<p><strong>模型评估</strong></p>
+<ul>
+<li>学术评审场景的特殊评估指标？</li>
+<li>如何平衡自动化评审与人工评审？</li>
+<li>如何处理领域特异性问题？</li>
+</ul>
+</li>
+</ol>
+<h3 id="项目经验阐述">项目经验阐述
+</h3><p><strong>STAR法则应用</strong>：</p>
+<ul>
+<li><strong>Situation</strong>：清晰描述项目背景和问题</li>
+<li><strong>Task</strong>：明确个人承担的具体任务</li>
+<li><strong>Action</strong>：详细说明采取的技术方案和实现细节</li>
+<li><strong>Result</strong>：量化展示项目成果和影响</li>
+</ul>
+<p><strong>技术深度展示</strong>：</p>
+<ul>
+<li>不仅说明&quot;做了什么&quot;，更要解释&quot;为什么这么做&quot;</li>
+<li>展示对技术选型的思考和权衡</li>
+<li>分享遇到的问题和解决方案</li>
+</ul>
+<hr>
+<h2 id="技能总结">技能总结
+</h2><h3 id="核心技术栈">核心技术栈
+</h3><ul>
+<li><strong>模型架构</strong>：熟悉Transformer原理，了解GPT、Qwen、DeepSeek等主流模型差异</li>
+<li><strong>大模型微调</strong>：掌握Qwen、Llama等模型的LoRA/QLoRA微调经验</li>
+<li><strong>检索增强生成</strong>：具备RAG项目经验，熟悉Embedding、Chunking和Reranking策略</li>
+<li><strong>Agent工程</strong>：熟悉多智能体系统设计，掌握LangChain/LangGraph框架</li>
+</ul>
+<h3 id="综合素质">综合素质
+</h3><ul>
+<li>良好的沟通表达能力，常担任项目负责人协调团队</li>
+<li>丰富的竞赛经验（数学建模美赛M奖、国赛省级二等奖等）</li>
+<li>快速学习和技术调研能力</li>
+</ul>
+<h3 id="未来方向">未来方向
+</h3><ul>
+<li>继续深化在多智能体学术评审领域的研究</li>
+<li>探索教育大模型的实际应用场景</li>
+<li>参与开源社区贡献，分享技术经验</li>
+</ul>
 
 </section>
 
@@ -530,6 +685,10 @@
     <section class="article-tags">
         
             <a href="/tags/%E5%AE%9E%E4%B9%A0/">实习</a>
+        
+            <a href="/tags/llm/">LLM</a>
+        
+            <a href="/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/">多智能体</a>
         
     </section>
 
@@ -546,7 +705,19 @@
 
         <span>All rights reserved.</span>
     </section>
-    </footer>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2026-04-12
+        </span>
+    </section></footer>
 
 
     
@@ -588,6 +759,19 @@
             
                 
 <article class="">
+    <a href="/2026/automated-peer-review/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PeerReview | 论文自动评阅</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/2025/mcts/">
         
         
@@ -607,19 +791,6 @@
 
         <div class="article-details">
             <h2 class="article-title">书籍阅读 | Speech and Language Processing</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/2025/rbdr/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">AIDR | Reasoning-based Drug Repurposing</h2>
         </div>
     </a>
 </article>
