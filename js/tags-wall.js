@@ -126,12 +126,12 @@ const Style1 = (data, marks, $tags, $style, Config) => {
   })
 
   const Color = (Array.isArray(Config.color) ? Config.color : [
-    '#E0CFEB', '#EDC8DF', '#F8D8CB', '#EDC8DF', '#F8D8CB',
-    '#FFFACC', '#C9EEC2', '#BDECE6', '#CDD9EE', '#5F9EA0',
-    '#F8DD9A', '#FBE999', '#D8E89B', '#98DE8D', '#8C5DAD',
-    '#B7418C', '#E16F41', '#3261AB', '#F8D436', '#FFEB33',
-    '#DFE83D', '#B5D145', '#45BD32', '#22A86B', '#24B2A2',
-    '#909090'
+    '#c5d5a8', '#a8bb82', '#8fa46a', '#d8e5c4', '#b8cca0',
+    '#e0c9a8', '#d4b896', '#c8a078', '#e8d8c0', '#c4a882',
+    '#e8c4c8', '#d4a8b0', '#c49098', '#e0d0d4', '#b89098',
+    '#ddb090', '#c89070', '#e8c4b0', '#d4a888', '#c08868',
+    '#d8cbb8', '#c8b8a0', '#b8a890', '#9abec4', '#8aabb0',
+    '#b0ccd0'
   ]).map(color => Utils.Color.format(color))
   
   const Size = [2.5, 3.2, 3.9, 4.5, 5.1, 5.6, 6.1, 6.5, 6.9, 7.3, 7.7]
@@ -144,7 +144,7 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     const genStyle = (index) => `.score-${index} { font-size: ${FontSize(Size[index])}px }`
     return Array.from(Array(11)).map((_, i) => genStyle(i)).join('\n')
   }
-  const genFontColor = (rgbBgColor) => Utils.Color.isDeep(rgbBgColor) ? '#555' : '#fff'
+  const genFontColor = (rgbBgColor) => Utils.Color.isDeep(rgbBgColor) ? '#3a3530' : '#faf3e8'
 
   const $bg = document.createElement('div')
   Utils.DOM.setStyle($bg, {
@@ -175,7 +175,7 @@ const Style1 = (data, marks, $tags, $style, Config) => {
       top: getIntFromRand(Math.random(), 90) + '%',
       left: getIntFromRand(Math.random(), 85) + '%',
       zIndex: (11 - $e.dataset.score).toString(),
-      boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
+      boxShadow: '0 2px 8px rgba(90,70,50,0.12)'
     })
     Utils.DOM.setStyle($e.getElementsByTagName('a')[0], {
       color: genFontColor(bgColor),
@@ -218,9 +218,9 @@ const Style1 = (data, marks, $tags, $style, Config) => {
 
   $style.innerHTML = genCSS() + `
     #my-tags { overflow-x: hidden; padding: 7%; text-align: center; width: 100%; height: 100%; position: relative; box-sizing: border-box; }
-    #my-tags a::after { content: "🎵"; }
+    #my-tags a::after { content: "\\2197"; font-size: .8em; vertical-align: super; }
     #my-tags a:hover::after { animation: move .3s linear infinite; position: relative; }
-    #my-tags mark { position: absolute; padding: .2em .3em; display: inline-block; border-radius: .2em; margin: .15em .1em; opacity: .8; transition: opacity .2s; }
+    #my-tags mark { position: absolute; padding: .25em .55em; display: inline-block; border-radius: 2em; margin: .15em .1em; opacity: .85; transition: opacity .2s; font-weight: 400; letter-spacing: .02em; }
     @media (max-width: 1000px) {
       #my-tags mark { animation: none !important; }
     }

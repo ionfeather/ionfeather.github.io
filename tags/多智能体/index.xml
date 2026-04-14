@@ -1,21 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>多智能体 on ionfeather&#39;Log</title>
-        <link>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</link>
-        <description>Recent content in 多智能体 on ionfeather&#39;Log</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Sun, 12 Apr 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>PeerReview | 论文自动评阅</title>
-        <link>https://ionfeather.github.io/2026/automated-peer-review/</link>
-        <pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2026/automated-peer-review/</guid>
-        <description>&lt;h2 id=&#34;论文自动评阅llm-based学术评审研究综述&#34;&gt;论文自动评阅：LLM-based学术评审研究综述
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多智能体 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</link><description>Recent content in 多智能体 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Sun, 12 Apr 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml"/><item><title>PeerReview | 论文自动评阅</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;h2 id="论文自动评阅llm-based学术评审研究综述"&gt;论文自动评阅：LLM-based学术评审研究综述
 &lt;/h2&gt;&lt;p&gt;随着大语言模型（LLM）技术的快速发展，自动化论文评审已成为学术界和工业界关注的热点。本文系统梳理了2024-2025年LLM-based学术评审的最新研究进展，涵盖基准数据集、主流方法、技术框架以及未来研究方向。&lt;/p&gt;
-&lt;h3 id=&#34;核心内容概览&#34;&gt;核心内容概览
+&lt;h3 id="核心内容概览"&gt;核心内容概览
 &lt;/h3&gt;&lt;p&gt;本文主要分为三个部分：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -28,31 +13,31 @@
 &lt;p&gt;&lt;strong&gt;实践思考与创新&lt;/strong&gt;：结合最新研究，提出细粒度Review→Point→RAG数据构建方法，探讨蓝色智能体的本地部署方案。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;研究意义&#34;&gt;研究意义
+&lt;h3 id="研究意义"&gt;研究意义
 &lt;/h3&gt;&lt;p&gt;自动化论文评审不仅能够缓解学术同行评审的压力，还能提供更一致、更高效的评审体验。然而，当前研究仍面临基准不统一、评估指标碎片化、跨领域泛化能力不足等挑战。本文旨在为相关研究者提供一个全面的技术图谱和研究方向参考。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;2024-2025年最新研究进展&#34;&gt;2024-2025年最新研究进展
-&lt;/h2&gt;&lt;h3 id=&#34;基准与数据集&#34;&gt;基准与数据集
-&lt;/h3&gt;&lt;h4 id=&#34;peerreadnaacl-2018&#34;&gt;PeerRead（NAACL 2018）
+&lt;h2 id="2024-2025年最新研究进展"&gt;2024-2025年最新研究进展
+&lt;/h2&gt;&lt;h3 id="基准与数据集"&gt;基准与数据集
+&lt;/h3&gt;&lt;h4 id="peerreadnaacl-2018"&gt;PeerRead（NAACL 2018）
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;包含 14.7K 篇论文草稿及 accept/reject 决策，其中一部分还配有 10.7K 条评审文本&lt;/li&gt;
 &lt;li&gt;在 ICLR 2017 的接收分类任务上，简单模型达到 65.3% accuracy，高于 57.6% 的多数类基线&lt;/li&gt;
 &lt;li&gt;更像是&amp;quot;历史基线&amp;quot;和&amp;quot;数据来源&amp;quot;，不是现代 LLM reviewer 的上限&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;thelwall--yaghiscientometrics-2025&#34;&gt;Thelwall &amp;amp; Yaghi（Scientometrics 2025）
+&lt;h4 id="thelwall--yaghiscientometrics-2025"&gt;Thelwall &amp;amp; Yaghi（Scientometrics 2025）
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;在 ICLR 上，ChatGPT 对人类评分的 Spearman 相关只有 0.38（题目+摘要）到 0.46（全文）&lt;/li&gt;
 &lt;li&gt;在 F1000Research 上几乎失效，相关从 0.00 到 0.09&lt;/li&gt;
 &lt;li&gt;结论：跨平台、跨评审制度之后，paper-only 预测并不稳&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;mmreview2025&#34;&gt;★MMReview（2025）
+&lt;h4 id="mmreview2025"&gt;★MMReview（2025）
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;收集了 240 篇论文、17 个研究领域、4 大学科门类、13 个任务&lt;/li&gt;
 &lt;li&gt;纳入 figures、tables 和 PDF page image&lt;/li&gt;
 &lt;li&gt;回应了此前研究&amp;quot;任务碎片化、数据不统一&amp;quot;的问题&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;主流方法&#34;&gt;主流方法
-&lt;/h3&gt;&lt;h4 id=&#34;deepreviewacl-2025&#34;&gt;★DeepReview（ACL 2025）
+&lt;h3 id="主流方法"&gt;主流方法
+&lt;/h3&gt;&lt;h4 id="deepreviewacl-2025"&gt;★DeepReview（ACL 2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;结构化评审流程&lt;/strong&gt;，走&amp;quot;human-like deep thinking process + 专门训练 reviewer 模型&amp;quot;的路线。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;三个阶段：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -65,7 +50,7 @@
 &lt;li&gt;ICLR 2024：DeepReviewer-14B 达到 1.3137 的 rating MSE、0.9102 的 MAE、64.06% decision accuracy&lt;/li&gt;
 &lt;li&gt;ICLR 2025：decision accuracy 进一步到 68.78%，F1 为 0.6227&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;reviewagents2025&#34;&gt;★ReviewAgents（2025）
+&lt;h4 id="reviewagents2025"&gt;★ReviewAgents（2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;结构化评审思维链（Review-CoT）&lt;/strong&gt;，将评审拆解为：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Summary&lt;/li&gt;
@@ -76,7 +61,7 @@
 &lt;li&gt;Final recommendation&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;通过显式结构约束，提高了生成评审的逻辑一致性与可读性。&lt;/p&gt;
-&lt;h4 id=&#34;agent-reviewersicml-2025&#34;&gt;★Agent Reviewers（ICML 2025）
+&lt;h4 id="agent-reviewersicml-2025"&gt;★Agent Reviewers（ICML 2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;多智能体评审系统&lt;/strong&gt;，使用：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Domain-specific reviewer agents&lt;/li&gt;
@@ -91,7 +76,7 @@
 &lt;li&gt;AC进行集中决策&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;关键发现：&lt;/strong&gt; 多智能体的收益不一定表现在raw accuracy，也可能体现在类别平衡、拒稿识别和决策校准上。&lt;/p&gt;
-&lt;h4 id=&#34;openreviewer2025&#34;&gt;★OpenReviewer（2025）
+&lt;h4 id="openreviewer2025"&gt;★OpenReviewer（2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;专门训练的reviewer模型&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;使用大规模专家评审数据（约79,000条）进行微调&lt;/li&gt;
@@ -103,7 +88,7 @@
 &lt;li&gt;GPT-4o 和 Claude-3.5 的平均推荐分分别是 7.7 和 7.6，明显偏乐观&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;通用 LLM 往往&amp;quot;收稿偏高&amp;quot;，而更强的 reviewer 模型变得更像人类那样会挑毛病、会压分&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;reviewevalemnlp-2025&#34;&gt;★ReviewEval（EMNLP 2025）
+&lt;h4 id="reviewevalemnlp-2025"&gt;★ReviewEval（EMNLP 2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;多维评审质量评估框架：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Human alignment（像不像人）&lt;/li&gt;
@@ -112,7 +97,7 @@
 &lt;li&gt;Constructiveness（是否有帮助）&lt;/li&gt;
 &lt;li&gt;Guideline adherence（是否符合规范）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;reviewrlemnlp-2025&#34;&gt;ReviewRL（EMNLP 2025）
+&lt;h4 id="reviewrlemnlp-2025"&gt;ReviewRL（EMNLP 2025）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;检索、SFT 和 RL 结合&lt;/strong&gt;的 review generation 与 rating prediction。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reward包括：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -120,88 +105,73 @@
 &lt;li&gt;Helpfulness：是不是具体、是否有帮助、是否覆盖关键问题&lt;/li&gt;
 &lt;li&gt;Human alignment：像不像人类reviewer&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;支撑性研究&#34;&gt;支撑性研究
-&lt;/h3&gt;&lt;h4 id=&#34;marg-multi-agent-review-generation-2024&#34;&gt;MARG: Multi-Agent Review Generation (2024)
+&lt;h3 id="支撑性研究"&gt;支撑性研究
+&lt;/h3&gt;&lt;h4 id="marg-multi-agent-review-generation-2024"&gt;MARG: Multi-Agent Review Generation (2024)
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;让多个GPT-4实例读论文、内部讨论，按照评论类型专门分工&lt;/li&gt;
 &lt;li&gt;平均每篇产生 &lt;strong&gt;3.7 条 good comments&lt;/strong&gt;，高于最佳单体基线的 &lt;strong&gt;1.7&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;Generic comments 比例从 &lt;strong&gt;60%&lt;/strong&gt; 降到 &lt;strong&gt;29%&lt;/strong&gt;，且 &lt;strong&gt;71%&lt;/strong&gt; 的评论被评为 specific / very specific&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;is-llm-a-reliable-reviewerlrec-coling-2024&#34;&gt;★Is LLM a Reliable Reviewer?（LREC-COLING 2024）
+&lt;h4 id="is-llm-a-reliable-reviewerlrec-coling-2024"&gt;★Is LLM a Reliable Reviewer?（LREC-COLING 2024）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;关键发现：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;给 GPT-3.5 看&lt;strong&gt;人类已写好的 review&lt;/strong&gt;时，最好能做到 0.353 的 exact accuracy&lt;/li&gt;
 &lt;li&gt;如果只给&lt;strong&gt;论文内容&lt;/strong&gt;，效果明显下降：只看摘要是 0.237，看整篇论文反而只有 0.138&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;不一定需要输入整篇论文，而是只给筛选后的section也能提升对于aspect score prediction分数预测的效果&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;数据集构建方法对比&#34;&gt;数据集构建方法对比
-&lt;/h3&gt;&lt;h4 id=&#34;deepreview&#34;&gt;DeepReview
+&lt;h3 id="数据集构建方法对比"&gt;数据集构建方法对比
+&lt;/h3&gt;&lt;h4 id="deepreview"&gt;DeepReview
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;用ICLR2024-2025的paper+review&lt;/li&gt;
 &lt;li&gt;构建三个中间的reasoning：新颖性评估、多维度评估、可靠性评估&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;reviewrl&#34;&gt;ReviewRL
+&lt;h4 id="reviewrl"&gt;ReviewRL
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;DeepReview的数据集中的ICLR 2024部分作为cold start&lt;/li&gt;
 &lt;li&gt;长CoT部分作为warm-up&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;reviewagents&#34;&gt;ReviewAgents
+&lt;h4 id="reviewagents"&gt;ReviewAgents
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;先把Review输入LLM，变成CoT格式&lt;/li&gt;
 &lt;li&gt;将&lt;strong&gt;相关工作显式地放进了训练中&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;openreviewer&#34;&gt;OpenReviewer
+&lt;h4 id="openreviewer"&gt;OpenReviewer
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Paper + ICLR的Reviewer Guide + review template + review&lt;/li&gt;
 &lt;li&gt;不对review进行处理&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;details&gt;
-    &lt;summary&gt;点击查看早期SEA框架内容（2024年研究）&lt;/summary&gt;
-    &lt;h3 id=&#34;生成式评审智能体&#34;&gt;生成式评审智能体
-&lt;/h3&gt;&lt;h4 id=&#34;sea框架&#34;&gt;SEA框架
-&lt;/h4&gt;&lt;p&gt;论文：&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2407.12857&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;SEA框架&lt;/a&gt;
-视频：&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1EFCZY3E5j/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=def42f0229df2650994ec2dc4854c7b4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;自动化同行评审框架（EMNLP 2024）_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
-&lt;h5 id=&#34;背景介绍&#34;&gt;背景介绍
+&lt;summary&gt;点击查看早期SEA框架内容（2024年研究）&lt;/summary&gt;
+&lt;h3 id="生成式评审智能体"&gt;生成式评审智能体
+&lt;/h3&gt;&lt;h4 id="sea框架"&gt;SEA框架
+&lt;/h4&gt;&lt;p&gt;论文：&lt;a class="link" href="https://arxiv.org/pdf/2407.12857" target="_blank" rel="noopener"
+&gt;SEA框架&lt;/a&gt;
+视频：&lt;a class="link" href="https://www.bilibili.com/video/BV1EFCZY3E5j/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=def42f0229df2650994ec2dc4854c7b4" target="_blank" rel="noopener"
+&gt;自动化同行评审框架（EMNLP 2024）_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id="背景介绍"&gt;背景介绍
 &lt;/h5&gt;&lt;p&gt;目前的自动化审稿的方式：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;基于Prompt方式。由于LLM训练时需要与人类偏好对齐，导致其倾向于讨好人类。&lt;/li&gt;
 &lt;li&gt;基于SFT。使用对应一篇文章的Review进行微调，导致结果存在片面性，且不同的会议的格式和标准也不同。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;method&#34;&gt;Method
+&lt;h5 id="method"&gt;Method
 &lt;/h5&gt;&lt;p&gt;SEA架构：&lt;strong&gt;S&lt;/strong&gt;tandardization, &lt;strong&gt;E&lt;/strong&gt;valuation and &lt;strong&gt;A&lt;/strong&gt;nalysis&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111203658358.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/IMG-20260111203658358.png"
+loading="lazy"
 &gt;&lt;/p&gt;
-&lt;h6 id=&#34;standardization&#34;&gt;Standardization
-&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111203755562.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
+&lt;h6 id="standardization"&gt;Standardization
+&lt;/h6&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/IMG-20260111203755562.png"
+loading="lazy"
 &gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;统一标准&lt;/strong&gt;：作者希望整合一篇文章的所有评审意见，消除冗余和错误，集中关注文章的优点和缺点。具体来说，作者使用了训练集20%的数据，并借助GPT-4对这些评审意见进行整合，形成统一的格式和标准。这构成了一个特定微调的数据集。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;微调模型&lt;/strong&gt;：作者对一个适应长文本的开源模型Mistral-7B进行微调，以蒸馏GPT-4的数据整合能力，最终得到数据标准化模型SEA-S。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;值得一提的是，SEA-S提供了一种泛化范式，可以应用于其他领域以获得标准化的评审意见。&lt;/p&gt;
-&lt;h6 id=&#34;evaluation&#34;&gt;Evaluation
-&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205140718.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
+&lt;h6 id="evaluation"&gt;Evaluation
+&lt;/h6&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/IMG-20260111205140718.png"
+loading="lazy"
 &gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;使用Nougat将PDF论文都转换为text或者LaTex代码&lt;/li&gt;
@@ -209,78 +179,57 @@
 &lt;li&gt;微调另一个Mistral-7B模型为SEA-E&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;经过以上处理后，SEA-E可以生成规范且高质量的评审意见。&lt;/p&gt;
-&lt;h6 id=&#34;analysis&#34;&gt;Analysis
-&lt;/h6&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205558622.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
+&lt;h6 id="analysis"&gt;Analysis
+&lt;/h6&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/IMG-20260111205558622.png"
+loading="lazy"
 &gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;加入一个新的度量标准：不匹配分数。具体来说，就是用置信度（confidence）和分数（score）计算出一个值，然后将评审的评分减去加权平均分，说明这个评审意见和论文偏离比较大，可能质量不高。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/assets/IMG-20260111205949784.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/IMG-20260111205949784.png"
+loading="lazy"
 &gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;计算了论文和评审之间的相互注意力，并训练了一个回归模型SEA-A来估计不匹配度分数。&lt;/li&gt;
 &lt;li&gt;在训练完模型后，实施了一个自我矫正机制：如果SEA-E生成的评审超过了一定的阈值，则重新生成该评审，加入新的提示以提高其与论文的一致性&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;最终作者展示了一些生成的示例，这些示例主要分为六个部分：总结（summary）、优点（strengths）、缺点（weaknesses）、问题（questions）、四个评分以及对论文的决定（接受或拒绝）和相应的理由。&lt;strong&gt;这些生成的评审意见与作者在实际投稿过程中收到的评审意见高度一致。&lt;/strong&gt;&lt;/p&gt;
-&lt;h5 id=&#34;实验&#34;&gt;实验
+&lt;h5 id="实验"&gt;实验
 &lt;/h5&gt;&lt;p&gt;使用NIPS2023和ICLR2024的80%作为训练集，20%作为测试集。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;评审结果最优&lt;/li&gt;
 &lt;li&gt;SEA-S的标准化水平最高，完全按照格式遵循&lt;/li&gt;
 &lt;li&gt;不匹配度最低，与论文一致性最高&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;/details&gt;
-
 &lt;hr&gt;
-&lt;h2 id=&#34;参考文献&#34;&gt;参考文献
+&lt;h2 id="参考文献"&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2407.12857&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;SEA框架&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2025.acl-long.1420.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DeepReview (ACL 2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2411.09763v1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ReviewAgents (2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2411.00816v1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Agent Reviewers (ICML 2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2508.14146&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;OpenReviewer (2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2025.emnlp-main.70.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ReviewEval (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2412.11948&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ReviewRL (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/2024.lrec-main.816.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Is LLM a Reliable Reviewer? (LREC-COLING 2024)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/pdf/2310.01783.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;MARG: Multi-Agent Review Generation (2024)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://aclanthology.org/N18-1149/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PeerRead (NAACL 2018)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2407.12857" target="_blank" rel="noopener"
+&gt;SEA框架&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://aclanthology.org/2025.acl-long.1420.pdf" target="_blank" rel="noopener"
+&gt;DeepReview (ACL 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2411.09763v1" target="_blank" rel="noopener"
+&gt;ReviewAgents (2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2411.00816v1" target="_blank" rel="noopener"
+&gt;Agent Reviewers (ICML 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2508.14146" target="_blank" rel="noopener"
+&gt;OpenReviewer (2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://aclanthology.org/2025.emnlp-main.70.pdf" target="_blank" rel="noopener"
+&gt;ReviewEval (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2412.11948" target="_blank" rel="noopener"
+&gt;ReviewRL (EMNLP 2025)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://aclanthology.org/2024.lrec-main.816.pdf" target="_blank" rel="noopener"
+&gt;Is LLM a Reliable Reviewer? (LREC-COLING 2024)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://arxiv.org/pdf/2310.01783.pdf" target="_blank" rel="noopener"
+&gt;MARG: Multi-Agent Review Generation (2024)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://aclanthology.org/N18-1149/" target="_blank" rel="noopener"
+&gt;PeerRead (NAACL 2018)&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;em&gt;最后更新：2026年4月12日&lt;/em&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>实习 | 兽人永不为奴，但偶尔可以</title>
-        <link>https://ionfeather.github.io/2026/intern/</link>
-        <pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2026/intern/</guid>
-        <description>&lt;h2 id=&#34;实习准备与经验总结&#34;&gt;实习准备与经验总结
+&lt;p&gt;&lt;em&gt;最后更新：2026年4月12日&lt;/em&gt;&lt;/p&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;h2 id="实习准备与经验总结"&gt;实习准备与经验总结
 &lt;/h2&gt;&lt;p&gt;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
-&lt;h3 id=&#34;最新项目经验&#34;&gt;最新项目经验
-&lt;/h3&gt;&lt;h4 id=&#34;1-基于思考帽认知模型的多智能体学术评审系统202505---至今&#34;&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+&lt;h3 id="最新项目经验"&gt;最新项目经验
+&lt;/h3&gt;&lt;h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---至今"&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;核心技术&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -296,7 +245,7 @@
 &lt;li&gt;结论逻辑矛盾性减少38%，实现100%证据可溯源&lt;/li&gt;
 &lt;li&gt;在盲测评审中针对专家意见的覆盖率达88%&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508&#34;&gt;2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）
+&lt;h4 id="2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508"&gt;2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：基于85篇AI顶会论文的PDF版本，回答人工标注的多选题，考察模型的长文本理解、多跳推理、实验数据解析及逻辑严谨性。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;技术方案&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -306,9 +255,9 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;项目成果&lt;/strong&gt;：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;技术深度微调与agent系统&#34;&gt;技术深度：微调与Agent系统
-&lt;/h2&gt;&lt;h3 id=&#34;微调技术详解&#34;&gt;微调技术详解
-&lt;/h3&gt;&lt;h4 id=&#34;loralow-rank-adaptation-of-llm&#34;&gt;LoRA：Low-Rank Adaptation of LLM
+&lt;h2 id="技术深度微调与agent系统"&gt;技术深度：微调与Agent系统
+&lt;/h2&gt;&lt;h3 id="微调技术详解"&gt;微调技术详解
+&lt;/h3&gt;&lt;h4 id="loralow-rank-adaptation-of-llm"&gt;LoRA：Low-Rank Adaptation of LLM
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心优势&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;参数效率&lt;/strong&gt;：仅需调整0.1%-0.01%的参数&lt;/li&gt;
@@ -334,100 +283,100 @@
 &lt;li&gt;主要应用于注意力层中的$W_q$和$W_v$&lt;/li&gt;
 &lt;li&gt;前馈层的LoRA在较大模型上可能有收益&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;lora改进版本对比&#34;&gt;LoRA改进版本对比
+&lt;h4 id="lora改进版本对比"&gt;LoRA改进版本对比
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;方法&lt;/th&gt;
-          &lt;th&gt;核心改进&lt;/th&gt;
-          &lt;th&gt;适用场景&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;LoRA+&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;加速训练，调整B比A的学习率更高&lt;/td&gt;
-          &lt;td&gt;需要快速迭代的场景&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;DoRA&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;权重分解为幅度和方向，分别调整&lt;/td&gt;
-          &lt;td&gt;追求高性能的场景&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;rsLoRA&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;引入动态秩调整和稳定化因子&lt;/td&gt;
-          &lt;td&gt;训练稳定性要求高的场景&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;PiSSA&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;优化初始化，使用SVD分解初始化A和B&lt;/td&gt;
-          &lt;td&gt;需要快速收敛的场景&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;GaLore&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;内存占用极低&lt;/td&gt;
-          &lt;td&gt;资源受限的环境&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;核心改进&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;LoRA+&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;加速训练，调整B比A的学习率更高&lt;/td&gt;
+&lt;td&gt;需要快速迭代的场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;DoRA&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;权重分解为幅度和方向，分别调整&lt;/td&gt;
+&lt;td&gt;追求高性能的场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;rsLoRA&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;引入动态秩调整和稳定化因子&lt;/td&gt;
+&lt;td&gt;训练稳定性要求高的场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;PiSSA&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;优化初始化，使用SVD分解初始化A和B&lt;/td&gt;
+&lt;td&gt;需要快速收敛的场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;GaLore&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;内存占用极低&lt;/td&gt;
+&lt;td&gt;资源受限的环境&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;llama-factory微调关键参数&#34;&gt;LLaMA Factory微调关键参数
+&lt;h4 id="llama-factory微调关键参数"&gt;LLaMA Factory微调关键参数
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;参数类别&lt;/th&gt;
-          &lt;th&gt;参数名&lt;/th&gt;
-          &lt;th&gt;核心作用&lt;/th&gt;
-          &lt;th&gt;建议值&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;训练核心&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;学习率&lt;/td&gt;
-          &lt;td&gt;控制参数更新步长&lt;/td&gt;
-          &lt;td&gt;LoRA: 1e-4到5e-4&lt;br&gt;全量: 1e-5到3e-5&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;per_device_train_batch_size&lt;/code&gt;&lt;br&gt;&lt;code&gt;gradient_accumulation_steps&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;决定有效批处理大小&lt;/td&gt;
-          &lt;td&gt;有效批大小 ≥ 16&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;LoRA核心&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;lora_rank&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;决定适配器能力&lt;/td&gt;
-          &lt;td&gt;通用任务: 8/16/32&lt;br&gt;复杂任务: 64+&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;lora_alpha&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;控制适配器输出缩放&lt;/td&gt;
-          &lt;td&gt;通常设为&lt;code&gt;lora_rank&lt;/code&gt;的2倍&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;流程控制&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;num_train_epochs&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;控制训练遍数&lt;/td&gt;
-          &lt;td&gt;指令微调: 1-3个epoch&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;数据格式&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;指定数据格式模板&lt;/td&gt;
-          &lt;td&gt;优先使用&lt;code&gt;default&lt;/code&gt;或模型对应模板&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;strong&gt;资源与长度&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;cutoff_len&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;设置训练数据最大长度&lt;/td&gt;
-          &lt;td&gt;根据任务实际需要设置&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数类别&lt;/th&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;核心作用&lt;/th&gt;
+&lt;th&gt;建议值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;训练核心&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;学习率&lt;/td&gt;
+&lt;td&gt;控制参数更新步长&lt;/td&gt;
+&lt;td&gt;LoRA: 1e-4到5e-4&lt;br&gt;全量: 1e-5到3e-5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;per_device_train_batch_size&lt;/code&gt;&lt;br&gt;&lt;code&gt;gradient_accumulation_steps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;决定有效批处理大小&lt;/td&gt;
+&lt;td&gt;有效批大小 ≥ 16&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;LoRA核心&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;lora_rank&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;决定适配器能力&lt;/td&gt;
+&lt;td&gt;通用任务: 8/16/32&lt;br&gt;复杂任务: 64+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;lora_alpha&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;控制适配器输出缩放&lt;/td&gt;
+&lt;td&gt;通常设为&lt;code&gt;lora_rank&lt;/code&gt;的2倍&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;流程控制&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;num_train_epochs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;控制训练遍数&lt;/td&gt;
+&lt;td&gt;指令微调: 1-3个epoch&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;数据格式&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定数据格式模板&lt;/td&gt;
+&lt;td&gt;优先使用&lt;code&gt;default&lt;/code&gt;或模型对应模板&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;资源与长度&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cutoff_len&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;设置训练数据最大长度&lt;/td&gt;
+&lt;td&gt;根据任务实际需要设置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;agent系统设计&#34;&gt;Agent系统设计
-&lt;/h3&gt;&lt;h4 id=&#34;记忆系统架构&#34;&gt;记忆系统架构
+&lt;h3 id="agent系统设计"&gt;Agent系统设计
+&lt;/h3&gt;&lt;h4 id="记忆系统架构"&gt;记忆系统架构
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;短期工作记忆&lt;/strong&gt;（当前评审会话）：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存储当前论文的评审进度、已识别问题点&lt;/li&gt;
@@ -446,7 +395,7 @@
 &lt;li&gt;积累各思考帽Agent的准确率统计数据&lt;/li&gt;
 &lt;li&gt;实现方式：向量数据库（FAISS）+ 关系型数据库&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;动态辩论协议设计&#34;&gt;动态辩论协议设计
+&lt;h4 id="动态辩论协议设计"&gt;动态辩论协议设计
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;多维度评估&lt;/strong&gt;：蓝帽智能体对论点进行逻辑性、证据链完整性等多维度实时测度&lt;/li&gt;
@@ -460,8 +409,8 @@
 &lt;li&gt;设计可扩展的插件系统支持不同评审场景&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;面试准备要点&#34;&gt;面试准备要点
-&lt;/h2&gt;&lt;h3 id=&#34;常见技术问题&#34;&gt;常见技术问题
+&lt;h2 id="面试准备要点"&gt;面试准备要点
+&lt;/h2&gt;&lt;h3 id="常见技术问题"&gt;常见技术问题
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;LoRA原理与实现&lt;/strong&gt;&lt;/p&gt;
@@ -496,7 +445,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;项目经验阐述&#34;&gt;项目经验阐述
+&lt;h3 id="项目经验阐述"&gt;项目经验阐述
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;STAR法则应用&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Situation&lt;/strong&gt;：清晰描述项目背景和问题&lt;/li&gt;
@@ -511,218 +460,205 @@
 &lt;li&gt;分享遇到的问题和解决方案&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;技能总结&#34;&gt;技能总结
-&lt;/h2&gt;&lt;h3 id=&#34;核心技术栈&#34;&gt;核心技术栈
+&lt;h2 id="技能总结"&gt;技能总结
+&lt;/h2&gt;&lt;h3 id="核心技术栈"&gt;核心技术栈
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;模型架构&lt;/strong&gt;：熟悉Transformer原理，了解GPT、Qwen、DeepSeek等主流模型差异&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;大模型微调&lt;/strong&gt;：掌握Qwen、Llama等模型的LoRA/QLoRA微调经验&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;检索增强生成&lt;/strong&gt;：具备RAG项目经验，熟悉Embedding、Chunking和Reranking策略&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Agent工程&lt;/strong&gt;：熟悉多智能体系统设计，掌握LangChain/LangGraph框架&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;综合素质&#34;&gt;综合素质
+&lt;h3 id="综合素质"&gt;综合素质
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;良好的沟通表达能力，常担任项目负责人协调团队&lt;/li&gt;
 &lt;li&gt;丰富的竞赛经验（数学建模美赛M奖、国赛省级二等奖等）&lt;/li&gt;
 &lt;li&gt;快速学习和技术调研能力&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;未来方向&#34;&gt;未来方向
+&lt;h3 id="未来方向"&gt;未来方向
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
 &lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
 &lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>论文阅读 | 多智能体协作机制：大语言模型综述</title>
-        <link>https://ionfeather.github.io/2025/multiagentcollaboration/</link>
-        <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid>
-        <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2306.03314&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;摘要&#34;&gt;摘要
+&lt;/ul&gt;</description></item><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;h2 id="论文阅读--多智能体协作机制大语言模型综述"&gt;论文阅读 | 多智能体协作机制：大语言模型综述
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2306.03314" target="_blank" rel="noopener"
+&gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="摘要"&gt;摘要
 &lt;/h3&gt;&lt;p&gt;随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。&lt;/p&gt;
 &lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
 &lt;p&gt;此外，本文还探讨了多智能体系统在不同领域的各种应用，包括5G/6G网络、工业5.0、问答系统、以及社会文化环境，展示了它们的广泛应用和更深远的影响。最后，我们总结了关键经验教训，分析了多智能体系统面临的开放挑战，并指出了朝着人工集体智能发展的潜在研究方向。&lt;/p&gt;
-&lt;h3 id=&#34;文章大纲&#34;&gt;文章大纲
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png&#34;
-	width=&#34;1220&#34;
-	height=&#34;1316&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ab095e826aa53589.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_2b68c987842d07e3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;文章大纲&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;92&#34;
-		data-flex-basis=&#34;222px&#34;
-	
+&lt;h3 id="文章大纲"&gt;文章大纲
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png"
+width="1220"
+height="1316"
+srcset="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ab095e826aa53589.png 480w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_2b68c987842d07e3.png 1024w"
+loading="lazy"
+alt="文章大纲"
+class="gallery-image"
+data-flex-grow="92"
+data-flex-basis="222px"
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;应用&#34;&gt;应用
+&lt;h3 id="应用"&gt;应用
 &lt;/h3&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;方法&lt;/th&gt;
-          &lt;th&gt;领域&lt;/th&gt;
-          &lt;th&gt;主要贡献&lt;/th&gt;
-          &lt;th&gt;优点&lt;/th&gt;
-          &lt;th&gt;缺点&lt;/th&gt;
-          &lt;th&gt;参考文献&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LLM-SC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;作为知识生成器增强语义解码器&lt;/td&gt;
-          &lt;td&gt;利用大语言模型，实现显著的编码增益&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[130]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LaMoSC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;提出一种大语言模型驱动的多模态融合语义通信&lt;/td&gt;
-          &lt;td&gt;在低信噪比条件下表现稳健&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型和视觉 Transformer，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[157]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LAM-MSC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;为多模态数据设计联合编码器；大语言模型作为知识生成器&lt;/td&gt;
-          &lt;td&gt;一个编码器和解码器可处理多种类型的数据；实现更好的编码率和重建误差&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[65]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;GMAC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;利用大语言模型实现观察状态与自然语言之间的语义对齐，并压缩语义信息&lt;/td&gt;
-          &lt;td&gt;提高收敛速度；实现无通信的多智能体协作&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[160]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LLM-Blender&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;采用多种大语言模型代理的集成方法进行候选排序&lt;/td&gt;
-          &lt;td&gt;能够生成比现有候选更好的输出&lt;/td&gt;
-          &lt;td&gt;为实现最优解，需要进行 O (n) 次推理，导致计算开销大&lt;/td&gt;
-          &lt;td&gt;[64]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SOT&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;并行生成每个答案框架；完成答案内容（需要规划结构）&lt;/td&gt;
-          &lt;td&gt;通过并行加速推理速度；适用于需要长结构答案的问题&lt;/td&gt;
-          &lt;td&gt;答案质量评估远非完美，由于提示集有限；不同代理的并行请求可能会影响服务吞吐量&lt;/td&gt;
-          &lt;td&gt;[95]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Meta-Prompting&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;构建高级元提示来指导大语言模型&lt;/td&gt;
-          &lt;td&gt;保持连贯的推理思路；挖掘各种专家角色&lt;/td&gt;
-          &lt;td&gt;多次模型调用成本较高；需要大量的规模和相当大的上下文窗口&lt;/td&gt;
-          &lt;td&gt;[119]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;MAD&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;两个代理表达各自的论点；一个评判者监控和管理辩论&lt;/td&gt;
-          &lt;td&gt;减少偏差和扭曲的认知；鼓励无限的外部反馈&lt;/td&gt;
-          &lt;td&gt;由于辩论时间长，计算成本高；大语言模型在长场景中难以保持连贯性和相关性&lt;/td&gt;
-          &lt;td&gt;[77]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;FORD&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;包括三个阶段的辩论：公平辩论、不匹配辩论、圆桌辩论&lt;/td&gt;
-          &lt;td&gt;通过辩论让大语言模型探索自身理解与他人概念化之间的差异&lt;/td&gt;
-          &lt;td&gt;除常识推理外，无法涵盖各种任务；严重依赖多项选择任务，限制了其泛化能力&lt;/td&gt;
-          &lt;td&gt;[140]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;ChatDev&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;采用聊天链将每个阶段分解为更小的子任务，实现代理之间的多轮通信，以协作开发解决方案&lt;/td&gt;
-          &lt;td&gt;最大限度减少代码幻觉（提供的源代码缺失的情况）&lt;/td&gt;
-          &lt;td&gt;没有清晰、详细的要求时，代理难以理解任务想法；通用软件的自动化评估非常复杂；多个代理需要更多的令牌和时间，导致计算需求大&lt;/td&gt;
-          &lt;td&gt;[105]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentVerse&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;由专家招募、协作决策、行动执行、评估四个阶段组成&lt;/td&gt;
-          &lt;td&gt;提高大语言模型在不确定情况下的泛化能力；提高代理的适应性&lt;/td&gt;
-          &lt;td&gt;协作决策过程中代理之间的通信存在挑战&lt;/td&gt;
-          &lt;td&gt;[24]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentCoord&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;为协调策略提供结构化表示；采用三阶段方法将一般目标转化为可执行策略&lt;/td&gt;
-          &lt;td&gt;简化协调策略的表示和探索；最小化代理的重复实例&lt;/td&gt;
-          &lt;td&gt;仅支持在纯文本环境中协调代理协作；仅支持静态协调策略设计&lt;/td&gt;
-          &lt;td&gt;[97]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;OpenAI&amp;rsquo;s Swarm&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;用于多智能体编排的例程和交接；轻量级协调与执行框架&lt;/td&gt;
-          &lt;td&gt;适用于需要可扩展性的应用；交接机制允许在专门代理之间实现无缝过渡&lt;/td&gt;
-          &lt;td&gt;主要关注基于角色的协议和集中式 / 分布式结构；尚未准备好投入生产&lt;/td&gt;
-          &lt;td&gt;见原文&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;TE&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;在主题研究中模拟人类参与者的代表性样本&lt;/td&gt;
-          &lt;td&gt;能够模拟不同的人类行为，并揭示模拟中的一致偏差&lt;/td&gt;
-          &lt;td&gt;需要研究更多的人类行为和额外的大语言模型，以确保关键发现的准确性&lt;/td&gt;
-          &lt;td&gt;[36]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentInstruct&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;通过迭代的跨代理细化生成多样化的自然语言数据，包括文化数据&lt;/td&gt;
-          &lt;td&gt;能够通过工具使用、代理能力等从生成的数据中训练更强大的模型&lt;/td&gt;
-          &lt;td&gt;需要人工构建生成流程&lt;/td&gt;
-          &lt;td&gt;[88]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SocialMind&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;整合言语、非言语和社交线索，通过增强现实眼镜生成现场建议&lt;/td&gt;
-          &lt;td&gt;设计并利用多模态、多层协作代理系统&lt;/td&gt;
-          &lt;td&gt;需要先进的边缘硬件来处理复杂系统&lt;/td&gt;
-          &lt;td&gt;[144]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;CulturePark&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;促使基于大语言模型的代理进行跨文化交流模拟&lt;/td&gt;
-          &lt;td&gt;生成的数据可用于训练具有不同文化背景的模型，减少偏差并实现民主化&lt;/td&gt;
-          &lt;td&gt;仍然依赖大语言模型对每种文化的了解，因此对资源较少的文化效果有限&lt;/td&gt;
-          &lt;td&gt;[73]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Mango&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;通过对概念和文化的提示，从基于大语言模型的代理中提取高质量知识&lt;/td&gt;
-          &lt;td&gt;自动化方法可生成大量资源&lt;/td&gt;
-          &lt;td&gt;人类评估需要来自更多样化的背景&lt;/td&gt;
-          &lt;td&gt;[94]&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;领域&lt;/th&gt;
+&lt;th&gt;主要贡献&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;th&gt;参考文献&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LLM-SC&lt;/td&gt;
+&lt;td&gt;物联网&lt;/td&gt;
+&lt;td&gt;作为知识生成器增强语义解码器&lt;/td&gt;
+&lt;td&gt;利用大语言模型，实现显著的编码增益&lt;/td&gt;
+&lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+&lt;td&gt;[130]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LaMoSC&lt;/td&gt;
+&lt;td&gt;物联网&lt;/td&gt;
+&lt;td&gt;提出一种大语言模型驱动的多模态融合语义通信&lt;/td&gt;
+&lt;td&gt;在低信噪比条件下表现稳健&lt;/td&gt;
+&lt;td&gt;由于使用大语言模型和视觉 Transformer，计算资源需求高&lt;/td&gt;
+&lt;td&gt;[157]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LAM-MSC&lt;/td&gt;
+&lt;td&gt;物联网&lt;/td&gt;
+&lt;td&gt;为多模态数据设计联合编码器；大语言模型作为知识生成器&lt;/td&gt;
+&lt;td&gt;一个编码器和解码器可处理多种类型的数据；实现更好的编码率和重建误差&lt;/td&gt;
+&lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+&lt;td&gt;[65]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GMAC&lt;/td&gt;
+&lt;td&gt;物联网&lt;/td&gt;
+&lt;td&gt;利用大语言模型实现观察状态与自然语言之间的语义对齐，并压缩语义信息&lt;/td&gt;
+&lt;td&gt;提高收敛速度；实现无通信的多智能体协作&lt;/td&gt;
+&lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
+&lt;td&gt;[160]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LLM-Blender&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;采用多种大语言模型代理的集成方法进行候选排序&lt;/td&gt;
+&lt;td&gt;能够生成比现有候选更好的输出&lt;/td&gt;
+&lt;td&gt;为实现最优解，需要进行 O (n) 次推理，导致计算开销大&lt;/td&gt;
+&lt;td&gt;[64]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SOT&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;并行生成每个答案框架；完成答案内容（需要规划结构）&lt;/td&gt;
+&lt;td&gt;通过并行加速推理速度；适用于需要长结构答案的问题&lt;/td&gt;
+&lt;td&gt;答案质量评估远非完美，由于提示集有限；不同代理的并行请求可能会影响服务吞吐量&lt;/td&gt;
+&lt;td&gt;[95]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Meta-Prompting&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;构建高级元提示来指导大语言模型&lt;/td&gt;
+&lt;td&gt;保持连贯的推理思路；挖掘各种专家角色&lt;/td&gt;
+&lt;td&gt;多次模型调用成本较高；需要大量的规模和相当大的上下文窗口&lt;/td&gt;
+&lt;td&gt;[119]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MAD&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;两个代理表达各自的论点；一个评判者监控和管理辩论&lt;/td&gt;
+&lt;td&gt;减少偏差和扭曲的认知；鼓励无限的外部反馈&lt;/td&gt;
+&lt;td&gt;由于辩论时间长，计算成本高；大语言模型在长场景中难以保持连贯性和相关性&lt;/td&gt;
+&lt;td&gt;[77]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;FORD&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;包括三个阶段的辩论：公平辩论、不匹配辩论、圆桌辩论&lt;/td&gt;
+&lt;td&gt;通过辩论让大语言模型探索自身理解与他人概念化之间的差异&lt;/td&gt;
+&lt;td&gt;除常识推理外，无法涵盖各种任务；严重依赖多项选择任务，限制了其泛化能力&lt;/td&gt;
+&lt;td&gt;[140]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ChatDev&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;采用聊天链将每个阶段分解为更小的子任务，实现代理之间的多轮通信，以协作开发解决方案&lt;/td&gt;
+&lt;td&gt;最大限度减少代码幻觉（提供的源代码缺失的情况）&lt;/td&gt;
+&lt;td&gt;没有清晰、详细的要求时，代理难以理解任务想法；通用软件的自动化评估非常复杂；多个代理需要更多的令牌和时间，导致计算需求大&lt;/td&gt;
+&lt;td&gt;[105]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AgentVerse&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;由专家招募、协作决策、行动执行、评估四个阶段组成&lt;/td&gt;
+&lt;td&gt;提高大语言模型在不确定情况下的泛化能力；提高代理的适应性&lt;/td&gt;
+&lt;td&gt;协作决策过程中代理之间的通信存在挑战&lt;/td&gt;
+&lt;td&gt;[24]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AgentCoord&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;为协调策略提供结构化表示；采用三阶段方法将一般目标转化为可执行策略&lt;/td&gt;
+&lt;td&gt;简化协调策略的表示和探索；最小化代理的重复实例&lt;/td&gt;
+&lt;td&gt;仅支持在纯文本环境中协调代理协作；仅支持静态协调策略设计&lt;/td&gt;
+&lt;td&gt;[97]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OpenAI&amp;rsquo;s Swarm&lt;/td&gt;
+&lt;td&gt;自然语言生成&lt;/td&gt;
+&lt;td&gt;用于多智能体编排的例程和交接；轻量级协调与执行框架&lt;/td&gt;
+&lt;td&gt;适用于需要可扩展性的应用；交接机制允许在专门代理之间实现无缝过渡&lt;/td&gt;
+&lt;td&gt;主要关注基于角色的协议和集中式 / 分布式结构；尚未准备好投入生产&lt;/td&gt;
+&lt;td&gt;见原文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TE&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;在主题研究中模拟人类参与者的代表性样本&lt;/td&gt;
+&lt;td&gt;能够模拟不同的人类行为，并揭示模拟中的一致偏差&lt;/td&gt;
+&lt;td&gt;需要研究更多的人类行为和额外的大语言模型，以确保关键发现的准确性&lt;/td&gt;
+&lt;td&gt;[36]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AgentInstruct&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;通过迭代的跨代理细化生成多样化的自然语言数据，包括文化数据&lt;/td&gt;
+&lt;td&gt;能够通过工具使用、代理能力等从生成的数据中训练更强大的模型&lt;/td&gt;
+&lt;td&gt;需要人工构建生成流程&lt;/td&gt;
+&lt;td&gt;[88]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SocialMind&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;整合言语、非言语和社交线索，通过增强现实眼镜生成现场建议&lt;/td&gt;
+&lt;td&gt;设计并利用多模态、多层协作代理系统&lt;/td&gt;
+&lt;td&gt;需要先进的边缘硬件来处理复杂系统&lt;/td&gt;
+&lt;td&gt;[144]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CulturePark&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;促使基于大语言模型的代理进行跨文化交流模拟&lt;/td&gt;
+&lt;td&gt;生成的数据可用于训练具有不同文化背景的模型，减少偏差并实现民主化&lt;/td&gt;
+&lt;td&gt;仍然依赖大语言模型对每种文化的了解，因此对资源较少的文化效果有限&lt;/td&gt;
+&lt;td&gt;[73]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mango&lt;/td&gt;
+&lt;td&gt;社会与文化领域&lt;/td&gt;
+&lt;td&gt;通过对概念和文化的提示，从基于大语言模型的代理中提取高质量知识&lt;/td&gt;
+&lt;td&gt;自动化方法可生成大量资源&lt;/td&gt;
+&lt;td&gt;人类评估需要来自更多样化的背景&lt;/td&gt;
+&lt;td&gt;[94]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;六个思考帽的设计&#34;&gt;六个思考帽的设计
-&lt;/h2&gt;&lt;h3 id=&#34;白色思考帽&#34;&gt;白色思考帽
+&lt;h2 id="六个思考帽的设计"&gt;六个思考帽的设计
+&lt;/h2&gt;&lt;h3 id="白色思考帽"&gt;白色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：收集客观信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -734,7 +670,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
+&lt;h3 id="绿色思考帽"&gt;绿色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：对论文提出创新性改进，探索论文的可能性&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -743,7 +679,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
+&lt;h3 id="黄色思考帽"&gt;黄色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -752,7 +688,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
+&lt;h3 id="黑色思考帽"&gt;黑色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：批判性思考，找出论文的问题和不足。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -761,7 +697,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;红色思考帽&#34;&gt;红色思考帽
+&lt;h3 id="红色思考帽"&gt;红色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：主观感受和直觉判断。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -770,7 +706,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
+&lt;h3 id="蓝色思考帽"&gt;蓝色思考帽
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：控制评审流程。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
@@ -780,14 +716,9 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;蓝色思考帽智能体应该如何控制&#34;&gt;蓝色思考帽智能体应该如何控制？
+&lt;h2 id="蓝色思考帽智能体应该如何控制"&gt;蓝色思考帽智能体应该如何控制？
 &lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;基于&lt;strong&gt;工作流管理&lt;/strong&gt;的集中式控制方法。蓝色智能体明确规定了其他智能体的工作顺序、时间和交互方式。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;协商机制&lt;/strong&gt;的分布式控制方法。在评审开始时，蓝色智能体发起评审任务，各思考帽智能体根据自身能力和状态反馈可承担的工作及预计时间。比如白色告诉蓝色需要5分钟完成，绿色说在白色完成后需要10分钟&amp;hellip;通过这些反馈，蓝色智能体来制定计划。&lt;/li&gt;
 &lt;li&gt;基于&lt;strong&gt;事件驱动&lt;/strong&gt;的动态控制方法。不同的智能体换成之后会触发不同的事件，如白色完成后让绿色工作，黑色和黄色在辩论后无法达成共识，就再次进行辩论等。这个事件定义较难。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+&lt;/ol&gt;</description></item></channel></rss>
