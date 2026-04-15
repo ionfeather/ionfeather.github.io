@@ -185,6 +185,26 @@
   }
 
    
+  .welcome {
+    position: relative;
+  }
+  .welcome-sticker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .welcome-sticker--left  { left: 20px; }
+  .welcome-sticker--right { right: 20px; }
+  @media (max-width: 680px) {
+    .welcome-sticker { display: none; }
+  }
+
+   
   html {
     scroll-behavior: smooth;
   }

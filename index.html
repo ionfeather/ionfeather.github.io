@@ -185,6 +185,26 @@
   }
 
    
+  .welcome {
+    position: relative;
+  }
+  .welcome-sticker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .welcome-sticker--left  { left: 20px; }
+  .welcome-sticker--right { right: 20px; }
+  @media (max-width: 680px) {
+    .welcome-sticker { display: none; }
+  }
+
+   
   html {
     scroll-behavior: smooth;
   }
@@ -1049,12 +1069,13 @@
     
     
     <div class="welcome" aria-label="Welcome to ionfeather'Log">
+        <img src="/stickers/douni-5.gif" alt="douni" class="welcome-sticker welcome-sticker--left">
         <p class="welcome-title" aria-hidden="true">
-        <span class="shake">👋</span>
         <span class="jump-text1">We</span><span class="jump-text2">lco</span><span class="jump-text3">me</span>
         <span class="jump-text4">to</span>
         <span class="jump-text5">ion</span><span class="jump-text6">fea</span><span class="jump-text7">t</span><span class="jump-text8">h</span><span class="jump-text9">er'</span><span class="jump-text10">Log</span>
         </p>
+        <img src="/stickers/capoo-2.gif" alt="capoo" class="welcome-sticker welcome-sticker--right">
     </div>
     
     

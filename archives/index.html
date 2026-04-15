@@ -184,6 +184,26 @@
   }
 
    
+  .welcome {
+    position: relative;
+  }
+  .welcome-sticker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    opacity: 0.92;
+    pointer-events: none;
+  }
+  .welcome-sticker--left  { left: 20px; }
+  .welcome-sticker--right { right: 20px; }
+  @media (max-width: 680px) {
+    .welcome-sticker { display: none; }
+  }
+
+   
   html {
     scroll-behavior: smooth;
   }
@@ -987,7 +1007,10 @@
     
     <div class="cafe-status-wrapper">
         <div class="note__item">
- <div class="note__day">一些碎碎念</div>
+ <div class="note__day">
+   一些碎碎念
+   <img src="/stickers/douni-4.gif" alt="douni" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-left:6px;position:relative;top:-1px;">
+ </div>
  <div class="note__list" style="font-size: 80%;">
  <details class="mumble" id="mumble-details">
      <summary>叽里咕噜，歪比巴卜</summary>
