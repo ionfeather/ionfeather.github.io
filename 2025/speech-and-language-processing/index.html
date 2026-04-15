@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Introduction\r阅读Speech and Language Processing这本书的一些笔记。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<title>书籍阅读 | Speech and Language Processing</title>
+
+<link rel='canonical' href='https://ionfeather.github.io/2025/speech-and-language-processing/'>
+
+<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="书籍阅读 | Speech and Language Processing">
+<meta property='og:description' content="Introduction\r阅读Speech and Language Processing这本书的一些笔记。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+<meta property='og:url' content='https://ionfeather.github.io/2025/speech-and-language-processing/'>
+<meta property='og:site_name' content='ionfeather&#39;Log'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LLM' /><meta property='article:published_time' content='2025-08-28T19:28:49&#43;08:00'/><meta property='article:modified_time' content='2025-08-28T19:28:49&#43;08:00'/>
+<meta name="twitter:title" content="书籍阅读 | Speech and Language Processing">
+<meta name="twitter:description" content="Introduction\r阅读Speech and Language Processing这本书的一些笔记。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
+    <link rel="shortcut icon" href="/ion.ico" />
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<style>
+   
+  :root {
+    --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --code-font-family: 'Consolas', monospace;
+    --article-font-family: 'Noto Serif SC', serif;
+    --heading-font-family: 'LXGW WenKai', serif;
+  }
+
+  html body {
+    font-family: var(--base-font-family);
+    font-weight: normal;
+  }
+
+   
+  :root {
+    --accent-color: #5a6e3a;
+    --accent-color-darker: #3e4e28;
+    --body-text-color: #3a3530;
+    --card-separator-color: rgba(200, 180, 160, 0.2);
+    --card-background: rgba(255, 254, 250, 0.82);
+    --card-background-selected: rgba(245, 236, 220, 0.7);
+  }
+  html[data-scheme="dark"] {
+    --accent-color: #8fa46a;
+    --accent-color-darker: #6b7d52;
+    --body-text-color: #e0d5c5;
+    --card-separator-color: rgba(100, 90, 70, 0.3);
+    --card-background: rgba(32, 31, 26, 0.62);
+    --card-background-selected: rgba(50, 46, 32, 0.7);
+    --card-text-color-secondary: rgba(220, 208, 188, 0.88);
+    --card-text-color-tertiary: rgba(175, 160, 138, 0.82);
+  }
+
+   
+  html body {
+    background-color: #fdf9f2 !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
+      linear-gradient(135deg, #fefcf8 0%, #fdf9f2 50%, #f7ede0 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+   
+  html[data-scheme="dark"] body {
+    background-color: #191917 !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse at 0% 0%, rgba(80, 100, 55, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(50, 40, 25, 0.25) 0%, transparent 55%),
+      linear-gradient(135deg, #1e1e1b 0%, #191917 50%, #151410 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+   
+  html body .article-list--tile article.has-image .article-details {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.18) 40%,
+      rgba(0, 0, 0, 0.62) 100%
+    ) !important;
+  }
+  html body .article-list--tile article.has-image .article-title {
+    color: #fff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55), 0 2px 16px rgba(0, 0, 0, 0.35) !important;
+    letter-spacing: 0.03em;
+  }
+
+   
+  html body .article-list article,
+  html body .article-list--tile article,
+  html body .article-list--compact article,
+  html body .main-article,
+  html body .welcome,
+  html body .pagination-container {
+    background: rgba(255, 254, 250, 0.82) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  }
+
+   
+  html[data-scheme="dark"] body .article-list article,
+  html[data-scheme="dark"] body .article-list--tile article,
+  html[data-scheme="dark"] body .article-list--compact article,
+  html[data-scheme="dark"] body .main-article,
+  html[data-scheme="dark"] body .welcome,
+  html[data-scheme="dark"] body .pagination-container {
+    background: rgba(32, 31, 26, 0.62) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+
+   
+  html body .widget,
+  html body .left-sidebar,
+  html body .widget-archive--list,
+  html body .menu {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+
+   
+  html body .archives-year {
+    background: rgba(255, 254, 250, 0.78) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 10px !important;
+    margin-bottom: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  }
+  html[data-scheme="dark"] body .archives-year {
+    background: rgba(32, 31, 26, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+
+   
+  html body .tagCloud .tagCloud-tags a {
+    background: rgba(255, 254, 250, 0.82) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(90, 70, 50, 0.08) !important;
+  }
+  html body .tagCloud .tagCloud-tags a:hover {
+    background: rgba(255, 254, 250, 0.96) !important;
+  }
+  html[data-scheme="dark"] body .tagCloud .tagCloud-tags a {
+    background: rgba(32, 31, 26, 0.75) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  html[data-scheme="dark"] body .tagCloud .tagCloud-tags a:hover {
+    background: rgba(32, 31, 26, 0.95) !important;
+  }
+
+   
+  html body .widget-archive--list,
+  html body .widget.archives .widget-archive--list {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+   
+  html body .menu {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+   
+  html {
+    scroll-behavior: smooth;
+  }
+
+   
+  .article-content pre,
+  .article-content .highlight pre,
+  .article-content code {
+    font-size: 1.35rem !important;
+    line-height: 1.65 !important;
+  }
+  .article-content pre {
+    padding: 16px 20px !important;
+  }
+  .article-content .highlight {
+    font-size: 1.35rem !important;
+  }
+
+   
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #c8b89a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #8fa46a; }
+
+   
+  .article-content a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  .article-content a:hover {
+    text-decoration-style: solid;
+  }
+
+   
+  html body .article-list .article-details {
+    position: relative;
+    padding-top: 40px !important;
+    padding-bottom: 32px !important;
+    padding-left: var(--card-padding) !important;
+    padding-right: calc(var(--card-padding) + 100px) !important;
+    gap: 10px !important;
+  }
+  html body .article-list .article-title-wrapper {
+    gap: 10px !important;
+  }
+  html body .article-list .article-time {
+    margin-top: 4px !important;
+  }
+  html body .article-list .article-category {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    right: var(--card-padding);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+   
+  .article-details time,
+  .article-category a,
+  .article-tags a,
+  .widget--archives a,
+  .pagination,
+  .sidebar nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82em;
+    letter-spacing: 0.02em;
+  }
+
+   
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .article-list article {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.35s ease;
+    will-change: transform;
+  }
+  .article-list article:nth-child(1) { animation-delay: 0.05s; }
+  .article-list article:nth-child(2) { animation-delay: 0.1s; }
+  .article-list article:nth-child(3) { animation-delay: 0.15s; }
+  .article-list article:nth-child(4) { animation-delay: 0.2s; }
+  .article-list article:nth-child(5) { animation-delay: 0.25s; }
+  .article-list article:nth-child(6) { animation-delay: 0.3s; }
+  .article-list article:nth-child(7) { animation-delay: 0.35s; }
+  .article-list article:nth-child(8) { animation-delay: 0.4s; }
+
+   
+  .article-list article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(90, 70, 50, 0.12);
+  }
+
+   
+  .article-image { overflow: hidden; }
+  .article-image img {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .article-list article:hover .article-image img {
+    transform: scale(1.06);
+  }
+
+   
+  .sidebar .site-avatar {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+  }
+  .sidebar .site-avatar:hover {
+    transform: rotate(6deg) scale(1.08);
+  }
+
+   
+  .welcome-title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .shake,
+  .jump-text1, .jump-text2, .jump-text3, .jump-text4, .jump-text5,
+  .jump-text6, .jump-text7, .jump-text8, .jump-text9, .jump-text10 {
+    animation: none !important;
+  }
+
+   
+  .jump-text5, .jump-text6, .jump-text7,
+  .jump-text8, .jump-text9, .jump-text10 {
+    color: #5a6e3a !important;
+  }
+  html[data-scheme="dark"] .jump-text5, html[data-scheme="dark"] .jump-text6,
+  html[data-scheme="dark"] .jump-text7, html[data-scheme="dark"] .jump-text8,
+  html[data-scheme="dark"] .jump-text9, html[data-scheme="dark"] .jump-text10 {
+    color: #8fa46a !important;
+  }
+
+   
+  html body .widget.archives .widget-archive--list {
+    transition: none !important;
+  }
+  html body .widget.archives .widget-archive--list:hover {
+    transform: none !important;
+  }
+  html body .widget.archives .archives-year {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+  html body .widget.archives .archives-year:hover {
+    transform: scale(1.04) translateX(4px);
+  }
+
+   
+  .tagCloud a, .widget--categories a {
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+  }
+  .tagCloud a:hover, .widget--categories a:hover {
+    transform: scale(1.12);
+  }
+
+   
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+   
+  .template-archives .archives-group {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .template-archives .archives-group:nth-child(1) { animation-delay: 0.05s; }
+  .template-archives .archives-group:nth-child(2) { animation-delay: 0.15s; }
+  .template-archives .archives-group:nth-child(3) { animation-delay: 0.25s; }
+  .template-archives .archives-group:nth-child(4) { animation-delay: 0.35s; }
+
+   
+  .template-archives .archives-date {
+    animation: fadeInLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: inherit;
+  }
+
+   
+  @keyframes archiveItemIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .template-archives .article-list--compact article {
+    opacity: 0;
+  }
+
+   
+  .article-list--compact article {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.25s ease;
+  }
+  .article-list--compact article:hover {
+    transform: translateX(6px);
+    box-shadow: 0 4px 16px rgba(90, 70, 50, 0.1);
+  }
+
+   
+  .inline-sticker {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px -4px;
+    border-radius: 4px;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+  }
+  .inline-sticker:hover {
+    transform: scale(1.25) rotate(-3deg);
+  }
+
+   
+  main {
+    animation: fadeInUp 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+   
+  html body .widget--toc {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  html body .widget--toc #TableOfContents {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 0;
+    font-family: system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul,
+  html body .widget--toc #TableOfContents > ol {
+    padding: 0 !important;
+    margin: 0 0 0 4px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.15) 0%,
+        rgba(90, 110, 58, 0.15) 86%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+  html body .widget--toc #TableOfContents li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > ul,
+  html body .widget--toc #TableOfContents > ul > li > ol,
+  html body .widget--toc #TableOfContents > ol > li > ul,
+  html body .widget--toc #TableOfContents > ol > li > ol {
+    padding: 0 !important;
+    margin: 0 0 0 13px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.10) 0%,
+        rgba(90, 110, 58, 0.10) 80%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > ul > li > ul,
+  html body .widget--toc #TableOfContents > ul > li > ul > li > ol,
+  html body .widget--toc #TableOfContents > ol > li > ol > li > ul,
+  html body .widget--toc #TableOfContents > ol > li > ol > li > ol {
+    padding: 0 !important;
+    margin: 0 0 0 11px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.07) 0%,
+        rgba(90, 110, 58, 0.07) 75%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+   
+  html body .widget--toc #TableOfContents a {
+    font-family: system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif !important;
+    display: block;
+    padding: 4px 8px 4px 14px;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--card-text-color-secondary);
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > a,
+  html body .widget--toc #TableOfContents > ol > li > a {
+    font-size: 1.48rem;
+    font-weight: 500;
+    color: var(--card-text-color-main);
+  }
+
+   
+  html body .widget--toc #TableOfContents li li a {
+    padding-left: 13px !important;
+    font-size: 1.38rem !important;
+    color: var(--card-text-color-secondary);
+  }
+
+   
+  html body .widget--toc #TableOfContents li li li a {
+    padding-left: 11px !important;
+    font-size: 1.3rem !important;
+    color: var(--card-text-color-tertiary);
+  }
+
+   
+  html body .widget--toc #TableOfContents ol li a::before {
+    content: none !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents a:hover {
+    color: var(--card-text-color-main);
+    border-left-color: rgba(90, 110, 58, 0.3);
+    background: rgba(90, 110, 58, 0.05);
+  }
+
+   
+  html body .widget--toc #TableOfContents li.active-class > a,
+  html body .widget--toc #TableOfContents li li.active-class > a,
+  html body .widget--toc #TableOfContents li li li.active-class > a {
+    color: var(--accent-color) !important;
+    font-weight: 500 !important;
+    border-left-color: var(--accent-color) !important;
+    background: rgba(90, 110, 58, 0.07) !important;
+    margin-left: -1px !important;
+  }
+
+  html body .widget--toc #TableOfContents li li.active-class > a {
+    padding-left: 13px !important;
+  }
+  html body .widget--toc #TableOfContents li li li.active-class > a {
+    padding-left: 11px !important;
+  }
+
+   
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.16) 0%,
+      rgba(143, 164, 106, 0.16) 86%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ol,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.10) 0%,
+      rgba(143, 164, 106, 0.10) 80%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ol,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.07) 0%,
+      rgba(143, 164, 106, 0.07) 75%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents a:hover {
+    border-left-color: rgba(143, 164, 106, 0.3) !important;
+    background: rgba(143, 164, 106, 0.06) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li.active-class > a,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li li.active-class > a,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li li li.active-class > a {
+    background: rgba(143, 164, 106, 0.1) !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li,
+  html body .widget--toc #TableOfContents > ol > li {
+    animation: tocFadeIn 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(1),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(1) { animation-delay: 0.04s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(2),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(2) { animation-delay: 0.09s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(3),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(3) { animation-delay: 0.14s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(4),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(4) { animation-delay: 0.19s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(n+5),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(n+5) { animation-delay: 0.24s; }
+
+  @keyframes tocFadeIn {
+    from { opacity: 0; transform: translateX(6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+</style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!document.querySelector('.template-archives')) return;
+    var delay = 0.08;
+    document.querySelectorAll('.template-archives .archives-group').forEach(function (group, gi) {
+      var groupBase = 0.1 + gi * 0.12;
+      group.querySelectorAll('.article-list--compact article').forEach(function (article, i) {
+        article.style.animation = 'archiveItemIn 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94) both';
+        article.style.animationDelay = (groupBase + i * delay) + 's';
+      });
+    });
+  });
+</script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" crossorigin="anonymous"></script>
+<script>
+  
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (typeof GLightbox === 'undefined') return;
+      GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        openEffect: 'zoom',
+        closeEffect: 'fade',
+        slideEffect: 'slide'
+      });
+    }, 100);
+  });
+</script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌳</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ionfeather&#39;Log</a></h1>
+            <h2 class="site-description">十年饮冰，难凉热血</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ionfeather'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg t="1732597946058" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3746" width="24" height="24"><path d="M850.346667 155.008a42.666667 42.666667 0 0 0-22.741334-23.509333c-8.704-3.754667-85.717333-33.322667-200.32 39.168H396.714667c-114.773333-72.618667-191.701333-42.922667-200.32-39.168a42.88 42.88 0 0 0-22.741334 23.466666c-26.197333 66.218667-18.048 136.448-7.850666 176.896C134.272 374.016 128 413.098667 128 469.333333c0 177.877333 127.104 227.882667 226.730667 246.272a189.568 189.568 0 0 0-13.013334 46.549334A44.373333 44.373333 0 0 0 341.333333 768v38.613333c-19.498667-4.138667-41.002667-11.946667-55.168-26.112C238.08 732.416 188.330667 682.666667 128 682.666667v85.333333c25.002667 0 65.365333 40.362667 97.834667 72.832 51.029333 51.029333 129.066667 55.253333 153.386666 55.253333 3.114667 0 5.376-0.085333 6.528-0.128A42.666667 42.666667 0 0 0 426.666667 853.333333v-82.090666c4.266667-24.746667 20.224-49.621333 27.946666-56.362667a42.666667 42.666667 0 0 0-23.125333-74.581333C293.333333 624.554667 213.333333 591.488 213.333333 469.333333c0-53.12 5.632-70.741333 31.573334-99.285333 11.008-12.117333 14.08-29.568 7.978666-44.8-4.821333-11.904-18.773333-65.450667-6.485333-117.546667 20.650667-1.578667 59.904 4.565333 113.706667 40.96C367.104 253.44 375.466667 256 384 256h256a42.666667 42.666667 0 0 0 23.936-7.338667c54.016-36.522667 92.970667-41.770667 113.664-41.130666 12.330667 52.224-1.578667 105.770667-6.4 117.674666a42.666667 42.666667 0 0 0 8.021333 44.928C805.077333 398.464 810.666667 416.085333 810.666667 469.333333c0 122.581333-79.957333 155.52-218.069334 170.922667a42.666667 42.666667 0 0 0-23.125333 74.709333c19.797333 17.066667 27.861333 32.469333 27.861333 53.034667v128h85.333334v-128c0-20.437333-3.925333-38.101333-9.770667-53.12C769.92 695.765333 896 643.712 896 469.333333c0-56.362667-6.272-95.530667-37.76-137.514666 10.197333-40.405333 18.261333-110.506667-7.893333-176.810667z" fill="currentColor" p-id="3747"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:lizishadowmay@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg t="1732597869588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23464" width="24" height="24"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="23465" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" width="200" height="200">
+  <path 
+    d="M170.666667 426.666667c-25.6 0-42.666667 17.066667-42.666667 42.666666s17.066667 42.666667 42.666667 42.666667c187.733333 0 341.333333 153.6 341.333333 341.333333 0 25.6 17.066667 42.666667 42.666667 42.666667s42.666667-17.066667 42.666666-42.666667c0-234.666667-192-426.666667-426.666666-426.666666z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+  <path 
+    d="M170.666667 128c-25.6 0-42.666667 17.066667-42.666667 42.666667s17.066667 42.666667 42.666667 42.666666c354.133333 0 640 285.866667 640 640 0 25.6 17.066667 42.666667 42.666666 42.666667s42.666667-17.066667 42.666667-42.666667c0-401.066667-324.266667-725.333333-725.333333-725.333333z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+  <path 
+    d="M213.333333 810.666667m-85.333333 0a85.333333 85.333333 0 1 0 170.666667 0 85.333333 85.333333 0 1 0-170.666667 0Z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>我在逛</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            
+
+                
+                    <span id="dark-mode-toggle">
+                        <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left"   width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-toggle-right"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                    </span>
+                
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#words-and-tokens">Words and Tokens</a>
+      <ol>
+        <li><a href="#words">Words</a></li>
+        <li><a href="#morphemes">Morphemes</a></li>
+        <li><a href="#unicode">Unicode</a>
+          <ol>
+            <li><a href="#code-points">Code Points</a></li>
+            <li><a href="#utf-8">UTF-8</a></li>
+          </ol>
+        </li>
+        <li><a href="#subword-tokenization-byte-pair-encoding">Subword Tokenization: Byte-Pair Encoding</a>
+          <ol>
+            <li><a href="#bpe">BPE</a></li>
+            <li><a href="#bpe-encoder">BPE encoder</a></li>
+            <li><a href="#bpe-in-practice">BPE in practice</a></li>
+          </ol>
+        </li>
+        <li><a href="#rule-based-tokenization">Rule-based tokenization</a>
+          <ol>
+            <li><a href="#sentence-segmentation">Sentence Segmentation</a></li>
+          </ol>
+        </li>
+        <li><a href="#corpora">Corpora</a></li>
+        <li><a href="#regular-expressions">Regular Expressions</a></li>
+        <li><a href="#simple-unix-tools-for-word-tokenization">Simple Unix Tools for Word Tokenization</a></li>
+        <li><a href="#minimum-edit-distance">Minimum Edit Distance</a>
+          <ol>
+            <li><a href="#the-minimum-edit-distance-algorithm">The Minimum Edit Distance Algorithm</a></li>
+          </ol>
+        </li>
+        <li><a href="#exercies">Exercies</a></li>
+      </ol>
+    </li>
+    <li><a href="#n-gram-language-models">N-gram Language Models</a>
+      <ol>
+        <li><a href="#n-grams">N-Grams</a>
+          <ol>
+            <li><a href="#how-to-estimate-probabilities">How to estimate probabilities</a></li>
+            <li><a href="#dealing-with-scale-in-large-n-gram-models">Dealing with scale in large n-gram models</a></li>
+            <li><a href="#evaluating-language-models-training-and-test-sets">Evaluating Language Models: Training and Test Sets</a></li>
+            <li><a href="#evaluating-language-models-perplexity">Evaluating Language Models: Perplexity</a></li>
+          </ol>
+        </li>
+        <li><a href="#sampling-sentences-from-a-language-model">Sampling sentences from a language model</a></li>
+        <li><a href="#generalizing-vs-overfitting-the-training-set">Generalizing vs. overfitting the training set</a></li>
+        <li><a href="#smoothing-interpolation-and-backoff">Smoothing, Interpolation, and Backoff</a>
+          <ol>
+            <li><a href="#laplace-smoothing">Laplace Smoothing</a></li>
+            <li><a href="#add-k-smoothing">Add-k Smoothing</a></li>
+            <li><a href="#language-model-interpolation">Language Model Interpolation</a></li>
+            <li><a href="#stupid-backoff">Stupid Backoff</a></li>
+          </ol>
+        </li>
+        <li><a href="#advanced-perplexitys-relation-to-entropy">Advanced: Perplexity&rsquo;s Relation to Entropy</a></li>
+        <li><a href="#excercies">Excercies</a></li>
+      </ol>
+    </li>
+    <li><a href="#logistic-regression-and-text-classification">Logistic Regression and Text Classification</a>
+      <ol>
+        <li><a href="#machine-learning-and-classification">Machine Learning and Classification</a></li>
+        <li><a href="#the-sigmoid-function">The Sigmoid Function</a></li>
+        <li><a href="#classification-with-logistic-regression">Classification with Logistic Regression</a>
+          <ol>
+            <li><a href="#sentiment-classification">Sentiment Classification</a></li>
+            <li><a href="#other-classification-tasks-and-features">Other Classification Tasks and Features</a></li>
+            <li><a href="#processing-many-examples-at-once">Processing many examples at once</a></li>
+          </ol>
+        </li>
+        <li><a href="#multinomial-logistic-regression">Multinomial Logistic Regression</a>
+          <ol>
+            <li><a href="#softmax">Softmax</a></li>
+            <li><a href="#applying-softmax-in-logistic-regression">Applying Softmax in Logistic Regression</a></li>
+            <li><a href="#features-in-multinomial-logistic-regression">Features in Multinomial Logistic Regression</a></li>
+          </ol>
+        </li>
+        <li><a href="#learning-in-logistic-regression">Learning in Logistic Regression</a></li>
+        <li><a href="#the-cross-entropy-loss-function">The Cross-entropy Loss Function</a></li>
+        <li><a href="#gradient-descent">Gradient Descent</a>
+          <ol>
+            <li><a href="#the-gradient-for-logistic-regression">The Gradient for Logistic Regression</a></li>
+            <li><a href="#the-stochastic-gradient-descent-algorithm">The Stochastic Gradient Descent Algorithm</a></li>
+            <li><a href="#mini-batch-training">Mini-batch Training</a></li>
+          </ol>
+        </li>
+        <li><a href="#learning-in-multinomial-logistic-regression">Learning in Multinomial Logistic Regression</a></li>
+        <li><a href="#evaluation-precision-recall-f-measure">Evaluation: Precision, Recall, F-measure</a></li>
+        <li><a href="#test-sets-and-cross-validation">Test sets and Cross-validation</a></li>
+        <li><a href="#statistical-significance-testing">Statistical Significance Testing</a>
+          <ol>
+            <li><a href="#the-paired-bootstrap-test">The Paired Bootstrap Test</a></li>
+          </ol>
+        </li>
+        <li><a href="#avoiding-harms-in-classification">Avoiding Harms in Classification</a></li>
+        <li><a href="#interpereting-models">Interpereting Models</a></li>
+        <li><a href="#advanced-regularization">Advanced: Regularization</a></li>
+      </ol>
+    </li>
+    <li><a href="#embeddings">Embeddings</a>
+      <ol>
+        <li><a href="#lexical-semantics">Lexical Semantics</a></li>
+        <li><a href="#vector-semantics-the-intuition">Vector Semantics: The Intuition</a>
+          <ol>
+            <li><a href="#simple-count-based-embeddings">Simple Count-based Embeddings</a></li>
+            <li><a href="#cosine-for-measuring-similarity">Cosine for Measuring Similarity</a></li>
+            <li><a href="#word2vec">Word2vec</a></li>
+            <li><a href="#learning-skip-gram-embeddings">Learning Skip-gram Embeddings</a></li>
+            <li><a href="#other-kinds-of-static-embeddings">Other kinds of static embeddings</a></li>
+          </ol>
+        </li>
+        <li><a href="#visualizing-embeddings">Visualizing Embeddings</a></li>
+        <li><a href="#semantic-properites-of-embeddings">Semantic Properites of Embeddings</a>
+          <ol>
+            <li><a href="#embeddings-and-historical-semantics">Embeddings and Historical Semantics</a></li>
+          </ol>
+        </li>
+        <li><a href="#bias-and-embeddings">Bias and Embeddings</a></li>
+        <li><a href="#evaluating-vector-models">Evaluating Vector Models</a></li>
+      </ol>
+    </li>
+    <li><a href="#neural-networks">Neural Networks</a>
+      <ol>
+        <li><a href="#units">Units</a></li>
+        <li><a href="#the-xor-problem">The XOR Problem</a>
+          <ol>
+            <li><a href="#the-solution-neural-networks">The Solution: Neural Networks</a></li>
+          </ol>
+        </li>
+        <li><a href="#feedforward-neural-networks">Feedforward Neural Networks</a>
+          <ol>
+            <li><a href="#more-details-on-feedforward-networks">More Details on Feedforward Networks</a></li>
+          </ol>
+        </li>
+        <li><a href="#feedforward-networks-for-nlp-classification">Feedforward Networks for NLP: Classification</a>
+          <ol>
+            <li><a href="#neural-net-classifiers-with-hand-built-features">Neural Net Classifiers with Hand-built Features</a></li>
+            <li><a href="#vectorizing-for-parallelizing-inference">Vectorizing for Parallelizing Inference</a></li>
+          </ol>
+        </li>
+        <li><a href="#embeddings-as-the-input-to-neural-net-classifiers">Embeddings as the Input to Neural Net Classifiers</a></li>
+        <li><a href="#training-neural-nets">Training Neural Nets</a>
+          <ol>
+            <li><a href="#loss-function">Loss Function</a></li>
+            <li><a href="#computing-the-gradient">Computing the Gradient</a></li>
+            <li><a href="#computation-graphs">Computation Graphs</a></li>
+            <li><a href="#backward-differentiation-on-computation-graphs">Backward Differentiation on Computation Graphs</a></li>
+            <li><a href="#more-details-on-learning">More Details on Learning</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#large-language-models">Large Language Models</a>
+      <ol>
+        <li><a href="#three-architecture-for-language-models">Three Architecture for Language Models</a></li>
+        <li><a href="#conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition</a></li>
+        <li><a href="#prompting">Prompting</a></li>
+        <li><a href="#generation-and-sampling">Generation and Sampling</a>
+          <ol>
+            <li><a href="#greedy-decoding">Greedy decoding</a></li>
+            <li><a href="#random-sampling">Random Sampling</a></li>
+            <li><a href="#temperature-sampling">Temperature Sampling</a></li>
+          </ol>
+        </li>
+        <li><a href="#training-large-language-models">Training Large Language Models</a>
+          <ol>
+            <li><a href="#self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining</a></li>
+            <li><a href="#pretraining-corpora-for-large-language-models">Pretraining Corpora for Large Language Models</a></li>
+            <li><a href="#finetuning">Finetuning</a></li>
+          </ol>
+        </li>
+        <li><a href="#evaluating-large-language-models">Evaluating Large Language Models</a>
+          <ol>
+            <li><a href="#perplexity">Perplexity</a></li>
+            <li><a href="#downstream-tasks-reasoniong-and-world-knowledge">Downstream Tasks: Reasoniong and World Knowledge</a></li>
+            <li><a href="#other-factors-for-evaluating-language-models">Other Factors for Evaluating Language Models</a></li>
+          </ol>
+        </li>
+        <li><a href="#ethical-and-safety-issues-with-language-models">Ethical and Safety Issues with Language Models</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #5DB9AE; color: #fff;">
+                学习札记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/speech-and-language-processing/">书籍阅读 | Speech and Language Processing</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-08-28</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 23 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+
+    <section class="article-content">
+    
+    
+    <h2 id="introduction">Introduction
+</h2><p>阅读<a class="link" href="https://web.stanford.edu/~jurafsky/slp3/"  target="_blank" rel="noopener"
+    >Speech and Language Processing</a>这本书的一些笔记。</p>
+<h2 id="words-and-tokens">Words and Tokens
+</h2><p>我们需要一个东西来建模语言，下面是我们的选择：</p>
+<h3 id="words">Words
+</h3><p>为什么不用词？</p>
+<ul>
+<li>有些语言没有orthographic words</li>
+<li>词的数量会随着文章增长，词汇表永远都会覆盖不足</li>
+</ul>
+<h3 id="morphemes">Morphemes
+</h3><p>语素类型</p>
+<ul>
+<li>屈折语素：inflectional morphemes</li>
+<li>派生语素：derivational morphemes</li>
+<li>附着语素：clitic</li>
+</ul>
+<p>语言类型</p>
+<ul>
+<li>Analytic</li>
+<li>polysynthetic</li>
+<li>fusional</li>
+<li>agglutinative</li>
+</ul>
+<p>为什么不用语素？</p>
+<ul>
+<li>语素很复杂，很难定义</li>
+<li>不同语言不同且难以统一</li>
+</ul>
+<h3 id="unicode">Unicode
+</h3><p>Unicode的历史</p>
+<ul>
+<li>ASCII</li>
+<li>CJKV</li>
+<li>不断更新中，越来越多，Unicode 16.0已经包含超过150000个字符</li>
+</ul>
+<h4 id="code-points">Code Points
+</h4><ul>
+<li>U+：表示接下来要用Unicode十六进制表示一个code point</li>
+<li>U+0061：0x0061一个意思，也就小写字母a。</li>
+</ul>
+<h4 id="utf-8">UTF-8
+</h4><p>目前最常用的encoding字符的方式。中文字符 “中” 的 Unicode 码点是<code>U+4E2D</code>，UTF-8 编码后为 3 个字节：<code>0xE4 0xB8 0xAD</code></p>
+<p>UTF-8是一种变长编码，兼容ASCII。</p>
+<ul>
+<li>如「世」，UTF-8 编码是<code>0xE4 B8 96</code>，其中E4的二进制为<code>11100110H</code>，开头的<code>1110H</code>表示这是一个3字节字符的第一个字节。</li>
+</ul>
+<h3 id="subword-tokenization-byte-pair-encoding">Subword Tokenization: Byte-Pair Encoding
+</h3><p>上面的三个候选都不行，word和morpheme难以规范定义，character可以通过unicode来定义，但又对于作为tokens来说太小了。</p>
+<p>为什么要tokenize输入？</p>
+<ul>
+<li>将输入转换为一组确定的、固定的单元（Token），能让不同的算法和系统在一些简单问题上达成共识。例如困惑度的计算。</li>
+<li>对可复现很重要</li>
+<li>为了消除unknown words的问题</li>
+</ul>
+<p>为了消除unknown words问题，现代tokenizers自动引入了token包含那些比words小的token，叫subword。</p>
+<p>使用<a class="link" href="https://platform.openai.com/tokenizer"  target="_blank" rel="noopener"
+    >Tokenizer - OpenAI API</a>中的<code>GPT-4o &amp;  GPT-4o mini</code>来分词下面这一大段话：</p>
+<blockquote>
+<p>For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.</p>
+</blockquote>
+<p>最终得到的是
+<img src="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp"
+	width="1600"
+	height="628"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_946399cef835fa81.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_df5a51fd17a14d78.webp"
+	data-lightbox-width="711"
+	data-lightbox-height="279"
+	
+		class="gallery-image" 
+		data-flex-grow="254"
+		data-flex-basis="611px"
+	
+>
+
+现在最流行的tokenization algorithm有两个：</p>
+<ul>
+<li>Byte-Pair Encoding(BPE)</li>
+<li>Unigram Language modeling(ULM)</li>
+</ul>
+<h4 id="bpe">BPE
+</h4><p>通过分析训练语料，自动学习出一套子词集合（词汇表），使得高频出现的字符 / 子词组合被合并为更大的子词单位。</p>
+<p>训练方法介绍。</p>
+<h4 id="bpe-encoder">BPE encoder
+</h4><h4 id="bpe-in-practice">BPE in practice
+</h4><p>通常，我们会对 UTF-8 编码文本的<strong>单个字节</strong>执行 BPE 操作。BPE 处理 “中” 时，输入并非<code>U+4E2D</code>这个码点，而是<code>E4</code>、<code>B8</code>、<code>AD</code>这三个独立字节。</p>
+<p>仅在<strong>预先切分出的单词内部</strong>执行 BPE 操作，有助于避免潜在问题。</p>
+<p>一些英语里的小发现：</p>
+<ul>
+<li>大多数单词的tokens是他们自己，包含词前空格。这样可以避免独立单词和单词内部的subword。</li>
+<li>附着语素Clitics在名字后面分开单独成token，但在常见的词语后面会是token的一部分</li>
+<li>数字通常三位一组</li>
+<li>一些词，如Anyhow和anyhow会有不同的分割方法</li>
+</ul>
+<p>这个和预处理有关系。</p>
+<p>SuperBPE会合并常规的BPE子词分词，效率更高。</p>
+<p>特别地，低资源语言的tokens更碎，就会输出边长，最终LLM的效率变低。</p>
+<h3 id="rule-based-tokenization">Rule-based tokenization
+</h3><p>Penn Treebank Tokenization Standard）：事实性规范。</p>
+<ul>
+<li>分开附着语素</li>
+<li>保留连字符连接的词</li>
+<li>分开所有的标点符号</li>
+</ul>
+<h4 id="sentence-segmentation">Sentence Segmentation
+</h4><p>sentence tokenization可以和word tokenization联合处理。</p>
+<h3 id="corpora">Corpora
+</h3><p>语料库和语言数量、使用者的特征都有关。</p>
+<p>code switching：在一次持续的交流）中，说话者或作者交替使用两种或多种 “语码”的现象。</p>
+<p>datasheet：存储一句话的特征，如时间、说话人性格、阶级&hellip;</p>
+<h3 id="regular-expressions">Regular Expressions
+</h3><p>正则表达式的具体实现。包含字符析取、计数、可选性、通配符、锚点和边界、替换和捕获组、前向断言等。</p>
+<h3 id="simple-unix-tools-for-word-tokenization">Simple Unix Tools for Word Tokenization
+</h3><p>可以在Unix、Linux系统中使用正则表达式。如<code>tr -sc 'A-Za-z' '\n' &lt; sh.txt</code>表示从 <code>sh.txt</code> 文件中提取所有英文字母，并将非字母字符替换为换行符，同时压缩连续的非字母字符为单个换行符。</p>
+<h3 id="minimum-edit-distance">Minimum Edit Distance
+</h3><p><strong>最小编辑距离</strong>：将一个字符串通过 “插入”“删除”“替换” 三种基本操作转换为另一个字符串所需的最少操作次数</p>
+<h4 id="the-minimum-edit-distance-algorithm">The Minimum Edit Distance Algorithm
+</h4><p>一个经典的动态规划问题。</p>
+<p><strong>字符对齐</strong>：通过回溯编辑距离矩阵中的 “最优路径”，反向推导出将一个字符串转换为另一个字符串的具体操作序列。也就是<strong>路径可视化</strong>。</p>
+<h3 id="exercies">Exercies
+</h3><details>
+    <summary>点击展开</summary>
+    <h5 id="21">2.1
+</h5><p>Write regular expressions for the following languages.</p>
+<ol>
+<li>The set of all alphabetic strings.</li>
+<li>The set of all lowercase alphabetic strings ending in &ldquo;b&rdquo;.</li>
+<li>The set of all strings from the alphabet {a, b} such that each &ldquo;a&rdquo; is immediately preceded by and immediately followed by a &ldquo;b&rdquo;.</li>
+</ol>
+<h5 id="22">2.2
+</h5><p>Write regular expressions for the following languages. By &ldquo;word&rdquo;, we mean an alphabetic string separated from other words by whitespace, relevant punctuation, line breaks, etc.</p>
+<ol>
+<li>The set of all strings with two consecutive repeated words (e.g., &ldquo;Humbert Humbert&rdquo; and &ldquo;the the&rdquo; but not &ldquo;the bug&rdquo; or &ldquo;the big bug&rdquo;).</li>
+<li>All strings that start at the beginning of the line with an integer and end at the end of the line with a word.</li>
+<li>All strings that have both the word &ldquo;grotto&rdquo; and the word &ldquo;raven&rdquo; in them (but not, e.g., words like &ldquo;grottos&rdquo; that merely contain &ldquo;grotto&rdquo;).</li>
+<li>Write a pattern that places the first word of an English sentence in a register. Deal with punctuation.</li>
+</ol>
+<h5 id="23">2.3
+</h5><p>Implement an ELIZA-like program, using substitutions such as those described on page 27. You might want to choose a different domain than a Rogerian psychologist, although keep in mind that you would need a domain in which your program can legitimately engage in a lot of simple repetition.</p>
+<h5 id="24">2.4
+</h5><p>Compute the edit distance (using insertion cost 1, deletion cost 1, substitution cost 1) of &ldquo;leda&rdquo; to &ldquo;deal&rdquo;. Show your work (using the edit distance grid).</p>
+<h5 id="25">2.5
+</h5><p>Figure out whether &ldquo;drive&rdquo; is closer to &ldquo;brief&rdquo; or to &ldquo;divers&rdquo; and what the edit distance is to each. You may use any version of distance that you like.</p>
+<h5 id="26">2.6
+</h5><p>Now implement a minimum edit distance algorithm and use your hand-computed results to check your code.</p>
+<h5 id="27">2.7
+</h5><p>Augment the minimum edit distance algorithm to output an alignment; you will need to store pointers and add a stage to compute the backtrace.</p>
+
+</details>
+
+<h2 id="n-gram-language-models">N-gram Language Models
+</h2><p>本章介绍最简单的语言模型：<strong>N元语法语言模型</strong>。</p>
+<h3 id="n-grams">N-Grams
+</h3><p><strong>概率链式法则</strong></p>
+<h4 id="how-to-estimate-probabilities">How to estimate probabilities
+</h4><p><strong>马尔科夫假设</strong>：假设一个单词的出现概率只和前面的一个单词有关。那么n-gram即只和前面的$n-1$个单词有关。</p>
+<p><strong>最大似然估计</strong>：已知前一个词$w_{n−1}$​时，当前词$w_n$​的概率</p>
+<p>终止符号（end-symbol）：所有可能句子的概率总和为 1，否则是特定长度的所有句子概率之和为 1。</p>
+<h4 id="dealing-with-scale-in-large-n-gram-models">Dealing with scale in large n-gram models
+</h4><p>Log probabilities</p>
+<p>N元语法的计算现在甚至能达到无限元。</p>
+<p>对N元语法模型进行修剪也是很重要的。</p>
+<h4 id="evaluating-language-models-training-and-test-sets">Evaluating Language Models: Training and Test Sets
+</h4><p><strong>内部评估</strong>和外部评估。</p>
+<p>训练集、开发集和测试集。</p>
+<h4 id="evaluating-language-models-perplexity">Evaluating Language Models: Perplexity
+</h4><p><strong>Perplexity（PPL）</strong>：困惑度越低，说明模型对文本的预测越准确（即模型越 “不困惑”）。</p>
+<ul>
+<li>具体来说，是“联合概率倒数的几何平均值”。</li>
+<li>在计算的时候常常会取对数来将求乘积变为求和，避免数值问题</li>
+</ul>
+<h5 id="perplexity-as-weighted-average-branching-factor">Perplexity as Weighted Average Branching Factor
+</h5><p>困惑度也可以理解为<strong>加权平均分支系数</strong>。其中，语言的 “分支系数”指的是 “任何一个词之后可能出现的下一个词的数量”。</p>
+<h3 id="sampling-sentences-from-a-language-model">Sampling sentences from a language model
+</h3><p>“0-1 数轴 + 区间映射”来理解采样的基本原理。</p>
+<h3 id="generalizing-vs-overfitting-the-training-set">Generalizing vs. overfitting the training set
+</h3><p>对于莎士比亚文本和华尔街日报的文本，两者差异过大以至于不能分别作为训练集和测试集。</p>
+<p>所以说要确保训练集和测试集的领域要相似。</p>
+<h3 id="smoothing-interpolation-and-backoff">Smoothing, Interpolation, and Backoff
+</h3><p>zero probability n-grams有两个问题：</p>
+<ul>
+<li>低估了词语序可能出现的可能性，导致最终的性能变差</li>
+<li>困惑度无法计算，因为无法除以0</li>
+</ul>
+<p>因此需要Smoothing或者discounting</p>
+<h4 id="laplace-smoothing">Laplace Smoothing
+</h4><p>其实也就是add one smoothing，就是对于所有的N元语法都加一。</p>
+<p>对于语言模型来说，结果并不是很好。对文本分类有效。</p>
+<h4 id="add-k-smoothing">Add-k Smoothing
+</h4><p>也就是对所有的都加K。</p>
+<p>对语言模型来说仍然效果一般。</p>
+<h4 id="language-model-interpolation">Language Model Interpolation
+</h4><p><strong>n 元语法插值法：加权融合不同阶数 n 元语法的概率</strong>，避免高阶的n元语法零概率导致的预测失效。</p>
+<p>加权的$\lambda$应该设置成多少呢？可以从预留集held-out corpus中学习。使用EM（期望最大化）算法来学习。</p>
+<h4 id="stupid-backoff">Stupid Backoff
+</h4><p><strong>回退模型</strong>：高阶n阶的模型无法使用的时候，回退到低阶模型。</p>
+<p><strong>Discount</strong>：要让回退模型（backoff model）输出合理的概率分布，我们必须对高阶 n 元语法的概率进行 “折扣处理”（discount），从而预留出部分概率余量（probability mass），供低阶 n 元语法使用。但在实际应用中，人们常使用一种更简单的 “无折扣回退算法”—— 即名为<strong>Stupid Backoff</strong>。</p>
+<h3 id="advanced-perplexitys-relation-to-entropy">Advanced: Perplexity&rsquo;s Relation to Entropy
+</h3><p><strong>熵</strong>：不确定性的度量方式。可以理解是编码某个决策或某条信息所需的最小平均比特数。越不确定，熵越大。</p>
+<p><strong>熵率</strong>：平均的不确定性。自然语言的熵率定义为 “<strong>无限长序列中，每个词的平均熵</strong>”，反映语言的长期不确定性。例如，英文的熵率约 1-2 比特 / 词，意味着平均每个词需要 1-2 比特来编码。</p>
+<p><strong>平稳性</strong>：序列概率不随着时间改变。自然语言不是，但是N元语法是平稳的。</p>
+<p><strong>遍历性</strong>：长序列中包含了所有的短序列。</p>
+<p><strong>Shannon-McMillan-Breiman theorem</strong>：如果语言满足某些正则条件（准确地说，是平稳且遍历的），<strong>序列长度趋近于无穷大时，“序列的平均对数概率的负值” ，即经验熵率会以概率1收敛敛到该过程的理论熵率</strong>。</p>
+<p><strong>交叉熵（Cross-Entropy）</strong>：我们虽然不知道数据的真实概率分布p，但是可以用模型m来近似p。（即我们虽然不知道自然语言的真实情况，但是可以用N元语法来近似。）<strong>交叉熵越小，模型越接近真实分布</strong>。</p>
+<p><strong>困惑度</strong>：<strong>困惑度是熵的指数形式</strong>。比较直观。</p>
+<h3 id="excercies">Excercies
+</h3><details>
+    <summary>点击展开</summary>
+    <h5 id="31">3.1
+</h5><p>Write out the equation for trigram probability estimation (modifying Eq. 3.11). Now write out all the non-zero trigram probabilities for the I am Sam corpus on page 40.</p>
+<h5 id="32">3.2
+</h5><p>Calculate the probability of the sentence <code>i want chinese food</code>. Give two probabilities, one using Fig. 3.2 and the ‘useful probabilities’ just below it on page 42, and another using the add-1 smoothed table in Fig. 3.7. Assume the additional add-1 smoothed probabilities $P(i|&lt;s&gt;) = 0.19$ and $P(&lt;/s&gt;|food) = 0.40$.</p>
+<h5 id="33">3.3
+</h5><p>Which of the two probabilities you computed in the previous exercise is higher, unsmoothed or smoothed? Explain why.</p>
+<h5 id="34">3.4
+</h5><p>We are given the following corpus, modified from the one in the chapter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; Sam I am &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I do not like green eggs and Sam &lt;/s&gt;
+</span></span></code></pre></div><p>Using a bigram language model with add-one smoothing, what is $P(Sam | am)$? Include $&lt;s&gt;$ and $&lt;/s&gt;$ in your counts just like any other token.</p>
+<h5 id="35">3.5
+</h5><p>Suppose we didn’t use the end-symbol $&lt;/s&gt;$. Train an unsmoothed bigram grammar on the following training corpus without using the end-symbol $&lt;/s&gt;$:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; a b  
+</span></span><span class="line"><span class="cl">&lt;s&gt; b b  
+</span></span><span class="line"><span class="cl">&lt;s&gt; b a  
+</span></span><span class="line"><span class="cl">&lt;s&gt; a a
+</span></span></code></pre></div><p>Demonstrate that your bigram model does not assign a single probability distribution across all sentence lengths by showing that the sum of the probability of the four possible 2 word sentences over the alphabet a,b is 1.0, and the sum of the probability of all possible 3 word sentences over the alphabet a,b is also 1.0.</p>
+<h5 id="36">3.6
+</h5><p>Suppose we train a trigram language model with add-one smoothing on a given corpus. The corpus contains V word types. Express a formula for estimating $P(w3|w1,w2)$, where $w3$ is a word which follows the bigram$ (w1,w2)$, in terms of various n-gram counts and V. Use the notation $c(w1,w2,w3)$ to denote the number of times that trigram $(w1,w2,w3)$ occurs in the corpus, and so on for bigrams and unigrams.</p>
+<h5 id="37">3.7
+</h5><p>We are given the following corpus, modified from the one in the chapter:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; Sam I am &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I am Sam &lt;/s&gt;  
+</span></span><span class="line"><span class="cl">&lt;s&gt; I do not like green eggs and Sam &lt;/s&gt;
+</span></span></code></pre></div><p>If we use linear interpolation smoothing between a maximum-likelihood bigram model and a maximum-likelihood unigram model with $λ₁ = 1/2$ and $λ₂ = 1/2,$ what is $P(Sam|am)$? Include $&lt;s&gt;$ and $&lt;/s&gt;$ in your counts just like any other token.</p>
+<h5 id="38">3.8
+</h5><p>Write a program to compute unsmoothed unigrams and bigrams.</p>
+<h5 id="39">3.9
+</h5><p>Run your n-gram program on two different small corpora of your choice (you might use email text or newsgroups). Now compare the statistics of the two corpora. What are the differences in the most common unigrams between the two? How about interesting differences in bigrams?</p>
+<h5 id="310">3.10
+</h5><p>Add an option to your program to generate random sentences.</p>
+<h5 id="311">3.11
+</h5><p>Add an option to your program to compute the perplexity of a test set.</p>
+<h5 id="312">3.12
+</h5><p>You are given a training set of 100 numbers that consists of 91 zeros and 1 each of the other digits 1-9. Now we see the following test set: 0 0 0 0 0 3 0 0 0 0. What is the unigram perplexity?</p>
+
+</details>
+
+<h2 id="logistic-regression-and-text-classification">Logistic Regression and Text Classification
+</h2><p>经典任务：</p>
+<ul>
+<li>sentiment analysis</li>
+<li>spam detection</li>
+<li>language id</li>
+<li>authorship attribution</li>
+</ul>
+<h3 id="machine-learning-and-classification">Machine Learning and Classification
+</h3><ul>
+<li>人工规则很脆弱，数据一变化就无法使用</li>
+<li>LLM的弱点：幻觉、无法解释。</li>
+</ul>
+<p>因此最常见的分类方法是<strong>有监督机器学习</strong>。</p>
+<ul>
+<li>概率分类器：输出<strong>样本属于每个类别的概率</strong>而不是类别标签，保证在合并的系统里不过早地输出结果。</li>
+</ul>
+<p>分类器的核心组件：</p>
+<ul>
+<li>A feature representation of the input</li>
+<li>A classificaition function that computes $\hat{y}$</li>
+<li>An objective funcion that we want to potimize for learning
+<ul>
+<li>loss function</li>
+</ul>
+</li>
+<li>An algorithm for optimizing the objective function
+<ul>
+<li>stochastic gradient descent algorithm</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-sigmoid-function">The Sigmoid Function
+</h3><p>二分类逻辑回归的目标是：计算样本属于正类的概率。</p>
+<ul>
+<li>第一步：计算线性得分$z=w⋅x+b$，值域为$[-\infty, +\infty ]$</li>
+<li>第二步：<strong>通过 Sigmoid 函数转换为概率</strong>：  将线性得分 z 映射到 $[0,1] $区间</li>
+</ul>
+<p>$z$常常被称作Logit（对数几率）。Logit就是Sigmoid的反函数。可以提醒我们后续要加上Sigmoid进行转换，因为$z$并不是一个真实的值。</p>
+<p>特别地，<strong>“正类的对数几率” 与特征呈线性关系</strong>。也就是当其他条件不变时，特征$x_1$每增加1，Logit就增加$w_1$。这非常有可解释性。</p>
+<h3 id="classification-with-logistic-regression">Classification with Logistic Regression
+</h3><p>当概率大于0.5的时候，就把它分类到正类里。</p>
+<h4 id="sentiment-classification">Sentiment Classification
+</h4><p>举了一个例子。</p>
+<h4 id="other-classification-tasks-and-features">Other Classification Tasks and Features
+</h4><p>Period disambiguation：确定句号是EOS还是其他。</p>
+<p><strong>Designing v.s. Learning features：</strong></p>
+<ul>
+<li>刚刚的例子，特征都是人工设计的。此外还有：
+<ul>
+<li>feaure interactions：基础特征组合成的复杂特征</li>
+<li>feature templates：抽象的特征规范来定义特征。这里的特征空间是稀疏的，此外特征一般是字符串描述的Hash值。</li>
+</ul>
+</li>
+<li>人工设计太复杂了。因此现代的NLP系统都是用Representation Learning来解决。</li>
+</ul>
+<p>standardize和normalize。</p>
+<h4 id="processing-many-examples-at-once">Processing many examples at once
+</h4><p>如果有许多的值要计算，可以使用matrix arithmetic来一次计算完。</p>
+<h3 id="multinomial-logistic-regression">Multinomial Logistic Regression
+</h3><p>多项逻辑回归也称softmax regression，老的教材上也叫maxent clasifier。</p>
+<p>在多项逻辑回归中，直接输出结果而不是一个概率值。</p>
+<ul>
+<li>hard classification</li>
+</ul>
+<h4 id="softmax">Softmax
+</h4><p>Sigmoid函数在多分类情况下的推广。</p>
+<h4 id="applying-softmax-in-logistic-regression">Applying Softmax in Logistic Regression
+</h4><p>可以使用矩阵运算方式加快计算。</p>
+$$\hat{y}=softmax(Wx+b)$$<blockquote>
+<p><a class="link" href="https://arxiv.org/abs/2506.11035"  target="_blank" rel="noopener"
+    >Doumbouya et al., 2025</a>是这么认为的：逻辑回归将矩阵的每一行 $w_k$视为<strong>第 $k$ 类的原型（prototype）</strong>，由于两个向量的相似度越高，它们的点积（dot product）值就越大，因此点积可作为衡量向量相似度的函数。模型最终将输入分配给相似度最高的类别。</p>
+</blockquote>
+<h4 id="features-in-multinomial-logistic-regression">Features in Multinomial Logistic Regression
+</h4><p>特征权重同时依赖于输入文本和输出类别。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp"
+	width="1600"
+	height="1800"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_610f3f19343d613c.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_1dd0b1b2c431bbaf.webp"
+	data-lightbox-width="744"
+	data-lightbox-height="837"
+	
+		class="gallery-image" 
+		data-flex-grow="88"
+		data-flex-basis="213px"
+	
+>
+</p>
+<h3 id="learning-in-logistic-regression">Learning in Logistic Regression
+</h3><p>逻辑回归是如何实现学习的？</p>
+<ul>
+<li>使system output（classifier output）和gold output（correct output）越接近越好。两者之间的距离可以称作<strong>损失函数</strong>或者<strong>代价函数</strong>。下面介绍交叉熵。</li>
+<li>需要一个算法来最小化损失函数。下面介绍随机梯度下降算法。</li>
+</ul>
+<h3 id="the-cross-entropy-loss-function">The Cross-entropy Loss Function
+</h3><p>条件最大似然估计：在给定$x$下，选择参数$w$和$b$使得$y$的对数概率最大。</p>
+<p>这里损失函数是<strong>负对数似然损失（negative log likelihood loss）</strong>，通常也被称为<strong>交叉熵损失（cross-entropy loss）</strong>。</p>
+<p>介绍了一下为什么<strong>最小化交叉熵损失可以使得真实分布和预测分布更加接近</strong>。</p>
+<h3 id="gradient-descent">Gradient Descent
+</h3><p>梯度下降算法的原理。介绍了梯度、学习率。</p>
+<h4 id="the-gradient-for-logistic-regression">The Gradient for Logistic Regression
+</h4><p>逻辑回归的梯度就是
+</p>
+$$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$<p>
+也就是预测值$\hat{y}$和实际值$y$之间的差乘输入值$x_j$。</p>
+<h4 id="the-stochastic-gradient-descent-algorithm">The Stochastic Gradient Descent Algorithm
+</h4><p>随机梯度下降算法是一种在线算法，可以边接收数据边学习。</p>
+<p>SGD每次用<strong>单个随机样本</strong>计算梯度。</p>
+<h4 id="mini-batch-training">Mini-batch Training
+</h4><p>batch training和mini-batch training的区别。</p>
+<ul>
+<li>batch gradient：所有的随机样本计算梯度。</li>
+<li>mini-batch gradient：小批量梯度下降算法。每次选择<strong>一小批随机样本</strong>计算梯度。</li>
+</ul>
+<h3 id="learning-in-multinomial-logistic-regression">Learning in Multinomial Logistic Regression
+</h3><p>多项式逻辑回归其实和二项式逻辑回归差不多。</p>
+<ul>
+<li>本质是使用独热标签+概率向量的形式进行计算。</li>
+<li>核心是 “对正确类别的预测概率取负对数”，得到交叉熵损失，其越小则预测概率越高。</li>
+</ul>
+<h3 id="evaluation-precision-recall-f-measure">Evaluation: Precision, Recall, F-measure
+</h3><ul>
+<li>confusion matrix</li>
+<li>accuracy</li>
+<li>precision</li>
+<li>recall</li>
+<li>F-measure
+<ul>
+<li>F1</li>
+<li>a weighted harmonic mean of precision and recall.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp"
+	width="1600"
+	height="679"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_4146c314d88ab94b.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_e4aefe55a7890447.webp"
+	data-lightbox-width="928"
+	data-lightbox-height="394"
+	
+		class="gallery-image" 
+		data-flex-grow="235"
+		data-flex-basis="565px"
+	
+>
+</p>
+<p>microaveraging v.s. macroaveraging</p>
+<ul>
+<li>微观平均：更关注 “整体样本的预测准确性”，<strong>少数类错判代价低于多数类</strong></li>
+<li>宏观平均：更关注所有的类的错判代价的公平，<strong>少数类和多数类的代价相等</strong>
+<img src="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp"
+	width="1600"
+	height="691"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_784d22778c76a9a9.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_fcaaa7540bbd00ec.webp"
+	data-lightbox-width="1084"
+	data-lightbox-height="468"
+	
+		class="gallery-image" 
+		data-flex-grow="231"
+		data-flex-basis="555px"
+	
+>
+</li>
+</ul>
+<h3 id="test-sets-and-cross-validation">Test sets and Cross-validation
+</h3><p>Cross-validation：解决测试集不足的问题。</p>
+<ul>
+<li>固定训练集和测试集。</li>
+<li>训练集中进行分割。
+<img src="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp"
+	width="1600"
+	height="826"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_b858971ac03b9413.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_897698156ca0162a.webp"
+	data-lightbox-width="895"
+	data-lightbox-height="462"
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="464px"
+	
+>
+</li>
+</ul>
+<h3 id="statistical-significance-testing">Statistical Significance Testing
+</h3><p><strong>统计显著性检验</strong></p>
+<ul>
+<li>不只是简单地检查A在测试集上的结果$M(A,x)$好于B在测试集上的结果$M(B,x)$。如果差很小的话，其实不一定能证明A的结果比B小，不具有统计学上的显著性。</li>
+<li>设计一个效应量$\delta (x)=M(A,x)-M(B,x)$，原假设是$H_0 :\delta (x)\leq 0$。这样计算p值是否小于阈值可以得出是否显著性地A比B要好。</li>
+</ul>
+<p>在NLP中，一般不用ANOVAs或者t检验，而是使用非参数检验：</p>
+<ul>
+<li><strong>近似随机化检验</strong>（Approximate Randomization Test）</li>
+<li><strong>bootstrap 检验</strong>（Bootstrap Test）</li>
+</ul>
+<blockquote>
+<p>方差分析和t检验都需要有假设：方差齐性或数据服从正态分布。所以只能用非参数检验。</p>
+</blockquote>
+<h4 id="the-paired-bootstrap-test">The Paired Bootstrap Test
+</h4><p>Bootstrap 检验的核心是 “重抽样”—— 从原始测试集<code>x</code>中<strong>有放回地随机抽取</strong>生成新的测试集。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp"
+	width="1600"
+	height="715"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_db812f89689a502a.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_a2cc687716d8b236.webp"
+	data-lightbox-width="1097"
+	data-lightbox-height="490"
+	
+		class="gallery-image" 
+		data-flex-grow="223"
+		data-flex-basis="537px"
+	
+>
+
+在新的测试集上，P 值等于 “重抽样测试集中，$d(x^{(i)})≥2d(x)$的数量占总重抽样次数b的比例”。<strong>判断此时的p值是否低于阈值就可以判断出是否是数据集本身的偏差导致了A比B要结果好。</strong></p>
+<blockquote>
+<p>LLM的解释：Bootstrap 重抽样，就是在 “不改变天平初始倾斜（测试集偏向）” 的前提下，反复放 “随机重量（重抽样的样本）”，看左边会比右边多低多少格 —— 如果只是天平本身歪了，随机放重量时，左边最多低 2 格左右（常规波动）；如果左边真的更重，就可能低 4 格以上（极端情况）。这种极端情况多了，超过了阈值，我们就更相信是天平本身的问题。</p>
+</blockquote>
+<h3 id="avoiding-harms-in-classification">Avoiding Harms in Classification
+</h3><p>representational harms：由于对特定社会群体的贬低或刻板印象导致的伤害。</p>
+<p>toxic detection</p>
+<p>model card</p>
+<h3 id="interpereting-models">Interpereting Models
+</h3><p>模型的可解释性也是很重要的。逻辑回归就是比较好的可解释的模型。</p>
+<h3 id="advanced-regularization">Advanced: Regularization
+</h3><p>regularization来解决过拟合的问题，提高模型泛化能力。</p>
+<ul>
+<li>L2 regulaization</li>
+<li>L1 regulaization</li>
+<li>lasso</li>
+<li>ridge</li>
+</ul>
+<h2 id="embeddings">Embeddings
+</h2><p>分布假说：相似的上下文总会表现出相似的意思。</p>
+<p>Embeddings分类</p>
+<ul>
+<li>static embeddings</li>
+<li>contextualized embeddings</li>
+</ul>
+<p>学习embeddings和它的意义的理论称为向量语义。</p>
+<ul>
+<li>自监督模型</li>
+<li>representation learning的一种</li>
+<li>无需通过特征工程的人工制造representations</li>
+</ul>
+<h3 id="lexical-semantics">Lexical Semantics
+</h3><ul>
+<li>lemma：citation form，词元，引用形式，一个词的基本形式。</li>
+<li>wordform：词形，一个词的具体使用形态。</li>
+<li>word sense：词义。</li>
+<li>synonymy：同义关系。</li>
+<li>word similarity：词语相似度。
+<ul>
+<li><a class="link" href="https://arxiv.org/abs/1408.3456"  target="_blank" rel="noopener"
+    >SimLex-999</a>中就让人们给一个词和另一个词的相似度打分。</li>
+</ul>
+</li>
+<li>word relatedness/association：词汇关联性，所有能让词汇有关联感的关系。
+<ul>
+<li>semantic fields</li>
+<li>topic models：特别地有Latent Dirichlet Allocation，LDA</li>
+<li>最常见的关系
+<ul>
+<li>hypernymy or IS-A</li>
+<li>antonymy</li>
+<li>mernoymy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>connotation</li>
+</ul>
+<h3 id="vector-semantics-the-intuition">Vector Semantics: The Intuition
+</h3><p>一个单词可以表示为<strong>多维语义空间中的一个点</strong>。而这个多维语义空间是从单词邻居的分布规律中推导而来的。</p>
+<ul>
+<li>tf-idf</li>
+<li>word2vec</li>
+<li>cosine</li>
+</ul>
+<h4 id="simple-count-based-embeddings">Simple Count-based Embeddings
+</h4><ul>
+<li>词汇表一般在1-5万之间</li>
+<li>稀疏向量表示：多数数值为0，目前有有效算法来有效存储和计算</li>
+<li>权重函数
+<ul>
+<li>计数的时候可以用权重函数</li>
+<li>目前最流行的方法是tf-idf</li>
+<li>还有一些历史权重方式</li>
+</ul>
+</li>
+</ul>
+<h4 id="cosine-for-measuring-similarity">Cosine for Measuring Similarity
+</h4><p>使用余弦计算相似度。适用于稀疏长向量。</p>
+<h4 id="word2vec">Word2vec
+</h4><p>embeddings要区别于原来的稀疏长向量，通常指短而稠密的向量。</p>
+<ul>
+<li>学习的权重变少，学习更快</li>
+<li>有助于泛化和避免过拟合</li>
+<li>能够更好捕捉同义性</li>
+</ul>
+<p>skip-gram with negative sampling（SGNS）是word2vec两种方法的一种。word2vec是一种<strong>静态embedding</strong>方法，区别于动态embedding，如BERT表示。</p>
+<p>这里有一个极具创新性的想法 ——<strong>不直接计算 “词与词的关联”（共现矩阵），而是通过一个 “预测任务” 让模型自动学习这种关联，再将学习成果（权重）作为词嵌入</strong>。</p>
+<ul>
+<li>这被称为<strong>自监督方法</strong></li>
+</ul>
+<p>Skip-gram 模型的核心思路如下：</p>
+<ol>
+<li>将目标词与其相邻的语境词视为<strong>正例</strong>。</li>
+<li>从词汇表中随机选取其他词语，作为<strong>负例</strong>。</li>
+<li>利用<strong>逻辑回归训练一个分类器，使其能够区分上述两种情况</strong>（即区分 “目标词与语境词是相邻关系” 和 “目标词与随机词无相邻关系”）。</li>
+<li>将训练过程中学到的权重作为embedding。</li>
+</ol>
+<h5 id="the-classifier">The Classifier
+</h5><p>Skip-gram目标是训练一个分类器，计算这个地方填这个词的概率。</p>
+<ul>
+<li><strong>核心思路</strong>：一个词是否可能出现在目标词附近，取决于它的嵌入向量与目标词的嵌入向量是否相似。</li>
+<li><strong>相似度计算</strong>：点积</li>
+<li>点积结果并非概率值，还需要经过Sigmoid函数运算‘</li>
+</ul>
+<p>Skip-gram模型其实是存储了每个单词的两个embeddings，一个作为目标词，一个作为上下文。分别从target matrix W和context matrix C矩阵中学习。</p>
+<h4 id="learning-skip-gram-embeddings">Learning Skip-gram Embeddings
+</h4><p><strong>positive examples</strong>：上下文滑动窗口</p>
+<p><strong>negative examples</strong>：词汇表中随机抽取，一般是positive examples的k倍，由目标词$w$和噪声词组成。</p>
+<p>在抽样的时候，会设置一个权重系数$\alpha =0.75$来调整概率$P(w)$避免总是选择高频词。</p>
+<p>学习目标：</p>
+<ul>
+<li>最大化positive examples中学习的相似度</li>
+<li>最小化negative examples中的相似度</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp"
+	width="1600"
+	height="1015"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_eba54474b05b9ddc.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_5fe46a8cf6e6fe78.webp"
+	data-lightbox-width="880"
+	data-lightbox-height="558"
+	
+		class="gallery-image" 
+		data-flex-grow="157"
+		data-flex-basis="378px"
+	
+>
+
+如图，目标是使得apricot和jam的点积更大，和matrix、Tolstoy的点积更小。</p>
+<p>在学习完了之后，一般只使用W来表示。</p>
+<h4 id="other-kinds-of-static-embeddings">Other kinds of static embeddings
+</h4><p>fasttext</p>
+<ul>
+<li>解决了word2vec的未知词问题</li>
+<li>subword models</li>
+</ul>
+<p>GloVe</p>
+<ul>
+<li>Global Vectors</li>
+<li>基于词词共现矩阵的概率</li>
+</ul>
+<p>word2vec可以看成<strong>间接优化一个 “带PPMI（Positive Pointwise Mutual Information）权重的共现矩阵” 的函数</strong>。</p>
+<blockquote>
+<p>我的一些想法：GNN是否也可以做类似的工作？GNN目前的方法就是直接处理图结构，进行局部图结构学习。不专门训练一个模型进行预测，而是把这个训练的模型的参数直接作为一个向量使用，反而能够更好地捕捉到隐含关系。</p>
+<p>这种想法是否可以将LLM和GNN更好地连接起来？</p>
+</blockquote>
+<h3 id="visualizing-embeddings">Visualizing Embeddings
+</h3><ul>
+<li>直接列出最相似的单词</li>
+<li>聚类算法</li>
+<li>t-SNE：让低维空间中 “点与点的相似概率”，尽量和高维空间中 “点与点的相似概率” 一致</li>
+</ul>
+<h3 id="semantic-properites-of-embeddings">Semantic Properites of Embeddings
+</h3><p>关联和相似的区别：越短的上下文得到的向量，相似越好找，关联越难；越长正好相反。</p>
+<ul>
+<li>一阶共现：组合关系，一起组合出现，如write和poem</li>
+<li>二阶共享：聚合关系，直接相关，如write和say</li>
+</ul>
+<p>类比关系：平行四边形模型
+<img src="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp"
+	width="1600"
+	height="662"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_9faec94f20a5ecc6.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_e9735512719a056b.webp"
+	data-lightbox-width="1134"
+	data-lightbox-height="469"
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="580px"
+	
+>
+
+问题是只能用在明确的关系、短的距离和频繁的单词上。</p>
+<h4 id="embeddings-and-historical-semantics">Embeddings and Historical Semantics
+</h4><p>嵌入的应用。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp"
+	width="1600"
+	height="963"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_97a27732d3e44539.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_3d449afd150e886.webp"
+	data-lightbox-width="839"
+	data-lightbox-height="505"
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="398px"
+	
+>
+</p>
+<p>很有意思。</p>
+<ul>
+<li>gay：愉悦的-&gt;明亮的-&gt;男同性恋</li>
+<li>broadcast：散播-&gt;报纸-&gt;BBC</li>
+<li>awful：庄严的-&gt;可怕的</li>
+</ul>
+<h3 id="bias-and-embeddings">Bias and Embeddings
+</h3><p>allocational harm</p>
+<p>embedding不仅反映输入，还放大偏见。</p>
+<h3 id="evaluating-vector-models">Evaluating Vector Models
+</h3><p>相似度度量：</p>
+<ul>
+<li>不含上下文
+<ul>
+<li>WordSim-353</li>
+<li>SimLex-999</li>
+<li>TOEFL dataset</li>
+</ul>
+</li>
+<li>含上下文
+<ul>
+<li>SCWS</li>
+<li>WiC</li>
+<li>semantic textual similarity task</li>
+</ul>
+</li>
+</ul>
+<p>类比度量：</p>
+<ul>
+<li>SemEval-2012 Task 2 dataset</li>
+</ul>
+<p>所有的Embedding算法都会存在固有的变异性。建议使用bootstrap采样后的文档中训练多个embeddings并平均。</p>
+<h2 id="neural-networks">Neural Networks
+</h2><p>McCulloch-Pitts neuron</p>
+<p>feedforward</p>
+<p>deep learning</p>
+<h3 id="units">Units
+</h3><p>bias term</p>
+<p>activation：使用non-linear functions，如sigmoid、tanh、ReLU等</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp"
+	width="1600"
+	height="811"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_c57c1cc1f981cdb7.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_6ff4dd718b3c425.webp"
+	data-lightbox-width="833"
+	data-lightbox-height="422"
+	
+		class="gallery-image" 
+		data-flex-grow="197"
+		data-flex-basis="473px"
+	
+>
+</p>
+<ul>
+<li>sigmoid和tanh的问题：特别容易出现饱和的现象，如当特别靠近1的时候，此时的导数接近于0，输入的微小改变将无法引起输出的任何变化。这种现象称为<strong>梯度消失</strong>。</li>
+</ul>
+<h3 id="the-xor-problem">The XOR Problem
+</h3><p>Minsky and Papert：一层神经元无法解决异或问题。如感知机。</p>
+<h4 id="the-solution-neural-networks">The Solution: Neural Networks
+</h4><p>包含隐藏层的多层感知机MLP解决了这个问题。</p>
+<p>下面这个图，不管对于原来的[0,1]还是[1,0]都会将他们在隐含层里转化为[1,0]。而原来的[0,0]和[1,1]则变为[2,1]，此时便线性可分。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp"
+	width="1600"
+	height="708"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_e9c1cd3d643b5afc.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_ad14f1dc77759379.webp"
+	data-lightbox-width="762"
+	data-lightbox-height="337"
+	
+		class="gallery-image" 
+		data-flex-grow="226"
+		data-flex-basis="542px"
+	
+>
+</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp"
+	width="1600"
+	height="1040"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_285a2b0830d45ce5.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_632856ae659452a7.webp"
+	data-lightbox-width="686"
+	data-lightbox-height="446"
+	
+		class="gallery-image" 
+		data-flex-grow="153"
+		data-flex-basis="369px"
+	
+>
+</p>
+<h3 id="feedforward-neural-networks">Feedforward Neural Networks
+</h3><p>与RNN对应，前馈神经网络（FNN）不带有循环。</p>
+<ul>
+<li>由于历史原因，FNN也称为多层感知机，MLPs，事实上现在的多层网络中已经不是感知机了。</li>
+<li>感知机使用阶跃函数，现在的神经网络用的是多种非线性的单元如ReLUs或者Sigmoid等</li>
+</ul>
+<p>前馈神经网络的标准结构是全连接的。
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp"
+	width="1600"
+	height="945"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_4980cca8b3c86ce8.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_5a64541272f5b083.webp"
+	data-lightbox-width="726"
+	data-lightbox-height="429"
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="406px"
+	
+>
+
+在这里，W作为输入层到隐含层的权重矩阵，U则是隐含层到输出层的权重矩阵。
+</p>
+$$h=\sigma(Wx+b)$$<p>
+</p>
+$$z=Uh$$<p>
+在得到输出结果$z$之后，由于$z$是一个实数值向量（其实就是logits），而分类需要的是概率分布向量，所以要对其进行归一化（normalizing）。这里使用的是softmax函数。
+</p>
+$$y = \text{softmax}(z)$$<p>神经网络和多项逻辑回归的区别：</p>
+<ul>
+<li>有许多层</li>
+<li>中间层的激活函数不只使用sigmoid</li>
+<li>特征可以不只是由人工的特征模板设计，而可以由网络自身得到</li>
+</ul>
+<p>逻辑回归可以理解成一层的神经网络。</p>
+<h4 id="more-details-on-feedforward-networks">More Details on Feedforward Networks
+</h4><p>为什么激活函数要非线性</p>
+<p>替换偏置项：使用dummy node来代替原来的偏置项。也就是下图中把b换成一个新的固定为1的$x_0$。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp"
+	width="1600"
+	height="860"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_d1e8a3ff26979ded.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_a38485de2d8e5134.webp"
+	data-lightbox-width="692"
+	data-lightbox-height="372"
+	
+		class="gallery-image" 
+		data-flex-grow="186"
+		data-flex-basis="446px"
+	
+>
+</p>
+<h3 id="feedforward-networks-for-nlp-classification">Feedforward Networks for NLP: Classification
+</h3><p>嵌入矩阵、表示池化、表示学习先不讲，先学一下用前馈神经网络解决分类问题。</p>
+<h4 id="neural-net-classifiers-with-hand-built-features">Neural Net Classifiers with Hand-built Features
+</h4><p>人工设计的特征，除了把MLP换成FNN之外没变化。
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp"
+	width="1600"
+	height="928"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_7961a9b30134eb1a.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_c2259a2fad79e98e.webp"
+	data-lightbox-width="688"
+	data-lightbox-height="399"
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+>
+</p>
+<h4 id="vectorizing-for-parallelizing-inference">Vectorizing for Parallelizing Inference
+</h4><p>单个样本特征维度是d，有m个样本，就可以将输入写成一个矩阵X为m×d维。</p>
+<p>其他的偏置项等也可以写成矩阵的形式，有助于最后的运算。此时有
+</p>
+$$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
+<p>这里的X中行向量表示一个样本的完整特征。有的时候会写成$WX+b$，有的时候是$XW+b$。注意X的形状有所不同。</p>
+</blockquote>
+<h3 id="embeddings-as-the-input-to-neural-net-classifiers">Embeddings as the Input to Neural Net Classifiers
+</h3><p>static embeddings代替hand-designed features。</p>
+<ul>
+<li>存储static embeddings的词典称为embedding matrix <strong>E</strong></li>
+</ul>
+<p>one-hot vector：从embedding matrix选取token embedding的方法
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp"
+	width="1600"
+	height="500"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_c4585f16221f1c60.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_4e3493b107c638aa.webp"
+	data-lightbox-width="688"
+	data-lightbox-height="215"
+	
+		class="gallery-image" 
+		data-flex-grow="320"
+		data-flex-basis="768px"
+	
+>
+</p>
+<p>分类器：</p>
+<ul>
+<li>concatenation：适合对token顺序和细节敏感的任务，如语言建模</li>
+<li>pooling：适合对整体语义敏感的任务，如情感分析
+<ul>
+<li>mean-pooling</li>
+<li>max-pooling</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp"
+	width="1600"
+	height="1412"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_ad976b9addff4fc2.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp 1600w"
+	loading="lazy"
+	
+		alt="前馈神经网络用于情感分析，带有池化层的结构"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_cc39dde9d901a3c2.webp"
+	data-lightbox-width="807"
+	data-lightbox-height="712"
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="272px"
+	
+>
+</p>
+<p>神经语言模型和N元语法模型的区别：</p>
+<ul>
+<li>可以处理更多的上下文，更加泛化，预测更准确；速度更慢，训练更麻烦</li>
+<li>使用embeddings表示词而不是word identity</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp"
+	width="1600"
+	height="1439"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_e93eb908cf3ef3ea.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp 1600w"
+	loading="lazy"
+	
+		alt="embedding layer e这里是拼接起来的"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_6223896f5274673a.webp"
+	data-lightbox-width="717"
+	data-lightbox-height="645"
+	
+		class="gallery-image" 
+		data-flex-grow="111"
+		data-flex-basis="266px"
+	
+>
+</p>
+<h3 id="training-neural-nets">Training Neural Nets
+</h3><p>损失函数、交叉熵</p>
+<p>误差反向传播/反向微分</p>
+<h4 id="loss-function">Loss Function
+</h4><p>交叉熵损失函数：负对数似然损失。用于<strong>输出为 “类别概率” 的任务</strong>。</p>
+<h4 id="computing-the-gradient">Computing the Gradient
+</h4><p>一层的时候可以用损失的导数，但是多层的时候需要用反向传播算法。</p>
+<h4 id="computation-graphs">Computation Graphs
+</h4><p>介绍了什么是计算图。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp"
+	width="1600"
+	height="604"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_6c9564e49156ecdd.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_1d7f6e5a13224d7b.webp"
+	data-lightbox-width="697"
+	data-lightbox-height="263"
+	
+		class="gallery-image" 
+		data-flex-grow="265"
+		data-flex-basis="636px"
+	
+>
+</p>
+<h4 id="backward-differentiation-on-computation-graphs">Backward Differentiation on Computation Graphs
+</h4><p><strong>反向传播</strong>：用链式法则一次性计算出所有参数的梯度。
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp"
+	width="1600"
+	height="834"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_8bc192f1e905f84d.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_cd927dc43688540a.webp"
+	data-lightbox-width="829"
+	data-lightbox-height="432"
+	
+		class="gallery-image" 
+		data-flex-grow="191"
+		data-flex-basis="460px"
+	
+>
+
+先正向传播一次，然后反向传播计算。</p>
+<ul>
+<li>正向传播是为了得到损失值</li>
+<li>反向传播是为了得到梯度，从而进行参数优化</li>
+</ul>
+<p>当然在真正的神经网络中，计算会更加复杂。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp"
+	width="1600"
+	height="993"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_ba9bc1dcb294c575.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_48a0102faa5415c5.webp"
+	data-lightbox-width="851"
+	data-lightbox-height="528"
+	
+		class="gallery-image" 
+		data-flex-grow="161"
+		data-flex-basis="386px"
+	
+>
+
+但是方法万变不离其宗。</p>
+<h4 id="more-details-on-learning">More Details on Learning
+</h4><p>神经网络优化问题是一个非凸优化问题。目前有了很多好的正则化方法：</p>
+<ul>
+<li>初始值不设为0，而是随机的一些小的数</li>
+<li>dropout</li>
+<li>超参数：Adam等</li>
+</ul>
+<p>GPUs等计算加速</p>
+<h2 id="large-language-models">Large Language Models
+</h2><p>ELIZA</p>
+<p>Distributional hypothesis</p>
+<p>Pretraining</p>
+<p>语言模型：依据前文预测下一个词的分布</p>
+<p>发展：</p>
+<ul>
+<li>N元语法</li>
+<li>LSA/LSI，隐含语义分析，开始用向量表示词</li>
+<li>神经网络语言模型neural language model</li>
+<li>RNN语言模型</li>
+<li>word2vec</li>
+<li>预训练技术</li>
+<li>Transformer提出</li>
+<li>掩码语言模型</li>
+<li>自回归语言模型</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp"
+	width="1600"
+	height="719"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_6efdeefde251b912.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_90777be9496bbda5.webp"
+	data-lightbox-width="817"
+	data-lightbox-height="367"
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="534px"
+	
+>
+</p>
+<p>如果可以预测下一个词的概率分布，那么就可以从概率分布中进行采样，从而生成下一个词。这样就从预测模型变成了生成模型。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp"
+	width="1600"
+	height="1102"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_b69ef0442510f542.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_8f2e67b3ba7a9e9a.webp"
+	data-lightbox-width="800"
+	data-lightbox-height="551"
+	
+		class="gallery-image" 
+		data-flex-grow="145"
+		data-flex-basis="348px"
+	
+>
+</p>
+<ul>
+<li>因果语言模型/自回归语言模型：从左到右依次生成</li>
+<li>掩码语言模型：BERT等，可以同时利用左右两侧的信息</li>
+</ul>
+<p>生成式AI</p>
+<h3 id="three-architecture-for-language-models">Three Architecture for Language Models
+</h3><p>三种结构：</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp"
+	width="1600"
+	height="728"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_42a47a0a5dccd269.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_c83a9b19250c8acd.webp"
+	data-lightbox-width="842"
+	data-lightbox-height="383"
+	
+		class="gallery-image" 
+		data-flex-grow="219"
+		data-flex-basis="527px"
+	
+>
+</p>
+<ul>
+<li>
+<p>decoder：上文中的架构。输入为一系列的token，<strong>依次迭代</strong>生成输出的token。用于自回归语言模型。</p>
+<ul>
+<li>生成文本等，如GPT</li>
+</ul>
+</li>
+<li>
+<p>encoder：用于掩码语言模型。输入为文本，输出为标签。</p>
+<ul>
+<li>分类文本等，如BERT</li>
+</ul>
+</li>
+<li>
+<p>encoder-decoder：输入为一串token，输出也是一串token。</p>
+<ul>
+<li>
+<p>相比decoder来说，和输入输出token的关系更不紧密，这类模型用于在不同类型的标记之间进行映射</p>
+</li>
+<li>
+<p>机器翻译等</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>他们都是基于神经网络构建的。</p>
+<h3 id="conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition
+</h3><p>不管什么任务，都可以简化为给定prompt的下一个词的预测任务。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp"
+	width="1600"
+	height="681"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_c6a83639aab09a66.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_777816ae88d62e14.webp"
+	data-lightbox-width="813"
+	data-lightbox-height="346"
+	
+		class="gallery-image" 
+		data-flex-grow="234"
+		data-flex-basis="563px"
+	
+>
+</p>
+<h3 id="prompting">Prompting
+</h3><p>指令微调</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp"
+	width="1600"
+	height="758"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6de0a6c03894efab.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_ad49807d54224a1f.webp"
+	data-lightbox-width="815"
+	data-lightbox-height="386"
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="506px"
+	
+>
+</p>
+<p>prompt</p>
+<ul>
+<li>Demonstrations</li>
+<li>Few-shot prompting</li>
+<li>Zero-shot prompting</li>
+</ul>
+<blockquote>
+<p>这种Demonstrations可以手动筛选，也可以由优化器如DSPy来自动选择。此外，Demonstrations似乎并不是一定要给正确的问题和答案，错误的也行，主要作用是格式。</p>
+</blockquote>
+<p>prompt：可以看做一个学习信号。<strong>提示词不会更新模型的权重，其改变的仅仅是模型的上下文信息以及网络中的激活状态。</strong></p>
+<ul>
+<li>in-context learning：参数没有改变的学习</li>
+<li>System prompt：影响全局的一个文本prompt，被添加到所有用户prompt或查询的前面</li>
+</ul>
+<h3 id="generation-and-sampling">Generation and Sampling
+</h3><p>语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp"
+	width="1600"
+	height="648"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_92f50f2f3cb2a0b7.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_de4f0bd4692fe7b9.webp"
+	data-lightbox-width="812"
+	data-lightbox-height="329"
+	
+		class="gallery-image" 
+		data-flex-grow="246"
+		data-flex-basis="592px"
+	
+>
+</p>
+<p>decoding：基于概率选择token生成的过程常称为decoding</p>
+<p>自回归生成
+D</p>
+<h4 id="greedy-decoding">Greedy decoding
+</h4><p>贪心解码：选择概率最高的那个token生成（argmax）</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp"
+	width="1600"
+	height="644"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_550cc608dfd97892.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_bc5db4c8e3696391.webp"
+	data-lightbox-width="830"
+	data-lightbox-height="334"
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="596px"
+	
+>
+</p>
+<p>效果不好——输入文本如果相同，结果是固定的。</p>
+<p><strong>束搜索</strong></p>
+<h4 id="random-sampling">Random Sampling
+</h4><p>按照分布采样，直到采样到EOS。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp"
+	width="1600"
+	height="643"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_724cbb90e108eeb4.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_33a69c31fecdb33b.webp"
+	data-lightbox-width="811"
+	data-lightbox-height="326"
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="597px"
+	
+>
+</p>
+<p>效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪</p>
+<h4 id="temperature-sampling">Temperature Sampling
+</h4><p>logits转化为probability的时候用带有temperature的softmax计算。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp"
+	width="1600"
+	height="648"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_b13ec6c5d993b012.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_28cbe33328e711fb.webp"
+	data-lightbox-width="958"
+	data-lightbox-height="388"
+	
+		class="gallery-image" 
+		data-flex-grow="246"
+		data-flex-basis="592px"
+	
+>
+</p>
+<p>当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp"
+	width="1600"
+	height="1208"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_54a6db0c6947b34.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_17444b5eb1063b99.webp"
+	data-lightbox-width="799"
+	data-lightbox-height="603"
+	
+		class="gallery-image" 
+		data-flex-grow="132"
+		data-flex-basis="318px"
+	
+>
+</p>
+<h3 id="training-large-language-models">Training Large Language Models
+</h3><p>一般分为三个阶段：</p>
+<ul>
+<li>预训练</li>
+<li>指令微调</li>
+<li>偏好对齐</li>
+</ul>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp"
+	width="1600"
+	height="1028"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_63e168b200ecd043.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_905fa508a436b981.webp"
+	data-lightbox-width="800"
+	data-lightbox-height="514"
+	
+		class="gallery-image" 
+		data-flex-grow="155"
+		data-flex-basis="373px"
+	
+>
+</p>
+<h4 id="self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining
+</h4><p>Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词</p>
+<p>如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp"
+	width="1600"
+	height="929"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_c0bd455b64f02e02.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_95ba0c808a061c06.webp"
+	data-lightbox-width="808"
+	data-lightbox-height="469"
+	
+		class="gallery-image" 
+		data-flex-grow="172"
+		data-flex-basis="413px"
+	
+>
+</p>
+<p>这些权重包括嵌入矩阵 E。由此学习到的嵌入，将能最有效地预测后续词语。</p>
+<h4 id="pretraining-corpora-for-large-language-models">Pretraining Corpora for Large Language Models
+</h4><p>训练数据可以用网络数据，并且加上一些精心筛选的数据。</p>
+<ul>
+<li>common crawl</li>
+<li>Colossal CLean Crawled Corpus</li>
+<li>The Pile</li>
+<li>Dolma</li>
+</ul>
+<p>避免个人信息PII，去重，安全筛选，toxicity detection。注意版权、数据同意、隐私和偏差等问题。</p>
+<h4 id="finetuning">Finetuning
+</h4><p>对已经与训练过的模型加入一些新的知识进行微调。如果新的数据是预训练的后面，也可以叫continued pretraining。</p>
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp"
+	width="1600"
+	height="825"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_daeb231fa4b645c1.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_6ae2ed8169293d5e.webp"
+	data-lightbox-width="704"
+	data-lightbox-height="363"
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+>
+</p>
+<h3 id="evaluating-large-language-models">Evaluating Large Language Models
+</h3><h4 id="perplexity">Perplexity
+</h4><p>由于链式法则，使用<strong>对数似然</strong>来作为衡量语言模型性能的指标的话，测试集的概率大小会受到token数量的影响。文本越长，测试集的概率越小。</p>
+<p>Perplexity：困惑度，长度归一化的指标。困惑度的具体公式是测试集概率的倒数，再按标记数量进行归一化。
+</p>
+$$\begin{aligned}
+\text{Perplexity}_{\boldsymbol{\theta}}(w_{1:n}) & =P_{\boldsymbol{\theta}}(w_{1:n})^{-\frac{1}{n}} \\
+ & =\sqrt[n]{\frac{1}{P_{\boldsymbol{\theta}}(w_{1:n})}}
+\end{aligned}$$<p>
+<strong>困惑度越低，模型越好。</strong></p>
+<blockquote>
+<p>困惑度非常依赖tokens的数量，因此不能对两个使用不同tokenizer的模型进行比较，而是只能对使用同一个tokenizer的模型比较。</p>
+</blockquote>
+<h4 id="downstream-tasks-reasoniong-and-world-knowledge">Downstream Tasks: Reasoniong and World Knowledge
+</h4><p>准确率：可以直接使用下游任务来衡量。</p>
+<ul>
+<li>MMLU
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp"
+	width="1600"
+	height="574"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_16a499bc0ac2b654.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp 1600w"
+	loading="lazy"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_3a92927996fd863.webp"
+	data-lightbox-width="805"
+	data-lightbox-height="289"
+	
+		class="gallery-image" 
+		data-flex-grow="278"
+		data-flex-basis="668px"
+	
+>
+
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp"
+	width="1600"
+	height="943"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_88c21daf6a036d9e.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp 1600w"
+	loading="lazy"
+	
+		alt="一个2-shot prompt的MMLU高中数学题"
+	
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_9a9a545cce7b7d5b.webp"
+	data-lightbox-width="806"
+	data-lightbox-height="475"
+	
+		class="gallery-image" 
+		data-flex-grow="169"
+		data-flex-basis="407px"
+	
+>
+</li>
+</ul>
+<p>但是问题是<strong>数据泄露</strong>。</p>
+<h4 id="other-factors-for-evaluating-language-models">Other Factors for Evaluating Language Models
+</h4><p>模型大小，训练时间，推理时间，GPU数量</p>
+<p>公平</p>
+<p>leaderboards</p>
+<h3 id="ethical-and-safety-issues-with-language-models">Ethical and Safety Issues with Language Models
+</h3><p>大模型幻觉问题：RAG</p>
+<p>安全问题：安全微调和对齐</p>
+<p>representational harms</p>
+<p>隐私问题</p>
+<p>情感依赖</p>
+<p>增长谎言、宣传、虚假信息等文本生成</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/llm/">LLM</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>All rights reserved.</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/2026/automated-peer-review/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">PeerReview | 论文自动评阅</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/2026/intern/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">实习 | 兽人永不为奴，但偶尔可以</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/2025/mcts/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">论文阅读| MCTS</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+  
+    <script src="https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"/>
+<div id="waline" class="waline-container"></div>
+
+<style>
+  .waline-container {
+    --waline-font-size: 1.5rem;
+    --waline-theme-color: #5a6e3a;
+    --waline-active-color: #5a6e3a;
+    --waline-border-radius: 12px;
+  }
+  html[data-scheme="dark"] .waline-container {
+    --waline-theme-color: #8fa46a;
+    --waline-active-color: #8fa46a;
+  }
+</style>
+
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      Waline.init({
+        el: '#waline',
+        serverURL: 'https:\/\/waline-ruby-one.vercel.app',
+        dark: 'html[data-scheme="dark"]',
+        emoji: [
+          'https://cdn.jsdelivr.net/gh/Saidosi/azuki-emoji-for-waline@1.0/azukisan',
+          'https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/bilibili',
+        ],
+        avatar: 'mp',
+        requiredMeta: [],
+        pageSize: 10,
+        locale: {
+          placeholder: '说点什么吧...',
+        },
+      });
+    }, 100);
+  });
+</script>
+
+  
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2026 ionfeather&#39;Log
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/3.3.0/pangu.min.js', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.8498e61bb408e9d7d8b4fdfd519dab892625b76081178df9f9f5fc14ab145613.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+
+    </body>
+</html>

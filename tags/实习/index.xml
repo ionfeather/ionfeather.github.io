@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>实习 on ionfeather&#39;Log</title>
+        <link>https://ionfeather.github.io/tags/%E5%AE%9E%E4%B9%A0/</link>
+        <description>Recent content in 实习 on ionfeather&#39;Log</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>ionfeather&#39;Log</copyright>
+        <lastBuildDate>Sun, 12 Apr 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%AE%9E%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>实习 | 兽人永不为奴，但偶尔可以</title>
+        <link>https://ionfeather.github.io/2026/intern/</link>
+        <pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate>
+        
+        <guid>https://ionfeather.github.io/2026/intern/</guid>
+        <description>&lt;h2 id=&#34;实习准备与经验总结&#34;&gt;实习准备与经验总结
+&lt;/h2&gt;&lt;p&gt;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
+&lt;h3 id=&#34;最新项目经验&#34;&gt;最新项目经验
+&lt;/h3&gt;&lt;h4 id=&#34;1-基于思考帽认知模型的多智能体学术评审系统202505---至今&#34;&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心技术&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据集构建&lt;/strong&gt;：采集并处理OpenReview等开源评审数据，构建基于[论文片段-亮点/缺陷识别-维度归因]思维链的训练集&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能体定制&lt;/strong&gt;：基于LLaMA-Factory框架，使用LoRA技术对开源模型进行指令微调（SFT）得到多个角色智能体（白/黄/黑/绿帽）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态辩论协议&lt;/strong&gt;：设计并实现动态权重感知共识多智能体动态辩论协议，引入蓝帽（裁判智能体）进行多维度实时评估&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;闭环验证&lt;/strong&gt;：集成事实性校验模块，对低置信度或矛盾信息自动触发检索与重评估循环&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;实验成果&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统评分与专家加权分平均绝对误差仅为0.42&lt;/li&gt;
+&lt;li&gt;语义重合度F1相比单模型Zero-shot评审提升28%&lt;/li&gt;
+&lt;li&gt;结论逻辑矛盾性减少38%，实现100%证据可溯源&lt;/li&gt;
+&lt;li&gt;在盲测评审中针对专家意见的覆盖率达88%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-ccks-2025---天池挑战赛---人工智能领域论文复杂问题问答评测202507---202508&#34;&gt;2. CCKS 2025 - 天池挑战赛 - 人工智能领域论文复杂问题问答评测（2025.07 - 2025.08）
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：基于85篇AI顶会论文的PDF版本，回答人工标注的多选题，考察模型的长文本理解、多跳推理、实验数据解析及逻辑严谨性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技术方案&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多模态解析&lt;/strong&gt;：对PDF论文进行精细标注，分离文本、表格与图像区域，采用Qwen-VL-OCR/Qwen2.5-VL提取图表深层语义&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAG优化&lt;/strong&gt;：使用Latechunk等技术进行智能分块，构建Qdrant向量数据库，使用Qwen3-Reranker模型进行精排序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;鲁棒决策&lt;/strong&gt;：开发rerank驱动的选项支持度判定算法，通过独立计算各选项证据分及Top-K补偿策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;项目成果&lt;/strong&gt;：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;技术深度微调与agent系统&#34;&gt;技术深度：微调与Agent系统
+&lt;/h2&gt;&lt;h3 id=&#34;微调技术详解&#34;&gt;微调技术详解
+&lt;/h3&gt;&lt;h4 id=&#34;loralow-rank-adaptation-of-llm&#34;&gt;LoRA：Low-Rank Adaptation of LLM
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心优势&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;参数效率&lt;/strong&gt;：仅需调整0.1%-0.01%的参数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;训练速度&lt;/strong&gt;：显著减少训练和部署时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模块化设计&lt;/strong&gt;：不影响原始模型，避免灾难性遗忘&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数学原理&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于奇异值分解（SVD），大部分信息集中在少量奇异值上&lt;/li&gt;
+&lt;li&gt;LoRA论文中GPT-3上的$\Delta W$的前10-20个奇异值可保留90%以上信息&lt;/li&gt;
+&lt;li&gt;参数更新：$W&amp;rsquo;=W+\Delta W=W+A\times B$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;训练流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;初始化&lt;/strong&gt;：$A$用小的随机值初始化，$B$初始化为全0&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前向传播&lt;/strong&gt;：$Y_{pred}=(W+A\times B)\times X$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;损失计算&lt;/strong&gt;：$L=Loss(Y_{true},Y_{pred})$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反向传播&lt;/strong&gt;：计算损失对$A$和$B$的梯度并更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;迭代优化&lt;/strong&gt;：重复直到收敛&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;应用位置&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主要应用于注意力层中的$W_q$和$W_v$&lt;/li&gt;
+&lt;li&gt;前馈层的LoRA在较大模型上可能有收益&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;lora改进版本对比&#34;&gt;LoRA改进版本对比
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;方法&lt;/th&gt;
+          &lt;th&gt;核心改进&lt;/th&gt;
+          &lt;th&gt;适用场景&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LoRA+&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;加速训练，调整B比A的学习率更高&lt;/td&gt;
+          &lt;td&gt;需要快速迭代的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;DoRA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;权重分解为幅度和方向，分别调整&lt;/td&gt;
+          &lt;td&gt;追求高性能的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;rsLoRA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;引入动态秩调整和稳定化因子&lt;/td&gt;
+          &lt;td&gt;训练稳定性要求高的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;PiSSA&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;优化初始化，使用SVD分解初始化A和B&lt;/td&gt;
+          &lt;td&gt;需要快速收敛的场景&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;GaLore&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;内存占用极低&lt;/td&gt;
+          &lt;td&gt;资源受限的环境&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;llama-factory微调关键参数&#34;&gt;LLaMA Factory微调关键参数
+&lt;/h4&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;参数类别&lt;/th&gt;
+          &lt;th&gt;参数名&lt;/th&gt;
+          &lt;th&gt;核心作用&lt;/th&gt;
+          &lt;th&gt;建议值&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;训练核心&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;学习率&lt;/td&gt;
+          &lt;td&gt;控制参数更新步长&lt;/td&gt;
+          &lt;td&gt;LoRA: 1e-4到5e-4&lt;br&gt;全量: 1e-5到3e-5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;per_device_train_batch_size&lt;/code&gt;&lt;br&gt;&lt;code&gt;gradient_accumulation_steps&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;决定有效批处理大小&lt;/td&gt;
+          &lt;td&gt;有效批大小 ≥ 16&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;LoRA核心&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;lora_rank&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;决定适配器能力&lt;/td&gt;
+          &lt;td&gt;通用任务: 8/16/32&lt;br&gt;复杂任务: 64+&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;lora_alpha&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;控制适配器输出缩放&lt;/td&gt;
+          &lt;td&gt;通常设为&lt;code&gt;lora_rank&lt;/code&gt;的2倍&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;流程控制&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;num_train_epochs&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;控制训练遍数&lt;/td&gt;
+          &lt;td&gt;指令微调: 1-3个epoch&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;数据格式&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;template&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;指定数据格式模板&lt;/td&gt;
+          &lt;td&gt;优先使用&lt;code&gt;default&lt;/code&gt;或模型对应模板&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;资源与长度&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;code&gt;cutoff_len&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;设置训练数据最大长度&lt;/td&gt;
+          &lt;td&gt;根据任务实际需要设置&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;agent系统设计&#34;&gt;Agent系统设计
+&lt;/h3&gt;&lt;h4 id=&#34;记忆系统架构&#34;&gt;记忆系统架构
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;短期工作记忆&lt;/strong&gt;（当前评审会话）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储当前论文的评审进度、已识别问题点&lt;/li&gt;
+&lt;li&gt;保留最近3-5轮Agent间的对话上下文&lt;/li&gt;
+&lt;li&gt;实现方式：内存中的字典结构，会话结束时清空&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;中期项目记忆&lt;/strong&gt;（单篇论文评审全流程）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储各思考帽Agent的评审意见、置信度分数&lt;/li&gt;
+&lt;li&gt;记录评审过程中的冲突检测与解决历史&lt;/li&gt;
+&lt;li&gt;实现方式：Redis缓存，设置24小时过期时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;长期知识记忆&lt;/strong&gt;（跨论文评审经验）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储历史评审模式、常见问题类型&lt;/li&gt;
+&lt;li&gt;积累各思考帽Agent的准确率统计数据&lt;/li&gt;
+&lt;li&gt;实现方式：向量数据库（FAISS）+ 关系型数据库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;动态辩论协议设计&#34;&gt;动态辩论协议设计
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;多维度评估&lt;/strong&gt;：蓝帽智能体对论点进行逻辑性、证据链完整性等多维度实时测度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;激励约束&lt;/strong&gt;：基于零和博弈的奖励信号分配，奖励正确见解，惩罚无效或误导性批判&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权重演化&lt;/strong&gt;：根据博弈演化后的智能体权重，通过动态加权机制生成最终结论&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;技术实现&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用LangChain/LangGraph框架构建Agent工作流&lt;/li&gt;
+&lt;li&gt;集成CoT（思维链）和ReAct（推理-行动）思想&lt;/li&gt;
+&lt;li&gt;设计可扩展的插件系统支持不同评审场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;面试准备要点&#34;&gt;面试准备要点
+&lt;/h2&gt;&lt;h3 id=&#34;常见技术问题&#34;&gt;常见技术问题
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LoRA原理与实现&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;为什么低秩分解有效？&lt;/li&gt;
+&lt;li&gt;如何选择rank和alpha参数？&lt;/li&gt;
+&lt;li&gt;与传统微调相比的优缺点？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RAG系统优化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分块策略如何影响检索效果？&lt;/li&gt;
+&lt;li&gt;如何处理长文档的多跳推理？&lt;/li&gt;
+&lt;li&gt;如何评估RAG系统的性能？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多智能体系统&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何设计Agent间的通信协议？&lt;/li&gt;
+&lt;li&gt;如何解决Agent间的冲突？&lt;/li&gt;
+&lt;li&gt;如何评估多智能体系统的整体性能？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;模型评估&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;学术评审场景的特殊评估指标？&lt;/li&gt;
+&lt;li&gt;如何平衡自动化评审与人工评审？&lt;/li&gt;
+&lt;li&gt;如何处理领域特异性问题？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;项目经验阐述&#34;&gt;项目经验阐述
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;STAR法则应用&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Situation&lt;/strong&gt;：清晰描述项目背景和问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Task&lt;/strong&gt;：明确个人承担的具体任务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Action&lt;/strong&gt;：详细说明采取的技术方案和实现细节&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Result&lt;/strong&gt;：量化展示项目成果和影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;技术深度展示&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不仅说明&amp;quot;做了什么&amp;quot;，更要解释&amp;quot;为什么这么做&amp;quot;&lt;/li&gt;
+&lt;li&gt;展示对技术选型的思考和权衡&lt;/li&gt;
+&lt;li&gt;分享遇到的问题和解决方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;技能总结&#34;&gt;技能总结
+&lt;/h2&gt;&lt;h3 id=&#34;核心技术栈&#34;&gt;核心技术栈
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模型架构&lt;/strong&gt;：熟悉Transformer原理，了解GPT、Qwen、DeepSeek等主流模型差异&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大模型微调&lt;/strong&gt;：掌握Qwen、Llama等模型的LoRA/QLoRA微调经验&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检索增强生成&lt;/strong&gt;：具备RAG项目经验，熟悉Embedding、Chunking和Reranking策略&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent工程&lt;/strong&gt;：熟悉多智能体系统设计，掌握LangChain/LangGraph框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;综合素质&#34;&gt;综合素质
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;良好的沟通表达能力，常担任项目负责人协调团队&lt;/li&gt;
+&lt;li&gt;丰富的竞赛经验（数学建模美赛M奖、国赛省级二等奖等）&lt;/li&gt;
+&lt;li&gt;快速学习和技术调研能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;未来方向&#34;&gt;未来方向
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
+&lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
+&lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

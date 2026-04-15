@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head>
+	<meta name="generator" content="Hugo 0.157.0"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="十年饮冰，难凉热血">
+<title>Pager 3 - ionfeather&#39;Log</title>
+
+<link rel='canonical' href='https://ionfeather.github.io/'>
+
+<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="ionfeather'Log">
+<meta property='og:description' content="十年饮冰，难凉热血">
+<meta property='og:url' content='https://ionfeather.github.io/'>
+<meta property='og:site_name' content='ionfeather&#39;Log'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-04-12T23:36:49&#43;08:00 '/>
+<meta name="twitter:title" content="ionfeather'Log">
+<meta name="twitter:description" content="十年饮冰，难凉热血"><link rel="alternate" type="application/rss&#43;xml" href="https://ionfeather.github.io/index.xml">
+    <link rel="shortcut icon" href="/ion.ico" />
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/style.css"
+  onload="this.media='all'" onError="this.media='none'">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap"
+  onload="this.media='all'" onError="this.media='none'">
+
+<style>
+   
+  :root {
+    --sys-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --zh-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --base-font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+    --code-font-family: 'Consolas', monospace;
+    --article-font-family: 'Noto Serif SC', serif;
+    --heading-font-family: 'LXGW WenKai', serif;
+  }
+
+  html body {
+    font-family: var(--base-font-family);
+    font-weight: normal;
+  }
+
+   
+  :root {
+    --accent-color: #5a6e3a;
+    --accent-color-darker: #3e4e28;
+    --body-text-color: #3a3530;
+    --card-separator-color: rgba(200, 180, 160, 0.2);
+    --card-background: rgba(255, 254, 250, 0.82);
+    --card-background-selected: rgba(245, 236, 220, 0.7);
+  }
+  html[data-scheme="dark"] {
+    --accent-color: #8fa46a;
+    --accent-color-darker: #6b7d52;
+    --body-text-color: #e0d5c5;
+    --card-separator-color: rgba(100, 90, 70, 0.3);
+    --card-background: rgba(32, 31, 26, 0.62);
+    --card-background-selected: rgba(50, 46, 32, 0.7);
+    --card-text-color-secondary: rgba(220, 208, 188, 0.88);
+    --card-text-color-tertiary: rgba(175, 160, 138, 0.82);
+  }
+
+   
+  html body {
+    background-color: #fdf9f2 !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
+      linear-gradient(135deg, #fefcf8 0%, #fdf9f2 50%, #f7ede0 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+   
+  html[data-scheme="dark"] body {
+    background-color: #191917 !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse at 0% 0%, rgba(80, 100, 55, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(50, 40, 25, 0.25) 0%, transparent 55%),
+      linear-gradient(135deg, #1e1e1b 0%, #191917 50%, #151410 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+   
+  html body .article-list--tile article.has-image .article-details {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.18) 40%,
+      rgba(0, 0, 0, 0.62) 100%
+    ) !important;
+  }
+  html body .article-list--tile article.has-image .article-title {
+    color: #fff !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55), 0 2px 16px rgba(0, 0, 0, 0.35) !important;
+    letter-spacing: 0.03em;
+  }
+
+   
+  html body .article-list article,
+  html body .article-list--tile article,
+  html body .article-list--compact article,
+  html body .main-article,
+  html body .welcome,
+  html body .pagination-container {
+    background: rgba(255, 254, 250, 0.82) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  }
+
+   
+  html[data-scheme="dark"] body .article-list article,
+  html[data-scheme="dark"] body .article-list--tile article,
+  html[data-scheme="dark"] body .article-list--compact article,
+  html[data-scheme="dark"] body .main-article,
+  html[data-scheme="dark"] body .welcome,
+  html[data-scheme="dark"] body .pagination-container {
+    background: rgba(32, 31, 26, 0.62) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+
+   
+  html body .widget,
+  html body .left-sidebar,
+  html body .widget-archive--list,
+  html body .menu {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+
+   
+  html body .archives-year {
+    background: rgba(255, 254, 250, 0.78) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 10px !important;
+    margin-bottom: 4px !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  }
+  html[data-scheme="dark"] body .archives-year {
+    background: rgba(32, 31, 26, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  }
+
+   
+  html body .tagCloud .tagCloud-tags a {
+    background: rgba(255, 254, 250, 0.82) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(90, 70, 50, 0.08) !important;
+  }
+  html body .tagCloud .tagCloud-tags a:hover {
+    background: rgba(255, 254, 250, 0.96) !important;
+  }
+  html[data-scheme="dark"] body .tagCloud .tagCloud-tags a {
+    background: rgba(32, 31, 26, 0.75) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  html[data-scheme="dark"] body .tagCloud .tagCloud-tags a:hover {
+    background: rgba(32, 31, 26, 0.95) !important;
+  }
+
+   
+  html body .widget-archive--list,
+  html body .widget.archives .widget-archive--list {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+   
+  html body .menu {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+   
+  html {
+    scroll-behavior: smooth;
+  }
+
+   
+  .article-content pre,
+  .article-content .highlight pre,
+  .article-content code {
+    font-size: 1.35rem !important;
+    line-height: 1.65 !important;
+  }
+  .article-content pre {
+    padding: 16px 20px !important;
+  }
+  .article-content .highlight {
+    font-size: 1.35rem !important;
+  }
+
+   
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #c8b89a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #8fa46a; }
+
+   
+  .article-content a {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  .article-content a:hover {
+    text-decoration-style: solid;
+  }
+
+   
+  html body .article-list .article-details {
+    position: relative;
+    padding-top: 40px !important;
+    padding-bottom: 32px !important;
+    padding-left: var(--card-padding) !important;
+    padding-right: calc(var(--card-padding) + 100px) !important;
+    gap: 10px !important;
+  }
+  html body .article-list .article-title-wrapper {
+    gap: 10px !important;
+  }
+  html body .article-list .article-time {
+    margin-top: 4px !important;
+  }
+  html body .article-list .article-category {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    right: var(--card-padding);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+   
+  .article-details time,
+  .article-category a,
+  .article-tags a,
+  .widget--archives a,
+  .pagination,
+  .sidebar nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82em;
+    letter-spacing: 0.02em;
+  }
+
+   
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .article-list article {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.35s ease;
+    will-change: transform;
+  }
+  .article-list article:nth-child(1) { animation-delay: 0.05s; }
+  .article-list article:nth-child(2) { animation-delay: 0.1s; }
+  .article-list article:nth-child(3) { animation-delay: 0.15s; }
+  .article-list article:nth-child(4) { animation-delay: 0.2s; }
+  .article-list article:nth-child(5) { animation-delay: 0.25s; }
+  .article-list article:nth-child(6) { animation-delay: 0.3s; }
+  .article-list article:nth-child(7) { animation-delay: 0.35s; }
+  .article-list article:nth-child(8) { animation-delay: 0.4s; }
+
+   
+  .article-list article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(90, 70, 50, 0.12);
+  }
+
+   
+  .article-image { overflow: hidden; }
+  .article-image img {
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .article-list article:hover .article-image img {
+    transform: scale(1.06);
+  }
+
+   
+  .sidebar .site-avatar {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+  }
+  .sidebar .site-avatar:hover {
+    transform: rotate(6deg) scale(1.08);
+  }
+
+   
+  .welcome-title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .shake,
+  .jump-text1, .jump-text2, .jump-text3, .jump-text4, .jump-text5,
+  .jump-text6, .jump-text7, .jump-text8, .jump-text9, .jump-text10 {
+    animation: none !important;
+  }
+
+   
+  .jump-text5, .jump-text6, .jump-text7,
+  .jump-text8, .jump-text9, .jump-text10 {
+    color: #5a6e3a !important;
+  }
+  html[data-scheme="dark"] .jump-text5, html[data-scheme="dark"] .jump-text6,
+  html[data-scheme="dark"] .jump-text7, html[data-scheme="dark"] .jump-text8,
+  html[data-scheme="dark"] .jump-text9, html[data-scheme="dark"] .jump-text10 {
+    color: #8fa46a !important;
+  }
+
+   
+  html body .widget.archives .widget-archive--list {
+    transition: none !important;
+  }
+  html body .widget.archives .widget-archive--list:hover {
+    transform: none !important;
+  }
+  html body .widget.archives .archives-year {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+  html body .widget.archives .archives-year:hover {
+    transform: scale(1.04) translateX(4px);
+  }
+
+   
+  .tagCloud a, .widget--categories a {
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: inline-block;
+  }
+  .tagCloud a:hover, .widget--categories a:hover {
+    transform: scale(1.12);
+  }
+
+   
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+   
+  .template-archives .archives-group {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .template-archives .archives-group:nth-child(1) { animation-delay: 0.05s; }
+  .template-archives .archives-group:nth-child(2) { animation-delay: 0.15s; }
+  .template-archives .archives-group:nth-child(3) { animation-delay: 0.25s; }
+  .template-archives .archives-group:nth-child(4) { animation-delay: 0.35s; }
+
+   
+  .template-archives .archives-date {
+    animation: fadeInLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: inherit;
+  }
+
+   
+  @keyframes archiveItemIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  .template-archives .article-list--compact article {
+    opacity: 0;
+  }
+
+   
+  .article-list--compact article {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.25s ease;
+  }
+  .article-list--compact article:hover {
+    transform: translateX(6px);
+    box-shadow: 0 4px 16px rgba(90, 70, 50, 0.1);
+  }
+
+   
+  .inline-sticker {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px -4px;
+    border-radius: 4px;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+  }
+  .inline-sticker:hover {
+    transform: scale(1.25) rotate(-3deg);
+  }
+
+   
+  main {
+    animation: fadeInUp 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+   
+  html body .widget--toc {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  html body .widget--toc #TableOfContents {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 0;
+    font-family: system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul,
+  html body .widget--toc #TableOfContents > ol {
+    padding: 0 !important;
+    margin: 0 0 0 4px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.15) 0%,
+        rgba(90, 110, 58, 0.15) 86%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+  html body .widget--toc #TableOfContents li {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > ul,
+  html body .widget--toc #TableOfContents > ul > li > ol,
+  html body .widget--toc #TableOfContents > ol > li > ul,
+  html body .widget--toc #TableOfContents > ol > li > ol {
+    padding: 0 !important;
+    margin: 0 0 0 13px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.10) 0%,
+        rgba(90, 110, 58, 0.10) 80%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > ul > li > ul,
+  html body .widget--toc #TableOfContents > ul > li > ul > li > ol,
+  html body .widget--toc #TableOfContents > ol > li > ol > li > ul,
+  html body .widget--toc #TableOfContents > ol > li > ol > li > ol {
+    padding: 0 !important;
+    margin: 0 0 0 11px !important;
+    background:
+      linear-gradient(to bottom,
+        rgba(90, 110, 58, 0.07) 0%,
+        rgba(90, 110, 58, 0.07) 75%,
+        transparent 100%
+      ) 0 0 / 1.5px 100% no-repeat;
+  }
+
+   
+  html body .widget--toc #TableOfContents a {
+    font-family: system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif !important;
+    display: block;
+    padding: 4px 8px 4px 14px;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    border-radius: 0 5px 5px 0;
+    font-size: 1.45rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--card-text-color-secondary);
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li > a,
+  html body .widget--toc #TableOfContents > ol > li > a {
+    font-size: 1.48rem;
+    font-weight: 500;
+    color: var(--card-text-color-main);
+  }
+
+   
+  html body .widget--toc #TableOfContents li li a {
+    padding-left: 13px !important;
+    font-size: 1.38rem !important;
+    color: var(--card-text-color-secondary);
+  }
+
+   
+  html body .widget--toc #TableOfContents li li li a {
+    padding-left: 11px !important;
+    font-size: 1.3rem !important;
+    color: var(--card-text-color-tertiary);
+  }
+
+   
+  html body .widget--toc #TableOfContents ol li a::before {
+    content: none !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents a:hover {
+    color: var(--card-text-color-main);
+    border-left-color: rgba(90, 110, 58, 0.3);
+    background: rgba(90, 110, 58, 0.05);
+  }
+
+   
+  html body .widget--toc #TableOfContents li.active-class > a,
+  html body .widget--toc #TableOfContents li li.active-class > a,
+  html body .widget--toc #TableOfContents li li li.active-class > a {
+    color: var(--accent-color) !important;
+    font-weight: 500 !important;
+    border-left-color: var(--accent-color) !important;
+    background: rgba(90, 110, 58, 0.07) !important;
+    margin-left: -1px !important;
+  }
+
+  html body .widget--toc #TableOfContents li li.active-class > a {
+    padding-left: 13px !important;
+  }
+  html body .widget--toc #TableOfContents li li li.active-class > a {
+    padding-left: 11px !important;
+  }
+
+   
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.16) 0%,
+      rgba(143, 164, 106, 0.16) 86%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ol,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.10) 0%,
+      rgba(143, 164, 106, 0.10) 80%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ol,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ul,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ol {
+    background-image: linear-gradient(to bottom,
+      rgba(143, 164, 106, 0.07) 0%,
+      rgba(143, 164, 106, 0.07) 75%,
+      transparent 100%) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents a:hover {
+    border-left-color: rgba(143, 164, 106, 0.3) !important;
+    background: rgba(143, 164, 106, 0.06) !important;
+  }
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li.active-class > a,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li li.active-class > a,
+  html[data-scheme="dark"] body .widget--toc #TableOfContents li li li.active-class > a {
+    background: rgba(143, 164, 106, 0.1) !important;
+  }
+
+   
+  html body .widget--toc #TableOfContents > ul > li,
+  html body .widget--toc #TableOfContents > ol > li {
+    animation: tocFadeIn 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(1),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(1) { animation-delay: 0.04s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(2),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(2) { animation-delay: 0.09s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(3),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(3) { animation-delay: 0.14s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(4),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(4) { animation-delay: 0.19s; }
+  html body .widget--toc #TableOfContents > ul > li:nth-child(n+5),
+  html body .widget--toc #TableOfContents > ol > li:nth-child(n+5) { animation-delay: 0.24s; }
+
+  @keyframes tocFadeIn {
+    from { opacity: 0; transform: translateX(6px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+</style>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!document.querySelector('.template-archives')) return;
+    var delay = 0.08;
+    document.querySelectorAll('.template-archives .archives-group').forEach(function (group, gi) {
+      var groupBase = 0.1 + gi * 0.12;
+      group.querySelectorAll('.article-list--compact article').forEach(function (article, i) {
+        article.style.animation = 'archiveItemIn 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94) both';
+        article.style.animationDelay = (groupBase + i * delay) + 's';
+      });
+    });
+  });
+</script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" crossorigin="anonymous"></script>
+<script>
+  
+
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (typeof GLightbox === 'undefined') return;
+      GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        openEffect: 'zoom',
+        closeEffect: 'fade',
+        slideEffect: 'slide'
+      });
+    }, 100);
+  });
+</script>
+
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🌳</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ionfeather&#39;Log</a></h1>
+            <h2 class="site-description">十年饮冰，难凉热血</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/ionfeather'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg t="1732597946058" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3746" width="24" height="24"><path d="M850.346667 155.008a42.666667 42.666667 0 0 0-22.741334-23.509333c-8.704-3.754667-85.717333-33.322667-200.32 39.168H396.714667c-114.773333-72.618667-191.701333-42.922667-200.32-39.168a42.88 42.88 0 0 0-22.741334 23.466666c-26.197333 66.218667-18.048 136.448-7.850666 176.896C134.272 374.016 128 413.098667 128 469.333333c0 177.877333 127.104 227.882667 226.730667 246.272a189.568 189.568 0 0 0-13.013334 46.549334A44.373333 44.373333 0 0 0 341.333333 768v38.613333c-19.498667-4.138667-41.002667-11.946667-55.168-26.112C238.08 732.416 188.330667 682.666667 128 682.666667v85.333333c25.002667 0 65.365333 40.362667 97.834667 72.832 51.029333 51.029333 129.066667 55.253333 153.386666 55.253333 3.114667 0 5.376-0.085333 6.528-0.128A42.666667 42.666667 0 0 0 426.666667 853.333333v-82.090666c4.266667-24.746667 20.224-49.621333 27.946666-56.362667a42.666667 42.666667 0 0 0-23.125333-74.581333C293.333333 624.554667 213.333333 591.488 213.333333 469.333333c0-53.12 5.632-70.741333 31.573334-99.285333 11.008-12.117333 14.08-29.568 7.978666-44.8-4.821333-11.904-18.773333-65.450667-6.485333-117.546667 20.650667-1.578667 59.904 4.565333 113.706667 40.96C367.104 253.44 375.466667 256 384 256h256a42.666667 42.666667 0 0 0 23.936-7.338667c54.016-36.522667 92.970667-41.770667 113.664-41.130666 12.330667 52.224-1.578667 105.770667-6.4 117.674666a42.666667 42.666667 0 0 0 8.021333 44.928C805.077333 398.464 810.666667 416.085333 810.666667 469.333333c0 122.581333-79.957333 155.52-218.069334 170.922667a42.666667 42.666667 0 0 0-23.125333 74.709333c19.797333 17.066667 27.861333 32.469333 27.861333 53.034667v128h85.333334v-128c0-20.437333-3.925333-38.101333-9.770667-53.12C769.92 695.765333 896 643.712 896 469.333333c0-56.362667-6.272-95.530667-37.76-137.514666 10.197333-40.405333 18.261333-110.506667-7.893333-176.810667z" fill="currentColor" p-id="3747"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:lizishadowmay@gmail.com'
+                        target="_blank"
+                        title="Email"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg t="1732597869588" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="23464" width="24" height="24"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857 0 0 1-73.142857 73.142857H170.666667a73.142857 73.142857 0 0 1-73.142857-73.142857V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952 0 0 1 26.087619 4.778666 72.704 72.704 0 0 1 30.622477 22.186667 73.508571 73.508571 0 0 1 10.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857 0 0 1-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048 0 0 1 40.155428-65.292191A72.97219 72.97219 0 0 1 170.666667 170.666667h682.666666z m-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="23465" fill="currentColor"></path></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='index.xml'
+                        target="_blank"
+                        title="RSS"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" width="200" height="200">
+  <path 
+    d="M170.666667 426.666667c-25.6 0-42.666667 17.066667-42.666667 42.666666s17.066667 42.666667 42.666667 42.666667c187.733333 0 341.333333 153.6 341.333333 341.333333 0 25.6 17.066667 42.666667 42.666667 42.666667s42.666667-17.066667 42.666666-42.666667c0-234.666667-192-426.666667-426.666666-426.666666z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+  <path 
+    d="M170.666667 128c-25.6 0-42.666667 17.066667-42.666667 42.666667s17.066667 42.666667 42.666667 42.666666c354.133333 0 640 285.866667 640 640 0 25.6 17.066667 42.666667 42.666666 42.666667s42.666667-17.066667 42.666667-42.666667c0-401.066667-324.266667-725.333333-725.333333-725.333333z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+  <path 
+    d="M213.333333 810.666667m-85.333333 0a85.333333 85.333333 0 1 0 170.666667 0 85.333333 85.333333 0 1 0-170.666667 0Z"
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+  ></path>
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li  class='current' >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>我在逛</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            
+
+                
+                    <span id="dark-mode-toggle">
+                        <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left"   width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+                        <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-toggle-right"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                    </span>
+                
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>搜索</label>
+            <input name="keyword" required placeholder="输入关键词..." />
+        
+            <button title="搜索">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">归档</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="/archives/#2026">
+                        
+                            <span class="year">2026</span>
+                            <span class="count">3</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2025">
+                        
+                            <span class="year">2025</span>
+                            <span class="count">26</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2024">
+                        
+                            <span class="year">2024</span>
+                            <span class="count">3</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">分类</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/%E9%9A%8F%E7%AC%94/" class="font_size_17">
+                玛德莱娜蛋糕
+            </a>
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="font_size_16">
+                学习札记
+            </a>
+        
+            <a href="/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/" class="font_size_2">
+                工作台
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/%E8%8A%82%E6%B0%94/" class="font_size_15">
+                节气
+            </a>
+        
+            <a href="/tags/llm/" class="font_size_7">
+                LLM
+            </a>
+        
+            <a href="/tags/ai4science/" class="font_size_6">
+                AI4Science
+            </a>
+        
+            <a href="/tags/aidr/" class="font_size_4">
+                AIDR
+            </a>
+        
+            <a href="/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/" class="font_size_3">
+                多智能体
+            </a>
+        
+            <a href="/tags/%E6%94%B6%E6%8B%BE%E5%8D%9A%E5%AE%A2/" class="font_size_2">
+                收拾博客
+            </a>
+        
+            <a href="/tags/langchain/" class="font_size_1">
+                LangChain
+            </a>
+        
+            <a href="/tags/rag/" class="font_size_1">
+                RAG
+            </a>
+        
+            <a href="/tags/%E5%AE%9E%E4%B9%A0/" class="font_size_1">
+                实习
+            </a>
+        
+            <a href="/tags/%E6%A2%A6/" class="font_size_1">
+                梦
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/2025/lesser-fullness-of-grain/">
+                <img src="/2025/lesser-fullness-of-grain/cover_hu_45e147ad225d25a1.webp"
+                        srcset="/2025/lesser-fullness-of-grain/cover_hu_45e147ad225d25a1.webp 1200w, /2025/lesser-fullness-of-grain/cover_hu_b80670ef4a4dd2b3.webp 2000w"
+                        width="1200" 
+                        height="1000" 
+                        loading="lazy"
+                        alt="Featured image of post 小满 | 春天一晃而过，夏天已然到来" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%9A%8F%E7%AC%94/" style="background-color: #6EB7DB; color: #fff;">
+                玛德莱娜蛋糕
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/lesser-fullness-of-grain/">小满 | 春天一晃而过，夏天已然到来</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-05-21</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/2025/pure-brightness/">
+                <img src="/2025/pure-brightness/cover_hu_309cc00aadf74e39.webp"
+                        srcset="/2025/pure-brightness/cover_hu_309cc00aadf74e39.webp 1200w, /2025/pure-brightness/cover_hu_e43f3415a0184329.webp 2000w"
+                        width="1200" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post 清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%9A%8F%E7%AC%94/" style="background-color: #6EB7DB; color: #fff;">
+                玛德莱娜蛋糕
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/pure-brightness/">清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-04</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #5DB9AE; color: #fff;">
+                学习札记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/moleculerepurposing-2/">AIDR | 综述与论文</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            综述与可以尝试复现的论文
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-04-04</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 7 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #5DB9AE; color: #fff;">
+                学习札记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/moleculerepurposing/">AIDR | 数据库探索</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-23</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 13 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/2025/the-spring-equinox/">
+                <img src="/2025/the-spring-equinox/cover_hu_ae81c03ed3cf3b54.webp"
+                        srcset="/2025/the-spring-equinox/cover_hu_ae81c03ed3cf3b54.webp 1200w, /2025/the-spring-equinox/cover_hu_880b6643246f8011.webp 2000w"
+                        width="1200" 
+                        height="987" 
+                        loading="lazy"
+                        alt="Featured image of post 春分 | 拍堤春水四垂天，红墙白塔，小花杨柳" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%9A%8F%E7%AC%94/" style="background-color: #6EB7DB; color: #fff;">
+                玛德莱娜蛋糕
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/the-spring-equinox/">春分 | 拍堤春水四垂天，红墙白塔，小花杨柳</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-22</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="has-image">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/2025/the-waking-of-insects/">
+                <img src="/2025/the-waking-of-insects/cover_hu_52052f6bf084b90b.webp"
+                        srcset="/2025/the-waking-of-insects/cover_hu_52052f6bf084b90b.webp 1200w, /2025/the-waking-of-insects/cover_hu_bc4688f2257a026e.webp 2000w"
+                        width="1200" 
+                        height="800" 
+                        loading="lazy"
+                        alt="Featured image of post 惊蛰 | 漫长的冬天终于到达了尾声" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E9%9A%8F%E7%AC%94/" style="background-color: #6EB7DB; color: #fff;">
+                玛德莱娜蛋糕
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/the-waking-of-insects/">惊蛰 | 漫长的冬天终于到达了尾声</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            春江水暖鸭先知
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-03-05</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #5DB9AE; color: #fff;">
+                学习札记
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/ai-assist-drug-design/">AIDD | 论文阅读</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            开展一些新的工作，关于使用AI来探索药物合成。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-02-26</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 38 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/" style="background-color: #C87391; color: #fff;">
+                工作台
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/2025/shortcodes/">博客探索 | 搬运一些Shortcodes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-02-18</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 2 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                    <a class='page-link' href='/page/2/'>2</a>
+                
+            
+            
+                <span class='page-link current'>3</span>
+                
+            
+            
+                    <a class='page-link' href='/page/4/'>4</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2024 - 
+        
+        2026 ionfeather&#39;Log
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    (function(u, c) {
+      var d = document, t = 'script', o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function(e) { c(e); }); }
+      s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/3.3.0/pangu.min.js', function() {
+      pangu.spacingPage();
+    });
+</script>
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.8498e61bb408e9d7d8b4fdfd519dab892625b76081178df9f9f5fc14ab145613.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+
+    </body>
+</html>
