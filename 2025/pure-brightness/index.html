@@ -1212,60 +1212,156 @@
 <p>穿上沙套、拿上登山杖、背好相机，「准备出发，全程预计需要4小时」。沙漠里的景色似乎是重复的重复，越过种植的网格形固沙植物后，遇到的沙丘上是细密的沙子，脚往下一踩，就会陷进去，每一步需要耗费平时许多许多倍的力气。</p>
 <p>我（应该叫帅哥，路上有个小孩非说我特别帅&hellip;）和唐老师（这里应该叫仙仙&hellip;叫她仙女姐姐给我笑个半死）还拿着相机，沙漠对于相机的破坏性简直强得可怕，无处不在的风沙打在UV镜和机身上，如果不是唐老师带了两个袖套保护镜头，估计50-250镜头的伸缩环里面会有无数的沙子卡在里面——但是我的侥幸心理，让我一直在切换16-50镜头和50-250镜头，还好没有损坏我的CMOS，但是我的16-50镜头最后的对焦环卡住了好多的沙子。</p>
 <p>别管了！与其在意什么相机的使用，不如看看美丽的、壮观的沙漠风光。</p>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
-    
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            
-            
-            <div class="swiper-slide">
-                <img src="DSC_6380.jpg" alt="">
-            </div>
-            
-            <div class="swiper-slide">
-                <img src="DSC_6623.jpg" alt="">
-            </div>
-            
-            <div class="swiper-slide">
-                <img src="DSC_6744.jpg" alt="">
-            </div>
-            
-            <div class="swiper-slide">
-                <img src="DSC04329.jpg" alt="">
-            </div>
-            
-            <div class="swiper-slide">
-                <img src="DSC_6353.jpg" alt="">
-            </div>
-            
-        </div>
-        
-        <div class="swiper-pagination"></div>
+<div class="imgloop-wrap" id="imgloop-0">
+  <div class="imgloop-track">
+    <div class="imgloop-slide">
+      <img src="/2025/pure-brightness/DSC_6380_hu_23f931f00e080353.webp" loading="lazy" alt="DSC_6380.jpg">
     </div>
+    <div class="imgloop-slide">
+      <img src="/2025/pure-brightness/DSC_6623_hu_9a29d42703e47def.webp" loading="lazy" alt="DSC_6623.jpg">
+    </div>
+    <div class="imgloop-slide">
+      <img src="/2025/pure-brightness/DSC_6744_hu_a90358b98d3feae2.webp" loading="lazy" alt="DSC_6744.jpg">
+    </div>
+    <div class="imgloop-slide">
+      <img src="/2025/pure-brightness/DSC04329_hu_93dc1ad5d63a903c.webp" loading="lazy" alt="DSC04329.jpg">
+    </div>
+    <div class="imgloop-slide">
+      <img src="/2025/pure-brightness/DSC_6353_hu_8a263c72dde0b5f2.webp" loading="lazy" alt="DSC_6353.jpg">
+    </div>
+  </div>
+  <button class="imgloop-btn imgloop-prev" aria-label="上一张">&#8249;</button>
+  <button class="imgloop-btn imgloop-next" aria-label="下一张">&#8250;</button>
+  <div class="imgloop-dots">
+    <span class="imgloop-dot active"></span>
+    <span class="imgloop-dot"></span>
+    <span class="imgloop-dot"></span>
+    <span class="imgloop-dot"></span>
+    <span class="imgloop-dot"></span>
+  </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
-     
-     <script>
-        var swiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            paginationClickable: true,
-        
-        autoHeight: true,
-        
-        keyboardControl : true,
-        
-        mousewheelControl : true,
-        
-        
-        
-        lazyLoading : true,
-		lazyLoadingInPrevNext : true,
-		
-		loop : true,
-        });
-        </script>
+<style>
+.imgloop-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 1.5em 0;
+  background: var(--card-background);
+  touch-action: pan-y;
+}
+.imgloop-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.imgloop-track::-webkit-scrollbar { display: none; }
+.imgloop-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+.imgloop-slide img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  display: block;
+  border: none !important;
+}
+.imgloop-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.75);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: #3a3530;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, opacity 0.2s;
+  opacity: 0.7;
+  z-index: 2;
+  padding: 0;
+}
+.imgloop-btn:hover { opacity: 1; background: rgba(255,255,255,0.95); }
+.imgloop-prev { left: 10px; }
+.imgloop-next { right: 10px; }
+html[data-scheme="dark"] .imgloop-btn {
+  background: rgba(40,38,30,0.75);
+  color: #e0d5c5;
+}
+html[data-scheme="dark"] .imgloop-btn:hover {
+  background: rgba(40,38,30,0.95);
+}
+.imgloop-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.imgloop-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.imgloop-dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+</style>
 
+<script>
+(function () {
+  var wrap = document.getElementById('imgloop-0');
+  if (!wrap) return;
+  var track = wrap.querySelector('.imgloop-track');
+  var slides = wrap.querySelectorAll('.imgloop-slide');
+  var dots = wrap.querySelectorAll('.imgloop-dot');
+  var total = slides.length;
+  var current = 0;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.scrollTo({ left: slides[current].offsetLeft, behavior: 'smooth' });
+    dots.forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  wrap.querySelector('.imgloop-prev').addEventListener('click', function () { goTo(current - 1); });
+  wrap.querySelector('.imgloop-next').addEventListener('click', function () { goTo(current + 1); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { goTo(i); }); });
+
+  
+  var ticking = false;
+  track.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var idx = Math.round(track.scrollLeft / track.clientWidth);
+      if (idx !== current) {
+        current = idx;
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+      }
+      ticking = false;
+    });
+  });
+})();
+</script>
 
 <p>终于到达了目的地，开始建设营地——我们找的地方刚好在一个大大的沙丘后面，远处的基站信号被它挡住了。只要是爬上沙丘，就会有信号，但是躺在我们的睡觉的帐篷里面，就肯定是没有的。不过这个是值得的，因为到了后半夜的时候，沙漠中接近零度的气温差点让我冻得发抖，如果在沙丘顶部扎营，风大一些我可能整个人要缩成虾了。</p>
 <p>在漫长的沙漠徒步和费力的建设营地之后，日落时分我沿着沙丘的山脊漫步，看着风卷出的痕迹，极目远眺，看到了「大漠孤烟直，长河落日圆」——长河是自阴山下千百年来不断流淌的黄河，而孤烟原来是从太阳飞来的航迹云。</p>
