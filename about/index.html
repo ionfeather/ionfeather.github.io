@@ -198,15 +198,20 @@
   .welcome-sticker {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(0.6);
     width: 72px;
     height: 72px;
     border-radius: 14px;
-    opacity: 0.92;
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .welcome-sticker--left  { left: 20px; }
   .welcome-sticker--right { right: 20px; }
+  .welcome--stickers-visible .welcome-sticker {
+    opacity: 0.92;
+    transform: translateY(-50%) scale(1);
+  }
   @media (max-width: 680px) {
     .welcome-sticker { display: none; }
   }
@@ -893,6 +898,63 @@
 </script>
 
 
+<script>
+(function () {
+    var darkSrc  = '/stickers/azuki/030.png';
+    var lightSrc = '/stickers/azuki/029.png';
+
+    var $s = null;
+    var hideTimer = null;
+
+    function getOrCreate() {
+        if (!$s) {
+            $s = document.createElement('img');
+            $s.alt = '';
+            Object.assign($s.style, {
+                position:     'fixed',
+                bottom:       '72px',
+                left:         '20px',
+                width:        '72px',
+                height:       '72px',
+                borderRadius: '14px',
+                opacity:      '0',
+                transform:    'scale(0.5) rotate(-10deg)',
+                transition:   'opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                pointerEvents:'none',
+                zIndex:       '9998',
+            });
+            document.body.appendChild($s);
+        }
+        return $s;
+    }
+
+    function show(src) {
+        var el = getOrCreate();
+        el.src = src;
+        el.style.opacity   = '1';
+        el.style.transform = 'scale(1) rotate(0deg)';
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+            el.style.opacity   = '0';
+            el.style.transform = 'scale(0.6) rotate(8deg)';
+        }, 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.getElementById('dark-mode-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function () {
+            
+            setTimeout(function () {
+                var isDark = document.documentElement.dataset.scheme === 'dark';
+                show(isDark ? darkSrc : lightSrc);
+            }, 50);
+        });
+    });
+})();
+</script>
+
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js" crossorigin="anonymous"></script>
 <script>
@@ -916,6 +978,7 @@
 
     </head>
     <body class="
+    template-about
     article-page">
     <script>
         (function() {
@@ -1854,6 +1917,13 @@
             right: 14px;
         }
     }
+
+    .template-about .article-title {
+        display: none;
+    }
+    .template-about .article-header {
+        display: none;
+    }
     </style>
 
     <div id="test"></div>
@@ -1892,6 +1962,104 @@
           `,
           rootDOM: document.getElementById('test')
         })
+    </script>
+
+    <script>
+    
+    (function () {
+        const stickerMap = {
+            '关于我': [
+                '/stickers/azuki/001.png',
+                '/stickers/azuki/007.png',
+                '/stickers/azuki/014.png',
+                '/stickers/azuki/021.png',
+            ],
+            '爱玩': [
+                '/stickers/capoo-1.gif',
+                '/stickers/capoo-2.gif',
+                '/stickers/azuki/003.png',
+                '/stickers/azuki/024.png',
+            ],
+            '在学习': [
+                '/stickers/azuki/005.png',
+                '/stickers/azuki/006.png',
+                '/stickers/capoo-3.gif',
+                '/stickers/azuki/030.png',
+            ],
+            '随笔': [
+                '/stickers/azuki/008.png',
+                '/stickers/azuki/013.png',
+                '/stickers/capoo-4.gif',
+                '/stickers/azuki/033.png',
+            ],
+            '读书': [
+                '/stickers/azuki/009.png',
+                '/stickers/azuki/010.png',
+                '/stickers/azuki/020.png',
+                '/stickers/azuki/036.png',
+            ],
+            '对你说': [
+                '/stickers/azuki/011.png',
+                '/stickers/capoo-5.gif',
+                '/stickers/azuki/019.png',
+                '/stickers/azuki/025.png',
+            ],
+            '摄影': [
+                '/stickers/azuki/012.png',
+                '/stickers/azuki/016.png',
+                '/stickers/capoo-6.gif',
+                '/stickers/azuki/022.png',
+            ],
+        };
+
+        
+        requestAnimationFrame(function () {
+            const container = document.getElementById('test');
+            if (!container) return;
+
+            
+            const $s = document.createElement('img');
+            $s.alt = '';
+            Object.assign($s.style, {
+                position:     'absolute',
+                bottom:       '10%',
+                right:        '8%',
+                width:        '80px',
+                height:       '80px',
+                borderRadius: '16px',
+                opacity:      '0',
+                transform:    'scale(0.6) rotate(-8deg)',
+                transition:   'opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                pointerEvents:'none',
+                zIndex:       '50',
+            });
+            container.appendChild($s);
+
+            let lastType = null;
+
+            container.querySelectorAll('#my-tags mark').forEach(function (mark) {
+                mark.addEventListener('mouseover', function () {
+                    const type = mark.dataset.type;
+                    if (!type || !stickerMap[type]) return;
+
+                    
+                    if (type !== lastType) {
+                        lastType = type;
+                        const pool = stickerMap[type];
+                        $s.src = pool[Math.floor(Math.random() * pool.length)];
+                    }
+                    $s.style.opacity   = '1';
+                    $s.style.transform = 'scale(1) rotate(0deg)';
+                });
+
+                mark.addEventListener('mouseout', function () {
+                    lastType = null;
+                    $s.style.opacity   = '0';
+                    $s.style.transform = 'scale(0.6) rotate(-8deg)';
+                });
+            });
+        });
+    })();
     </script>
 
     <footer class="site-footer">

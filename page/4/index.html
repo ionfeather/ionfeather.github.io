@@ -199,15 +199,20 @@
   .welcome-sticker {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(0.6);
     width: 72px;
     height: 72px;
     border-radius: 14px;
-    opacity: 0.92;
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .welcome-sticker--left  { left: 20px; }
   .welcome-sticker--right { right: 20px; }
+  .welcome--stickers-visible .welcome-sticker {
+    opacity: 0.92;
+    transform: translateY(-50%) scale(1);
+  }
   @media (max-width: 680px) {
     .welcome-sticker { display: none; }
   }
@@ -891,6 +896,63 @@
       });
     });
   });
+</script>
+
+
+<script>
+(function () {
+    var darkSrc  = '/stickers/azuki/030.png';
+    var lightSrc = '/stickers/azuki/029.png';
+
+    var $s = null;
+    var hideTimer = null;
+
+    function getOrCreate() {
+        if (!$s) {
+            $s = document.createElement('img');
+            $s.alt = '';
+            Object.assign($s.style, {
+                position:     'fixed',
+                bottom:       '72px',
+                left:         '20px',
+                width:        '72px',
+                height:       '72px',
+                borderRadius: '14px',
+                opacity:      '0',
+                transform:    'scale(0.5) rotate(-10deg)',
+                transition:   'opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                pointerEvents:'none',
+                zIndex:       '9998',
+            });
+            document.body.appendChild($s);
+        }
+        return $s;
+    }
+
+    function show(src) {
+        var el = getOrCreate();
+        el.src = src;
+        el.style.opacity   = '1';
+        el.style.transform = 'scale(1) rotate(0deg)';
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+            el.style.opacity   = '0';
+            el.style.transform = 'scale(0.6) rotate(8deg)';
+        }, 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var toggle = document.getElementById('dark-mode-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', function () {
+            
+            setTimeout(function () {
+                var isDark = document.documentElement.dataset.scheme === 'dark';
+                show(isDark ? darkSrc : lightSrc);
+            }, 50);
+        });
+    });
+})();
 </script>
 
 
@@ -2002,6 +2064,17 @@
     })('//cdn.bootcss.com/pangu/3.3.0/pangu.min.js', function() {
       pangu.spacingPage();
     });
+</script>
+<script>
+(function () {
+    var title = document.querySelector('.welcome-title');
+    var welcome = document.querySelector('.welcome');
+    if (!title || !welcome) return;
+    title.style.cursor = 'pointer';
+    title.addEventListener('click', function () {
+        welcome.classList.toggle('welcome--stickers-visible');
+    });
+})();
 </script>
 
             </main>
