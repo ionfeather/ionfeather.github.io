@@ -151,7 +151,7 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     position: 'absolute',
     zIndex: '-1',
     fontSize: 11 * Config.scale + 'rem',
-    color: Utils.Color.format(Color.pop()),
+    color: getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#5a6e3a',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -218,8 +218,8 @@ const Style1 = (data, marks, $tags, $style, Config) => {
 
   $style.innerHTML = genCSS() + `
     #my-tags { overflow-x: hidden; padding: 7%; text-align: center; width: 100%; height: 100%; position: relative; box-sizing: border-box; }
-    #my-tags a::after { content: "\\2197"; font-size: .8em; vertical-align: super; }
-    #my-tags a:hover::after { animation: move .3s linear infinite; position: relative; }
+    #my-tags a::after { content: "\\2197"; font-size: .8em; vertical-align: super; display: inline-block; transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease; opacity: 0.6; }
+    #my-tags a:hover::after { transform: translate(3px, -3px); opacity: 1; }
     #my-tags mark { position: absolute; padding: .25em .55em; display: inline-block; border-radius: 2em; margin: .15em .1em; opacity: .85; transition: opacity .2s; font-weight: 400; letter-spacing: .02em; }
     @media (max-width: 1000px) {
       #my-tags mark { animation: none !important; }
@@ -227,11 +227,6 @@ const Style1 = (data, marks, $tags, $style, Config) => {
     @media (max-width: 600px) {
       #my-tags mark { position: unset; }
       html { overflow-x: hidden; font-size: 10px; }
-    }
-    @keyframes move {
-      0% { left: 0px }
-      50% { left: 1% }
-      100 { left: 0px }
     }
     @keyframes float {
       0% { transform: translatey(0px) rotate(0deg); }

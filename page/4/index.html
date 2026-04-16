@@ -17,6 +17,14 @@
     <link rel="shortcut icon" href="/ion.ico" />
 
 
+<script>
+  if (sessionStorage.getItem('siteVisited')) {
+    document.documentElement.classList.add('no-menu-anim');
+  } else {
+    sessionStorage.setItem('siteVisited', '1');
+  }
+</script>
+
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap"
   onload="this.media='all'" onError="this.media='none'">
@@ -619,6 +627,182 @@
     to   { opacity: 1; transform: translateX(0); }
   }
 
+   
+   
+  @media (min-width: 768px) {
+    .sidebar-social-bar {
+      display: contents;
+    }
+    #dark-mode-toggle {
+      order: 999;
+      margin-top: auto;
+    }
+  }
+
+   
+  @media (max-width: 767px) {
+    .sidebar-social-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    #dark-mode-toggle {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: var(--body-text-color);
+    }
+
+  }
+
+   
+  .menu-social li a {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+    display: inline-flex;
+  }
+  .menu-social li a:hover {
+    transform: translateY(-4px) scale(1.18);
+    color: var(--accent-color);
+  }
+  .menu-social li a svg {
+    transition: stroke 0.2s ease;
+  }
+  .menu-social li a:hover svg {
+    stroke: var(--accent-color);
+  }
+
+   
+  @keyframes menuSlideIn {
+    from { opacity: 0; transform: translateX(-14px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  #main-menu li {
+    animation: menuSlideIn 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .no-menu-anim #main-menu li {
+    animation: none !important;
+  }
+  #main-menu li:nth-child(1) { animation-delay: 0.04s; }
+  #main-menu li:nth-child(2) { animation-delay: 0.09s; }
+  #main-menu li:nth-child(3) { animation-delay: 0.14s; }
+  #main-menu li:nth-child(4) { animation-delay: 0.19s; }
+  #main-menu li:nth-child(5) { animation-delay: 0.24s; }
+  #main-menu li:nth-child(n+6) { animation-delay: 0.28s; }
+
+  #main-menu li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    transition: color 0.22s ease, transform 0.22s ease;
+    overflow: hidden;
+  }
+
+   
+  #main-menu li a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: var(--accent-color);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: left;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  #main-menu li a:hover::before {
+    opacity: 0.07;
+    transform: scaleX(1);
+  }
+  #main-menu li.current a::before {
+    opacity: 0.11;
+    transform: scaleX(1);
+  }
+
+   
+  #main-menu li.current a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: var(--accent-color);
+    border-radius: 0 3px 3px 0;
+    transition: height 0.22s ease;
+  }
+
+   
+  #main-menu li a svg {
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                color 0.22s ease;
+  }
+  #main-menu li a:hover svg {
+    transform: scale(1.22);
+    color: var(--accent-color);
+  }
+  #main-menu li.current a svg {
+    color: var(--accent-color);
+  }
+
+   
+  #main-menu li a span {
+    position: relative;
+    transition: transform 0.22s ease, color 0.22s ease;
+  }
+  #main-menu li a:hover span {
+    transform: translateX(3px);
+    color: var(--accent-color);
+  }
+  #main-menu li.current a span {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+   
+  html[data-scheme="dark"] #main-menu li a:hover::before {
+    opacity: 0.1;
+  }
+  html[data-scheme="dark"] #main-menu li.current a::before {
+    opacity: 0.15;
+  }
+
+   
+  @media (min-width: 1280px) {
+    #main-menu li a {
+      padding: 7px 10px;
+      gap: 8px;
+    }
+  }
+
+   
+  @media (max-width: 767px) {
+    #main-menu li a::before,
+    #main-menu li a::after {
+      display: none;
+    }
+    #main-menu li a {
+      padding: 6px 8px;
+      border-radius: 8px;
+    }
+    #main-menu li a:hover span,
+    #main-menu li.current a span {
+      transform: none;
+    }
+    #main-menu li.current a {
+      border-left: 3px solid var(--accent-color);
+      padding-left: 10px;
+      border-radius: 0 8px 8px 0;
+    }
+  }
+
 </style>
 
 
@@ -696,7 +880,7 @@
                 <a href="/">
                 
                     
-                    
+
                     
                         
                         <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
@@ -704,21 +888,20 @@
                     
                 
                 </a>
-                
-                    <span class="emoji">🌳</span>
-                
             </figure>
             
         
-        
+
         <div class="site-meta">
             <h1 class="site-name"><a href="/">ionfeather&#39;Log</a></h1>
             <h2 class="site-description">十年饮冰，难凉热血</h2>
         </div>
-    </header><ol class="menu-social">
+    </header>
+
+    <div class="sidebar-social-bar"><ol class="menu-social">
             
                 <li>
-                    <a 
+                    <a
                         href='https://github.com/ionfeather'
                         target="_blank"
                         title="GitHub"
@@ -732,7 +915,7 @@
                 </li>
             
                 <li>
-                    <a 
+                    <a
                         href='mailto:lizishadowmay@gmail.com'
                         target="_blank"
                         title="Email"
@@ -746,7 +929,7 @@
                 </li>
             
                 <li>
-                    <a 
+                    <a
                         href='index.xml'
                         target="_blank"
                         title="RSS"
@@ -778,7 +961,15 @@
                     </a>
                 </li>
             
-        </ol><ol class="menu" id="main-menu">
+        </ol>
+        <span id="dark-mode-toggle">
+            <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left"   width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+            <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-toggle-right"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+        </span>
+        
+    </div>
+
+    <ol class="menu" id="main-menu">
         
         
         
@@ -878,18 +1069,6 @@
             </a>
         </li>
         
-        <li class="menu-bottom-section">
-            
-
-                
-                    <span id="dark-mode-toggle">
-                        <svg  xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left"   width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
-                        <svg  xmlns="http://www.w3.org/2000/svg"  class="icon icon-tabler icon-tabler-toggle-right"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
-                    </span>
-                
-                
-            </ol>
-        </li>
     </ol>
 </aside>
 
@@ -1715,15 +1894,26 @@
 
 <footer class="site-footer">
     <section class="copyright">
-        &copy; 
+        &copy;
         
-            2024 - 
+            2024 -
         
         2026 ionfeather&#39;Log
+        · <span id="site-runtime"></span>
+        <script>
+        (function() {
+            var start = new Date('2024-10-20');
+            var now = new Date();
+            var days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+            var years = Math.floor(days / 365);
+            var remainDays = days % 365;
+            document.getElementById('site-runtime').textContent =
+                years > 0 ? years + '年' + remainDays + '天' : days + '天';
+        })();
+        </script>
     </section>
-    
-    <section class="powerby">
-        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+
+    <section class="powerby">使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
