@@ -2,16 +2,16 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="十年饮冰，难凉热血">
-<title></title>
+<title>Posts</title>
 
 <link rel='canonical' href='https://ionfeather.github.io/post/'>
 
-<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="">
+<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="Posts">
 <meta property='og:description' content="十年饮冰，难凉热血">
 <meta property='og:url' content='https://ionfeather.github.io/post/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
 <meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-04-12T23:36:49&#43;08:00 '/>
-<meta name="twitter:title" content="">
+<meta name="twitter:title" content="Posts">
 <meta name="twitter:description" content="十年饮冰，难凉热血"><link rel="alternate" type="application/rss&#43;xml" href="https://ionfeather.github.io/post/index.xml">
     <link rel="shortcut icon" href="/ion.ico" />
 
@@ -371,6 +371,22 @@
   }
 
    
+  .pagination .page-link {
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+  .pagination .page-link:not(.current):not(.dots):hover {
+    background: rgba(90, 110, 58, 0.12) !important;
+    color: var(--accent-color) !important;
+  }
+  html[data-scheme="dark"] .pagination .page-link:not(.current):not(.dots):hover {
+    background: rgba(143, 164, 106, 0.14) !important;
+    color: var(--accent-color) !important;
+  }
+  .pagination .page-link.dots {
+    opacity: 0.4;
+  }
+
+   
   .tagCloud a, .widget--categories a {
     transition: transform 0.2s ease, color 0.2s ease;
     display: inline-block;
@@ -411,12 +427,69 @@
 
    
   .article-list--compact article {
-    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.28s ease,
+                background 0.28s ease;
   }
+
+   
+  .article-list--compact article::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 60%;
+    background: var(--accent-color);
+    border-radius: 0 3px 3px 0;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.28s ease;
+    opacity: 0;
+    z-index: 1;
+  }
+  .article-list--compact article:hover::before {
+    transform: translateY(-50%) scaleY(1);
+    opacity: 1;
+  }
+
   .article-list--compact article:hover {
-    transform: translateX(6px);
-    box-shadow: 0 4px 16px rgba(90, 70, 50, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 6px 20px rgba(90, 70, 50, 0.12);
+    background: rgba(255, 254, 250, 0.96) !important;
+  }
+  html[data-scheme="dark"] .article-list--compact article:hover {
+    background: rgba(40, 39, 32, 0.85) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+   
+  .article-list--compact article .article-title {
+    transition: color 0.22s ease;
+  }
+  .article-list--compact article:hover .article-title {
+    color: var(--accent-color);
+  }
+
+   
+  .article-list--compact article footer.article-time {
+    transition: opacity 0.22s ease;
+  }
+  .article-list--compact article:hover footer.article-time {
+    opacity: 0.7;
+  }
+
+   
+  .article-list--compact .article-image {
+    overflow: hidden;
+  }
+  .article-list--compact .article-image img {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .article-list--compact article:hover .article-image img {
+    transform: scale(1.08);
   }
 
    
@@ -993,7 +1066,7 @@
         
         
         <li >
-            <a href='/%E5%85%B3%E4%BA%8E/' >
+            <a href='/about/' >
                 
                 
                 
@@ -1250,7 +1323,7 @@
         <div class="section-card">
             <div class="section-details">
                 <h3 class="section-count">35 个页面</h3>
-                <h1 class="section-term"></h1>
+                <h1 class="section-term">Posts</h1>
                 
             </div>
         </div>
