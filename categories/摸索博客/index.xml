@@ -857,21 +857,30 @@
 &lt;/h2&gt;&lt;div class=&#34;imgloop-wrap&#34; id=&#34;imgloop-17&#34;&gt;
   &lt;div class=&#34;imgloop-track&#34;&gt;
     &lt;div class=&#34;imgloop-slide&#34;&gt;
-      &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_85182a50046c7c07.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3245.jpg&#34;&gt;
+      &lt;a class=&#34;glightbox-imgloop-17&#34; href=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_ff15e20163d4fb20.webp&#34; data-desc=&#34;DSC_3245.jpg&#34;&gt;
+        &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_69bf5f62009e9829.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3245.jpg&#34;&gt;
+      &lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&#34;imgloop-slide&#34;&gt;
-      &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_d76abe7f8f642459.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3248.jpg&#34;&gt;
+      &lt;a class=&#34;glightbox-imgloop-17&#34; href=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_b367f6af80c5a4bd.webp&#34; data-desc=&#34;DSC_3248.jpg&#34;&gt;
+        &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_7b92918258791bed.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3248.jpg&#34;&gt;
+      &lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&#34;imgloop-slide&#34;&gt;
-      &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_4850f552966a4045.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3304.jpg&#34;&gt;
+      &lt;a class=&#34;glightbox-imgloop-17&#34; href=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_575f320135889499.webp&#34; data-desc=&#34;DSC_3304.jpg&#34;&gt;
+        &lt;img src=&#34;https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_37fc8b79e72a7666.webp&#34; loading=&#34;lazy&#34; alt=&#34;DSC_3304.jpg&#34;&gt;
+      &lt;/a&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;button class=&#34;imgloop-btn imgloop-prev&#34; aria-label=&#34;上一张&#34;&gt;&amp;#8249;&lt;/button&gt;
-  &lt;button class=&#34;imgloop-btn imgloop-next&#34; aria-label=&#34;下一张&#34;&gt;&amp;#8250;&lt;/button&gt;
   &lt;div class=&#34;imgloop-dots&#34;&gt;
     &lt;span class=&#34;imgloop-dot active&#34;&gt;&lt;/span&gt;
     &lt;span class=&#34;imgloop-dot&#34;&gt;&lt;/span&gt;
     &lt;span class=&#34;imgloop-dot&#34;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  
+  &lt;div class=&#34;imgloop-lb-thumbs-wrap&#34; style=&#34;display:none&#34; aria-hidden=&#34;true&#34;&gt;
+    &lt;div class=&#34;imgloop-lb-thumbs&#34;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -896,44 +905,26 @@
 .imgloop-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-}
-.imgloop-slide img {
-  width: 100%;
-  max-height: 520px;
-  object-fit: contain;
-  display: block;
-  border: none !important;
-}
-.imgloop-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.75);
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  color: #3a3530;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, opacity 0.2s;
-  opacity: 0.7;
-  z-index: 2;
-  padding: 0;
 }
-.imgloop-btn:hover { opacity: 1; background: rgba(255,255,255,0.95); }
-.imgloop-prev { left: 10px; }
-.imgloop-next { right: 10px; }
-html[data-scheme=&#34;dark&#34;] .imgloop-btn {
-  background: rgba(40,38,30,0.75);
-  color: #e0d5c5;
+.imgloop-slide a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
 }
-html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
-  background: rgba(40,38,30,0.95);
+.imgloop-slide img {
+  max-width: 100%;
+  max-height: 520px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border: none !important;
+  cursor: zoom-in;
 }
 .imgloop-dots {
   position: absolute;
@@ -943,6 +934,12 @@ html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
   display: flex;
   gap: 6px;
   z-index: 2;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.imgloop-dots.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 .imgloop-dot {
   width: 6px;
@@ -956,6 +953,95 @@ html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
   background: #fff;
   transform: scale(1.3);
 }
+
+ 
+.gslide-image img {
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  object-fit: contain !important;
+}
+
+ 
+.imgloop-lb-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 10003;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s, background 0.2s;
+  pointer-events: auto;
+}
+.imgloop-lb-toggle:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.22);
+}
+
+ 
+.glightbox-container .imgloop-lb-thumbs-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10002;
+  display: none;
+  justify-content: center;
+  padding: 10px 20px 24px;
+  background: linear-gradient(to top, rgba(42,45,50,0.98) 0%, rgba(42,45,50,0.75) 50%, transparent);
+  pointer-events: auto;
+}
+.glightbox-container .imgloop-lb-thumbs-wrap.open {
+  display: flex;
+}
+.imgloop-lb-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  max-width: 100%;
+}
+.imgloop-lb-thumbs::-webkit-scrollbar { height: 6px; }
+.imgloop-lb-thumbs::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+}
+.imgloop-lb-thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+  border: 2px solid transparent;
+  background: rgba(0,0,0,0.2);
+}
+.imgloop-lb-thumb:hover { opacity: 0.9; }
+.imgloop-lb-thumb.active {
+  opacity: 1;
+  border-color: var(--accent-color, #6b8e9e);
+  transform: translateY(-2px);
+}
+.imgloop-lb-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 640px) {
+  .imgloop-lb-thumb { width: 52px; height: 52px; }
+}
 &lt;/style&gt;
 
 &lt;script&gt;
@@ -968,21 +1054,29 @@ html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
   var total = slides.length;
   var current = 0;
 
+  var dotsWrap = wrap.querySelector(&#39;.imgloop-dots&#39;);
+  var dotsTimer = null;
+
+  function wakeDots() {
+    dotsWrap.classList.remove(&#39;fade-out&#39;);
+    window.clearTimeout(dotsTimer);
+    dotsTimer = window.setTimeout(function () {
+      dotsWrap.classList.add(&#39;fade-out&#39;);
+    }, 2500);
+  }
+
   function goTo(index) {
     current = (index + total) % total;
     track.scrollTo({ left: slides[current].offsetLeft, behavior: &#39;smooth&#39; });
-    dots.forEach(function(d, i) {
-      d.classList.toggle(&#39;active&#39;, i === current);
-    });
+    dots.forEach(function(d, i) { d.classList.toggle(&#39;active&#39;, i === current); });
+    wakeDots();
   }
 
-  wrap.querySelector(&#39;.imgloop-prev&#39;).addEventListener(&#39;click&#39;, function () { goTo(current - 1); });
-  wrap.querySelector(&#39;.imgloop-next&#39;).addEventListener(&#39;click&#39;, function () { goTo(current + 1); });
   dots.forEach(function (d, i) { d.addEventListener(&#39;click&#39;, function () { goTo(i); }); });
 
-  
   var ticking = false;
   track.addEventListener(&#39;scroll&#39;, function () {
+    wakeDots();
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(function () {
@@ -992,6 +1086,93 @@ html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
         dots.forEach(function(d, i) { d.classList.toggle(&#39;active&#39;, i === current); });
       }
       ticking = false;
+    });
+  });
+
+   
+  wakeDots();
+
+  window.addEventListener(&#39;load&#39;, function () {
+    if (typeof GLightbox === &#39;undefined&#39;) {
+      console.warn(&#39;[imgloop] GLightbox not loaded&#39;);
+      return;
+    }
+
+    var sel = &#39;.glightbox-imgloop-17&#39;;
+    var anchors = wrap.querySelectorAll(sel);
+    if (!anchors.length) return;
+
+    var lightbox = GLightbox({
+      selector: sel,
+      touchNavigation: true,
+      loop: true,
+      openEffect: &#39;zoom&#39;,
+      closeEffect: &#39;fade&#39;,
+      slideEffect: &#39;slide&#39;,
+      closeButton: true,
+      keyboardNavigation: true,
+      draggable: true,
+      closeOnOutsideClick: true,
+      zoomable: false
+    });
+
+    var thumbsWrap = wrap.querySelector(&#39;.imgloop-lb-thumbs-wrap&#39;);
+    var thumbs = thumbsWrap.querySelector(&#39;.imgloop-lb-thumbs&#39;);
+
+    anchors.forEach(function (a, i) {
+      var miniImg = a.querySelector(&#39;img&#39;);
+      var src = miniImg ? miniImg.src : a.href;
+      var alt = a.getAttribute(&#39;data-desc&#39;) || &#39;&#39;;
+      var thumb = document.createElement(&#39;div&#39;);
+      thumb.className = &#39;imgloop-lb-thumb&#39; + (i === 0 ? &#39; active&#39; : &#39;&#39;);
+      thumb.innerHTML = &#39;&lt;img src=&#34;&#39; + src + &#39;&#34; alt=&#34;&#39; + alt + &#39;&#34; loading=&#34;lazy&#34;&gt;&#39;;
+      thumb.addEventListener(&#39;click&#39;, function (e) {
+        e.stopPropagation();
+        lightbox.goToSlide(i);
+      });
+      thumbs.appendChild(thumb);
+    });
+
+    function syncThumbs(index) {
+      var t = thumbs.querySelectorAll(&#39;.imgloop-lb-thumb&#39;);
+      t.forEach(function (el, i) { el.classList.toggle(&#39;active&#39;, i === index); });
+      if (t[index]) t[index].scrollIntoView({ behavior: &#39;smooth&#39;, inline: &#39;center&#39;, block: &#39;nearest&#39; });
+    }
+
+    var toggle = document.createElement(&#39;button&#39;);
+    toggle.className = &#39;imgloop-lb-toggle&#39;;
+    toggle.setAttribute(&#39;aria-label&#39;, &#39;切换缩略图&#39;);
+    toggle.innerHTML = &#39;&amp;#8942;&amp;#8942; 缩略图&#39;;
+    toggle.addEventListener(&#39;click&#39;, function (e) {
+      e.stopPropagation();
+      thumbsWrap.classList.toggle(&#39;open&#39;);
+    });
+
+    function showControls() {
+      var gb = document.querySelector(&#39;.glightbox-container&#39;);
+      if (gb) {
+        gb.appendChild(toggle);
+        gb.appendChild(thumbsWrap);
+      }
+      thumbsWrap.classList.remove(&#39;open&#39;);
+      syncThumbs(lightbox.getActiveSlideIndex() || 0);
+    }
+
+    function hideControls() {
+      thumbsWrap.classList.remove(&#39;open&#39;);
+      wrap.appendChild(thumbsWrap);
+      if (toggle.parentNode) toggle.parentNode.removeChild(toggle);
+    }
+
+    lightbox.on(&#39;open&#39;, function () {
+      showControls();
+    });
+    lightbox.on(&#39;slide_changed&#39;, function (ref) {
+      var idx = ref.current ? ref.current.index : (lightbox.getActiveSlideIndex() || 0);
+      syncThumbs(idx);
+    });
+    lightbox.on(&#39;close&#39;, function () {
+      hideControls();
     });
   });
 })();
@@ -1050,15 +1231,15 @@ html[data-scheme=&#34;dark&#34;] .imgloop-btn:hover {
 &lt;p&gt;我不得不赞赏一下这个Linter，真的很好用，格式化目前的Markdown内容一直是我的心头痒，对于我这个强迫症来说，现在只需要按一下&lt;code&gt;Ctrl+S&lt;/code&gt;就可以让我的敲击的内容都非常规范化，这实在是伟大的发明。&lt;/p&gt;
 &lt;h3 id=&#34;excalidraw&#34;&gt;Excalidraw
 &lt;/h3&gt;&lt;p&gt;这个插件还挺好看的，可以绘制手绘风格的图像，我绘制一些想法会更加方便。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_163702850c407373.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_d373339367fe1841.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1107&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_dad269ba26d9e056.webp 800w, https://ionfeather.github.io/2025/obsidian/image_hu_163702850c407373.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/obsidian/image_hu_d59a8b5d627b66c5.webp 800w, https://ionfeather.github.io/2025/obsidian/image_hu_d373339367fe1841.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;学习时间和自信心之间的关系&#34;
 	
-	data-original=&#34;/2025/obsidian/image_hu_291476d133285ecc.webp&#34;
+	data-original=&#34;/2025/obsidian/image_hu_cbf9a1d10f408abf.webp&#34;
 	data-lightbox-width=&#34;536&#34;
 	data-lightbox-height=&#34;371&#34;
 	

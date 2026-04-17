@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/frosts-descent/'>
 
-<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="霜降 | 一百年前的故事">
+<link rel="stylesheet" href="/scss/style.min.e722bb6bd4f8ba9a664eb5a364a5eea5f9e6e8e35ee176a89ad5a81453c78595.css"><meta property='og:title' content="霜降 | 一百年前的故事">
 <meta property='og:description' content="没写博客的日子在玩和学习\r一直想着说要写一下博客，但是总是故意忘记这回事——输出总是一件需要耗能的事情，有点儿像是摄影中的后期（？）\n按下快门、找到美景的时候真的超级开心，但后期的时候就会需要一些兴致，一般是一个想发朋友圈的噱头或者是看到自己的超级好看的照片希望分享才会动身。总而言之言而总之，今天又找到了一些小小的动力，于是开始写！\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/frosts-descent/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -23,6 +23,16 @@
   } else {
     sessionStorage.setItem('siteVisited', '1');
   }
+</script>
+
+
+<script>
+  (function () {
+    var saved = localStorage.getItem('StackColorScheme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = saved === 'dark' || (saved === 'auto' && systemDark) || (!saved && systemDark);
+    document.documentElement.dataset.scheme = isDark ? 'dark' : 'light';
+  })();
 </script>
 
 
@@ -49,46 +59,6 @@
   html body {
     font-family: var(--base-font-family);
     font-weight: normal;
-  }
-
-   
-  :root {
-    --accent-color: #5a6e3a;
-    --accent-color-darker: #3e4e28;
-    --body-text-color: #3a3530;
-    --card-separator-color: rgba(200, 180, 160, 0.2);
-    --card-background: rgba(255, 254, 250, 0.82);
-    --card-background-selected: rgba(245, 236, 220, 0.7);
-  }
-  html[data-scheme="dark"] {
-    --accent-color: #8fa46a;
-    --accent-color-darker: #6b7d52;
-    --body-text-color: #e0d5c5;
-    --card-separator-color: rgba(100, 90, 70, 0.3);
-    --card-background: rgba(32, 31, 26, 0.62);
-    --card-background-selected: rgba(50, 46, 32, 0.7);
-    --card-text-color-secondary: rgba(220, 208, 188, 0.88);
-    --card-text-color-tertiary: rgba(175, 160, 138, 0.82);
-  }
-
-   
-  html body {
-    background-color: #fdf9f2 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
-      linear-gradient(135deg, #fefcf8 0%, #fdf9f2 50%, #f7ede0 100%) !important;
-    background-attachment: fixed !important;
-  }
-
-   
-  html[data-scheme="dark"] body {
-    background-color: #191917 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
-      radial-gradient(ellipse at 0% 0%, rgba(80, 100, 55, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse at 100% 100%, rgba(50, 40, 25, 0.25) 0%, transparent 55%),
-      linear-gradient(135deg, #1e1e1b 0%, #191917 50%, #151410 100%) !important;
-    background-attachment: fixed !important;
   }
 
    
@@ -127,10 +97,10 @@
   html[data-scheme="dark"] body .main-article,
   html[data-scheme="dark"] body .welcome,
   html[data-scheme="dark"] body .pagination-container {
-    background: rgba(32, 31, 26, 0.62) !important;
+    background: rgba(48, 54, 66, 0.72) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -156,8 +126,8 @@
     border: 1px solid rgba(255, 255, 255, 0.45) !important;
   }
   html[data-scheme="dark"] body .archives-year {
-    background: rgba(32, 31, 26, 0.55) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: rgba(48, 54, 66, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -172,11 +142,11 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a {
-    background: rgba(32, 31, 26, 0.75) !important;
+    background: rgba(48, 54, 66, 0.8) !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a:hover {
-    background: rgba(32, 31, 26, 0.95) !important;
+    background: rgba(65, 73, 88, 0.95) !important;
   }
 
    
@@ -237,21 +207,33 @@
   }
 
    
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #c8b89a; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #8fa46a; }
-
    
   .article-content a {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
   .article-content a:hover {
-    text-decoration-style: solid;
+    border-bottom-style: solid;
+  }
+  .article-content a:has(> img) {
+    border-bottom: none;
+  }
+
+   
+  html body *:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  html body a:focus-visible,
+  html body button:focus-visible {
+    border-radius: 4px;
+  }
+
+   
+  input, textarea, [contenteditable="true"] {
+    caret-color: var(--accent-color);
   }
 
    
@@ -358,7 +340,7 @@
   html[data-scheme="dark"] .jump-text5, html[data-scheme="dark"] .jump-text6,
   html[data-scheme="dark"] .jump-text7, html[data-scheme="dark"] .jump-text8,
   html[data-scheme="dark"] .jump-text9, html[data-scheme="dark"] .jump-text10 {
-    color: #8fa46a !important;
+    color: #6b8e9e !important;
   }
 
    
@@ -385,7 +367,7 @@
     color: var(--accent-color) !important;
   }
   html[data-scheme="dark"] .pagination .page-link:not(.current):not(.dots):hover {
-    background: rgba(143, 164, 106, 0.14) !important;
+    background: rgba(107, 142, 158, 0.14) !important;
     color: var(--accent-color) !important;
   }
   .pagination .page-link.dots {
@@ -467,7 +449,7 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] .article-list--compact article:hover {
-    background: rgba(40, 39, 32, 0.85) !important;
+    background: rgba(60, 68, 82, 0.88) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
@@ -652,8 +634,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.16) 0%,
-      rgba(143, 164, 106, 0.16) 86%,
+      rgba(107, 142, 158, 0.16) 0%,
+      rgba(107, 142, 158, 0.16) 86%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul,
@@ -661,8 +643,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.10) 0%,
-      rgba(143, 164, 106, 0.10) 80%,
+      rgba(107, 142, 158, 0.10) 0%,
+      rgba(107, 142, 158, 0.10) 80%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ul,
@@ -670,18 +652,18 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.07) 0%,
-      rgba(143, 164, 106, 0.07) 75%,
+      rgba(107, 142, 158, 0.07) 0%,
+      rgba(107, 142, 158, 0.07) 75%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents a:hover {
-    border-left-color: rgba(143, 164, 106, 0.3) !important;
-    background: rgba(143, 164, 106, 0.06) !important;
+    border-left-color: rgba(107, 142, 158, 0.3) !important;
+    background: rgba(107, 142, 158, 0.06) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li li.active-class > a {
-    background: rgba(143, 164, 106, 0.1) !important;
+    background: rgba(107, 142, 158, 0.1) !important;
   }
 
    
@@ -846,10 +828,10 @@
 
    
   html[data-scheme="dark"] #main-menu li a:hover::before {
-    opacity: 0.1;
+    opacity: 0.12;
   }
   html[data-scheme="dark"] #main-menu li.current a::before {
-    opacity: 0.15;
+    opacity: 0.18;
   }
 
    
@@ -931,7 +913,29 @@
 
     function show(src) {
         var el = getOrCreate();
+        var toggle = document.getElementById('dark-mode-toggle');
         el.src = src;
+
+        if (toggle) {
+            var rect = toggle.getBoundingClientRect();
+            if (window.innerWidth < 768) {
+                
+                el.style.left   = (rect.left - 84) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            } else {
+                
+                el.style.left   = (rect.right + 12) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            }
+        } else {
+            
+            el.style.left   = '20px';
+            el.style.bottom = '72px';
+            el.style.top    = 'auto';
+        }
+
         el.style.opacity   = '1';
         el.style.transform = 'scale(1) rotate(0deg)';
         clearTimeout(hideTimer);
@@ -952,6 +956,112 @@
             }, 50);
         });
     });
+})();
+</script>
+
+
+<style>
+  .tang-laoshi {
+    cursor: pointer;
+    transition: border-bottom-color 0.25s ease;
+    border-bottom: 1px dotted transparent;
+  }
+  .tang-laoshi:hover {
+    border-bottom-color: rgba(90, 110, 58, 0.35);
+  }
+  html[data-scheme="dark"] .tang-laoshi:hover {
+    border-bottom-color: rgba(125, 160, 176, 0.4);
+  }
+</style>
+<script>
+(function () {
+  var pool = [
+    '/stickers/azuki/003.png',
+    '/stickers/azuki/005.png',
+    '/stickers/azuki/007.png',
+    '/stickers/azuki/011.png',
+    '/stickers/azuki/014.png',
+    '/stickers/azuki/021.png',
+    '/stickers/azuki/029.png',
+    '/stickers/azuki/036.png',
+  ];
+  var cooldown = false;
+
+  function wrapTangLaoshi(node) {
+    if (node.nodeType !== 3) return;
+    var text = node.textContent;
+    if (text.indexOf('唐老师') === -1) return;
+
+    var parts = text.split('唐老师');
+    var frag = document.createDocumentFragment();
+    parts.forEach(function (part, i) {
+      if (part) frag.appendChild(document.createTextNode(part));
+      if (i < parts.length - 1) {
+        var span = document.createElement('span');
+        span.className = 'tang-laoshi';
+        span.textContent = '唐老师';
+        frag.appendChild(span);
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function init() {
+    var walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(wrapTangLaoshi);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  document.addEventListener('click', function (e) {
+    if (cooldown) return;
+    var el = e.target.closest('.tang-laoshi');
+    if (!el) return;
+
+    cooldown = true;
+    setTimeout(function () { cooldown = false; }, 800);
+
+    var rect = el.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = pool[Math.floor(Math.random() * pool.length)];
+    img.alt = '';
+    Object.assign(img.style, {
+      position: 'fixed',
+      left: (rect.left + rect.width / 2 - 40) + 'px',
+      top: (rect.top - 90) + 'px',
+      width: '80px',
+      height: '80px',
+      borderRadius: '16px',
+      opacity: '0',
+      transform: 'scale(0.4) translateY(20px) rotate(-10deg)',
+      transition: 'opacity 0.35s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      pointerEvents: 'none',
+      zIndex: '9999',
+    });
+    document.body.appendChild(img);
+
+    requestAnimationFrame(function () {
+      img.style.opacity = '1';
+      img.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+    });
+
+    setTimeout(function () {
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.7) translateY(-10px) rotate(6deg)';
+      setTimeout(function () { img.remove(); }, 400);
+    }, 1400);
+  });
 })();
 </script>
 
@@ -1020,7 +1130,7 @@
 
                     
                         
-                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
+                        <img src="/img/avatar_hu_346bcac48b777fa1.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -1249,8 +1359,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/2025/frosts-descent/">
-                <img src="/2025/frosts-descent/cover_hu_b3cfb95e42cbf63.webp"
-                        srcset="/2025/frosts-descent/cover_hu_b3cfb95e42cbf63.webp 1200w, /2025/frosts-descent/cover_hu_28e792ac14c62c96.webp 2000w"
+                <img src="/2025/frosts-descent/cover_hu_34e69e99143c2654.webp"
+                        srcset="/2025/frosts-descent/cover_hu_34e69e99143c2654.webp 1200w, /2025/frosts-descent/cover_hu_15fe0ddaf1ab178b.webp 2000w"
                         width="1200" 
                         height="846" 
                         loading="lazy"
@@ -1332,15 +1442,15 @@
 <h2 id="故宫博物院百年午门展">故宫博物院百年午门展
 </h2><p>10月1日躺在家里在准备第二天骑行的时候，10月2日在骑行到天津半路的时候，10月3日在住一天洗浴中心回到北京的高铁上的时候，我都在八点整准时掏出手机，3，2，1，进入页面，刷新，看到售罄——10月3日的时候奇迹出现了！那天进去的时候显示还有余票，我点击选择，付款，竟然成功跳出来了微信的付款页面。超级开心！</p>
 <p>那时候的我不知道我到底有多幸运。后来在10月的下半旬唐老师和我每天蹲点，连着抢半个月都没有一丝希望再来一张午门展的票，让我能看到李白的《上阳台帖》。抢到的门票非常巧，正好在10月10日，故宫博物院建立百年。我兴致勃勃从家里出发，远赴故宫，只为一睹《清明上河图》《五牛图》《伯远帖》。北京阴雨连绵，10月初的北京树木仍然深绿，但已经展现出了秋意。</p>
-<p><img src="/2025/frosts-descent/assets/IMG-20251030221923746_hu_c49d0c828d9d78cb.webp"
+<p><img src="/2025/frosts-descent/assets/IMG-20251030221923746_hu_ac8b3ae1f37e3c42.webp"
 	width="1600"
 	height="1636"
-	srcset="/2025/frosts-descent/assets/IMG-20251030221923746_hu_ba74593d245e5217.webp 800w, /2025/frosts-descent/assets/IMG-20251030221923746_hu_c49d0c828d9d78cb.webp 1600w"
+	srcset="/2025/frosts-descent/assets/IMG-20251030221923746_hu_61b93f03eb2ad38f.webp 800w, /2025/frosts-descent/assets/IMG-20251030221923746_hu_ac8b3ae1f37e3c42.webp 1600w"
 	loading="lazy"
 	
 		alt="这就是为什么后来还想去一次。因为展品是分期的。"
 	
-	data-original="/2025/frosts-descent/assets/IMG-20251030221923746_hu_b6d7306a04200a00.webp"
+	data-original="/2025/frosts-descent/assets/IMG-20251030221923746_hu_fed49483ec7c46a3.webp"
 	data-lightbox-width="792"
 	data-lightbox-height="810"
 	
@@ -1352,13 +1462,13 @@
 </p>
 <p>从金鱼胡同到东华门再到午门，路过九九八十一个门钉后左转，我登上了许久未开放的午门。迎接我的不是展品，而是突然下起来的雨和漫长的队伍，当时是下午1点，我那时不会想到我会看到故宫的夜色。</p>
 <p>但是有些付出是值得的，故宫的展览是我逛过的展览里面最豪华的。那些珍奇的物件、名贵的首饰、穿越千年来的书画，无一不给我留下了巨大的震撼。</p>
-<p><img src="/2025/frosts-descent/DIC_9575_hu_1df28c216335ad2b.webp"
+<p><img src="/2025/frosts-descent/DIC_9575_hu_fc0af3f4929b7c0f.webp"
 	width="1600"
 	height="2170"
-	srcset="/2025/frosts-descent/DIC_9575_hu_11b8327a9fb77f78.webp 800w, /2025/frosts-descent/DIC_9575_hu_1df28c216335ad2b.webp 1600w"
+	srcset="/2025/frosts-descent/DIC_9575_hu_a85d2e6cca44e3a2.webp 800w, /2025/frosts-descent/DIC_9575_hu_fc0af3f4929b7c0f.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/DIC_9575_hu_7187b2ed235c9f8e.webp"
+	data-original="/2025/frosts-descent/DIC_9575_hu_40548e51ee8684b7.webp"
 	data-lightbox-width="2950"
 	data-lightbox-height="4000"
 	
@@ -1368,13 +1478,13 @@
 	
 >
 
-<img src="/2025/frosts-descent/DIC_9674_hu_146103d2ead3f44a.webp"
+<img src="/2025/frosts-descent/DIC_9674_hu_dc02b366a90df88d.webp"
 	width="1600"
 	height="1067"
-	srcset="/2025/frosts-descent/DIC_9674_hu_d23e54e740dffcf8.webp 800w, /2025/frosts-descent/DIC_9674_hu_146103d2ead3f44a.webp 1600w"
+	srcset="/2025/frosts-descent/DIC_9674_hu_9e8f99ccfb20a578.webp 800w, /2025/frosts-descent/DIC_9674_hu_dc02b366a90df88d.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/DIC_9674_hu_c97fd642751f416f.webp"
+	data-original="/2025/frosts-descent/DIC_9674_hu_70154c5d023bd484.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2667"
 	
@@ -1384,13 +1494,13 @@
 	
 >
 
-<img src="/2025/frosts-descent/DIC_9691_hu_703d102236f51dd2.webp"
+<img src="/2025/frosts-descent/DIC_9691_hu_2a90f8b4be4d4203.webp"
 	width="1600"
 	height="939"
-	srcset="/2025/frosts-descent/DIC_9691_hu_b6f03cf29e19f76e.webp 800w, /2025/frosts-descent/DIC_9691_hu_703d102236f51dd2.webp 1600w"
+	srcset="/2025/frosts-descent/DIC_9691_hu_fbad7d30d981663e.webp 800w, /2025/frosts-descent/DIC_9691_hu_2a90f8b4be4d4203.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/DIC_9691_hu_dbca546393ea046e.webp"
+	data-original="/2025/frosts-descent/DIC_9691_hu_b4242ece508a3cc7.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2349"
 	
@@ -1400,13 +1510,13 @@
 	
 >
 </p>
-<p><img src="/2025/frosts-descent/DIC_9771_hu_306f9cbe15ad46fa.webp"
+<p><img src="/2025/frosts-descent/DIC_9771_hu_9a13d3c7bdaaaedf.webp"
 	width="1600"
 	height="1067"
-	srcset="/2025/frosts-descent/DIC_9771_hu_890fe5686af11bf2.webp 800w, /2025/frosts-descent/DIC_9771_hu_306f9cbe15ad46fa.webp 1600w"
+	srcset="/2025/frosts-descent/DIC_9771_hu_205eeb6a19b58f22.webp 800w, /2025/frosts-descent/DIC_9771_hu_9a13d3c7bdaaaedf.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/DIC_9771_hu_e12d8cdbd3660714.webp"
+	data-original="/2025/frosts-descent/DIC_9771_hu_aa5cf6deb45ed740.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2667"
 	
@@ -1416,13 +1526,13 @@
 	
 >
 
-<img src="/2025/frosts-descent/DIC_9834_hu_7e30c09dd07cc9f5.webp"
+<img src="/2025/frosts-descent/DIC_9834_hu_7c70385770cb3101.webp"
 	width="1600"
 	height="959"
-	srcset="/2025/frosts-descent/DIC_9834_hu_b44961dac9cf3a13.webp 800w, /2025/frosts-descent/DIC_9834_hu_7e30c09dd07cc9f5.webp 1600w"
+	srcset="/2025/frosts-descent/DIC_9834_hu_a18300cbc9bdcc25.webp 800w, /2025/frosts-descent/DIC_9834_hu_7c70385770cb3101.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/DIC_9834_hu_b2c520a138b3b37f.webp"
+	data-original="/2025/frosts-descent/DIC_9834_hu_c733517c452a8f4b.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2397"
 	
@@ -1433,13 +1543,13 @@
 >
 </p>
 <p>看完清明上河图出来，已经是晚上八点的故宫了。平时故宫将会在4点清场——但很幸运，我第一次来故宫就看到了夜色如铅、夜雨淅淅沥沥的故宫。站在午门上远眺端门、天安门和人民大会堂，再向东望向王府井和角楼，最后向北，越过故宫层层叠叠的建筑，甚至能看到景山公园和天坛。</p>
-<p><img src="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_d27eba255619de1a.webp"
+<p><img src="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_71cdadc5d89e3da4.webp"
 	width="1600"
 	height="1067"
-	srcset="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_6b1b479a4895b246.webp 800w, /2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_d27eba255619de1a.webp 1600w"
+	srcset="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_1ceaa6c7d4e61983.webp 800w, /2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_71cdadc5d89e3da4.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_b7fa8d1e64a71371.webp"
+	data-original="/2025/frosts-descent/assets/DIC_9967-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_eebe6c7f85efadc3.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2667"
 	
@@ -1449,13 +1559,13 @@
 	
 >
 </p>
-<p><img src="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_9f766247164603eb.webp"
+<p><img src="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_25f049717a04a7c2.webp"
 	width="1600"
 	height="825"
-	srcset="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_2d9587d94557acf.webp 800w, /2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_9f766247164603eb.webp 1600w"
+	srcset="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_3e31189a1d8cbdd5.webp 800w, /2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_25f049717a04a7c2.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_af8d1b90f44e4f59.webp"
+	data-original="/2025/frosts-descent/assets/DIC_9940-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_8668741602822aa1.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2062"
 	
@@ -1465,13 +1575,13 @@
 	
 >
 </p>
-<p><img src="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_2c2ecb7018921387.webp"
+<p><img src="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_b54f623668f4dea.webp"
 	width="1600"
 	height="1014"
-	srcset="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_c85539b073cc7545.webp 800w, /2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_2c2ecb7018921387.webp 1600w"
+	srcset="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_828529d23cf3dadd.webp 800w, /2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_b54f623668f4dea.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_1ccdd4cc94a17a90.webp"
+	data-original="/2025/frosts-descent/assets/DIC_9990-%E5%B7%B2%E5%A2%9E%E5%BC%BA-%E9%99%8D%E5%99%AA_hu_91276413333aaa58.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2536"
 	
@@ -1593,7 +1703,7 @@
         
         
             <div class="article-image">
-                <img src="/2025/cold-dew/assets/cover.44c640d9a6f2b2b588060c4021a44e7d_hu_52326abdbc25d158.webp" 
+                <img src="/2025/cold-dew/assets/cover.44c640d9a6f2b2b588060c4021a44e7d_hu_2ed3e557c8aef7a3.webp" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1618,7 +1728,7 @@
         
         
             <div class="article-image">
-                <img src="/2025/white-dew/moon.8369846602aa1879a7bb81550572edac_hu_8556d0669f994b58.webp" 
+                <img src="/2025/white-dew/moon.8369846602aa1879a7bb81550572edac_hu_1d225f6d1a0d0053.webp" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -1657,23 +1767,23 @@
     --waline-border-radius: 12px;
   }
   html[data-scheme="dark"] .waline-container {
-    --waline-theme-color: #8fa46a;
-    --waline-active-color: #8fa46a;
-    --waline-color: #e0d5c5;
-    --waline-bgcolor: #1e1e1b;
-    --waline-bgcolor-light: #252520;
-    --waline-bgcolor-hover: #2a2a24;
-    --waline-border-color: rgba(100, 90, 70, 0.3);
-    --waline-disable-bgcolor: #2a2a24;
-    --waline-disable-color: rgba(220, 208, 188, 0.35);
-    --waline-bq-color: rgba(143, 164, 106, 0.15);
-    --waline-info-bgcolor: #252520;
-    --waline-info-color: rgba(220, 208, 188, 0.6);
-    --waline-dark-grey: #e0d5c5;
-    --waline-light-grey: rgba(175, 160, 138, 0.5);
+    --waline-theme-color: #7da0b0;
+    --waline-active-color: #7da0b0;
+    --waline-color: #c5cdd6;
+    --waline-bgcolor: #252830;
+    --waline-bgcolor-light: #2a2d32;
+    --waline-bgcolor-hover: #323844;
+    --waline-border-color: rgba(100, 110, 125, 0.3);
+    --waline-disable-bgcolor: #323844;
+    --waline-disable-color: rgba(160, 170, 185, 0.35);
+    --waline-bq-color: rgba(125, 160, 176, 0.15);
+    --waline-info-bgcolor: #2a2d32;
+    --waline-info-color: rgba(160, 170, 185, 0.6);
+    --waline-dark-grey: #c5cdd6;
+    --waline-light-grey: rgba(140, 150, 165, 0.5);
   }
   html[data-scheme="dark"] .waline-container .wl-count {
-    color: #e0d5c5;
+    color: #c5cdd6;
   }
 </style>
 
@@ -1897,7 +2007,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.8498e61bb408e9d7d8b4fdfd519dab892625b76081178df9f9f5fc14ab145613.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.35587fbbd1c97b1b2e3379c2e2303062ed094388b955e4f8c07920bcc168a204.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

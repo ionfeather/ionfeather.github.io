@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/rbdr/'>
 
-<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
+<link rel="stylesheet" href="/scss/style.min.e722bb6bd4f8ba9a664eb5a364a5eea5f9e6e8e35ee176a89ad5a81453c78595.css"><meta property='og:title' content="AIDR | Reasoning-based Drug Repurposing">
 <meta property='og:description' content="Reasoning-based drug repurposing\r问题&amp;回答\r问题\rLLM在Repurposing中的应用情况 是否有基于文本结构，引入大模型知识作为一部分特征？ 测试集是什么 传统模型/基于网络的模型的准确率 回答\r有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。 有的。将文本以特定的形式组织，如&quot;药物A[SEP]疾病B&quot;，然后将其变成向量，嵌入到GNN中。 阅读了几篇，测试集有 B-dataset（SCMFDD-S/L）：来自于 Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。 C-dataset：来自于 Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。 F-dataset：来自于 PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology，侧重于模型对文本知识的分析能力。 R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。 模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。 Action\rWeek\rweek1\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/rbdr/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -22,6 +22,16 @@
   } else {
     sessionStorage.setItem('siteVisited', '1');
   }
+</script>
+
+
+<script>
+  (function () {
+    var saved = localStorage.getItem('StackColorScheme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = saved === 'dark' || (saved === 'auto' && systemDark) || (!saved && systemDark);
+    document.documentElement.dataset.scheme = isDark ? 'dark' : 'light';
+  })();
 </script>
 
 
@@ -48,46 +58,6 @@
   html body {
     font-family: var(--base-font-family);
     font-weight: normal;
-  }
-
-   
-  :root {
-    --accent-color: #5a6e3a;
-    --accent-color-darker: #3e4e28;
-    --body-text-color: #3a3530;
-    --card-separator-color: rgba(200, 180, 160, 0.2);
-    --card-background: rgba(255, 254, 250, 0.82);
-    --card-background-selected: rgba(245, 236, 220, 0.7);
-  }
-  html[data-scheme="dark"] {
-    --accent-color: #8fa46a;
-    --accent-color-darker: #6b7d52;
-    --body-text-color: #e0d5c5;
-    --card-separator-color: rgba(100, 90, 70, 0.3);
-    --card-background: rgba(32, 31, 26, 0.62);
-    --card-background-selected: rgba(50, 46, 32, 0.7);
-    --card-text-color-secondary: rgba(220, 208, 188, 0.88);
-    --card-text-color-tertiary: rgba(175, 160, 138, 0.82);
-  }
-
-   
-  html body {
-    background-color: #fdf9f2 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
-      linear-gradient(135deg, #fefcf8 0%, #fdf9f2 50%, #f7ede0 100%) !important;
-    background-attachment: fixed !important;
-  }
-
-   
-  html[data-scheme="dark"] body {
-    background-color: #191917 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
-      radial-gradient(ellipse at 0% 0%, rgba(80, 100, 55, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse at 100% 100%, rgba(50, 40, 25, 0.25) 0%, transparent 55%),
-      linear-gradient(135deg, #1e1e1b 0%, #191917 50%, #151410 100%) !important;
-    background-attachment: fixed !important;
   }
 
    
@@ -126,10 +96,10 @@
   html[data-scheme="dark"] body .main-article,
   html[data-scheme="dark"] body .welcome,
   html[data-scheme="dark"] body .pagination-container {
-    background: rgba(32, 31, 26, 0.62) !important;
+    background: rgba(48, 54, 66, 0.72) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -155,8 +125,8 @@
     border: 1px solid rgba(255, 255, 255, 0.45) !important;
   }
   html[data-scheme="dark"] body .archives-year {
-    background: rgba(32, 31, 26, 0.55) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: rgba(48, 54, 66, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -171,11 +141,11 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a {
-    background: rgba(32, 31, 26, 0.75) !important;
+    background: rgba(48, 54, 66, 0.8) !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a:hover {
-    background: rgba(32, 31, 26, 0.95) !important;
+    background: rgba(65, 73, 88, 0.95) !important;
   }
 
    
@@ -236,21 +206,33 @@
   }
 
    
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #c8b89a; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #8fa46a; }
-
    
   .article-content a {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
   .article-content a:hover {
-    text-decoration-style: solid;
+    border-bottom-style: solid;
+  }
+  .article-content a:has(> img) {
+    border-bottom: none;
+  }
+
+   
+  html body *:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  html body a:focus-visible,
+  html body button:focus-visible {
+    border-radius: 4px;
+  }
+
+   
+  input, textarea, [contenteditable="true"] {
+    caret-color: var(--accent-color);
   }
 
    
@@ -357,7 +339,7 @@
   html[data-scheme="dark"] .jump-text5, html[data-scheme="dark"] .jump-text6,
   html[data-scheme="dark"] .jump-text7, html[data-scheme="dark"] .jump-text8,
   html[data-scheme="dark"] .jump-text9, html[data-scheme="dark"] .jump-text10 {
-    color: #8fa46a !important;
+    color: #6b8e9e !important;
   }
 
    
@@ -384,7 +366,7 @@
     color: var(--accent-color) !important;
   }
   html[data-scheme="dark"] .pagination .page-link:not(.current):not(.dots):hover {
-    background: rgba(143, 164, 106, 0.14) !important;
+    background: rgba(107, 142, 158, 0.14) !important;
     color: var(--accent-color) !important;
   }
   .pagination .page-link.dots {
@@ -466,7 +448,7 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] .article-list--compact article:hover {
-    background: rgba(40, 39, 32, 0.85) !important;
+    background: rgba(60, 68, 82, 0.88) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
@@ -651,8 +633,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.16) 0%,
-      rgba(143, 164, 106, 0.16) 86%,
+      rgba(107, 142, 158, 0.16) 0%,
+      rgba(107, 142, 158, 0.16) 86%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul,
@@ -660,8 +642,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.10) 0%,
-      rgba(143, 164, 106, 0.10) 80%,
+      rgba(107, 142, 158, 0.10) 0%,
+      rgba(107, 142, 158, 0.10) 80%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ul,
@@ -669,18 +651,18 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.07) 0%,
-      rgba(143, 164, 106, 0.07) 75%,
+      rgba(107, 142, 158, 0.07) 0%,
+      rgba(107, 142, 158, 0.07) 75%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents a:hover {
-    border-left-color: rgba(143, 164, 106, 0.3) !important;
-    background: rgba(143, 164, 106, 0.06) !important;
+    border-left-color: rgba(107, 142, 158, 0.3) !important;
+    background: rgba(107, 142, 158, 0.06) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li li.active-class > a {
-    background: rgba(143, 164, 106, 0.1) !important;
+    background: rgba(107, 142, 158, 0.1) !important;
   }
 
    
@@ -845,10 +827,10 @@
 
    
   html[data-scheme="dark"] #main-menu li a:hover::before {
-    opacity: 0.1;
+    opacity: 0.12;
   }
   html[data-scheme="dark"] #main-menu li.current a::before {
-    opacity: 0.15;
+    opacity: 0.18;
   }
 
    
@@ -930,7 +912,29 @@
 
     function show(src) {
         var el = getOrCreate();
+        var toggle = document.getElementById('dark-mode-toggle');
         el.src = src;
+
+        if (toggle) {
+            var rect = toggle.getBoundingClientRect();
+            if (window.innerWidth < 768) {
+                
+                el.style.left   = (rect.left - 84) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            } else {
+                
+                el.style.left   = (rect.right + 12) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            }
+        } else {
+            
+            el.style.left   = '20px';
+            el.style.bottom = '72px';
+            el.style.top    = 'auto';
+        }
+
         el.style.opacity   = '1';
         el.style.transform = 'scale(1) rotate(0deg)';
         clearTimeout(hideTimer);
@@ -951,6 +955,112 @@
             }, 50);
         });
     });
+})();
+</script>
+
+
+<style>
+  .tang-laoshi {
+    cursor: pointer;
+    transition: border-bottom-color 0.25s ease;
+    border-bottom: 1px dotted transparent;
+  }
+  .tang-laoshi:hover {
+    border-bottom-color: rgba(90, 110, 58, 0.35);
+  }
+  html[data-scheme="dark"] .tang-laoshi:hover {
+    border-bottom-color: rgba(125, 160, 176, 0.4);
+  }
+</style>
+<script>
+(function () {
+  var pool = [
+    '/stickers/azuki/003.png',
+    '/stickers/azuki/005.png',
+    '/stickers/azuki/007.png',
+    '/stickers/azuki/011.png',
+    '/stickers/azuki/014.png',
+    '/stickers/azuki/021.png',
+    '/stickers/azuki/029.png',
+    '/stickers/azuki/036.png',
+  ];
+  var cooldown = false;
+
+  function wrapTangLaoshi(node) {
+    if (node.nodeType !== 3) return;
+    var text = node.textContent;
+    if (text.indexOf('唐老师') === -1) return;
+
+    var parts = text.split('唐老师');
+    var frag = document.createDocumentFragment();
+    parts.forEach(function (part, i) {
+      if (part) frag.appendChild(document.createTextNode(part));
+      if (i < parts.length - 1) {
+        var span = document.createElement('span');
+        span.className = 'tang-laoshi';
+        span.textContent = '唐老师';
+        frag.appendChild(span);
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function init() {
+    var walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(wrapTangLaoshi);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  document.addEventListener('click', function (e) {
+    if (cooldown) return;
+    var el = e.target.closest('.tang-laoshi');
+    if (!el) return;
+
+    cooldown = true;
+    setTimeout(function () { cooldown = false; }, 800);
+
+    var rect = el.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = pool[Math.floor(Math.random() * pool.length)];
+    img.alt = '';
+    Object.assign(img.style, {
+      position: 'fixed',
+      left: (rect.left + rect.width / 2 - 40) + 'px',
+      top: (rect.top - 90) + 'px',
+      width: '80px',
+      height: '80px',
+      borderRadius: '16px',
+      opacity: '0',
+      transform: 'scale(0.4) translateY(20px) rotate(-10deg)',
+      transition: 'opacity 0.35s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      pointerEvents: 'none',
+      zIndex: '9999',
+    });
+    document.body.appendChild(img);
+
+    requestAnimationFrame(function () {
+      img.style.opacity = '1';
+      img.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+    });
+
+    setTimeout(function () {
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.7) translateY(-10px) rotate(6deg)';
+      setTimeout(function () { img.remove(); }, 400);
+    }, 1400);
+  });
 })();
 </script>
 
@@ -1019,7 +1129,7 @@
 
                     
                         
-                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
+                        <img src="/img/avatar_hu_346bcac48b777fa1.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -1441,15 +1551,15 @@
 <li>知识利用：LLM生成的离散文本如何转化为适合GNN推理的连续数值表示，并设计高效融合架构</li>
 </ul>
 <h4 id="核心方法">核心方法
-</h4><p><img src="/2025/rbdr/assets/20250610205120_hu_55f3e9e82caa97a2.webp"
+</h4><p><img src="/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp"
 	width="1600"
 	height="1175"
-	srcset="/2025/rbdr/assets/20250610205120_hu_d6ebe14bc1814493.webp 800w, /2025/rbdr/assets/20250610205120_hu_55f3e9e82caa97a2.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610205120_hu_8ef7db985c3b0bf9.webp 800w, /2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp 1600w"
 	loading="lazy"
 	
 		alt="流程图"
 	
-	data-original="/2025/rbdr/assets/20250610205120_hu_f19846673b4da04.webp"
+	data-original="/2025/rbdr/assets/20250610205120_hu_8b5a27a43674a25.webp"
 	data-lightbox-width="4000"
 	data-lightbox-height="2936"
 	
@@ -1562,15 +1672,15 @@
 <h4 id="指标结果">指标结果
 </h4><ul>
 <li>AUC、AUPR、F1和五折交叉验证结果<br>
-<img src="/2025/rbdr/assets/20250610223319_hu_d361e473eb08ef5d.webp"
+<img src="/2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp"
 	width="1600"
 	height="1050"
-	srcset="/2025/rbdr/assets/20250610223319_hu_933d6b4ff10fee01.webp 800w, /2025/rbdr/assets/20250610223319_hu_d361e473eb08ef5d.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610223319_hu_2ade6ad6168df68a.webp 800w, /2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp 1600w"
 	loading="lazy"
 	
 		alt="四个数据集下的三种不同方法的效果"
 	
-	data-original="/2025/rbdr/assets/20250610223319_hu_8beac5695b98eebf.webp"
+	data-original="/2025/rbdr/assets/20250610223319_hu_82248a5f7233f6b6.webp"
 	data-lightbox-width="1506"
 	data-lightbox-height="988"
 	
@@ -1590,15 +1700,15 @@
 </li>
 </ul>
 <p>分别通过AUC、AUPR、F1-score和Precision来判断效果。</p>
-<p><img src="/2025/rbdr/assets/20250610223616_hu_f56e19ad4d0821f9.webp"
+<p><img src="/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp"
 	width="1600"
 	height="1342"
-	srcset="/2025/rbdr/assets/20250610223616_hu_111401d778864364.webp 800w, /2025/rbdr/assets/20250610223616_hu_f56e19ad4d0821f9.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610223616_hu_4297bba02a896982.webp 800w, /2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp 1600w"
 	loading="lazy"
 	
 		alt="最优模型为粗体，次优为下划线"
 	
-	data-original="/2025/rbdr/assets/20250610223616_hu_76af8170a0a1fdc1.webp"
+	data-original="/2025/rbdr/assets/20250610223616_hu_501c43dda3c54ed4.webp"
 	data-lightbox-width="944"
 	data-lightbox-height="792"
 	
@@ -1608,15 +1718,15 @@
 	
 >
 <br>
-<img src="/2025/rbdr/assets/20250610224129_hu_b5ee258834bdf7b6.webp"
+<img src="/2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp"
 	width="1600"
 	height="1225"
-	srcset="/2025/rbdr/assets/20250610224129_hu_f5d626f624c9513f.webp 800w, /2025/rbdr/assets/20250610224129_hu_b5ee258834bdf7b6.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610224129_hu_27d0071f5f403883.webp 800w, /2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp 1600w"
 	loading="lazy"
 	
 		alt="最终平均结果"
 	
-	data-original="/2025/rbdr/assets/20250610224129_hu_3d401698a0c8dd4f.webp"
+	data-original="/2025/rbdr/assets/20250610224129_hu_34d5098d058ab748.webp"
 	data-lightbox-width="469"
 	data-lightbox-height="359"
 	
@@ -1669,13 +1779,13 @@
 <li><strong>多源融合</strong>：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物-疾病关联。</li>
 <li><strong>图网络 + 注意力</strong>：用 GCN 处理 “药物-疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。</li>
 </ul>
-<p><img src="/2025/rbdr/assets/20250611145238_hu_6727e696ede38e29.webp"
+<p><img src="/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp"
 	width="1600"
 	height="1228"
-	srcset="/2025/rbdr/assets/20250611145238_hu_3286fb50b3f699ed.webp 800w, /2025/rbdr/assets/20250611145238_hu_6727e696ede38e29.webp 1600w"
+	srcset="/2025/rbdr/assets/20250611145238_hu_747b28cc8fd47b5d.webp 800w, /2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250611145238_hu_b08fbf3aca83afce.webp"
+	data-original="/2025/rbdr/assets/20250611145238_hu_ceddae1ed40b3058.webp"
 	data-lightbox-width="1014"
 	data-lightbox-height="778"
 	
@@ -1741,13 +1851,13 @@
 </li>
 </ol>
 <h5 id="bert在文中">BERT在文中
-</h5><p><img src="/2025/rbdr/assets/20250611151737_hu_4de23799b8e08515.webp"
+</h5><p><img src="/2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp"
 	width="1600"
 	height="764"
-	srcset="/2025/rbdr/assets/20250611151737_hu_e70edcb005258dc1.webp 800w, /2025/rbdr/assets/20250611151737_hu_4de23799b8e08515.webp 1600w"
+	srcset="/2025/rbdr/assets/20250611151737_hu_ef0cb56b7b218c5.webp 800w, /2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250611151737_hu_8ca8e28c00671a1d.webp"
+	data-original="/2025/rbdr/assets/20250611151737_hu_67a75ea1a8722176.webp"
 	data-lightbox-width="1010"
 	data-lightbox-height="482"
 	
@@ -1808,13 +1918,13 @@
 <li><strong>核融合与传统机器学习</strong>：DDA-SKF</li>
 </ol>
 <p>LBMFF在所有指标上都体现出了领先。</p>
-<p><img src="/2025/rbdr/assets/20250611153556_hu_b76e23309590e6c8.webp"
+<p><img src="/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp"
 	width="1600"
 	height="596"
-	srcset="/2025/rbdr/assets/20250611153556_hu_6bac18b448fa4c08.webp 800w, /2025/rbdr/assets/20250611153556_hu_b76e23309590e6c8.webp 1600w"
+	srcset="/2025/rbdr/assets/20250611153556_hu_495ff5a8c3a9cdf8.webp 800w, /2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250611153556_hu_b44b1cdc49df5620.webp"
+	data-original="/2025/rbdr/assets/20250611153556_hu_55e7ccdd8de0681a.webp"
 	data-lightbox-width="1620"
 	data-lightbox-height="603"
 	
@@ -1825,13 +1935,13 @@
 >
 </p>
 <p>此外，LBMFF在TL-HGBI在多数指标上仍优于对比方法，证明方法在<strong>大规模数据集上的泛化能力</strong>。</p>
-<p><img src="/2025/rbdr/assets/20250611154234_hu_3938e340646265f3.webp"
+<p><img src="/2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp"
 	width="1600"
 	height="568"
-	srcset="/2025/rbdr/assets/20250611154234_hu_a3237822816ac80.webp 800w, /2025/rbdr/assets/20250611154234_hu_3938e340646265f3.webp 1600w"
+	srcset="/2025/rbdr/assets/20250611154234_hu_d566177af47c89b8.webp 800w, /2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250611154234_hu_43b80307b153c140.webp"
+	data-original="/2025/rbdr/assets/20250611154234_hu_b1f64f71f5e25148.webp"
 	data-lightbox-width="1659"
 	data-lightbox-height="589"
 	
@@ -1876,15 +1986,15 @@
 </ul>
 <h4 id="核心方法-2">核心方法
 </h4><p><strong>GPT-4 系统性挖掘真阴性数据</strong>，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。</p>
-<p><img src="/2025/rbdr/assets/20250610231108_hu_7b7eb7c81bd98e1.webp"
+<p><img src="/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp"
 	width="1600"
 	height="476"
-	srcset="/2025/rbdr/assets/20250610231108_hu_7fe327344fe971c4.webp 800w, /2025/rbdr/assets/20250610231108_hu_7b7eb7c81bd98e1.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610231108_hu_e54e9cb639feed2d.webp 800w, /2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp 1600w"
 	loading="lazy"
 	
 		alt="临床试验药物标注流程"
 	
-	data-original="/2025/rbdr/assets/20250610231108_hu_a782e911cb73ba95.webp"
+	data-original="/2025/rbdr/assets/20250610231108_hu_f59feda0ba8806b0.webp"
 	data-lightbox-width="1056"
 	data-lightbox-height="314"
 	
@@ -1908,13 +2018,13 @@
 <li><strong>GPT-4 标注</strong>：使用 GPT-4 识别的 26 个阳性和 54 个阴性药物。</li>
 <li><strong>无采样 PU</strong>：将所有未标记药物视为阴性，导致类别不平衡。</li>
 <li><strong>下采样 PU</strong>：从未标记药物中随机采样 43 个阴性，重复 100 次以控制类别不平衡。<br>
-<img src="/2025/rbdr/assets/20250610234019_hu_c9956204cc66aaa.webp"
+<img src="/2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp"
 	width="1600"
 	height="1444"
-	srcset="/2025/rbdr/assets/20250610234019_hu_198ebcef2152cd90.webp 800w, /2025/rbdr/assets/20250610234019_hu_c9956204cc66aaa.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610234019_hu_fbd712319f4787bc.webp 800w, /2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250610234019_hu_3ed157533bc8c592.webp"
+	data-original="/2025/rbdr/assets/20250610234019_hu_a35f4268ca941fe9.webp"
 	data-lightbox-width="720"
 	data-lightbox-height="650"
 	
@@ -1930,13 +2040,13 @@
 <p>训练集和测试集来自于作者自己收集和整理。</p>
 <h4 id="研究结果-1">研究结果
 </h4><p>使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。</p>
-<p><img src="/2025/rbdr/assets/20250610232517_hu_159d77fdaf983b9f.webp"
+<p><img src="/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp"
 	width="1600"
 	height="666"
-	srcset="/2025/rbdr/assets/20250610232517_hu_cdc07b2d049f2e63.webp 800w, /2025/rbdr/assets/20250610232517_hu_159d77fdaf983b9f.webp 1600w"
+	srcset="/2025/rbdr/assets/20250610232517_hu_41a30403e778c142.webp 800w, /2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250610232517_hu_5c3ebbbe89130675.webp"
+	data-original="/2025/rbdr/assets/20250610232517_hu_4548e1cc63ffc3d6.webp"
 	data-lightbox-width="1442"
 	data-lightbox-height="600"
 	
@@ -1972,13 +2082,13 @@
     >DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed</a></p>
 </blockquote>
 <p>提出了一个多源提示的LLM药物重定位框架。</p>
-<p><img src="/2025/rbdr/assets/20250611164032_hu_3e63af9b345ee10d.webp"
+<p><img src="/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp"
 	width="1600"
 	height="1177"
-	srcset="/2025/rbdr/assets/20250611164032_hu_1b8714e54d1a6518.webp 800w, /2025/rbdr/assets/20250611164032_hu_3e63af9b345ee10d.webp 1600w"
+	srcset="/2025/rbdr/assets/20250611164032_hu_93e8e7e924c93bf.webp 800w, /2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/rbdr/assets/20250611164032_hu_8e27b5b3c602e6e3.webp"
+	data-original="/2025/rbdr/assets/20250611164032_hu_5ee2297aa09071f3.webp"
 	data-lightbox-width="1944"
 	data-lightbox-height="1430"
 	
@@ -2126,23 +2236,23 @@
     --waline-border-radius: 12px;
   }
   html[data-scheme="dark"] .waline-container {
-    --waline-theme-color: #8fa46a;
-    --waline-active-color: #8fa46a;
-    --waline-color: #e0d5c5;
-    --waline-bgcolor: #1e1e1b;
-    --waline-bgcolor-light: #252520;
-    --waline-bgcolor-hover: #2a2a24;
-    --waline-border-color: rgba(100, 90, 70, 0.3);
-    --waline-disable-bgcolor: #2a2a24;
-    --waline-disable-color: rgba(220, 208, 188, 0.35);
-    --waline-bq-color: rgba(143, 164, 106, 0.15);
-    --waline-info-bgcolor: #252520;
-    --waline-info-color: rgba(220, 208, 188, 0.6);
-    --waline-dark-grey: #e0d5c5;
-    --waline-light-grey: rgba(175, 160, 138, 0.5);
+    --waline-theme-color: #7da0b0;
+    --waline-active-color: #7da0b0;
+    --waline-color: #c5cdd6;
+    --waline-bgcolor: #252830;
+    --waline-bgcolor-light: #2a2d32;
+    --waline-bgcolor-hover: #323844;
+    --waline-border-color: rgba(100, 110, 125, 0.3);
+    --waline-disable-bgcolor: #323844;
+    --waline-disable-color: rgba(160, 170, 185, 0.35);
+    --waline-bq-color: rgba(125, 160, 176, 0.15);
+    --waline-info-bgcolor: #2a2d32;
+    --waline-info-color: rgba(160, 170, 185, 0.6);
+    --waline-dark-grey: #c5cdd6;
+    --waline-light-grey: rgba(140, 150, 165, 0.5);
   }
   html[data-scheme="dark"] .waline-container .wl-count {
-    color: #e0d5c5;
+    color: #c5cdd6;
   }
 </style>
 
@@ -2366,7 +2476,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.8498e61bb408e9d7d8b4fdfd519dab892625b76081178df9f9f5fc14ab145613.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.35587fbbd1c97b1b2e3379c2e2303062ed094388b955e4f8c07920bcc168a204.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

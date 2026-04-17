@@ -571,15 +571,15 @@
 &lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
 &lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_410b9250686e3921.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;449&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_44b2552ded3dcc1b.webp 800w, https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_410b9250686e3921.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_1f33033cea39861b.webp 800w, https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Zork1游戏。这种游戏需要的不能只是短期决策，而是需要长远规划。&#34;
 	
-	data-original=&#34;/2025/mcts/assets/IMG-20251008192705223_hu_24396b5e53ed8bea.webp&#34;
+	data-original=&#34;/2025/mcts/assets/IMG-20251008192705223_hu_f9febf283cfc8194.webp&#34;
 	data-lightbox-width=&#34;890&#34;
 	data-lightbox-height=&#34;250&#34;
 	
@@ -672,13 +672,13 @@
 &lt;p&gt;For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;最终得到的是
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_78b7f66701f68d05.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;628&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_946399cef835fa81.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_5a6b3d8a142c0f1e.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_78b7f66701f68d05.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_df5a51fd17a14d78.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_679ead1693876318.webp&#34;
 	data-lightbox-width=&#34;711&#34;
 	data-lightbox-height=&#34;279&#34;
 	
@@ -938,13 +938,13 @@ $$\hat{y}=softmax(Wx+b)$$&lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;features-in-multinomial-logistic-regression&#34;&gt;Features in Multinomial Logistic Regression
 &lt;/h4&gt;&lt;p&gt;特征权重同时依赖于输入文本和输出类别。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_f946687271f2c7.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1800&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_610f3f19343d613c.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_8c7dd65f4a37b10c.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_f946687271f2c7.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_1dd0b1b2c431bbaf.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_5f6b119c81d82bb.webp&#34;
 	data-lightbox-width=&#34;744&#34;
 	data-lightbox-height=&#34;837&#34;
 	
@@ -999,13 +999,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_80eecd065b4f2529.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;679&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_4146c314d88ab94b.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_dbd496cbffd14a6.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_80eecd065b4f2529.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_e4aefe55a7890447.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_9cf1611936cc2a22.webp&#34;
 	data-lightbox-width=&#34;928&#34;
 	data-lightbox-height=&#34;394&#34;
 	
@@ -1019,13 +1019,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;ul&gt;
 &lt;li&gt;微观平均：更关注 “整体样本的预测准确性”，&lt;strong&gt;少数类错判代价低于多数类&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;宏观平均：更关注所有的类的错判代价的公平，&lt;strong&gt;少数类和多数类的代价相等&lt;/strong&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bce1606c8a27263a.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;691&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_784d22778c76a9a9.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_e44c7136f9451f.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bce1606c8a27263a.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_fcaaa7540bbd00ec.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_5e37f2d251acea56.webp&#34;
 	data-lightbox-width=&#34;1084&#34;
 	data-lightbox-height=&#34;468&#34;
 	
@@ -1041,13 +1041,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;ul&gt;
 &lt;li&gt;固定训练集和测试集。&lt;/li&gt;
 &lt;li&gt;训练集中进行分割。
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_f644b5885a3d8798.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;826&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_b858971ac03b9413.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_8275e2091b7dd9bb.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_f644b5885a3d8798.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_897698156ca0162a.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_ab9cb9fb8924372d.webp&#34;
 	data-lightbox-width=&#34;895&#34;
 	data-lightbox-height=&#34;462&#34;
 	
@@ -1074,13 +1074,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;the-paired-bootstrap-test&#34;&gt;The Paired Bootstrap Test
 &lt;/h4&gt;&lt;p&gt;Bootstrap 检验的核心是 “重抽样”—— 从原始测试集&lt;code&gt;x&lt;/code&gt;中&lt;strong&gt;有放回地随机抽取&lt;/strong&gt;生成新的测试集。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8834e9dd07cbe4f0.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;715&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_db812f89689a502a.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_231aaf251a455dea.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8834e9dd07cbe4f0.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_a2cc687716d8b236.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_e660c251eaf3348c.webp&#34;
 	data-lightbox-width=&#34;1097&#34;
 	data-lightbox-height=&#34;490&#34;
 	
@@ -1205,13 +1205,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;最大化positive examples中学习的相似度&lt;/li&gt;
 &lt;li&gt;最小化negative examples中的相似度&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b2fe4b2a085ce91d.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1015&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_eba54474b05b9ddc.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_c32d35eab0a14e0.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b2fe4b2a085ce91d.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_5fe46a8cf6e6fe78.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_100a69b2cf34b3d0.webp&#34;
 	data-lightbox-width=&#34;880&#34;
 	data-lightbox-height=&#34;558&#34;
 	
@@ -1252,13 +1252,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;二阶共享：聚合关系，直接相关，如write和say&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;类比关系：平行四边形模型
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_b74d446cf1a8cc0d.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;662&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_9faec94f20a5ecc6.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_6776f0b1194bd6d9.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_b74d446cf1a8cc0d.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_e9735512719a056b.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_42c3105e0df5cecf.webp&#34;
 	data-lightbox-width=&#34;1134&#34;
 	data-lightbox-height=&#34;469&#34;
 	
@@ -1271,13 +1271,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 问题是只能用在明确的关系、短的距离和频繁的单词上。&lt;/p&gt;
 &lt;h4 id=&#34;embeddings-and-historical-semantics&#34;&gt;Embeddings and Historical Semantics
 &lt;/h4&gt;&lt;p&gt;嵌入的应用。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_a2dc5d1c3930ef7.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;963&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_97a27732d3e44539.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_524f0f21b2376aaa.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_a2dc5d1c3930ef7.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_3d449afd150e886.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_52ad1ea06d5349c6.webp&#34;
 	data-lightbox-width=&#34;839&#34;
 	data-lightbox-height=&#34;505&#34;
 	
@@ -1326,13 +1326,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;h3 id=&#34;units&#34;&gt;Units
 &lt;/h3&gt;&lt;p&gt;bias term&lt;/p&gt;
 &lt;p&gt;activation：使用non-linear functions，如sigmoid、tanh、ReLU等&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_226eac04811c2ad2.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;811&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_c57c1cc1f981cdb7.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_13eb5030ae0719ae.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_226eac04811c2ad2.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_6ff4dd718b3c425.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_22c05e1472d1c4e6.webp&#34;
 	data-lightbox-width=&#34;833&#34;
 	data-lightbox-height=&#34;422&#34;
 	
@@ -1350,13 +1350,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;h4 id=&#34;the-solution-neural-networks&#34;&gt;The Solution: Neural Networks
 &lt;/h4&gt;&lt;p&gt;包含隐藏层的多层感知机MLP解决了这个问题。&lt;/p&gt;
 &lt;p&gt;下面这个图，不管对于原来的[0,1]还是[1,0]都会将他们在隐含层里转化为[1,0]。而原来的[0,0]和[1,1]则变为[2,1]，此时便线性可分。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_95a20cb06918d8f2.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;708&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_e9c1cd3d643b5afc.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_17ec3de45f51b102.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_95a20cb06918d8f2.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_ad14f1dc77759379.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_6aaaa4d32b832d8c.webp&#34;
 	data-lightbox-width=&#34;762&#34;
 	data-lightbox-height=&#34;337&#34;
 	
@@ -1366,13 +1366,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 	
 &gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3ab15a7d7dfab66b.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1040&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_285a2b0830d45ce5.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3a900488593fd703.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3ab15a7d7dfab66b.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_632856ae659452a7.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_387f50d8c4eb6ea7.webp&#34;
 	data-lightbox-width=&#34;686&#34;
 	data-lightbox-height=&#34;446&#34;
 	
@@ -1389,13 +1389,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 &lt;li&gt;感知机使用阶跃函数，现在的神经网络用的是多种非线性的单元如ReLUs或者Sigmoid等&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;前馈神经网络的标准结构是全连接的。
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d62aeddacf8fab6c.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;945&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_4980cca8b3c86ce8.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_779d54ec934991ce.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d62aeddacf8fab6c.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_5a64541272f5b083.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_6934e99e39911584.webp&#34;
 	data-lightbox-width=&#34;726&#34;
 	data-lightbox-height=&#34;429&#34;
 	
@@ -1422,13 +1422,13 @@ $$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&
 &lt;h4 id=&#34;more-details-on-feedforward-networks&#34;&gt;More Details on Feedforward Networks
 &lt;/h4&gt;&lt;p&gt;为什么激活函数要非线性&lt;/p&gt;
 &lt;p&gt;替换偏置项：使用dummy node来代替原来的偏置项。也就是下图中把b换成一个新的固定为1的$x_0$。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_cf3d1bf74df94a00.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;860&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_d1e8a3ff26979ded.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_b87cbff16aebe248.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_cf3d1bf74df94a00.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_a38485de2d8e5134.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_35d290d7b2c5e922.webp&#34;
 	data-lightbox-width=&#34;692&#34;
 	data-lightbox-height=&#34;372&#34;
 	
@@ -1442,13 +1442,13 @@ $$y = \text{softmax}(z)$$&lt;p&gt;神经网络和多项逻辑回归的区别：&
 &lt;/h3&gt;&lt;p&gt;嵌入矩阵、表示池化、表示学习先不讲，先学一下用前馈神经网络解决分类问题。&lt;/p&gt;
 &lt;h4 id=&#34;neural-net-classifiers-with-hand-built-features&#34;&gt;Neural Net Classifiers with Hand-built Features
 &lt;/h4&gt;&lt;p&gt;人工设计的特征，除了把MLP换成FNN之外没变化。
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_554f3d0f4c80ea24.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;928&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_7961a9b30134eb1a.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_1c8597e191ec501d.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_554f3d0f4c80ea24.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_c2259a2fad79e98e.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_f4d0835201061fa8.webp&#34;
 	data-lightbox-width=&#34;688&#34;
 	data-lightbox-height=&#34;399&#34;
 	
@@ -1471,13 +1471,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;存储static embeddings的词典称为embedding matrix &lt;strong&gt;E&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;one-hot vector：从embedding matrix选取token embedding的方法
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_991ec0b41ec156a8.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;500&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_c4585f16221f1c60.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_2b5931026be56c47.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_991ec0b41ec156a8.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_4e3493b107c638aa.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_e3b077c1c8caf98f.webp&#34;
 	data-lightbox-width=&#34;688&#34;
 	data-lightbox-height=&#34;215&#34;
 	
@@ -1497,15 +1497,15 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_40d417d9985a3255.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1412&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_ad976b9addff4fc2.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_7eb87a825914b6d1.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_40d417d9985a3255.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;前馈神经网络用于情感分析，带有池化层的结构&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_cc39dde9d901a3c2.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_fb616516efd038d5.webp&#34;
 	data-lightbox-width=&#34;807&#34;
 	data-lightbox-height=&#34;712&#34;
 	
@@ -1520,15 +1520,15 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;可以处理更多的上下文，更加泛化，预测更准确；速度更慢，训练更麻烦&lt;/li&gt;
 &lt;li&gt;使用embeddings表示词而不是word identity&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_60d6ffcdfbcc320.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1439&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_e93eb908cf3ef3ea.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_d7ab8cf09ba411da.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_60d6ffcdfbcc320.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;embedding layer e这里是拼接起来的&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_6223896f5274673a.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_56889e01ce6b7ea4.webp&#34;
 	data-lightbox-width=&#34;717&#34;
 	data-lightbox-height=&#34;645&#34;
 	
@@ -1547,13 +1547,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/h4&gt;&lt;p&gt;一层的时候可以用损失的导数，但是多层的时候需要用反向传播算法。&lt;/p&gt;
 &lt;h4 id=&#34;computation-graphs&#34;&gt;Computation Graphs
 &lt;/h4&gt;&lt;p&gt;介绍了什么是计算图。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_3376f18c5957682c.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;604&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_6c9564e49156ecdd.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_cbca9c2ff7c48d3c.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_3376f18c5957682c.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_1d7f6e5a13224d7b.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_f03e597618d171e7.webp&#34;
 	data-lightbox-width=&#34;697&#34;
 	data-lightbox-height=&#34;263&#34;
 	
@@ -1565,13 +1565,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/p&gt;
 &lt;h4 id=&#34;backward-differentiation-on-computation-graphs&#34;&gt;Backward Differentiation on Computation Graphs
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;反向传播&lt;/strong&gt;：用链式法则一次性计算出所有参数的梯度。
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_9502cbf5fb11f235.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;834&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_8bc192f1e905f84d.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_ebcaf609834c2a4c.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_9502cbf5fb11f235.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_cd927dc43688540a.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_2e0a9378695661be.webp&#34;
 	data-lightbox-width=&#34;829&#34;
 	data-lightbox-height=&#34;432&#34;
 	
@@ -1587,13 +1587,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;反向传播是为了得到梯度，从而进行参数优化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;当然在真正的神经网络中，计算会更加复杂。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_3f0666cf2d42cb73.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;993&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_ba9bc1dcb294c575.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_f574dbc8576b4254.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_3f0666cf2d42cb73.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_48a0102faa5415c5.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_b2f99bb1a5ef4c90.webp&#34;
 	data-lightbox-width=&#34;851&#34;
 	data-lightbox-height=&#34;528&#34;
 	
@@ -1629,13 +1629,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;li&gt;掩码语言模型&lt;/li&gt;
 &lt;li&gt;自回归语言模型&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_894164e4f3174fec.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;719&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_6efdeefde251b912.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_b88bcecde86fcdda.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_894164e4f3174fec.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_90777be9496bbda5.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_ac9ae4ffc17077e6.webp&#34;
 	data-lightbox-width=&#34;817&#34;
 	data-lightbox-height=&#34;367&#34;
 	
@@ -1646,13 +1646,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &gt;
 &lt;/p&gt;
 &lt;p&gt;如果可以预测下一个词的概率分布，那么就可以从概率分布中进行采样，从而生成下一个词。这样就从预测模型变成了生成模型。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2c381efa889fef4d.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1102&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_b69ef0442510f542.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_6d43ef49259554fe.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2c381efa889fef4d.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_8f2e67b3ba7a9e9a.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_a32fdb469602b0e4.webp&#34;
 	data-lightbox-width=&#34;800&#34;
 	data-lightbox-height=&#34;551&#34;
 	
@@ -1669,13 +1669,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;生成式AI&lt;/p&gt;
 &lt;h3 id=&#34;three-architecture-for-language-models&#34;&gt;Three Architecture for Language Models
 &lt;/h3&gt;&lt;p&gt;三种结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_92b68f3cbe85452.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;728&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_42a47a0a5dccd269.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_2834201c066496bd.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_92b68f3cbe85452.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_c83a9b19250c8acd.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_557f1e7e03d58397.webp&#34;
 	data-lightbox-width=&#34;842&#34;
 	data-lightbox-height=&#34;383&#34;
 	
@@ -1713,13 +1713,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;p&gt;他们都是基于神经网络构建的。&lt;/p&gt;
 &lt;h3 id=&#34;conditional-generation-of-text-the-intuition&#34;&gt;Conditional Generation of Text: The Intuition
 &lt;/h3&gt;&lt;p&gt;不管什么任务，都可以简化为给定prompt的下一个词的预测任务。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_d3e6cc8b71752f2a.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;681&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_c6a83639aab09a66.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_a4c490754a19e065.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_d3e6cc8b71752f2a.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_777816ae88d62e14.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_cab62d9b33614cc8.webp&#34;
 	data-lightbox-width=&#34;813&#34;
 	data-lightbox-height=&#34;346&#34;
 	
@@ -1731,13 +1731,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/p&gt;
 &lt;h3 id=&#34;prompting&#34;&gt;Prompting
 &lt;/h3&gt;&lt;p&gt;指令微调&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_15412b4b21317e15.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;758&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6de0a6c03894efab.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f4062ec638c6eeaa.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_15412b4b21317e15.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_ad49807d54224a1f.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f05e060a98c42ff5.webp&#34;
 	data-lightbox-width=&#34;815&#34;
 	data-lightbox-height=&#34;386&#34;
 	
@@ -1763,13 +1763,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 &lt;/ul&gt;
 &lt;h3 id=&#34;generation-and-sampling&#34;&gt;Generation and Sampling
 &lt;/h3&gt;&lt;p&gt;语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_5c5f6516be47923c.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;648&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_92f50f2f3cb2a0b7.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_e651bddcd401adf0.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_5c5f6516be47923c.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_de4f0bd4692fe7b9.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_10e93d8eef2920b9.webp&#34;
 	data-lightbox-width=&#34;812&#34;
 	data-lightbox-height=&#34;329&#34;
 	
@@ -1784,13 +1784,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquo
 D&lt;/p&gt;
 &lt;h4 id=&#34;greedy-decoding&#34;&gt;Greedy decoding
 &lt;/h4&gt;&lt;p&gt;贪心解码：选择概率最高的那个token生成（argmax）&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_a98ddda1e9700710.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;644&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_550cc608dfd97892.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_654d36c15db4bdf9.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_a98ddda1e9700710.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_bc5db4c8e3696391.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_5e029f75a51d1515.webp&#34;
 	data-lightbox-width=&#34;830&#34;
 	data-lightbox-height=&#34;334&#34;
 	
@@ -1804,13 +1804,13 @@ D&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;束搜索&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;random-sampling&#34;&gt;Random Sampling
 &lt;/h4&gt;&lt;p&gt;按照分布采样，直到采样到EOS。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_6b02165d8be02478.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;643&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_724cbb90e108eeb4.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_34020b737bd968c6.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_6b02165d8be02478.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_33a69c31fecdb33b.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_3ad1b560cb5287a6.webp&#34;
 	data-lightbox-width=&#34;811&#34;
 	data-lightbox-height=&#34;326&#34;
 	
@@ -1823,13 +1823,13 @@ D&lt;/p&gt;
 &lt;p&gt;效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪&lt;/p&gt;
 &lt;h4 id=&#34;temperature-sampling&#34;&gt;Temperature Sampling
 &lt;/h4&gt;&lt;p&gt;logits转化为probability的时候用带有temperature的softmax计算。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_c4dca283f0738380.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;648&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_b13ec6c5d993b012.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_3935ea939dd0a535.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_c4dca283f0738380.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_28cbe33328e711fb.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_9743eeb5b3091a1e.webp&#34;
 	data-lightbox-width=&#34;958&#34;
 	data-lightbox-height=&#34;388&#34;
 	
@@ -1840,13 +1840,13 @@ D&lt;/p&gt;
 &gt;
 &lt;/p&gt;
 &lt;p&gt;当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_4674288e2bc5eaa6.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1208&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_54a6db0c6947b34.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_6b78404155a2dc4a.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_4674288e2bc5eaa6.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_17444b5eb1063b99.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_5f4d7525cd25b31b.webp&#34;
 	data-lightbox-width=&#34;799&#34;
 	data-lightbox-height=&#34;603&#34;
 	
@@ -1863,13 +1863,13 @@ D&lt;/p&gt;
 &lt;li&gt;指令微调&lt;/li&gt;
 &lt;li&gt;偏好对齐&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_24e12638cab8b7cd.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1028&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_63e168b200ecd043.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_f11568aecc825041.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_24e12638cab8b7cd.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_905fa508a436b981.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_cef0e830db61de5.webp&#34;
 	data-lightbox-width=&#34;800&#34;
 	data-lightbox-height=&#34;514&#34;
 	
@@ -1882,13 +1882,13 @@ D&lt;/p&gt;
 &lt;h4 id=&#34;self-supervised-training-algorithm-for-pretraining&#34;&gt;Self-supervised Training Algorithm for Pretraining
 &lt;/h4&gt;&lt;p&gt;Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词&lt;/p&gt;
 &lt;p&gt;如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1a75653ad8b8efd0.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;929&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_c0bd455b64f02e02.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_f0666baaab88e005.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1a75653ad8b8efd0.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_95ba0c808a061c06.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_2d66be4912becf58.webp&#34;
 	data-lightbox-width=&#34;808&#34;
 	data-lightbox-height=&#34;469&#34;
 	
@@ -1910,13 +1910,13 @@ D&lt;/p&gt;
 &lt;p&gt;避免个人信息PII，去重，安全筛选，toxicity detection。注意版权、数据同意、隐私和偏差等问题。&lt;/p&gt;
 &lt;h4 id=&#34;finetuning&#34;&gt;Finetuning
 &lt;/h4&gt;&lt;p&gt;对已经与训练过的模型加入一些新的知识进行微调。如果新的数据是预训练的后面，也可以叫continued pretraining。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5899338e5b8b3626.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;825&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_daeb231fa4b645c1.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_2436c7a2123ad2c6.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5899338e5b8b3626.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_6ae2ed8169293d5e.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_6a09ad56cd03294.webp&#34;
 	data-lightbox-width=&#34;704&#34;
 	data-lightbox-height=&#34;363&#34;
 	
@@ -1943,13 +1943,13 @@ $$\begin{aligned}
 &lt;/h4&gt;&lt;p&gt;准确率：可以直接使用下游任务来衡量。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;MMLU
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_ea610a3fc2055ae6.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;574&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_16a499bc0ac2b654.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_8b6b6adf6fcc64fb.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_ea610a3fc2055ae6.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_3a92927996fd863.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_a6ab813e6cea1264.webp&#34;
 	data-lightbox-width=&#34;805&#34;
 	data-lightbox-height=&#34;289&#34;
 	
@@ -1959,15 +1959,15 @@ $$\begin{aligned}
 	
 &gt;
 
-&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_2be978c8dbd65861.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;943&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_88c21daf6a036d9e.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_69a4f1834d7bc724.webp 800w, https://ionfeather.github.io/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_2be978c8dbd65861.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;一个2-shot prompt的MMLU高中数学题&#34;
 	
-	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_9a9a545cce7b7d5b.webp&#34;
+	data-original=&#34;/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_32bbde7a21370d0.webp&#34;
 	data-lightbox-width=&#34;806&#34;
 	data-lightbox-height=&#34;475&#34;
 	

@@ -89,15 +89,15 @@
 &lt;li&gt;知识利用：LLM生成的离散文本如何转化为适合GNN推理的连续数值表示，并设计高效融合架构&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;核心方法&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_55f3e9e82caa97a2.webp&#34;
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1175&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_d6ebe14bc1814493.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_55f3e9e82caa97a2.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_8ef7db985c3b0bf9.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;流程图&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610205120_hu_f19846673b4da04.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610205120_hu_8b5a27a43674a25.webp&#34;
 	data-lightbox-width=&#34;4000&#34;
 	data-lightbox-height=&#34;2936&#34;
 	
@@ -210,15 +210,15 @@
 &lt;h4 id=&#34;指标结果&#34;&gt;指标结果
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;AUC、AUPR、F1和五折交叉验证结果&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_d361e473eb08ef5d.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1050&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_933d6b4ff10fee01.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_d361e473eb08ef5d.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_2ade6ad6168df68a.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;四个数据集下的三种不同方法的效果&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610223319_hu_8beac5695b98eebf.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610223319_hu_82248a5f7233f6b6.webp&#34;
 	data-lightbox-width=&#34;1506&#34;
 	data-lightbox-height=&#34;988&#34;
 	
@@ -238,15 +238,15 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;分别通过AUC、AUPR、F1-score和Precision来判断效果。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_f56e19ad4d0821f9.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1342&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_111401d778864364.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_f56e19ad4d0821f9.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_4297bba02a896982.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最优模型为粗体，次优为下划线&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610223616_hu_76af8170a0a1fdc1.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610223616_hu_501c43dda3c54ed4.webp&#34;
 	data-lightbox-width=&#34;944&#34;
 	data-lightbox-height=&#34;792&#34;
 	
@@ -256,15 +256,15 @@
 	
 &gt;
 &lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_b5ee258834bdf7b6.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1225&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_f5d626f624c9513f.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_b5ee258834bdf7b6.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_27d0071f5f403883.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;最终平均结果&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610224129_hu_3d401698a0c8dd4f.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610224129_hu_34d5098d058ab748.webp&#34;
 	data-lightbox-width=&#34;469&#34;
 	data-lightbox-height=&#34;359&#34;
 	
@@ -317,13 +317,13 @@
 &lt;li&gt;&lt;strong&gt;多源融合&lt;/strong&gt;：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物-疾病关联。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;图网络 + 注意力&lt;/strong&gt;：用 GCN 处理 “药物-疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_6727e696ede38e29.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1228&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_3286fb50b3f699ed.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_6727e696ede38e29.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_747b28cc8fd47b5d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250611145238_hu_b08fbf3aca83afce.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250611145238_hu_ceddae1ed40b3058.webp&#34;
 	data-lightbox-width=&#34;1014&#34;
 	data-lightbox-height=&#34;778&#34;
 	
@@ -389,13 +389,13 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h5 id=&#34;bert在文中&#34;&gt;BERT在文中
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_4de23799b8e08515.webp&#34;
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;764&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_e70edcb005258dc1.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_4de23799b8e08515.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_ef0cb56b7b218c5.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250611151737_hu_8ca8e28c00671a1d.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250611151737_hu_67a75ea1a8722176.webp&#34;
 	data-lightbox-width=&#34;1010&#34;
 	data-lightbox-height=&#34;482&#34;
 	
@@ -456,13 +456,13 @@
 &lt;li&gt;&lt;strong&gt;核融合与传统机器学习&lt;/strong&gt;：DDA-SKF&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;LBMFF在所有指标上都体现出了领先。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_b76e23309590e6c8.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;596&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_6bac18b448fa4c08.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_b76e23309590e6c8.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_495ff5a8c3a9cdf8.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250611153556_hu_b44b1cdc49df5620.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250611153556_hu_55e7ccdd8de0681a.webp&#34;
 	data-lightbox-width=&#34;1620&#34;
 	data-lightbox-height=&#34;603&#34;
 	
@@ -473,13 +473,13 @@
 &gt;
 &lt;/p&gt;
 &lt;p&gt;此外，LBMFF在TL-HGBI在多数指标上仍优于对比方法，证明方法在&lt;strong&gt;大规模数据集上的泛化能力&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_3938e340646265f3.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;568&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_a3237822816ac80.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_3938e340646265f3.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_d566177af47c89b8.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250611154234_hu_43b80307b153c140.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250611154234_hu_b1f64f71f5e25148.webp&#34;
 	data-lightbox-width=&#34;1659&#34;
 	data-lightbox-height=&#34;589&#34;
 	
@@ -524,15 +524,15 @@
 &lt;/ul&gt;
 &lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;GPT-4 系统性挖掘真阴性数据&lt;/strong&gt;，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_7b7eb7c81bd98e1.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_7fe327344fe971c4.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_7b7eb7c81bd98e1.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_e54e9cb639feed2d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;临床试验药物标注流程&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610231108_hu_a782e911cb73ba95.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610231108_hu_f59feda0ba8806b0.webp&#34;
 	data-lightbox-width=&#34;1056&#34;
 	data-lightbox-height=&#34;314&#34;
 	
@@ -556,13 +556,13 @@
 &lt;li&gt;&lt;strong&gt;GPT-4 标注&lt;/strong&gt;：使用 GPT-4 识别的 26 个阳性和 54 个阴性药物。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;无采样 PU&lt;/strong&gt;：将所有未标记药物视为阴性，导致类别不平衡。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;下采样 PU&lt;/strong&gt;：从未标记药物中随机采样 43 个阴性，重复 100 次以控制类别不平衡。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c9956204cc66aaa.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1444&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_198ebcef2152cd90.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c9956204cc66aaa.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_fbd712319f4787bc.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610234019_hu_3ed157533bc8c592.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610234019_hu_a35f4268ca941fe9.webp&#34;
 	data-lightbox-width=&#34;720&#34;
 	data-lightbox-height=&#34;650&#34;
 	
@@ -578,13 +578,13 @@
 &lt;p&gt;训练集和测试集来自于作者自己收集和整理。&lt;/p&gt;
 &lt;h4 id=&#34;研究结果-1&#34;&gt;研究结果
 &lt;/h4&gt;&lt;p&gt;使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_159d77fdaf983b9f.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;666&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_cdc07b2d049f2e63.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_159d77fdaf983b9f.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_41a30403e778c142.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250610232517_hu_5c3ebbbe89130675.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250610232517_hu_4548e1cc63ffc3d6.webp&#34;
 	data-lightbox-width=&#34;1442&#34;
 	data-lightbox-height=&#34;600&#34;
 	
@@ -620,13 +620,13 @@
     &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;提出了一个多源提示的LLM药物重定位框架。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_3e63af9b345ee10d.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1177&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_1b8714e54d1a6518.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_3e63af9b345ee10d.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_93e8e7e924c93bf.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/rbdr/assets/20250611164032_hu_8e27b5b3c602e6e3.webp&#34;
+	data-original=&#34;/2025/rbdr/assets/20250611164032_hu_5ee2297aa09071f3.webp&#34;
 	data-lightbox-width=&#34;1944&#34;
 	data-lightbox-height=&#34;1430&#34;
 	
@@ -659,15 +659,15 @@
         <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
 &lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class=&#34;link&#34; href=&#34;https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;表示图&lt;/a&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_a4ab02d5b656dc8b.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1600&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_905b818c1bcaeb2a.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_a4ab02d5b656dc8b.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_6473b1778363a8f2.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;异构网络表示图&#34;
 	
-	data-original=&#34;/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_47bcd980eb9c8250.webp&#34;
+	data-original=&#34;/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_c1c33dfb6e78f21.webp&#34;
 	data-lightbox-width=&#34;788&#34;
 	data-lightbox-height=&#34;788&#34;
 	
@@ -693,15 +693,15 @@
 &lt;li&gt;矩阵分解/填充&lt;/li&gt;
 &lt;li&gt;深度学习&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_79da02c4d311ae8.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;924&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_25e2040123b09056.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_79da02c4d311ae8.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_f1bf107c9c7d6207.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法预测药物-疾病关联的一般过程的示意图&#34;
 	
-	data-original=&#34;/2025/aidr-network-method/assets/20250605220543_hu_8f1dfd958fc3bbe1.webp&#34;
+	data-original=&#34;/2025/aidr-network-method/assets/20250605220543_hu_5b4f6b0ce483aff7.webp&#34;
 	data-lightbox-width=&#34;1425&#34;
 	data-lightbox-height=&#34;823&#34;
 	
@@ -712,15 +712,15 @@
 &gt;
 &lt;/p&gt;
 &lt;p&gt;这里有一个简单的思维导图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_b20d3fbe24990c99.webp&#34;
+&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;763&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_fae2a7ae05c40005.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_b20d3fbe24990c99.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_266007cd64ce2914.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;基于网络的方法&#34;
 	
-	data-original=&#34;/2025/aidr-network-method/assets/20250605220431_hu_2290f4aa525d868.webp&#34;
+	data-original=&#34;/2025/aidr-network-method/assets/20250605220431_hu_de0fc13c053d140c.webp&#34;
 	data-lightbox-width=&#34;2000&#34;
 	data-lightbox-height=&#34;954&#34;
 	
@@ -858,13 +858,13 @@
         
         <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
         <description>&lt;h2 id=&#34;数据库&#34;&gt;数据库
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_d58a2fff2373493d.webp&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;2163&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_ee7b383b9123b631.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_d58a2fff2373493d.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_b4a9f631d34ccc4a.webp&#34;
+	data-original=&#34;/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_5a1c68d6e0a15544.webp&#34;
 	data-lightbox-width=&#34;2352&#34;
 	data-lightbox-height=&#34;3180&#34;
 	
@@ -908,13 +908,13 @@
 &lt;li&gt;&lt;code&gt;INDICATI&lt;/code&gt;：适应症，即药物被用于治疗的病症。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Disease entry&lt;/code&gt;：疾病条目，这里使用了 ICD-11 编码来表示具体的疾病。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_392f17b14b30bdda.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;942&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a83568ab5970ab86.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_392f17b14b30bdda.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_702c96b7171ed5d5.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_a9b4dd6e66435083.webp&#34;
+	data-original=&#34;/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_d53a41a4a9cc07a2.webp&#34;
 	data-lightbox-width=&#34;2302&#34;
 	data-lightbox-height=&#34;1356&#34;
 	
@@ -1217,13 +1217,13 @@
 &lt;li&gt;&lt;strong&gt;genes.tsv&lt;/strong&gt;：记录了基因声明相关数据，可能涵盖基因的基本信息，如基因名称、基因 ID、基因功能注释等内容。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;drugs.tsv&lt;/strong&gt;：存放药物声明数据，包括药物的名称、药物 ID、药物的基本属性、药理作用等信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;categories.tsv&lt;/strong&gt;：用于存储与数据分类相关的信息。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_47a6a8fa28111ad5.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;618&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_7da5a7cfa760e4c4.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_47a6a8fa28111ad5.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_2ef5f00ae37f3d1.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
-	data-original=&#34;/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_b598f41a1cd47f62.webp&#34;
+	data-original=&#34;/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_873cfa56fc432cb2.webp&#34;
 	data-lightbox-width=&#34;1636&#34;
 	data-lightbox-height=&#34;632&#34;
 	
@@ -1441,15 +1441,15 @@
 &lt;li&gt;&lt;strong&gt;作用机制 / 药物注释&lt;/strong&gt;：&lt;strong&gt;浅蓝色&lt;/strong&gt;区域负责注释药物作用机制，关联化合物、靶点和生物效应。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;来源和已批准药物数据&lt;/strong&gt;：&lt;strong&gt;灰色&lt;/strong&gt;区域中，来源信息保证数据可追溯，已批准药物 数据包含批准文号、适应症和生产厂家等，这个应该是用来避免专利壁垒的，可以查看专利即将到期的药物。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;常规信息&lt;/strong&gt;：&lt;strong&gt;浅黄色&lt;/strong&gt;区域存放数据库的版本号、更新时间等基础信息。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_15059bd326637581.webp&#34;
+&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp&#34;
 	width=&#34;1600&#34;
 	height=&#34;1970&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_1ff74734e9a4dc5a.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_15059bd326637581.webp 1600w&#34;
+	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_ce928bb857149d5a.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp 1600w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ChEMBL整体情况&#34;
 	
-	data-original=&#34;/2025/moleculerepurposing/assets/chembl_35_schema_hu_79d939e3a464d4ca.webp&#34;
+	data-original=&#34;/2025/moleculerepurposing/assets/chembl_35_schema_hu_8526ce051bba571.webp&#34;
 	data-lightbox-width=&#34;3249&#34;
 	data-lightbox-height=&#34;4000&#34;
 	

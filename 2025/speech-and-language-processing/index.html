@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 
-<link rel="stylesheet" href="/scss/style.min.d77736391b92ac9633444698b109d7619c8be53bcb5839fe1dfea172b5061741.css"><meta property='og:title' content="书籍阅读 | Speech and Language Processing">
+<link rel="stylesheet" href="/scss/style.min.e722bb6bd4f8ba9a664eb5a364a5eea5f9e6e8e35ee176a89ad5a81453c78595.css"><meta property='og:title' content="书籍阅读 | Speech and Language Processing">
 <meta property='og:description' content="Introduction\r阅读Speech and Language Processing这本书的一些笔记。\nWords and Tokens\r我们需要一个东西来建模语言，下面是我们的选择：\nWords\r为什么不用词？\n有些语言没有orthographic words 词的数量会随着文章增长，词汇表永远都会覆盖不足 Morphemes\r语素类型\n">
 <meta property='og:url' content='https://ionfeather.github.io/2025/speech-and-language-processing/'>
 <meta property='og:site_name' content='ionfeather&#39;Log'>
@@ -22,6 +22,16 @@
   } else {
     sessionStorage.setItem('siteVisited', '1');
   }
+</script>
+
+
+<script>
+  (function () {
+    var saved = localStorage.getItem('StackColorScheme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = saved === 'dark' || (saved === 'auto' && systemDark) || (!saved && systemDark);
+    document.documentElement.dataset.scheme = isDark ? 'dark' : 'light';
+  })();
 </script>
 
 
@@ -48,46 +58,6 @@
   html body {
     font-family: var(--base-font-family);
     font-weight: normal;
-  }
-
-   
-  :root {
-    --accent-color: #5a6e3a;
-    --accent-color-darker: #3e4e28;
-    --body-text-color: #3a3530;
-    --card-separator-color: rgba(200, 180, 160, 0.2);
-    --card-background: rgba(255, 254, 250, 0.82);
-    --card-background-selected: rgba(245, 236, 220, 0.7);
-  }
-  html[data-scheme="dark"] {
-    --accent-color: #8fa46a;
-    --accent-color-darker: #6b7d52;
-    --body-text-color: #e0d5c5;
-    --card-separator-color: rgba(100, 90, 70, 0.3);
-    --card-background: rgba(32, 31, 26, 0.62);
-    --card-background-selected: rgba(50, 46, 32, 0.7);
-    --card-text-color-secondary: rgba(220, 208, 188, 0.88);
-    --card-text-color-tertiary: rgba(175, 160, 138, 0.82);
-  }
-
-   
-  html body {
-    background-color: #fdf9f2 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E"),
-      linear-gradient(135deg, #fefcf8 0%, #fdf9f2 50%, #f7ede0 100%) !important;
-    background-attachment: fixed !important;
-  }
-
-   
-  html[data-scheme="dark"] body {
-    background-color: #191917 !important;
-    background-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E"),
-      radial-gradient(ellipse at 0% 0%, rgba(80, 100, 55, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse at 100% 100%, rgba(50, 40, 25, 0.25) 0%, transparent 55%),
-      linear-gradient(135deg, #1e1e1b 0%, #191917 50%, #151410 100%) !important;
-    background-attachment: fixed !important;
   }
 
    
@@ -126,10 +96,10 @@
   html[data-scheme="dark"] body .main-article,
   html[data-scheme="dark"] body .welcome,
   html[data-scheme="dark"] body .pagination-container {
-    background: rgba(32, 31, 26, 0.62) !important;
+    background: rgba(48, 54, 66, 0.72) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -155,8 +125,8 @@
     border: 1px solid rgba(255, 255, 255, 0.45) !important;
   }
   html[data-scheme="dark"] body .archives-year {
-    background: rgba(32, 31, 26, 0.55) !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    background: rgba(48, 54, 66, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
   }
 
    
@@ -171,11 +141,11 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a {
-    background: rgba(32, 31, 26, 0.75) !important;
+    background: rgba(48, 54, 66, 0.8) !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
   }
   html[data-scheme="dark"] body .tagCloud .tagCloud-tags a:hover {
-    background: rgba(32, 31, 26, 0.95) !important;
+    background: rgba(65, 73, 88, 0.95) !important;
   }
 
    
@@ -236,21 +206,33 @@
   }
 
    
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #c8b89a; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #8fa46a; }
-
    
   .article-content a {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--accent-color);
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-color);
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
   .article-content a:hover {
-    text-decoration-style: solid;
+    border-bottom-style: solid;
+  }
+  .article-content a:has(> img) {
+    border-bottom: none;
+  }
+
+   
+  html body *:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  html body a:focus-visible,
+  html body button:focus-visible {
+    border-radius: 4px;
+  }
+
+   
+  input, textarea, [contenteditable="true"] {
+    caret-color: var(--accent-color);
   }
 
    
@@ -357,7 +339,7 @@
   html[data-scheme="dark"] .jump-text5, html[data-scheme="dark"] .jump-text6,
   html[data-scheme="dark"] .jump-text7, html[data-scheme="dark"] .jump-text8,
   html[data-scheme="dark"] .jump-text9, html[data-scheme="dark"] .jump-text10 {
-    color: #8fa46a !important;
+    color: #6b8e9e !important;
   }
 
    
@@ -384,7 +366,7 @@
     color: var(--accent-color) !important;
   }
   html[data-scheme="dark"] .pagination .page-link:not(.current):not(.dots):hover {
-    background: rgba(143, 164, 106, 0.14) !important;
+    background: rgba(107, 142, 158, 0.14) !important;
     color: var(--accent-color) !important;
   }
   .pagination .page-link.dots {
@@ -466,7 +448,7 @@
     background: rgba(255, 254, 250, 0.96) !important;
   }
   html[data-scheme="dark"] .article-list--compact article:hover {
-    background: rgba(40, 39, 32, 0.85) !important;
+    background: rgba(60, 68, 82, 0.88) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
@@ -651,8 +633,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.16) 0%,
-      rgba(143, 164, 106, 0.16) 86%,
+      rgba(107, 142, 158, 0.16) 0%,
+      rgba(107, 142, 158, 0.16) 86%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul,
@@ -660,8 +642,8 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.10) 0%,
-      rgba(143, 164, 106, 0.10) 80%,
+      rgba(107, 142, 158, 0.10) 0%,
+      rgba(107, 142, 158, 0.10) 80%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ul > li > ul > li > ul,
@@ -669,18 +651,18 @@
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ul,
   html[data-scheme="dark"] body .widget--toc #TableOfContents > ol > li > ol > li > ol {
     background-image: linear-gradient(to bottom,
-      rgba(143, 164, 106, 0.07) 0%,
-      rgba(143, 164, 106, 0.07) 75%,
+      rgba(107, 142, 158, 0.07) 0%,
+      rgba(107, 142, 158, 0.07) 75%,
       transparent 100%) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents a:hover {
-    border-left-color: rgba(143, 164, 106, 0.3) !important;
-    background: rgba(143, 164, 106, 0.06) !important;
+    border-left-color: rgba(107, 142, 158, 0.3) !important;
+    background: rgba(107, 142, 158, 0.06) !important;
   }
   html[data-scheme="dark"] body .widget--toc #TableOfContents li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li.active-class > a,
   html[data-scheme="dark"] body .widget--toc #TableOfContents li li li.active-class > a {
-    background: rgba(143, 164, 106, 0.1) !important;
+    background: rgba(107, 142, 158, 0.1) !important;
   }
 
    
@@ -845,10 +827,10 @@
 
    
   html[data-scheme="dark"] #main-menu li a:hover::before {
-    opacity: 0.1;
+    opacity: 0.12;
   }
   html[data-scheme="dark"] #main-menu li.current a::before {
-    opacity: 0.15;
+    opacity: 0.18;
   }
 
    
@@ -930,7 +912,29 @@
 
     function show(src) {
         var el = getOrCreate();
+        var toggle = document.getElementById('dark-mode-toggle');
         el.src = src;
+
+        if (toggle) {
+            var rect = toggle.getBoundingClientRect();
+            if (window.innerWidth < 768) {
+                
+                el.style.left   = (rect.left - 84) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            } else {
+                
+                el.style.left   = (rect.right + 12) + 'px';
+                el.style.top    = (rect.top + rect.height / 2 - 36) + 'px';
+                el.style.bottom = 'auto';
+            }
+        } else {
+            
+            el.style.left   = '20px';
+            el.style.bottom = '72px';
+            el.style.top    = 'auto';
+        }
+
         el.style.opacity   = '1';
         el.style.transform = 'scale(1) rotate(0deg)';
         clearTimeout(hideTimer);
@@ -951,6 +955,112 @@
             }, 50);
         });
     });
+})();
+</script>
+
+
+<style>
+  .tang-laoshi {
+    cursor: pointer;
+    transition: border-bottom-color 0.25s ease;
+    border-bottom: 1px dotted transparent;
+  }
+  .tang-laoshi:hover {
+    border-bottom-color: rgba(90, 110, 58, 0.35);
+  }
+  html[data-scheme="dark"] .tang-laoshi:hover {
+    border-bottom-color: rgba(125, 160, 176, 0.4);
+  }
+</style>
+<script>
+(function () {
+  var pool = [
+    '/stickers/azuki/003.png',
+    '/stickers/azuki/005.png',
+    '/stickers/azuki/007.png',
+    '/stickers/azuki/011.png',
+    '/stickers/azuki/014.png',
+    '/stickers/azuki/021.png',
+    '/stickers/azuki/029.png',
+    '/stickers/azuki/036.png',
+  ];
+  var cooldown = false;
+
+  function wrapTangLaoshi(node) {
+    if (node.nodeType !== 3) return;
+    var text = node.textContent;
+    if (text.indexOf('唐老师') === -1) return;
+
+    var parts = text.split('唐老师');
+    var frag = document.createDocumentFragment();
+    parts.forEach(function (part, i) {
+      if (part) frag.appendChild(document.createTextNode(part));
+      if (i < parts.length - 1) {
+        var span = document.createElement('span');
+        span.className = 'tang-laoshi';
+        span.textContent = '唐老师';
+        frag.appendChild(span);
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  }
+
+  function init() {
+    var walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(wrapTangLaoshi);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  document.addEventListener('click', function (e) {
+    if (cooldown) return;
+    var el = e.target.closest('.tang-laoshi');
+    if (!el) return;
+
+    cooldown = true;
+    setTimeout(function () { cooldown = false; }, 800);
+
+    var rect = el.getBoundingClientRect();
+    var img = document.createElement('img');
+    img.src = pool[Math.floor(Math.random() * pool.length)];
+    img.alt = '';
+    Object.assign(img.style, {
+      position: 'fixed',
+      left: (rect.left + rect.width / 2 - 40) + 'px',
+      top: (rect.top - 90) + 'px',
+      width: '80px',
+      height: '80px',
+      borderRadius: '16px',
+      opacity: '0',
+      transform: 'scale(0.4) translateY(20px) rotate(-10deg)',
+      transition: 'opacity 0.35s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      pointerEvents: 'none',
+      zIndex: '9999',
+    });
+    document.body.appendChild(img);
+
+    requestAnimationFrame(function () {
+      img.style.opacity = '1';
+      img.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+    });
+
+    setTimeout(function () {
+      img.style.opacity = '0';
+      img.style.transform = 'scale(0.7) translateY(-10px) rotate(6deg)';
+      setTimeout(function () { img.remove(); }, 400);
+    }, 1400);
+  });
 })();
 </script>
 
@@ -1019,7 +1129,7 @@
 
                     
                         
-                        <img src="/img/avatar_hu_38e8a09fc3979fa.jpg" width="300"
+                        <img src="/img/avatar_hu_346bcac48b777fa1.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -1553,13 +1663,13 @@
 <p>For example, if we had happened not to ever see the word lower, when it appears we could segment it successfully into low and er which we had already seen. In the worst case, a really unusual word (perhaps an acronym like GRPO) could be tokenized as a sequence of individual letters if necessary.</p>
 </blockquote>
 <p>最终得到的是
-<img src="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_78b7f66701f68d05.webp"
 	width="1600"
 	height="628"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_946399cef835fa81.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_b74de08bb61b43e9.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_5a6b3d8a142c0f1e.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_78b7f66701f68d05.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_df5a51fd17a14d78.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250828205105982_hu_679ead1693876318.webp"
 	data-lightbox-width="711"
 	data-lightbox-height="279"
 	
@@ -1819,13 +1929,13 @@ $$\hat{y}=softmax(Wx+b)$$<blockquote>
 </blockquote>
 <h4 id="features-in-multinomial-logistic-regression">Features in Multinomial Logistic Regression
 </h4><p>特征权重同时依赖于输入文本和输出类别。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_f946687271f2c7.webp"
 	width="1600"
 	height="1800"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_610f3f19343d613c.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_a51937d9a2430c5.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_8c7dd65f4a37b10c.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_f946687271f2c7.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_1dd0b1b2c431bbaf.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830163440597_hu_5f6b119c81d82bb.webp"
 	data-lightbox-width="744"
 	data-lightbox-height="837"
 	
@@ -1880,13 +1990,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 </ul>
 </li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_80eecd065b4f2529.webp"
 	width="1600"
 	height="679"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_4146c314d88ab94b.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_68e30caa5d321584.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_dbd496cbffd14a6.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_80eecd065b4f2529.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_e4aefe55a7890447.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830172049893_hu_9cf1611936cc2a22.webp"
 	data-lightbox-width="928"
 	data-lightbox-height="394"
 	
@@ -1900,13 +2010,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <ul>
 <li>微观平均：更关注 “整体样本的预测准确性”，<strong>少数类错判代价低于多数类</strong></li>
 <li>宏观平均：更关注所有的类的错判代价的公平，<strong>少数类和多数类的代价相等</strong>
-<img src="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bce1606c8a27263a.webp"
 	width="1600"
 	height="691"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_784d22778c76a9a9.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_41ca154b804a73fa.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_e44c7136f9451f.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_bce1606c8a27263a.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_fcaaa7540bbd00ec.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173257005_hu_5e37f2d251acea56.webp"
 	data-lightbox-width="1084"
 	data-lightbox-height="468"
 	
@@ -1922,13 +2032,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <ul>
 <li>固定训练集和测试集。</li>
 <li>训练集中进行分割。
-<img src="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_f644b5885a3d8798.webp"
 	width="1600"
 	height="826"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_b858971ac03b9413.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_1cd9029ce1af4edf.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_8275e2091b7dd9bb.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_f644b5885a3d8798.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_897698156ca0162a.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830173844382_hu_ab9cb9fb8924372d.webp"
 	data-lightbox-width="895"
 	data-lightbox-height="462"
 	
@@ -1955,13 +2065,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 </blockquote>
 <h4 id="the-paired-bootstrap-test">The Paired Bootstrap Test
 </h4><p>Bootstrap 检验的核心是 “重抽样”—— 从原始测试集<code>x</code>中<strong>有放回地随机抽取</strong>生成新的测试集。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8834e9dd07cbe4f0.webp"
 	width="1600"
 	height="715"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_db812f89689a502a.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_5d6798d91f30f180.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_231aaf251a455dea.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_8834e9dd07cbe4f0.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_a2cc687716d8b236.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250830181020970_hu_e660c251eaf3348c.webp"
 	data-lightbox-width="1097"
 	data-lightbox-height="490"
 	
@@ -2086,13 +2196,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <li>最大化positive examples中学习的相似度</li>
 <li>最小化negative examples中的相似度</li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b2fe4b2a085ce91d.webp"
 	width="1600"
 	height="1015"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_eba54474b05b9ddc.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_6f07e66f7e4deb5.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_c32d35eab0a14e0.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_b2fe4b2a085ce91d.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_5fe46a8cf6e6fe78.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831142750258_hu_100a69b2cf34b3d0.webp"
 	data-lightbox-width="880"
 	data-lightbox-height="558"
 	
@@ -2133,13 +2243,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <li>二阶共享：聚合关系，直接相关，如write和say</li>
 </ul>
 <p>类比关系：平行四边形模型
-<img src="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_b74d446cf1a8cc0d.webp"
 	width="1600"
 	height="662"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_9faec94f20a5ecc6.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_86fd6069c38ddbab.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_6776f0b1194bd6d9.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_b74d446cf1a8cc0d.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_e9735512719a056b.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150132974_hu_42c3105e0df5cecf.webp"
 	data-lightbox-width="1134"
 	data-lightbox-height="469"
 	
@@ -2152,13 +2262,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 问题是只能用在明确的关系、短的距离和频繁的单词上。</p>
 <h4 id="embeddings-and-historical-semantics">Embeddings and Historical Semantics
 </h4><p>嵌入的应用。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_a2dc5d1c3930ef7.webp"
 	width="1600"
 	height="963"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_97a27732d3e44539.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_63027f3e0cc4e72a.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_524f0f21b2376aaa.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_a2dc5d1c3930ef7.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_3d449afd150e886.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250831150603967_hu_52ad1ea06d5349c6.webp"
 	data-lightbox-width="839"
 	data-lightbox-height="505"
 	
@@ -2207,13 +2317,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <h3 id="units">Units
 </h3><p>bias term</p>
 <p>activation：使用non-linear functions，如sigmoid、tanh、ReLU等</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_226eac04811c2ad2.webp"
 	width="1600"
 	height="811"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_c57c1cc1f981cdb7.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_a7d2a88363259ee9.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_13eb5030ae0719ae.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_226eac04811c2ad2.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_6ff4dd718b3c425.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901195216978_hu_22c05e1472d1c4e6.webp"
 	data-lightbox-width="833"
 	data-lightbox-height="422"
 	
@@ -2231,13 +2341,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <h4 id="the-solution-neural-networks">The Solution: Neural Networks
 </h4><p>包含隐藏层的多层感知机MLP解决了这个问题。</p>
 <p>下面这个图，不管对于原来的[0,1]还是[1,0]都会将他们在隐含层里转化为[1,0]。而原来的[0,0]和[1,1]则变为[2,1]，此时便线性可分。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_95a20cb06918d8f2.webp"
 	width="1600"
 	height="708"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_e9c1cd3d643b5afc.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_f48018ec0a952cc8.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_17ec3de45f51b102.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_95a20cb06918d8f2.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_ad14f1dc77759379.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901200315265_hu_6aaaa4d32b832d8c.webp"
 	data-lightbox-width="762"
 	data-lightbox-height="337"
 	
@@ -2247,13 +2357,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 	
 >
 </p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3ab15a7d7dfab66b.webp"
 	width="1600"
 	height="1040"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_285a2b0830d45ce5.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_5a2c86d054fee6ff.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3a900488593fd703.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_3ab15a7d7dfab66b.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_632856ae659452a7.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250901201345068_hu_387f50d8c4eb6ea7.webp"
 	data-lightbox-width="686"
 	data-lightbox-height="446"
 	
@@ -2270,13 +2380,13 @@ $$\frac{\partial L_{\mathrm{CE}}(\hat{y},y)}{\partial w_{j}}=-(y-\hat{y})x_{j}$$
 <li>感知机使用阶跃函数，现在的神经网络用的是多种非线性的单元如ReLUs或者Sigmoid等</li>
 </ul>
 <p>前馈神经网络的标准结构是全连接的。
-<img src="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d62aeddacf8fab6c.webp"
 	width="1600"
 	height="945"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_4980cca8b3c86ce8.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_ed1ab88a2ed8f229.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_779d54ec934991ce.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_d62aeddacf8fab6c.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_5a64541272f5b083.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902182112223_hu_6934e99e39911584.webp"
 	data-lightbox-width="726"
 	data-lightbox-height="429"
 	
@@ -2303,13 +2413,13 @@ $$y = \text{softmax}(z)$$<p>神经网络和多项逻辑回归的区别：</p>
 <h4 id="more-details-on-feedforward-networks">More Details on Feedforward Networks
 </h4><p>为什么激活函数要非线性</p>
 <p>替换偏置项：使用dummy node来代替原来的偏置项。也就是下图中把b换成一个新的固定为1的$x_0$。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_cf3d1bf74df94a00.webp"
 	width="1600"
 	height="860"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_d1e8a3ff26979ded.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_ddcea35d4a4229a7.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_b87cbff16aebe248.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_cf3d1bf74df94a00.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_a38485de2d8e5134.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185044344_hu_35d290d7b2c5e922.webp"
 	data-lightbox-width="692"
 	data-lightbox-height="372"
 	
@@ -2323,13 +2433,13 @@ $$y = \text{softmax}(z)$$<p>神经网络和多项逻辑回归的区别：</p>
 </h3><p>嵌入矩阵、表示池化、表示学习先不讲，先学一下用前馈神经网络解决分类问题。</p>
 <h4 id="neural-net-classifiers-with-hand-built-features">Neural Net Classifiers with Hand-built Features
 </h4><p>人工设计的特征，除了把MLP换成FNN之外没变化。
-<img src="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_554f3d0f4c80ea24.webp"
 	width="1600"
 	height="928"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_7961a9b30134eb1a.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_4f327caa66e97d6c.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_1c8597e191ec501d.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_554f3d0f4c80ea24.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_c2259a2fad79e98e.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902185551826_hu_f4d0835201061fa8.webp"
 	data-lightbox-width="688"
 	data-lightbox-height="399"
 	
@@ -2352,13 +2462,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <li>存储static embeddings的词典称为embedding matrix <strong>E</strong></li>
 </ul>
 <p>one-hot vector：从embedding matrix选取token embedding的方法
-<img src="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_991ec0b41ec156a8.webp"
 	width="1600"
 	height="500"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_c4585f16221f1c60.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_75cda530f56d23.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_2b5931026be56c47.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_991ec0b41ec156a8.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_4e3493b107c638aa.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192356608_hu_e3b077c1c8caf98f.webp"
 	data-lightbox-width="688"
 	data-lightbox-height="215"
 	
@@ -2378,15 +2488,15 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </ul>
 </li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_40d417d9985a3255.webp"
 	width="1600"
 	height="1412"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_ad976b9addff4fc2.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_efd07754b3f8616c.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_7eb87a825914b6d1.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_40d417d9985a3255.webp 1600w"
 	loading="lazy"
 	
 		alt="前馈神经网络用于情感分析，带有池化层的结构"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_cc39dde9d901a3c2.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902192912076_hu_fb616516efd038d5.webp"
 	data-lightbox-width="807"
 	data-lightbox-height="712"
 	
@@ -2401,15 +2511,15 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <li>可以处理更多的上下文，更加泛化，预测更准确；速度更慢，训练更麻烦</li>
 <li>使用embeddings表示词而不是word identity</li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_60d6ffcdfbcc320.webp"
 	width="1600"
 	height="1439"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_e93eb908cf3ef3ea.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_75917803de5f0f47.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_d7ab8cf09ba411da.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_60d6ffcdfbcc320.webp 1600w"
 	loading="lazy"
 	
 		alt="embedding layer e这里是拼接起来的"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_6223896f5274673a.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902193413335_hu_56889e01ce6b7ea4.webp"
 	data-lightbox-width="717"
 	data-lightbox-height="645"
 	
@@ -2428,13 +2538,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </h4><p>一层的时候可以用损失的导数，但是多层的时候需要用反向传播算法。</p>
 <h4 id="computation-graphs">Computation Graphs
 </h4><p>介绍了什么是计算图。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_3376f18c5957682c.webp"
 	width="1600"
 	height="604"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_6c9564e49156ecdd.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_e58577c91d085192.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_cbca9c2ff7c48d3c.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_3376f18c5957682c.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_1d7f6e5a13224d7b.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902201310848_hu_f03e597618d171e7.webp"
 	data-lightbox-width="697"
 	data-lightbox-height="263"
 	
@@ -2446,13 +2556,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </p>
 <h4 id="backward-differentiation-on-computation-graphs">Backward Differentiation on Computation Graphs
 </h4><p><strong>反向传播</strong>：用链式法则一次性计算出所有参数的梯度。
-<img src="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_9502cbf5fb11f235.webp"
 	width="1600"
 	height="834"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_8bc192f1e905f84d.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_84e9b22218c64ef3.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_ebcaf609834c2a4c.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_9502cbf5fb11f235.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_cd927dc43688540a.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213405406_hu_2e0a9378695661be.webp"
 	data-lightbox-width="829"
 	data-lightbox-height="432"
 	
@@ -2468,13 +2578,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <li>反向传播是为了得到梯度，从而进行参数优化</li>
 </ul>
 <p>当然在真正的神经网络中，计算会更加复杂。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_3f0666cf2d42cb73.webp"
 	width="1600"
 	height="993"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_ba9bc1dcb294c575.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_456873574e45a50.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_f574dbc8576b4254.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_3f0666cf2d42cb73.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_48a0102faa5415c5.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250902213726628_hu_b2f99bb1a5ef4c90.webp"
 	data-lightbox-width="851"
 	data-lightbox-height="528"
 	
@@ -2510,13 +2620,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <li>掩码语言模型</li>
 <li>自回归语言模型</li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_894164e4f3174fec.webp"
 	width="1600"
 	height="719"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_6efdeefde251b912.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_df46138a64c505ef.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_b88bcecde86fcdda.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_894164e4f3174fec.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_90777be9496bbda5.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221442377_hu_ac9ae4ffc17077e6.webp"
 	data-lightbox-width="817"
 	data-lightbox-height="367"
 	
@@ -2527,13 +2637,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 >
 </p>
 <p>如果可以预测下一个词的概率分布，那么就可以从概率分布中进行采样，从而生成下一个词。这样就从预测模型变成了生成模型。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2c381efa889fef4d.webp"
 	width="1600"
 	height="1102"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_b69ef0442510f542.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2ecab373cbe385b1.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_6d43ef49259554fe.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_2c381efa889fef4d.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_8f2e67b3ba7a9e9a.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221449983_hu_a32fdb469602b0e4.webp"
 	data-lightbox-width="800"
 	data-lightbox-height="551"
 	
@@ -2550,13 +2660,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <p>生成式AI</p>
 <h3 id="three-architecture-for-language-models">Three Architecture for Language Models
 </h3><p>三种结构：</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_92b68f3cbe85452.webp"
 	width="1600"
 	height="728"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_42a47a0a5dccd269.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_4365515d699f6b0e.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_2834201c066496bd.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_92b68f3cbe85452.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_c83a9b19250c8acd.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903221500783_hu_557f1e7e03d58397.webp"
 	data-lightbox-width="842"
 	data-lightbox-height="383"
 	
@@ -2594,13 +2704,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 <p>他们都是基于神经网络构建的。</p>
 <h3 id="conditional-generation-of-text-the-intuition">Conditional Generation of Text: The Intuition
 </h3><p>不管什么任务，都可以简化为给定prompt的下一个词的预测任务。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_d3e6cc8b71752f2a.webp"
 	width="1600"
 	height="681"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_c6a83639aab09a66.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_bb333f640d85a2f2.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_a4c490754a19e065.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_d3e6cc8b71752f2a.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_777816ae88d62e14.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222035606_hu_cab62d9b33614cc8.webp"
 	data-lightbox-width="813"
 	data-lightbox-height="346"
 	
@@ -2612,13 +2722,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </p>
 <h3 id="prompting">Prompting
 </h3><p>指令微调</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_15412b4b21317e15.webp"
 	width="1600"
 	height="758"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_6de0a6c03894efab.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f86e9c5b4c2993f0.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f4062ec638c6eeaa.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_15412b4b21317e15.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_ad49807d54224a1f.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222047947_hu_f05e060a98c42ff5.webp"
 	data-lightbox-width="815"
 	data-lightbox-height="386"
 	
@@ -2644,13 +2754,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 </ul>
 <h3 id="generation-and-sampling">Generation and Sampling
 </h3><p>语言模型的内部网络会生成logits，再由softmax计算得到概率，随后在这些token中进行采样。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_5c5f6516be47923c.webp"
 	width="1600"
 	height="648"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_92f50f2f3cb2a0b7.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_64ddc01b84639ce6.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_e651bddcd401adf0.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_5c5f6516be47923c.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_de4f0bd4692fe7b9.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222105152_hu_10e93d8eef2920b9.webp"
 	data-lightbox-width="812"
 	data-lightbox-height="329"
 	
@@ -2665,13 +2775,13 @@ $$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$<blockquote>
 D</p>
 <h4 id="greedy-decoding">Greedy decoding
 </h4><p>贪心解码：选择概率最高的那个token生成（argmax）</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_a98ddda1e9700710.webp"
 	width="1600"
 	height="644"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_550cc608dfd97892.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_40db4f5f6252f2fd.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_654d36c15db4bdf9.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_a98ddda1e9700710.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_bc5db4c8e3696391.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222114008_hu_5e029f75a51d1515.webp"
 	data-lightbox-width="830"
 	data-lightbox-height="334"
 	
@@ -2685,13 +2795,13 @@ D</p>
 <p><strong>束搜索</strong></p>
 <h4 id="random-sampling">Random Sampling
 </h4><p>按照分布采样，直到采样到EOS。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_6b02165d8be02478.webp"
 	width="1600"
 	height="643"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_724cbb90e108eeb4.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_928f4f3ee8544b7d.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_34020b737bd968c6.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_6b02165d8be02478.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_33a69c31fecdb33b.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222124629_hu_3ad1b560cb5287a6.webp"
 	data-lightbox-width="811"
 	data-lightbox-height="326"
 	
@@ -2704,13 +2814,13 @@ D</p>
 <p>效果也不好——有些token虽然占比小，但是这些token很多，导致占比也不小。如果被采样到了，句子会变得很奇怪</p>
 <h4 id="temperature-sampling">Temperature Sampling
 </h4><p>logits转化为probability的时候用带有temperature的softmax计算。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_c4dca283f0738380.webp"
 	width="1600"
 	height="648"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_b13ec6c5d993b012.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_26ec9fbe92942448.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_3935ea939dd0a535.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_c4dca283f0738380.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_28cbe33328e711fb.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222132977_hu_9743eeb5b3091a1e.webp"
 	data-lightbox-width="958"
 	data-lightbox-height="388"
 	
@@ -2721,13 +2831,13 @@ D</p>
 >
 </p>
 <p>当$\tau \le 1$的时候，会倾向将高概率拉得更高，低概率拉得更低，反之则更容易选择到低概率事件。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_4674288e2bc5eaa6.webp"
 	width="1600"
 	height="1208"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_54a6db0c6947b34.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_f92d377a8a0ca358.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_6b78404155a2dc4a.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_4674288e2bc5eaa6.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_17444b5eb1063b99.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222140906_hu_5f4d7525cd25b31b.webp"
 	data-lightbox-width="799"
 	data-lightbox-height="603"
 	
@@ -2744,13 +2854,13 @@ D</p>
 <li>指令微调</li>
 <li>偏好对齐</li>
 </ul>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_24e12638cab8b7cd.webp"
 	width="1600"
 	height="1028"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_63e168b200ecd043.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_bd947b8c16d661af.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_f11568aecc825041.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_24e12638cab8b7cd.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_905fa508a436b981.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222151929_hu_cef0e830db61de5.webp"
 	data-lightbox-width="800"
 	data-lightbox-height="514"
 	
@@ -2763,13 +2873,13 @@ D</p>
 <h4 id="self-supervised-training-algorithm-for-pretraining">Self-supervised Training Algorithm for Pretraining
 </h4><p>Teacher forcing：永远给模型正确的序列，而不是按照模型的预测接着往下来预测下一个词</p>
 <p>如下图，网络中的权重会通过梯度下降进行调整，以最小化该批次上的平均交叉熵损失。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1a75653ad8b8efd0.webp"
 	width="1600"
 	height="929"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_c0bd455b64f02e02.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1ea3177f4b61c653.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_f0666baaab88e005.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_1a75653ad8b8efd0.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_95ba0c808a061c06.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903222201965_hu_2d66be4912becf58.webp"
 	data-lightbox-width="808"
 	data-lightbox-height="469"
 	
@@ -2791,13 +2901,13 @@ D</p>
 <p>避免个人信息PII，去重，安全筛选，toxicity detection。注意版权、数据同意、隐私和偏差等问题。</p>
 <h4 id="finetuning">Finetuning
 </h4><p>对已经与训练过的模型加入一些新的知识进行微调。如果新的数据是预训练的后面，也可以叫continued pretraining。</p>
-<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp"
+<p><img src="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5899338e5b8b3626.webp"
 	width="1600"
 	height="825"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_daeb231fa4b645c1.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_f82f5cfe9e436b30.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_2436c7a2123ad2c6.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_5899338e5b8b3626.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_6ae2ed8169293d5e.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903194702282_hu_6a09ad56cd03294.webp"
 	data-lightbox-width="704"
 	data-lightbox-height="363"
 	
@@ -2824,13 +2934,13 @@ $$\begin{aligned}
 </h4><p>准确率：可以直接使用下游任务来衡量。</p>
 <ul>
 <li>MMLU
-<img src="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_ea610a3fc2055ae6.webp"
 	width="1600"
 	height="574"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_16a499bc0ac2b654.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_f48222a539253590.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_8b6b6adf6fcc64fb.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_ea610a3fc2055ae6.webp 1600w"
 	loading="lazy"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_3a92927996fd863.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214854478_hu_a6ab813e6cea1264.webp"
 	data-lightbox-width="805"
 	data-lightbox-height="289"
 	
@@ -2840,15 +2950,15 @@ $$\begin{aligned}
 	
 >
 
-<img src="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp"
+<img src="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_2be978c8dbd65861.webp"
 	width="1600"
 	height="943"
-	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_88c21daf6a036d9e.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_33df88b2c81812f2.webp 1600w"
+	srcset="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_69a4f1834d7bc724.webp 800w, /2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_2be978c8dbd65861.webp 1600w"
 	loading="lazy"
 	
 		alt="一个2-shot prompt的MMLU高中数学题"
 	
-	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_9a9a545cce7b7d5b.webp"
+	data-original="/2025/speech-and-language-processing/assets/IMG-20250903214915252_hu_32bbde7a21370d0.webp"
 	data-lightbox-width="806"
 	data-lightbox-height="475"
 	
@@ -2995,23 +3105,23 @@ $$\begin{aligned}
     --waline-border-radius: 12px;
   }
   html[data-scheme="dark"] .waline-container {
-    --waline-theme-color: #8fa46a;
-    --waline-active-color: #8fa46a;
-    --waline-color: #e0d5c5;
-    --waline-bgcolor: #1e1e1b;
-    --waline-bgcolor-light: #252520;
-    --waline-bgcolor-hover: #2a2a24;
-    --waline-border-color: rgba(100, 90, 70, 0.3);
-    --waline-disable-bgcolor: #2a2a24;
-    --waline-disable-color: rgba(220, 208, 188, 0.35);
-    --waline-bq-color: rgba(143, 164, 106, 0.15);
-    --waline-info-bgcolor: #252520;
-    --waline-info-color: rgba(220, 208, 188, 0.6);
-    --waline-dark-grey: #e0d5c5;
-    --waline-light-grey: rgba(175, 160, 138, 0.5);
+    --waline-theme-color: #7da0b0;
+    --waline-active-color: #7da0b0;
+    --waline-color: #c5cdd6;
+    --waline-bgcolor: #252830;
+    --waline-bgcolor-light: #2a2d32;
+    --waline-bgcolor-hover: #323844;
+    --waline-border-color: rgba(100, 110, 125, 0.3);
+    --waline-disable-bgcolor: #323844;
+    --waline-disable-color: rgba(160, 170, 185, 0.35);
+    --waline-bq-color: rgba(125, 160, 176, 0.15);
+    --waline-info-bgcolor: #2a2d32;
+    --waline-info-color: rgba(160, 170, 185, 0.6);
+    --waline-dark-grey: #c5cdd6;
+    --waline-light-grey: rgba(140, 150, 165, 0.5);
   }
   html[data-scheme="dark"] .waline-container .wl-count {
-    color: #e0d5c5;
+    color: #c5cdd6;
   }
 </style>
 
@@ -3235,7 +3345,7 @@ $$\begin{aligned}
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.8498e61bb408e9d7d8b4fdfd519dab892625b76081178df9f9f5fc14ab145613.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.35587fbbd1c97b1b2e3379c2e2303062ed094388b955e4f8c07920bcc168a204.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
