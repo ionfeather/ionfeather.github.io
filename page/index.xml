@@ -1,569 +1,418 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Pages on ionfeather&#39;Log</title>
-        <link>https://ionfeather.github.io/page/</link>
-        <description>Recent content in Pages on ionfeather&#39;Log</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ionfeather.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>归档</title>
-        <link>https://ionfeather.github.io/archives/</link>
-        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://ionfeather.github.io/archives/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>关于</title>
-        <link>https://ionfeather.github.io/about/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ionfeather.github.io/about/</guid>
-        <description>&lt;h3 id=&#34;aloha&#34;&gt;Aloha!
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on ionfeather'Log</title><link>https://ionfeather.github.io/page/</link><description>Recent content in Pages on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ionfeather.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>归档</title><link>https://ionfeather.github.io/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://ionfeather.github.io/archives/</guid><description/></item><item><title>关于</title><link>https://ionfeather.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ionfeather.github.io/about/</guid><description>&lt;h3 id="aloha"&gt;Aloha!
 &lt;/h3&gt;&lt;p&gt;这里是ionfeather。&lt;/p&gt;
 &lt;p&gt;我的面包体据说是ENFP，但是我是一个懒懒的人，其实我的MBTI最接近的是REST。金牛座，喜欢五分甜少冰的杨枝甘露、正常冰少甜的陨石拿铁和有糖的可乐。&lt;/p&gt;
 &lt;p&gt;我在2024年末建立了这个网站，随便写一点东西。&lt;/p&gt;
 &lt;p&gt;我觉得啊，如果不记录的话，人生的一些小小的细节就会慢慢丢失，回顾起来虽然还知道「对对，那年发生了什么事件」，但那种细微的味道却会消失。希望我在时间里的刻舟求剑能够记录下来一些我和我的生活。&lt;/p&gt;
 &lt;!-- ## Blog更新时间轴
-
-&lt;div class=&#34;timeline__row&#34;&gt;
-    &lt;div class=&#34;timeline__time&#34;&gt;
-        &lt;div class=&#34;timeline__time&#34;&gt;2024-10-20&lt;/div&gt;
-        &lt;div class=&#34;timeline__split-line&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;timeline__content&#34;&gt;
-        &lt;div class=&#34;timeline__tags&#34;&gt;
-            &lt;span class=&#34;timeline__tag&#34;&gt;博客&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;a href=&#34;&#34;&gt;
-            &lt;div class=&#34;timeline__title&#34;&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;
-        &lt;/a&gt;
-        
-        &lt;div class=&#34;timeline__description&#34;&gt;
-            使用Hugo的Stack主题
-        &lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;2024-10-20&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
 &lt;/div&gt;
-
-
-&lt;style&gt;
-    .timeline {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .timeline__row {
-        display: flex;
-        padding-left: 4%;
-        height: 90px;
-    }
-    
-    .timeline__time {
-        flex: 0 0 110px;
-        color: #5d5d5d;
-        font-size: 17px;
-        text-transform: uppercase;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5rem 0;
-    }
-    
-    .timeline__time-text {
-        margin: 0;
-    }
-    
-    .timeline__split-line {
-        position: absolute;
-        top: 0.5rem;
-        right: -20px;
-        height: 100%;
-        width: 2px;
-        background-color: #84c4e240;
-        z-index: 0;
-    }
-    
-    .timeline__split-line:before {
-        content: &#34;&#34;;
-        position: absolute;
-        top: 24%;
-        right: -4px;
-        transform: translateY(-50%);
-        width: 10px;
-        height: 10px;
-        background-color: #c9e5f2;
-        box-shadow: 0 0 0 4px var(--theme);
-        border-radius: 50%;
-        border: 0px solid #84c4e2;
-        z-index: -1;
-    }
-    
-    .timeline__content {
-        flex: 1;
-        margin-left: 4.5rem;
-        padding: 0.5rem 0 1.2rem 0;
-    }
-    
-    .timeline__title {
-        margin: 0;
-        margin-bottom: 2px;
-        padding-top: 3px;
-        margin-left: 0.5rem;
-        color: var(--content);
-        font-family: var(--font-family-teshu);
-        font-size: 19px;
-        font-weight: 600;
-        width: fit-content;
-        display: inline-block;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__tags {
-        display: inline-block;
-        padding: 0;
-        margin-left: 0.3rem;
-        align-items: center;
-        gap: 0.3rem;
-    }
-    
-    .timeline__tag {
-        display: inline-block;
-        color: var(--secondary);
-        background-color: #84c4e230;
-        border: 1.5px solid #84c4e230;
-        border-radius: 999px;
-        padding: 0rem 0.5rem;
-        font-size: 12px;
-        white-space: nowrap;
-        line-height: 1.4rem;
-        opacity: 0.8;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__description {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #5d5d5d;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0.5rem 0 0.4rem 1.5rem;
-         
-    }
-     
-    
-    .timeline__tag-style {
-        background-color: #c581da;
-         
-        border-color: #c581da;
-         
-        color: #FFFFFF;
-         
-    }
-     
-    
-    .timeline__tag-article {
-        background-color: #92d392;
-         
-        border-color: #92d392;
-         
-        color: #000000;
-         
-    }
-     
-    
-    .timeline__tag-page {
-        background-color: #707070;
-         
-        border-color: #707070;
-         
-        color: #FFFFFF;
-         
-    }
-    
-    @media screen and (max-width: 768px) {
-        .timeline__time {
-            font-size: 14px;
-             
-        }
-        .timeline__title {
-            font-size: 16px;
-             
-        }
-        .timeline__description {
-            font-size: 14px;
-             
-        }
-    }
-&lt;/style&gt;
-
-&lt;div class=&#34;timeline__row&#34;&gt;
-    &lt;div class=&#34;timeline__time&#34;&gt;
-        &lt;div class=&#34;timeline__time&#34;&gt;2024-11-04&lt;/div&gt;
-        &lt;div class=&#34;timeline__split-line&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;timeline__content&#34;&gt;
-        &lt;div class=&#34;timeline__tags&#34;&gt;
-            &lt;span class=&#34;timeline__tag&#34;&gt;博客&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;a href=&#34;&#34;&gt;
-            &lt;div class=&#34;timeline__title&#34;&gt;增加评论区&lt;/div&gt;
-        &lt;/a&gt;
-        
-        &lt;div class=&#34;timeline__description&#34;&gt;
-            部署Waline，但还有一些问题
-        &lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
 &lt;/div&gt;
-
-
-&lt;style&gt;
-    .timeline {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .timeline__row {
-        display: flex;
-        padding-left: 4%;
-        height: 90px;
-    }
-    
-    .timeline__time {
-        flex: 0 0 110px;
-        color: #5d5d5d;
-        font-size: 17px;
-        text-transform: uppercase;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5rem 0;
-    }
-    
-    .timeline__time-text {
-        margin: 0;
-    }
-    
-    .timeline__split-line {
-        position: absolute;
-        top: 0.5rem;
-        right: -20px;
-        height: 100%;
-        width: 2px;
-        background-color: #84c4e240;
-        z-index: 0;
-    }
-    
-    .timeline__split-line:before {
-        content: &#34;&#34;;
-        position: absolute;
-        top: 24%;
-        right: -4px;
-        transform: translateY(-50%);
-        width: 10px;
-        height: 10px;
-        background-color: #c9e5f2;
-        box-shadow: 0 0 0 4px var(--theme);
-        border-radius: 50%;
-        border: 0px solid #84c4e2;
-        z-index: -1;
-    }
-    
-    .timeline__content {
-        flex: 1;
-        margin-left: 4.5rem;
-        padding: 0.5rem 0 1.2rem 0;
-    }
-    
-    .timeline__title {
-        margin: 0;
-        margin-bottom: 2px;
-        padding-top: 3px;
-        margin-left: 0.5rem;
-        color: var(--content);
-        font-family: var(--font-family-teshu);
-        font-size: 19px;
-        font-weight: 600;
-        width: fit-content;
-        display: inline-block;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__tags {
-        display: inline-block;
-        padding: 0;
-        margin-left: 0.3rem;
-        align-items: center;
-        gap: 0.3rem;
-    }
-    
-    .timeline__tag {
-        display: inline-block;
-        color: var(--secondary);
-        background-color: #84c4e230;
-        border: 1.5px solid #84c4e230;
-        border-radius: 999px;
-        padding: 0rem 0.5rem;
-        font-size: 12px;
-        white-space: nowrap;
-        line-height: 1.4rem;
-        opacity: 0.8;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__description {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #5d5d5d;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0.5rem 0 0.4rem 1.5rem;
-         
-    }
-     
-    
-    .timeline__tag-style {
-        background-color: #c581da;
-         
-        border-color: #c581da;
-         
-        color: #FFFFFF;
-         
-    }
-     
-    
-    .timeline__tag-article {
-        background-color: #92d392;
-         
-        border-color: #92d392;
-         
-        color: #000000;
-         
-    }
-     
-    
-    .timeline__tag-page {
-        background-color: #707070;
-         
-        border-color: #707070;
-         
-        color: #FFFFFF;
-         
-    }
-    
-    @media screen and (max-width: 768px) {
-        .timeline__time {
-            font-size: 14px;
-             
-        }
-        .timeline__title {
-            font-size: 16px;
-             
-        }
-        .timeline__description {
-            font-size: 14px;
-             
-        }
-    }
-&lt;/style&gt;
-
-&lt;div class=&#34;timeline__row&#34;&gt;
-    &lt;div class=&#34;timeline__time&#34;&gt;
-        &lt;div class=&#34;timeline__time&#34;&gt;2025-02-13&lt;/div&gt;
-        &lt;div class=&#34;timeline__split-line&#34;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;timeline__content&#34;&gt;
-        &lt;div class=&#34;timeline__tags&#34;&gt;
-            &lt;span class=&#34;timeline__tag&#34;&gt;博客&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;a href=&#34;&#34;&gt;
-            &lt;div class=&#34;timeline__title&#34;&gt;Bug修复&lt;/div&gt;
-        &lt;/a&gt;
-        
-        &lt;div class=&#34;timeline__description&#34;&gt;
-            修复了一些bug，如邮箱显示错误、搜索功能失效等
-        &lt;/div&gt;
-    &lt;/div&gt;
+&lt;a href=""&gt;
+&lt;div class="timeline__title"&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;
+&lt;/a&gt;
+&lt;div class="timeline__description"&gt;
+使用Hugo的Stack主题
 &lt;/div&gt;
-
-
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;style&gt;
-    .timeline {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .timeline__row {
-        display: flex;
-        padding-left: 4%;
-        height: 90px;
-    }
-    
-    .timeline__time {
-        flex: 0 0 110px;
-        color: #5d5d5d;
-        font-size: 17px;
-        text-transform: uppercase;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.5rem 0;
-    }
-    
-    .timeline__time-text {
-        margin: 0;
-    }
-    
-    .timeline__split-line {
-        position: absolute;
-        top: 0.5rem;
-        right: -20px;
-        height: 100%;
-        width: 2px;
-        background-color: #84c4e240;
-        z-index: 0;
-    }
-    
-    .timeline__split-line:before {
-        content: &#34;&#34;;
-        position: absolute;
-        top: 24%;
-        right: -4px;
-        transform: translateY(-50%);
-        width: 10px;
-        height: 10px;
-        background-color: #c9e5f2;
-        box-shadow: 0 0 0 4px var(--theme);
-        border-radius: 50%;
-        border: 0px solid #84c4e2;
-        z-index: -1;
-    }
-    
-    .timeline__content {
-        flex: 1;
-        margin-left: 4.5rem;
-        padding: 0.5rem 0 1.2rem 0;
-    }
-    
-    .timeline__title {
-        margin: 0;
-        margin-bottom: 2px;
-        padding-top: 3px;
-        margin-left: 0.5rem;
-        color: var(--content);
-        font-family: var(--font-family-teshu);
-        font-size: 19px;
-        font-weight: 600;
-        width: fit-content;
-        display: inline-block;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__tags {
-        display: inline-block;
-        padding: 0;
-        margin-left: 0.3rem;
-        align-items: center;
-        gap: 0.3rem;
-    }
-    
-    .timeline__tag {
-        display: inline-block;
-        color: var(--secondary);
-        background-color: #84c4e230;
-        border: 1.5px solid #84c4e230;
-        border-radius: 999px;
-        padding: 0rem 0.5rem;
-        font-size: 12px;
-        white-space: nowrap;
-        line-height: 1.4rem;
-        opacity: 0.8;
-        vertical-align: middle;
-         
-    }
-    
-    .timeline__description {
-        font-size: 15px;
-        line-height: 1.6;
-        color: #5d5d5d;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 0.5rem 0 0.4rem 1.5rem;
-         
-    }
-     
-    
-    .timeline__tag-style {
-        background-color: #c581da;
-         
-        border-color: #c581da;
-         
-        color: #FFFFFF;
-         
-    }
-     
-    
-    .timeline__tag-article {
-        background-color: #92d392;
-         
-        border-color: #92d392;
-         
-        color: #000000;
-         
-    }
-     
-    
-    .timeline__tag-page {
-        background-color: #707070;
-         
-        border-color: #707070;
-         
-        color: #FFFFFF;
-         
-    }
-    
-    @media screen and (max-width: 768px) {
-        .timeline__time {
-            font-size: 14px;
-             
-        }
-        .timeline__title {
-            font-size: 16px;
-             
-        }
-        .timeline__description {
-            font-size: 14px;
-             
-        }
-    }
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: #5d5d5d;
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: #84c4e240;
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--theme);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--content);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--secondary);
+background-color: #84c4e230;
+border: 1.5px solid #84c4e230;
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: #5d5d5d;
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
 &lt;/style&gt;
- --&gt;</description>
-        </item>
-        <item>
-        <title>搜索</title>
-        <link>https://ionfeather.github.io/search/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ionfeather.github.io/search/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>我在逛</title>
-        <link>https://ionfeather.github.io/links/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://ionfeather.github.io/links/</guid>
-        <description></description>
-        </item>
-        
-    </channel>
-</rss>
+&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;2024-11-04&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
+&lt;/div&gt;
+&lt;a href=""&gt;
+&lt;div class="timeline__title"&gt;增加评论区&lt;/div&gt;
+&lt;/a&gt;
+&lt;div class="timeline__description"&gt;
+部署Waline，但还有一些问题
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: #5d5d5d;
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: #84c4e240;
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--theme);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--content);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--secondary);
+background-color: #84c4e230;
+border: 1.5px solid #84c4e230;
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: #5d5d5d;
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
+&lt;/style&gt;
+&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;2025-02-13&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
+&lt;/div&gt;
+&lt;a href=""&gt;
+&lt;div class="timeline__title"&gt;Bug修复&lt;/div&gt;
+&lt;/a&gt;
+&lt;div class="timeline__description"&gt;
+修复了一些bug，如邮箱显示错误、搜索功能失效等
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: #5d5d5d;
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: #84c4e240;
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--theme);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--content);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--secondary);
+background-color: #84c4e230;
+border: 1.5px solid #84c4e230;
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: #5d5d5d;
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
+&lt;/style&gt;
+--&gt;</description></item><item><title>搜索</title><link>https://ionfeather.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ionfeather.github.io/search/</guid><description/></item><item><title>我在逛</title><link>https://ionfeather.github.io/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ionfeather.github.io/links/</guid><description/></item></channel></rss>

@@ -1,680 +1,247 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>AIDR on ionfeather&#39;Log</title>
-        <link>https://ionfeather.github.io/tags/aidr/</link>
-        <description>Recent content in AIDR on ionfeather&#39;Log</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Tue, 10 Jun 2025 14:24:22 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/aidr/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>AIDR | Reasoning-based Drug Repurposing</title>
-        <link>https://ionfeather.github.io/2025/rbdr/</link>
-        <pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/rbdr/</guid>
-        <description>&lt;h2 id=&#34;reasoning-based-drug-repurposing&#34;&gt;Reasoning-based drug repurposing
-&lt;/h2&gt;&lt;h3 id=&#34;问题回答&#34;&gt;问题&amp;amp;回答
-&lt;/h3&gt;&lt;h4 id=&#34;问题&#34;&gt;问题
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;LLM在Repurposing中的应用情况&lt;/li&gt;
-&lt;li&gt;是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/li&gt;
-&lt;li&gt;测试集是什么&lt;/li&gt;
-&lt;li&gt;传统模型/基于网络的模型的准确率&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;回答&#34;&gt;回答
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;有两种情况。第一种，引入LLM后的文本信息作为向量嵌入到GNN中；第二种，LLM作为筛选数据的方法，从数据层面提升最终效果。&lt;/li&gt;
-&lt;li&gt;有的。将文本以特定的形式组织，如&amp;quot;药物A[SEP]疾病B&amp;quot;，然后将其变成向量，嵌入到GNN中。&lt;/li&gt;
-&lt;li&gt;阅读了几篇，测试集有
-&lt;ol&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xiangyue9607/SCMFDD&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;B-dataset&lt;/a&gt;（SCMFDD-S/L）：来自于 &lt;a class=&#34;link&#34; href=&#34;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text&lt;/a&gt;，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了 SCMFDD-S 和 SCMFDD-L 数据集，其中的前者是这里的 B-dataset，适用于常规场景。&lt;/li&gt;
-&lt;li&gt;C-dataset：来自于 &lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/32/17/2664/2450730&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic&lt;/a&gt;，由 Dndataset 和 F-dataset 整合而成，结合了药物的 ATC 编码和疾病的 DO 术语。包含 963 种药物、1263 种疾病和 54921 个药物-疾病关系。适用于多源数据融合场景。&lt;/li&gt;
-&lt;li&gt;F-dataset：来自于 &lt;a class=&#34;link&#34; href=&#34;https://www.embopress.org/doi/full/10.1038/msb.2011.26&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology&lt;/a&gt;，侧重于模型对文本知识的分析能力。&lt;/li&gt;
-&lt;li&gt;R-dataset：整合 C-dataset、F-dataset 和 KEGG 数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;模型准确率在不同的数据集上不同。这里的B、C、F数据集使用得比较多，一般来说衡量标准是AUC、AUPR、F1-score和Precision。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;action&#34;&gt;Action
-&lt;/h3&gt;&lt;h4 id=&#34;week&#34;&gt;Week
-&lt;/h4&gt;&lt;p&gt;week1&lt;/p&gt;
-&lt;p&gt;相关论文调研： 是否有用大模型推理在repurposing里做的？ 是否有基于文本&amp;amp;结构特征做repurposing，然后把大模型reasoning的知识作为一部分feature加入，能够提升其效果，&lt;strong&gt;找出可复现的工作&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;week2&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;找出可复现的工作（上周遗留）&lt;/strong&gt;， repurposing任务的测试集是什么？ 在这个测试集上 传统大模型是多少准确率，基于网络的方式是多少准确率？&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AIDR on ionfeather'Log</title><link>https://ionfeather.github.io/tags/aidr/</link><description>Recent content in AIDR on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/aidr/index.xml" rel="self" type="application/rss+xml"/><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;
+&lt;p&gt;但这条&amp;quot;捷径&amp;quot;本身也不容易——药物有成千上万种，疾病同样，候选组合是天文数字。计算方法的核心工作，就是从这个巨大的空间里找出有意义的配对。&lt;/p&gt;
+&lt;p&gt;LLM 的加入改变了什么？根据近期工作来看，大概有三条路线：① 把 LLM 的语义理解能力转化为 GNN 的节点特征；② 用 LLM 清洗训练数据而不是改模型；③ 让 LLM 直接做多源推理。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;相关论文调研&#34;&gt;相关论文调研
-&lt;/h2&gt;&lt;h3 id=&#34;llm-dda&#34;&gt;LLM-DDA
-&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39325266/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation - PubMed&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;问题与回答&#34;&gt;问题与回答
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;LLM的推理信息在这里被引入了GNN中作为一部分特征&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;文本结构经过LLM编码后的向量，引入到GNN网络中&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;见下面的数据集部分。一共使用了四个数据集。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;与下面四种baseline进行比较
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;机器学习方法&lt;/strong&gt;：DDA-SKF、NIMCGCN；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵分解方法&lt;/strong&gt;：SCPMF、DRWBNCF；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;深度学习/GNN方法&lt;/strong&gt;：REDDA、LAGCN、HDGAT&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM&lt;/strong&gt; &lt;strong&gt;直接预测&lt;/strong&gt;DirectPred&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这里的前三种就是传统模型等其他方法。在下方的结果处说明了AUC、AUPR、F1-score和Precision的值。&lt;/p&gt;
-&lt;h4 id=&#34;解决的问题&#34;&gt;解决的问题
-&lt;/h4&gt;&lt;p&gt;现有图神经网络（GNN）方法过度依赖网络拓扑结构，受限于不完整、含噪声的网络数据，且忽略生物医学领域丰富知识的问题。通过整合大语言模型（LLM）推断的知识表示，提升 DDA 预测的准确性和可靠性。&lt;/p&gt;
-&lt;h4 id=&#34;面临挑战&#34;&gt;面临挑战
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;数据层面：传统GNN方法以来药物-疾病异构网络存在稀疏性和标签不平衡的问题&lt;/li&gt;
-&lt;li&gt;模型层面：现有方法难以捕捉复杂关联&lt;/li&gt;
-&lt;li&gt;知识利用：LLM生成的离散文本如何转化为适合GNN推理的连续数值表示，并设计高效融合架构&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;核心方法&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1175&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_8ef7db985c3b0bf9.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;流程图&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610205120_hu_8b5a27a43674a25.webp&#34;
-	data-lightbox-width=&#34;4000&#34;
-	data-lightbox-height=&#34;2936&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;136&#34;
-		data-flex-basis=&#34;326px&#34;
-	
-&gt;
-&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;TL;DR：关键在于&lt;strong&gt;知识挖掘（LLM 提示）→ 语义编码（嵌入生成）→ 图模型融合（关联预测）&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Step1：构建异质网络&lt;/p&gt;
-&lt;p&gt;Step2：利用LLM的知识来拓展潜在知识&lt;/p&gt;
-&lt;p&gt;Step3：基于LLM的嵌入生成&lt;/p&gt;
-&lt;p&gt;Step4：构建LLM-DDA模型&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;一、药物-疾病异质网络构建（Drug-disease heterogeneous network construction）&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;数据来源&lt;/strong&gt;：整合 DrugBank（药物数据库 ）、OMIM（人类孟德尔遗传数据库 ）、MeSH（医学主题词表 ）等生物医学数据库 。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;构建逻辑&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;先计算 &lt;strong&gt;药物-药物、疾病-疾病的成对相似度（Pairwise similarities）&lt;/strong&gt;（如化学结构、基因功能相似性 ）。&lt;/li&gt;
-&lt;li&gt;再结合已知 &lt;strong&gt;药物-疾病关联（Drug-disease associations）&lt;/strong&gt; ，构建成包含药物、疾病节点，以及相似度、关联关系边的&lt;strong&gt;异质图网络&lt;/strong&gt; ，为后续分析提供拓扑结构基础。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;二、零样本提示工程（Zero-shot prompt engineering）&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;核心动作&lt;/strong&gt;：设计 &lt;strong&gt;基于化学生物特征的提示模板（Chemobiomedical characteristics-based prompt template design）&lt;/strong&gt; ，把药物 / 疾病的专业属性（如靶点、作用通路、临床特征等 ）转化为大语言模型（LLM）可理解的指令。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;功能价值&lt;/strong&gt;：借助 GPT-4 的知识推理能力，&lt;strong&gt;生成目标药物 / 疾病的详细描述&lt;/strong&gt; ，挖掘数据库外的潜在知识关联，引入LLM知识。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;三、基于 LLM 的嵌入生成&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;双模型进行嵌入生成&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;用 &lt;strong&gt;ChatGPT-4 Turbo&lt;/strong&gt;（通用大模型）、&lt;strong&gt;BioBERTpt&lt;/strong&gt;（生物医学专用预训练模型 ），对 GPT-4 生成的文本描述做编码。&lt;/li&gt;
-&lt;li&gt;输出 &lt;strong&gt;LLM 嵌入&lt;/strong&gt;，把生物医学语义信息转化为数值向量，让后续图模型能 理解语言知识。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;四、LLM-DDA 模型构建（LLM-DDA model construction）&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;多架构覆盖&lt;/strong&gt;：提供 3 种融合策略，适配不同场景需求：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;LLM-DDA (node feat)&lt;/strong&gt;：直接把 LLM 嵌入作为节点特征，融入传统图神经网络，轻量且易部署。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM-DDA (graph-graph)&lt;/strong&gt;：双图网络并行，分别处理 LLM 嵌入图与原始异质图，再融合结果，强化多源信息互补。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM-DDA (graph-ae)&lt;/strong&gt;：结合图自动编码器（Graph-AE），优化嵌入特征与拓扑结构的融合，适合挖掘深层关联。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;输入衔接&lt;/strong&gt;：模型输入关联两部分：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Similarity features&lt;/strong&gt;（相似度特征 ）：来自第一步异质网络的拓扑计算。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Adjacency matrix&lt;/strong&gt;（邻接矩阵）：刻画药物-疾病的关联结构，让模型同时学习知识语义（LLM 嵌入）和网络拓扑（图结构），提升药物-疾病关联预测精度。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;数据集&#34;&gt;数据集
-&lt;/h4&gt;&lt;p&gt;四个药物-疾病的基准数据集&lt;/p&gt;
+&lt;h2 id="数据集背景"&gt;数据集背景
+&lt;/h2&gt;&lt;p&gt;这个领域有几个被反复引用的基准数据集，先统一列出，避免后面重复解释：&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Dataset&lt;/th&gt;
-          &lt;th&gt;Drugs&lt;/th&gt;
-          &lt;th&gt;Diseases&lt;/th&gt;
-          &lt;th&gt;Drug-disease Associations&lt;/th&gt;
-          &lt;th&gt;Pos-Neg Ratio&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;B-dataset&lt;/td&gt;
-          &lt;td&gt;269&lt;/td&gt;
-          &lt;td&gt;598&lt;/td&gt;
-          &lt;td&gt;18,416&lt;/td&gt;
-          &lt;td&gt;11.45%&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;C-dataset&lt;/td&gt;
-          &lt;td&gt;663&lt;/td&gt;
-          &lt;td&gt;409&lt;/td&gt;
-          &lt;td&gt;2,532&lt;/td&gt;
-          &lt;td&gt;1.57%&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;F-dataset&lt;/td&gt;
-          &lt;td&gt;593&lt;/td&gt;
-          &lt;td&gt;313&lt;/td&gt;
-          &lt;td&gt;1,933&lt;/td&gt;
-          &lt;td&gt;1.05%&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;R-dataset&lt;/td&gt;
-          &lt;td&gt;894&lt;/td&gt;
-          &lt;td&gt;454&lt;/td&gt;
-          &lt;td&gt;2,704&lt;/td&gt;
-          &lt;td&gt;0.67%&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;数据集&lt;/th&gt;
+&lt;th&gt;药物数&lt;/th&gt;
+&lt;th&gt;疾病数&lt;/th&gt;
+&lt;th&gt;已知关联数&lt;/th&gt;
+&lt;th&gt;正样本率&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;B-dataset&lt;/td&gt;
+&lt;td&gt;269&lt;/td&gt;
+&lt;td&gt;598&lt;/td&gt;
+&lt;td&gt;18,416&lt;/td&gt;
+&lt;td&gt;11.45%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C-dataset&lt;/td&gt;
+&lt;td&gt;663&lt;/td&gt;
+&lt;td&gt;409&lt;/td&gt;
+&lt;td&gt;2,532&lt;/td&gt;
+&lt;td&gt;1.57%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F-dataset&lt;/td&gt;
+&lt;td&gt;593&lt;/td&gt;
+&lt;td&gt;313&lt;/td&gt;
+&lt;td&gt;1,933&lt;/td&gt;
+&lt;td&gt;1.05%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;R-dataset&lt;/td&gt;
+&lt;td&gt;894&lt;/td&gt;
+&lt;td&gt;454&lt;/td&gt;
+&lt;td&gt;2,704&lt;/td&gt;
+&lt;td&gt;0.67%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;正样本率的差异很关键：B-dataset 的 11% 相对好学，R-dataset 0.67% 意味着极端不平衡，大量未知关联中混杂着真正的负例。评估主要看 AUC、AUPR、F1，其中 AUPR 对不平衡数据更敏感。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xiangyue9607/SCMFDD&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;B-dataset&lt;/a&gt;：来自于&lt;a class=&#34;link&#34; href=&#34;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text&lt;/a&gt;，这篇文章里主要介绍了一个相似性约束矩阵分解的方法，里面编制了SCMFDD-S和SCMFDD-L数据集，其中的前者是这里的B-dataset，适用于常规场景。&lt;/li&gt;
-&lt;li&gt;C-dataset：来自于&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/32/17/2664/2450730&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Drug repositioning based on comprehensive similarity measures and Bi-Random walk algorithm | Bioinformatics | Oxford Academic&lt;/a&gt;，由Dndataset和F-dataset整合而成，结合了药物的ATC编码和疾病的DO术语。适用于多源数据融合场景。&lt;/li&gt;
-&lt;li&gt;F-dataset：来自于&lt;a class=&#34;link&#34; href=&#34;https://www.embopress.org/doi/full/10.1038/msb.2011.26&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PREDICT: a method for inferring novel drug indications with application to personalized medicine | Molecular Systems Biology&lt;/a&gt;，侧重于模型对文本知识的分析能力。&lt;/li&gt;
-&lt;li&gt;R-dataset：本文自己提出。整合C-dataset、F-dataset和KEGG数据库的信息，用于极端稀疏和不平衡数据下的鲁棒性。&lt;/li&gt;
+&lt;li&gt;B-dataset：来自 &lt;a class="link" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4" target="_blank" rel="noopener"
+&gt;SCMFDD&lt;/a&gt;，适用于常规场景&lt;/li&gt;
+&lt;li&gt;C-dataset：来自 &lt;a class="link" href="https://academic.oup.com/bioinformatics/article/32/17/2664/2450730" target="_blank" rel="noopener"
+&gt;Bi-Random walk&lt;/a&gt;，由 Dndataset 和 F-dataset 整合，结合 ATC 编码和 DO 术语&lt;/li&gt;
+&lt;li&gt;F-dataset：来自 &lt;a class="link" href="https://www.embopress.org/doi/full/10.1038/msb.2011.26" target="_blank" rel="noopener"
+&gt;PREDICT&lt;/a&gt;，侧重文本知识分析能力&lt;/li&gt;
+&lt;li&gt;R-dataset：LLM-DDA 论文自建，整合 C/F-dataset 和 KEGG，用于极端稀疏场景&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;指标结果&#34;&gt;指标结果
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;AUC、AUPR、F1和五折交叉验证结果&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1050&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_2ade6ad6168df68a.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223319_hu_ec6d89c53167ca1.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;四个数据集下的三种不同方法的效果&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610223319_hu_82248a5f7233f6b6.webp&#34;
-	data-lightbox-width=&#34;1506&#34;
-	data-lightbox-height=&#34;988&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;152&#34;
-		data-flex-basis=&#34;365px&#34;
-	
-&gt;
-&lt;/li&gt;
-&lt;li&gt;与下面四种baseline进行比较
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;机器学习方法&lt;/strong&gt;：DDA-SKF、NIMCGCN；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵分解方法&lt;/strong&gt;：SCPMF、DRWBNCF；&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;深度学习/GNN方法&lt;/strong&gt;：REDDA、LAGCN、HDGAT&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;LLM&lt;/strong&gt; &lt;strong&gt;直接预测&lt;/strong&gt;DirectPred&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;分别通过AUC、AUPR、F1-score和Precision来判断效果。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1342&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_4297bba02a896982.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;最优模型为粗体，次优为下划线&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610223616_hu_501c43dda3c54ed4.webp&#34;
-	data-lightbox-width=&#34;944&#34;
-	data-lightbox-height=&#34;792&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;119&#34;
-		data-flex-basis=&#34;286px&#34;
-	
-&gt;
-&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1225&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_27d0071f5f403883.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610224129_hu_ee7f88286938a04f.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;最终平均结果&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610224129_hu_34d5098d058ab748.webp&#34;
-	data-lightbox-width=&#34;469&#34;
-	data-lightbox-height=&#34;359&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;130&#34;
-		data-flex-basis=&#34;313px&#34;
-	
-&gt;
-&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;lbmff&#34;&gt;LBMFF
+&lt;h2 id="路线一llm-作为语义特征编码器"&gt;路线一：LLM 作为语义特征编码器
+&lt;/h2&gt;&lt;p&gt;这条路线的逻辑是：结构化数据库（DrugBank、OMIM 等）能告诉你药物的靶点、结构，但捕捉不到文献中隐含的知识——一篇论文里可能早就暗示了某个药物对某类疾病有效，但这种关联从未被整理进数据库。用 LLM/BERT 读这些文本，把语义信息转成向量，再注入 GNN，就能补上这个盲区。&lt;/p&gt;
+&lt;h3 id="llm-dda"&gt;LLM-DDA
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Frontiers | Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/" target="_blank" rel="noopener"
+&gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;问题与回答-1&#34;&gt;问题与回答
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这里使用了BERT来挖掘文献中的关联关系。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;BERT经过预训练和微调之后，能够学习文献中的一些关联关系，输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;，从而文献中的药物-药物相似性关系和疾病-疾病相似性关系知识。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;见下面的数据集部分。一共使用了两个数据集。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;对比的模型分为如下部分，都是各自领域的SOTA模型。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵分解与正则化&lt;/strong&gt;：BNNR、DRWBNCF&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵补全与神经归纳&lt;/strong&gt;：NIMCGCN&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;核融合与传统机器学习&lt;/strong&gt;：DDA-SKF&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;对比结果如研究结果部分所示。&lt;/p&gt;
-&lt;h4 id=&#34;解决的问题-1&#34;&gt;解决的问题
-&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;药物重定位中的关联预测问题&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;面临的挑战&#34;&gt;面临的挑战
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;文献信息利用不够充分：现在大多数计算方法都是依赖结构化数据库，但是科学文献中有很多未被充分挖掘的药物-疾病关联关系。&lt;/li&gt;
-&lt;li&gt;多特征难以有效融合：药物和疾病的特征具有异质性。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;核心方法-1&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;提出了LBMFF（基于文献的多特征融合方法）。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;多源融合&lt;/strong&gt;：同时用结构化数据库（Drugbank、SIDER 等）和非结构化文献（BERT 处理），挖掘更全面的药物-疾病关联。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;图网络 + 注意力&lt;/strong&gt;：用 GCN 处理 “药物-疾病” 关联的图结构，注意力机制强化关键特征，提升预测准确性。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1228&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_747b28cc8fd47b5d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250611145238_hu_ceddae1ed40b3058.webp&#34;
-	data-lightbox-width=&#34;1014&#34;
-	data-lightbox-height=&#34;778&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;130&#34;
-		data-flex-basis=&#34;312px&#34;
-	
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp"
+width="1600"
+height="1175"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_8ef7db985c3b0bf9.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610205120_hu_a10d39a82e3ad174.webp 1600w"
+loading="lazy"
+alt="LLM-DDA 框架"
+data-original="/2025/rbdr/assets/20250610205120_hu_8b5a27a43674a25.webp"
+data-lightbox-width="4000"
+data-lightbox-height="2936"
+class="gallery-image"
+data-flex-grow="136"
+data-flex-basis="326px"
 &gt;
 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四步走：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;相似性计算
+&lt;li&gt;&lt;strong&gt;异质网络构建&lt;/strong&gt;：整合 DrugBank、OMIM、MeSH 等数据库，计算药物-药物、疾病-疾病的成对相似度，构建包含多种边类型的异质图&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;零样本提示工程&lt;/strong&gt;：设计基于化学生物特征的 prompt 模板，用 GPT-4 为每种药物/疾病生成详细描述，挖掘数据库之外的潜在知识&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM 嵌入生成&lt;/strong&gt;：用 ChatGPT-4 Turbo 和 BioBERTpt 对 GPT-4 生成的文本编码，输出语义向量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;三种融合策略&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;从&lt;strong&gt;多源数据&lt;/strong&gt;提取特征，计算药物、疾病的相似性，构建关联矩阵&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;药物相似性&lt;/strong&gt;（Drug-Drug）：&lt;br&gt;
-整合 3 类结构化数据 + 文献语义：
-&lt;ul&gt;
-&lt;li&gt;化学结构（Drugbank 数据库，药物分子结构）&lt;/li&gt;
-&lt;li&gt;副作用（SIDER 数据库，药物-副作用关联）&lt;/li&gt;
-&lt;li&gt;靶点（Drugbank 数据库，药物-靶点关联）&lt;/li&gt;
-&lt;li&gt;文献语义（BERT 模型处理文献，挖掘药物间语义关联）&lt;br&gt;
-最终加权融合（α、β、γ 为权重），输出&lt;strong&gt;药物相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;疾病相似性&lt;/strong&gt;（Disease-Disease）：&lt;br&gt;
-整合 2 类数据：
--MeSH 数据库（疾病树编号，疾病分类体系）
-&lt;ul&gt;
-&lt;li&gt;文献语义（BERT 模型处理文献，挖掘疾病间语义关联）&lt;br&gt;
-输出&lt;strong&gt;疾病相似性矩阵&lt;/strong&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;药物-疾病关联&lt;/strong&gt;（Drug-Disease）：&lt;br&gt;
-直接从 CTD 数据库（比较毒理学数据库）获取&lt;strong&gt;已知关联矩阵&lt;/strong&gt;，标记已验证的药物-疾病对。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;特征表示
-&lt;ul&gt;
-&lt;li&gt;将上一步得到的 &lt;strong&gt;药物相似性矩阵、疾病相似性矩阵、已知关联矩阵&lt;/strong&gt; 拼接，形成模型输入的&lt;strong&gt;融合特征矩阵&lt;/strong&gt;，统一表征药物和疾病的多源信息。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;编码器
-&lt;ul&gt;
-&lt;li&gt;用&lt;strong&gt;带注意力机制的图卷积网络（GCN）&lt;/strong&gt; 学习药物、疾病的嵌入表示：&lt;/li&gt;
-&lt;li&gt;两层 GCN（Graph Convolution Encoder Layer）逐层提取特征，ReLU 激活增加非线性。&lt;/li&gt;
-&lt;li&gt;注意力机制（Attention mechanism）动态分配权重，突出关键特征（比如强关联的药物-疾病对）。&lt;/li&gt;
-&lt;li&gt;最终输出 &lt;strong&gt;药物 + 疾病的嵌入向量&lt;/strong&gt;（维度 (m + n)×d ，m 是药物数，n 是疾病数，d 是嵌入维度 ）。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;解码器
-&lt;ul&gt;
-&lt;li&gt;通过&lt;strong&gt;矩阵乘法&lt;/strong&gt;还原关联预测：
-&lt;ul&gt;
-&lt;li&gt;药物嵌入（$Eₘₓ×d$ ）、权重矩阵（$W_d×d$ ）、疾病嵌入（$Eₙₓ×d $）相乘，重建药物-疾病关联得分。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;预测输出&lt;strong&gt;潜在关联&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;实线：已知关联（来自 CTD 数据库）。&lt;/li&gt;
-&lt;li&gt;虚线：模型预测的&lt;strong&gt;潜在关联&lt;/strong&gt;（未被验证，但算法判定有高可能性的药物-疾病对 ），可辅助药物重定位研究。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;node feat&lt;/strong&gt;：LLM 嵌入直接作为 GNN 节点特征，最轻量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;graph-graph&lt;/strong&gt;：双图并行，LLM 嵌入图和原始异质图各跑一路再融合&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;graph-ae&lt;/strong&gt;：结合图自编码器，更深度地融合语义和拓扑&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h5 id=&#34;bert在文中&#34;&gt;BERT在文中
-&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;764&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_ef0cb56b7b218c5.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611151737_hu_cd94caf896dd853f.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250611151737_hu_67a75ea1a8722176.webp&#34;
-	data-lightbox-width=&#34;1010&#34;
-	data-lightbox-height=&#34;482&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;209&#34;
-		data-flex-basis=&#34;502px&#34;
-	
+&lt;p&gt;在四个数据集上，LLM-DDA 均优于纯 GNN 基线（REDDA、LAGCN、HDGAT）和 LLM 直接预测（DirectPred）。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp"
+width="1600"
+height="1342"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_4297bba02a896982.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610223616_hu_46ca4ecc138eb73c.webp 1600w"
+loading="lazy"
+alt="四个数据集上的对比结果"
+data-original="/2025/rbdr/assets/20250610223616_hu_501c43dda3c54ed4.webp"
+data-lightbox-width="944"
+data-lightbox-height="792"
+class="gallery-image"
+data-flex-grow="119"
+data-flex-basis="286px"
 &gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;预训练&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;数据准备&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;筛选包含药物、疾病名称的科学文献（如从 PubMed 获取，文中提到的 673,665 篇相关文献 ），这些文献包含药物-疾病关联的语义描述（如治疗、关联、机制等表述 ）。&lt;/li&gt;
-&lt;li&gt;将文献中疾病、药物相关文本构建为“药物文本-疾病文本” 对作为输入序列。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Masked LM&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;让BERT预测被遮盖内容，如[MASK]可以治疗糖尿病，需要推断出是药物X。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;NSP&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;真实对：药物A[SEP]疾病B&lt;/li&gt;
-&lt;li&gt;虚假对：药物C[SEP] 疾病D&lt;/li&gt;
-&lt;li&gt;需要判断文本对是否是真实对&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;模型微调&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;数据&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;使用CTD等数据库中已知的药物-疾病关联对。存在关联为正例，无关联为负例&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;输出语义特征&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;经过预训练 + 微调后，BERT 对输入的 “药物-疾病文本对”，会输出包含&lt;strong&gt;语义关联信息的向量表示&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;研究结果&#34;&gt;研究结果
-&lt;/h4&gt;&lt;h5 id=&#34;测试集&#34;&gt;测试集
-&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;Zhang（SCMFDD-S）：来自于&lt;a class=&#34;link&#34; href=&#34;https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2220-4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Predicting drug-disease associations by using similarity constrained matrix factorization | BMC Bioinformatics | Full Text&lt;/a&gt;，在上面被称为B-dataset。包含269种药物、598种疾病和18416个药物-疾病关系。本文中还从其他数据库中填充了化学结构、药物-靶点关系和药物副作用、疾病树作为药物-药物相似性度量的数据。&lt;/li&gt;
-&lt;li&gt;TL-HGBI：来自于&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/30/20/2923/2422178&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Drug repositioning by integrating target information through a heterogeneous network model | Bioinformatics | Oxford Academic&lt;/a&gt;。包含963种药物、1263种疾病和54921个药物-疾病关系。同样地，也进行了信息填充来进行相似性度量。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&#34;指标表现&#34;&gt;指标表现
-&lt;/h5&gt;&lt;p&gt;和SOTA模型进行比较，分别是&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;图神经网络（GNN）&lt;/strong&gt;：DRHGCN、LAGCN、REDDA&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵分解与正则化&lt;/strong&gt;：BNNR、DRWBNCF&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;矩阵补全与神经归纳&lt;/strong&gt;：NIMCGCN&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;核融合与传统机器学习&lt;/strong&gt;：DDA-SKF&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;LBMFF在所有指标上都体现出了领先。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;596&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_495ff5a8c3a9cdf8.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250611153556_hu_55e7ccdd8de0681a.webp&#34;
-	data-lightbox-width=&#34;1620&#34;
-	data-lightbox-height=&#34;603&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;268&#34;
-		data-flex-basis=&#34;644px&#34;
-	
-&gt;
-&lt;/p&gt;
-&lt;p&gt;此外，LBMFF在TL-HGBI在多数指标上仍优于对比方法，证明方法在&lt;strong&gt;大规模数据集上的泛化能力&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;568&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_d566177af47c89b8.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611154234_hu_5c08855067b06ed4.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250611154234_hu_b1f64f71f5e25148.webp&#34;
-	data-lightbox-width=&#34;1659&#34;
-	data-lightbox-height=&#34;589&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;281&#34;
-		data-flex-basis=&#34;675px&#34;
-	
-&gt;
-&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;llm进行阴性数据标注&#34;&gt;LLM进行阴性数据标注
+&lt;h3 id="lbmff"&gt;LBMFF
 &lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39905466/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Improving drug repositioning with negative data labeling using large language models-PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full" target="_blank" rel="noopener"
+&gt;Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;问题与回答-2&#34;&gt;问题与回答
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Q1. LLM在Repurposing中的应用情况&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;LLM引入了自己的推理能力来修改训练数据。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q2. 是否有基于文本结构，引入大模型知识作为一部分特征？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;没有。这里大模型的作用是通过自身的知识，在文本中筛选出更好的数据来提升最终效果的。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q3. 测试集是什么&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;测试集是由AACT 数据库得到。作者手动选择了一部分数据（5 阳性 + 11 阴性 ）作为测试集验证泛化能力。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Q4. 传统模型/基于网络的模型的准确率&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;见研究结果。本文通过&lt;strong&gt;提升数据集中真阴性数据的质量&lt;/strong&gt;来提高了最终的模型效果。具体来说，提升的效果还是比较显著的。&lt;/p&gt;
-&lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
-&lt;/h4&gt;&lt;p&gt;在药物重新定位中，监督机器学习模型因缺乏可靠的&lt;strong&gt;阴性数据&lt;/strong&gt;（即因无效或毒性失败的药物）而预测准确性和泛化能力不足。&lt;/p&gt;
-&lt;p&gt;传统的 Positive-Unlabeled（PU）学习方法通过随机采样或简单分类未标记数据作为阴性，存在误分类或决策边界简化的问题，导致模型性能受限。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;LLM通过进行分析文献和数据，系统挖掘真阴性数据，提升了阴性数据的质量。&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;面临的挑战-1&#34;&gt;面临的挑战
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;阴性数据获取困难&lt;/strong&gt;：多数数据库会把试验中止就等同于阴性，但终止原因可能并不是因为药物疗效/毒性问题，而是资金不足等原因。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PU学习方法的局限性&lt;/strong&gt;：随机采样未标记数据作为阴性会引入分类偏差，而基于聚类等策略的阴性筛选假设正负样本边界清晰，与真实场景不符，导致模型泛化能力差。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;临床数据处理复杂性&lt;/strong&gt;：临床试验文本存在表述不规范、结果不完整等问题，传统方法难以准确解析并识别真正的阴性药物。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;GPT-4 系统性挖掘真阴性数据&lt;/strong&gt;，为药物重定位提供 “高质量标注 + 精准模型” 方案，可扩展到其他疾病。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;476&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_e54e9cb639feed2d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;临床试验药物标注流程&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610231108_hu_f59feda0ba8806b0.webp&#34;
-	data-lightbox-width=&#34;1056&#34;
-	data-lightbox-height=&#34;314&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;336&#34;
-		data-flex-basis=&#34;807px&#34;
-	
+&lt;p&gt;和 LLM-DDA 思路类似，但 LLM 部分换成了专门在生物医学文献上预训练+微调的 BERT。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp"
+width="1600"
+height="1228"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_747b28cc8fd47b5d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611145238_hu_34d133bd049a79f.webp 1600w"
+loading="lazy"
+alt="LBMFF 框架"
+data-original="/2025/rbdr/assets/20250611145238_hu_ceddae1ed40b3058.webp"
+data-lightbox-width="1014"
+data-lightbox-height="778"
+class="gallery-image"
+data-flex-grow="130"
+data-flex-basis="312px"
 &gt;
 &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BERT 的使用方式：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;临床数据获取&lt;/strong&gt;：从 AACT 数据库获取 2539 个前列腺癌相关临床试验，排除未公布结果和因非疗效原因终止的试验后，剩余 1442 个试验由 GPT-4 分析。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;GPT-4的训练和验证&lt;/strong&gt;：使用 22 个手动策划的试验对 GPT-4 进行验证，其中包括 14 个无关试验、4 个阳性试验和 4 个阴性试验，GPT-4 成功正确分类所有试验。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;特征构建&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;知识-based 特征&lt;/strong&gt;：从 DrugBank 获取药物-基因、药物-靶点、药物-通路相互作用、结构特性和靶点类别等，转换为独热编码。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;network-based 特征&lt;/strong&gt;：构建包含药物-药物相似性、蛋白质-蛋白质相互作用和基因本体论的多层生物网络，提取拓扑特征。&lt;/li&gt;
+&lt;li&gt;预训练阶段：从 PubMed 筛选 673,665 篇相关文献，以&amp;quot;药物A[SEP]疾病B&amp;quot;格式训练 Masked LM 和 NSP 任务&lt;/li&gt;
+&lt;li&gt;微调阶段：用 CTD 数据库的已知关联对做正例、无关联为负例，微调后输出包含语义关联信息的向量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;对比策略&lt;/strong&gt;：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;GPT-4 标注&lt;/strong&gt;：使用 GPT-4 识别的 26 个阳性和 54 个阴性药物。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;无采样 PU&lt;/strong&gt;：将所有未标记药物视为阴性，导致类别不平衡。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;下采样 PU&lt;/strong&gt;：从未标记药物中随机采样 43 个阴性，重复 100 次以控制类别不平衡。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1444&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_fbd712319f4787bc.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610234019_hu_c7310bd277645239.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610234019_hu_a35f4268ca941fe9.webp&#34;
-	data-lightbox-width=&#34;720&#34;
-	data-lightbox-height=&#34;650&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;110&#34;
-		data-flex-basis=&#34;265px&#34;
-	
-&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;训练集和测试集来自于作者自己收集和整理。&lt;/p&gt;
-&lt;h4 id=&#34;研究结果-1&#34;&gt;研究结果
-&lt;/h4&gt;&lt;p&gt;使用六种机器学习算法和5折交叉验证训练模型，测试集验证泛化能力（5 阳性 + 11 阴性 ）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;666&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_41a30403e778c142.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250610232517_hu_4548e1cc63ffc3d6.webp&#34;
-	data-lightbox-width=&#34;1442&#34;
-	data-lightbox-height=&#34;600&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;240&#34;
-		data-flex-basis=&#34;576px&#34;
-	
+&lt;p&gt;这个语义向量和来自 Drugbank（化学结构、靶点、副作用）、MeSH（疾病分类）的结构化特征拼接，一起送进带注意力机制的 GCN。解码器用简单的矩阵乘法还原药物-疾病关联得分。&lt;/p&gt;
+&lt;p&gt;在 Zhang（B-dataset）和 TL-HGBI 两个数据集上，LBMFF 优于 DRHGCN、LAGCN、BNNR、NIMCGCN 等同期 SOTA。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp"
+width="1600"
+height="596"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_495ff5a8c3a9cdf8.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611153556_hu_1123198959f4859c.webp 1600w"
+loading="lazy"
+alt="LBMFF 在两个数据集上的对比结果"
+data-original="/2025/rbdr/assets/20250611153556_hu_55e7ccdd8de0681a.webp"
+data-lightbox-width="1620"
+data-lightbox-height="603"
+class="gallery-image"
+data-flex-grow="268"
+data-flex-basis="644px"
 &gt;
 &lt;/p&gt;
-&lt;h5 id=&#34;1-训练集表现图-a&#34;&gt;1. 训练集表现（图 A）：
-&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;GPT-4（🔴）&lt;/strong&gt;：多数算法（如 LogL1、RF、SVM ）平衡准确率接近 0.9，说明用 GPT-4 标注的高质量数据，模型在训练集上 “学的好”，分类稳定。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;No sampling（🟢）&lt;/strong&gt;：部分算法（如 ANN、NB ）准确率暴跌，因阴性样本太多，学不到有效模式。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Under sampling（🔵）&lt;/strong&gt;：表现居中，虽平衡了类别，但随机丢数据，训练效果不如 GPT-4 标注。&lt;/li&gt;
+&lt;hr&gt;
+&lt;h2 id="路线二llm-改造数据而不是改模型"&gt;路线二：LLM 改造数据，而不是改模型
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/" target="_blank" rel="noopener"
+&gt;Improving drug repositioning with negative data labeling using large language models&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这篇思路最巧。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;背景痛点&lt;/strong&gt;：药物重定位的监督模型缺乏可靠的阴性数据。药物在临床试验中失败，不代表它对这种疾病无效——终止原因可能是资金不足、样本量不够、适应症选错。直接把&amp;quot;未被验证有效&amp;quot;当负例，引入的噪声比想象的大。&lt;/p&gt;
+&lt;p&gt;传统 PU Learning 要么把所有未标注数据当负例（class imbalance 爆炸），要么随机下采样（丢掉真实信息）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方案&lt;/strong&gt;：让 GPT-4 读临床试验记录，判断&amp;quot;这个试验的失败是否真的说明药物对该疾病无效&amp;quot;。从 AACT 数据库的 2539 个前列腺癌试验里，排除结果未公布和非疗效原因终止后，剩余 1442 个由 GPT-4 分析，最终识别出 26 个真阳性和 54 个高质量真阴性。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp"
+width="1600"
+height="476"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_e54e9cb639feed2d.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610231108_hu_942e5ed6362e816.webp 1600w"
+loading="lazy"
+alt="临床试验标注流程"
+data-original="/2025/rbdr/assets/20250610231108_hu_f59feda0ba8806b0.webp"
+data-lightbox-width="1056"
+data-lightbox-height="314"
+class="gallery-image"
+data-flex-grow="336"
+data-flex-basis="807px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特征构建&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Knowledge-based 特征：DrugBank 的药物-基因、药物-靶点、药物-通路关系，独热编码&lt;/li&gt;
+&lt;li&gt;Network-based 特征：药物-药物相似性、PPI、Gene Ontology 的多层生物网络拓扑特征&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;2-测试集表现图-b&#34;&gt;2. 测试集表现（图 B）：
-&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;GPT-4（🔴）&lt;/strong&gt;：多数算法（如 LogL1、RF、SVM ）MCC 显著高于其他策略，尤其是 LogL1、RF，说明模型泛化能力强，用 GPT-4 标注数据训练的模型，在真实测试集上 “预测准”。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;No sampling（🟢）&lt;/strong&gt;：MCC 普遍低（如 NB 甚至接近 0 ），模型被类别不平衡拖垮。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Under sampling（🔵）&lt;/strong&gt;：MCC 比 GPT-4 低，因下采样丢了很多真实阴性信息，模型学到的规律不完整。&lt;/li&gt;
+&lt;p&gt;&lt;strong&gt;结果&lt;/strong&gt;：用 GPT-4 标注数据训练的模型（LogL1、RF、SVM），在 MCC 上显著高于 PU Learning 两种变体。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp"
+width="1600"
+height="666"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_41a30403e778c142.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250610232517_hu_1a33cfe68f3cbb8b.webp 1600w"
+loading="lazy"
+alt="三种标注策略的训练集/测试集对比"
+data-original="/2025/rbdr/assets/20250610232517_hu_4548e1cc63ffc3d6.webp"
+data-lightbox-width="1442"
+data-lightbox-height="600"
+class="gallery-image"
+data-flex-grow="240"
+data-flex-basis="576px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;注意：这里没有改任何模型架构，提升完全来自数据质量。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="路线三llm-作为直接推理者"&gt;路线三：LLM 作为直接推理者
+&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/" target="_blank" rel="noopener"
+&gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;不借助 GNN，直接用多源提示让 LLM 做推理。把药物的结构、靶点、已知适应症，疾病的生物标志物、发病机制，整合成结构化 prompt 输入模型，让 LLM 直接判断潜在关联。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp"
+width="1600"
+height="1177"
+srcset="https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_93e8e7e924c93bf.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp 1600w"
+loading="lazy"
+alt="DrugReAlign 框架"
+data-original="/2025/rbdr/assets/20250611164032_hu_5ee2297aa09071f3.webp"
+data-lightbox-width="1944"
+data-lightbox-height="1430"
+class="gallery-image"
+data-flex-grow="135"
+data-flex-basis="326px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;当时效果不如有 GNN 加持的方法，但方向值得关注：随着 LLM 推理能力增强，&amp;ldquo;不需要 GNN，直接问 LLM&amp;quot;可能越来越可行。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="其他相关工作"&gt;其他相关工作
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DrugGen&lt;/strong&gt;：&lt;a class="link" href="https://www.nature.com/articles/s41598-025-98629-1" target="_blank" rel="noopener"
+&gt;基于 DrugGPT 的分子生成模型&lt;/a&gt;，通过 SFT + PPO + RL 引导生成更高质量的分子，方向是 de novo 药物生成而非 repurposing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BioBERT&lt;/strong&gt;：&lt;a class="link" href="https://academic.oup.com/bioinformatics/article/36/4/1234/5566506" target="_blank" rel="noopener"
+&gt;生物医学领域的预训练语言模型&lt;/a&gt;，LBMFF 等工作的上游依赖&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM 化学任务基准&lt;/strong&gt;：&lt;a class="link" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf" target="_blank" rel="noopener"
+&gt;八项化学任务评测&lt;/a&gt;，零/少样本设定下 GPT-4 最优，Davinci-003 次之&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;其他&#34;&gt;其他
-&lt;/h3&gt;&lt;h4 id=&#34;druggen&#34;&gt;DrugGen
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nature.com/articles/s41598-025-98629-1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugGen enhances drug discovery with large language models and reinforcement learning | Scientific Reports&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这篇文章介绍了一个基于DrugGPT的模型DrugGen，通过监督微调、近端策略优化和强化学习来引导模型生成更高质量的分子。&lt;/p&gt;
-&lt;h4 id=&#34;drugrealign&#34;&gt;DrugReAlign
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/39379930/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models - PubMed&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;提出了一个多源提示的LLM药物重定位框架。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1177&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_93e8e7e924c93bf.webp 800w, https://ionfeather.github.io/2025/rbdr/assets/20250611164032_hu_7df49c5f0e7d2ec.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/rbdr/assets/20250611164032_hu_5ee2297aa09071f3.webp&#34;
-	data-lightbox-width=&#34;1944&#34;
-	data-lightbox-height=&#34;1430&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;135&#34;
-		data-flex-basis=&#34;326px&#34;
-	
-&gt;
-&lt;/p&gt;
-&lt;h4 id=&#34;benchmarkllm在八项化学任务中的表现&#34;&gt;Benchmark：LLM在八项化学任务中的表现
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;What can Large Language Models do in chemistry? A comprehensive benchmark on eight tasks&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;评估了LLM在八项具体的化学任务中的表现，采用零样本、少样本上下文学习设置，最后得出GPT-4最佳，Davinci-003次之，GPT-3.5第三。&lt;/p&gt;
-&lt;h4 id=&#34;biobert&#34;&gt;BioBERT
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://academic.oup.com/bioinformatics/article/36/4/1234/5566506&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;BioBERT: a pre-trained biomedical language representation model for biomedical text mining | Bioinformatics | Oxford Academic&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;介绍了一个用于生物医学领域的预训练语言表示模型，其在BERT的基础上使用生物医学领域语料库进行预训练。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>AIDR | 基于网络的方法</title>
-        <link>https://ionfeather.github.io/2025/aidr-network-method/</link>
-        <pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/aidr-network-method/</guid>
-        <description>&lt;h2 id=&#34;介绍&#34;&gt;介绍
-&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class=&#34;link&#34; href=&#34;https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;表示图&lt;/a&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1600&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_6473b1778363a8f2.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;异构网络表示图&#34;
-	
-	data-original=&#34;/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_c1c33dfb6e78f21.webp&#34;
-	data-lightbox-width=&#34;788&#34;
-	data-lightbox-height=&#34;788&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;100&#34;
-		data-flex-basis=&#34;240px&#34;
-	
+&lt;h2 id="个人判断"&gt;个人判断
+&lt;/h2&gt;&lt;p&gt;三条路线里，&lt;strong&gt;路线二&lt;/strong&gt;（数据标注）最被低估。路线一的增量有限——LLM 嵌入 + GNN 确实比纯 GNN 好，但好多少取决于数据集，且引入了 GPT-4 API 调用的额外成本。路线三还不成熟。&lt;/p&gt;
+&lt;p&gt;路线二的逻辑更干净：与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
+&lt;p&gt;药物重定位里真正稀缺的不是模型能力，而是&lt;strong&gt;高质量的标注数据&lt;/strong&gt;，尤其是可靠的阴性。这个方向如果能扩展到其他适应症，比前两条路线更有实用价值。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
+&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
+&gt;表示图&lt;/a&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp"
+width="1600"
+height="1600"
+srcset="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_6473b1778363a8f2.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp 1600w"
+loading="lazy"
+alt="异构网络表示图"
+data-original="/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_c1c33dfb6e78f21.webp"
+data-lightbox-width="788"
+data-lightbox-height="788"
+class="gallery-image"
+data-flex-grow="100"
+data-flex-basis="240px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;其中，绿色节点表示蛋白质、红色节点表示药物、蓝色节点表示疾病。这可以看成一个三层架构。网络可以具有多种类型的节点和多层架构。同类型节点之间的实线表示它们之间存在一定的关系。以药物层为例，关系类型可以如下：&lt;/p&gt;
@@ -686,96 +253,72 @@
 &lt;/ol&gt;
 &lt;p&gt;虚线的双箭头线表示两种不同类型的节点之间的交互关系。同样的原理也适用于药物层以外的其他层。而右边的黑色实线箭头指的是三种类型节点的大概图。&lt;/p&gt;
 &lt;p&gt;许多机器学习算法和神经网络算法都可以以这种异构网络作为数据的载体，例如随机游走、图神经网络等。异构网络将药物重定位任务带到了另一个层次，可以更高效地提取输入实体的特征并将其固定在一定维度上。&lt;/p&gt;
-&lt;p&gt;对于基于网络的AIDR方法，参考&lt;a class=&#34;link&#34; href=&#34;https://pmc.ncbi.nlm.nih.gov/articles/PMC9599692/#sec2-biomolecules-12-01497&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Drug-Disease Association Prediction Using Heterogeneous Networks for Computational Drug Repositioning&lt;/a&gt;，将基于网络的AIDR方法分成三种：&lt;/p&gt;
+&lt;p&gt;对于基于网络的AIDR方法，参考&lt;a class="link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9599692/#sec2-biomolecules-12-01497" target="_blank" rel="noopener"
+&gt;Drug-Disease Association Prediction Using Heterogeneous Networks for Computational Drug Repositioning&lt;/a&gt;，将基于网络的AIDR方法分成三种：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;图挖掘&lt;/li&gt;
 &lt;li&gt;矩阵分解/填充&lt;/li&gt;
 &lt;li&gt;深度学习&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;924&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_f1bf107c9c7d6207.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;基于网络的方法预测药物-疾病关联的一般过程的示意图&#34;
-	
-	data-original=&#34;/2025/aidr-network-method/assets/20250605220543_hu_5b4f6b0ce483aff7.webp&#34;
-	data-lightbox-width=&#34;1425&#34;
-	data-lightbox-height=&#34;823&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;173&#34;
-		data-flex-basis=&#34;415px&#34;
-	
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp"
+width="1600"
+height="924"
+srcset="https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_f1bf107c9c7d6207.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220543_hu_552c8e13a357a45a.webp 1600w"
+loading="lazy"
+alt="基于网络的方法预测药物-疾病关联的一般过程的示意图"
+data-original="/2025/aidr-network-method/assets/20250605220543_hu_5b4f6b0ce483aff7.webp"
+data-lightbox-width="1425"
+data-lightbox-height="823"
+class="gallery-image"
+data-flex-grow="173"
+data-flex-basis="415px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;这里有一个简单的思维导图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;763&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_266007cd64ce2914.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;基于网络的方法&#34;
-	
-	data-original=&#34;/2025/aidr-network-method/assets/20250605220431_hu_de0fc13c053d140c.webp&#34;
-	data-lightbox-width=&#34;2000&#34;
-	data-lightbox-height=&#34;954&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;209&#34;
-		data-flex-basis=&#34;503px&#34;
-	
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp"
+width="1600"
+height="763"
+srcset="https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_266007cd64ce2914.webp 800w, https://ionfeather.github.io/2025/aidr-network-method/assets/20250605220431_hu_90757afe48a98c96.webp 1600w"
+loading="lazy"
+alt="基于网络的方法"
+data-original="/2025/aidr-network-method/assets/20250605220431_hu_de0fc13c053d140c.webp"
+data-lightbox-width="2000"
+data-lightbox-height="954"
+class="gallery-image"
+data-flex-grow="209"
+data-flex-basis="503px"
 &gt;
 &lt;/p&gt;
-&lt;h2 id=&#34;图挖掘算法&#34;&gt;图挖掘算法
-&lt;/h2&gt;&lt;h2 id=&#34;矩阵分解填充&#34;&gt;矩阵分解/填充
-&lt;/h2&gt;&lt;h2 id=&#34;深度学习&#34;&gt;深度学习
-&lt;/h2&gt;</description>
-        </item>
-        <item>
-        <title>AIDR | 综述与论文</title>
-        <link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link>
-        <pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid>
-        <description>&lt;h2 id=&#34;阅读综述&#34;&gt;阅读综述
+&lt;h2 id="图挖掘算法"&gt;图挖掘算法
+&lt;/h2&gt;&lt;h2 id="矩阵分解填充"&gt;矩阵分解/填充
+&lt;/h2&gt;&lt;h2 id="深度学习"&gt;深度学习
+&lt;/h2&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
 &lt;li&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods&lt;/li&gt;
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;可用的模型&#34;&gt;可用的模型
+&lt;h3 id="可用的模型"&gt;可用的模型
 &lt;/h3&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;
-&lt;h2 id=&#34;阅读论文&#34;&gt;阅读论文
-&lt;/h2&gt;&lt;h3 id=&#34;artificial-intelligence-in-drug-development--nature-medicine&#34;&gt;Artificial intelligence in drug development | &lt;em&gt;nature medicine&lt;/em&gt;
+&lt;h2 id="阅读论文"&gt;阅读论文
+&lt;/h2&gt;&lt;h3 id="artificial-intelligence-in-drug-development--nature-medicine"&gt;Artificial intelligence in drug development | &lt;em&gt;nature medicine&lt;/em&gt;
 &lt;/h3&gt;&lt;p&gt;这是一篇综述，讲解了人工智能在药物发现中的应用取得了显著进展，特别是在靶点识别、虚拟筛选、新药设计（de novo design）、ADMET预测和合成规划等方面。&lt;/p&gt;
 &lt;p&gt;这里主要关注他讲的AI在药物重定位中的作用。&lt;/p&gt;
-&lt;h3 id=&#34;a-foundation-model-for-clinician-centered-drug-repurposing--nature-medicine&#34;&gt;A foundation model for clinician-centered drug repurposing | &lt;em&gt;nature medicine&lt;/em&gt;
-&lt;/h3&gt;&lt;h4 id=&#34;摘要&#34;&gt;摘要
+&lt;h3 id="a-foundation-model-for-clinician-centered-drug-repurposing--nature-medicine"&gt;A foundation model for clinician-centered drug repurposing | &lt;em&gt;nature medicine&lt;/em&gt;
+&lt;/h3&gt;&lt;h4 id="摘要"&gt;摘要
 &lt;/h4&gt;&lt;p&gt;文章介绍了药物再利用人工智能模型在临床应用中的局限性，并提出了本研究的核心——TxGNN模型。&lt;/p&gt;
-&lt;h4 id=&#34;解决的问题&#34;&gt;解决的问题
+&lt;h4 id="解决的问题"&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;目前的模型过于依赖&lt;strong&gt;已有疗法&lt;/strong&gt;和&lt;strong&gt;关于此疾病详细的分子机制&lt;/strong&gt;，对于多疾病、零样本情境下的药物再利用没有好用的模型。&lt;/p&gt;
-&lt;h4 id=&#34;挑战是什么&#34;&gt;挑战是什么
+&lt;h4 id="挑战是什么"&gt;挑战是什么
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;现有计算方法假设待预测疾病已有可用药物&lt;/strong&gt;，然而大量疾病（研究中 92% 的 17,080 种疾病）缺乏已知适应症，罕见病中约 95% 无 FDA 批准药物，85% 甚至无有潜力的治疗药物，&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;药物重利用的适应症可能与最初研究的适应症无关&lt;/strong&gt;，现有机器学习模型对数据不完整、稀疏且无已知疗法的疾病，识别治疗候选药物的能力大幅下降。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;核心方法&#34;&gt;核心方法
+&lt;h4 id="核心方法"&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;TxGNN。图基础模型，在医学知识图谱上训练，利用图神经网络和度量学习模块，将药物再利用问题转化为零样本预测问题。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/assets/20250330192550.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-	
-	
-	
-	
+&lt;img src="https://ionfeather.github.io/assets/20250330192550.png"
+loading="lazy"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;TxGNN模型主要由两个模块组成：TxGNN Predictor（预测模块）和TxGNN Explainer（解释模块）。&lt;/p&gt;
@@ -794,34 +337,34 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;优势&#34;&gt;优势
+&lt;h4 id="优势"&gt;优势
 &lt;/h4&gt;&lt;p&gt;在零样本条件下，TxGNN预测效果相比别的模型体现出了广泛的泛化性和准确性。&lt;/p&gt;
-&lt;h4 id=&#34;数据集&#34;&gt;数据集
+&lt;h4 id="数据集"&gt;数据集
 &lt;/h4&gt;&lt;p&gt;医学知识图谱公开，包含 10 种类型的节点和 29 种类型的无向边，共有 123,527 个节点和 8,063,026 条边，涵盖 17,080 种疾病（92% 缺乏 FDA 批准药物）和 7,957 种潜在药物重利用候选药物，还包含生物过程、分子功能、蛋白质、表型等多种生物医学概念信息。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;知识图谱下载地址：&lt;a class=&#34;link&#34; href=&#34;https://doi.org/10.7910/DVN/IXA7BM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PrimeKG&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;演示界面：&lt;a class=&#34;link&#34; href=&#34;http://txgnn.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;TxGNN Explorer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Github仓库：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mims-harvard/TxGNN&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;mims-harvard/TxGNN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;知识图谱下载地址：&lt;a class="link" href="https://doi.org/10.7910/DVN/IXA7BM" target="_blank" rel="noopener"
+&gt;PrimeKG&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;演示界面：&lt;a class="link" href="http://txgnn.org/" target="_blank" rel="noopener"
+&gt;TxGNN Explorer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Github仓库：&lt;a class="link" href="https://github.com/mims-harvard/TxGNN" target="_blank" rel="noopener"
+&gt;mims-harvard/TxGNN&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha&#34;&gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubmed.ncbi.nlm.nih.gov/34944476/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha - PubMed&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;摘要-1&#34;&gt;摘要
+&lt;h3 id="in-silico-drug-repurposing-for-anti-inflammatory-therapy-virtual-search-for-dual-inhibitors-of-caspase-1-and-tnf-alpha"&gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha
+&lt;/h3&gt;&lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/34944476/" target="_blank" rel="noopener"
+&gt;In Silico Drug Repurposing for Anti-Inflammatory Therapy: Virtual Search for Dual Inhibitors of Caspase-1 and TNF-Alpha - PubMed&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="摘要-1"&gt;摘要
 &lt;/h4&gt;&lt;p&gt;炎症与多种疾病相关，caspase-1 和 TNF-alpha 在炎症发展中起关键作用，针对二者的双重抑制剂有望治疗多种炎症性疾病。本文构建了基于定量构效关系和多层感知器神经网络的多条件模型（mtc-QSAR-MLP）用于虚拟筛选抗炎药物。经数据集处理、模型开发与评估，该模型准确性超 88%。利用此模型筛选出如 linagliptin、icariin 和 rolipram 等潜在的 caspase-1 和 TNF-alpha 双重抑制剂，为抗炎治疗提供新方向，有望用于自身免疫疾病、癌症及 COVID-19 等疾病的治疗。&lt;/p&gt;
-&lt;h4 id=&#34;解决的问题-1&#34;&gt;解决的问题
+&lt;h4 id="解决的问题-1"&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;caspase-1 和 TNF-alpha&lt;/strong&gt;是炎症发展中的关键蛋白，针对它们的双重抑制剂有望治疗多种炎症性疾病。&lt;/p&gt;
-&lt;h4 id=&#34;挑战是什么-1&#34;&gt;挑战是什么
+&lt;h4 id="挑战是什么-1"&gt;挑战是什么
 &lt;/h4&gt;&lt;p&gt;通过药物再利用的方式来加速抗炎药物的发现。&lt;/p&gt;
-&lt;h4 id=&#34;核心方法-1&#34;&gt;核心方法
+&lt;h4 id="核心方法-1"&gt;核心方法
 &lt;/h4&gt;&lt;p&gt;构建基于定量结构 - 活性关系（QSAR）和多层感知器神经网络（MLP）的多条件模型（mtc-QSAR-MLP），用于虚拟筛选 caspase-1 和 TNF-alpha 的双重抑制剂。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;数据处理与分子描述符计算&lt;/strong&gt;：从 &lt;a class=&#34;link&#34; href=&#34;https://chembl.gitbook.io/chembl-interface-documentation/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ChEMBL&lt;/a&gt;数据库获取 caspase-1 和 TNF-alpha 的化学及抑制数据，经筛选得到 1476 个分子案例。用&lt;a class=&#34;link&#34; href=&#34;https://insilicomoleculardesign.com/modeslab/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;code&gt;MODESLAB v1.5&lt;/code&gt;&lt;/a&gt;软件计算多种分子描述符，包括拓扑指数等。还通过 Box-Jenkins 方法融合化学和生物信息，得到能反映分子结构与实验条件关系的\(D[GTI]cj\)描述符，为模型构建提供丰富数据支持。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据处理与分子描述符计算&lt;/strong&gt;：从 &lt;a class="link" href="https://chembl.gitbook.io/chembl-interface-documentation/downloads" target="_blank" rel="noopener"
+&gt;ChEMBL&lt;/a&gt;数据库获取 caspase-1 和 TNF-alpha 的化学及抑制数据，经筛选得到 1476 个分子案例。用&lt;a class="link" href="https://insilicomoleculardesign.com/modeslab/" target="_blank" rel="noopener"
+&gt;&lt;code&gt;MODESLAB v1.5&lt;/code&gt;&lt;/a&gt;软件计算多种分子描述符，包括拓扑指数等。还通过 Box-Jenkins 方法融合化学和生物信息，得到能反映分子结构与实验条件关系的\(D[GTI]cj\)描述符，为模型构建提供丰富数据支持。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;mtc-QSAR-MLP 模型构建&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;数据集划分&lt;/strong&gt;：将数据集按 3:1 随机分为训练集（1111 个分子案例，占 75.27%）和测试集（365 个分子案例，占 24.73%） 。&lt;/li&gt;
@@ -832,56 +375,44 @@
 &lt;li&gt;&lt;strong&gt;模型评估&lt;/strong&gt;：采用 Bounding Box 方法确定模型适用性域，计算描述符的局部适用性域分数（\(LSAD_D [GTI] cj\)）和总分数（TSAD），判断分子是否在适用性域内。通过分析模型在训练集和测试集上的性能指标，如准确率、敏感性、特异性和 MCC 等，验证模型对不同实验条件下化学物质抑制活性的分类和预测能力。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;虚拟筛选与结果验证&lt;/strong&gt;：使用构建好的 mtc-QSAR-MLP 模型对 8922 种机构监管化学品数据库进行虚拟筛选，考虑 8 种实验条件，计算每个分子的 FA (%)（分子在 8 种实验条件下被预测为活性的频率）和 S (TSAD)（考虑 8 种实验条件下分子的总适用性域分数）指标，筛选潜在双重抑制剂。对筛选结果，通过在科学文献中搜索相关信息，结合实验证据验证其抑制 caspase-1 和 TNF-alpha 的可能性。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;优势-1&#34;&gt;优势
+&lt;h4 id="优势-1"&gt;优势
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;整合多源数据&lt;/strong&gt;：基于扰动理论和机器学习构建模型，能够整合不同类型的化学和生物数据。通过 Box-Jenkins 方法对传统分子描述符进行处理，得到融合化学结构与实验条件信息的描述符，使模型能综合考虑多种因素。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;多靶点多终点预测&lt;/strong&gt;：可同时预测多个生物终点（如活性、毒性、药代动力学性质），并针对多个不同靶点（如 caspase-1 和 TNF-alpha）进行预测。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;高预测准确性&lt;/strong&gt;：模型在训练集和测试集上都表现出较高的准确性。训练集准确率达 92.44%，测试集准确率为 88.49%，马修斯相关系数（MCC）在训练集和测试集分别为 0.844 和 0.764。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;提供理化和结构解释&lt;/strong&gt;：通过对分子描述符的分析，能够从物理化学和结构层面解释模型的预测结果。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;数据集-1&#34;&gt;数据集
-&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chembl.gitbook.io/chembl-interface-documentation/downloads&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ChEMBL&lt;/a&gt;开放数据库。&lt;/p&gt;
+&lt;h4 id="数据集-1"&gt;数据集
+&lt;/h4&gt;&lt;p&gt;&lt;a class="link" href="https://chembl.gitbook.io/chembl-interface-documentation/downloads" target="_blank" rel="noopener"
+&gt;ChEMBL&lt;/a&gt;开放数据库。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;machine-learningenabled-virtual-screening-indicates-the-anti-tuberculosis-activity-of-aldoxorubicin-and-quarfloxin-with-verification-by-molecular-docking-molecular-dynamics-simulations-and-biological-evaluations--briefings-bioinf&#34;&gt;Machine learning–enabled virtual screening indicates the anti-tuberculosis activity of aldoxorubicin and quarfloxin with verification by molecular docking, molecular dynamics simulations, and biological evaluations | &lt;em&gt;Briefings Bioinf&lt;/em&gt;
-&lt;/h3&gt;&lt;h4 id=&#34;解决的问题-2&#34;&gt;解决的问题
+&lt;h3 id="machine-learningenabled-virtual-screening-indicates-the-anti-tuberculosis-activity-of-aldoxorubicin-and-quarfloxin-with-verification-by-molecular-docking-molecular-dynamics-simulations-and-biological-evaluations--briefings-bioinf"&gt;Machine learning–enabled virtual screening indicates the anti-tuberculosis activity of aldoxorubicin and quarfloxin with verification by molecular docking, molecular dynamics simulations, and biological evaluations | &lt;em&gt;Briefings Bioinf&lt;/em&gt;
+&lt;/h3&gt;&lt;h4 id="解决的问题-2"&gt;解决的问题
 &lt;/h4&gt;&lt;p&gt;目前的抗结核药物一定程度上控制了结核病的传播，但耐药结核病的出现使得这些药物的疗效大打折扣。&lt;/p&gt;
 &lt;p&gt;虚拟筛选技术，为快速识别潜在的抗结核药物候选物提供了一种有效的手段。研究旨在通过结合多种机器学习和深度学习模型，开发一种虚拟筛选工作流程，以重新利用现有药物来对抗结核分枝杆菌，从而加速抗结核药物的发现进程。&lt;/p&gt;
-&lt;h4 id=&#34;核心方法-2&#34;&gt;核心方法
-&lt;/h4&gt;&lt;p&gt;研究者首先从ChEMBL数据库中收集了大量已知的抗结核药物的生物活性数据，用于训练和验证多种机器学习和深度学习模型。这些模型包括XGBoost和图神经网络（GNNs），用于预测化合物的最小抑制浓度（MIC）。接着，研究者使用这些模型对DrugBank数据库中的11,576种化合物进行虚拟筛选，筛选出具有潜在抗结核活性的化合物。通过多步过滤和实验验证，最终确定了两种具有显著抗结核活性的化合物：aldoxorubicin和quarfloxi，为了进一步验证作用机制，研究者通过分子对接、分子动力学模拟和表面等离子共振实验，确认了它们与结核分枝杆菌DNA gyrase的直接结合。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>AIDR | 数据库探索</title>
-        <link>https://ionfeather.github.io/2025/moleculerepurposing/</link>
-        <pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid>
-        <description>&lt;h2 id=&#34;数据库&#34;&gt;数据库
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;2163&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_5a1c68d6e0a15544.webp&#34;
-	data-lightbox-width=&#34;2352&#34;
-	data-lightbox-height=&#34;3180&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;73&#34;
-		data-flex-basis=&#34;177px&#34;
-	
+&lt;h4 id="核心方法-2"&gt;核心方法
+&lt;/h4&gt;&lt;p&gt;研究者首先从ChEMBL数据库中收集了大量已知的抗结核药物的生物活性数据，用于训练和验证多种机器学习和深度学习模型。这些模型包括XGBoost和图神经网络（GNNs），用于预测化合物的最小抑制浓度（MIC）。接着，研究者使用这些模型对DrugBank数据库中的11,576种化合物进行虚拟筛选，筛选出具有潜在抗结核活性的化合物。通过多步过滤和实验验证，最终确定了两种具有显著抗结核活性的化合物：aldoxorubicin和quarfloxi，为了进一步验证作用机制，研究者通过分子对接、分子动力学模拟和表面等离子共振实验，确认了它们与结核分枝杆菌DNA gyrase的直接结合。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
+width="1600"
+height="2163"
+srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w"
+loading="lazy"
+data-original="/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_5a1c68d6e0a15544.webp"
+data-lightbox-width="2352"
+data-lightbox-height="3180"
+class="gallery-image"
+data-flex-grow="73"
+data-flex-basis="177px"
 &gt;
 &lt;/p&gt;
-&lt;h3 id=&#34;ttd&#34;&gt;TTD
+&lt;h3 id="ttd"&gt;TTD
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;TTD&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://db.idrblab.net/ttd/" target="_blank" rel="noopener"
+&gt;TTD&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;治疗靶点数据库。它是一个专门收集和整理与&lt;strong&gt;治疗靶点&lt;/strong&gt;相关信息的数据库。&lt;/li&gt;
-&lt;li&gt;下载地址：&lt;a class=&#34;link&#34; href=&#34;https://db.idrblab.net/ttd/full-data-download&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Full Data Download | Therapeutic Target Database&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载地址：&lt;a class="link" href="https://db.idrblab.net/ttd/full-data-download" target="_blank" rel="noopener"
+&gt;Full Data Download | Therapeutic Target Database&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;数据库比较大，这里筛选了药物-靶点-疾病关联数据：
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Target to drug mapping with mode of action&lt;/strong&gt;
@@ -908,20 +439,17 @@
 &lt;li&gt;&lt;code&gt;INDICATI&lt;/code&gt;：适应症，即药物被用于治疗的病症。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Disease entry&lt;/code&gt;：疾病条目，这里使用了 ICD-11 编码来表示具体的疾病。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Clinical status&lt;/code&gt;：临床状态。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;942&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_702c96b7171ed5d5.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_d53a41a4a9cc07a2.webp&#34;
-	data-lightbox-width=&#34;2302&#34;
-	data-lightbox-height=&#34;1356&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;169&#34;
-		data-flex-basis=&#34;407px&#34;
-	
+&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp"
+width="1600"
+height="942"
+srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_702c96b7171ed5d5.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_639d629eea20cd39.webp 1600w"
+loading="lazy"
+data-original="/2025/moleculerepurposing/assets/TTD%E6%95%B0%E6%8D%AE%E5%BA%93_hu_d53a41a4a9cc07a2.webp"
+data-lightbox-width="2302"
+data-lightbox-height="1356"
+class="gallery-image"
+data-flex-grow="169"
+data-flex-basis="407px"
 &gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -931,60 +459,60 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;表一target-to-drug-mapping-with-mode-of-action&#34;&gt;表一：Target to drug mapping with mode of action
+&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;TargetID&lt;/th&gt;
-          &lt;th&gt;DrugID&lt;/th&gt;
-          &lt;th&gt;Highest_status&lt;/th&gt;
-          &lt;th&gt;MOA&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;T87024&lt;/td&gt;
-          &lt;td&gt;D00RRU&lt;/td&gt;
-          &lt;td&gt;Approved&lt;/td&gt;
-          &lt;td&gt;Modulator&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;TargetID&lt;/th&gt;
+&lt;th&gt;DrugID&lt;/th&gt;
+&lt;th&gt;Highest_status&lt;/th&gt;
+&lt;th&gt;MOA&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;T87024&lt;/td&gt;
+&lt;td&gt;D00RRU&lt;/td&gt;
+&lt;td&gt;Approved&lt;/td&gt;
+&lt;td&gt;Modulator&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这个表格表示：ID为D00RRU的药物能够以调节剂的方式作用ID为T87024的疾病，并且已经被批准。&lt;/p&gt;
-&lt;h4 id=&#34;表二drug-to-disease-mapping-with-icd-identifiers&#34;&gt;表二：Drug to disease mapping with ICD identifiers
+&lt;h4 id="表二drug-to-disease-mapping-with-icd-identifiers"&gt;表二：Drug to disease mapping with ICD identifiers
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;TTDDRUID&lt;/th&gt;
-          &lt;th&gt;DRUGNAME&lt;/th&gt;
-          &lt;th&gt;INDICATI&lt;/th&gt;
-          &lt;th&gt;ICD-11&lt;/th&gt;
-          &lt;th&gt;Clinical status&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;DZB84T&lt;/td&gt;
-          &lt;td&gt;Maralixibat&lt;/td&gt;
-          &lt;td&gt;Pruritus&lt;/td&gt;
-          &lt;td&gt;EC90&lt;/td&gt;
-          &lt;td&gt;Approved&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;DZB84T&lt;/td&gt;
-          &lt;td&gt;Maralixibat&lt;/td&gt;
-          &lt;td&gt;Progressive familial intrahepatic cholestasis&lt;/td&gt;
-          &lt;td&gt;5C58.03&lt;/td&gt;
-          &lt;td&gt;Phase 3&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;DZB84T&lt;/td&gt;
-          &lt;td&gt;Maralixibat&lt;/td&gt;
-          &lt;td&gt;Alagille syndrome&lt;/td&gt;
-          &lt;td&gt;LB20.0Y&lt;/td&gt;
-          &lt;td&gt;Phase 2&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;TTDDRUID&lt;/th&gt;
+&lt;th&gt;DRUGNAME&lt;/th&gt;
+&lt;th&gt;INDICATI&lt;/th&gt;
+&lt;th&gt;ICD-11&lt;/th&gt;
+&lt;th&gt;Clinical status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;DZB84T&lt;/td&gt;
+&lt;td&gt;Maralixibat&lt;/td&gt;
+&lt;td&gt;Pruritus&lt;/td&gt;
+&lt;td&gt;EC90&lt;/td&gt;
+&lt;td&gt;Approved&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DZB84T&lt;/td&gt;
+&lt;td&gt;Maralixibat&lt;/td&gt;
+&lt;td&gt;Progressive familial intrahepatic cholestasis&lt;/td&gt;
+&lt;td&gt;5C58.03&lt;/td&gt;
+&lt;td&gt;Phase 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;DZB84T&lt;/td&gt;
+&lt;td&gt;Maralixibat&lt;/td&gt;
+&lt;td&gt;Alagille syndrome&lt;/td&gt;
+&lt;td&gt;LB20.0Y&lt;/td&gt;
+&lt;td&gt;Phase 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这个表格表示ID为DZB84T的药物，名为Maralixibat，有对应几种适应症：&lt;/p&gt;
 &lt;ul&gt;
@@ -992,39 +520,39 @@
 &lt;li&gt;适应症为&lt;code&gt;Progressive familial intrahepatic cholestasis&lt;/code&gt;（进行性家族性肝内胆汁淤积症），ICD-11 编码是&lt;code&gt;5C58.03&lt;/code&gt;，临床状态为&lt;code&gt;Phase 3&lt;/code&gt;（三期临床试验）。&lt;/li&gt;
 &lt;li&gt;适应症为&lt;code&gt;Alagille syndrome&lt;/code&gt;（阿拉基综合征），ICD-11 编码是&lt;code&gt;LB20.0Y&lt;/code&gt;，临床状态为&lt;code&gt;Phase 2&lt;/code&gt;（二期临床试验）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;表三target-to-disease-mapping-with-icd-identifiers&#34;&gt;表三：Target to disease mapping with ICD identifiers
+&lt;h4 id="表三target-to-disease-mapping-with-icd-identifiers"&gt;表三：Target to disease mapping with ICD identifiers
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;TARGETID&lt;/th&gt;
-          &lt;th&gt;TARGNAME&lt;/th&gt;
-          &lt;th&gt;INDICATI&lt;/th&gt;
-          &lt;th&gt;INDICATI&lt;/th&gt;
-          &lt;th&gt;INDICATI&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;T00033&lt;/td&gt;
-          &lt;td&gt;Transforming growth factor alpha (TGFA)&lt;/td&gt;
-          &lt;td&gt;Phase 1/2&lt;/td&gt;
-          &lt;td&gt;Chronic kidney disease&lt;/td&gt;
-          &lt;td&gt;[ICD-11: GB61]&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;TARGETID&lt;/th&gt;
+&lt;th&gt;TARGNAME&lt;/th&gt;
+&lt;th&gt;INDICATI&lt;/th&gt;
+&lt;th&gt;INDICATI&lt;/th&gt;
+&lt;th&gt;INDICATI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;T00033&lt;/td&gt;
+&lt;td&gt;Transforming growth factor alpha (TGFA)&lt;/td&gt;
+&lt;td&gt;Phase 1/2&lt;/td&gt;
+&lt;td&gt;Chronic kidney disease&lt;/td&gt;
+&lt;td&gt;[ICD-11: GB61]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这个表格表示 ID 为 T00033 的靶点，名为 Transforming growth factor alpha (TGFA)，有对应的临床关联信息：关联的疾病适应症为&lt;code&gt;Chronic kidney disease&lt;/code&gt;（慢性肾脏病），ICD-11 编码是&lt;code&gt;GB61&lt;/code&gt;，临床状态为&lt;code&gt;Phase 1/2&lt;/code&gt;（一期 / 二期临床试验 ）。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;pubchem&#34;&gt;PubChem
+&lt;h3 id="pubchem"&gt;PubChem
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://pubchem.ncbi.nlm.nih.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;PubChem&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener"
+&gt;PubChem&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;PubChem是美国国立卫生研究院的一个开放化学数据库。&lt;strong&gt;化合物信息数据库&lt;/strong&gt;，收录大量化合物的结构、生物活性等信息，为科研、药物研发等提供数据支持，也用于化学知识普及和教学。这个数据库非常大。&lt;/li&gt;
-&lt;li&gt;用途参考：&lt;a class=&#34;link&#34; href=&#34;https://mp.weixin.qq.com/s/rys-1FXn5ZmqilTz1iD-pQ&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Nucleic Acids Research | 疗效药物靶标的比较性研究与数据平台构建&lt;/a&gt;。&lt;/li&gt;
-&lt;li&gt;FTP下载：&lt;a class=&#34;link&#34; href=&#34;https://ftp.ncbi.nlm.nih.gov/pubchem/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Index of /pubchem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;用途参考：&lt;a class="link" href="https://mp.weixin.qq.com/s/rys-1FXn5ZmqilTz1iD-pQ" target="_blank" rel="noopener"
+&gt;Nucleic Acids Research | 疗效药物靶标的比较性研究与数据平台构建&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;FTP下载：&lt;a class="link" href="https://ftp.ncbi.nlm.nih.gov/pubchem/" target="_blank" rel="noopener"
+&gt;Index of /pubchem&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;药物-疾病关联数据
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;./Bioassay&lt;/code&gt;：生物测定数据，包含大量药物对不同生物靶点或细胞系的活性测试结果&lt;/li&gt;
@@ -1037,156 +565,156 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面以&lt;code&gt;./Bioassay&lt;/code&gt;数据为例。&lt;/p&gt;
-&lt;h4 id=&#34;表-1pubchem的bioassay的csv文件的标题行的分类和标签说明&#34;&gt;表 1：PubChem的&lt;code&gt;./Bioassay&lt;/code&gt;的CSV文件的标题行的分类和标签说明
+&lt;h4 id="表-1pubchem的bioassay的csv文件的标题行的分类和标签说明"&gt;表 1：PubChem的&lt;code&gt;./Bioassay&lt;/code&gt;的CSV文件的标题行的分类和标签说明
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;分类&lt;/th&gt;
-          &lt;th&gt;标签名称&lt;/th&gt;
-          &lt;th&gt;说明&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_RESULT_TAG&lt;/td&gt;
-          &lt;td&gt;行ID&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_SID&lt;/td&gt;
-          &lt;td&gt;PubChem SID&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_CID&lt;/td&gt;
-          &lt;td&gt;PubChem CID&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/td&gt;
-          &lt;td&gt;PubChem活性结果（即，Inactive, Active, Inconclusive, Unspecified, or Probe）&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_ACTIVITY_SCORE&lt;/td&gt;
-          &lt;td&gt;PubChem活性得分，值越高表示活性越强&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_ACTIVITY_URL&lt;/td&gt;
-          &lt;td&gt;测试结果特定的url&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行&lt;/td&gt;
-          &lt;td&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/td&gt;
-          &lt;td&gt;测试结果特定的注释&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行（可选）&lt;/td&gt;
-          &lt;td&gt;测试结果名称1（如：name of test result 1）&lt;/td&gt;
-          &lt;td&gt;测试结果1的数据&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;数据行（可选）&lt;/td&gt;
-          &lt;td&gt;测试结果名称2（如：name of test result 2）&lt;/td&gt;
-          &lt;td&gt;测试结果2的数据&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
-          &lt;td&gt;RESULT_UNIT&lt;/td&gt;
-          &lt;td&gt;单位（e.g. MICROMOLAR, NANOMOLAR和其他PubChem上传系统使用的标签）&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
-          &lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION&lt;/td&gt;
-          &lt;td&gt;如果测试结果表示有效浓度则为TRUE&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
-          &lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION_QUALIFIER&lt;/td&gt;
-          &lt;td&gt;如果测试结果表示与有效浓度相关的终点限定词（e.g. &amp;lt;, &amp;lt;=, =, &amp;gt;, &amp;gt;=）则为TRUE&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
-          &lt;td&gt;RESULT_ATTR_CONC_MICROMOL&lt;/td&gt;
-          &lt;td&gt;以微摩尔为单位的测试浓度&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分类&lt;/th&gt;
+&lt;th&gt;标签名称&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_RESULT_TAG&lt;/td&gt;
+&lt;td&gt;行ID&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_SID&lt;/td&gt;
+&lt;td&gt;PubChem SID&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_CID&lt;/td&gt;
+&lt;td&gt;PubChem CID&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/td&gt;
+&lt;td&gt;PubChem活性结果（即，Inactive, Active, Inconclusive, Unspecified, or Probe）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_ACTIVITY_SCORE&lt;/td&gt;
+&lt;td&gt;PubChem活性得分，值越高表示活性越强&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_ACTIVITY_URL&lt;/td&gt;
+&lt;td&gt;测试结果特定的url&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行&lt;/td&gt;
+&lt;td&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/td&gt;
+&lt;td&gt;测试结果特定的注释&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行（可选）&lt;/td&gt;
+&lt;td&gt;测试结果名称1（如：name of test result 1）&lt;/td&gt;
+&lt;td&gt;测试结果1的数据&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据行（可选）&lt;/td&gt;
+&lt;td&gt;测试结果名称2（如：name of test result 2）&lt;/td&gt;
+&lt;td&gt;测试结果2的数据&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+&lt;td&gt;RESULT_UNIT&lt;/td&gt;
+&lt;td&gt;单位（e.g. MICROMOLAR, NANOMOLAR和其他PubChem上传系统使用的标签）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+&lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION&lt;/td&gt;
+&lt;td&gt;如果测试结果表示有效浓度则为TRUE&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+&lt;td&gt;RESULT_IS_ACTIVE_CONCENTRATION_QUALIFIER&lt;/td&gt;
+&lt;td&gt;如果测试结果表示与有效浓度相关的终点限定词（e.g. &amp;lt;, &amp;lt;=, =, &amp;gt;, &amp;gt;=）则为TRUE&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;可选标题行（测试结果）&lt;/td&gt;
+&lt;td&gt;RESULT_ATTR_CONC_MICROMOL&lt;/td&gt;
+&lt;td&gt;以微摩尔为单位的测试浓度&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h4 id=&#34;表二pubchem-csvdata0000001_00010001csv文件&#34;&gt;表二：PubChem CSV/Data/0000001_0001000/1.csv文件
+&lt;h4 id="表二pubchem-csvdata0000001_00010001csv文件"&gt;表二：PubChem CSV/Data/0000001_0001000/1.csv文件
 &lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;PUBCHEM_RESULT_TAG&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_SID&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_CID&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_EXT_DATASOURCE_SMILES&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_ACTIVITY_SCORE&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_ACTIVITY_URL&lt;/th&gt;
-          &lt;th&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/th&gt;
-          &lt;th&gt;LogGI50_M&lt;/th&gt;
-          &lt;th&gt;LogGI50_u&lt;/th&gt;
-          &lt;th&gt;LogGI50_V&lt;/th&gt;
-          &lt;th&gt;IndnGI50&lt;/th&gt;
-          &lt;th&gt;StddevGI50&lt;/th&gt;
-          &lt;th&gt;LogTGI_M&lt;/th&gt;
-          &lt;th&gt;LogTGI_u&lt;/th&gt;
-          &lt;th&gt;LogTGI_V&lt;/th&gt;
-          &lt;th&gt;IndnTGI&lt;/th&gt;
-          &lt;th&gt;StddevTGI&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;1&lt;/td&gt;
-          &lt;td&gt;66954&lt;/td&gt;
-          &lt;td&gt;11122&lt;/td&gt;
-          &lt;td&gt;CC1=CC(=O)C=CC1=O&lt;/td&gt;
-          &lt;td&gt;Inactive&lt;/td&gt;
-          &lt;td&gt;10&lt;/td&gt;
-          &lt;td&gt;&lt;a class=&#34;link&#34; href=&#34;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;searchlist=1&amp;systemname=NCI+Cancer&amp;idn1=1&amp;idn2=1&lt;/a&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;-4.5753&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;1&lt;/td&gt;
-          &lt;td&gt;0&lt;/td&gt;
-          &lt;td&gt;-4&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;1&lt;/td&gt;
-          &lt;td&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;PUBCHEM_RESULT_TAG&lt;/th&gt;
+&lt;th&gt;PUBCHEM_SID&lt;/th&gt;
+&lt;th&gt;PUBCHEM_CID&lt;/th&gt;
+&lt;th&gt;PUBCHEM_EXT_DATASOURCE_SMILES&lt;/th&gt;
+&lt;th&gt;PUBCHEM_ACTIVITY_OUTCOME&lt;/th&gt;
+&lt;th&gt;PUBCHEM_ACTIVITY_SCORE&lt;/th&gt;
+&lt;th&gt;PUBCHEM_ACTIVITY_URL&lt;/th&gt;
+&lt;th&gt;PUBCHEM_ASSAYDATA_COMMENT&lt;/th&gt;
+&lt;th&gt;LogGI50_M&lt;/th&gt;
+&lt;th&gt;LogGI50_u&lt;/th&gt;
+&lt;th&gt;LogGI50_V&lt;/th&gt;
+&lt;th&gt;IndnGI50&lt;/th&gt;
+&lt;th&gt;StddevGI50&lt;/th&gt;
+&lt;th&gt;LogTGI_M&lt;/th&gt;
+&lt;th&gt;LogTGI_u&lt;/th&gt;
+&lt;th&gt;LogTGI_V&lt;/th&gt;
+&lt;th&gt;IndnTGI&lt;/th&gt;
+&lt;th&gt;StddevTGI&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;66954&lt;/td&gt;
+&lt;td&gt;11122&lt;/td&gt;
+&lt;td&gt;CC1=CC(=O)C=CC1=O&lt;/td&gt;
+&lt;td&gt;Inactive&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;&lt;a class="link" href="http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1" target="_blank" rel="noopener"
+&gt;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;searchlist=1&amp;systemname=NCI+Cancer&amp;idn1=1&amp;idn2=1&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;-4.5753&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;-4&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这个表格表示数据行 ID 为 1 的记录，其中涉及的 PubChem SID 为 66954，PubChem CID 为 11122，化合物的 SMILES 表示形式为&lt;code&gt;CC1=CC(=O)C=CC1=O&lt;/code&gt;，有对应的生物活性关联信息：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;PubChem 活性结果为&lt;code&gt;Inactive&lt;/code&gt;（无活性），PubChem 活性得分为 10，表明在此次生物测定中该化合物活性较低。&lt;/li&gt;
-&lt;li&gt;测试结果特定的 url 为&lt;a class=&#34;link&#34; href=&#34;http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;dtp.cancer.gov/services/nci60data/colordoseresponse/pdf/1&lt;/a&gt;，可通过该链接获取更多相关测试结果信息。&lt;/li&gt;
+&lt;li&gt;测试结果特定的 url 为&lt;a class="link" href="http://dtp.nci.nih.gov/dtpstandard/servlet/doseresponse?searchtype=NSC&amp;amp;searchlist=1&amp;amp;systemname=NCI&amp;#43;Cancer&amp;amp;idn1=1&amp;amp;idn2=1" target="_blank" rel="noopener"
+&gt;dtp.cancer.gov/services/nci60data/colordoseresponse/pdf/1&lt;/a&gt;，可通过该链接获取更多相关测试结果信息。&lt;/li&gt;
 &lt;li&gt;测试结果特定的注释为空。&lt;/li&gt;
 &lt;li&gt;关于 GI50（半数生长抑制浓度）的相关数据：
 &lt;ul&gt;
@@ -1205,10 +733,10 @@
 &lt;/ul&gt;
 &lt;p&gt;其他的如&lt;code&gt;./Target&lt;/code&gt;、&lt;code&gt;./Commpound&lt;/code&gt;和&lt;code&gt;./Compound_3D&lt;/code&gt;等数据也呈现如此结构。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;dgidb&#34;&gt;DGIdb
+&lt;h3 id="dgidb"&gt;DGIdb
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://dgidb.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DGIdb&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://dgidb.org/" target="_blank" rel="noopener"
+&gt;DGIdb&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;药物基因相互作用数据库，主要收集和整理&lt;strong&gt;药物与基因之间相互作用&lt;/strong&gt;的相关信息。&lt;/li&gt;
 &lt;li&gt;这个数据库一共就四个表格，分别存储药物-基因相互作用、基因、药物和分类相关信息，使用&lt;code&gt;tsv&lt;/code&gt;格式进行存储。数据大小约为24.9MB。
@@ -1217,20 +745,17 @@
 &lt;li&gt;&lt;strong&gt;genes.tsv&lt;/strong&gt;：记录了基因声明相关数据，可能涵盖基因的基本信息，如基因名称、基因 ID、基因功能注释等内容。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;drugs.tsv&lt;/strong&gt;：存放药物声明数据，包括药物的名称、药物 ID、药物的基本属性、药理作用等信息。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;categories.tsv&lt;/strong&gt;：用于存储与数据分类相关的信息。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;618&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_2ef5f00ae37f3d1.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-	data-original=&#34;/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_873cfa56fc432cb2.webp&#34;
-	data-lightbox-width=&#34;1636&#34;
-	data-lightbox-height=&#34;632&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;258&#34;
-		data-flex-basis=&#34;621px&#34;
-	
+&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp"
+width="1600"
+height="618"
+srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_2ef5f00ae37f3d1.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_9a10d2e2544ca1ff.webp 1600w"
+loading="lazy"
+data-original="/2025/moleculerepurposing/assets/%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB_hu_873cfa56fc432cb2.webp"
+data-lightbox-width="1636"
+data-lightbox-height="632"
+class="gallery-image"
+data-flex-grow="258"
+data-flex-basis="621px"
 &gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -1238,7 +763,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;表一interactionstsv&#34;&gt;表一：interactions.tsv
+&lt;h4 id="表一interactionstsv"&gt;表一：interactions.tsv
 &lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;gene_claim_name&lt;/strong&gt;：基因的声明名称。&lt;/li&gt;
@@ -1256,58 +781,58 @@
 &lt;li&gt;&lt;strong&gt;anti_neoplastic&lt;/strong&gt;：药物是否具有抗肿瘤作用的标识。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;gene_claim_name&lt;/th&gt;
-          &lt;th&gt;gene_concept_id&lt;/th&gt;
-          &lt;th&gt;gene_name&lt;/th&gt;
-          &lt;th&gt;interaction_source_db_name&lt;/th&gt;
-          &lt;th&gt;interaction_source_db_version&lt;/th&gt;
-          &lt;th&gt;interaction_type&lt;/th&gt;
-          &lt;th&gt;interaction_score&lt;/th&gt;
-          &lt;th&gt;drug_claim_name&lt;/th&gt;
-          &lt;th&gt;drug_concept_id&lt;/th&gt;
-          &lt;th&gt;drug_name&lt;/th&gt;
-          &lt;th&gt;approved&lt;/th&gt;
-          &lt;th&gt;immunotherapy&lt;/th&gt;
-          &lt;th&gt;anti_neoplastic&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;CYP2D6&lt;/td&gt;
-          &lt;td&gt;hgnc:2625&lt;/td&gt;
-          &lt;td&gt;CYP2D6&lt;/td&gt;
-          &lt;td&gt;DTC&lt;/td&gt;
-          &lt;td&gt;9/2/20&lt;/td&gt;
-          &lt;td&gt;NULL&lt;/td&gt;
-          &lt;td&gt;0.017709164&lt;/td&gt;
-          &lt;td&gt;RACLOPRIDE&lt;/td&gt;
-          &lt;td&gt;ncit:C152139&lt;/td&gt;
-          &lt;td&gt;RACLOPRIDE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;PPARG&lt;/td&gt;
-          &lt;td&gt;hgnc:9236&lt;/td&gt;
-          &lt;td&gt;PPARG&lt;/td&gt;
-          &lt;td&gt;DTC&lt;/td&gt;
-          &lt;td&gt;9/2/20&lt;/td&gt;
-          &lt;td&gt;NULL&lt;/td&gt;
-          &lt;td&gt;0.84012274&lt;/td&gt;
-          &lt;td&gt;KALOPANAX-SAPONIN F&lt;/td&gt;
-          &lt;td&gt;chembl:CHEMBL1833984&lt;/td&gt;
-          &lt;td&gt;CHEMBL:CHEMBL1833984&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;gene_claim_name&lt;/th&gt;
+&lt;th&gt;gene_concept_id&lt;/th&gt;
+&lt;th&gt;gene_name&lt;/th&gt;
+&lt;th&gt;interaction_source_db_name&lt;/th&gt;
+&lt;th&gt;interaction_source_db_version&lt;/th&gt;
+&lt;th&gt;interaction_type&lt;/th&gt;
+&lt;th&gt;interaction_score&lt;/th&gt;
+&lt;th&gt;drug_claim_name&lt;/th&gt;
+&lt;th&gt;drug_concept_id&lt;/th&gt;
+&lt;th&gt;drug_name&lt;/th&gt;
+&lt;th&gt;approved&lt;/th&gt;
+&lt;th&gt;immunotherapy&lt;/th&gt;
+&lt;th&gt;anti_neoplastic&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CYP2D6&lt;/td&gt;
+&lt;td&gt;hgnc:2625&lt;/td&gt;
+&lt;td&gt;CYP2D6&lt;/td&gt;
+&lt;td&gt;DTC&lt;/td&gt;
+&lt;td&gt;9/2/20&lt;/td&gt;
+&lt;td&gt;NULL&lt;/td&gt;
+&lt;td&gt;0.017709164&lt;/td&gt;
+&lt;td&gt;RACLOPRIDE&lt;/td&gt;
+&lt;td&gt;ncit:C152139&lt;/td&gt;
+&lt;td&gt;RACLOPRIDE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PPARG&lt;/td&gt;
+&lt;td&gt;hgnc:9236&lt;/td&gt;
+&lt;td&gt;PPARG&lt;/td&gt;
+&lt;td&gt;DTC&lt;/td&gt;
+&lt;td&gt;9/2/20&lt;/td&gt;
+&lt;td&gt;NULL&lt;/td&gt;
+&lt;td&gt;0.84012274&lt;/td&gt;
+&lt;td&gt;KALOPANAX-SAPONIN F&lt;/td&gt;
+&lt;td&gt;chembl:CHEMBL1833984&lt;/td&gt;
+&lt;td&gt;CHEMBL:CHEMBL1833984&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;这个表格有两列，这里只对第一列进行解释：基因声明名称为&lt;code&gt;CYP2D6&lt;/code&gt;，基因概念 ID 是&lt;code&gt;hgnc:2625&lt;/code&gt;，基因名称同样为&lt;code&gt;CYP2D6&lt;/code&gt;。相互作用来源数据库名称是&lt;code&gt;DTC&lt;/code&gt;，数据库版本为&lt;code&gt;9/2/20&lt;/code&gt;，相互作用类型为空（&lt;code&gt;NULL&lt;/code&gt;），相互作用得分为&lt;code&gt;0.017709164&lt;/code&gt;。药物声明名称是&lt;code&gt;RACLOPRIDE&lt;/code&gt;，药物概念 ID 为&lt;code&gt;ncit:C152139&lt;/code&gt;，药物名称是&lt;code&gt;RACLOPRIDE&lt;/code&gt;。该药物未被批准（&lt;code&gt;approved&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），不是免疫疗法（&lt;code&gt;immunotherapy&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），也不是抗肿瘤药物（&lt;code&gt;anti_neoplastic&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;） 。&lt;/p&gt;
-&lt;h4 id=&#34;表二drugstsv&#34;&gt;表二：drugs.tsv
+&lt;h4 id="表二drugstsv"&gt;表二：drugs.tsv
 &lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;drug_claim_name&lt;/strong&gt;：药物的特定称谓。&lt;/li&gt;
@@ -1321,35 +846,35 @@
 &lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;drug_claim_name&lt;/th&gt;
-          &lt;th&gt;nomenclature&lt;/th&gt;
-          &lt;th&gt;concept_id&lt;/th&gt;
-          &lt;th&gt;drug_name&lt;/th&gt;
-          &lt;th&gt;approved&lt;/th&gt;
-          &lt;th&gt;immunotherapy&lt;/th&gt;
-          &lt;th&gt;anti_neoplastic&lt;/th&gt;
-          &lt;th&gt;source_db_name&lt;/th&gt;
-          &lt;th&gt;source_db_version&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;BRAF(V600E) Kinase Inhibitor RO5212054&lt;/td&gt;
-          &lt;td&gt;Primary Drug Name&lt;/td&gt;
-          &lt;td&gt;ncit:C92591&lt;/td&gt;
-          &lt;td&gt;BRAF(V600E) KINASE INHIBITOR RO5212054&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;FALSE&lt;/td&gt;
-          &lt;td&gt;TRUE&lt;/td&gt;
-          &lt;td&gt;NCIt&lt;/td&gt;
-          &lt;td&gt;24.02d&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;drug_claim_name&lt;/th&gt;
+&lt;th&gt;nomenclature&lt;/th&gt;
+&lt;th&gt;concept_id&lt;/th&gt;
+&lt;th&gt;drug_name&lt;/th&gt;
+&lt;th&gt;approved&lt;/th&gt;
+&lt;th&gt;immunotherapy&lt;/th&gt;
+&lt;th&gt;anti_neoplastic&lt;/th&gt;
+&lt;th&gt;source_db_name&lt;/th&gt;
+&lt;th&gt;source_db_version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;BRAF(V600E) Kinase Inhibitor RO5212054&lt;/td&gt;
+&lt;td&gt;Primary Drug Name&lt;/td&gt;
+&lt;td&gt;ncit:C92591&lt;/td&gt;
+&lt;td&gt;BRAF(V600E) KINASE INHIBITOR RO5212054&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;FALSE&lt;/td&gt;
+&lt;td&gt;TRUE&lt;/td&gt;
+&lt;td&gt;NCIt&lt;/td&gt;
+&lt;td&gt;24.02d&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;药物声明名称为&lt;code&gt;BRAF(V600E) Kinase Inhibitor RO5212054&lt;/code&gt;，药物命名法类型是&lt;code&gt;Primary Drug Name&lt;/code&gt;，药物概念 ID 是&lt;code&gt;ncit:C92591&lt;/code&gt;，药物名称为&lt;code&gt;BRAF(V600E) KINASE INHIBITOR RO5212054&lt;/code&gt;。该药物未被批准（&lt;code&gt;approved&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），不是免疫疗法（&lt;code&gt;immunotherapy&lt;/code&gt;为&lt;code&gt;FALSE&lt;/code&gt;），是抗肿瘤药物（&lt;code&gt;anti_neoplastic&lt;/code&gt;为&lt;code&gt;TRUE&lt;/code&gt;） 。药物数据的来源数据库名称是&lt;code&gt;NCIt&lt;/code&gt;，数据库版本为&lt;code&gt;24.02d&lt;/code&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;表三genetsv&#34;&gt;表三：gene.tsv
+&lt;h4 id="表三genetsv"&gt;表三：gene.tsv
 &lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;gene_claim_name&lt;/strong&gt;：基因的声明名称。&lt;/li&gt;
@@ -1360,29 +885,29 @@
 &lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;gene_claim_name&lt;/th&gt;
-          &lt;th&gt;nomenclature&lt;/th&gt;
-          &lt;th&gt;concept_id&lt;/th&gt;
-          &lt;th&gt;gene_name&lt;/th&gt;
-          &lt;th&gt;source_db_name&lt;/th&gt;
-          &lt;th&gt;source_db_version&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;NGFIBA&lt;/td&gt;
-          &lt;td&gt;NCBI Gene Name&lt;/td&gt;
-          &lt;td&gt;NULL&lt;/td&gt;
-          &lt;td&gt;NULL&lt;/td&gt;
-          &lt;td&gt;BaderLab&lt;/td&gt;
-          &lt;td&gt;Feb-14&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;gene_claim_name&lt;/th&gt;
+&lt;th&gt;nomenclature&lt;/th&gt;
+&lt;th&gt;concept_id&lt;/th&gt;
+&lt;th&gt;gene_name&lt;/th&gt;
+&lt;th&gt;source_db_name&lt;/th&gt;
+&lt;th&gt;source_db_version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NGFIBA&lt;/td&gt;
+&lt;td&gt;NCBI Gene Name&lt;/td&gt;
+&lt;td&gt;NULL&lt;/td&gt;
+&lt;td&gt;NULL&lt;/td&gt;
+&lt;td&gt;BaderLab&lt;/td&gt;
+&lt;td&gt;Feb-14&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;基因声明名称为&lt;code&gt;NGFIBA&lt;/code&gt;，基因命名法类型是&lt;code&gt;NCBI Gene Name&lt;/code&gt;，基因概念 ID 是&lt;code&gt;NULL&lt;/code&gt;，基因名称同样为&lt;code&gt;NULL&lt;/code&gt;。基因数据的来源数据库名称是&lt;code&gt;BaderLab&lt;/code&gt;，数据库版本为&lt;code&gt;Feb-14&lt;/code&gt;。&lt;/p&gt;
-&lt;h4 id=&#34;表四categoriestsv&#34;&gt;表四：categories.tsv
+&lt;h4 id="表四categoriestsv"&gt;表四：categories.tsv
 &lt;/h4&gt;&lt;p&gt;其中的各列的意思分别是&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;：某实体的名称（这里可能是基因或其他生物相关实体名称）。&lt;/li&gt;
@@ -1391,46 +916,46 @@
 &lt;li&gt;&lt;strong&gt;source_db_version&lt;/strong&gt;：来源数据库的版本。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;name&lt;/th&gt;
-          &lt;th&gt;name-2&lt;/th&gt;
-          &lt;th&gt;source_db_name&lt;/th&gt;
-          &lt;th&gt;source_db_version&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;PXR&lt;/td&gt;
-          &lt;td&gt;NUCLEAR HORMONE RECEPTOR&lt;/td&gt;
-          &lt;td&gt;BaderLab&lt;/td&gt;
-          &lt;td&gt;Feb-14&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;name-2&lt;/th&gt;
+&lt;th&gt;source_db_name&lt;/th&gt;
+&lt;th&gt;source_db_version&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PXR&lt;/td&gt;
+&lt;td&gt;NUCLEAR HORMONE RECEPTOR&lt;/td&gt;
+&lt;td&gt;BaderLab&lt;/td&gt;
+&lt;td&gt;Feb-14&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;名称为&lt;code&gt;PXR&lt;/code&gt;，另一个相关名称或描述是&lt;code&gt;NUCLEAR HORMONE RECEPTOR&lt;/code&gt;。数据的来源数据库名称是&lt;code&gt;BaderLab&lt;/code&gt;，数据库版本为&lt;code&gt;Feb-14&lt;/code&gt;。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;drugbank&#34;&gt;DrugBank
+&lt;h3 id="drugbank"&gt;DrugBank
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/drugs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;DrugBank&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://go.drugbank.com/drugs" target="_blank" rel="noopener"
+&gt;DrugBank&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;综合药物信息数据库&lt;/strong&gt;，整合了药物的化学、药理、毒理等多方面信息。&lt;/li&gt;
-&lt;li&gt;一个巨大的数据库。这个数据库免费开放给学术用户，但商业使用收费。可以在网页上进行学生/老师认证注册。药物再利用在其中是很小的一个板块，可以在&lt;a class=&#34;link&#34; href=&#34;https://go.drugbank.com/data_packages/drug_repurposing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;这里&lt;/a&gt;下载。&lt;/li&gt;
+&lt;li&gt;一个巨大的数据库。这个数据库免费开放给学术用户，但商业使用收费。可以在网页上进行学生/老师认证注册。药物再利用在其中是很小的一个板块，可以在&lt;a class="link" href="https://go.drugbank.com/data_packages/drug_repurposing" target="_blank" rel="noopener"
+&gt;这里&lt;/a&gt;下载。&lt;/li&gt;
 &lt;li&gt;学生身份目前正在审核状态，无法下载。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;chembl&#34;&gt;ChEMBL
+&lt;h3 id="chembl"&gt;ChEMBL
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ebi.ac.uk/chembl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;ChEMBL&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://www.ebi.ac.uk/chembl/" target="_blank" rel="noopener"
+&gt;ChEMBL&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;ChEMBL 是一个开源的生物活性分子数据库，&lt;strong&gt;专注于小分子化合物与生物靶点之间的相互作用信息。&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;数据大小大约2GB。有不同的版本，提供FTP方式下载，可以在这里下载&lt;a class=&#34;link&#34; href=&#34;https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_35/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;最新的版本ChEMBL_35&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;数据大小大约2GB。有不同的版本，提供FTP方式下载，可以在这里下载&lt;a class="link" href="https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_35/" target="_blank" rel="noopener"
+&gt;最新的版本ChEMBL_35&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;目录中的内容可以参考README文件。主要的部分可以见下图，组织时FASTA文件、SDF文件、HTML文件和TXT文件都有使用。数据可以加载到MySQL、PostgreSQL等数据库中。&lt;/li&gt;
 &lt;li&gt;有官方的数据库结构图如下，主要分成
 &lt;ul&gt;
@@ -1441,22 +966,18 @@
 &lt;li&gt;&lt;strong&gt;作用机制 / 药物注释&lt;/strong&gt;：&lt;strong&gt;浅蓝色&lt;/strong&gt;区域负责注释药物作用机制，关联化合物、靶点和生物效应。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;来源和已批准药物数据&lt;/strong&gt;：&lt;strong&gt;灰色&lt;/strong&gt;区域中，来源信息保证数据可追溯，已批准药物 数据包含批准文号、适应症和生产厂家等，这个应该是用来避免专利壁垒的，可以查看专利即将到期的药物。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;常规信息&lt;/strong&gt;：&lt;strong&gt;浅黄色&lt;/strong&gt;区域存放数据库的版本号、更新时间等基础信息。&lt;br&gt;
-&lt;img src=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1970&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_ce928bb857149d5a.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;ChEMBL整体情况&#34;
-	
-	data-original=&#34;/2025/moleculerepurposing/assets/chembl_35_schema_hu_8526ce051bba571.webp&#34;
-	data-lightbox-width=&#34;3249&#34;
-	data-lightbox-height=&#34;4000&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;81&#34;
-		data-flex-basis=&#34;194px&#34;
-	
+&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp"
+width="1600"
+height="1970"
+srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_ce928bb857149d5a.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/chembl_35_schema_hu_e221aeef17462e54.webp 1600w"
+loading="lazy"
+alt="ChEMBL整体情况"
+data-original="/2025/moleculerepurposing/assets/chembl_35_schema_hu_8526ce051bba571.webp"
+data-lightbox-width="3249"
+data-lightbox-height="4000"
+class="gallery-image"
+data-flex-grow="81"
+data-flex-basis="194px"
 &gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -1465,13 +986,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;bindingdb&#34;&gt;BindingDB
+&lt;h3 id="bindingdb"&gt;BindingDB
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/index.jsp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;BindingDB&lt;/a&gt;
+&lt;li&gt;&lt;a class="link" href="https://www.bindingdb.org/rwd/bind/index.jsp" target="_blank" rel="noopener"
+&gt;BindingDB&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;主要收集药物靶点蛋白质和类药小分子之间的相互作用亲和力数据&lt;/strong&gt;。数据库大小为484.07 MB（&lt;a class=&#34;link&#34; href=&#34;https://www.bindingdb.org/rwd/bind/chemsearch/marvin/SDFdownload.jsp?download_file=/rwd/bind/downloads/BindingDB_All_202504_tsv.zip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;TSV&lt;/a&gt;版本）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主要收集药物靶点蛋白质和类药小分子之间的相互作用亲和力数据&lt;/strong&gt;。数据库大小为484.07 MB（&lt;a class="link" href="https://www.bindingdb.org/rwd/bind/chemsearch/marvin/SDFdownload.jsp?download_file=/rwd/bind/downloads/BindingDB_All_202504_tsv.zip" target="_blank" rel="noopener"
+&gt;TSV&lt;/a&gt;版本）。&lt;/li&gt;
 &lt;li&gt;该数据文件只有一个表格，该表总共包含117列。
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;配体标识与结构（7 列）&lt;/strong&gt;：如 “BindingDB MonomerID” 等，用于确定和描述配体，包括多种结构表示方式和自定义名称。&lt;/li&gt;
@@ -1497,9 +1018,4 @@
 &lt;li&gt;数据库交叉引用：PubChem CID 为 3009304，PubChem SID 为 483500124，方便在 PubChem 数据库中查找该配体更多信息。&lt;/li&gt;
 &lt;li&gt;蛋白质链信息：靶点含 1 条蛋白质链，其序列为 “PQITLWQRPLVTIKIGGQLKEALLDTGADDTVLEEMSLPGRWKPKMIGGIGGFIKVRQYDQILIEICGHKAIGTVLVGPTPVNIIGRNLLTQIGCTLNF”，相关 PDB ID 有 “1W5Y”“1W5X” 等多个，UniProt（SwissProt）相关信息显示，其推荐名称是 “Gag-Pol polyprotein”，Entry Name 为 “POL_HV1BR”，Primary ID 为 “P03367”。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+&lt;/blockquote&gt;</description></item></channel></rss>

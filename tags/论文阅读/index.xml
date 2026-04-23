@@ -1,271 +1,295 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>论文阅读 on ionfeather&#39;Log</title>
-        <link>https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
-        <description>Recent content in 论文阅读 on ionfeather&#39;Log</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <copyright>ionfeather&#39;Log</copyright>
-        <lastBuildDate>Sat, 15 Feb 2025 21:58:31 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>论文阅读 | 多智能体协作机制：大语言模型综述</title>
-        <link>https://ionfeather.github.io/2025/multiagentcollaboration/</link>
-        <pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate>
-        
-        <guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid>
-        <description>&lt;h2 id=&#34;论文阅读--多智能体协作机制大语言模型综述&#34;&gt;论文阅读 | 多智能体协作机制：大语言模型综述
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://arxiv.org/abs/2306.03314&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;[2306.03314] Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;摘要&#34;&gt;摘要
-&lt;/h3&gt;&lt;p&gt;随着大语言模型（LLMs）的最新进展，代理式人工智能（Agentic AI）在现实应用中取得了显著进展，朝着基于多个大语言模型的智能体迈进，实现感知、学习、推理和协同行动。这些基于大语言模型的多智能体系统（MASs）使得一组智能体能够协作解决复杂任务，并以大规模方式实现集体行动，从孤立的模型转向以协作为核心的方法。&lt;/p&gt;
-&lt;p&gt;本文提供了关于多智能体系统协作方面的广泛综述，并提出了一个可扩展的框架来指导未来的研究。我们的框架根据关键维度对协作机制进行表征：参与者（涉及的智能体）、类型（例如，合作、竞争或合作竞争）、结构（例如，点对点、集中式或分布式）、策略（例如，基于角色或基于模型）以及协调协议。通过对现有方法的回顾，我们的研究成果为揭示和推动基于大语言模型的多智能体系统向更加智能和协作的解决方案发展，特别是在复杂的现实应用中，提供了基础。&lt;/p&gt;
-&lt;p&gt;此外，本文还探讨了多智能体系统在不同领域的各种应用，包括5G/6G网络、工业5.0、问答系统、以及社会文化环境，展示了它们的广泛应用和更深远的影响。最后，我们总结了关键经验教训，分析了多智能体系统面临的开放挑战，并指出了朝着人工集体智能发展的潜在研究方向。&lt;/p&gt;
-&lt;h3 id=&#34;文章大纲&#34;&gt;文章大纲
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp&#34;
-	width=&#34;1600&#34;
-	height=&#34;1726&#34;
-	srcset=&#34;https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ae3274dfdd858246.webp 800w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp 1600w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;文章大纲&#34;
-	
-	data-original=&#34;/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_aedb6d02602b4278.webp&#34;
-	data-lightbox-width=&#34;1220&#34;
-	data-lightbox-height=&#34;1316&#34;
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;92&#34;
-		data-flex-basis=&#34;222px&#34;
-	
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>论文阅读 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link><description>Recent content in 论文阅读 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;这篇笔记整理了两篇相关论文：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;综述&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2501.06322" target="_blank" rel="noopener"
+&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）——系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2306.03314" target="_blank" rel="noopener"
+&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）——提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
+&lt;/h2&gt;&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;
+&lt;p&gt;这篇综述的核心贡献是提出了一套统一的分析框架，用 &lt;strong&gt;collaboration channel&lt;/strong&gt; 为分析单元，从类型、结构、策略三个维度刻画 LLM-based MAS 的协作机制。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp"
+width="1600"
+height="1726"
+srcset="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ae3274dfdd858246.webp 800w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp 1600w"
+loading="lazy"
+alt="综述框架示意图"
+data-original="/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_aedb6d02602b4278.webp"
+data-lightbox-width="1220"
+data-lightbox-height="1316"
+class="gallery-image"
+data-flex-grow="92"
+data-flex-basis="222px"
 &gt;
 &lt;/p&gt;
-&lt;h3 id=&#34;应用&#34;&gt;应用
+&lt;h3 id="11-协作类型"&gt;1.1 协作类型
 &lt;/h3&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;方法&lt;/th&gt;
-          &lt;th&gt;领域&lt;/th&gt;
-          &lt;th&gt;主要贡献&lt;/th&gt;
-          &lt;th&gt;优点&lt;/th&gt;
-          &lt;th&gt;缺点&lt;/th&gt;
-          &lt;th&gt;参考文献&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LLM-SC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;作为知识生成器增强语义解码器&lt;/td&gt;
-          &lt;td&gt;利用大语言模型，实现显著的编码增益&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[130]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LaMoSC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;提出一种大语言模型驱动的多模态融合语义通信&lt;/td&gt;
-          &lt;td&gt;在低信噪比条件下表现稳健&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型和视觉 Transformer，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[157]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LAM-MSC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;为多模态数据设计联合编码器；大语言模型作为知识生成器&lt;/td&gt;
-          &lt;td&gt;一个编码器和解码器可处理多种类型的数据；实现更好的编码率和重建误差&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[65]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;GMAC&lt;/td&gt;
-          &lt;td&gt;物联网&lt;/td&gt;
-          &lt;td&gt;利用大语言模型实现观察状态与自然语言之间的语义对齐，并压缩语义信息&lt;/td&gt;
-          &lt;td&gt;提高收敛速度；实现无通信的多智能体协作&lt;/td&gt;
-          &lt;td&gt;由于使用大语言模型，计算资源需求高&lt;/td&gt;
-          &lt;td&gt;[160]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;LLM-Blender&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;采用多种大语言模型代理的集成方法进行候选排序&lt;/td&gt;
-          &lt;td&gt;能够生成比现有候选更好的输出&lt;/td&gt;
-          &lt;td&gt;为实现最优解，需要进行 O (n) 次推理，导致计算开销大&lt;/td&gt;
-          &lt;td&gt;[64]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SOT&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;并行生成每个答案框架；完成答案内容（需要规划结构）&lt;/td&gt;
-          &lt;td&gt;通过并行加速推理速度；适用于需要长结构答案的问题&lt;/td&gt;
-          &lt;td&gt;答案质量评估远非完美，由于提示集有限；不同代理的并行请求可能会影响服务吞吐量&lt;/td&gt;
-          &lt;td&gt;[95]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Meta-Prompting&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;构建高级元提示来指导大语言模型&lt;/td&gt;
-          &lt;td&gt;保持连贯的推理思路；挖掘各种专家角色&lt;/td&gt;
-          &lt;td&gt;多次模型调用成本较高；需要大量的规模和相当大的上下文窗口&lt;/td&gt;
-          &lt;td&gt;[119]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;MAD&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;两个代理表达各自的论点；一个评判者监控和管理辩论&lt;/td&gt;
-          &lt;td&gt;减少偏差和扭曲的认知；鼓励无限的外部反馈&lt;/td&gt;
-          &lt;td&gt;由于辩论时间长，计算成本高；大语言模型在长场景中难以保持连贯性和相关性&lt;/td&gt;
-          &lt;td&gt;[77]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;FORD&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;包括三个阶段的辩论：公平辩论、不匹配辩论、圆桌辩论&lt;/td&gt;
-          &lt;td&gt;通过辩论让大语言模型探索自身理解与他人概念化之间的差异&lt;/td&gt;
-          &lt;td&gt;除常识推理外，无法涵盖各种任务；严重依赖多项选择任务，限制了其泛化能力&lt;/td&gt;
-          &lt;td&gt;[140]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;ChatDev&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;采用聊天链将每个阶段分解为更小的子任务，实现代理之间的多轮通信，以协作开发解决方案&lt;/td&gt;
-          &lt;td&gt;最大限度减少代码幻觉（提供的源代码缺失的情况）&lt;/td&gt;
-          &lt;td&gt;没有清晰、详细的要求时，代理难以理解任务想法；通用软件的自动化评估非常复杂；多个代理需要更多的令牌和时间，导致计算需求大&lt;/td&gt;
-          &lt;td&gt;[105]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentVerse&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;由专家招募、协作决策、行动执行、评估四个阶段组成&lt;/td&gt;
-          &lt;td&gt;提高大语言模型在不确定情况下的泛化能力；提高代理的适应性&lt;/td&gt;
-          &lt;td&gt;协作决策过程中代理之间的通信存在挑战&lt;/td&gt;
-          &lt;td&gt;[24]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentCoord&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;为协调策略提供结构化表示；采用三阶段方法将一般目标转化为可执行策略&lt;/td&gt;
-          &lt;td&gt;简化协调策略的表示和探索；最小化代理的重复实例&lt;/td&gt;
-          &lt;td&gt;仅支持在纯文本环境中协调代理协作；仅支持静态协调策略设计&lt;/td&gt;
-          &lt;td&gt;[97]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;OpenAI&amp;rsquo;s Swarm&lt;/td&gt;
-          &lt;td&gt;自然语言生成&lt;/td&gt;
-          &lt;td&gt;用于多智能体编排的例程和交接；轻量级协调与执行框架&lt;/td&gt;
-          &lt;td&gt;适用于需要可扩展性的应用；交接机制允许在专门代理之间实现无缝过渡&lt;/td&gt;
-          &lt;td&gt;主要关注基于角色的协议和集中式 / 分布式结构；尚未准备好投入生产&lt;/td&gt;
-          &lt;td&gt;见原文&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;TE&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;在主题研究中模拟人类参与者的代表性样本&lt;/td&gt;
-          &lt;td&gt;能够模拟不同的人类行为，并揭示模拟中的一致偏差&lt;/td&gt;
-          &lt;td&gt;需要研究更多的人类行为和额外的大语言模型，以确保关键发现的准确性&lt;/td&gt;
-          &lt;td&gt;[36]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;AgentInstruct&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;通过迭代的跨代理细化生成多样化的自然语言数据，包括文化数据&lt;/td&gt;
-          &lt;td&gt;能够通过工具使用、代理能力等从生成的数据中训练更强大的模型&lt;/td&gt;
-          &lt;td&gt;需要人工构建生成流程&lt;/td&gt;
-          &lt;td&gt;[88]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;SocialMind&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;整合言语、非言语和社交线索，通过增强现实眼镜生成现场建议&lt;/td&gt;
-          &lt;td&gt;设计并利用多模态、多层协作代理系统&lt;/td&gt;
-          &lt;td&gt;需要先进的边缘硬件来处理复杂系统&lt;/td&gt;
-          &lt;td&gt;[144]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;CulturePark&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;促使基于大语言模型的代理进行跨文化交流模拟&lt;/td&gt;
-          &lt;td&gt;生成的数据可用于训练具有不同文化背景的模型，减少偏差并实现民主化&lt;/td&gt;
-          &lt;td&gt;仍然依赖大语言模型对每种文化的了解，因此对资源较少的文化效果有限&lt;/td&gt;
-          &lt;td&gt;[73]&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Mango&lt;/td&gt;
-          &lt;td&gt;社会与文化领域&lt;/td&gt;
-          &lt;td&gt;通过对概念和文化的提示，从基于大语言模型的代理中提取高质量知识&lt;/td&gt;
-          &lt;td&gt;自动化方法可生成大量资源&lt;/td&gt;
-          &lt;td&gt;人类评估需要来自更多样化的背景&lt;/td&gt;
-          &lt;td&gt;[94]&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;th&gt;典型场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Cooperation&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;agent 共享同一目标，分工协作&lt;/td&gt;
+&lt;td&gt;任务分配清晰，设计简单&lt;/td&gt;
+&lt;td&gt;目标偏差会放大错误，单点失败影响全局&lt;/td&gt;
+&lt;td&gt;代码生成、问答、决策&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Competition&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;agent 各自优化自身目标，可能相互对立&lt;/td&gt;
+&lt;td&gt;促进更优解，提升系统鲁棒性&lt;/td&gt;
+&lt;td&gt;需要冲突解决机制，过度竞争会影响对齐&lt;/td&gt;
+&lt;td&gt;辩论、游戏对抗、候选答案筛选&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Coopetition&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;在共享任务上合作，在部分目标上竞争&lt;/td&gt;
+&lt;td&gt;平衡各方利益，更接近现实决策场景&lt;/td&gt;
+&lt;td&gt;研究还少，机制复杂&lt;/td&gt;
+&lt;td&gt;谈判、MoE 模型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Cooperation&lt;/strong&gt; 是目前最主流的形式。CAMEL 用角色扮演对话让两个 agent 协作完成任务；AutoGen 允许灵活定义 agent 行为和通信模式；MetaGPT 把 SOPs 编码进提示，让 agent 像流水线一样分工。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Competition&lt;/strong&gt; 最典型的用途是辩论——多个 agent 持不同立场互相质疑，最后由裁判 agent 综合。LLMARENA 在 7 个游戏环境里系统评测了竞争式 MAS。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Coopetition&lt;/strong&gt; 尚处于早期。MoE（Mixture of Experts）在某种程度上符合这个模式：多个专家模型竞争上岗，但最终结果是合作产出。&lt;/p&gt;
+&lt;h3 id="12-协作策略"&gt;1.2 协作策略
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;策略&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;th&gt;典型场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Rule-based&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;agent 交互严格受预定义规则约束&lt;/td&gt;
+&lt;td&gt;高效、可预测、一致性好&lt;/td&gt;
+&lt;td&gt;适应性差，规则集随任务复杂度指数增长&lt;/td&gt;
+&lt;td&gt;问答、共识搜索、导航、同行评审&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Role-based&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;每个 agent 承担特定角色和职责&lt;/td&gt;
+&lt;td&gt;模块化、可复用，发挥各自专长&lt;/td&gt;
+&lt;td&gt;角色僵化时难以应对预期外场景&lt;/td&gt;
+&lt;td&gt;软件开发、机器人协作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Model-based&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;agent 基于对环境和他人的概率模型做决策&lt;/td&gt;
+&lt;td&gt;适应动态环境，对不确定性鲁棒&lt;/td&gt;
+&lt;td&gt;实现复杂，计算开销大&lt;/td&gt;
+&lt;td&gt;游戏、机器人、动态决策&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Rule-based 的典型是&lt;strong&gt;同行评审&lt;/strong&gt;场景——论文评审流程本身就是一套规则，agent 按步骤执行。Role-based 的典型是 ChatDev 和 MetaGPT，把软件开发团队的角色（PM、架构师、开发者、测试员）映射给不同 agent。Model-based 则常见于博弈和机器人场景，agent 需要推断对手意图并动态调整策略。&lt;/p&gt;
+&lt;h3 id="13-通信结构"&gt;1.3 通信结构
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;结构&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;th&gt;典型场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Centralized&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;所有协作决策由中央 agent 统筹&lt;/td&gt;
+&lt;td&gt;简单，资源分配高效&lt;/td&gt;
+&lt;td&gt;中央节点是单点故障，系统韧性差&lt;/td&gt;
+&lt;td&gt;决策制定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Decentralized&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;决策分散在多个 agent，点对点通信&lt;/td&gt;
+&lt;td&gt;单点失败不影响全局，可扩展性高&lt;/td&gt;
+&lt;td&gt;通信开销大，资源分配效率低&lt;/td&gt;
+&lt;td&gt;问答、推理、代码生成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Hierarchical&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;agent 分层排列，跨层级通信受限&lt;/td&gt;
+&lt;td&gt;任务在层级间分配，降低单点压力&lt;/td&gt;
+&lt;td&gt;底层故障向上传播，延迟高&lt;/td&gt;
+&lt;td&gt;代码生成、问答、故事生成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Centralized 的典型是 Federated Learning（FL）——中央聚合节点协调所有客户端 agent。Decentralized 的典型是 MARG（多 agent 论文评审）。Hierarchical 的典型是 DyLAN，用多层 agent 网络动态筛选最优贡献者。&lt;/p&gt;
+&lt;h3 id="14-协调与编排"&gt;1.4 协调与编排
+&lt;/h3&gt;&lt;p&gt;协调决定协作信道如何被创建、排序和管理，分两类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;静态编排&lt;/strong&gt;：依赖预先定义的领域知识和规则建立协作信道。典型是顺序链式调用（sequential chaining）——前一个 agent 的输出是后一个的输入。优点是一致性好，缺点是遇到预定义规则外的情况会失效&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态编排&lt;/strong&gt;：系统实时分配角色和信道，适应变化的任务需求。典型是 Management Agent 根据任务动态构建 DAG（有向无环图），或 Solo Performance Prompting（SPP）在运行时动态生成对应的 persona&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="二框架实现talebirad--nadiri-2023"&gt;二、框架实现（Talebirad &amp;amp; Nadiri, 2023）
+&lt;/h2&gt;&lt;p&gt;如果综述回答的是&amp;quot;多智能体系统有哪些协作方式&amp;quot;，这篇回答的是&amp;quot;一个具体的多智能体系统怎么设计和实现&amp;quot;。&lt;/p&gt;
+&lt;h3 id="21-agent-的形式化表示"&gt;2.1 Agent 的形式化表示
+&lt;/h3&gt;&lt;p&gt;系统被建模为图 $G(V, E)$，$V$ 是 agent 和插件的集合，$E$ 是连接通道。&lt;/p&gt;
+&lt;p&gt;每个 agent $i$ 表示为五元组 $A_i = (L_i, R_i, S_i, C_i, H_i)$：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;$L_i$（语言模型）&lt;/strong&gt;：具体模型实例及配置（temperature 等）。GPT-4 适合深度推理，GPT-3.5-turbo 适合快速响应&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$R_i$（角色）&lt;/strong&gt;：agent 在系统中的职责&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$S_i$（状态）&lt;/strong&gt;：当前知识库和&amp;quot;想法&amp;quot;——知识是对环境的理解，想法是当前关注点，每次交互后更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$C_i$（创建权限）&lt;/strong&gt;：是否有权动态创建新 agent&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;$H_i$（停止权限）&lt;/strong&gt;：有权叫停哪些 agent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个插件 $j$ 表示为 $P_j = (F_j, C_j, U_j)$：功能集合、配置参数、使用约束。插件让 agent 能访问外部工具、数据库、API。&lt;/p&gt;
+&lt;h3 id="22-关键机制"&gt;2.2 关键机制
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;动态 agent 创建&lt;/strong&gt;：当 $C_i = \text{true}$ 时，agent 可以在运行时动态生成新 agent，为其分配角色和权限。这让系统在负载突然增加时自动扩容，而不需要提前规划所有 agent。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反馈机制&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Inter-agent 反馈&lt;/em&gt;：agent 之间互相提供改进意见，参考 CAMEL 的 Inception Prompting&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;自反馈&lt;/em&gt;：用一对 agent 模拟——一个给反馈，一个修改输出，免去人工介入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Oracle Agent&lt;/strong&gt;：无状态、无记忆，每次完全基于当前输入行动。适合做独立评估——不受历史偏见影响，常用于监控主 agent 的响应质量。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervisor Agent&lt;/strong&gt;：持续监控主 agent 的任务进度，检测到死循环或偏离时主动发起停止命令。把&amp;quot;需要人类一直盯着&amp;quot;的监督工作自动化。&lt;/p&gt;
+&lt;h3 id="23-案例auto-gpt-与-babyagi"&gt;2.3 案例：Auto-GPT 与 BabyAGI
+&lt;/h3&gt;&lt;p&gt;论文用这套框架重新建模了两个知名系统：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Auto-GPT&lt;/strong&gt;：建模为单 agent，浏览器/文件/代码执行等能力对应不同插件；Supervisor Agent 检测死循环；Oracle Agent 做安全监控&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BabyAGI&lt;/strong&gt;：建模为三 agent 系统——任务创建 agent、优先级排序 agent、执行 agent；向量数据库作为插件负责任务存储和检索&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="24-案例法庭与软件开发"&gt;2.4 案例：法庭与软件开发
+&lt;/h3&gt;&lt;p&gt;两个场景展示框架的通用性：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;法庭模拟&lt;/strong&gt;：法官、陪审团、控辩律师、证人、书记员各对应一个 agent，每个配备对应工具插件（法律知识库、证据分析工具、文档管理等），按真实庭审流程交互。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;软件开发&lt;/strong&gt;：UX 设计师、产品经理、架构师、开发者、测试员、UI 设计师、调试员各为一个 agent，Oracle Agent 做整体质量反馈。映射了真实软件团队的分工结构。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="三应用领域"&gt;三、应用领域
+&lt;/h2&gt;&lt;p&gt;以下是两篇论文覆盖的主要实际系统，按领域整理：&lt;/p&gt;
+&lt;h3 id="物联网--语义通信"&gt;物联网 / 语义通信
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;主要贡献&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LLM-SC&lt;/td&gt;
+&lt;td&gt;LLM 作为知识生成器增强语义解码器&lt;/td&gt;
+&lt;td&gt;计算资源需求高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LaMoSC&lt;/td&gt;
+&lt;td&gt;LLM 驱动多模态融合语义通信，低信噪比下稳健&lt;/td&gt;
+&lt;td&gt;计算资源需求高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LAM-MSC&lt;/td&gt;
+&lt;td&gt;联合编码器处理多模态数据&lt;/td&gt;
+&lt;td&gt;计算资源需求高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GMAC&lt;/td&gt;
+&lt;td&gt;LLM 实现状态与语言的语义对齐，支持无通信协作&lt;/td&gt;
+&lt;td&gt;计算资源需求高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;物联网方向的共同瓶颈：LLM 的计算开销在边缘设备上难以承受，这是结构性矛盾。&lt;/p&gt;
+&lt;h3 id="自然语言生成"&gt;自然语言生成
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;主要贡献&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LLM-Blender&lt;/td&gt;
+&lt;td&gt;多 LLM 集成候选排序&lt;/td&gt;
+&lt;td&gt;O(n) 次推理，开销大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SOT&lt;/td&gt;
+&lt;td&gt;并行生成答案框架再填充&lt;/td&gt;
+&lt;td&gt;评估质量受限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Meta-Prompting&lt;/td&gt;
+&lt;td&gt;元提示切换专家角色&lt;/td&gt;
+&lt;td&gt;需要大上下文窗口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;MAD&lt;/td&gt;
+&lt;td&gt;两 agent 辩论 + 评判者监控&lt;/td&gt;
+&lt;td&gt;长场景难保连贯&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ChatDev&lt;/td&gt;
+&lt;td&gt;聊天链拆解软件开发为子任务&lt;/td&gt;
+&lt;td&gt;需求不清晰时难理解任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AgentVerse&lt;/td&gt;
+&lt;td&gt;招募→决策→执行→评估四阶段&lt;/td&gt;
+&lt;td&gt;agent 间通信存在挑战&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OpenAI Swarm&lt;/td&gt;
+&lt;td&gt;例程与交接机制的轻量级编排框架&lt;/td&gt;
+&lt;td&gt;尚未生产就绪&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="社会与文化"&gt;社会与文化
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;主要贡献&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;TE&lt;/td&gt;
+&lt;td&gt;模拟人类参与者样本，揭示一致偏差&lt;/td&gt;
+&lt;td&gt;需要更多人类行为数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;AgentInstruct&lt;/td&gt;
+&lt;td&gt;跨 agent 迭代细化生成多样化数据&lt;/td&gt;
+&lt;td&gt;需要人工构建生成流程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CulturePark&lt;/td&gt;
+&lt;td&gt;促进跨文化交流模拟，生成多文化训练数据&lt;/td&gt;
+&lt;td&gt;低资源文化效果有限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SocialMind&lt;/td&gt;
+&lt;td&gt;AR 眼镜实时整合多模态社交线索&lt;/td&gt;
+&lt;td&gt;依赖先进边缘硬件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;六个思考帽的设计&#34;&gt;六个思考帽的设计
-&lt;/h2&gt;&lt;h3 id=&#34;白色思考帽&#34;&gt;白色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：收集客观信息。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;对论文进行解析。&lt;/li&gt;
-&lt;li&gt;从论文文本中抽取结构化数据。&lt;/li&gt;
-&lt;li&gt;从网络中搜索作者之前的研究成果。&lt;/li&gt;
-&lt;li&gt;从网络中搜索同类研究的对比数据。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;绿色思考帽&#34;&gt;绿色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：对论文提出创新性改进，探索论文的可能性&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;未定。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;黄色思考帽&#34;&gt;黄色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：积极角度评估论文，找出论文的优点和贡献。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;用优点和创新点微调后的大模型。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;黑色思考帽&#34;&gt;黑色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：批判性思考，找出论文的问题和不足。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;用批判性数据集微调后的大模型。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;红色思考帽&#34;&gt;红色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：主观感受和直觉判断。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;让智能体多阅读论文，找到好的论文之间的共性和形成自己的「偏好」。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;蓝色思考帽&#34;&gt;蓝色思考帽
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：控制评审流程。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;实现方式&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;未定。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;蓝色思考帽智能体应该如何控制&#34;&gt;蓝色思考帽智能体应该如何控制？
-&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;基于&lt;strong&gt;工作流管理&lt;/strong&gt;的集中式控制方法。蓝色智能体明确规定了其他智能体的工作顺序、时间和交互方式。&lt;/li&gt;
-&lt;li&gt;基于&lt;strong&gt;协商机制&lt;/strong&gt;的分布式控制方法。在评审开始时，蓝色智能体发起评审任务，各思考帽智能体根据自身能力和状态反馈可承担的工作及预计时间。比如白色告诉蓝色需要5分钟完成，绿色说在白色完成后需要10分钟&amp;hellip;通过这些反馈，蓝色智能体来制定计划。&lt;/li&gt;
-&lt;li&gt;基于&lt;strong&gt;事件驱动&lt;/strong&gt;的动态控制方法。不同的智能体换成之后会触发不同的事件，如白色完成后让绿色工作，黑色和黄色在辩论后无法达成共识，就再次进行辩论等。这个事件定义较难。&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+&lt;h2 id="四几点观察"&gt;四、几点观察
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。但现实任务往往是混合的——谈判、政策制定这类场景天然就是合作竞争，这个方向的研究潜力还没被充分挖掘。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠，也比人工盯着省力。这个机制简单但实用，在工程落地上价值很高。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。单个任务的准确率能测，但&amp;quot;协作质量&amp;quot;怎么测、&amp;ldquo;分工是否合理&amp;quot;怎么量化，目前没有标准答案。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作是推理时的&amp;quot;外挂&amp;rdquo;，而不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身，天花板比较明显。&lt;/p&gt;</description></item></channel></rss>
