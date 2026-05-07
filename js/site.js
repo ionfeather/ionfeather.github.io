@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ========== 主页文章卡片 stagger 动画 ========== */
+document.addEventListener('DOMContentLoaded', function () {
+  var list = document.querySelector('.article-list');
+  if (!list) return;
+  list.querySelectorAll('article').forEach(function (article, i) {
+    var anim = i % 2 === 0 ? 'slideInLeft' : 'slideInRight';
+    article.style.animation = anim + ' 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both';
+    article.style.animationDelay = (0.04 + i * 0.07) + 's';
+  });
+});
+
 /* ========== 切换深色/亮色时出现小豆泥 ========== */
 (function () {
   var darkSrc  = '/stickers/azuki/030.png';
