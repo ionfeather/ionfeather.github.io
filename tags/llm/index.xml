@@ -1,4 +1,341 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm/</link><description>Recent content in LLM on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Sun, 12 Apr 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时，一直有个绕不过去的问题：agent 生成的内容质量怎么评？人工标注太慢，让 LLM 直接打分又不知道该不该信。后来想到学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是&amp;quot;用 LLM 做复杂内容的质量判断&amp;quot;。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm/</link><description>Recent content in LLM on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 07 May 2026 21:35:18 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;SGLang, a Structured Generation Language for LLMs，论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
+&gt;[2312.07104] SGLang: Efficient Execution of Structured Language Model Programs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="解决的问题"&gt;解决的问题
+&lt;/h2&gt;&lt;p&gt;尽管LM程序被广泛使用，但当前用于表达和执行它们的系统仍然低效。我们确定了与高效使用LM程序相关的两个主要挑战：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;编写LM程序既繁琐又困难。开发LM程序通常需要大量的字符串处理、提示的实验性调整、脆弱的输出解析、处理多种输入模态以及实现并行机制。&lt;/li&gt;
+&lt;li&gt;由于大量计算和内存浪费，启动LM程序效率不高。&lt;/li&gt;
+&lt;li&gt;Key-Value的重用策略不佳&lt;/li&gt;
+&lt;li&gt;结构化输出一个一个token预测，太慢了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="基本框架"&gt;基本框架
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_b49e6e3acc698c16.webp"
+width="1600"
+height="322"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_31e4615c340815ef.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_b49e6e3acc698c16.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628650_hu_34bd412715dd18c5.webp"
+data-lightbox-width="915"
+data-lightbox-height="184"
+class="gallery-image"
+data-flex-grow="497"
+data-flex-basis="1193px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="frontend"&gt;Frontend
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;SGLang 是一种嵌入在 Python 中的领域特定语言（DSL，Domain Specific Language）&lt;/li&gt;
+&lt;li&gt;提供了针对 LLM 编程的原语，支持并行性、控制流、嵌套调用和外部调用&lt;/li&gt;
+&lt;li&gt;SGLang 的设计目标是简化 LLM 程序的编写，并通过解释器、编译器和高性能运行时来提高执行效率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="interpreter"&gt;Interpreter
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;将前端代码转换为流式操作序列，异步提交给运行时&lt;/li&gt;
+&lt;li&gt;维护提示（Prompt）的中间状态（如对话历史、生成结果），确保多轮调用间的上下文一致性&lt;/li&gt;
+&lt;li&gt;支持将程序编译为静态计算图，进一步优化执行性能（如减少冗余计算)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="backend"&gt;Backend
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;RadixAttention：用于在运行时自动重用 Key-Value（KV）缓存。该技术通过在基数树（radix tree）中维护一个最近最少使用（LRU）缓存，实现了多个生成调用之间的自动 KV 缓存重用。（在现有的推理引擎中，请求的KV缓存在处理完成后会被丢弃，这阻止了KV缓存在多次调用之间的重用，并显著减慢了执行速度）&lt;/li&gt;
+&lt;li&gt;Compressed finite state machines（压缩有限状态机）：实现更快的结构化输出解码。在可能的情况下将多标记路径压缩为单步路径，允许一次性解码多个标记，从而实现更快的解码速度（现有的系统仅遵循下一个标记的约束，通过屏蔽不允许的标记的概率来实现，这使得它们每次只能解码一个标记）&lt;/li&gt;
+&lt;li&gt;API speculative execution （API 推测性执行）：API推测性执行，以优化仅API模型的多调用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总的来说，后端的用处是解决加速问题。&lt;/p&gt;
+&lt;h2 id="programming-model"&gt;Programming Model
+&lt;/h2&gt;&lt;h3 id="运行实例"&gt;运行实例
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_d1b9c3ec09b50b56.webp"
+width="1600"
+height="1123"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_e1562b1cad05019b.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_d1b9c3ec09b50b56.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628664_hu_c8eb89672850adee.webp"
+data-lightbox-width="1049"
+data-lightbox-height="736"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="342px"
+&gt;
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;函数 &lt;code&gt;multi_dimensional_judge&lt;/code&gt; 接受三个参数：&lt;code&gt;s&lt;/code&gt;、&lt;code&gt;path&lt;/code&gt; 和 &lt;code&gt;essay&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;其中，&lt;code&gt;s&lt;/code&gt; 管理提示状态，&lt;code&gt;path&lt;/code&gt; 是图像文件路径，&lt;code&gt;essay&lt;/code&gt; 是论文文本。&lt;/li&gt;
+&lt;li&gt;可以使用 &lt;code&gt;+=&lt;/code&gt; 操作符将新字符串和 SGLang 原语追加到状态 &lt;code&gt;s&lt;/code&gt; 中以执行。&lt;/li&gt;
+&lt;li&gt;该函数首先将图像和论文添加到提示中，然后使用 &lt;code&gt;select&lt;/code&gt; 检查论文是否与图像相关，将结果存储在 &lt;code&gt;s[&amp;quot;related&amp;quot;]&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;如果相关，则将 &lt;code&gt;fork&lt;/code&gt; 三个副本以并行评估不同维度，使用 &lt;code&gt;gen&lt;/code&gt; 将结果存储在 &lt;code&gt;f[&amp;quot;judgment&amp;quot;]&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;接下来，它合并评估结果，生成摘要，并分配字母等级。&lt;/li&gt;
+&lt;li&gt;最后，它以 &lt;code&gt;JSON&lt;/code&gt; 格式返回结果，遵循由正则表达式约束 &lt;code&gt;regex&lt;/code&gt; 定义的模式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="原语"&gt;原语
+&lt;/h3&gt;&lt;p&gt;SGLang 提供了用于控制提示状态、生成和并行性的原语。它们可以与 Python 语法和库一起使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gen&lt;/code&gt;：调用模型进行生产并存储在第一个参数指定的名称命名的变量中。支持正则实现结构化输出。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;select&lt;/code&gt;：调用模型从列表中选择概率最高的选项&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;+=&lt;/code&gt; / &lt;code&gt;extend&lt;/code&gt;：将字符串追加到 &lt;code&gt;prompt&lt;/code&gt; 中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[variable name]&lt;/code&gt;：获取生成的结果&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fork&lt;/code&gt;：并行分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;join&lt;/code&gt;：重新连接提示状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;image&lt;/code&gt; / &lt;code&gt;video&lt;/code&gt;：图像/视频输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="执行模式"&gt;执行模式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;eager&lt;/code&gt;：最简单的是通过 Compiler，将 Prompt 视为异步执行流。像 &lt;code&gt;extend&lt;/code&gt;、&lt;code&gt;gen&lt;/code&gt; 和 &lt;code&gt;select&lt;/code&gt; 这样的原语被提交到流中以异步执行。这些非阻塞调用允许 Python 代码继续运行，而无需等待生成完成，类似于异步启动 CUDA 内核。每个提示由后台线程中的流执行器管理，实现程序内并行性。获取生成结果会阻塞，直到结果准备好，以确保正确的同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;：可以被编译为计算图，通过图执行器执行，从而实现更多的优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="efficient-kv-cache-reuse-with-radixattention"&gt;Efficient KV Cache Reuse with RadixAttention
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_64e2fb6b62290d59.webp"
+width="1600"
+height="856"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_df7a7a921549964c.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_64e2fb6b62290d59.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628671_hu_8d0a4bec38ea7ed3.webp"
+data-lightbox-width="1282"
+data-lightbox-height="686"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="448px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="radixattention"&gt;RadixAttention
+&lt;/h3&gt;&lt;p&gt;KV cache经常需要重复使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SGLang 程序可以将多个生成调用进行链式组合，并通过 &lt;code&gt;fork&lt;/code&gt; 原语创建并行副本。此外，不同的程序实例通常会共享一些公共部分（例如系统 Prompt）。这些场景在执行过程中会产生许多共享的 token 前缀，从而为 KV 缓存的重用提供了大量机会。&lt;/li&gt;
+&lt;li&gt;使用树结构维护历史的 KV cache，从而减少 prefix KV cache 的计算，达到减少 prefill 计算的效果；&lt;/li&gt;
+&lt;li&gt;KV 缓存的计算仅仅取决于所有先前的 token，所以前缀相同的不同序列可以重复使用前缀标记的 KV 缓存，避免冗余计算。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_5b05ebce8aab7874.webp"
+width="1600"
+height="1204"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_121e2923881b914b.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_5b05ebce8aab7874.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628692_hu_3fe2a1b8c2b9d7bc.webp"
+data-lightbox-width="937"
+data-lightbox-height="705"
+class="gallery-image"
+data-flex-grow="132"
+data-flex-basis="318px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;节点采用颜色编码以反映不同的状态：绿色表示新添加的节点，蓝色表示在该时间点访问的缓存节点，红色表示已被驱逐的节点。&lt;/p&gt;
+&lt;p&gt;在步骤(1)中，基数树最初是空的。&lt;/p&gt;
+&lt;p&gt;在步骤(2)中，服务器处理传入的用户消息“Hello”并以LLM输出“Hi”进行响应。系统提示“您是一个有用的助手”，用户留言“您好！”，LLM回复“您好！”作为链接到新节点的单边合并到树中。&lt;/p&gt;
+&lt;p&gt;在步骤(3)中，新的提示到达，服务器在基数树中找到该提示的前缀（即会话的第一轮）并重用其KV缓存。新的回合作为新节点附加到树中。&lt;/p&gt;
+&lt;p&gt;在步骤(4)中，新的聊天会话开始。 (3) 中的节点“b”被分成两个节点，以允许两个聊天会话共享系统提示。&lt;/p&gt;
+&lt;p&gt;在步骤(5)中，第二聊天会话继续。然而，由于内存限制，(4) 中的节点“c”必须被逐出。新的回合被附加在(4)中的节点“d”之后。&lt;/p&gt;
+&lt;p&gt;在步骤(6)中，服务器接收小样本学习查询，对其进行处理，并将其插入到树中。根节点被拆分，因为新查询不与现有节点共享任何前缀。&lt;/p&gt;
+&lt;p&gt;在步骤（7）中，服务器接收一批额外的小样本学习查询。这些查询共享同一组少数样本示例，因此我们从 (6) 中拆分节点“e”以实现共享。&lt;/p&gt;
+&lt;p&gt;在步骤(8)中，服务器从第一聊天会话接收新消息。它从第二个聊天会话中驱逐所有节点（节点“g”和“h”），因为它们最近最少使用。&lt;/p&gt;
+&lt;p&gt;在步骤(9)中，服务器接收到对来自(8)的节点“j”中的问题采样更多答案的请求，可能是为了自我一致性提示。为了为这些请求腾出空间，我们在 (8) 中逐出节点“i”、“k”和“l”。&lt;/p&gt;
+&lt;h3 id="缓存感知"&gt;缓存感知
+&lt;/h3&gt;&lt;p&gt;对于请求的前缀长度排序，按深度优先搜索（DFS）顺序获得最佳的缓存命中率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当等待队列中有许多请求时，它们的执行顺序对缓存命中率有显著影响。例如，如果请求调度器频繁地在不同的、不相关的请求之间切换，可能会导致缓存抖动和低命中率。&lt;/li&gt;
+&lt;li&gt;缓存感知调度策略的目的是提高缓存命中率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，策略是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在批处理设置中，按照匹配的前缀长度对请求进行排序，并优先处理匹配前缀较长的请求，而不是采用先到先得的调度方式；&lt;/li&gt;
+&lt;li&gt;最长共享前缀优先顺序等同于深度优先搜索顺序（DFS）；&lt;/li&gt;
+&lt;li&gt;在线情况下，DFS顺序会被破坏，但调度仍然近似于在完整基数树的扩展部分上的DFS行为。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="基于缓存感知的radixattention连续批处理调度"&gt;基于缓存感知的RadixAttention连续批处理调度
+&lt;/h3&gt;&lt;p&gt;算法如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_ce942a7f0ef40769.webp"
+width="1600"
+height="1725"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_1d0f04fd21c7ab07.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_ce942a7f0ef40769.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628697_hu_16a3e921955eaa68.webp"
+data-lightbox-width="744"
+data-lightbox-height="802"
+class="gallery-image"
+data-flex-grow="92"
+data-flex-basis="222px"
+&gt;
+&lt;/p&gt;
+&lt;h2 id="data-parallel-distributed-radixattention"&gt;Data-Parallel Distributed RadixAttention
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Worker：维护自己的子树&lt;/li&gt;
+&lt;li&gt;Router：负责管理一个元树，这个元树负责充当一个字典树，用于跟踪所有的子树和关联设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体来说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新的请求到达 Router 时，会在元树上执行前缀匹配&lt;/li&gt;
+&lt;li&gt;根据每个请求的 affinity（通过与特定 Worker 和同一组中其他请求共享前缀的长度来衡量），Router 实施各种策略来做出高效的调度决策，以最小化冗余计算&lt;/li&gt;
+&lt;li&gt;每次处理新请求时，路由器和工作器都会独立更新各自的树。&lt;/li&gt;
+&lt;li&gt;如果 Worker 节点发生逐出（eviction），它会将此逐出提交到一个队列中。Router 会在活动量较低的时期处理此队列，以更新元树。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="压缩有限状态机"&gt;压缩有限状态机
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://oi-wiki.org/misc/fsm/" target="_blank" rel="noopener"
+&gt;有限状态自动机 - OI Wiki&lt;/a&gt;这篇wiki介绍了有限状态自动机，以及其和正则表达式之间的关系。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_3bb7878ab59a0eef.webp"
+width="1600"
+height="746"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_1d11b973e3cde515.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_3bb7878ab59a0eef.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628703_hu_ac0303d1e993419d.webp"
+data-lightbox-width="912"
+data-lightbox-height="425"
+class="gallery-image"
+data-flex-grow="214"
+data-flex-basis="515px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;用户经常希望遵循约束模型的输出，如 JSON 格式，目前的系统基本用的方法是 &lt;code&gt;Normal FSM&lt;/code&gt;，其解决方案是 decode 的时候将下一个状态的非法 token 的可能性设置为 0。&lt;/p&gt;
+&lt;p&gt;但是这存在一些问题：这个方法是逐个词元（token-by-token）地进行解码的。这意味着即使像 {&amp;ldquo;summary&amp;rdquo;: &amp;quot; 这种固定不变的字符串序列，它在模型内部可能由多个词元组成，现有系统也必须一个词元一个词元地处理，这非常低效。&lt;/p&gt;
+&lt;p&gt;而 SGLang 通过一个 fast constrained decoding runtime with a compressed FSM 解决此问题。把 FSM 中相邻的、只有一个转换路径的边（singular-transition edges）压缩成一条单一的边。这样就可以一次 decode 生成多个 token，大大加快了速度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.lmsys.org/blog/2024-02-05-compressed-fsm/" target="_blank" rel="noopener"
+&gt;Fast JSON Decoding for Local LLMs with Compressed Finite State Machine - LMSYS Blog | LMSYS Org&lt;/a&gt;这里有一个博客可以参考，以供更深入的理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_249771119bd12b15.webp"
+width="1600"
+height="469"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_d7dd4b32e35d54c4.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_249771119bd12b15.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628709_hu_ce59d86d377e96b1.webp"
+data-lightbox-width="921"
+data-lightbox-height="270"
+class="gallery-image"
+data-flex-grow="341"
+data-flex-basis="818px"
+&gt;
+&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_7d27768669d8bf50.webp"
+width="1600"
+height="791"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_ebe67fe3b66fce43.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_7d27768669d8bf50.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628727_hu_50c45af1b846f532.webp"
+data-lightbox-width="922"
+data-lightbox-height="456"
+class="gallery-image"
+data-flex-grow="202"
+data-flex-basis="485px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;SGLang 提供了 &lt;code&gt;regex&lt;/code&gt; 参数来提供正则表达式选择。&lt;/p&gt;
+&lt;h2 id="api-speculative-execution"&gt;API Speculative Execution
+&lt;/h2&gt;&lt;p&gt;前面的都是应用于开放权重模型，这里介绍了API调用情况下的优化。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在第一次 API 调用时延长生成： 当 SGLang 发出第一个 &lt;code&gt;gen&lt;/code&gt; 请求（例如，生成 &lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt;）时，它会忽略通常的停止条件。这意味着它会指示模型在生成完 &lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt; 之后，继续生成更多的 token，而不是立即停止。&lt;/li&gt;
+&lt;li&gt;解释器存储额外输出： SGLang 的解释器会捕获并存储模型在这次延长生成中产生的所有额外输出。&lt;/li&gt;
+&lt;li&gt;后续请求重用： 当程序遇到后续的 &lt;code&gt;gen&lt;/code&gt; 请求（例如，生成 &lt;code&gt;&amp;quot;job&amp;quot;&lt;/code&gt;）时，SGLang 的解释器会首先检查它之前存储的额外输出。如果这些额外输出中包含了后续请求所需的信息（比如已经生成了 &lt;code&gt;&amp;quot;job&amp;quot;&lt;/code&gt;），那么它就会直接重用这些已有的输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="性能评估"&gt;性能评估
+&lt;/h2&gt;&lt;p&gt;SGLang 是使用 PyTorch 实现的，并使用了来自 FlashInfer 和 Triton 的自定义 CUDA 内核。&lt;/p&gt;
+&lt;h3 id="开源模型结果"&gt;开源模型结果
+&lt;/h3&gt;&lt;p&gt;吞吐提高了6.4倍，延迟减少了3.7倍。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RadixAttention：通过共享 KV 缓存减少总内存使用，从而支持更大的批处理量以提高吞吐量。它还减少了预填充（prefill）计算，降低了首个 token 的延迟。&lt;/li&gt;
+&lt;li&gt;MMLU：利用 RadixAttention 重用 5-shot 示例的 KV 缓存。&lt;/li&gt;
+&lt;li&gt;HellaSwag：对 few-shot 示例和多选问题的共同前缀进行 KV 缓存重用，实现了两级共享。&lt;/li&gt;
+&lt;li&gt;ReAct 和生成式代理：重用代理模板和之前调用的 KV 缓存。&lt;/li&gt;
+&lt;li&gt;Tree-of-thought 和 Skeleton-of-thought：在单个程序中并行化生成调用，并尽可能重用 KV 缓存。&lt;/li&gt;
+&lt;li&gt;JSON 解码：通过压缩的有限状态机（FSM）同时解码多个 token，加速了解码过程。&lt;/li&gt;
+&lt;li&gt;多轮对话：重用聊天历史的 KV 缓存。这种加速对于短输出更为明显，因为 KV 缓存重用主要有助于减少前缀时间；对于长输出，由于共享较少且解码时间占主导，加速效果不显著。&lt;/li&gt;
+&lt;li&gt;DSPy RAG 管道：重用通用上下文示例的 KV 缓存。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_42605b675fd2fc58.webp"
+width="1600"
+height="352"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_5d7cab2077537670.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_42605b675fd2fc58.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628736_hu_6a3d59909b6dc466.webp"
+data-lightbox-width="924"
+data-lightbox-height="203"
+class="gallery-image"
+data-flex-grow="455"
+data-flex-basis="1092px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_e688fc90e5ed7481.webp"
+width="1600"
+height="393"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_10ab8838273812ec.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_e688fc90e5ed7481.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628742_hu_370113745b909c5d.webp"
+data-lightbox-width="900"
+data-lightbox-height="221"
+class="gallery-image"
+data-flex-grow="407"
+data-flex-basis="977px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="多模态张量并行结果"&gt;多模态张量并行结果
+&lt;/h3&gt;&lt;p&gt;Mixtral-8x7B 和 Llama70B，结果呈现出和上面的开源小模型相当的加速。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_45ddf7eff6b0cede.webp"
+width="1600"
+height="331"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_165c691be37da573.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_45ddf7eff6b0cede.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628759_hu_6d03fdb68068022a.webp"
+data-lightbox-width="927"
+data-lightbox-height="192"
+class="gallery-image"
+data-flex-grow="482"
+data-flex-basis="1158px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_e026b7fdab64e773.webp"
+width="1600"
+height="388"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_cd099c7803943c3.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_e026b7fdab64e773.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628764_hu_e9b50bb80e79bf19.webp"
+data-lightbox-width="919"
+data-lightbox-height="223"
+class="gallery-image"
+data-flex-grow="412"
+data-flex-basis="989px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="多模态大模型结果"&gt;多模态大模型结果
+&lt;/h3&gt;&lt;p&gt;SGLang 天然支持 &lt;code&gt;image&lt;/code&gt; 和 &lt;code&gt;video&lt;/code&gt; 的原语（将 image 计算 hash，将其 key 存入 Radix Tree 中，从而可以重复使用 KV cache）。&lt;/p&gt;
+&lt;p&gt;最高达到了6倍的加速。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_4522648d1fc09b35.webp"
+width="1600"
+height="266"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_f602c3b1f57ff4d8.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_4522648d1fc09b35.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628769_hu_b896bc4c46bffcec.webp"
+data-lightbox-width="757"
+data-lightbox-height="126"
+class="gallery-image"
+data-flex-grow="600"
+data-flex-basis="1441px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="生产部署"&gt;生产部署
+&lt;/h3&gt;&lt;p&gt;Chatbot Arena中已经部署，有些模型流量较低，因此只有一个SGLang worker提供服务。一个月后，发现缓存命中率较高。&lt;/p&gt;
+&lt;h3 id="api模型结果"&gt;API模型结果
+&lt;/h3&gt;&lt;p&gt;测试了一个使用 OpenAI 的 GPT-3.5 模型从维基百科页面提取三个字段的提示。通过使用few-shot提示，API推测执行的准确性很高，并且由于提取了三个字段，因此将输入令牌的成本降低了约三倍。&lt;/p&gt;
+&lt;h3 id="消融实验"&gt;消融实验
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_2b3ea4a1bc165210.webp"
+width="1600"
+height="427"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_37b41c4a5a3738ac.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_2b3ea4a1bc165210.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628775_hu_3ebcea86d2a83ab3.webp"
+data-lightbox-width="824"
+data-lightbox-height="220"
+class="gallery-image"
+data-flex-grow="374"
+data-flex-basis="898px"
+&gt;
+&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;h3 id="sglang的主要优势"&gt;SGLang的主要优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;前端可以优化LLM应用的编程模型，通过DSL和原语来简化编程&lt;/li&gt;
+&lt;li&gt;后端大幅优化运行速度&lt;/li&gt;
+&lt;li&gt;Radix Attention机制：使用Radix Tree高效自动复用KV cache&lt;/li&gt;
+&lt;li&gt;压缩FSM：对有限状态机进行压缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="和其他框架的比较"&gt;和其他框架的比较
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;未完待续&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时，一直有个绕不过去的问题：agent 生成的内容质量怎么评？人工标注太慢，让 LLM 直接打分又不知道该不该信。后来想到学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是&amp;quot;用 LLM 做复杂内容的质量判断&amp;quot;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？哪条路线更值得押注？&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -435,7 +772,712 @@
 &lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
 &lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
 &lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>论文阅读| MCTS</title><link>https://ionfeather.github.io/2025/mcts/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts/</guid><description>&lt;h2 id="mcts"&gt;MCTS
+&lt;/ul&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;h2 id="rag-的本质"&gt;RAG 的本质
+&lt;/h2&gt;&lt;p&gt;RAG（Retrieval-Augmented Generation）并不是简单的&amp;quot;先搜索再拼接 Prompt&amp;quot;。它的核心问题是：&lt;strong&gt;如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从这个角度理解，RAG 要解决的是三个子问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;知识存储&lt;/strong&gt;：外部知识以什么形式存储，才能既保留语义又支持高效检索？&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;知识检索&lt;/strong&gt;：给定用户问题，如何精准召回最相关的知识片段？&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;知识利用&lt;/strong&gt;：召回的片段如何组织进 Prompt，才能让 LLM 真正&amp;quot;用&amp;quot;上这些信息，而不是忽略或 hallucinate？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="rag-的演进路线"&gt;RAG 的演进路线
+&lt;/h2&gt;&lt;p&gt;业界通常把 RAG 的发展分为四个阶段，理解这个演进有助于把握各种技术的定位：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;阶段&lt;/th&gt;
+&lt;th&gt;特征&lt;/th&gt;
+&lt;th&gt;代表技术&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Naive RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;直接分块→Embedding→向量检索→拼接Prompt&lt;/td&gt;
+&lt;td&gt;最基本的 FAISS + LLM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Advanced RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;在检索前/检索中/检索后增加优化环节&lt;/td&gt;
+&lt;td&gt;Query Rewriting, Reranking, Hybrid Search&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Modular RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;各环节模块化，可自由组合&lt;/td&gt;
+&lt;td&gt;Self-RAG, RAPTOR, GraphRAG&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Agentic RAG&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;引入 Agent 能力，动态决策检索策略&lt;/td&gt;
+&lt;td&gt;ReAct, Tool-use, Multi-hop Retrieval&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;下面这个项目属于 Naive RAG 到 Advanced RAG 之间的实现，很适合用来理解基础链路。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="项目复现local_pdf_chat_rag"&gt;项目复现：Local_Pdf_Chat_RAG
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/weiwill88/Local_Pdf_Chat_RAG" target="_blank" rel="noopener"
+&gt;Github: weiwill88/Local_Pdf_Chat_RAG&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="环境配置"&gt;环境配置
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;pip install -r requirements.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;实际遇到的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pytorch 要求的 &lt;code&gt;nvidia-cufile-cu12&lt;/code&gt; 和 &lt;code&gt;nvidia-nvshmem-cu12&lt;/code&gt; 版本号不对，需要重新安装对应版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;numpy&lt;/code&gt; 需降级到 2.0 以下（很多库还没兼容 numpy 2.x）&lt;/li&gt;
+&lt;li&gt;额外安装 &lt;code&gt;sniffio&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;配置 Siliconflow 和 SerpAPI 的 API Key&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="核心模块详解"&gt;核心模块详解
+&lt;/h2&gt;&lt;h3 id="文档处理层indexing"&gt;文档处理层（Indexing）
+&lt;/h3&gt;&lt;p&gt;文档处理层的目标是把非结构化的 PDF 转化为可供检索的结构化表示。关键函数是 &lt;code&gt;process_multiple_pdfs&lt;/code&gt;，其流程如下：&lt;/p&gt;
+&lt;h4 id="文本提取与清洗"&gt;文本提取与清洗
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pdfminer.high_level&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;extract_text&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;extract_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pdf_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;潜在问题&lt;/strong&gt;：PDF 提取会丢失布局信息（表格、标题层级、页眉页脚）。对于学术论文或财报，这可能导致语义断裂。进阶方案包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Layout-aware 提取&lt;/strong&gt;：使用 &lt;code&gt;Marker&lt;/code&gt;、&lt;code&gt;Unstructured&lt;/code&gt; 或 &lt;code&gt;LlamaParse&lt;/code&gt; 保留文档结构&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多模态提取&lt;/strong&gt;：扫描版 PDF 需要 OCR（&lt;code&gt;paddleocr&lt;/code&gt;、&lt;code&gt;tesseract&lt;/code&gt;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="文本分块chunking"&gt;文本分块（Chunking）
+&lt;/h4&gt;&lt;p&gt;项目使用 &lt;code&gt;RecursiveCharacterTextSplitter&lt;/code&gt;，按字符数递归切割：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;text_splitter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;RecursiveCharacterTextSplitter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;chunk_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;chunk_overlap&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;chunks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;text_splitter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;分块策略的深层问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;Chunking 不是越细越好。分块粒度直接影响检索精度和上下文完整性：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;策略&lt;/th&gt;
+&lt;th&gt;原理&lt;/th&gt;
+&lt;th&gt;优点&lt;/th&gt;
+&lt;th&gt;缺点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;固定长度&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;按字符/Token数切割&lt;/td&gt;
+&lt;td&gt;简单、均匀&lt;/td&gt;
+&lt;td&gt;可能切断句子语义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;递归字符&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;优先按段落→句子→单词切割&lt;/td&gt;
+&lt;td&gt;保持边界完整&lt;/td&gt;
+&lt;td&gt;仍可能破坏跨段落语义&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;语义分块（Semantic）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;按语义相似度聚类句子&lt;/td&gt;
+&lt;td&gt;块内语义连贯&lt;/td&gt;
+&lt;td&gt;计算成本高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Agentic Chunking&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;让 LLM 判断最佳切分点&lt;/td&gt;
+&lt;td&gt;质量最高&lt;/td&gt;
+&lt;td&gt;速度慢、费用高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;结构感知&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;按标题、章节、表格切分&lt;/td&gt;
+&lt;td&gt;保留文档层级&lt;/td&gt;
+&lt;td&gt;依赖布局解析质量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Overlap（重叠）的作用&lt;/strong&gt;：相邻 chunk 之间设置重叠区域（如 50 字符），可以确保跨边界的信息不会在检索时完全丢失。但 overlap 过大会增加冗余存储。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;进阶：Parent Document Retrieval&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;小 chunk 检索精度高，但上下文不足；大 chunk 上下文全，但检索精度低。Parent Document Retrieval 的策略是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;把文档切成大 chunk（parent，如 2000 字符）&lt;/li&gt;
+&lt;li&gt;每个 parent 再切成多个小 chunk（child，如 200 字符）&lt;/li&gt;
+&lt;li&gt;检索时用小 chunk 的向量，召回后返回对应的完整 parent&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样既保证检索精度，又保证生成时有足够上下文。&lt;/p&gt;
+&lt;h4 id="向量嵌入embedding"&gt;向量嵌入（Embedding）
+&lt;/h4&gt;&lt;p&gt;项目使用向量模型将 chunk 转为 dense embedding：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;embeddings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;embedding_model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunks&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# embeddings: (N, D) 的 numpy 数组，D 为模型维度&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Embedding 模型的选型&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;模型类型&lt;/th&gt;
+&lt;th&gt;代表&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;通用 Embedding&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;text-embedding-ada-002&lt;/code&gt;, &lt;code&gt;bge-large-zh&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;通用性强，适合大多数场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;多语言专用&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;piccolo-base-zh&lt;/code&gt;, &lt;code&gt;m3e-base&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;中文效果通常优于 OpenAI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;稀疏向量&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;SPLADE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;生成学习得到的稀疏表示，兼具 BM25 的可解释性和向量的语义性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;迟交互模型&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ColBERT&lt;/code&gt;, &lt;code&gt;ColBERTv2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;token-level 交互，精度极高但存储和计算成本大&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;MRL 向量&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bge-m3&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;支持不同维度的截断（如 1024→512→256），灵活权衡精度与速度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Bi-encoder vs Cross-encoder&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bi-encoder&lt;/strong&gt;：文档和查询分别编码为向量，通过点积/余弦相似度比较。&lt;strong&gt;优点&lt;/strong&gt;：可以预先计算文档向量，检索极快。&lt;strong&gt;缺点&lt;/strong&gt;：查询和文档没有细粒度交互，精度有上限。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-encoder&lt;/strong&gt;：把查询和文档拼接后一起输入模型，通过 attention 计算相关性。&lt;strong&gt;优点&lt;/strong&gt;：精度高。&lt;strong&gt;缺点&lt;/strong&gt;：每次检索都要做一次前向传播，无法预先计算，只能用于重排序阶段。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此 RAG 的标准范式是：&lt;strong&gt;Bi-encoder 做召回（Recall），Cross-encoder 做精排（Reranking）&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id="faiss-索引构建"&gt;FAISS 索引构建
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;faiss&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;dimension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;embeddings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 如 1024&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;faiss&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IndexFlatL2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dimension&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;embeddings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;FAISS 索引类型的深度对比&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IndexFlatL2&lt;/code&gt; 是暴力搜索（精确 KNN），时间复杂度 $O(N \times D)$，适合数十万以下的数据量。当数据规模增大时，需要近似索引：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;索引类型&lt;/th&gt;
+&lt;th&gt;原理&lt;/th&gt;
+&lt;th&gt;查询复杂度&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;IndexFlatL2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;精确 L2 距离&lt;/td&gt;
+&lt;td&gt;$O(ND)$&lt;/td&gt;
+&lt;td&gt;&amp;lt; 100K，追求精度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;IndexIVFFlat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;倒排文件：先聚类（Voronoi 单元），查询时只搜最近的几类&lt;/td&gt;
+&lt;td&gt;$O(D \times \text{nlist})$&lt;/td&gt;
+&lt;td&gt;100K-10M，可调 nprobe 平衡速度精度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;IndexHNSWFlat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;图索引：构建 Navigable Small World 图&lt;/td&gt;
+&lt;td&gt;$O(\log N)$&lt;/td&gt;
+&lt;td&gt;1M-100M，建索引慢查询快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;IndexIVFPQ&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;IVF + Product Quantization（乘积量化）&lt;/td&gt;
+&lt;td&gt;$O(D \times \text{nprobe} + M \times \text{nprobe})$&lt;/td&gt;
+&lt;td&gt;&amp;gt; 10M，内存占用极小，有损压缩&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;关键参数&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nlist&lt;/code&gt;（IVF）：聚类中心数，通常设为 $4 \times \sqrt{N}$&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nprobe&lt;/code&gt;（IVF）：查询时搜索的聚类数，越大越精确但越慢&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M&lt;/code&gt;（HNSW）：每个节点的最大连接数，越大图越稠密、精度越高、内存越大&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;efConstruction&lt;/code&gt; / &lt;code&gt;efSearch&lt;/code&gt;（HNSW）：建图/搜索时的候选列表大小&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="bm25-索引构建"&gt;BM25 索引构建
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;rank_bm25&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BM25Okapi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;jieba&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;tokenized_corpus&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;jieba&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cut&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chunk&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;chunk&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;chunks&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;bm25&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;BM25Okapi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tokenized_corpus&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;BM25 的数学原理&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;BM25 计算查询 $Q$ 和文档 $D$ 的相关性得分：&lt;/p&gt;
+$$\text{score}(D, Q) = \sum_{i=1}^{n} \text{IDF}(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot \left(1 - b + b \cdot \frac{|D|}{\text{avgdl}}\right)}$$&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$f(q_i, D)$：词 $q_i$ 在文档 $D$ 中的词频&lt;/li&gt;
+&lt;li&gt;$|D|$：文档长度（词数）&lt;/li&gt;
+&lt;li&gt;$\text{avgdl}$：语料库平均文档长度&lt;/li&gt;
+&lt;li&gt;$k_1$：控制词频饱和度（通常 1.2~2.0）&lt;/li&gt;
+&lt;li&gt;$b$：控制长度归一化强度（通常 0.75）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;词频饱和的直观理解&lt;/strong&gt;：当 $k_1 = 1.2$ 时，词频从 1→10 带来的分数增长远大于 10→100。饱和函数 $\frac{f \cdot (k_1+1)}{f + k_1}$ 的上限是 $k_1 + 1$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BM25 与 TF-IDF 的本质区别&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;TF-IDF 的词频是线性的，BM25 是非线性饱和的&lt;/li&gt;
+&lt;li&gt;TF-IDF 的长度归一化是简单的 $|D|$ 除法，BM25 是更平滑的线性插值&lt;/li&gt;
+&lt;li&gt;BM25 的 IDF 有下限保护（防止负值），TF-IDF 的 IDF 可能出现负值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="混合检索hybrid-search"&gt;混合检索（Hybrid Search）
+&lt;/h4&gt;&lt;p&gt;FAISS（Dense Retrieval）和 BM25（Sparse Retrieval）各有盲区：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dense：擅长语义泛化（&amp;ldquo;苹果&amp;rdquo;→&amp;ldquo;水果&amp;rdquo;），但可能漏掉专有名词、型号、代码等精确匹配&lt;/li&gt;
+&lt;li&gt;Sparse：擅长精确关键词匹配，但无法理解同义词、上下位词&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;融合策略&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线性加权（Linear Combination）&lt;/strong&gt;
+&lt;/p&gt;
+$$\text{score}_{\text{hybrid}} = \alpha \cdot \text{score}_{\text{dense}} + (1-\alpha) \cdot \text{score}_{\text{sparse}}$$&lt;p&gt;
+需要对两种分数做归一化（如 Min-Max 或 Z-score）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RRF（Reciprocal Rank Fusion）&lt;/strong&gt;
+&lt;/p&gt;
+$$\text{RRF}(d) = \sum_{r \in R} \frac{1}{k + r(d)}$$&lt;p&gt;
+其中 $r(d)$ 是文档 $d$ 在某路检索中的排名，$k$ 是平滑常数（通常取 60）。
+RRF 不需要分数归一化，对排名敏感而非绝对分数，实现简单且鲁棒。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="检索层retrieval"&gt;检索层（Retrieval）
+&lt;/h3&gt;&lt;p&gt;检索层的目标是在毫秒级时间内从海量文档中召回最相关的片段。项目中的实现比较直接，但生产级 RAG 的检索链路通常更复杂。&lt;/p&gt;
+&lt;h4 id="查询改写query-rewriting"&gt;查询改写（Query Rewriting）
+&lt;/h4&gt;&lt;p&gt;用户原始 query 往往不适合直接检索：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;口语化、模糊（&amp;ldquo;那个讲什么的来着&amp;rdquo;）&lt;/li&gt;
+&lt;li&gt;缺少上下文（多轮对话中的指代消解）&lt;/li&gt;
+&lt;li&gt;需要多跳推理（&amp;ldquo;A 公司的 CEO 之前任职的公司是什么&amp;rdquo;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;常见改写策略&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;技术&lt;/th&gt;
+&lt;th&gt;做法&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;HyDE（Hypothetical Document Embedding）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;让 LLM 先生成一个&amp;quot;理想答案&amp;quot;，用这个答案的 embedding 去检索&lt;/td&gt;
+&lt;td&gt;短 query、术语缺失&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Query Expansion&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;用 LLM 或同义词库扩展查询词&lt;/td&gt;
+&lt;td&gt;专业领域检索&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Step-back Prompting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;把具体问题抽象成更通用的问题，分别检索&lt;/td&gt;
+&lt;td&gt;需要推理链的复杂问题&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;指代消解&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;把多轮对话中的&amp;quot;它&amp;quot;&amp;ldquo;那个&amp;quot;替换为具体实体&lt;/td&gt;
+&lt;td&gt;对话式 RAG&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;HyDE 的具体流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;User query: &amp;ldquo;RAG 中的重排序怎么做&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;LLM 生成假设文档：&amp;ldquo;重排序是 RAG 中的重要环节，通常使用 cross-encoder&amp;hellip;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;用假设文档的 embedding 去检索，而非原始 query 的 embedding&lt;/li&gt;
+&lt;li&gt;召回真实文档&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：HyDE 在 LLM 对领域有一定了解时效果好；如果领域太专，LLM 生成的假设文档可能偏差很大，反而引入噪声。&lt;/p&gt;
+&lt;h4 id="多路召回multi-channel-retrieval"&gt;多路召回（Multi-channel Retrieval）
+&lt;/h4&gt;&lt;p&gt;除了 Dense + Sparse 的混合检索，还可以引入更多召回通道：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;关键词召回&lt;/strong&gt;：BM25、TF-IDF&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向量召回&lt;/strong&gt;：Dense Embedding、多向量（ColBERT）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图召回&lt;/strong&gt;：GraphRAG 中的社区摘要、实体关系&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重排序召回&lt;/strong&gt;：先用轻量模型粗排，再用重排序模型精排&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;各路召回的结果通过 RRF 或加权融合。&lt;/p&gt;
+&lt;h4 id="重排序reranking"&gt;重排序（Reranking）
+&lt;/h4&gt;&lt;p&gt;初排（召回）追求速度，通常使用 Bi-encoder，但精度有上限。重排序阶段可以使用更重的 Cross-encoder：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sentence_transformers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CrossEncoder&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;reranker&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CrossEncoder&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;BAAI/bge-reranker-large&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;pairs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;retrieved_docs&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;scores&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reranker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pairs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;重排序的 Trade-off&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果召回 Top-100，重排序全部 100 对也很慢。通常只重排序 Top-K（如 Top-20 或 Top-50）&lt;/li&gt;
+&lt;li&gt;重排序模型本身有长度限制（如 512 tokens），长文档需要截断或分段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;进阶：Listwise Reranking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Pointwise reranking（逐对打分）只考虑 query 和单个文档的关系，忽略了文档之间的关系。Listwise 方法（如 SetRank、AllRank）把整个文档列表作为输入，考虑文档间的多样性、覆盖度，避免召回的 Top-K 内容高度重复。&lt;/p&gt;
+&lt;h4 id="上下文压缩contextual-compression"&gt;上下文压缩（Contextual Compression）
+&lt;/h4&gt;&lt;p&gt;召回的 chunk 可能包含大量无关内容。Contextual Compression 的策略是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先用标准检索召回相关文档&lt;/li&gt;
+&lt;li&gt;用 LLM 对每个文档提取与 query 相关的句子/段落&lt;/li&gt;
+&lt;li&gt;只把压缩后的内容送入最终生成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;LangChain 提供了 &lt;code&gt;ContextualCompressionRetriever&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;langchain.retrievers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ContextualCompressionRetriever&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;compressor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LLMChainExtractor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_llm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;llm&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;compression_retriever&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ContextualCompressionRetriever&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;base_compressor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;compressor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;base_retriever&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;retriever&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id="生成层generation"&gt;生成层（Generation）
+&lt;/h3&gt;&lt;p&gt;生成层的核心问题是：&lt;strong&gt;如何把检索到的上下文组织成 Prompt，让 LLM 既充分利用外部知识，又不被无关信息干扰？&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id="prompt-工程"&gt;Prompt 工程
+&lt;/h4&gt;&lt;p&gt;基础的 RAG Prompt 模板：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;你是专业的问答助手。请根据以下参考资料回答问题。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;如果资料中没有相关信息，请明确说明&amp;#34;根据现有资料无法回答&amp;#34;。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;参考资料：
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{context}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;用户问题：{question}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;请回答：
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;关键设计原则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;明确的角色设定&lt;/strong&gt;：让模型进入&amp;quot;严谨回答&amp;quot;模式，降低幻觉概率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;引用要求&lt;/strong&gt;：强制模型标注信息来源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拒绝回答机制&lt;/strong&gt;：明确给出&amp;quot;无法回答&amp;quot;的许可，避免强行编造&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Few-shot Prompting&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;在 Prompt 中加入 1-3 个示例，展示&amp;quot;如何基于资料回答&amp;quot;和&amp;quot;如何表示无法回答&amp;rdquo;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;示例 1：
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;资料：[文档A] RAG 是 2020 年由 Meta 提出的...
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;问题：RAG 是谁提出的？
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;回答：根据文档A，RAG 是 2020 年由 Meta 提出的。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;示例 2：
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;资料：[文档B] 深度学习需要大量数据...
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;问题：量子计算机的最新进展？
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;回答：根据现有资料无法回答。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="lost-in-the-middle-问题"&gt;Lost in the Middle 问题
+&lt;/h4&gt;&lt;p&gt;LLM 对 Prompt 中不同位置的信息敏感度不同。研究表明，&lt;strong&gt;模型更容易忽略 Prompt 中间部分的信息&lt;/strong&gt;，这被称为 &amp;ldquo;Lost in the Middle&amp;rdquo; 效应。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缓解策略&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Reorder&lt;/strong&gt;：把最相关的 chunk 放在开头和结尾，次相关的放中间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;压缩&lt;/strong&gt;：减少总上下文长度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多查询分解&lt;/strong&gt;：把复杂问题拆成多个子问题，分别检索和回答&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="引用溯源citation--attribution"&gt;引用溯源（Citation / Attribution）
+&lt;/h4&gt;&lt;p&gt;让模型在生成时标注信息来源，有两个层面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Chunk-level 引用&lt;/strong&gt;：回答中标注 &amp;ldquo;根据文档[1]&amp;hellip;&amp;rdquo;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实现：在 Prompt 中给每个 chunk 编号，要求模型在回答中引用编号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Sentence-level 引用&lt;/strong&gt;：精确到句子级别的溯源&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实现：生成后做一次后处理，用相似度或 NLI（自然语言推断）模型判断每个生成句子来源于哪个 chunk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;引用质量评估&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Citation Precision&lt;/strong&gt;：生成的引用中，真正支持该陈述的比例&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Citation Recall&lt;/strong&gt;：陈述中需要引用的部分，实际给出引用的比例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="上下文长度管理"&gt;上下文长度管理
+&lt;/h4&gt;&lt;p&gt;当检索到大量 chunk 时，总长度可能超过 LLM 的上下文窗口。策略包括：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;策略&lt;/th&gt;
+&lt;th&gt;做法&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;截断（Truncation）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;只保留前 N 个 chunk&lt;/td&gt;
+&lt;td&gt;简单直接，可能丢失后面相关信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Map-Reduce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;每个 chunk 单独生成中间答案，再汇总&lt;/td&gt;
+&lt;td&gt;长文档问答&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Refine&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;逐个 chunk 迭代优化答案&lt;/td&gt;
+&lt;td&gt;需要逐步精化的场景&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;摘要压缩&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;先用 LLM 把多个 chunk 压缩成短摘要&lt;/td&gt;
+&lt;td&gt;chunk 数量极多时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Map-Reduce 的详细流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Map 阶段：每个 chunk 独立回答 query，得到多个中间答案&lt;/li&gt;
+&lt;li&gt;Reduce 阶段：把所有中间答案拼接，让 LLM 综合出最终答案&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;缺点：Map 阶段缺乏全局视角，可能每个中间答案都不完整。改进版是 &lt;strong&gt;Refine&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用第一个 chunk 生成初始答案&lt;/li&gt;
+&lt;li&gt;用第二个 chunk + 当前答案，让 LLM 修正/补充答案&lt;/li&gt;
+&lt;li&gt;迭代直到所有 chunk 处理完毕&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="多轮对话中的上下文管理"&gt;多轮对话中的上下文管理
+&lt;/h4&gt;&lt;p&gt;对话式 RAG 面临独特的挑战：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;指代消解&lt;/strong&gt;：&amp;ldquo;它是什么意思？&amp;rdquo; → 需要把&amp;quot;它&amp;quot;替换为前文提到的实体&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对话历史累积&lt;/strong&gt;：多轮后对话历史过长，需要选择性保留&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;查询意图漂移&lt;/strong&gt;：用户可能在对话中切换话题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解决方案&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;维护一个独立的对话摘要，每轮更新&lt;/li&gt;
+&lt;li&gt;检索时同时考虑当前 query 和对话摘要&lt;/li&gt;
+&lt;li&gt;使用专门的指代消解模型或让 LLM 先做 query 改写&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="高级-rag-架构"&gt;高级 RAG 架构
+&lt;/h2&gt;&lt;h3 id="self-rag"&gt;Self-RAG
+&lt;/h3&gt;&lt;p&gt;传统 RAG unconditional 地检索固定数量的文档，Self-RAG 让模型自己决定是否需要检索、检索多少次：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;模型生成时，遇到不确定的内容，输出 &lt;code&gt;[Retrieve]&lt;/code&gt; token&lt;/li&gt;
+&lt;li&gt;触发检索，召回相关文档&lt;/li&gt;
+&lt;li&gt;模型继续生成，并输出 &lt;code&gt;[IsSupp]&lt;/code&gt; 或 &lt;code&gt;[IsUseful]&lt;/code&gt; 等反思 token&lt;/li&gt;
+&lt;li&gt;如果信息支持当前陈述，继续生成；如果不支持，修正或重新检索&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Self-RAG 需要在训练阶段引入这些特殊 token，让模型学会何时检索、如何评估检索结果。&lt;/p&gt;
+&lt;h3 id="raptor"&gt;RAPTOR
+&lt;/h3&gt;&lt;p&gt;RAPTOR（Recursive Abstraction Processing for Tree-Organized Retrieval）解决的是&lt;strong&gt;跨 chunk 的宏观语义检索&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;比如一本书的多个章节分散在几十个 chunk 中，用户问&amp;quot;这本书的核心观点是什么&amp;quot;，传统 RAG 很难回答，因为每个 chunk 只包含局部信息。&lt;/p&gt;
+&lt;p&gt;RAPTOR 的做法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;底层：原始 chunk 的 embedding&lt;/li&gt;
+&lt;li&gt;中层：对相邻 chunk 聚类，用 LLM 生成摘要，再对摘要做 embedding&lt;/li&gt;
+&lt;li&gt;顶层：对中层摘要继续聚类、摘要，形成树状结构&lt;/li&gt;
+&lt;li&gt;检索时自顶向下或按层检索，既能在底层找细节，也能在顶层找宏观结论&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="graphrag"&gt;GraphRAG
+&lt;/h3&gt;&lt;p&gt;GraphRAG 把文档转化为&lt;strong&gt;知识图谱&lt;/strong&gt;，节点是实体，边是关系。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;构建流程&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从文档中提取实体和关系（用 LLM 或 NER 模型）&lt;/li&gt;
+&lt;li&gt;构建图，社区检测（如 Leiden 算法）发现主题社区&lt;/li&gt;
+&lt;li&gt;对每个社区生成摘要&lt;/li&gt;
+&lt;li&gt;检索时既可以查具体实体，也可以查社区摘要&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;GraphRAG vs 向量 RAG&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;向量 RAG 擅长&amp;quot;相似语义&amp;quot;的匹配&lt;/li&gt;
+&lt;li&gt;GraphRAG 擅长&amp;quot;结构化关系&amp;quot;的推理（如&amp;quot;A 的合作伙伴 B 的投资方是谁&amp;quot;）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="评估体系"&gt;评估体系
+&lt;/h2&gt;&lt;p&gt;RAG 的评估分为检索评估和生成评估两个维度。&lt;/p&gt;
+&lt;h3 id="检索评估"&gt;检索评估
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指标&lt;/th&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;计算方式&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Hit Rate@K&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;正确答案是否在 Top-K 中&lt;/td&gt;
+&lt;td&gt;二元判断，取平均&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;MRR&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Mean Reciprocal Rank&lt;/td&gt;
+&lt;td&gt;$\frac{1}{|Q|} \sum_{i=1}^{|Q|} \frac{1}{\text{rank}_i}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;NDCG@K&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;考虑相关度等级的累积增益&lt;/td&gt;
+&lt;td&gt;折扣累积增益 / 理想累积增益&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Recall@K&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;相关文档被召回的比例&lt;/td&gt;
+&lt;td&gt;$\frac{\text{召回的相关文档数}}{\text{总相关文档数}}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Precision@K&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Top-K 中相关文档的比例&lt;/td&gt;
+&lt;td&gt;$\frac{\text{Top-K 中的相关文档数}}{K}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：检索评估需要 ground truth（标注好的 query-document 对）。如果没有标注，可以用 LLM 作为评判员（LLM-as-a-judge）来判断召回文档是否与 query 相关。&lt;/p&gt;
+&lt;h3 id="生成评估"&gt;生成评估
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指标&lt;/th&gt;
+&lt;th&gt;评估维度&lt;/th&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Faithfulness&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;回答是否忠于检索内容&lt;/td&gt;
+&lt;td&gt;用 NLI 模型判断回答中的每个陈述是否能被上下文支撑&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Answer Relevance&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;回答是否切题&lt;/td&gt;
+&lt;td&gt;用 LLM 判断回答与问题的相关性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Context Precision&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;检索的上下文中有多少是相关的&lt;/td&gt;
+&lt;td&gt;相关 chunk 数 / 总 chunk 数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Context Recall&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;回答问题所需的信息有多少被检索到&lt;/td&gt;
+&lt;td&gt;需要人工或 LLM 标注&amp;quot;必需信息&amp;quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Answer Correctness&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;回答的事实正确性&lt;/td&gt;
+&lt;td&gt;对比标准答案，用 LLM 或规则判断&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;RAGAS&lt;/strong&gt; 是一个流行的自动化评估框架，可以用几行代码完成上述评估：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;ragas&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;ragas.metrics&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;faithfulness&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;answer_relevancy&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context_recall&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;evaluate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;eval_dataset&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;faithfulness&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;answer_relevancy&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context_recall&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="ab-测试与在线评估"&gt;A/B 测试与在线评估
+&lt;/h3&gt;&lt;p&gt;离线评估有局限：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标注数据难以覆盖真实用户的全部 query 分布&lt;/li&gt;
+&lt;li&gt;LLM-as-a-judge 本身可能有偏见&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在线评估的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户满意度&lt;/strong&gt;：点赞/点踩、是否追问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;引用点击率&lt;/strong&gt;：用户是否点击查看引用来源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任务完成率&lt;/strong&gt;：对话是否在更少轮次内解决用户问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="实践中的常见问题与对策"&gt;实践中的常见问题与对策
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;现象&lt;/th&gt;
+&lt;th&gt;可能原因&lt;/th&gt;
+&lt;th&gt;解决方案&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;检索到的内容不相关&lt;/td&gt;
+&lt;td&gt;Query 表述与文档差异大&lt;/td&gt;
+&lt;td&gt;使用 HyDE、Query Expansion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;回答包含幻觉&lt;/td&gt;
+&lt;td&gt;模型忽略了上下文，依赖参数知识&lt;/td&gt;
+&lt;td&gt;强化 Prompt 中的引用要求、降低 temperature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;回答碎片化&lt;/td&gt;
+&lt;td&gt;Chunk 太小，缺乏全局信息&lt;/td&gt;
+&lt;td&gt;使用 Parent Document Retrieval、RAPTOR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;长文档处理慢&lt;/td&gt;
+&lt;td&gt;IndexFlatL2 暴力搜索&lt;/td&gt;
+&lt;td&gt;换 IVF、HNSW 或 PQ 索引&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;多轮对话理解差&lt;/td&gt;
+&lt;td&gt;缺乏对话历史管理&lt;/td&gt;
+&lt;td&gt;维护对话摘要、做指代消解&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;跨文档推理困难&lt;/td&gt;
+&lt;td&gt;向量检索无法表达实体关系&lt;/td&gt;
+&lt;td&gt;引入 GraphRAG&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="真正生产环境中的rag需要注意的点"&gt;真正生产环境中的RAG需要注意的点
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据层&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; PDF 提取质量是否足够？表格、图片是否丢失关键信息？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Chunking 策略是否合理？是否做了 overlap？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否需要多粒度索引（小 chunk 检索 + 大 chunk 生成）？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;索引层&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Embedding 模型是否针对领域微调？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 向量索引类型是否匹配数据规模？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否需要混合检索（Dense + Sparse）？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 索引更新策略（增量更新 vs 全量重建）？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;检索层&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否做了 Query Rewriting？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否需要多路召回？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否加了 Reranker？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 检索结果是否去重？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;生成层&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Prompt 是否要求引用和拒绝回答？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否处理了 Lost in the Middle？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 上下文长度是否超限？压缩策略是什么？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Temperature、Top-p 等生成参数是否调优？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;评估层&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否有评估数据集？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否同时评估检索和生成？&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 是否监控线上用户反馈？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;p&gt;RAG 远不是&amp;quot;Embedding + 向量检索 + Prompt 拼接&amp;quot;那么简单。用Kimi-2.6来总结：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文档理解的深度&lt;/strong&gt;：布局解析、多粒度分块、多模态处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;表示学习的精度&lt;/strong&gt;：Embedding 选型、混合检索、重排序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检索策略的灵活&lt;/strong&gt;：Query 改写、多路召回、动态决策&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生成控制的严谨&lt;/strong&gt;：Prompt 工程、引用溯源、拒绝机制、上下文管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;评估体系的完整&lt;/strong&gt;：离线指标 + 在线反馈的持续迭代&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS
 &lt;/h2&gt;&lt;h2 id="mc-dml"&gt;MC-DML
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
 &gt;[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents&lt;/a&gt;&lt;/p&gt;
@@ -447,13 +1489,13 @@
 &lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
 &lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp"
 width="1600"
 height="449"
-srcset="https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_1f33033cea39861b.webp 800w, https://ionfeather.github.io/2025/mcts/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp 1600w"
+srcset="https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_1f33033cea39861b.webp 800w, https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp 1600w"
 loading="lazy"
 alt="Zork1游戏。这种游戏需要的不能只是短期决策，而是需要长远规划。"
-data-original="/2025/mcts/assets/IMG-20251008192705223_hu_f9febf283cfc8194.webp"
+data-original="/2025/mcts-llm/assets/IMG-20251008192705223_hu_f9febf283cfc8194.webp"
 data-lightbox-width="890"
 data-lightbox-height="250"
 class="gallery-image"
@@ -1729,7 +2771,7 @@ data-flex-basis="407px"
 &lt;p&gt;representational harms&lt;/p&gt;
 &lt;p&gt;隐私问题&lt;/p&gt;
 &lt;p&gt;情感依赖&lt;/p&gt;
-&lt;p&gt;增长谎言、宣传、虚假信息等文本生成&lt;/p&gt;</description></item><item><title>阅读博客 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs
+&lt;p&gt;增长谎言、宣传、虚假信息等文本生成&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
 &gt;Deep dive into LLMs like ChatGPT by Andrej Karpathy (TL;DR) | Anfal Mushtaq&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="预训练"&gt;预训练
@@ -1834,7 +2876,7 @@ data-flex-basis="407px"
 &gt;LM Studio&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;基础模型Base Models&lt;/strong&gt; → Explore &lt;a class="link" href="https://app.hyperbolic.xyz/" target="_blank" rel="noopener"
 &gt;Hyperbolic&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>学习笔记 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post 学习笔记 | LangChain学习笔记" /&gt;&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
+&lt;/ul&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post 博客阅读 | LangChain学习笔记" /&gt;&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 &lt;div class="chat --other"&gt;
 &lt;div class="chat__inner"&gt;

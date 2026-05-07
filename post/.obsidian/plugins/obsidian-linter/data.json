@@ -106,7 +106,7 @@
       "enabled": true
     },
     "move-footnotes-to-the-bottom": {
-      "enabled": false
+      "enabled": true
     },
     "re-index-footnotes": {
       "enabled": false
@@ -122,7 +122,7 @@
       "style": "space"
     },
     "convert-bullet-list-markers": {
-      "enabled": false
+      "enabled": true
     },
     "default-language-for-code-fences": {
       "enabled": true,
@@ -267,7 +267,7 @@
       "enabled": false
     },
     "remove-multiple-blank-lines-on-paste": {
-      "enabled": false
+      "enabled": true
     }
   },
   "lintOnSave": true,

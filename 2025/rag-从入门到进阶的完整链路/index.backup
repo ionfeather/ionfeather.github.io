@@ -1,0 +1,532 @@
+---
+title: RAG | 从入门到进阶的完整链路
+date: 2025-12-11T18:59:53+08:00
+lastmod: 2026-05-07T21:35:18+08:00
+draft: true
+categories:
+  - 学习笔记
+tags:
+  - RAG
+  - LLM
+math: true
+---
+
+## RAG 的本质
+
+RAG（Retrieval-Augmented Generation）并不是简单的"先搜索再拼接 Prompt"。它的核心问题是：**如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？**
+
+从这个角度理解，RAG 要解决的是三个子问题：
+1. **知识存储**：外部知识以什么形式存储，才能既保留语义又支持高效检索？
+2. **知识检索**：给定用户问题，如何精准召回最相关的知识片段？
+3. **知识利用**：召回的片段如何组织进 Prompt，才能让 LLM 真正"用"上这些信息，而不是忽略或 hallucinate？
+
+## RAG 的演进路线
+
+业界通常把 RAG 的发展分为四个阶段，理解这个演进有助于把握各种技术的定位：
+
+| 阶段 | 特征 | 代表技术 |
+|------|------|---------|
+| **Naive RAG** | 直接分块→Embedding→向量检索→拼接Prompt | 最基本的 FAISS + LLM |
+| **Advanced RAG** | 在检索前/检索中/检索后增加优化环节 | Query Rewriting, Reranking, Hybrid Search |
+| **Modular RAG** | 各环节模块化，可自由组合 | Self-RAG, RAPTOR, GraphRAG |
+| **Agentic RAG** | 引入 Agent 能力，动态决策检索策略 | ReAct, Tool-use, Multi-hop Retrieval |
+
+下面这个项目属于 Naive RAG 到 Advanced RAG 之间的实现，很适合用来理解基础链路。
+
+---
+
+## 项目复现：Local_Pdf_Chat_RAG
+
+[Github: weiwill88/Local_Pdf_Chat_RAG](https://github.com/weiwill88/Local_Pdf_Chat_RAG)
+
+### 环境配置
+
+```bash
+pip install -r requirements.txt
+```
+
+实际遇到的问题：
+- Pytorch 要求的 `nvidia-cufile-cu12` 和 `nvidia-nvshmem-cu12` 版本号不对，需要重新安装对应版本
+- `numpy` 需降级到 2.0 以下（很多库还没兼容 numpy 2.x）
+- 额外安装 `sniffio`
+- 配置 Siliconflow 和 SerpAPI 的 API Key
+
+---
+
+## 核心模块详解
+
+### 文档处理层（Indexing）
+
+文档处理层的目标是把非结构化的 PDF 转化为可供检索的结构化表示。关键函数是 `process_multiple_pdfs`，其流程如下：
+
+#### 文本提取与清洗
+
+```python
+from pdfminer.high_level import extract_text
+text = extract_text(pdf_path)
+```
+
+**潜在问题**：PDF 提取会丢失布局信息（表格、标题层级、页眉页脚）。对于学术论文或财报，这可能导致语义断裂。进阶方案包括：
+- **Layout-aware 提取**：使用 `Marker`、`Unstructured` 或 `LlamaParse` 保留文档结构
+- **多模态提取**：扫描版 PDF 需要 OCR（`paddleocr`、`tesseract`）
+
+#### 文本分块（Chunking）
+
+项目使用 `RecursiveCharacterTextSplitter`，按字符数递归切割：
+
+```python
+text_splitter = RecursiveCharacterTextSplitter(
+    chunk_size=500,
+    chunk_overlap=50
+)
+chunks = text_splitter.split_text(text)
+```
+
+**分块策略的深层问题**：
+
+Chunking 不是越细越好。分块粒度直接影响检索精度和上下文完整性：
+
+| 策略 | 原理 | 优点 | 缺点 |
+|------|------|------|------|
+| **固定长度** | 按字符/Token数切割 | 简单、均匀 | 可能切断句子语义 |
+| **递归字符** | 优先按段落→句子→单词切割 | 保持边界完整 | 仍可能破坏跨段落语义 |
+| **语义分块（Semantic）** | 按语义相似度聚类句子 | 块内语义连贯 | 计算成本高 |
+| **Agentic Chunking** | 让 LLM 判断最佳切分点 | 质量最高 | 速度慢、费用高 |
+| **结构感知** | 按标题、章节、表格切分 | 保留文档层级 | 依赖布局解析质量 |
+
+**Overlap（重叠）的作用**：相邻 chunk 之间设置重叠区域（如 50 字符），可以确保跨边界的信息不会在检索时完全丢失。但 overlap 过大会增加冗余存储。
+
+**进阶：Parent Document Retrieval**
+
+小 chunk 检索精度高，但上下文不足；大 chunk 上下文全，但检索精度低。Parent Document Retrieval 的策略是：
+1. 把文档切成大 chunk（parent，如 2000 字符）
+2. 每个 parent 再切成多个小 chunk（child，如 200 字符）
+3. 检索时用小 chunk 的向量，召回后返回对应的完整 parent
+
+这样既保证检索精度，又保证生成时有足够上下文。
+
+#### 向量嵌入（Embedding）
+
+项目使用向量模型将 chunk 转为 dense embedding：
+
+```python
+embeddings = embedding_model.encode(chunks)
+# embeddings: (N, D) 的 numpy 数组，D 为模型维度
+```
+
+**Embedding 模型的选型**：
+
+| 模型类型 | 代表 | 特点 |
+|---------|------|------|
+| **通用 Embedding** | `text-embedding-ada-002`, `bge-large-zh` | 通用性强，适合大多数场景 |
+| **多语言专用** | `piccolo-base-zh`, `m3e-base` | 中文效果通常优于 OpenAI |
+| **稀疏向量** | `SPLADE` | 生成学习得到的稀疏表示，兼具 BM25 的可解释性和向量的语义性 |
+| **迟交互模型** | `ColBERT`, `ColBERTv2` | token-level 交互，精度极高但存储和计算成本大 |
+| **MRL 向量** | `bge-m3` | 支持不同维度的截断（如 1024→512→256），灵活权衡精度与速度 |
+
+**Bi-encoder vs Cross-encoder**：
+- **Bi-encoder**：文档和查询分别编码为向量，通过点积/余弦相似度比较。**优点**：可以预先计算文档向量，检索极快。**缺点**：查询和文档没有细粒度交互，精度有上限。
+- **Cross-encoder**：把查询和文档拼接后一起输入模型，通过 attention 计算相关性。**优点**：精度高。**缺点**：每次检索都要做一次前向传播，无法预先计算，只能用于重排序阶段。
+
+因此 RAG 的标准范式是：**Bi-encoder 做召回（Recall），Cross-encoder 做精排（Reranking）**。
+
+#### FAISS 索引构建
+
+```python
+import faiss
+dimension = embeddings.shape[1]  # 如 1024
+index = faiss.IndexFlatL2(dimension)
+index.add(embeddings)
+```
+
+**FAISS 索引类型的深度对比**：
+
+`IndexFlatL2` 是暴力搜索（精确 KNN），时间复杂度 $O(N \times D)$，适合数十万以下的数据量。当数据规模增大时，需要近似索引：
+
+| 索引类型            | 原理                               | 查询复杂度                                                                | 适用场景                      |
+| --------------- | -------------------------------- | -------------------------------------------------------------------- | ------------------------- |
+| `IndexFlatL2`   | 精确 L2 距离                         | $O(ND)$                                                              | < 100K，追求精度               |
+| `IndexIVFFlat`  | 倒排文件：先聚类（Voronoi 单元），查询时只搜最近的几类  | $O(D \times \text{nlist})$                                           | 100K-10M，可调 nprobe 平衡速度精度 |
+| `IndexHNSWFlat` | 图索引：构建 Navigable Small World 图   | $O(\log N)$                                                          | 1M-100M，建索引慢查询快           |
+| `IndexIVFPQ`    | IVF + Product Quantization（乘积量化） | $O(D \times \text{nprobe} + M \times \text{nprobe})$ | > 10M，内存占用极小，有损压缩         |
+
+**关键参数**：
+- `nlist`（IVF）：聚类中心数，通常设为 $4 \times \sqrt{N}$
+- `nprobe`（IVF）：查询时搜索的聚类数，越大越精确但越慢
+- `M`（HNSW）：每个节点的最大连接数，越大图越稠密、精度越高、内存越大
+- `efConstruction` / `efSearch`（HNSW）：建图/搜索时的候选列表大小
+
+#### BM25 索引构建
+
+```python
+from rank_bm25 import BM25Okapi
+import jieba
+
+tokenized_corpus = [list(jieba.cut(chunk)) for chunk in chunks]
+bm25 = BM25Okapi(tokenized_corpus)
+```
+
+**BM25 的数学原理**：
+
+BM25 计算查询 $Q$ 和文档 $D$ 的相关性得分：
+
+$$\text{score}(D, Q) = \sum_{i=1}^{n} \text{IDF}(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot \left(1 - b + b \cdot \frac{|D|}{\text{avgdl}}\right)}$$
+
+其中：
+- $f(q_i, D)$：词 $q_i$ 在文档 $D$ 中的词频
+- $|D|$：文档长度（词数）
+- $\text{avgdl}$：语料库平均文档长度
+- $k_1$：控制词频饱和度（通常 1.2~2.0）
+- $b$：控制长度归一化强度（通常 0.75）
+
+**词频饱和的直观理解**：当 $k_1 = 1.2$ 时，词频从 1→10 带来的分数增长远大于 10→100。饱和函数 $\frac{f \cdot (k_1+1)}{f + k_1}$ 的上限是 $k_1 + 1$。
+
+**BM25 与 TF-IDF 的本质区别**：
+1. TF-IDF 的词频是线性的，BM25 是非线性饱和的
+2. TF-IDF 的长度归一化是简单的 $|D|$ 除法，BM25 是更平滑的线性插值
+3. BM25 的 IDF 有下限保护（防止负值），TF-IDF 的 IDF 可能出现负值
+
+#### 混合检索（Hybrid Search）
+
+FAISS（Dense Retrieval）和 BM25（Sparse Retrieval）各有盲区：
+- Dense：擅长语义泛化（"苹果"→"水果"），但可能漏掉专有名词、型号、代码等精确匹配
+- Sparse：擅长精确关键词匹配，但无法理解同义词、上下位词
+
+**融合策略**：
+
+1. **线性加权（Linear Combination）**
+   $$\text{score}_{\text{hybrid}} = \alpha \cdot \text{score}_{\text{dense}} + (1-\alpha) \cdot \text{score}_{\text{sparse}}$$
+   需要对两种分数做归一化（如 Min-Max 或 Z-score）。
+
+2. **RRF（Reciprocal Rank Fusion）**
+   $$\text{RRF}(d) = \sum_{r \in R} \frac{1}{k + r(d)}$$
+   其中 $r(d)$ 是文档 $d$ 在某路检索中的排名，$k$ 是平滑常数（通常取 60）。
+   RRF 不需要分数归一化，对排名敏感而非绝对分数，实现简单且鲁棒。
+
+---
+
+### 检索层（Retrieval）
+
+检索层的目标是在毫秒级时间内从海量文档中召回最相关的片段。项目中的实现比较直接，但生产级 RAG 的检索链路通常更复杂。
+
+#### 查询改写（Query Rewriting）
+
+用户原始 query 往往不适合直接检索：
+- 口语化、模糊（"那个讲什么的来着"）
+- 缺少上下文（多轮对话中的指代消解）
+- 需要多跳推理（"A 公司的 CEO 之前任职的公司是什么"）
+
+**常见改写策略**：
+
+| 技术 | 做法 | 适用场景 |
+|------|------|---------|
+| **HyDE（Hypothetical Document Embedding）** | 让 LLM 先生成一个"理想答案"，用这个答案的 embedding 去检索 | 短 query、术语缺失 |
+| **Query Expansion** | 用 LLM 或同义词库扩展查询词 | 专业领域检索 |
+| **Step-back Prompting** | 把具体问题抽象成更通用的问题，分别检索 | 需要推理链的复杂问题 |
+| **指代消解** | 把多轮对话中的"它""那个"替换为具体实体 | 对话式 RAG |
+
+**HyDE 的具体流程**：
+1. User query: "RAG 中的重排序怎么做"
+2. LLM 生成假设文档："重排序是 RAG 中的重要环节，通常使用 cross-encoder..."
+3. 用假设文档的 embedding 去检索，而非原始 query 的 embedding
+4. 召回真实文档
+
+**注意**：HyDE 在 LLM 对领域有一定了解时效果好；如果领域太专，LLM 生成的假设文档可能偏差很大，反而引入噪声。
+
+#### 多路召回（Multi-channel Retrieval）
+
+除了 Dense + Sparse 的混合检索，还可以引入更多召回通道：
+- **关键词召回**：BM25、TF-IDF
+- **向量召回**：Dense Embedding、多向量（ColBERT）
+- **图召回**：GraphRAG 中的社区摘要、实体关系
+- **重排序召回**：先用轻量模型粗排，再用重排序模型精排
+
+各路召回的结果通过 RRF 或加权融合。
+
+#### 重排序（Reranking）
+
+初排（召回）追求速度，通常使用 Bi-encoder，但精度有上限。重排序阶段可以使用更重的 Cross-encoder：
+
+```python
+from sentence_transformers import CrossEncoder
+reranker = CrossEncoder('BAAI/bge-reranker-large')
+
+pairs = [[query, doc] for doc in retrieved_docs]
+scores = reranker.predict(pairs)
+```
+
+**重排序的 Trade-off**：
+- 如果召回 Top-100，重排序全部 100 对也很慢。通常只重排序 Top-K（如 Top-20 或 Top-50）
+- 重排序模型本身有长度限制（如 512 tokens），长文档需要截断或分段
+
+**进阶：Listwise Reranking**
+
+Pointwise reranking（逐对打分）只考虑 query 和单个文档的关系，忽略了文档之间的关系。Listwise 方法（如 SetRank、AllRank）把整个文档列表作为输入，考虑文档间的多样性、覆盖度，避免召回的 Top-K 内容高度重复。
+
+#### 上下文压缩（Contextual Compression）
+
+召回的 chunk 可能包含大量无关内容。Contextual Compression 的策略是：
+1. 先用标准检索召回相关文档
+2. 用 LLM 对每个文档提取与 query 相关的句子/段落
+3. 只把压缩后的内容送入最终生成
+
+LangChain 提供了 `ContextualCompressionRetriever`：
+
+```python
+from langchain.retrievers import ContextualCompressionRetriever
+compressor = LLMChainExtractor.from_llm(llm)
+compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor,
+    base_retriever=retriever
+)
+```
+
+---
+
+### 生成层（Generation）
+
+生成层的核心问题是：**如何把检索到的上下文组织成 Prompt，让 LLM 既充分利用外部知识，又不被无关信息干扰？**
+
+#### Prompt 工程
+
+基础的 RAG Prompt 模板：
+
+```
+你是专业的问答助手。请根据以下参考资料回答问题。
+如果资料中没有相关信息，请明确说明"根据现有资料无法回答"。
+
+参考资料：
+{context}
+
+用户问题：{question}
+
+请回答：
+```
+
+**关键设计原则**：
+
+1. **明确的角色设定**：让模型进入"严谨回答"模式，降低幻觉概率
+2. **引用要求**：强制模型标注信息来源
+3. **拒绝回答机制**：明确给出"无法回答"的许可，避免强行编造
+
+**Few-shot Prompting**：
+
+在 Prompt 中加入 1-3 个示例，展示"如何基于资料回答"和"如何表示无法回答"：
+
+```
+示例 1：
+资料：[文档A] RAG 是 2020 年由 Meta 提出的...
+问题：RAG 是谁提出的？
+回答：根据文档A，RAG 是 2020 年由 Meta 提出的。
+
+示例 2：
+资料：[文档B] 深度学习需要大量数据...
+问题：量子计算机的最新进展？
+回答：根据现有资料无法回答。
+```
+
+#### Lost in the Middle 问题
+
+LLM 对 Prompt 中不同位置的信息敏感度不同。研究表明，**模型更容易忽略 Prompt 中间部分的信息**，这被称为 "Lost in the Middle" 效应。
+
+**缓解策略**：
+- **Reorder**：把最相关的 chunk 放在开头和结尾，次相关的放中间
+- **压缩**：减少总上下文长度
+- **多查询分解**：把复杂问题拆成多个子问题，分别检索和回答
+
+#### 引用溯源（Citation / Attribution）
+
+让模型在生成时标注信息来源，有两个层面：
+
+1. **Chunk-level 引用**：回答中标注 "根据文档[1]..."
+   - 实现：在 Prompt 中给每个 chunk 编号，要求模型在回答中引用编号
+
+2. **Sentence-level 引用**：精确到句子级别的溯源
+   - 实现：生成后做一次后处理，用相似度或 NLI（自然语言推断）模型判断每个生成句子来源于哪个 chunk
+
+**引用质量评估**：
+- **Citation Precision**：生成的引用中，真正支持该陈述的比例
+- **Citation Recall**：陈述中需要引用的部分，实际给出引用的比例
+
+#### 上下文长度管理
+
+当检索到大量 chunk 时，总长度可能超过 LLM 的上下文窗口。策略包括：
+
+| 策略 | 做法 | 适用场景 |
+|------|------|---------|
+| **截断（Truncation）** | 只保留前 N 个 chunk | 简单直接，可能丢失后面相关信息 |
+| **Map-Reduce** | 每个 chunk 单独生成中间答案，再汇总 | 长文档问答 |
+| **Refine** | 逐个 chunk 迭代优化答案 | 需要逐步精化的场景 |
+| **摘要压缩** | 先用 LLM 把多个 chunk 压缩成短摘要 | chunk 数量极多时 |
+
+**Map-Reduce 的详细流程**：
+1. Map 阶段：每个 chunk 独立回答 query，得到多个中间答案
+2. Reduce 阶段：把所有中间答案拼接，让 LLM 综合出最终答案
+
+缺点：Map 阶段缺乏全局视角，可能每个中间答案都不完整。改进版是 **Refine**：
+1. 用第一个 chunk 生成初始答案
+2. 用第二个 chunk + 当前答案，让 LLM 修正/补充答案
+3. 迭代直到所有 chunk 处理完毕
+
+#### 多轮对话中的上下文管理
+
+对话式 RAG 面临独特的挑战：
+- **指代消解**："它是什么意思？" → 需要把"它"替换为前文提到的实体
+- **对话历史累积**：多轮后对话历史过长，需要选择性保留
+- **查询意图漂移**：用户可能在对话中切换话题
+
+**解决方案**：
+- 维护一个独立的对话摘要，每轮更新
+- 检索时同时考虑当前 query 和对话摘要
+- 使用专门的指代消解模型或让 LLM 先做 query 改写
+
+---
+
+## 高级 RAG 架构
+
+### Self-RAG
+
+传统 RAG  unconditional 地检索固定数量的文档，Self-RAG 让模型自己决定是否需要检索、检索多少次：
+
+1. 模型生成时，遇到不确定的内容，输出 `[Retrieve]` token
+2. 触发检索，召回相关文档
+3. 模型继续生成，并输出 `[IsSupp]` 或 `[IsUseful]` 等反思 token
+4. 如果信息支持当前陈述，继续生成；如果不支持，修正或重新检索
+
+Self-RAG 需要在训练阶段引入这些特殊 token，让模型学会何时检索、如何评估检索结果。
+
+### RAPTOR
+
+RAPTOR（Recursive Abstraction Processing for Tree-Organized Retrieval）解决的是**跨 chunk 的宏观语义检索**。
+
+比如一本书的多个章节分散在几十个 chunk 中，用户问"这本书的核心观点是什么"，传统 RAG 很难回答，因为每个 chunk 只包含局部信息。
+
+RAPTOR 的做法：
+1. 底层：原始 chunk 的 embedding
+2. 中层：对相邻 chunk 聚类，用 LLM 生成摘要，再对摘要做 embedding
+3. 顶层：对中层摘要继续聚类、摘要，形成树状结构
+4. 检索时自顶向下或按层检索，既能在底层找细节，也能在顶层找宏观结论
+
+### GraphRAG
+
+GraphRAG 把文档转化为**知识图谱**，节点是实体，边是关系。
+
+**构建流程**：
+1. 从文档中提取实体和关系（用 LLM 或 NER 模型）
+2. 构建图，社区检测（如 Leiden 算法）发现主题社区
+3. 对每个社区生成摘要
+4. 检索时既可以查具体实体，也可以查社区摘要
+
+**GraphRAG vs 向量 RAG**：
+- 向量 RAG 擅长"相似语义"的匹配
+- GraphRAG 擅长"结构化关系"的推理（如"A 的合作伙伴 B 的投资方是谁"）
+
+---
+
+## 评估体系
+
+RAG 的评估分为检索评估和生成评估两个维度。
+
+### 检索评估
+
+| 指标 | 定义 | 计算方式 |
+|------|------|---------|
+| **Hit Rate@K** | 正确答案是否在 Top-K 中 | 二元判断，取平均 |
+| **MRR** | Mean Reciprocal Rank | $\frac{1}{\|Q\|} \sum_{i=1}^{\|Q\|} \frac{1}{\text{rank}_i}$ |
+| **NDCG@K** | 考虑相关度等级的累积增益 | 折扣累积增益 / 理想累积增益 |
+| **Recall@K** | 相关文档被召回的比例 | $\frac{\text{召回的相关文档数}}{\text{总相关文档数}}$ |
+| **Precision@K** | Top-K 中相关文档的比例 | $\frac{\text{Top-K 中的相关文档数}}{K}$ |
+
+**注意**：检索评估需要 ground truth（标注好的 query-document 对）。如果没有标注，可以用 LLM 作为评判员（LLM-as-a-judge）来判断召回文档是否与 query 相关。
+
+### 生成评估
+
+| 指标 | 评估维度 | 方法 |
+|------|---------|------|
+| **Faithfulness** | 回答是否忠于检索内容 | 用 NLI 模型判断回答中的每个陈述是否能被上下文支撑 |
+| **Answer Relevance** | 回答是否切题 | 用 LLM 判断回答与问题的相关性 |
+| **Context Precision** | 检索的上下文中有多少是相关的 | 相关 chunk 数 / 总 chunk 数 |
+| **Context Recall** | 回答问题所需的信息有多少被检索到 | 需要人工或 LLM 标注"必需信息" |
+| **Answer Correctness** | 回答的事实正确性 | 对比标准答案，用 LLM 或规则判断 |
+
+**RAGAS** 是一个流行的自动化评估框架，可以用几行代码完成上述评估：
+
+```python
+from ragas import evaluate
+from ragas.metrics import faithfulness, answer_relevancy, context_recall
+
+result = evaluate(
+    dataset=eval_dataset,
+    metrics=[faithfulness, answer_relevancy, context_recall]
+)
+```
+
+### A/B 测试与在线评估
+
+离线评估有局限：
+- 标注数据难以覆盖真实用户的全部 query 分布
+- LLM-as-a-judge 本身可能有偏见
+
+在线评估的方法：
+- **用户满意度**：点赞/点踩、是否追问
+- **引用点击率**：用户是否点击查看引用来源
+- **任务完成率**：对话是否在更少轮次内解决用户问题
+
+---
+
+## 实践中的常见问题与对策
+
+| 现象        | 可能原因             | 解决方案                                |
+| --------- | ---------------- | ----------------------------------- |
+| 检索到的内容不相关 | Query 表述与文档差异大   | 使用 HyDE、Query Expansion             |
+| 回答包含幻觉    | 模型忽略了上下文，依赖参数知识  | 强化 Prompt 中的引用要求、降低 temperature     |
+| 回答碎片化     | Chunk 太小，缺乏全局信息  | 使用 Parent Document Retrieval、RAPTOR |
+| 长文档处理慢    | IndexFlatL2 暴力搜索 | 换 IVF、HNSW 或 PQ 索引                  |
+| 多轮对话理解差   | 缺乏对话历史管理         | 维护对话摘要、做指代消解                        |
+| 跨文档推理困难   | 向量检索无法表达实体关系     | 引入 GraphRAG                         |
+
+---
+
+## 从 Naive RAG 到 Production RAG 的 checklist
+
+1. **数据层**
+   - [ ] PDF 提取质量是否足够？表格、图片是否丢失关键信息？
+   - [ ] Chunking 策略是否合理？是否做了 overlap？
+   - [ ] 是否需要多粒度索引（小 chunk 检索 + 大 chunk 生成）？
+
+2. **索引层**
+   - [ ] Embedding 模型是否针对领域微调？
+   - [ ] 向量索引类型是否匹配数据规模？
+   - [ ] 是否需要混合检索（Dense + Sparse）？
+   - [ ] 索引更新策略（增量更新 vs 全量重建）？
+
+3. **检索层**
+   - [ ] 是否做了 Query Rewriting？
+   - [ ] 是否需要多路召回？
+   - [ ] 是否加了 Reranker？
+   - [ ] 检索结果是否去重？
+
+4. **生成层**
+   - [ ] Prompt 是否要求引用和拒绝回答？
+   - [ ] 是否处理了 Lost in the Middle？
+   - [ ] 上下文长度是否超限？压缩策略是什么？
+   - [ ] Temperature、Top-p 等生成参数是否调优？
+
+5. **评估层**
+   - [ ] 是否有评估数据集？
+   - [ ] 是否同时评估检索和生成？
+   - [ ] 是否监控线上用户反馈？
+
+---
+
+## 总结
+
+RAG 远不是"Embedding + 向量检索 + Prompt 拼接"那么简单。一条 Production-ready 的 RAG 链路涉及：
+
+- **文档理解的深度**：布局解析、多粒度分块、多模态处理
+- **表示学习的精度**：Embedding 选型、混合检索、重排序
+- **检索策略的灵活**：Query 改写、多路召回、动态决策
+- **生成控制的严谨**：Prompt 工程、引用溯源、拒绝机制、上下文管理
+- **评估体系的完整**：离线指标 + 在线反馈的持续迭代
+
+
