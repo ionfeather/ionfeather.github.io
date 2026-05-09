@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+/* ========== 搜索页：URL 带 keyword 时给表单加 class ========== */
+document.addEventListener('DOMContentLoaded', function () {
+  var pageURL = new URL(window.location.toString());
+  var keywords = pageURL.searchParams.get('keyword');
+  if (!keywords) return;
+  var form = document.querySelector('.search-form');
+  var input = form ? form.querySelector('input[name="keyword"]') : null;
+  if (form && input) {
+    input.value = keywords;
+    form.classList.add('has-keyword');
+  }
+});
+
 /* ========== 切换深色/亮色时出现小豆泥 ========== */
 (function () {
   var darkSrc  = '/stickers/azuki/030.png';
