@@ -59,7 +59,8 @@
 &lt;h2 id="路线一llm-作为语义特征编码器"&gt;路线一：LLM 作为语义特征编码器
 &lt;/h2&gt;&lt;p&gt;这条路线的逻辑是：结构化数据库（DrugBank、OMIM 等）能告诉你药物的靶点、结构，但捕捉不到文献中隐含的知识——一篇论文里可能早就暗示了某个药物对某类疾病有效，但这种关联从未被整理进数据库。用 LLM/BERT 读这些文本，把语义信息转成向量，再注入 GNN，就能补上这个盲区。&lt;/p&gt;
 &lt;h3 id="llm-dda"&gt;LLM-DDA
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39325266/" target="_blank" rel="noopener"
 &gt;Empowering Graph Neural Network-Based Computational Drug Repositioning with Large Language Model-Inferred Knowledge Representation&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -106,7 +107,8 @@ data-flex-basis="286px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="lbmff"&gt;LBMFF
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2023.1205144/full" target="_blank" rel="noopener"
 &gt;Drug–disease association prediction with literature based multi-feature fusion&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -148,7 +150,8 @@ data-flex-basis="644px"
 &lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="路线二llm-改造数据而不是改模型"&gt;路线二：LLM 改造数据，而不是改模型
-&lt;/h2&gt;&lt;blockquote&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/" target="_blank" rel="noopener"
 &gt;Improving drug repositioning with negative data labeling using large language models&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -193,7 +196,8 @@ data-flex-basis="576px"
 &lt;p&gt;注意：这里没有改任何模型架构，提升完全来自数据质量。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="路线三llm-作为直接推理者"&gt;路线三：LLM 作为直接推理者
-&lt;/h2&gt;&lt;blockquote&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39379930/" target="_blank" rel="noopener"
 &gt;DrugReAlign: a multisource prompt framework for drug repurposing based on large language models&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

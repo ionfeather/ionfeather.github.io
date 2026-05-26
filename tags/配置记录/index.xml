@@ -29,7 +29,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;conda remove -n &amp;lt;env_name&amp;gt; --all
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="在conda中配置jupyter内核"&gt;在conda中配置Jupyter内核
 &lt;/h3&gt;&lt;h4 id="安装jupyter内核"&gt;安装Jupyter内核
-&lt;/h4&gt;&lt;blockquote&gt;
+&lt;/h4&gt;
+&lt;blockquote&gt;
 &lt;p&gt;总是忘记Jupyter内核如何配置。记录一下：&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;安装ipykernel。&lt;/p&gt;

@@ -350,11 +350,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-1';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -422,6 +440,11 @@ syncThumbs(idx);
 });
 lightbox.on('close', function () {
 hideControls();
+});
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
 });
 });
 })();
@@ -815,11 +838,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-1';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -887,6 +928,11 @@ syncThumbs(idx);
 });
 lightbox.on('close', function () {
 hideControls();
+});
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
 });
 });
 })();
@@ -1215,11 +1261,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -1287,6 +1351,11 @@ syncThumbs(idx);
 });
 lightbox.on('close', function () {
 hideControls();
+});
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
 });
 });
 })();
@@ -1625,11 +1694,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -1697,6 +1784,11 @@ syncThumbs(idx);
 });
 lightbox.on('close', function () {
 hideControls();
+});
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
 });
 });
 })();
@@ -1941,11 +2033,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -2013,6 +2123,11 @@ syncThumbs(idx);
 });
 lightbox.on('close', function () {
 hideControls();
+});
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
 });
 });
 })();

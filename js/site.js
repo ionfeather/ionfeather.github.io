@@ -15,10 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var list = document.querySelector('.article-list');
   if (!list) return;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   list.querySelectorAll('article').forEach(function (article, i) {
-    var anim = i % 2 === 0 ? 'slideInLeft' : 'slideInRight';
-    article.style.animation = anim + ' 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both';
-    article.style.animationDelay = (0.04 + i * 0.07) + 's';
+    if (reduceMotion) {
+      article.style.opacity = '1';
+      article.style.animation = 'none';
+      return;
+    }
+    article.style.animation = 'homepageCardIn 0.36s cubic-bezier(0.25, 0.46, 0.45, 0.94) both';
+    article.style.animationDelay = (0.03 + i * 0.04) + 's';
   });
 });
 
@@ -283,5 +288,4 @@ window.addEventListener('load', function () {
     });
   }, 600);
 })();
-
 

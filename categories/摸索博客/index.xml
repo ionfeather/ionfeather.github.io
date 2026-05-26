@@ -873,11 +873,29 @@ ticking = false;
 });
 });
 wakeDots();
-window.addEventListener('load', function () {
-if (typeof GLightbox === 'undefined') {
-console.warn('[imgloop] GLightbox not loaded');
-return;
+function loadGLightbox() {
+if (window.GLightbox) return Promise.resolve();
+if (window.__glightboxLoading) return window.__glightboxLoading;
+window.__glightboxLoading = new Promise(function (resolve, reject) {
+if (!document.querySelector('link[data-glightbox-css]')) {
+var css = document.createElement('link');
+css.rel = 'stylesheet';
+css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+css.crossOrigin = 'anonymous';
+css.setAttribute('data-glightbox-css', 'true');
+document.head.appendChild(css);
 }
+var script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+script.crossOrigin = 'anonymous';
+script.onload = resolve;
+script.onerror = reject;
+document.head.appendChild(script);
+});
+return window.__glightboxLoading;
+}
+function initLightbox() {
+if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-17';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
@@ -946,6 +964,11 @@ syncThumbs(idx);
 lightbox.on('close', function () {
 hideControls();
 });
+}
+document.addEventListener('DOMContentLoaded', function () {
+loadGLightbox().then(initLightbox).catch(function () {
+console.warn('[imgloop] GLightbox failed to load');
+});
 });
 })();
 &lt;/script&gt;
@@ -976,7 +999,8 @@ allowfullscreen="true"
 &lt;p&gt;欢迎大家去看！&lt;/p&gt;</description></item><item><title>博客探索 | 使用Obsidian来写博客</title><link>https://ionfeather.github.io/2025/obsidian/</link><pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate><guid>https://ionfeather.github.io/2025/obsidian/</guid><description>&lt;p&gt;之前一直在用Typora来写文章，发现有的时候也太难用了，不仅插件少，还要付费。这个时候看到很多的博客都用Obsidian来写，不得不心动了。&lt;/p&gt;
 &lt;h2 id="obsidian的插件"&gt;Obsidian的插件
 &lt;/h2&gt;&lt;h3 id="linter"&gt;Linter
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/662183315" target="_blank" rel="noopener"
 &gt;Obsidian Linter插件：打造统一、美观的笔记环境 - 知乎&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

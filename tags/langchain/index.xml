@@ -193,12 +193,14 @@ color: #b1b1b1;
 &lt;p&gt;检索增强生成的思想是，在给定一个问题时，首先进行检索步骤以获取任何相关文档。然后将这些文档与原始问题一起传递给语言模型，并让它生成一个回答。然而，为了做到这一点，首先需要将文档以适合进行此类查询的格式呈现。&lt;/p&gt;
 &lt;/details&gt;
 &lt;h2 id="构造一个语义搜索引擎"&gt;构造一个语义搜索引擎
-&lt;/h2&gt;&lt;blockquote&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://python.langchain.com/docs/tutorials/retrievers/" target="_blank" rel="noopener"
 &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="读取pdf"&gt;读取PDF
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://python.langchain.com/docs/how_to/document_loader_pdf/" target="_blank" rel="noopener"
 &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

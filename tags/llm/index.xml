@@ -1,4 +1,449 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm/</link><description>Recent content in LLM on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 07 May 2026 21:35:18 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;SGLang, a Structured Generation Language for LLMs，论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm/</link><description>Recent content in LLM on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Sat, 16 May 2026 18:44:45 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | QwenImage技术报告</title><link>https://ionfeather.github.io/2026/qwenimage/</link><pubDate>Sat, 16 May 2026 18:44:45 +0800</pubDate><guid>https://ionfeather.github.io/2026/qwenimage/</guid><description>
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;论文：&lt;/strong&gt; &lt;a class="link" href="https://arxiv.org/abs/2508.02324" target="_blank" rel="noopener"
+&gt;Qwen-Image Technical Report&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心贡献：&lt;/strong&gt; MSRoPE 多模态位置编码 + 双流 MMDiT 架构 + 复杂文本渲染 + 精确图像编辑&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Qwen-Image&lt;/strong&gt; 是通义千问系列中的图像生成基础模型，最亮眼的两个能力是&lt;strong&gt;复杂文本渲染&lt;/strong&gt;和&lt;strong&gt;精确图像编辑&lt;/strong&gt;。为应对复杂文本渲染的挑战，论文设计了一套精细的数据处理管线，确保模型能够准确生成图像中的文字内容。在图像编辑方面，模型支持基于指令的编辑操作，能够在保持主体身份的前提下完成局部修改和风格迁移。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="模型架构"&gt;模型架构
+&lt;/h2&gt;&lt;p&gt;Qwen-Image 采用标准的&lt;strong&gt;双流 MMDiT（Multi-Modal Diffusion Transformer）&lt;/strong&gt; 架构。文本和图像各有一条独立的 Transformer 流，每条流有独立的注意力计算，通过交叉注意力层进行模态间信息交换。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260430104402.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="核心组件"&gt;核心组件
+&lt;/h3&gt;&lt;p&gt;核心组件是多模态大模型、VAE和MMDiT。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513104335.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;组件&lt;/th&gt;
+&lt;th&gt;具体实现&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;MLLM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Qwen2.5-VL（冻结）&lt;/td&gt;
+&lt;td&gt;提取文本语义特征，通过投影层映射到扩散模型的嵌入空间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;VAE 编码器&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;8× 下采样&lt;/td&gt;
+&lt;td&gt;将原始像素压缩到潜在空间，提供图像的低维连续表示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;文本流（Text Stream）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;独立 Transformer 层&lt;/td&gt;
+&lt;td&gt;处理文本 token 序列，保持文本语义的完整性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;图像流（Image Stream）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;独立 Transformer 层&lt;/td&gt;
+&lt;td&gt;处理图像 patch token，执行扩散去噪过程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;交叉注意力&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;流间交叉注意力层&lt;/td&gt;
+&lt;td&gt;两条流之间交换信息，实现文本对图像生成的精确控制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;归一化策略：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在注意力计算的 Q 和 K 上使用 &lt;strong&gt;RMSNorm&lt;/strong&gt; 进行 QK 归一化，防止注意力分数随模型规模增大而膨胀，稳定训练过程。&lt;/li&gt;
+&lt;li&gt;其他归一化层同样使用 RMSNorm 或 LayerNorm。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="多模态大模型"&gt;多模态大模型
+&lt;/h4&gt;&lt;p&gt;使用Qwen2.5-VL。好处有以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文字和图像空间已经对齐&lt;/li&gt;
+&lt;li&gt;仍然有强大的语言建模能力&lt;/li&gt;
+&lt;li&gt;支持多模态输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为纯文本输入和文本和图像输入设计了不同的系统提示。最后，我们利用 Qwen2.5-VL 语言模型主干的最后一层隐藏状态的潜在特征作为用户输入的表示。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513095247.png"
+loading="lazy"
+&gt;
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513095307.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h4 id="vae"&gt;VAE
+&lt;/h4&gt;&lt;p&gt;使用single-encoder，dual-decoder的策略。&lt;/p&gt;
+&lt;p&gt;采用Wan-2.1-VAE的架构，冻结其编码器，并对图像解码器进行微调。为了提高重建保真度，特别是对于小文本和细粒度细节，我们在内部富含文本的图像语料库上训练解码器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;平衡重建损失与感知损失可以有效减少网格伪影，这种伪影经常在灌木丛等重复纹理中观察到。&lt;/li&gt;
+&lt;li&gt;随着重建质量的提高，对抗性损失变得无效，因为判别器无法提供有效的指导。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基于这些观察，我们仅使用重建和感知损失，在微调过程中动态调整它们的比例。&lt;/p&gt;
+&lt;h4 id="mmdit"&gt;MMDiT
+&lt;/h4&gt;&lt;p&gt;Multimodal Diffusion Transformer目前应该是最有效的一类之一，FLUX和Seedream都是用的此模型，本文也不例外。&lt;/p&gt;
+&lt;p&gt;本文提出了MSRoPE。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要解决的问题：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;扩散 Transformer 中的位置编码面临一个固有矛盾：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;图像 patch 是&lt;strong&gt;二维网格结构&lt;/strong&gt;，需要 2D RoPE 来捕获空间关系。&lt;/li&gt;
+&lt;li&gt;文本 token 是&lt;strong&gt;一维序列&lt;/strong&gt;，标准做法使用一维位置编码。&lt;/li&gt;
+&lt;li&gt;传统做法将文本 token 展平后拼接到图像位置嵌入之后，导致文本和图像在位置空间中处于不同的分布区域，难以精确建模文本对图像特定区域的细粒度控制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="notice notice-info"&gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Seedream 3.0 的改进尝试&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Seedream 3.0 提出的 Scaling RoPE 对此做了改进：将图像的位置编码压缩到图像的中心区域，文本 token 被视为形状为 [1, L] 的二维 token，再用 2D RoPE 进行联合编码。MSRoPE 在此基础上做了进一步简化。&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;MSRoPE 的具体做法：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260430105225.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;文本 token 提升为二维&lt;/strong&gt;：将一维文本位置序列视为二维张量，在两个维度上使用&lt;strong&gt;相同的位置 ID&lt;/strong&gt;。即对于位置为 $n$ 的文本 token，其二维坐标为 $(n, n)$。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对角线拼接&lt;/strong&gt;：文本 token 沿着&amp;quot;对角线&amp;quot;方向与图像 patch 的位置编码进行拼接，使得文本和图像共享同一套 2D 坐标系。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多尺度旋转频率&lt;/strong&gt;：通过调整 RoPE 的旋转频率基数，支持不同尺度的位置关系编码，使模型能够同时捕获全局布局和局部细节。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;与文本展平后拼接的对比：&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;对比项&lt;/th&gt;
+&lt;th&gt;文本展平后拼接&lt;/th&gt;
+&lt;th&gt;MSRoPE&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;文本位置维度&lt;/td&gt;
+&lt;td&gt;1D 序列位置&lt;/td&gt;
+&lt;td&gt;2D 联合空间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;图文对齐方式&lt;/td&gt;
+&lt;td&gt;分属不同空间&lt;/td&gt;
+&lt;td&gt;对角统一坐标系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;细粒度定位&lt;/td&gt;
+&lt;td&gt;难以精确对应图像区域&lt;/td&gt;
+&lt;td&gt;自然支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;文字渲染&lt;/td&gt;
+&lt;td&gt;位置模糊，容易漂移&lt;/td&gt;
+&lt;td&gt;精确定位，不飘移&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;最终效果：&lt;/strong&gt; MSRoPE 使得模型能够在统一的 2D 空间中精确地对文字进行位置编码，生成的文字能够准确出现在指定位置，且大小、方向与场景自然融合。&lt;/p&gt;
+&lt;h3 id="多任务框架"&gt;多任务框架
+&lt;/h3&gt;&lt;p&gt;Qwen-Image 在统一的框架中支持三种任务类型：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;任务&lt;/th&gt;
+&lt;th&gt;输入&lt;/th&gt;
+&lt;th&gt;输出&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;文生图（T2I）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;文本 prompt&lt;/td&gt;
+&lt;td&gt;生成图像&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;图生图（I2I）&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;参考图像 + 文本指令&lt;/td&gt;
+&lt;td&gt;编辑后的图像&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;图文生图&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;参考图像 + 文本 prompt&lt;/td&gt;
+&lt;td&gt;融合生成的新图像&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;对于图像输入任务，模型的处理方式是：使用 Qwen2.5-VL 提取视觉 patches，通过 ViT 编码后与文本 token 拼接形成输入序列；同时，VAE 编码的图像潜在表示输入到图像流中。模型通过引入新的&lt;strong&gt;帧维度（frame dimension）&lt;/strong&gt; 来扩展 MSRoPE，以区分输入图像和生成图像的位置。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="数据准备"&gt;数据准备
+&lt;/h2&gt;&lt;h3 id="数据收集"&gt;数据收集
+&lt;/h3&gt;&lt;p&gt;准备了大量的数据集进行训练，比例如下：
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513104705.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="多阶段数据清洗"&gt;多阶段数据清洗
+&lt;/h3&gt;&lt;p&gt;论文构建了一套完整的数据清洗流程来确保训练数据质量。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513110820.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一阶段 — 初始预训练数据：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用resize为256p的图像，去除低于此分辨率的，压缩高于此分辨率的&lt;/li&gt;
+&lt;li&gt;去除低质量或不相关图片&lt;/li&gt;
+&lt;li&gt;去除损坏文件&lt;/li&gt;
+&lt;li&gt;去除重复数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;二阶段 — 质量筛选：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;旋转：使用EXIF信息旋转&lt;/li&gt;
+&lt;li&gt;清晰度不佳&lt;/li&gt;
+&lt;li&gt;曝光错误&lt;/li&gt;
+&lt;li&gt;饱和度过高&lt;/li&gt;
+&lt;li&gt;熵过低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下图展示了具体的filter operator筛选的方法。
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513141211.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;三阶段 — 图像-文本对改进：&lt;/strong&gt;
+将文本分成了三个部分：原始描述、重述和融合描述。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原始描述&lt;/strong&gt;：有噪音但是带来了世界知识。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重述&lt;/strong&gt;：由Qwen-VL Captioner生成的描述组成，提供更具有描述性和结构化的注释。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;融合描述&lt;/strong&gt;：将原始和生成的描述混合，提供通用知识和细节化描述。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chinese CLIP&amp;amp;SigLIP 2&lt;/strong&gt;：移除描述不准确的图文&lt;/li&gt;
+&lt;li&gt;移除一些非法的、长度过长的描述&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;四阶段 — 文本渲染增强：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第三阶段的数据集被分为四个分割：&lt;strong&gt;英语分割、中文分割、其他语言分割和非文本分割&lt;/strong&gt;，以确保不同语言环境下的平衡训练。&lt;/li&gt;
+&lt;li&gt;使用了合成文本渲染数据&lt;/li&gt;
+&lt;li&gt;密集文本Filter和小字符Filter去除过小的图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;五阶段 — 高分辨率细化：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;strong&gt;640p图像训练&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图像质量&lt;/strong&gt;Filter去除有质量问题的图像，如曝光、模糊或伪影&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;审美&lt;/strong&gt;Filter去除构图或视觉吸引力较差的图像&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常元素&lt;/strong&gt;Filter去除含有水印、二维码、条形码或其他可能干扰查看的元素的图像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;六阶段 — 类别平衡和肖像增强：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将数据集分成三种类别：&lt;strong&gt;常规、肖像和文本渲染&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;关键字retrieval和图像retrieval通过目标patch来扩充数据集：从人物类别中检索逼真的肖像、卡通人物和名人图像。然后生成合成字幕以强调特定于角色的细节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;七阶段 — 平衡多尺度训练：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在640p和1328p上联合训练&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分层分类&lt;/strong&gt;：受 WordNet 设计原则的启发，分类中只保留具有最高质量和审美吸引力的图像&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重采样&lt;/strong&gt;：采用专门的重采样策略来平衡包含文本渲染的数据，解决token频率的长尾分布问题&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="数据标注"&gt;数据标注
+&lt;/h3&gt;&lt;p&gt;利用功能强大的图像描述生成器（例如 Qwen2.5-VL）不仅生成全面的&lt;strong&gt;图像描述&lt;/strong&gt;，还生成捕获基本图像属性和质量属性的&lt;strong&gt;结构化元数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513144911.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="数据合成"&gt;数据合成
+&lt;/h3&gt;&lt;p&gt;多阶段文本感知图像合成pipeline，集成了三种互补策略：&lt;strong&gt;纯渲染、合成渲染和复杂渲染&lt;/strong&gt;。
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513145145.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;简单背景下的纯渲染&lt;/strong&gt;：模型识别生成字符最有效的方法。如果段落中的任何字符由于限制（例如字体不可用或渲染错误）而无法渲染，则整个段落将被丢弃。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上下文场景下的合成渲染&lt;/strong&gt;：合成文本嵌入到现实的视觉环境中，模仿其在日常环境中的外观，比如纸张、木板等，然后无缝地合成到不同的背景图像中。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;结构化模板下的复杂渲染&lt;/strong&gt;：基于预定义模板（例如 PowerPoint 幻灯片或用户界面模型）的编程编辑的综合策略。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="训练"&gt;训练
+&lt;/h2&gt;&lt;h3 id="预训练"&gt;预训练
+&lt;/h3&gt;&lt;p&gt;Qwen-Image 采用 &lt;strong&gt;Flow Matching（FM）&lt;/strong&gt; 作为训练目标，而非传统扩散模型的噪声预测。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下图是用GPT-Image-2生成的示意图。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513151040.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h4 id="producer-consumer框架"&gt;Producer-Consumer框架
+&lt;/h4&gt;&lt;p&gt;受到 &lt;strong&gt;Ray&lt;/strong&gt;分布式框架的启发：&lt;/p&gt;
+&lt;p&gt;**Producer 的任务是把原始数据处理好，让 GPU 可以直接训练。具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;数据筛选&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;根据预定义标准过滤图像-文本对，比如图像分辨率、是否符合检测规则等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码成潜在表示（Latent Representation）&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;strong&gt;MLLM 模型&lt;/strong&gt;（如 Qwen2.5 VL）和 &lt;strong&gt;VAE&lt;/strong&gt; 对图像进行编码。&lt;/li&gt;
+&lt;li&gt;这样可以减少数据量，并加速训练。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缓存与分组&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;将处理好的图像按分辨率分组，存入高速缓存（cache buckets）。&lt;/li&gt;
+&lt;li&gt;存储在一个共享的、&lt;strong&gt;位置感知的存储系统&lt;/strong&gt;（location-aware store），让消费者可以快速获取。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;与 Consumer 连接&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;使用 HTTP 传输层实现通信。&lt;/li&gt;
+&lt;li&gt;支持 &lt;strong&gt;RPC（远程过程调用）语义&lt;/strong&gt; 和 &lt;strong&gt;零拷贝调度&lt;/strong&gt;（zero-copy scheduling），可以异步传输数据而不浪费内存。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Consumer 专注于模型训练：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;训练节点部署在 GPU 密集型集群上&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;专注计算&lt;/strong&gt;：因为数据处理都在 Producer，Consumer 只需用 GPU 训练 MMDiT 模型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数分布&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;模型参数使用 &lt;strong&gt;4-way tensor-parallel&lt;/strong&gt;（张量并行）分布在多个 GPU。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异步拉取数据&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;每个数据并行组（data-parallel group）可以直接从 Producer 拉取预处理好的批次（batches），无需等待。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="分布式训练"&gt;分布式训练
+&lt;/h4&gt;&lt;p&gt;由于参数量较大，无法仅使用 FSDP 将模型加载到单块 GPU 上，采用了 &lt;strong&gt;Megatron-LM&lt;/strong&gt; 进行分布式训练：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;混合并行策略&lt;/strong&gt;：数据并行（Data Parallelism）+ 张量并行（Tensor Parallelism），使用 &lt;strong&gt;Transformer-Engine&lt;/strong&gt; 库实现高效计算。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分布式优化器&lt;/strong&gt;：使用分布式优化器减少显存占用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;激活检查点（Activation Checkpointing）&lt;/strong&gt;：初期使用，后期随着优化器优化关闭激活检查点，仅依赖分布式优化器来降低通信开销。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="分阶段训练策略"&gt;分阶段训练策略
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;提高分辨率：从低分辨率到高分辨率&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成文本渲染：从非文本到文本&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;精细化数据质量：从海量数据到精细化数据&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;平衡数据分布：从不平衡到平衡&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;使用合成数据进行增强：从真实世界数据到合成数据&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="后训练"&gt;后训练
+&lt;/h3&gt;&lt;h4 id="sft"&gt;SFT
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;高质量数据集&lt;/strong&gt;：分层组织的语义类别数据集，覆盖多种场景和风格。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;人工标注&lt;/strong&gt;：细致的人工标注和审核流程，针对模型在实际应用中的不足进行有针对性的优化。&lt;/li&gt;
+&lt;li&gt;图像清晰、细节丰富、明亮且逼真。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="rl"&gt;RL
+&lt;/h4&gt;&lt;p&gt;采用两阶段强化学习策略：&lt;/p&gt;
+&lt;p&gt;**DPO&lt;/p&gt;
+&lt;p&gt;基本思路是：对同一 prompt，人工选择&lt;strong&gt;最好&lt;/strong&gt;和&lt;strong&gt;最差&lt;/strong&gt;的生成图像，基于 Flow Matching 的似然函数构造 DPO 目标函数，将偏好信号直接融入生成轨迹优化中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;应用规模&lt;/strong&gt;：在大规模偏好数据集上应用，快速对齐模型与人类偏好。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化目标&lt;/strong&gt;：提升模型生成&amp;quot;好图&amp;quot;的概率，降低生成&amp;quot;差图&amp;quot;的概率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;**GRPO&lt;/p&gt;
+&lt;p&gt;我们按照 Flow-GRPO 使用 GRPO 进行进一步的细粒度训练。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;采样&lt;/strong&gt;：从当前策略（模型）中采样多组生成图像。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;评估&lt;/strong&gt;：使用多个专用奖励模型（美学评分、文字渲染精度、编辑一致性等）对每组图像进行打分。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化&lt;/strong&gt;：在小规模、高质量的数据上进行精细化调整。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="多任务训练"&gt;多任务训练
+&lt;/h4&gt;&lt;p&gt;除了文生图之外，还有多模态图像生成任务，支持了输入文本+图像作为Qwen-Image MMDiT的输入。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="实验"&gt;实验
+&lt;/h2&gt;&lt;h3 id="人类评价"&gt;人类评价
+&lt;/h3&gt;&lt;p&gt;AI Arena2，这是一个基于 Elo 评级系统（Elo &amp;amp;Sloan，2008）构建的开放基准测试平台。由用户选出其中较好的一个。&lt;/p&gt;
+&lt;p&gt;和Imagen 4 Ultra Preview 0606、Seedream 3.0、GPT Image 1[HIGH]、FLUX.1 Kontext [Pro]比较，排名第三。
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173340.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="量化指标"&gt;量化指标
+&lt;/h3&gt;&lt;h4 id="vae重建表现"&gt;VAE重建表现
+&lt;/h4&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173558.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h4 id="文生图表现"&gt;文生图表现
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;DPG&lt;/strong&gt;：该基准测试由 1K 密集提示组成，可以对提示遵守情况的不同方面进行细粒度评估。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173815.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;GenEval&lt;/strong&gt;：该基准侧重于使用具有不同对象属性的组合提示来生成以对象为中心的文本到图像。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173830.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OneIG-Bench&lt;/strong&gt;：跨多个维度对 T2I 模型进行细粒度评估而设计的综合基准。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174102.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174134.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;TIIF&lt;/strong&gt;：在系统评估 T2I 模型解释和遵循复杂文本指令的能力的基准。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174213.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CVTG-2K&lt;/strong&gt;：该基准测试包含 2K 提示，每个提示需要在生成的图像上渲染 2-5 个英语区域。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174401.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ChineseWord&lt;/strong&gt;：本问题提出的基准。根据常用规范汉字表，我们将汉字分为三个难度等级：一级（3500字）、二级（3000字）、三级（1605字）。我们制作了几个提示模板，指示文本到图像模型生成包含单个汉字的图像。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174411.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LongText-Bench&lt;/strong&gt;：这是一个专门为评估模型精确渲染长文本的能力而设计的基准。该数据集包含 160 个提示，涵盖八个不同的场景。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174420.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;h4 id="图像编辑"&gt;图像编辑
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Benchmark有&lt;/strong&gt;：GEdit-Bench、ImgEdit、Novel view synthesis、Depth Estimation&lt;/p&gt;
+&lt;p&gt;总之效果不错。&lt;/p&gt;
+&lt;h3 id="定性指标"&gt;定性指标
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VAE重建效果&lt;/strong&gt;：可以看到细节非常好，不会出现糊，仍然可以辨认。
+&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513175206.png"
+loading="lazy"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;图像生成&lt;/strong&gt;：从英文文本渲染、中文文本渲染、多对象生成、空间关系生成四个方面进行定性评价。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能够渲染长段英文文本，文本保真度高。&lt;/li&gt;
+&lt;li&gt;精确生成中文对联，渲染结构化段落和手写文本，保持排版美观&lt;/li&gt;
+&lt;li&gt;精确生成指定动物及其位置，忠实呈现毛绒样式&lt;/li&gt;
+&lt;li&gt;准确生成符合提示的场景与对象交互，能理解并执行复杂空间和动作提示。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;图像编辑&lt;/strong&gt;：针对文本和素材编辑、对象添加/删除/替换、姿势操纵、链式编辑和新颖视图合成五个关键方面进行了定性评估。总之效果不错。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="结论"&gt;结论
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Qwen-Image&lt;/strong&gt; 是 Qwen 系列推出的一款全新图像生成基础模型，它在复杂文本渲染和精细图像编辑上表现尤为出色。通过完整的数据管道和渐进式训练策略，Qwen-Image 能在生成图像中准确呈现长文本内容，避免文字丢失、错误或重复。&lt;/p&gt;
+&lt;p&gt;相比传统图像生成模型，它不仅追求视觉美观，更强调 &lt;strong&gt;文本与图像的精准对齐&lt;/strong&gt;。这意味着未来的交互界面可以从纯语言交互（LUI）升级为视觉-语言交互（VLUI），用户不仅能用文字表达意图，还能生成富含文字、结构清晰的图像。&lt;/p&gt;
+&lt;p&gt;除了文本渲染，Qwen-Image 还能处理 &lt;strong&gt;传统理解任务&lt;/strong&gt;，比如深度估计。与传统判别模型不同，它通过生成理解方式构建视觉内容分布，从而自然推断深度，实现了理解与生成的结合。&lt;/p&gt;
+&lt;p&gt;更令人惊喜的是，Qwen-Image 在 &lt;strong&gt;3D、视频和多对象场景&lt;/strong&gt;中也表现出色。它能保证多视角一致性，准确保留主体身份和背景结构，甚至在复杂动作或布局中保持高连贯性。&lt;/p&gt;
+&lt;p&gt;总的来说，Qwen-Image 不只是一个图像生成模型，它标志着 &lt;strong&gt;多模态 AI 的新方向&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生成模型不仅生成图像，还能理解图像&lt;/li&gt;
+&lt;li&gt;理解模型通过生成过程实现更深入的认知&lt;/li&gt;
+&lt;li&gt;视觉与语言的结合将带来更直观、智能的交互体验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;div class="notice notice-info"&gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;核心贡献总结&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;MSRoPE 多尺度旋转位置编码&lt;/strong&gt;：将文本 token 提升为二维，沿对角线与图像位置编码统一，实现精确的图文位置对齐，是复杂文字渲染的关键支撑。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双流 MMDiT 架构&lt;/strong&gt;：结合 Qwen2.5-VL 视觉编码器和 Flow Matching 训练目标，在统一框架中支持文生图、图生图和图像编辑。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;四阶段渐进式预训练&lt;/strong&gt;：从 256px 到 1024px+，逐步集成文字渲染能力，辅以精细的数据构建，确保生成质量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;两阶段后训练（SFT → DPO + GRPO）&lt;/strong&gt;：离线偏好对齐 + 在线策略优化的组合，系统性提升美学质量、文字渲染精度和编辑一致性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description></item><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;SGLang, a Structured Generation Language for LLMs，论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
 &gt;[2312.07104] SGLang: Efficient Execution of Structured Language Model Programs&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="解决的问题"&gt;解决的问题
 &lt;/h2&gt;&lt;p&gt;尽管LM程序被广泛使用，但当前用于表达和执行它们的系统仍然低效。我们确定了与高效使用LM程序相关的两个主要挑战：&lt;/p&gt;
@@ -165,7 +610,8 @@ data-flex-basis="222px"
 &lt;li&gt;如果 Worker 节点发生逐出（eviction），它会将此逐出提交到一个队列中。Router 会在活动量较低的时期处理此队列，以更新元树。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="压缩有限状态机"&gt;压缩有限状态机
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://oi-wiki.org/misc/fsm/" target="_blank" rel="noopener"
 &gt;有限状态自动机 - OI Wiki&lt;/a&gt;这篇wiki介绍了有限状态自动机，以及其和正则表达式之间的关系。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -333,7 +779,8 @@ data-flex-basis="898px"
 &lt;li&gt;压缩FSM：对有限状态机进行压缩&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="和其他框架的比较"&gt;和其他框架的比较
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;/blockquote&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时，一直有个绕不过去的问题：agent 生成的内容质量怎么评？人工标注太慢，让 LLM 直接打分又不知道该不该信。后来想到学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是&amp;quot;用 LLM 做复杂内容的质量判断&amp;quot;。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？哪条路线更值得押注？&lt;/strong&gt;&lt;/p&gt;
@@ -1829,7 +2276,8 @@ data-flex-basis="611px"
 &lt;/h4&gt;&lt;p&gt;Sigmoid函数在多分类情况下的推广。&lt;/p&gt;
 &lt;h4 id="applying-softmax-in-logistic-regression"&gt;Applying Softmax in Logistic Regression
 &lt;/h4&gt;&lt;p&gt;可以使用矩阵运算方式加快计算。&lt;/p&gt;
-$$\hat{y}=softmax(Wx+b)$$&lt;blockquote&gt;
+$$\hat{y}=softmax(Wx+b)$$
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2506.11035" target="_blank" rel="noopener"
 &gt;Doumbouya et al., 2025&lt;/a&gt;是这么认为的：逻辑回归将矩阵的每一行 $w_k$视为&lt;strong&gt;第 $k$ 类的原型（prototype）&lt;/strong&gt;，由于两个向量的相似度越高，它们的点积（dot product）值就越大，因此点积可作为衡量向量相似度的函数。模型最终将输入分配给相似度最高的类别。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2313,7 +2761,8 @@ data-flex-basis="413px"
 &lt;/h4&gt;&lt;p&gt;单个样本特征维度是d，有m个样本，就可以将输入写成一个矩阵X为m×d维。&lt;/p&gt;
 &lt;p&gt;其他的偏置项等也可以写成矩阵的形式，有助于最后的运算。此时有
 &lt;/p&gt;
-$$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$&lt;blockquote&gt;
+$$H=\sigma(XW^T+\textbf{b})$$$$Z=HU^T$$$$\hat{Y}=\text{softmax}(Z)$$
+&lt;blockquote&gt;
 &lt;p&gt;这里的X中行向量表示一个样本的完整特征。有的时候会写成$WX+b$，有的时候是$XW+b$。注意X的形状有所不同。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="embeddings-as-the-input-to-neural-net-classifiers"&gt;Embeddings as the Input to Neural Net Classifiers
@@ -3071,12 +3520,14 @@ color: #b1b1b1;
 &lt;p&gt;检索增强生成的思想是，在给定一个问题时，首先进行检索步骤以获取任何相关文档。然后将这些文档与原始问题一起传递给语言模型，并让它生成一个回答。然而，为了做到这一点，首先需要将文档以适合进行此类查询的格式呈现。&lt;/p&gt;
 &lt;/details&gt;
 &lt;h2 id="构造一个语义搜索引擎"&gt;构造一个语义搜索引擎
-&lt;/h2&gt;&lt;blockquote&gt;
+&lt;/h2&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://python.langchain.com/docs/tutorials/retrievers/" target="_blank" rel="noopener"
 &gt;Build a semantic search engine | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="读取pdf"&gt;读取PDF
-&lt;/h3&gt;&lt;blockquote&gt;
+&lt;/h3&gt;
+&lt;blockquote&gt;
 &lt;p&gt;&lt;a class="link" href="https://python.langchain.com/docs/how_to/document_loader_pdf/" target="_blank" rel="noopener"
 &gt;How to load PDFs | 🦜️🔗 LangChain&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
