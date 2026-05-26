@@ -221,58 +221,22 @@ window.addEventListener('load', function () {
   }
 
   setTimeout(function () {
-    var sidebar = document.querySelector('.left-sidebar');
-    var trigger = document.createElement('div');
-    trigger.className = 'sidebar-edge-trigger';
-    trigger.setAttribute('role', 'button');
-    trigger.setAttribute('tabindex', '0');
+    var darkModeToggle = document.getElementById('dark-mode-toggle');
+    if (!darkModeToggle || !darkModeToggle.parentNode) return;
+
+    var trigger = document.createElement('button');
+    trigger.className = 'sidebar-rail-toggle';
+    trigger.type = 'button';
     trigger.setAttribute('aria-label', document.body.classList.contains('is-sidebar-rail') ? '展开侧边栏' : '收起侧边栏');
-    document.body.appendChild(trigger);
-
-    // 展开和收起两个状态的触发器基准位置（相对于视口）
-    var expandedLeft = 0, railLeft = 0;
-
-    // 无闪烁地测量两种状态下 main 的左边界
-    function measureBothStates() {
-      var wasRail = document.body.classList.contains('is-sidebar-rail');
-      // 暂时禁用过渡，避免测量过程中触发动画
-      document.body.classList.add('no-sidebar-anim');
-
-      if (wasRail) document.body.classList.remove('is-sidebar-rail');
-      sidebar.offsetHeight; // 强制同步 layout
-      expandedLeft = Math.max(0, main.getBoundingClientRect().left - 4);
-
-      document.body.classList.add('is-sidebar-rail');
-      sidebar.offsetHeight;
-      railLeft = Math.max(0, main.getBoundingClientRect().left - 4);
-
-      if (!wasRail) document.body.classList.remove('is-sidebar-rail');
-      sidebar.offsetHeight;
-      document.body.classList.remove('no-sidebar-anim');
-    }
-
-    // 立即（无动画）将触发器定位到当前状态
-    function snapTriggerPosition() {
-      var isRail = document.body.classList.contains('is-sidebar-rail');
-      trigger.style.transition = 'none';
-      trigger.style.left = expandedLeft + 'px';
-      trigger.style.transform = 'translateX(' + (isRail ? railLeft - expandedLeft : 0) + 'px)';
-      trigger.offsetHeight; // flush
-      trigger.style.transition = '';
-    }
-
-    measureBothStates();
-    snapTriggerPosition();
-
-    window.addEventListener('resize', function () {
-      measureBothStates();
-      snapTriggerPosition();
-    });
+    trigger.innerHTML = [
+      '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-sidebar-toggle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
+      '<path stroke="none" d="M0 0h24v24H0z" fill="none"/>',
+      '<path d="M9 6l6 6l-6 6"/>',
+      '</svg>'
+    ].join('');
+    darkModeToggle.parentNode.insertBefore(trigger, darkModeToggle);
 
     function toggle() {
-      var goingToRail = !document.body.classList.contains('is-sidebar-rail');
-      // 预先设置目标 transform，CSS transition 会同步驱动动画
-      trigger.style.transform = 'translateX(' + (goingToRail ? railLeft - expandedLeft : 0) + 'px)';
       document.body.classList.toggle('is-sidebar-rail');
       var isRail = document.body.classList.contains('is-sidebar-rail');
       trigger.setAttribute('aria-label', isRail ? '展开侧边栏' : '收起侧边栏');
@@ -288,4 +252,3 @@ window.addEventListener('load', function () {
     });
   }, 600);
 })();
-
