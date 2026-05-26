@@ -446,13 +446,12 @@
 &lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
 &lt;/h2&gt;&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;
 &lt;p&gt;这篇综述的核心贡献是提出了一套统一的分析框架，用 &lt;strong&gt;collaboration channel&lt;/strong&gt; 为分析单元，从类型、结构、策略三个维度刻画 LLM-based MAS 的协作机制。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp"
-width="1600"
-height="1726"
-srcset="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_ae3274dfdd858246.webp 800w, https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_17dade597b4f9c59.webp 1600w"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png"
+width="1220"
+height="1316"
 loading="lazy"
 alt="综述框架示意图"
-data-original="/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C_hu_aedb6d02602b4278.webp"
+data-original="/2025/multiagentcollaboration/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93%E5%8D%8F%E4%BD%9C.png"
 data-lightbox-width="1220"
 data-lightbox-height="1316"
 class="gallery-image"
