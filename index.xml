@@ -8,14 +8,30 @@
 &lt;hr&gt;
 &lt;h2 id="模型架构"&gt;模型架构
 &lt;/h2&gt;&lt;p&gt;Qwen-Image 采用标准的&lt;strong&gt;双流 MMDiT（Multi-Modal Diffusion Transformer）&lt;/strong&gt; 架构。文本和图像各有一条独立的 Transformer 流，每条流有独立的注意力计算，通过交叉注意力层进行模态间信息交换。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260430104402.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214449185.png"
+width="1278"
+height="746"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610214449185.png"
+data-lightbox-width="1278"
+data-lightbox-height="746"
+class="gallery-image"
+data-flex-grow="171"
+data-flex-basis="411px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="核心组件"&gt;核心组件
 &lt;/h3&gt;&lt;p&gt;核心组件是多模态大模型、VAE和MMDiT。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513104335.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215110382.png"
+width="1526"
+height="734"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215110382.png"
+data-lightbox-width="1526"
+data-lightbox-height="734"
+class="gallery-image"
+data-flex-grow="207"
+data-flex-basis="498px"
 &gt;
 &lt;/p&gt;
 &lt;table&gt;
@@ -52,11 +68,6 @@ loading="lazy"
 &lt;td&gt;流间交叉注意力层&lt;/td&gt;
 &lt;td&gt;两条流之间交换信息，实现文本对图像生成的精确控制&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;归一化策略：&lt;/strong&gt;&lt;/p&gt;
@@ -71,12 +82,44 @@ loading="lazy"
 &lt;li&gt;仍然有强大的语言建模能力&lt;/li&gt;
 &lt;li&gt;支持多模态输入&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;为纯文本输入和文本和图像输入设计了不同的系统提示。最后，我们利用 Qwen2.5-VL 语言模型主干的最后一层隐藏状态的潜在特征作为用户输入的表示。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513095247.png"
+&lt;p&gt;为纯文本输入和文本和图像输入设计了不同的系统提示。最后，我们利用 Qwen2.5-VL 语言模型主干的最后一层隐藏状态的潜在特征作为用户输入的表示。
+&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220105309_hu_37b50832f7aa2dde.webp"
+width="1600"
+height="466"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220105309_hu_e6bdc4bad84e6742.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220105309_hu_37b50832f7aa2dde.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220105309_hu_4ef5c0cb2f3ed193.webp"
+data-lightbox-width="1812"
+data-lightbox-height="528"
+class="gallery-image"
+data-flex-grow="343"
+data-flex-basis="823px"
 &gt;
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513095307.png"
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215523622_hu_a8e53e08382941ef.webp"
+width="1600"
+height="743"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215523622_hu_d6cfb9943ba227fe.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215523622_hu_a8e53e08382941ef.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215523622_hu_ec532d841266df97.webp"
+data-lightbox-width="2326"
+data-lightbox-height="1080"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="516px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215547891_hu_bb307147338d2d8a.webp"
+width="1600"
+height="571"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215547891_hu_dc0b41a1a14e4473.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215547891_hu_bb307147338d2d8a.webp 1600w"
+loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215547891_hu_fd3c39ab7d4ca5d0.webp"
+data-lightbox-width="2350"
+data-lightbox-height="838"
+class="gallery-image"
+data-flex-grow="280"
+data-flex-basis="673px"
 &gt;
 &lt;/p&gt;
 &lt;h4 id="vae"&gt;VAE
@@ -103,8 +146,17 @@ loading="lazy"
 &lt;p&gt;Seedream 3.0 提出的 Scaling RoPE 对此做了改进：将图像的位置编码压缩到图像的中心区域，文本 token 被视为形状为 [1, L] 的二维 token，再用 2D RoPE 进行联合编码。MSRoPE 在此基础上做了进一步简化。&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;MSRoPE 的具体做法：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260430105225.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214819362_hu_cd15b7976b6a435b.webp"
+width="1600"
+height="917"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214819362_hu_d5505c9527c08685.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214819362_hu_cd15b7976b6a435b.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610214819362_hu_764322c06f1c02ca.webp"
+data-lightbox-width="1734"
+data-lightbox-height="994"
+class="gallery-image"
+data-flex-grow="174"
+data-flex-basis="418px"
 &gt;
 &lt;/p&gt;
 &lt;ol&gt;
@@ -177,15 +229,33 @@ loading="lazy"
 &lt;hr&gt;
 &lt;h2 id="数据准备"&gt;数据准备
 &lt;/h2&gt;&lt;h3 id="数据收集"&gt;数据收集
-&lt;/h3&gt;&lt;p&gt;准备了大量的数据集进行训练，比例如下：
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513104705.png"
+&lt;/h3&gt;&lt;p&gt;准备了大量的数据集进行训练，比例如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214732373_hu_7bfb22ad2fa109e7.webp"
+width="1600"
+height="1134"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214732373_hu_4ead6806cf79d4c6.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214732373_hu_7bfb22ad2fa109e7.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610214732373_hu_3879997ad2ad9726.webp"
+data-lightbox-width="1770"
+data-lightbox-height="1254"
+class="gallery-image"
+data-flex-grow="141"
+data-flex-basis="338px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="多阶段数据清洗"&gt;多阶段数据清洗
 &lt;/h3&gt;&lt;p&gt;论文构建了一套完整的数据清洗流程来确保训练数据质量。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513110820.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214634641_hu_c2dd4bed34799115.webp"
+width="1600"
+height="1049"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214634641_hu_247e313de3186d45.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214634641_hu_c2dd4bed34799115.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610214634641_hu_aae7f67dcebe33cd.webp"
+data-lightbox-width="2062"
+data-lightbox-height="1352"
+class="gallery-image"
+data-flex-grow="152"
+data-flex-basis="366px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一阶段 — 初始预训练数据：&lt;/strong&gt;&lt;/p&gt;
@@ -203,9 +273,18 @@ loading="lazy"
 &lt;li&gt;饱和度过高&lt;/li&gt;
 &lt;li&gt;熵过低&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;下图展示了具体的filter operator筛选的方法。
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513141211.png"
+&lt;p&gt;下图展示了具体的filter operator筛选的方法。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214910564_hu_4bdabc5163912996.webp"
+width="1600"
+height="1095"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214910564_hu_42adada6bc4ab628.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610214910564_hu_4bdabc5163912996.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610214910564_hu_ebd3eb1177ef1a5b.webp"
+data-lightbox-width="1756"
+data-lightbox-height="1202"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="350px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;三阶段 — 图像-文本对改进：&lt;/strong&gt;
@@ -243,14 +322,32 @@ loading="lazy"
 &lt;/ul&gt;
 &lt;h3 id="数据标注"&gt;数据标注
 &lt;/h3&gt;&lt;p&gt;利用功能强大的图像描述生成器（例如 Qwen2.5-VL）不仅生成全面的&lt;strong&gt;图像描述&lt;/strong&gt;，还生成捕获基本图像属性和质量属性的&lt;strong&gt;结构化元数据&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513144911.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215255733_hu_cba2e5ab852d2c99.webp"
+width="1600"
+height="1084"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215255733_hu_ddcaed741839e8b1.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215255733_hu_cba2e5ab852d2c99.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215255733_hu_5cf7a4d868e77b32.webp"
+data-lightbox-width="1892"
+data-lightbox-height="1282"
+class="gallery-image"
+data-flex-grow="147"
+data-flex-basis="354px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="数据合成"&gt;数据合成
 &lt;/h3&gt;&lt;p&gt;多阶段文本感知图像合成pipeline，集成了三种互补策略：&lt;strong&gt;纯渲染、合成渲染和复杂渲染&lt;/strong&gt;。
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513145145.png"
+&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_9ff2adfc4e7a737e.webp"
+width="1600"
+height="1013"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_176264d067798280.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_9ff2adfc4e7a737e.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215721814_hu_9b66ad8d4211ebef.webp"
+data-lightbox-width="2016"
+data-lightbox-height="1276"
+class="gallery-image"
+data-flex-grow="157"
+data-flex-basis="379px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简单背景下的纯渲染&lt;/strong&gt;：模型识别生成字符最有效的方法。如果段落中的任何字符由于限制（例如字体不可用或渲染错误）而无法渲染，则整个段落将被丢弃。&lt;/p&gt;
@@ -261,10 +358,18 @@ loading="lazy"
 &lt;/h2&gt;&lt;h3 id="预训练"&gt;预训练
 &lt;/h3&gt;&lt;p&gt;Qwen-Image 采用 &lt;strong&gt;Flow Matching（FM）&lt;/strong&gt; 作为训练目标，而非传统扩散模型的噪声预测。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;下图是用GPT-Image-2生成的示意图。&lt;/p&gt;
+&lt;p&gt;下图是用AI生成的示意图。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513151040.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220504589.png"
+width="1360"
+height="1156"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220504589.png"
+data-lightbox-width="1360"
+data-lightbox-height="1156"
+class="gallery-image"
+data-flex-grow="117"
+data-flex-basis="282px"
 &gt;
 &lt;/p&gt;
 &lt;h4 id="producer-consumer框架"&gt;Producer-Consumer框架
@@ -354,54 +459,142 @@ loading="lazy"
 &lt;/h2&gt;&lt;h3 id="人类评价"&gt;人类评价
 &lt;/h3&gt;&lt;p&gt;AI Arena2，这是一个基于 Elo 评级系统（Elo &amp;amp;Sloan，2008）构建的开放基准测试平台。由用户选出其中较好的一个。&lt;/p&gt;
 &lt;p&gt;和Imagen 4 Ultra Preview 0606、Seedream 3.0、GPT Image 1[HIGH]、FLUX.1 Kontext [Pro]比较，排名第三。
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173340.png"
+&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215004379.png"
+width="1365"
+height="592"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215004379.png"
+data-lightbox-width="1365"
+data-lightbox-height="592"
+class="gallery-image"
+data-flex-grow="230"
+data-flex-basis="553px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="量化指标"&gt;量化指标
 &lt;/h3&gt;&lt;h4 id="vae重建表现"&gt;VAE重建表现
-&lt;/h4&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173558.png"
+&lt;/h4&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220609078_hu_52148a2cbe4fa1ad.webp"
+width="1600"
+height="429"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220609078_hu_4ea958a3dc87375c.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220609078_hu_52148a2cbe4fa1ad.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220609078_hu_150aecfd08846d3.webp"
+data-lightbox-width="2392"
+data-lightbox-height="642"
+class="gallery-image"
+data-flex-grow="372"
+data-flex-basis="894px"
 &gt;
 &lt;/p&gt;
 &lt;h4 id="文生图表现"&gt;文生图表现
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;DPG&lt;/strong&gt;：该基准测试由 1K 密集提示组成，可以对提示遵守情况的不同方面进行细粒度评估。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173815.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220639877_hu_89aafb36d9464c1c.webp"
+width="1600"
+height="921"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220639877_hu_28d294b92b969cb4.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220639877_hu_89aafb36d9464c1c.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220639877_hu_fcce33cb02ec7287.webp"
+data-lightbox-width="2200"
+data-lightbox-height="1266"
+class="gallery-image"
+data-flex-grow="173"
+data-flex-basis="417px"
 &gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;GenEval&lt;/strong&gt;：该基准侧重于使用具有不同对象属性的组合提示来生成以对象为中心的文本到图像。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513173830.png"
+&lt;strong&gt;GenEval&lt;/strong&gt;：该基准侧重于使用具有不同对象属性的组合提示来生成以对象为中心的文本到图像。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220711243_hu_cc54a3a7d67775f8.webp"
+width="1600"
+height="703"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220711243_hu_368a54c48d79cb2a.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220711243_hu_cc54a3a7d67775f8.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220711243_hu_df276739f99349e6.webp"
+data-lightbox-width="2220"
+data-lightbox-height="976"
+class="gallery-image"
+data-flex-grow="227"
+data-flex-basis="545px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;OneIG-Bench&lt;/strong&gt;：跨多个维度对 T2I 模型进行细粒度评估而设计的综合基准。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174102.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220731842_hu_2fe01e3bbff91667.webp"
+width="1600"
+height="1028"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220731842_hu_cf0bf88155585c6c.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220731842_hu_2fe01e3bbff91667.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220731842_hu_dee1aba2f38be65c.webp"
+data-lightbox-width="2024"
+data-lightbox-height="1300"
+class="gallery-image"
+data-flex-grow="155"
+data-flex-basis="373px"
 &gt;
 &lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174134.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220802102_hu_3a925aac96a22db1.webp"
+width="1600"
+height="635"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220802102_hu_1860eeb2a33990c8.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220802102_hu_3a925aac96a22db1.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220802102_hu_5fee9ac8bd5fcb55.webp"
+data-lightbox-width="2010"
+data-lightbox-height="798"
+class="gallery-image"
+data-flex-grow="251"
+data-flex-basis="604px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TIIF&lt;/strong&gt;：在系统评估 T2I 模型解释和遵循复杂文本指令的能力的基准。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174213.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220820788_hu_e3508e2cedf28c51.webp"
+width="1600"
+height="821"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220820788_hu_e5c0b20cfe2d94e3.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220820788_hu_e3508e2cedf28c51.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220820788_hu_4c0109a2a5edcf44.webp"
+data-lightbox-width="2046"
+data-lightbox-height="1050"
+class="gallery-image"
+data-flex-grow="194"
+data-flex-basis="467px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;CVTG-2K&lt;/strong&gt;：该基准测试包含 2K 提示，每个提示需要在生成的图像上渲染 2-5 个英语区域。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174401.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220835892_hu_b42e58813141ef7b.webp"
+width="1600"
+height="564"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220835892_hu_85825738b5948e29.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220835892_hu_b42e58813141ef7b.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220835892_hu_6a8319dd64830262.webp"
+data-lightbox-width="2058"
+data-lightbox-height="726"
+class="gallery-image"
+data-flex-grow="283"
+data-flex-basis="680px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ChineseWord&lt;/strong&gt;：本问题提出的基准。根据常用规范汉字表，我们将汉字分为三个难度等级：一级（3500字）、二级（3000字）、三级（1605字）。我们制作了几个提示模板，指示文本到图像模型生成包含单个汉字的图像。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174411.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220852327_hu_bc19204dfc7c91cf.webp"
+width="1600"
+height="370"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220852327_hu_88984ecfe42f9d32.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220852327_hu_bc19204dfc7c91cf.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220852327_hu_e45ffcb1f047970f.webp"
+data-lightbox-width="1930"
+data-lightbox-height="446"
+class="gallery-image"
+data-flex-grow="432"
+data-flex-basis="1038px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;LongText-Bench&lt;/strong&gt;：这是一个专门为评估模型精确渲染长文本的能力而设计的基准。该数据集包含 160 个提示，涵盖八个不同的场景。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513174420.png"
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220920802_hu_b786452768123363.webp"
+width="1600"
+height="628"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220920802_hu_96e9e878acaa07ea.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610220920802_hu_b786452768123363.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610220920802_hu_3f0b863d9ed1e450.webp"
+data-lightbox-width="2054"
+data-lightbox-height="806"
+class="gallery-image"
+data-flex-grow="254"
+data-flex-basis="611px"
 &gt;
 &lt;/p&gt;
 &lt;h4 id="图像编辑"&gt;图像编辑
@@ -409,8 +602,17 @@ loading="lazy"
 &lt;p&gt;总之效果不错。&lt;/p&gt;
 &lt;h3 id="定性指标"&gt;定性指标
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VAE重建效果&lt;/strong&gt;：可以看到细节非常好，不会出现糊，仍然可以辨认。
-&lt;img src="https://ionfeather.github.io/assets/Pasted%20image%2020260513175206.png"
+&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_4310b346ee2ff75e.webp"
+width="1600"
+height="704"
+srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_b7c26c86b9ca279.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_4310b346ee2ff75e.webp 1600w"
 loading="lazy"
+data-original="/2026/qwenimage/assets/IMG-20260610215933758_hu_51e00dce14b16e16.webp"
+data-lightbox-width="2190"
+data-lightbox-height="964"
+class="gallery-image"
+data-flex-grow="227"
+data-flex-basis="545px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;图像生成&lt;/strong&gt;：从英文文本渲染、中文文本渲染、多对象生成、空间关系生成四个方面进行定性评价。&lt;/p&gt;
