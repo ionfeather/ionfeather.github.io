@@ -336,8 +336,8 @@ data-flex-basis="354px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="数据合成"&gt;数据合成
-&lt;/h3&gt;&lt;p&gt;多阶段文本感知图像合成pipeline，集成了三种互补策略：&lt;strong&gt;纯渲染、合成渲染和复杂渲染&lt;/strong&gt;。
-&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_9ff2adfc4e7a737e.webp"
+&lt;/h3&gt;&lt;p&gt;多阶段文本感知图像合成pipeline，集成了三种互补策略：&lt;strong&gt;纯渲染、合成渲染和复杂渲染&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_9ff2adfc4e7a737e.webp"
 width="1600"
 height="1013"
 srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_176264d067798280.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215721814_hu_9ff2adfc4e7a737e.webp 1600w"
@@ -601,8 +601,8 @@ data-flex-basis="611px"
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Benchmark有&lt;/strong&gt;：GEdit-Bench、ImgEdit、Novel view synthesis、Depth Estimation&lt;/p&gt;
 &lt;p&gt;总之效果不错。&lt;/p&gt;
 &lt;h3 id="定性指标"&gt;定性指标
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VAE重建效果&lt;/strong&gt;：可以看到细节非常好，不会出现糊，仍然可以辨认。
-&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_4310b346ee2ff75e.webp"
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VAE重建效果&lt;/strong&gt;：可以看到细节非常好，不会出现糊，仍然可以辨认。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_4310b346ee2ff75e.webp"
 width="1600"
 height="704"
 srcset="https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_b7c26c86b9ca279.webp 800w, https://ionfeather.github.io/2026/qwenimage/assets/IMG-20260610215933758_hu_4310b346ee2ff75e.webp 1600w"
