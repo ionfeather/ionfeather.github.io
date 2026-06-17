@@ -1,4 +1,1319 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Sat, 16 May 2026 18:44:45 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | QwenImage技术报告</title><link>https://ionfeather.github.io/2026/qwenimage/</link><pubDate>Sat, 16 May 2026 18:44:45 +0800</pubDate><guid>https://ionfeather.github.io/2026/qwenimage/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 18 Jun 2026 00:46:23 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | Bernini-Latent Semantic Planning for Video Diffusion</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>
+&lt;blockquote&gt;
+&lt;p&gt;论文链接：&lt;a class="link" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener"
+&gt;arXiv:2605.22344&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目主页：&lt;a class="link" href="https://bernini-ai.github.io/" target="_blank" rel="noopener"
+&gt;https://bernini-ai.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="notice notice-info" &gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;阅读路线：先看 Bernini 为什么选择 &lt;strong&gt;ViT embedding space&lt;/strong&gt; 做接口，再看 Planner / Renderer 如何分工，最后看数据构建和三阶段训练。整篇文章的核心不是“又做了一个视频生成模型”，而是它重新划分了 MLLM 和 Diffusion Model 在生成任务里的职责。&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Q：既然 MLLM 已经很擅长理解图像和视频，扩散模型也已经很会生成图像和视频，那能不能发挥这两个的长处，结合一下呢？&lt;/p&gt;
+&lt;p&gt;A：可以，但关键在于找到一个合适的中间表示。这个中间表示既要让 MLLM 说得明白，也要让 DiT 用得上。论文选择的是 &lt;strong&gt;MLLM 自己的 ViT embedding space&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class="mark-card"&gt;Bernini 让 MLLM 在 ViT embedding 空间里先做语义规划，再让 DiT 在 VAE latent 空间里完成像素渲染。&lt;/div&gt;
+&lt;h2 id="生成到底该怎么做"&gt;生成到底该怎么做
+&lt;/h2&gt;&lt;p&gt;MLLM（多模态大语言模型）和扩散模型各自已经达到了很高的成熟度，但它们的演进路径相对独立。Bernini的核心洞察是将两者统一起来，通过清晰的分工协作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MLLM负责语义规划（Semantic Planning）&lt;/strong&gt;：利用其强大的多模态理解能力，在ViT embedding空间预测目标内容的语义表示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DiT负责像素渲染（Pixel Rendering）&lt;/strong&gt;：基于语义表示和低级视觉特征，通过流匹配（Flow Matching）生成高保真图像/视频&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两者之间的接口使用 &lt;strong&gt;MLLM 自身的 ViT embedding 空间&lt;/strong&gt;。这点很重要：MLLM 原本就是在这个空间里接收、理解和组织视觉信息的，所以让它在这里预测“目标画面应该长什么样”，比要求它直接吐出像素或 VAE latent 更自然。&lt;/p&gt;
+&lt;p&gt;换句话说，Bernini 不是让语言模型直接学“画画”，而是让它先学会在自己熟悉的视觉语义空间里写一份更像样的“施工图”。&lt;/p&gt;
+&lt;div class="notice notice-tip" &gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;可以把 Bernini 理解成两步：Planner 写“语义施工图”，Renderer 负责“按图施工”。前者要求理解和规划，后者要求保真和时序一致。&lt;/p&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;为什么使用 ViT embedding 空间？&lt;/p&gt;
+&lt;p&gt;可以从 MLLM 的结构讲起。以 Qwen2.5-VL 为例，图像或视频首先经过 Vision Encoder，被编码为 Visual Tokens；这些 Visual Tokens 与文本 tokens 一起输入 Qwen2.5 LM Decoder，最终由语言模型头输出文字 token。也就是说，MLLM 并不是直接在像素空间中理解图像，而是在 Vision Encoder 输出的 ViT embedding 空间中接收和表征视觉信息。因此，用这个空间进行推理和表示，是在顺着模型原本的能力走。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024749.png"
+width="854"
+height="770"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024749.png"
+data-lightbox-width="854"
+data-lightbox-height="770"
+class="gallery-image"
+data-flex-grow="110"
+data-flex-basis="266px"
+&gt;
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="这篇论文主要解决什么"&gt;这篇论文主要解决什么
+&lt;/h3&gt;&lt;p&gt;读这篇论文时，可以先把问题拆成四个层次：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;理解与生成是割裂的&lt;/strong&gt;：MLLMs 擅长语义推理，但无法直接生成像素；扩散模型擅长合成，但对复杂指令和多模态上下文的理解能力不够。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视频编辑任务太杂&lt;/strong&gt;：添加、移除、替换、风格迁移、运动修改都算编辑，但每个任务过去往往有一套专门方法，很难统一。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多视觉输入容易混淆&lt;/strong&gt;：参考图像、源视频、目标输出被拼进同一个序列后，可能共享相同的时空坐标，模型会分不清“这是参考物体”还是“这是目标画面”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高质量编辑数据少&lt;/strong&gt;：视频编辑数据比图像编辑数据难构造得多，尤其是大规模、高质量、多任务的数据。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="整体架构"&gt;整体架构
+&lt;/h2&gt;&lt;p&gt;Bernini 的结构可以先按“谁负责想，谁负责画”来理解。它由两个核心组件构成：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024707.png"
+width="1241"
+height="893"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024707.png"
+data-lightbox-width="1241"
+data-lightbox-height="893"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="333px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;第一部分是 &lt;strong&gt;MLLM-based Planner&lt;/strong&gt;。它读入文本、源图像、源视频、参考图像等上下文，然后在 ViT embedding 空间里预测目标视觉语义表示。&lt;/p&gt;
+&lt;p&gt;第二部分是 &lt;strong&gt;DiT-based Renderer&lt;/strong&gt;。它拿到 Planner 给出的目标语义表示，再结合文本特征和源视频的低级视觉特征，最终在 VAE latent 空间里生成视频。&lt;/p&gt;
+&lt;p&gt;训练时，Bernini 采用联合目标，同时优化 MLLM、ViT Embedding Decoder 以及 DiT Renderer：&lt;br&gt;
+$$&lt;br&gt;
+L = \lambda_{text}L_{ntp}&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\lambda_{visual}L_{visual}&lt;/li&gt;
+&lt;li&gt;\lambda_{dit}L_{dit}&lt;br&gt;
+$$
+其中：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;$L_{ntp}$：标准 Next-Token Prediction Loss，用于保持 MLLM 的语言理解与多模态推理能力；&lt;/li&gt;
+&lt;li&gt;$L_{visual}$：ViT embedding 空间中的 Flow Matching Loss，用于训练 Semantic Planner 预测目标视觉语义表示；&lt;/li&gt;
+&lt;li&gt;$L_{dit}$：VAE latent 空间中的 Flow Matching Loss，用于训练 DiT Renderer 完成视频生成与编辑；&lt;/li&gt;
+&lt;li&gt;$\lambda_{text}$、$\lambda_{visual}$、$\lambda_{dit}$ 为对应损失项的权重系数。&lt;br&gt;
+因此，Bernini 同时学习三件事：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;保留 MLLM 的理解能力；&lt;/li&gt;
+&lt;li&gt;在 ViT embedding 空间中规划目标视觉语义；&lt;/li&gt;
+&lt;li&gt;在 VAE latent 空间中渲染最终视频。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="mllm-based-planner语义规划器"&gt;MLLM-based Planner（语义规划器）
+&lt;/h3&gt;&lt;p&gt;Planner 这一部分最像 Bernini 的“脑子”。论文采用 &lt;strong&gt;Qwen2.5-VL-7B&lt;/strong&gt; 作为基础，把文本、源图像、源视频以及目标图像/视频统一序列化为一维 token 序列：&lt;/p&gt;
+$$
+z = \text{MLLM}(t, v^{src}_1, v^{src}_2, ..., v^{src}_N, v^{tgt})
+$$&lt;p&gt;其中，$t$ 表示文本嵌入，$v^{src}_i$ 表示第 $i$ 个源视觉输入的 ViT embedding，$v^{tgt}$ 表示目标图像/视频对应的视觉 token 序列。&lt;/p&gt;
+&lt;p&gt;这里有一个很像 masked modeling 的设计：训练时，$v^{tgt}$ 来自真实目标输出的 ViT embedding，并随机遮挡其中一部分；推理时，由于目标输出未知，所有目标视觉 token 都初始化为共享的 mask token。MLLM 对整个多模态序列编码后得到 hidden states，其中目标 token 位置上的 hidden states 就被视为目标视觉内容的语义表示。&lt;/p&gt;
+&lt;h4 id="mask-based-semantic-planning"&gt;&lt;strong&gt;Mask-based Semantic Planning&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;训练阶段&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;随机 mask 一部分目标视觉 token，并将其替换为共享的 mask token；&lt;/li&gt;
+&lt;li&gt;mask 比例从 Beta 分布中采样：
+$$
+r \sim \text{Beta}(\alpha, \beta)
+$$&lt;/li&gt;
+&lt;li&gt;MLLM 根据文本、源图像、源视频以及目标序列中未被 mask 的视觉 token，推断被 mask 位置的目标视觉内容；&lt;/li&gt;
+&lt;li&gt;被 mask 位置对应的 hidden states 会送入 &lt;strong&gt;ViT Embedding Decoder&lt;/strong&gt;，该解码器由 MLP 和 ResNet-based prediction head 组成；&lt;/li&gt;
+&lt;li&gt;ViT Embedding Decoder 负责预测对应位置的 ground-truth ViT embeddings，并在 ViT embedding space 中使用 Flow Matching 目标进行训练。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;推理阶段&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;所有目标视觉 token 首先被初始化为 mask token，然后通过 $K$ 步迭代逐步补全。第 $k$ 步的 mask ratio 按余弦调度递减：
+$$
+\text{mask\_ratio}(k, K) = \cos\left(\frac{\pi}{2} \cdot \frac{k+1}{K}\right)
+$$&lt;/li&gt;
+&lt;li&gt;每一步中，当前预测出的目标视觉 token 会被重新送回 MLLM，作为下一轮推断的部分观测，最终从粗到细得到完整的目标 ViT embedding 序列。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="dit-based-renderer像素渲染器"&gt;DiT-based Renderer（像素渲染器）
+&lt;/h3&gt;&lt;p&gt;Renderer 才是真正负责生成像素的部分。它采用 &lt;strong&gt;Wan2.2-A14B&lt;/strong&gt; 作为基础，在 VAE latent 空间中进行 Flow Matching 去噪：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以MLLM输出的语义嵌入作为cross-attention条件&lt;/li&gt;
+&lt;li&gt;额外注入文本特征（T5编码器）和源VAE特征（用于编辑时的细节保留）&lt;/li&gt;
+&lt;li&gt;通过多条件引导的Classifier-Free Guidance合成最终输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="训练技术"&gt;训练技术
+&lt;/h2&gt;&lt;h3 id="sa-3d-ropesegment-aware-3d-rotary-positional-embedding"&gt;SA-3D RoPE（Segment-Aware 3D Rotary Positional Embedding）
+&lt;/h3&gt;&lt;p&gt;当多个视觉输入拼接为统一序列时，会出现一个很实际的问题：不同 segment 的 token 可能具有相同的 $(t, h, w)$ 时空坐标。比如参考图和目标视频的某些位置坐标相同，但语义身份完全不同。模型如果只看标准 3D RoPE，就可能发生身份混淆（identity ambiguity）。&lt;/p&gt;
+&lt;p&gt;SA-3D RoPE为每个视觉segment分配一个索引 $i$（目标segment为 $i=0$，输入segment为 $i=1,2,&amp;hellip;$），并在标准3D RoPE的基础上引入segment依赖的全局相位调制：&lt;/p&gt;
+$$\tilde{r}_{t,h,w,i} = r_{t,h,w} \odot r^{seg}_i$$&lt;p&gt;其中 $\odot$ 表示复数逐元素乘法。这使得注意力机制能在保留3D RoPE时空建模能力的同时，区分来自不同segment的token。&lt;/p&gt;
+&lt;p&gt;直观上，SA-3D RoPE 给每段视觉输入加了一个“段身份”。消融实验表明，相比标准 3D RoPE 和添加可学习 segment embedding 的基线，它能更有效地减少参考图像外观细节泄漏到目标区域的问题（reference leakage）。&lt;/p&gt;
+&lt;div class="notice notice-note" &gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#436170"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;SA-3D RoPE 解决的不是“怎么表示时间和空间”，而是“多个视觉输入放在同一个序列里时，模型怎么知道每个 token 属于哪个视觉来源”。这是统一多输入视频编辑里很容易被忽略的问题。&lt;/p&gt;&lt;/div&gt;
+&lt;h3 id="chain-of-thought-推理增强"&gt;Chain-of-Thought 推理增强
+&lt;/h3&gt;&lt;p&gt;为了增强MLLM的理解能力向生成能力的迁移，引入两种CoT推理模式：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Self-text Reasoning（自文本推理）&lt;/strong&gt;：将原始编辑指令重写为更详细、结构化、语义更丰富的编辑指令。构建了约100万样本的大规模文本CoT数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Self-vision-text Reasoning（自视觉-文本推理）&lt;/strong&gt;：将视频编辑分解为两个阶段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;图像级推理&lt;/strong&gt;：在首帧上进行图像编辑，产生编辑后的中间帧作为视觉中间表示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视频级生成&lt;/strong&gt;：基于中间帧将编辑传播到完整视频，保持时间一致性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;消融实验显示，结合文本推理和视觉-文本推理能达到最佳性能，多模态推理在纯文本推理之外提供了互补收益。&lt;/p&gt;
+&lt;h2 id="数据构建"&gt;数据构建
+&lt;/h2&gt;&lt;p&gt;Bernini 的训练数据是整篇论文里非常重的一部分。原因也很简单：模型想统一处理 T2V、I2V、V2V、参考图驱动生成、视频编辑等任务，就不能只靠单一数据源。它的训练语料覆盖文本理解、图像/视频生成、图像/视频编辑等多种任务。&lt;/p&gt;
+&lt;h3 id="预训练数据"&gt;预训练数据
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005604998.png"
+width="1271"
+height="622"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005604998.png"
+data-lightbox-width="1271"
+data-lightbox-height="622"
+class="gallery-image"
+data-flex-grow="204"
+data-flex-basis="490px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video-pair数据（2000万对）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从通用T2V语料中，对同源视频的片段计算X-CLIP相似度&lt;/li&gt;
+&lt;li&gt;筛选相似度在 $[0.65, 0.95]$ 之间、时长2-10秒的片段对&lt;/li&gt;
+&lt;li&gt;1:1平衡人物/非人物内容（由Qwen3-VL-30B标注）&lt;/li&gt;
+&lt;li&gt;使用Qwen3-VL-235B进行coarse-to-fine指令生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024789.png"
+width="1557"
+height="693"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024789.png"
+data-lightbox-width="1557"
+data-lightbox-height="693"
+class="gallery-image"
+data-flex-grow="224"
+data-flex-basis="539px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Image-pair数据（近3000万对）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从30万+教程视频中提取关键帧&lt;/li&gt;
+&lt;li&gt;通过CLIP相似度筛选 $[0.75, 0.95]$ 的图像对&lt;/li&gt;
+&lt;li&gt;使用Qwen3-VL生成描述视觉差异的文本提示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024815.png"
+width="1552"
+height="607"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024815.png"
+data-lightbox-width="1552"
+data-lightbox-height="607"
+class="gallery-image"
+data-flex-grow="255"
+data-flex-basis="613px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Interleaved Image-text数据（约1000万）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网页数据：从OmniCorpus构建，Qwen3-32B重生成文本以提升流畅度&lt;/li&gt;
+&lt;li&gt;视频数据：从T2V语料提取最多8个关键帧，生成帧间文本过渡描述&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="图像编辑和图像到视频编辑数据"&gt;图像编辑和图像到视频编辑数据
+&lt;/h3&gt;&lt;p&gt;这一节是数据构建里比较关键的部分。高质量、多样化的视频到视频编辑数据很难大规模构造，但图像编辑领域已经积累了更成熟的模型和数据资源。于是 Bernini 做了一个转换：把一部分视频编辑问题先重构为图像到视频编辑问题。&lt;/p&gt;
+&lt;p&gt;具体来说，就是先利用强图像编辑模型获得高质量的编辑后首帧，再通过图像到视频生成将图像级编辑能力迁移到视频生成中，最终服务于视频到视频编辑训练。&lt;/p&gt;
+&lt;p&gt;具体而言，作者首先构造图像编辑三元组，即 $(\text{Source Image}, \text{Edited Image}, \text{Edit Prompt})$。编辑指令由两种互补方式生成：第一种方式从真实用户编辑指令池中为每张源图像采样多个候选 prompt，再由 MLLM 选择最合适的候选并重写为最终编辑指令；第二种方式维护一个动态 prompt bank，要求 MLLM 在给定源图像和已有 prompt bank 的条件下生成语义差异较大的新编辑指令，高新颖度的 prompt 被加入 bank，重复度较高的 prompt 则被丢弃。这样可以避免编辑指令集中在少数常见操作上，提高数据分布的多样性。&lt;/p&gt;
+&lt;p&gt;在获得编辑后图像之后，作者进一步使用 MLLM 生成对应的 motion prompt，将静态图像编辑扩展为图像到视频编辑数据。最终得到两类训练样本：一类是图像编辑三元组 $(\text{Source Image}, \text{Edited Image}, \text{Edit Prompt})$，用于学习图像级编辑能力；另一类是图像到视频三元组 $(\text{Source Image}, \text{Video}, \text{Edit Prompt}+\text{Motion Prompt})$，用于将编辑后的静态视觉状态扩展为动态视频。这部分数据的作用是把成熟的图像编辑监督迁移到视频生成中，从而提高视频编辑任务的多样性和泛化能力。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024837.png"
+width="1131"
+height="663"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024837.png"
+data-lightbox-width="1131"
+data-lightbox-height="663"
+class="gallery-image"
+data-flex-grow="170"
+data-flex-basis="409px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Propagation-based数据增强&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;初始使用DiffuEraser和VACE生成addition/removal/replacement数据，但存在伪影和多样性不足&lt;/li&gt;
+&lt;li&gt;训练基础propagation模型，将源视频 + 编辑后的首帧 + 编辑指令 → 目标编辑视频&lt;/li&gt;
+&lt;li&gt;结合强图像编辑模型生成高质量首帧，从而提升整体视频编辑质量&lt;/li&gt;
+&lt;li&gt;对 addition、removal 和 replacement 等任务进行源视频与编辑视频的交换，并使用 MLLM 重新生成匹配的反向编辑 prompt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;强图像编辑模型更容易生成高质量的编辑后首帧，而 propagation model 负责将首帧中的编辑结果传播到后续帧，并尽量保持时间一致性。这样，视频编辑数据的构造被拆解为两个相对更容易的问题：首先生成高质量 edited first frame，然后将该编辑状态沿时间维度传播为完整视频。相比直接用现有视频编辑模型生成整段视频，这种方式可以显著降低伪影，提高编辑质量和任务覆盖范围.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005605261.png"
+width="1591"
+height="796"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005605261.png"
+data-lightbox-width="1591"
+data-lightbox-height="796"
+class="gallery-image"
+data-flex-grow="199"
+data-flex-basis="479px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Motion-aware数据（人机交互场景）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提出双分支融合框架：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;I2V分支&lt;/strong&gt;：引入动作适应性，允许编辑后的人体姿态自然变化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;V2V分支&lt;/strong&gt;：保持源视频运动一致性&lt;/li&gt;
+&lt;li&gt;通过加权引导融合两个分支的输出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="reference-image-guided-video-generation-and-editing-data"&gt;Reference-image-guided Video Generation and Editing Data
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Reference-to-Video（R2V）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通用物体R2V：MLLM识别视频中3-5个最显著物体，为每个物体编写编辑指令，&lt;strong&gt;提取对象并放到不同的场景中&lt;/strong&gt;，生成（reference, keyframe）的R2V标注。&lt;/li&gt;
+&lt;li&gt;人物R2V：利用长视频中的身份重现，从同一视频/剧集中检索同身份参考片段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Reference+Video-to-Video（RV2V）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用中间版本视频编辑器，为R2V样本生成移除/替换参考物体的指令，产生输入视频&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="reference-video-guided-video-generation-data"&gt;Reference-video-guided Video Generation Data
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Motion Transfer（动作迁移）&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从真实视频中提取DWPose，用Bernini的pose-to-video能力生成参考视频&lt;/li&gt;
+&lt;li&gt;参考图像从目标视频中随机采样一帧&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024861.png"
+width="1514"
+height="607"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024861.png"
+data-lightbox-width="1514"
+data-lightbox-height="607"
+class="gallery-image"
+data-flex-grow="249"
+data-flex-basis="598px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="reasoning-augmented-video-data"&gt;Reasoning-augmented Video Data
+&lt;/h3&gt;&lt;p&gt;受 Emu3、&lt;a class="link" href="../../AIGC%e6%a8%a1%e5%9e%8b/OminiGen2/OminiGen2.md" &gt;OminiGen2&lt;/a&gt; 等统一模型的启发，Bernini 也把显式思维链纳入到视频编辑训练中。不过这里的 Chain-of-Thought 不是推理阶段让模型显式输出一段长文本推理，而是作为训练阶段的额外监督信号注入到 Planner 中。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024888.png"
+width="1563"
+height="570"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024888.png"
+data-lightbox-width="1563"
+data-lightbox-height="570"
+class="gallery-image"
+data-flex-grow="274"
+data-flex-basis="658px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Self-text Reasoning&lt;/strong&gt;：将原始编辑指令扩展为更详细的结构化编辑计划，为MLLM提供显式语言推理路径。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Self-vision-text Reasoning&lt;/strong&gt;：进一步引入编辑后首帧作为视觉中间状态，将视频编辑分解为“图像级编辑→视频级传播”两个阶段，从而在视觉空间中构建隐式推理链。&lt;/p&gt;
+&lt;h2 id="三阶段训练策略"&gt;三阶段训练策略
+&lt;/h2&gt;&lt;p&gt;前面讲了模型和数据，接下来是训练策略。Bernini 没有一上来就端到端训练所有模块，而是分三步逐渐对齐：先让 Planner 学会做视觉语义规划，再让 Renderer 学会高质量渲染，最后再做联合训练。&lt;/p&gt;
+&lt;p&gt;&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;Stage I&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;训练&lt;/span&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;MLLM Planner 预训练&lt;/div&gt;&lt;div class="timeline__description"&gt;
+先把 Qwen2.5-VL 从理解模型转成能预测目标 ViT embedding 的语义规划器。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: var(--card-text-color-secondary, #5d5d5d);
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: rgba(132, 196, 226, 0.25);
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--card-background, #fff);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--card-text-color-main);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: var(--card-text-color-secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
+&lt;/style&gt;
+&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;Stage II&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;训练&lt;/span&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;DiT Renderer 预训练&lt;/div&gt;&lt;div class="timeline__description"&gt;
+固定语义条件侧，集中训练渲染器的高保真生成与编辑能力。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: var(--card-text-color-secondary, #5d5d5d);
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: rgba(132, 196, 226, 0.25);
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--card-background, #fff);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--card-text-color-main);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: var(--card-text-color-secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
+&lt;/style&gt;
+&lt;div class="timeline__row"&gt;
+&lt;div class="timeline__time"&gt;
+&lt;div class="timeline__time"&gt;Stage III&lt;/div&gt;
+&lt;div class="timeline__split-line"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="timeline__content"&gt;
+&lt;div class="timeline__tags"&gt;
+&lt;span class="timeline__tag"&gt;训练&lt;/span&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;全模型联合训练&lt;/div&gt;&lt;div class="timeline__description"&gt;
+轻量对齐 Planner 与 Renderer，并引入 Reasoning-augmented Video Data。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+.timeline {
+display: flex;
+flex-direction: column;
+}
+.timeline__row {
+display: flex;
+padding-left: 4%;
+height: 90px;
+}
+.timeline__time {
+flex: 0 0 110px;
+color: var(--card-text-color-secondary, #5d5d5d);
+font-size: 17px;
+text-transform: uppercase;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0.5rem 0;
+}
+.timeline__time-text {
+margin: 0;
+}
+.timeline__split-line {
+position: absolute;
+top: 0.5rem;
+right: -20px;
+height: 100%;
+width: 2px;
+background-color: rgba(132, 196, 226, 0.25);
+z-index: 0;
+}
+.timeline__split-line:before {
+content: "";
+position: absolute;
+top: 24%;
+right: -4px;
+transform: translateY(-50%);
+width: 10px;
+height: 10px;
+background-color: #c9e5f2;
+box-shadow: 0 0 0 4px var(--card-background, #fff);
+border-radius: 50%;
+border: 0px solid #84c4e2;
+z-index: -1;
+}
+.timeline__content {
+flex: 1;
+margin-left: 4.5rem;
+padding: 0.5rem 0 1.2rem 0;
+}
+.timeline__title {
+margin: 0;
+margin-bottom: 2px;
+padding-top: 3px;
+margin-left: 0.5rem;
+color: var(--card-text-color-main);
+font-family: var(--font-family-teshu);
+font-size: 19px;
+font-weight: 600;
+width: fit-content;
+display: inline-block;
+vertical-align: middle;
+}
+.timeline__tags {
+display: inline-block;
+padding: 0;
+margin-left: 0.3rem;
+align-items: center;
+gap: 0.3rem;
+}
+.timeline__tag {
+display: inline-block;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
+border-radius: 999px;
+padding: 0rem 0.5rem;
+font-size: 12px;
+white-space: nowrap;
+line-height: 1.4rem;
+opacity: 0.8;
+vertical-align: middle;
+}
+.timeline__description {
+font-size: 15px;
+line-height: 1.6;
+color: var(--card-text-color-secondary);
+overflow: hidden;
+text-overflow: ellipsis;
+margin: 0.5rem 0 0.4rem 1.5rem;
+}
+.timeline__tag-style {
+background-color: #c581da;
+border-color: #c581da;
+color: #FFFFFF;
+}
+.timeline__tag-article {
+background-color: #92d392;
+border-color: #92d392;
+color: #000000;
+}
+.timeline__tag-page {
+background-color: #707070;
+border-color: #707070;
+color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
+}
+@media screen and (max-width: 768px) {
+.timeline__time {
+font-size: 14px;
+}
+.timeline__title {
+font-size: 16px;
+}
+.timeline__description {
+font-size: 14px;
+}
+}
+&lt;/style&gt;
+&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Stage&lt;/th&gt;
+&lt;th&gt;Optimized&lt;/th&gt;
+&lt;th&gt;Res.&lt;/th&gt;
+&lt;th&gt;LR&lt;/th&gt;
+&lt;th&gt;EMA&lt;/th&gt;
+&lt;th&gt;T2I&lt;/th&gt;
+&lt;th&gt;T2V&lt;/th&gt;
+&lt;th&gt;I2I&lt;/th&gt;
+&lt;th&gt;V2V&lt;/th&gt;
+&lt;th&gt;I2V&lt;/th&gt;
+&lt;th&gt;IV2V&lt;/th&gt;
+&lt;th&gt;V.P.&lt;/th&gt;
+&lt;th&gt;I.P.&lt;/th&gt;
+&lt;th&gt;Int.&lt;/th&gt;
+&lt;th&gt;Und.&lt;/th&gt;
+&lt;th&gt;CoT&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;MLLM&lt;/td&gt;
+&lt;td&gt;256p&lt;/td&gt;
+&lt;td&gt;1e-5&lt;/td&gt;
+&lt;td&gt;0.999&lt;/td&gt;
+&lt;td&gt;13%&lt;/td&gt;
+&lt;td&gt;19%&lt;/td&gt;
+&lt;td&gt;3%&lt;/td&gt;
+&lt;td&gt;1%&lt;/td&gt;
+&lt;td&gt;1%&lt;/td&gt;
+&lt;td&gt;1%&lt;/td&gt;
+&lt;td&gt;15%&lt;/td&gt;
+&lt;td&gt;21%&lt;/td&gt;
+&lt;td&gt;6%&lt;/td&gt;
+&lt;td&gt;20%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;II&lt;/td&gt;
+&lt;td&gt;DiT&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;1e-5&lt;/td&gt;
+&lt;td&gt;0.9995&lt;/td&gt;
+&lt;td&gt;31%&lt;/td&gt;
+&lt;td&gt;42%&lt;/td&gt;
+&lt;td&gt;4%&lt;/td&gt;
+&lt;td&gt;0.4%&lt;/td&gt;
+&lt;td&gt;0.4%&lt;/td&gt;
+&lt;td&gt;0.3%&lt;/td&gt;
+&lt;td&gt;11%&lt;/td&gt;
+&lt;td&gt;11%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;II&lt;/td&gt;
+&lt;td&gt;DiT&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;1e-5&lt;/td&gt;
+&lt;td&gt;0.9999&lt;/td&gt;
+&lt;td&gt;20%&lt;/td&gt;
+&lt;td&gt;30%&lt;/td&gt;
+&lt;td&gt;40%&lt;/td&gt;
+&lt;td&gt;3.3%&lt;/td&gt;
+&lt;td&gt;3.5%&lt;/td&gt;
+&lt;td&gt;3.2%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;III&lt;/td&gt;
+&lt;td&gt;All&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;1e-5&lt;/td&gt;
+&lt;td&gt;0.9995&lt;/td&gt;
+&lt;td&gt;16%&lt;/td&gt;
+&lt;td&gt;24%&lt;/td&gt;
+&lt;td&gt;32%&lt;/td&gt;
+&lt;td&gt;2.6%&lt;/td&gt;
+&lt;td&gt;2.8%&lt;/td&gt;
+&lt;td&gt;2.6%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;20%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;III&lt;/td&gt;
+&lt;td&gt;All&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;1e-5&lt;/td&gt;
+&lt;td&gt;0.999&lt;/td&gt;
+&lt;td&gt;12%&lt;/td&gt;
+&lt;td&gt;18%&lt;/td&gt;
+&lt;td&gt;24%&lt;/td&gt;
+&lt;td&gt;2%&lt;/td&gt;
+&lt;td&gt;2%&lt;/td&gt;
+&lt;td&gt;2%&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;20%&lt;/td&gt;
+&lt;td&gt;20%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;其中的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Res. = Resolution&lt;/li&gt;
+&lt;li&gt;V.P. = Video Pairs&lt;/li&gt;
+&lt;li&gt;I.P. = Image Pairs&lt;/li&gt;
+&lt;li&gt;Int. = Interleaved Image-Text Data&lt;/li&gt;
+&lt;li&gt;Und. = Understanding Data&lt;/li&gt;
+&lt;li&gt;CoT = Reasoning-augmented Video Data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对应的来说，可以看下表：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Stage&lt;/th&gt;
+&lt;th&gt;优化模块&lt;/th&gt;
+&lt;th&gt;分辨率&lt;/th&gt;
+&lt;th&gt;主要目标&lt;/th&gt;
+&lt;th&gt;核心数据&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;I&lt;/td&gt;
+&lt;td&gt;MLLM Planner&lt;/td&gt;
+&lt;td&gt;256p&lt;/td&gt;
+&lt;td&gt;将Qwen2.5-VL从理解模型转化为语义规划器&lt;/td&gt;
+&lt;td&gt;Understanding、Image Pair、Video Pair、多任务生成编辑数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;II&lt;/td&gt;
+&lt;td&gt;DiT Renderer&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;学习高保真生成与编辑能力&lt;/td&gt;
+&lt;td&gt;T2I/T2V预训练 + I2I/I2V/V2V/IV2V编辑数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;III&lt;/td&gt;
+&lt;td&gt;全模型联合训练&lt;/td&gt;
+&lt;td&gt;480p&lt;/td&gt;
+&lt;td&gt;对齐语义规划与视频渲染，并引入推理能力&lt;/td&gt;
+&lt;td&gt;高质量生成编辑数据 + Understanding Data + CoT Data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Stage I：MLLM预训练&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标：将Qwen2.5-VL从多模态理解模型转化为语义规划器，并学习在ViT embedding空间预测目标视觉语义表示&lt;/li&gt;
+&lt;li&gt;损失：$\lambda_{text}L_{ntp} + \lambda_{visual}L_{visual}$，其中 $\lambda_{text}=0.2, \lambda_{visual}=1$
+&lt;ul&gt;
+&lt;li&gt;$L_{ntp}$ 用于保持MLLM原有的语言与多模态理解能力&lt;/li&gt;
+&lt;li&gt;$L_{visual}$ 用于训练ViT Embedding Decoder恢复目标ViT embedding&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;渐进式数据课程：先T2I建立图像生成能力，再扩展到T2V、I2I、V2V，为了提高跨异构任务的鲁棒性，我们采用了任务相关的掩码比率策略。mask 比例从 Beta 分布中采样： $r \sim \text{Beta}(\alpha, \beta)$，不同任务的信息量不同，训练时采用任务相关的mask比例策略：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center"&gt;任务&lt;/th&gt;
+&lt;th style="text-align: center"&gt;$\alpha$&lt;/th&gt;
+&lt;th style="text-align: center"&gt;$\beta$&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;T2I&lt;/td&gt;
+&lt;td style="text-align: center"&gt;5.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;1.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;T2V&lt;/td&gt;
+&lt;td style="text-align: center"&gt;8.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;1.05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;I2I&lt;/td&gt;
+&lt;td style="text-align: center"&gt;8.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;1.05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;I2V&lt;/td&gt;
+&lt;td style="text-align: center"&gt;10.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;1.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;V2V&lt;/td&gt;
+&lt;td style="text-align: center"&gt;12.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;0.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center"&gt;IV2V&lt;/td&gt;
+&lt;td style="text-align: center"&gt;12.0&lt;/td&gt;
+&lt;td style="text-align: center"&gt;0.9&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;随着任务输入信息量的增加（从纯文本生成到图像/视频条件编辑），分布向概率1.0偏移，即更多目标token被mask，迫使规划器从高层多模态上下文中推断语义，减少信息泄漏。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Stage II：DiT预训练&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标：赋予渲染器高保真合成和源保持编辑能力&lt;/li&gt;
+&lt;li&gt;损失：$L_{dit}$，条件为文本特征和源VAE特征&lt;/li&gt;
+&lt;li&gt;Pair数据采样比例线性衰减：初期高比例以提升泛化，后期降至零以精调编辑性能&lt;/li&gt;
+&lt;li&gt;不同任务采用定制的shift参数和噪声加权方案（logit-normal/mode分布）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Parameter&lt;/th&gt;
+&lt;th&gt;T2I&lt;/th&gt;
+&lt;th&gt;I2I&lt;/th&gt;
+&lt;th&gt;T2V&lt;/th&gt;
+&lt;th&gt;I2V&lt;/th&gt;
+&lt;th&gt;V2V&lt;/th&gt;
+&lt;th&gt;IV2V&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Weighting&lt;/td&gt;
+&lt;td&gt;logit-normal&lt;/td&gt;
+&lt;td&gt;logit-normal&lt;/td&gt;
+&lt;td&gt;mode&lt;/td&gt;
+&lt;td&gt;mode&lt;/td&gt;
+&lt;td&gt;mode&lt;/td&gt;
+&lt;td&gt;mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shift&lt;/td&gt;
+&lt;td&gt;3.0&lt;/td&gt;
+&lt;td&gt;4.0&lt;/td&gt;
+&lt;td&gt;3.0&lt;/td&gt;
+&lt;td&gt;5.0&lt;/td&gt;
+&lt;td&gt;5.0&lt;/td&gt;
+&lt;td&gt;5.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Weighting&lt;/strong&gt; 表示 Flow Matching 训练时的时间步采样权重分布。
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;logit-normal&lt;/strong&gt;：更适合图像任务（T2I、I2I），会覆盖更广泛的噪声区间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;mode&lt;/strong&gt;：更适合视频任务（T2V、I2V、V2V、IV2V），更加关注主要训练区域，提高视频生成稳定性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shift&lt;/strong&gt; 为 Flow Matching 中的时间重参数化系数（shift parameter）。
+&lt;ul&gt;
+&lt;li&gt;较大的 Shift（如 5.0）会使训练更加关注高信噪比区域，有利于复杂视频编辑任务。&lt;/li&gt;
+&lt;li&gt;较小的 Shift（如 3.0）则更加均衡地覆盖整个噪声空间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总体上，Bernini 对图像生成和视频编辑采用了不同的 Flow Matching 训练策略：图像任务更关注全局泛化能力，而视频任务更强调时序一致性和编辑稳定性。&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;展开：logit-normal 和 mode sampling 是什么？&lt;/summary&gt;
+&lt;p&gt;它们都是 Flow Matching 训练中的 &lt;strong&gt;时间步采样策略&lt;/strong&gt;。训练时需要采样一个时间步 $t\in[0,1]$，表示当前样本的噪声程度。不同采样策略会让模型更关注不同噪声区间。图像任务主要关注单帧质量，因此使用 logit-normal 覆盖较完整的噪声区间；视频任务还要学习运动和时间一致性，因此使用 mode sampling，让训练更关注对视频生成更关键的噪声区域。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;mode sampling&lt;/strong&gt; 通过函数变换把均匀采样的 $u$ 映射成新的时间步：&lt;/p&gt;
+$$f_{mode}(u;s) = 1-u - s\left( \cos^2\left(\frac{\pi}{2}u\right)-1+u \right)$$&lt;p&gt;从而构造出更加偏向特定噪声区域的采样分布。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;logit-normal sampling&lt;/strong&gt; 来源于 Stable Diffusion 3，是一种非均匀采样方式，先在 logit 空间中采样，再映射回 $[0,1]$：&lt;/p&gt;
+$$\pi_{ln}(t;m,s)= \frac{1}{s\sqrt{2\pi}} \frac{1}{t(1-t)} \exp\left( -\frac{(\operatorname{logit}(t)-m)^2}{2s^2} \right)$$&lt;p&gt;其中：&lt;/p&gt;
+$$\operatorname{logit}(t)=\ln\frac{t}{1-t}$$
+&lt;/details&gt;
+&lt;p&gt;&lt;strong&gt;Stage III：联合训练&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;目标：对齐语义规划与视觉渲染&lt;/li&gt;
+&lt;li&gt;损失：$\lambda_{ntp}L_{ntp} + \lambda_{visual}L_{visual} + \lambda_{dit}L_{dit}$&lt;/li&gt;
+&lt;li&gt;仅轻量联合训练，保持两个组件的预训练优势&lt;/li&gt;
+&lt;li&gt;后期引入CoT推理增强数据，提升结构化推理能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="推理策略"&gt;推理策略
+&lt;/h2&gt;&lt;p&gt;推理时也可以按两阶段理解：先在 ViT embedding 空间里把目标语义补出来，再把这个语义表示交给 DiT 渲染成视频。&lt;/p&gt;
+&lt;h3 id="vit-embedding规划"&gt;ViT Embedding规划
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;目标视觉token初始化为全mask&lt;/li&gt;
+&lt;li&gt;MLLM通过25步迭代逐步预测目标语义token&lt;/li&gt;
+&lt;li&gt;每步预测结果通过ViT Embedding Decoder进行5步Flow Matching去噪精炼（文本引导尺度1.2，图像引导尺度1.0）&lt;/li&gt;
+&lt;li&gt;完整目标ViT嵌入与文本、源ViT嵌入一起重新输入MLLM，产生DiT条件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;迭代规划的额外开销相对于DiT渲染几乎可忽略。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="dit渲染"&gt;DiT渲染
+&lt;/h3&gt;&lt;p&gt;为了控制不同条件对生成结果的影响，Bernini 将最终预测拆分为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无条件预测（Unconditional Prediction）&lt;/li&gt;
+&lt;li&gt;Video Guidance&lt;/li&gt;
+&lt;li&gt;Image Guidance&lt;/li&gt;
+&lt;li&gt;Text Guidance&lt;/li&gt;
+&lt;li&gt;Target Semantic Guidance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;采用多条件分解的Classifier-Free Guidance：&lt;/p&gt;
+$$\hat{\epsilon} = \epsilon_{\emptyset,\emptyset,\emptyset,\emptyset} + \omega_{vid}\Delta_{vid} + \omega_{img}\Delta_{img} + \omega_{txt}\Delta_{txt} + \omega_{tgt}\Delta_{tgt}$$&lt;p&gt;其中各增量项分别对应源视频VAE特征、源图像VAE特征、文本特征和目标语义嵌入的条件贡献。&lt;/p&gt;
+&lt;p&gt;不同任务的引导尺度：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;任务&lt;/th&gt;
+&lt;th&gt;Steps&lt;/th&gt;
+&lt;th&gt;$\omega_{txt}$&lt;/th&gt;
+&lt;th&gt;$\omega_{vid}$&lt;/th&gt;
+&lt;th&gt;$\omega_{img}$&lt;/th&gt;
+&lt;th&gt;$\omega_{tgt}$&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;T2V&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;4.0&lt;/td&gt;
+&lt;td&gt;—&lt;/td&gt;
+&lt;td&gt;1.0&lt;/td&gt;
+&lt;td&gt;1.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;S2V&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;4.0&lt;/td&gt;
+&lt;td&gt;1.25&lt;/td&gt;
+&lt;td&gt;2.5&lt;/td&gt;
+&lt;td&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;V2V&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;4.0&lt;/td&gt;
+&lt;td&gt;1.25&lt;/td&gt;
+&lt;td&gt;1.25&lt;/td&gt;
+&lt;td&gt;0.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RV2V&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;4.0&lt;/td&gt;
+&lt;td&gt;1.25&lt;/td&gt;
+&lt;td&gt;3.0&lt;/td&gt;
+&lt;td&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="基础设施"&gt;基础设施
+&lt;/h2&gt;&lt;h3 id="训练优化"&gt;训练优化
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;内存优化&lt;/strong&gt;：通过 FSDP 配置优化，将单卡显存从 72GB 降至 40GB。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输入管线优化&lt;/strong&gt;：将原本“先拼接再 scatter”的流程改为直接 index-scatter 到预分配 buffer，减少约 17GB 中间显存。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;激活卸载&lt;/strong&gt;：使用 pinned CPU memory pool + delayed-queue prefetch，实现 D2H/H2D 与计算重叠，最终支持 440K token 长序列训练，相比原 100K 提升 4.4 倍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;算子优化&lt;/strong&gt;：采用 FlashAttention-4、FlexAttention、异步 QKV 通信、TND layout 保留、QuACK RMSNorm kernel 等，整体最高带来 46% 训练加速。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;并行策略&lt;/strong&gt;：结合 FSDP 权重切分与 Ulysses-style Sequence Parallelism；MLLM 在 SP degree=4 时吞吐提升约 2 倍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;序列打包与批处理&lt;/strong&gt;：使用变长 FlashAttention、batch forward、dummy-forward padding 和 token-bucket batching，减少 padding 浪费并提高 GPU 利用率，端到端吞吐提升约 4.5 倍。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据加载负载均衡&lt;/strong&gt;：使用 greedy bin-packing 在节点间重新分配样本，使 max/min workload ratio 低于 1.01，并带来约 15% 吞吐提升。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="推理优化"&gt;推理优化
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DiT 推理并行&lt;/strong&gt;：集成 DeepSpeed Ulysses，并对 QKV tensor 使用异步 all-to-all 通信。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VAE 推理并行&lt;/strong&gt;：沿时间维度使用 context parallelism，并采用异步卷积缓存传输。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;整体效果&lt;/strong&gt;：多 GPU 推理带来超过 7.2 倍加速。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="模型蒸馏"&gt;模型蒸馏
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stage 1：CFG蒸馏&lt;/strong&gt;：学生模型直接预测CFG组合输出，单步前向替代条件/无条件双评估，每步计算减半&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stage 2：ReFlow&lt;/strong&gt;：拉直概率流ODE轨迹，以更少积分步实现准确生成&lt;/li&gt;
+&lt;li&gt;最终学生模型仅需4 NFE即可达到教师模型80 NFE的可比质量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="实验结果"&gt;实验结果
+&lt;/h2&gt;&lt;p&gt;实验部分可以从两个角度看：第一，Bernini 作为视频编辑模型是否真的更强；第二，引入 MLLM Planner 之后，基础视频生成能力有没有被削弱。&lt;/p&gt;
+&lt;div class="notice notice-tip" &gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;看实验时重点关注两个信号：视频编辑指标是否提升，以及 T2V 基础能力是否保持。前者说明 Planner 真的带来了更好的语义控制，后者说明统一框架没有明显牺牲原本的视频生成能力。&lt;/p&gt;&lt;/div&gt;
+&lt;h3 id="bernini-bench自建评测集"&gt;Bernini-Bench（自建评测集）
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024910.png"
+width="1154"
+height="810"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024910.png"
+data-lightbox-width="1154"
+data-lightbox-height="810"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="341px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;覆盖22种细粒度编辑任务、300个测试用例，支持V2V和RV2V两种设置，评估维度包括指令遵循（IF）、视频一致性（VC）、参考图像一致性（IC）、生成质量（GQ）、总体得分（OS）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;V2V结果&lt;/strong&gt;：Bernini总体得分3.49，超越Wan2.7（3.30）和Kling O3（3.05），尤其在&lt;strong&gt;视频一致性&lt;/strong&gt;上优势显著（3.51 vs 3.11）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RV2V结果&lt;/strong&gt;：Bernini总体得分3.50，视频一致性3.51，与Wan2.7（3.48）和Kling O3（3.14）相比均保持领先。
+&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024944.png"
+width="1011"
+height="434"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005024944.png"
+data-lightbox-width="1011"
+data-lightbox-height="434"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="559px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005605374.png"
+width="1082"
+height="564"
+loading="lazy"
+data-original="/2026/bernini/assets/IMG-20260618005605374.png"
+data-lightbox-width="1082"
+data-lightbox-height="564"
+class="gallery-image"
+data-flex-grow="191"
+data-flex-basis="460px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="公开基准评测"&gt;公开基准评测
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;OpenVE-Bench&lt;/strong&gt;：总体得分 4.04，大幅超越最强基线 VINO（3.18）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;EditVerse&lt;/strong&gt;：编辑质量8.02（新最高），Pick Score 20.26，文本对齐27.37。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FiVE&lt;/strong&gt;：在结构保持、背景保留、文本对齐、编辑精度等指标上达到SOTA或接近SOTA，FiVE-Acc准确率78.16显著领先。&lt;/p&gt;
+&lt;h3 id="视频生成评测"&gt;视频生成评测
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;VBench（T2V）&lt;/strong&gt;：Total 84.64，与Wan2.2-A14B（84.79）基本持平，说明统一框架扩展未损害基础T2V能力。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;OpenS2V-Eval（Subject-to-Video）&lt;/strong&gt;：Total 62.94，超越所有开源和闭源方法。其中&lt;strong&gt;FaceSim高达78.20&lt;/strong&gt;，超过次优基线Kling O3（57.20）逾20个绝对点，在多人脸身份保持上取得突破性进展。&lt;/p&gt;
+&lt;h3 id="消融实验"&gt;消融实验
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;OS&lt;/th&gt;
+&lt;th&gt;IF&lt;/th&gt;
+&lt;th&gt;VC&lt;/th&gt;
+&lt;th&gt;GQ&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Baseline&lt;/td&gt;
+&lt;td&gt;3.12&lt;/td&gt;
+&lt;td&gt;3.36&lt;/td&gt;
+&lt;td&gt;3.18&lt;/td&gt;
+&lt;td&gt;3.37&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+ PE (Qwen2.5-VL-7B)&lt;/td&gt;
+&lt;td&gt;3.20&lt;/td&gt;
+&lt;td&gt;3.43&lt;/td&gt;
+&lt;td&gt;3.21&lt;/td&gt;
+&lt;td&gt;3.39&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+ Self-text&lt;/td&gt;
+&lt;td&gt;3.33&lt;/td&gt;
+&lt;td&gt;3.55&lt;/td&gt;
+&lt;td&gt;3.31&lt;/td&gt;
+&lt;td&gt;3.44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+ PE (GPT-5.4)&lt;/td&gt;
+&lt;td&gt;3.49&lt;/td&gt;
+&lt;td&gt;3.66&lt;/td&gt;
+&lt;td&gt;3.51&lt;/td&gt;
+&lt;td&gt;3.49&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;+ PE (GPT-5.4) + Self-vision-text&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3.52&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;3.65&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;3.54&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;3.49&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;推理增强一致性地提升性能，视觉-文本推理在最强文本推理基础上进一步带来增益。&lt;/p&gt;
+&lt;h2 id="related-work-总结"&gt;Related Work 总结
+&lt;/h2&gt;&lt;p&gt;Related Work 可以按两条路线理解：一条路线是把理解和生成放进同一个统一主干里，另一条路线是保留 MLLM 和 Diffusion Model 两个模块，再研究它们之间怎么传递条件。&lt;/p&gt;
+&lt;h3 id="统一多模态主干"&gt;统一多模态主干
+&lt;/h3&gt;&lt;p&gt;这一类方法希望用一个统一 Transformer 同时处理文本、图像和视频 token。它们的核心思想是：把理解和生成都放进同一个 backbone 里完成。&lt;/p&gt;
+&lt;p&gt;代表方法包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Emu3&lt;/strong&gt;：将文本、图像、视频全部离散化到统一词表中，用 next-token prediction 训练单一 Transformer。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Janus&lt;/strong&gt;：保留统一自回归 backbone，但将理解和生成的视觉编码器解耦，理解侧使用 SigLIP-style encoder，生成侧使用 VQ tokenizer。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Show-o&lt;/strong&gt;：在同一个 Transformer 中结合文本自回归建模和图像 token 的离散扩散。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a class="link" href="../../AIGC%e6%a8%a1%e5%9e%8b/HunyuanImage%203.0/HunyuanImage%203.0%20Technical%20Report.md" &gt;HunyuanImage 3.0&lt;/a&gt;&lt;/strong&gt;：进一步引入 MoE decoder，同时处理文本 next-token prediction 和图像 token 的 diffusion prediction。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;BAGEL&lt;/strong&gt;：使用 Mixture-of-Transformer-Experts 架构，不同理解/生成专家通过共享 self-attention 交互。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lumina-DiMOO&lt;/strong&gt;：放弃自回归预测，使用统一离散 masked diffusion 目标建模文本和视觉 token。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这类方法的优点是形式统一，缺点也很明显：训练成本高，而且理解能力和生成能力容易互相干扰。&lt;/p&gt;
+&lt;h3 id="mllm作为生成条件"&gt;MLLM作为生成条件
+&lt;/h3&gt;&lt;p&gt;第二类方法不强行把理解和生成合并到一个 backbone，而是保留两个模块：MLLM 负责理解和提供条件，Diffusion Model 负责生成图像或视频。这类方法的差别主要在于：MLLM 到 Diffusion Model 之间传递什么表示。&lt;/p&gt;
+&lt;p&gt;代表方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MetaQuery&lt;/strong&gt;：使用少量可学习 Query Token 作为 MLLM 与扩散模型之间的桥梁。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bifrost-1&lt;/strong&gt;：利用 Patch-Level CLIP Latent 作为语义接口连接 MLLM 与图像生成器。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEED-X&lt;/strong&gt;：直接使用 MLLM Hidden States 作为图像生成模型的条件输入。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DreamLLM&lt;/strong&gt;：将 MLLM Hidden States 输入视觉解码器，实现理解与生成统一训练。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emu&lt;/strong&gt;：利用 MLLM Hidden States 驱动外部图像生成器，实现多模态理解与生成协同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LaVi-Bridge&lt;/strong&gt;：重点研究冻结语言模型与视觉生成模型之间的桥接机制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UniVideo&lt;/strong&gt;：将 MLLM Hidden States 与视频扩散模型结合，实现统一的视频生成与编辑框架。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;VInO&lt;/strong&gt;：结合 MLLM、VAE Latent 和视频扩散模型，统一支持 Subject-to-Video 与 Instruction-based Video Editing。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特别地，Bernini 不直接使用 MLLM 的 output hidden states 作为接口，而是将&lt;strong&gt;接口锚定在 MLLM 自身的 ViT embedding space&lt;/strong&gt;。这使它和普通“MLLM 给扩散模型提供条件”的方法拉开了差异：Planner 不是只提供一段语义提示，而是在视觉语义空间里规划目标输出。&lt;/p&gt;
+&lt;h2 id="局限性与总结"&gt;局限性与总结
+&lt;/h2&gt;&lt;p&gt;Bernini 最值得看的地方，不只是它把几个模块拼在了一起，而是它重新划分了生成任务里的责任边界：MLLM 不直接生成像素，而是负责语义规划；DiT 不负责深层推理，而是专注高保真渲染。这个分工让两个已经很强的模型各自留在更擅长的位置上。&lt;/p&gt;
+&lt;h3 id="主要贡献"&gt;主要贡献
+&lt;/h3&gt;&lt;p&gt;本文提出了 &lt;strong&gt;Bernini&lt;/strong&gt;，一种统一的视频生成与编辑框架。它的主要贡献包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提出&lt;strong&gt;ViT embedding空间作为语义接口&lt;/strong&gt;，实现MLLM理解能力向生成任务的直接迁移&lt;/li&gt;
+&lt;li&gt;设计&lt;strong&gt;SA-3D RoPE&lt;/strong&gt;解决统一序列中多视觉segment的身份混淆问题&lt;/li&gt;
+&lt;li&gt;引入&lt;strong&gt;Latent Chain-of-Thought&lt;/strong&gt;推理增强，桥接空间推理与时间生成&lt;/li&gt;
+&lt;li&gt;构建&lt;strong&gt;大规模多任务训练语料&lt;/strong&gt;和&lt;strong&gt;多样化数据合成管线&lt;/strong&gt;，支撑统一的视频生成与编辑&lt;/li&gt;
+&lt;li&gt;在视频编辑、主体驱动视频生成、文本到视频生成等多个基准上达到&lt;strong&gt;SOTA性能&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="局限性"&gt;局限性
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;复杂编辑场景仍依赖外部LLM重写器提供详细结构化指令，原生推理能力尚不充分&lt;/li&gt;
+&lt;li&gt;主体驱动视频生成的视觉质量与更强的闭源系统（如Wan2.7）仍有差距&lt;/li&gt;
+&lt;li&gt;基础模型的选择（MLLM planner和DiT renderer）对最终效果有较大制约&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总体来看，Bernini 的路线很清晰：不要强行让一个模型同时完成理解、规划和渲染，而是把“看懂要生成什么”和“生成得足够好”拆开，再用一个合适的视觉语义空间把它们接起来。对于视频生成和视频编辑来说，这可能比单纯扩大模型规模更有启发。&lt;/p&gt;</description></item><item><title>论文阅读 | QwenImage技术报告</title><link>https://ionfeather.github.io/2026/qwenimage/</link><pubDate>Sat, 16 May 2026 18:44:45 +0800</pubDate><guid>https://ionfeather.github.io/2026/qwenimage/</guid><description>
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;论文：&lt;/strong&gt; &lt;a class="link" href="https://arxiv.org/abs/2508.02324" target="_blank" rel="noopener"
 &gt;Qwen-Image Technical Report&lt;/a&gt;&lt;/p&gt;
@@ -6242,24 +7557,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;div class="chat --self"&gt;
@@ -6329,24 +7644,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;p&gt;使用LangChain听说比较方便。&lt;/p&gt;

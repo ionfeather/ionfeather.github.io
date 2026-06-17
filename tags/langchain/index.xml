@@ -67,24 +67,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;div class="chat --self"&gt;
@@ -154,24 +154,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;p&gt;使用LangChain听说比较方便。&lt;/p&gt;

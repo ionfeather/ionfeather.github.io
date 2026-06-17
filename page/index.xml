@@ -12,11 +12,7 @@
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;&lt;div class="timeline__description"&gt;
 使用Hugo的Stack主题
 &lt;/div&gt;
 &lt;/div&gt;
@@ -33,7 +29,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -51,7 +47,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -63,7 +59,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -78,7 +74,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -95,9 +91,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -109,7 +105,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -128,6 +124,42 @@ color: #000000;
 background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
 }
 @media screen and (max-width: 768px) {
 .timeline__time {
@@ -149,11 +181,7 @@ font-size: 14px;
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;增加评论区&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;增加评论区&lt;/div&gt;&lt;div class="timeline__description"&gt;
 部署Waline，但还有一些问题
 &lt;/div&gt;
 &lt;/div&gt;
@@ -170,7 +198,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -188,7 +216,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -200,7 +228,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -215,7 +243,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -232,9 +260,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -246,7 +274,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -265,6 +293,42 @@ color: #000000;
 background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
 }
 @media screen and (max-width: 768px) {
 .timeline__time {
@@ -286,11 +350,7 @@ font-size: 14px;
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;Bug修复&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;Bug修复&lt;/div&gt;&lt;div class="timeline__description"&gt;
 修复了一些bug，如邮箱显示错误、搜索功能失效等
 &lt;/div&gt;
 &lt;/div&gt;
@@ -307,7 +367,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -325,7 +385,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -337,7 +397,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -352,7 +412,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -369,9 +429,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -383,7 +443,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -402,6 +462,42 @@ color: #000000;
 background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
 }
 @media screen and (max-width: 768px) {
 .timeline__time {

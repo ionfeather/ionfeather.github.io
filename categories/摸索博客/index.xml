@@ -12,7 +12,7 @@
 &lt;/ul&gt;
 &lt;h2 id="文字"&gt;文字
 &lt;/h2&gt;&lt;h3 id="重点标记"&gt;重点标记
-&lt;/h3&gt;&lt;mark&gt;好喜欢蓝色！&lt;/mark&gt;
+&lt;/h3&gt;&lt;div class="mark-card"&gt;好喜欢蓝色！&lt;/div&gt;
 &lt;!-- //实际使用时应为双括号 --&gt;
 &lt;h3 id="文本折叠"&gt;文本折叠
 &lt;/h3&gt;&lt;details&gt;
@@ -130,24 +130,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;div class="chat --self"&gt;
@@ -217,24 +217,24 @@ font-size: 0.9em;
 margin-left: 10px;
 word-break: break-all;
 }
-[data-scheme="dark"] {
-.chat.--self {
-color: #fefefe;
-background-color: #253958;
+html[data-scheme="dark"] .chat.--self {
+color: #eaf2f7;
+background-color: rgba(73, 105, 132, 0.56);
+border: 1px solid rgba(125, 160, 176, 0.18);
 }
-.chat.--self::before {
-border-color: transparent transparent transparent #253958;
+html[data-scheme="dark"] .chat.--self::before {
+border-color: transparent transparent transparent rgba(73, 105, 132, 0.56);
 }
-.chat.--other {
-color: #fefefe;
-background-color: #1a1a1a;
+html[data-scheme="dark"] .chat.--other {
+color: #e8edf2;
+background-color: rgba(56, 62, 74, 0.72);
+border: 1px solid rgba(255, 255, 255, 0.07);
 }
-.chat.--other::before {
-border-color: transparent #1a1a1a transparent transparent;
+html[data-scheme="dark"] .chat.--other::before {
+border-color: transparent rgba(56, 62, 74, 0.72) transparent transparent;
 }
-.chat__meta {
-color: #b1b1b1;
-}
+html[data-scheme="dark"] .chat__meta {
+color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
 &lt;h3 id="时间轴"&gt;时间轴
@@ -246,11 +246,7 @@ color: #b1b1b1;
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;创建ionfeather&amp;#39;Log&lt;/div&gt;&lt;div class="timeline__description"&gt;
 使用Hugo的Stack主题
 &lt;/div&gt;
 &lt;/div&gt;
@@ -267,7 +263,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -285,7 +281,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -297,7 +293,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -312,7 +308,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -329,9 +325,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -343,7 +339,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -362,6 +358,42 @@ color: #000000;
 background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
 }
 @media screen and (max-width: 768px) {
 .timeline__time {
@@ -384,11 +416,7 @@ font-size: 14px;
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;增加评论区&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;增加评论区&lt;/div&gt;&lt;div class="timeline__description"&gt;
 部署Waline，但还有一些问题
 &lt;/div&gt;
 &lt;/div&gt;
@@ -405,7 +433,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -423,7 +451,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -435,7 +463,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -450,7 +478,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -467,9 +495,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -481,7 +509,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -500,6 +528,42 @@ color: #000000;
 background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
+}
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
 }
 @media screen and (max-width: 768px) {
 .timeline__time {
@@ -522,11 +586,7 @@ font-size: 14px;
 &lt;div class="timeline__content"&gt;
 &lt;div class="timeline__tags"&gt;
 &lt;span class="timeline__tag"&gt;博客&lt;/span&gt;
-&lt;/div&gt;
-&lt;a href=""&gt;
-&lt;div class="timeline__title"&gt;Bug修复&lt;/div&gt;
-&lt;/a&gt;
-&lt;div class="timeline__description"&gt;
+&lt;/div&gt;&lt;div class="timeline__title"&gt;Bug修复&lt;/div&gt;&lt;div class="timeline__description"&gt;
 修复了一些bug，如邮箱显示错误、搜索功能失效等
 &lt;/div&gt;
 &lt;/div&gt;
@@ -543,7 +603,7 @@ height: 90px;
 }
 .timeline__time {
 flex: 0 0 110px;
-color: #5d5d5d;
+color: var(--card-text-color-secondary, #5d5d5d);
 font-size: 17px;
 text-transform: uppercase;
 position: relative;
@@ -561,7 +621,7 @@ top: 0.5rem;
 right: -20px;
 height: 100%;
 width: 2px;
-background-color: #84c4e240;
+background-color: rgba(132, 196, 226, 0.25);
 z-index: 0;
 }
 .timeline__split-line:before {
@@ -573,7 +633,7 @@ transform: translateY(-50%);
 width: 10px;
 height: 10px;
 background-color: #c9e5f2;
-box-shadow: 0 0 0 4px var(--theme);
+box-shadow: 0 0 0 4px var(--card-background, #fff);
 border-radius: 50%;
 border: 0px solid #84c4e2;
 z-index: -1;
@@ -588,7 +648,7 @@ margin: 0;
 margin-bottom: 2px;
 padding-top: 3px;
 margin-left: 0.5rem;
-color: var(--content);
+color: var(--card-text-color-main);
 font-family: var(--font-family-teshu);
 font-size: 19px;
 font-weight: 600;
@@ -605,9 +665,9 @@ gap: 0.3rem;
 }
 .timeline__tag {
 display: inline-block;
-color: var(--secondary);
-background-color: #84c4e230;
-border: 1.5px solid #84c4e230;
+color: var(--card-text-color-secondary);
+background-color: rgba(132, 196, 226, 0.18);
+border: 1.5px solid rgba(132, 196, 226, 0.18);
 border-radius: 999px;
 padding: 0rem 0.5rem;
 font-size: 12px;
@@ -619,7 +679,7 @@ vertical-align: middle;
 .timeline__description {
 font-size: 15px;
 line-height: 1.6;
-color: #5d5d5d;
+color: var(--card-text-color-secondary);
 overflow: hidden;
 text-overflow: ellipsis;
 margin: 0.5rem 0 0.4rem 1.5rem;
@@ -639,6 +699,42 @@ background-color: #707070;
 border-color: #707070;
 color: #FFFFFF;
 }
+html[data-scheme="dark"] .timeline__time {
+color: rgba(190, 200, 210, 0.78);
+}
+html[data-scheme="dark"] .timeline__split-line {
+background-color: rgba(125, 160, 176, 0.22);
+}
+html[data-scheme="dark"] .timeline__split-line:before {
+background-color: #7da0b0;
+box-shadow: 0 0 0 4px rgba(48, 54, 66, 0.92);
+}
+html[data-scheme="dark"] .timeline__title {
+color: #e8edf2;
+}
+html[data-scheme="dark"] .timeline__description {
+color: rgba(190, 200, 210, 0.82);
+}
+html[data-scheme="dark"] .timeline__tag {
+color: rgba(220, 226, 234, 0.9);
+background-color: rgba(125, 160, 176, 0.16);
+border-color: rgba(125, 160, 176, 0.28);
+}
+html[data-scheme="dark"] .timeline__tag-style {
+color: #f5eef8;
+background-color: rgba(173, 125, 194, 0.46);
+border-color: rgba(196, 154, 213, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-article {
+color: #edf8ef;
+background-color: rgba(96, 150, 108, 0.46);
+border-color: rgba(128, 184, 140, 0.55);
+}
+html[data-scheme="dark"] .timeline__tag-page {
+color: #eef2f6;
+background-color: rgba(96, 106, 120, 0.62);
+border-color: rgba(130, 142, 158, 0.55);
+}
 @media screen and (max-width: 768px) {
 .timeline__time {
 font-size: 14px;
@@ -656,17 +752,17 @@ font-size: 14px;
 &lt;/h2&gt;&lt;div class="imgloop-wrap" id="imgloop-17"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_ff15e20163d4fb20.webp" data-desc="DSC_3245.jpg"&gt;
+&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_ff15e20163d4fb20.webp" data-desc="DSC_3245.jpg" data-imgloop="imgloop-17"&gt;
 &lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_69bf5f62009e9829.webp" loading="lazy" alt="DSC_3245.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_b367f6af80c5a4bd.webp" data-desc="DSC_3248.jpg"&gt;
+&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_b367f6af80c5a4bd.webp" data-desc="DSC_3248.jpg" data-imgloop="imgloop-17"&gt;
 &lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_7b92918258791bed.webp" loading="lazy" alt="DSC_3248.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_575f320135889499.webp" data-desc="DSC_3304.jpg"&gt;
+&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_575f320135889499.webp" data-desc="DSC_3304.jpg" data-imgloop="imgloop-17"&gt;
 &lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_37fc8b79e72a7666.webp" loading="lazy" alt="DSC_3304.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -874,32 +970,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-17';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -911,7 +993,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -941,7 +1024,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);

@@ -191,20 +191,89 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 })();
 
-/* ========== GLightbox 初始化 ========== */
-window.addEventListener('load', function () {
-  setTimeout(function () {
-    if (typeof GLightbox === 'undefined') return;
-    GLightbox({
-      selector:        '.glightbox',
-      touchNavigation: true,
-      loop:            true,
-      openEffect:      'zoom',
-      closeEffect:     'fade',
-      slideEffect:     'slide'
+/* ========== GLightbox 统一加载与初始化 ========== */
+(function () {
+  var cdnCss = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
+  var cdnJs = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
+  var articleLightbox = null;
+
+  function loadGLightbox() {
+    if (window.GLightbox) return Promise.resolve(window.GLightbox);
+    if (window.__glightboxLoading) return window.__glightboxLoading;
+
+    window.__glightboxLoading = new Promise(function (resolve, reject) {
+      if (!document.querySelector('link[data-glightbox-css]')) {
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = cdnCss;
+        css.crossOrigin = 'anonymous';
+        css.setAttribute('data-glightbox-css', 'true');
+        document.head.appendChild(css);
+      }
+
+      var existingScript = document.querySelector('script[data-glightbox-js]');
+      if (existingScript) {
+        existingScript.addEventListener('load', function () { resolve(window.GLightbox); });
+        existingScript.addEventListener('error', reject);
+        return;
+      }
+
+      var script = document.createElement('script');
+      script.src = cdnJs;
+      script.crossOrigin = 'anonymous';
+      script.setAttribute('data-glightbox-js', 'true');
+      script.onload = function () { resolve(window.GLightbox); };
+      script.onerror = reject;
+      document.head.appendChild(script);
     });
-  }, 100);
-});
+
+    return window.__glightboxLoading;
+  }
+
+  function commonOptions(selector) {
+    return {
+      selector: selector,
+      touchNavigation: true,
+      loop: true,
+      openEffect: 'zoom',
+      closeEffect: 'fade',
+      slideEffect: 'slide',
+      closeButton: true,
+      keyboardNavigation: true,
+      draggable: true,
+      closeOnOutsideClick: true,
+      zoomable: false
+    };
+  }
+
+  function initArticleLightbox() {
+    var selector = '.article-content .glightbox:not([data-imgloop])';
+    if (!document.querySelector(selector)) return Promise.resolve(null);
+
+    return loadGLightbox().then(function () {
+      if (!window.GLightbox) return null;
+      if (articleLightbox && typeof articleLightbox.destroy === 'function') {
+        articleLightbox.destroy();
+      }
+      articleLightbox = GLightbox(commonOptions(selector));
+      return articleLightbox;
+    }).catch(function () {
+      console.warn('[lightbox] GLightbox failed to load');
+      return null;
+    });
+  }
+
+  window.IonLightbox = {
+    load: loadGLightbox,
+    options: commonOptions,
+    initArticle: initArticleLightbox
+  };
+
+  window.addEventListener('load', function () {
+    window.setTimeout(initArticleLightbox, 0);
+  });
+  document.addEventListener('stack:gallery-ready', initArticleLightbox);
+})();
 
 /* ========== 文章页左侧边栏图标栏模式 ========== */
 (function () {

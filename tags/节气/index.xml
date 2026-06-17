@@ -121,27 +121,27 @@ data-flex-basis="360px"
 &lt;div class="imgloop-wrap" id="imgloop-1"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231521942_hu_3bb3ebe8ed35a74b.webp" data-desc="assets/IMG-20260509231521942.jpeg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231521942_hu_3bb3ebe8ed35a74b.webp" data-desc="assets/IMG-20260509231521942.jpeg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231521942_hu_705d562ad571f3fa.webp" loading="lazy" alt="assets/IMG-20260509231521942.jpeg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231527747_hu_aac5229188d522ec.webp" data-desc="assets/IMG-20260509231527747.jpeg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231527747_hu_aac5229188d522ec.webp" data-desc="assets/IMG-20260509231527747.jpeg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231527747_hu_7cc76eb002713a44.webp" loading="lazy" alt="assets/IMG-20260509231527747.jpeg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231538063_hu_9192126bf5524b71.webp" data-desc="assets/IMG-20260509231538063.jpeg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231538063_hu_9192126bf5524b71.webp" data-desc="assets/IMG-20260509231538063.jpeg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231538063_hu_e998d7581778112f.webp" loading="lazy" alt="assets/IMG-20260509231538063.jpeg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231544499_hu_c63ef772a1a5cf3f.webp" data-desc="assets/IMG-20260509231544499.jpeg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231544499_hu_c63ef772a1a5cf3f.webp" data-desc="assets/IMG-20260509231544499.jpeg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231544499_hu_6c63587abc8553ad.webp" loading="lazy" alt="assets/IMG-20260509231544499.jpeg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231558664_hu_763a8c0939e87aae.webp" data-desc="assets/IMG-20260509231558664.jpeg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231558664_hu_763a8c0939e87aae.webp" data-desc="assets/IMG-20260509231558664.jpeg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2026/pure-brightness/assets/IMG-20260509231558664_hu_1ebf1d00b78edae2.webp" loading="lazy" alt="assets/IMG-20260509231558664.jpeg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -351,32 +351,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-1';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -388,7 +374,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -418,7 +405,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);
@@ -620,17 +608,17 @@ data-flex-basis="378px"
 &lt;div class="imgloop-wrap" id="imgloop-1"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9210_hu_26f5221a58dbd858.webp" data-desc="assets/DIC_9210.jpg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9210_hu_26f5221a58dbd858.webp" data-desc="assets/DIC_9210.jpg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9210_hu_21fbc4789b4f86a2.webp" loading="lazy" alt="assets/DIC_9210.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/IMG-20251009191233301_hu_644b20e2116a6bff.webp" data-desc="assets/IMG-20251009191233301.jpg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/IMG-20251009191233301_hu_644b20e2116a6bff.webp" data-desc="assets/IMG-20251009191233301.jpg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2025/cold-dew/assets/IMG-20251009191233301_hu_43c7976974d40c11.webp" loading="lazy" alt="assets/IMG-20251009191233301.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9150_hu_27cc12dd38eca2e8.webp" data-desc="assets/DIC_9150.jpg"&gt;
+&lt;a class="glightbox-imgloop-1" href="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9150_hu_27cc12dd38eca2e8.webp" data-desc="assets/DIC_9150.jpg" data-imgloop="imgloop-1"&gt;
 &lt;img src="https://ionfeather.github.io/2025/cold-dew/assets/DIC_9150_hu_c9543932caba8e70.webp" loading="lazy" alt="assets/DIC_9150.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -838,32 +826,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-1';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -875,7 +849,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -905,7 +880,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);
@@ -1031,27 +1007,27 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;div class="imgloop-wrap" id="imgloop-0"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6380_hu_b580049b9c1b03c4.webp" data-desc="DSC_6380.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6380_hu_b580049b9c1b03c4.webp" data-desc="DSC_6380.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/pure-brightness/DSC_6380_hu_ad32f05284860c1b.webp" loading="lazy" alt="DSC_6380.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6623_hu_70911331706dad16.webp" data-desc="DSC_6623.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6623_hu_70911331706dad16.webp" data-desc="DSC_6623.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/pure-brightness/DSC_6623_hu_a16e5b170c287e76.webp" loading="lazy" alt="DSC_6623.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6744_hu_96fdbcbf7b478ebd.webp" data-desc="DSC_6744.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6744_hu_96fdbcbf7b478ebd.webp" data-desc="DSC_6744.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/pure-brightness/DSC_6744_hu_242d3e611e265c08.webp" loading="lazy" alt="DSC_6744.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC04329_hu_806c9244f0dbdc83.webp" data-desc="DSC04329.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC04329_hu_806c9244f0dbdc83.webp" data-desc="DSC04329.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/pure-brightness/DSC04329_hu_fd359dee69fcc4e1.webp" loading="lazy" alt="DSC04329.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6353_hu_8aade7c42c6bf712.webp" data-desc="DSC_6353.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/pure-brightness/DSC_6353_hu_8aade7c42c6bf712.webp" data-desc="DSC_6353.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/pure-brightness/DSC_6353_hu_4bd12757490b2eac.webp" loading="lazy" alt="DSC_6353.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -1261,32 +1237,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -1298,7 +1260,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -1328,7 +1291,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);
@@ -1464,27 +1428,27 @@ data-flex-basis="360px"
 &lt;div class="imgloop-wrap" id="imgloop-0"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5515_hu_776cee9d544f6be3.webp" data-desc="DSC_5515.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5515_hu_776cee9d544f6be3.webp" data-desc="DSC_5515.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5515_hu_6e68633783c46b97.webp" loading="lazy" alt="DSC_5515.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5547_hu_dddc1e0215a697da.webp" data-desc="DSC_5547.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5547_hu_dddc1e0215a697da.webp" data-desc="DSC_5547.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5547_hu_61547d294099a71a.webp" loading="lazy" alt="DSC_5547.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5580_hu_f62f7aec5e6ac7bf.webp" data-desc="DSC_5580.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5580_hu_f62f7aec5e6ac7bf.webp" data-desc="DSC_5580.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5580_hu_7ed49b71637ae1ba.webp" loading="lazy" alt="DSC_5580.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5638_hu_f50d81b848a1009a.webp" data-desc="DSC_5638.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5638_hu_f50d81b848a1009a.webp" data-desc="DSC_5638.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5638_hu_f771ba159bf5bcdc.webp" loading="lazy" alt="DSC_5638.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5805_hu_b51366417eb700f1.webp" data-desc="DSC_5805.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5805_hu_b51366417eb700f1.webp" data-desc="DSC_5805.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/DSC_5805_hu_c254d6a78b9dd056.webp" loading="lazy" alt="DSC_5805.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -1694,32 +1658,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -1731,7 +1681,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -1761,7 +1712,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);
@@ -1815,17 +1767,17 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;div class="imgloop-wrap" id="imgloop-0"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic2_hu_beacb7b3401de280.webp" data-desc="pic2.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic2_hu_beacb7b3401de280.webp" data-desc="pic2.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/pic2_hu_c13f3b2e3f82d4dc.webp" loading="lazy" alt="pic2.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic1_hu_f0ff2a1aab664b94.webp" data-desc="pic1.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic1_hu_f0ff2a1aab664b94.webp" data-desc="pic1.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/pic1_hu_ce1d243c4c14e54a.webp" loading="lazy" alt="pic1.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic3_hu_b7ec1345ca4b985b.webp" data-desc="pic3.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="https://ionfeather.github.io/2025/the-waking-of-insects/pic3_hu_b7ec1345ca4b985b.webp" data-desc="pic3.jpg" data-imgloop="imgloop-0"&gt;
 &lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/pic3_hu_37c65bbbc2ac6ce6.webp" loading="lazy" alt="pic3.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
@@ -2033,32 +1985,18 @@ ticking = false;
 });
 wakeDots();
 function loadGLightbox() {
-if (window.GLightbox) return Promise.resolve();
-if (window.__glightboxLoading) return window.__glightboxLoading;
-window.__glightboxLoading = new Promise(function (resolve, reject) {
-if (!document.querySelector('link[data-glightbox-css]')) {
-var css = document.createElement('link');
-css.rel = 'stylesheet';
-css.href = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css';
-css.crossOrigin = 'anonymous';
-css.setAttribute('data-glightbox-css', 'true');
-document.head.appendChild(css);
-}
-var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js';
-script.crossOrigin = 'anonymous';
-script.onload = resolve;
-script.onerror = reject;
-document.head.appendChild(script);
-});
-return window.__glightboxLoading;
+if (window.IonLightbox &amp;&amp; window.IonLightbox.load) return window.IonLightbox.load();
+if (window.GLightbox) return Promise.resolve(window.GLightbox);
+return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
 var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
-var lightbox = GLightbox({
+var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
+? window.IonLightbox.options(sel)
+: {
 selector: sel,
 touchNavigation: true,
 loop: true,
@@ -2070,7 +2008,8 @@ keyboardNavigation: true,
 draggable: true,
 closeOnOutsideClick: true,
 zoomable: false
-});
+};
+var lightbox = GLightbox(options);
 var thumbsWrap = wrap.querySelector('.imgloop-lb-thumbs-wrap');
 var thumbs = thumbsWrap.querySelector('.imgloop-lb-thumbs');
 anchors.forEach(function (a, i) {
@@ -2100,7 +2039,8 @@ e.stopPropagation();
 thumbsWrap.classList.toggle('open');
 });
 function showControls() {
-var gb = document.querySelector('.glightbox-container');
+var boxes = document.querySelectorAll('.glightbox-container');
+var gb = boxes.length ? boxes[boxes.length - 1] : null;
 if (gb) {
 gb.appendChild(toggle);
 gb.appendChild(thumbsWrap);
