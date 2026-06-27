@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ionfeather'Log</title><link>https://ionfeather.github.io/</link><description>Recent content on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 18 Jun 2026 00:46:23 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | Bernini-Latent Semantic Planning for Video Diffusion</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ionfeather'Log</title><link>https://ionfeather.github.io/</link><description>Recent content on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 18 Jun 2026 00:46:23 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>
 &lt;blockquote&gt;
 &lt;p&gt;论文链接：&lt;a class="link" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener"
 &gt;arXiv:2605.22344&lt;/a&gt;&lt;/p&gt;
@@ -6,20 +6,18 @@
 &gt;https://bernini-ai.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="notice notice-info" &gt;
-&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;阅读路线：先看 Bernini 为什么选择 &lt;strong&gt;ViT embedding space&lt;/strong&gt; 做接口，再看 Planner / Renderer 如何分工，最后看数据构建和三阶段训练。整篇文章的核心不是“又做了一个视频生成模型”，而是它重新划分了 MLLM 和 Diffusion Model 在生成任务里的职责。&lt;/p&gt;&lt;/div&gt;
-&lt;p&gt;Q：既然 MLLM 已经很擅长理解图像和视频，扩散模型也已经很会生成图像和视频，那能不能发挥这两个的长处，结合一下呢？&lt;/p&gt;
-&lt;p&gt;A：可以，但关键在于找到一个合适的中间表示。这个中间表示既要让 MLLM 说得明白，也要让 DiT 用得上。论文选择的是 &lt;strong&gt;MLLM 自己的 ViT embedding space&lt;/strong&gt;。&lt;/p&gt;
-&lt;div class="mark-card"&gt;Bernini 让 MLLM 在 ViT embedding 空间里先做语义规划，再让 DiT 在 VAE latent 空间里完成像素渲染。&lt;/div&gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Q&lt;/strong&gt;：既然 MLLM 已经很擅长理解图像和视频，扩散模型也已经很会生成图像和视频，那能不能发挥这两个的长处，结合一下呢？&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A&lt;/strong&gt;：可以，但关键在于找到一个合适的中间表示。这个中间表示既要让 MLLM 说得明白，也要让 DiT 用得上。论文选择的是 &lt;strong&gt;MLLM 的 ViT embedding space&lt;/strong&gt;。&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Bernini 让 MLLM 在 ViT embedding 空间里先做语义规划，再让 DiT 在 VAE latent 空间里完成像素渲染。&lt;/p&gt;
 &lt;h2 id="生成到底该怎么做"&gt;生成到底该怎么做
 &lt;/h2&gt;&lt;p&gt;MLLM（多模态大语言模型）和扩散模型各自已经达到了很高的成熟度，但它们的演进路径相对独立。Bernini的核心洞察是将两者统一起来，通过清晰的分工协作：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;MLLM负责语义规划（Semantic Planning）&lt;/strong&gt;：利用其强大的多模态理解能力，在ViT embedding空间预测目标内容的语义表示&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;DiT负责像素渲染（Pixel Rendering）&lt;/strong&gt;：基于语义表示和低级视觉特征，通过流匹配（Flow Matching）生成高保真图像/视频&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;两者之间的接口使用 &lt;strong&gt;MLLM 自身的 ViT embedding 空间&lt;/strong&gt;。这点很重要：MLLM 原本就是在这个空间里接收、理解和组织视觉信息的，所以让它在这里预测“目标画面应该长什么样”，比要求它直接吐出像素或 VAE latent 更自然。&lt;/p&gt;
-&lt;p&gt;换句话说，Bernini 不是让语言模型直接学“画画”，而是让它先学会在自己熟悉的视觉语义空间里写一份更像样的“施工图”。&lt;/p&gt;
+&lt;p&gt;两者之间的接口使用 &lt;strong&gt;MLLM 自身的 ViT embedding 空间&lt;/strong&gt;。MLLM 原本就是在这个空间里接收、理解和组织视觉信息的，所以让它在这里预测“目标画面应该长什么样”，比要求它直接吐出像素或 VAE latent 更自然。&lt;/p&gt;
 &lt;div class="notice notice-tip" &gt;
-&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;可以把 Bernini 理解成两步：Planner 写“语义施工图”，Renderer 负责“按图施工”。前者要求理解和规划，后者要求保真和时序一致。&lt;/p&gt;&lt;/div&gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;可以把 Bernini 理解成两步：Planner、Renderer。前者要求理解和规划，后者要求保真和时序一致。&lt;/p&gt;&lt;/div&gt;
 &lt;blockquote&gt;
 &lt;p&gt;为什么使用 ViT embedding 空间？&lt;/p&gt;
 &lt;p&gt;可以从 MLLM 的结构讲起。以 Qwen2.5-VL 为例，图像或视频首先经过 Vision Encoder，被编码为 Visual Tokens；这些 Visual Tokens 与文本 tokens 一起输入 Qwen2.5 LM Decoder，最终由语言模型头输出文字 token。也就是说，MLLM 并不是直接在像素空间中理解图像，而是在 Vision Encoder 输出的 ViT embedding 空间中接收和表征视觉信息。因此，用这个空间进行推理和表示，是在顺着模型原本的能力走。&lt;/p&gt;
@@ -40,13 +38,13 @@ data-flex-basis="266px"
 &lt;h3 id="这篇论文主要解决什么"&gt;这篇论文主要解决什么
 &lt;/h3&gt;&lt;p&gt;读这篇论文时，可以先把问题拆成四个层次：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;理解与生成是割裂的&lt;/strong&gt;：MLLMs 擅长语义推理，但无法直接生成像素；扩散模型擅长合成，但对复杂指令和多模态上下文的理解能力不够。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;理解与生成的割裂&lt;/strong&gt;：MLLMs 擅长语义推理，但无法直接生成像素；扩散模型擅长合成，但对复杂指令和多模态上下文的理解能力不够。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;视频编辑任务太杂&lt;/strong&gt;：添加、移除、替换、风格迁移、运动修改都算编辑，但每个任务过去往往有一套专门方法，很难统一。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;多视觉输入容易混淆&lt;/strong&gt;：参考图像、源视频、目标输出被拼进同一个序列后，可能共享相同的时空坐标，模型会分不清“这是参考物体”还是“这是目标画面”。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多视觉输入容易混淆&lt;/strong&gt;：参考图像、源视频、目标输出被拼进同一个序列后，可能共享相同的时空坐标，模型会分不清参考物体和目标画面。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;高质量编辑数据少&lt;/strong&gt;：视频编辑数据比图像编辑数据难构造得多，尤其是大规模、高质量、多任务的数据。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id="整体架构"&gt;整体架构
-&lt;/h2&gt;&lt;p&gt;Bernini 的结构可以先按“谁负责想，谁负责画”来理解。它由两个核心组件构成：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Bernini 的结构由两个核心组件构成：&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024707_hu_ec78e6c15e91ab94.webp"
 width="1600"
 height="1151"
@@ -63,34 +61,28 @@ data-flex-basis="333px"
 &lt;p&gt;第一部分是 &lt;strong&gt;MLLM-based Planner&lt;/strong&gt;。它读入文本、源图像、源视频、参考图像等上下文，然后在 ViT embedding 空间里预测目标视觉语义表示。&lt;/p&gt;
 &lt;p&gt;第二部分是 &lt;strong&gt;DiT-based Renderer&lt;/strong&gt;。它拿到 Planner 给出的目标语义表示，再结合文本特征和源视频的低级视觉特征，最终在 VAE latent 空间里生成视频。&lt;/p&gt;
 &lt;p&gt;训练时，Bernini 采用联合目标，同时优化 MLLM、ViT Embedding Decoder 以及 DiT Renderer：&lt;br&gt;
-$$&lt;br&gt;
-L = \lambda_{text}L_{ntp}&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;\lambda_{visual}L_{visual}&lt;/li&gt;
-&lt;li&gt;\lambda_{dit}L_{dit}&lt;br&gt;
-$$
-其中：&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/p&gt;
+$$ L = \lambda_{text}L_{ntp} + \lambda_{visual}L_{visual} + \lambda_{dit}L_{dit} $$&lt;p&gt;
+其中：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$L_{ntp}$：标准 Next-Token Prediction Loss，用于保持 MLLM 的语言理解与多模态推理能力；&lt;/li&gt;
 &lt;li&gt;$L_{visual}$：ViT embedding 空间中的 Flow Matching Loss，用于训练 Semantic Planner 预测目标视觉语义表示；&lt;/li&gt;
 &lt;li&gt;$L_{dit}$：VAE latent 空间中的 Flow Matching Loss，用于训练 DiT Renderer 完成视频生成与编辑；&lt;/li&gt;
-&lt;li&gt;$\lambda_{text}$、$\lambda_{visual}$、$\lambda_{dit}$ 为对应损失项的权重系数。&lt;br&gt;
-因此，Bernini 同时学习三件事：&lt;/li&gt;
+&lt;li&gt;$\lambda_{text}$、$\lambda_{visual}$、$\lambda_{dit}$ 为对应损失项的权重系数。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;因此，Bernini 同时学习三件事：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;保留 MLLM 的理解能力；&lt;/li&gt;
 &lt;li&gt;在 ViT embedding 空间中规划目标视觉语义；&lt;/li&gt;
 &lt;li&gt;在 VAE latent 空间中渲染最终视频。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id="mllm-based-planner语义规划器"&gt;MLLM-based Planner（语义规划器）
-&lt;/h3&gt;&lt;p&gt;Planner 这一部分最像 Bernini 的“脑子”。论文采用 &lt;strong&gt;Qwen2.5-VL-7B&lt;/strong&gt; 作为基础，把文本、源图像、源视频以及目标图像/视频统一序列化为一维 token 序列：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;Planner采用 &lt;strong&gt;Qwen2.5-VL-7B&lt;/strong&gt; 作为基础，把文本、源图像、源视频以及目标图像/视频统一序列化为一维 token 序列：&lt;/p&gt;
 $$
 z = \text{MLLM}(t, v^{src}_1, v^{src}_2, ..., v^{src}_N, v^{tgt})
 $$&lt;p&gt;其中，$t$ 表示文本嵌入，$v^{src}_i$ 表示第 $i$ 个源视觉输入的 ViT embedding，$v^{tgt}$ 表示目标图像/视频对应的视觉 token 序列。&lt;/p&gt;
-&lt;p&gt;这里有一个很像 masked modeling 的设计：训练时，$v^{tgt}$ 来自真实目标输出的 ViT embedding，并随机遮挡其中一部分；推理时，由于目标输出未知，所有目标视觉 token 都初始化为共享的 mask token。MLLM 对整个多模态序列编码后得到 hidden states，其中目标 token 位置上的 hidden states 就被视为目标视觉内容的语义表示。&lt;/p&gt;
-&lt;h4 id="mask-based-semantic-planning"&gt;&lt;strong&gt;Mask-based Semantic Planning&lt;/strong&gt;
-&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;训练阶段&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这里有一个很像 masked modeling 的设计：训练时，$v^{tgt}$ 来自真实目标输出的 ViT embedding，并随机遮挡其中一部分；推理时，由于目标输出未知，所有目标视觉 token 都初始化为共享的 mask token。MLLM 对整个多模态序列编码后得到 hidden states，其中目标 token 位置上的 hidden states 就被视为目标视觉内容的语义表示。具体细节如下：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;训练阶段&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;随机 mask 一部分目标视觉 token，并将其替换为共享的 mask token；&lt;/li&gt;
 &lt;li&gt;mask 比例从 Beta 分布中采样：
@@ -123,14 +115,17 @@ $$&lt;/li&gt;
 $$\tilde{r}_{t,h,w,i} = r_{t,h,w} \odot r^{seg}_i$$&lt;p&gt;其中 $\odot$ 表示复数逐元素乘法。这使得注意力机制能在保留3D RoPE时空建模能力的同时，区分来自不同segment的token。&lt;/p&gt;
 &lt;p&gt;直观上，SA-3D RoPE 给每段视觉输入加了一个“段身份”。消融实验表明，相比标准 3D RoPE 和添加可学习 segment embedding 的基线，它能更有效地减少参考图像外观细节泄漏到目标区域的问题（reference leakage）。&lt;/p&gt;
 &lt;div class="notice notice-note" &gt;
-&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#436170"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;SA-3D RoPE 解决的不是“怎么表示时间和空间”，而是“多个视觉输入放在同一个序列里时，模型怎么知道每个 token 属于哪个视觉来源”。这是统一多输入视频编辑里很容易被忽略的问题。&lt;/p&gt;&lt;/div&gt;
+&lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#436170"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;SA-3D RoPE 解决的问题是多个视觉输入放在同一个序列里时，模型怎么知道每个 token 属于哪个视觉来源。这是统一多输入视频编辑里很容易被忽略的问题。&lt;/p&gt;&lt;/div&gt;
 &lt;h3 id="chain-of-thought-推理增强"&gt;Chain-of-Thought 推理增强
 &lt;/h3&gt;&lt;p&gt;为了增强MLLM的理解能力向生成能力的迁移，引入两种CoT推理模式：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Self-text Reasoning（自文本推理）&lt;/strong&gt;：将原始编辑指令重写为更详细、结构化、语义更丰富的编辑指令。构建了约100万样本的大规模文本CoT数据。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Self-vision-text Reasoning（自视觉-文本推理）&lt;/strong&gt;：将视频编辑分解为两个阶段：&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Self-text Reasoning（自文本推理）&lt;/strong&gt;：将原始编辑指令重写为更详细、结构化、语义更丰富的编辑指令。构建了约100万样本的大规模文本CoT数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Self-vision-text Reasoning（自视觉-文本推理）&lt;/strong&gt;：将视频编辑分解为两个阶段：
+&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;图像级推理&lt;/strong&gt;：在首帧上进行图像编辑，产生编辑后的中间帧作为视觉中间表示&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;视频级生成&lt;/strong&gt;：基于中间帧将编辑传播到完整视频，保持时间一致性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;消融实验显示，结合文本推理和视觉-文本推理能达到最佳性能，多模态推理在纯文本推理之外提供了互补收益。&lt;/p&gt;
 &lt;h2 id="数据构建"&gt;数据构建
@@ -194,11 +189,18 @@ data-flex-basis="613px"
 &lt;li&gt;视频数据：从T2V语料提取最多8个关键帧，生成帧间文本过渡描述&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="图像编辑和图像到视频编辑数据"&gt;图像编辑和图像到视频编辑数据
-&lt;/h3&gt;&lt;p&gt;这一节是数据构建里比较关键的部分。高质量、多样化的视频到视频编辑数据很难大规模构造，但图像编辑领域已经积累了更成熟的模型和数据资源。于是 Bernini 做了一个转换：把一部分视频编辑问题先重构为图像到视频编辑问题。&lt;/p&gt;
-&lt;p&gt;具体来说，就是先利用强图像编辑模型获得高质量的编辑后首帧，再通过图像到视频生成将图像级编辑能力迁移到视频生成中，最终服务于视频到视频编辑训练。&lt;/p&gt;
-&lt;p&gt;具体而言，作者首先构造图像编辑三元组，即 $(\text{Source Image}, \text{Edited Image}, \text{Edit Prompt})$。编辑指令由两种互补方式生成：第一种方式从真实用户编辑指令池中为每张源图像采样多个候选 prompt，再由 MLLM 选择最合适的候选并重写为最终编辑指令；第二种方式维护一个动态 prompt bank，要求 MLLM 在给定源图像和已有 prompt bank 的条件下生成语义差异较大的新编辑指令，高新颖度的 prompt 被加入 bank，重复度较高的 prompt 则被丢弃。这样可以避免编辑指令集中在少数常见操作上，提高数据分布的多样性。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;Bernini 做了一个转换：&lt;strong&gt;把一部分视频编辑问题先重构为图像到视频编辑问题。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;先利用强图像编辑模型获得高质量的编辑后首帧，再通过图像到视频生成将图像级编辑能力迁移到视频生成中，最终服务于视频到视频编辑训练。&lt;/p&gt;
+&lt;p&gt;&lt;details&gt;
+&lt;summary&gt;点击展开&lt;/summary&gt;
+&lt;p&gt;具体而言，作者首先构造图像编辑三元组，即 $(\text{Source Image}, \text{Edited Image}, \text{Edit Prompt})$。编辑指令由两种互补方式生成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一种方式从真实用户编辑指令池中为每张源图像采样多个候选 prompt，再由 MLLM 选择最合适的候选并重写为最终编辑指令；&lt;/li&gt;
+&lt;li&gt;第二种方式维护一个动态 prompt bank，要求 MLLM 在给定源图像和已有 prompt bank 的条件下生成语义差异较大的新编辑指令，高新颖度的 prompt 被加入 bank，重复度较高的 prompt 则被丢弃。这样可以避免编辑指令集中在少数常见操作上，提高数据分布的多样性。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;在获得编辑后图像之后，作者进一步使用 MLLM 生成对应的 motion prompt，将静态图像编辑扩展为图像到视频编辑数据。最终得到两类训练样本：一类是图像编辑三元组 $(\text{Source Image}, \text{Edited Image}, \text{Edit Prompt})$，用于学习图像级编辑能力；另一类是图像到视频三元组 $(\text{Source Image}, \text{Video}, \text{Edit Prompt}+\text{Motion Prompt})$，用于将编辑后的静态视觉状态扩展为动态视频。这部分数据的作用是把成熟的图像编辑监督迁移到视频生成中，从而提高视频编辑任务的多样性和泛化能力。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024837_hu_383cd95a61e0e25e.webp"
+&lt;/details&gt;
+&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024837_hu_383cd95a61e0e25e.webp"
 width="1600"
 height="938"
 srcset="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024837_hu_8f238f5ec68e49e8.webp 800w, https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024837_hu_383cd95a61e0e25e.webp 1600w"
@@ -212,15 +214,15 @@ data-flex-basis="409px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Propagation-based数据增强&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;最开始文章使用DiffuEraser和VACE生成addition/removal/replacement数据，但存在伪影和多样性不足。因此做了如下改进：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;初始使用DiffuEraser和VACE生成addition/removal/replacement数据，但存在伪影和多样性不足&lt;/li&gt;
-&lt;li&gt;训练基础propagation模型，将源视频 + 编辑后的首帧 + 编辑指令 → 目标编辑视频&lt;/li&gt;
+&lt;li&gt;训练基础propagation模型，将&lt;strong&gt;源视频 + 编辑后的首帧 + 编辑指令 → 目标编辑视频&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;结合强图像编辑模型生成高质量首帧，从而提升整体视频编辑质量&lt;/li&gt;
-&lt;li&gt;对 addition、removal 和 replacement 等任务进行源视频与编辑视频的交换，并使用 MLLM 重新生成匹配的反向编辑 prompt&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;强图像编辑模型更容易生成高质量的编辑后首帧，而 propagation model 负责将首帧中的编辑结果传播到后续帧，并尽量保持时间一致性。这样，视频编辑数据的构造被拆解为两个相对更容易的问题：首先生成高质量 edited first frame，然后将该编辑状态沿时间维度传播为完整视频。相比直接用现有视频编辑模型生成整段视频，这种方式可以显著降低伪影，提高编辑质量和任务覆盖范围.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;此外，对 addition、removal 和 replacement 等任务进行源视频与编辑视频的交换，并使用 MLLM 重新生成匹配的反向编辑 prompt。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005605261_hu_4f821f142558e379.webp"
 width="1600"
 height="801"
@@ -274,7 +276,7 @@ data-flex-basis="598px"
 &gt;
 &lt;/p&gt;
 &lt;h3 id="reasoning-augmented-video-data"&gt;Reasoning-augmented Video Data
-&lt;/h3&gt;&lt;p&gt;受 Emu3、&lt;a class="link" href="../../AIGC%e6%a8%a1%e5%9e%8b/OminiGen2/OminiGen2.md" &gt;OminiGen2&lt;/a&gt; 等统一模型的启发，Bernini 也把显式思维链纳入到视频编辑训练中。不过这里的 Chain-of-Thought 不是推理阶段让模型显式输出一段长文本推理，而是作为训练阶段的额外监督信号注入到 Planner 中。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;受 Emu3、OmniGen2等统一模型的启发，Bernini 也把显式思维链纳入到视频编辑训练中。不过这里的 Chain-of-Thought 不是推理阶段让模型显式输出一段长文本推理，而是&lt;strong&gt;作为训练阶段的额外监督信号注入到 Planner 中&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/bernini/assets/IMG-20260618005024888_hu_ab8acaa573c98520.webp"
 width="1600"
 height="583"
@@ -1153,7 +1155,7 @@ $$\hat{\epsilon} = \epsilon_{\emptyset,\emptyset,\emptyset,\emptyset} + \omega_{
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="基础设施"&gt;基础设施
+&lt;h2 id="infrastructure优化"&gt;infrastructure优化
 &lt;/h2&gt;&lt;h3 id="训练优化"&gt;训练优化
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;内存优化&lt;/strong&gt;：通过 FSDP 配置优化，将单卡显存从 72GB 降至 40GB。&lt;/li&gt;
@@ -1174,8 +1176,8 @@ $$\hat{\epsilon} = \epsilon_{\emptyset,\emptyset,\emptyset,\emptyset} + \omega_{
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Stage 1：CFG蒸馏&lt;/strong&gt;：学生模型直接预测CFG组合输出，单步前向替代条件/无条件双评估，每步计算减半&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Stage 2：ReFlow&lt;/strong&gt;：拉直概率流ODE轨迹，以更少积分步实现准确生成&lt;/li&gt;
-&lt;li&gt;最终学生模型仅需4 NFE即可达到教师模型80 NFE的可比质量&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;最终学生模型仅需4 NFE即可达到教师模型80 NFE的可比质量&lt;/p&gt;
 &lt;h2 id="实验结果"&gt;实验结果
 &lt;/h2&gt;&lt;p&gt;实验部分可以从两个角度看：第一，Bernini 作为视频编辑模型是否真的更强；第二，引入 MLLM Planner 之后，基础视频生成能力有没有被削弱。&lt;/p&gt;
 &lt;div class="notice notice-tip" &gt;
@@ -1280,7 +1282,7 @@ data-flex-basis="460px"
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;推理增强一致性地提升性能，视觉-文本推理在最强文本推理基础上进一步带来增益。&lt;/p&gt;
-&lt;h2 id="related-work-总结"&gt;Related Work 总结
+&lt;h2 id="related-work"&gt;Related Work
 &lt;/h2&gt;&lt;p&gt;Related Work 可以按两条路线理解：一条路线是把理解和生成放进同一个统一主干里，另一条路线是保留 MLLM 和 Diffusion Model 两个模块，再研究它们之间怎么传递条件。&lt;/p&gt;
 &lt;h3 id="统一多模态主干"&gt;统一多模态主干
 &lt;/h3&gt;&lt;p&gt;这一类方法希望用一个统一 Transformer 同时处理文本、图像和视频 token。它们的核心思想是：把理解和生成都放进同一个 backbone 里完成。&lt;/p&gt;
@@ -1289,7 +1291,7 @@ data-flex-basis="460px"
 &lt;li&gt;&lt;strong&gt;Emu3&lt;/strong&gt;：将文本、图像、视频全部离散化到统一词表中，用 next-token prediction 训练单一 Transformer。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Janus&lt;/strong&gt;：保留统一自回归 backbone，但将理解和生成的视觉编码器解耦，理解侧使用 SigLIP-style encoder，生成侧使用 VQ tokenizer。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Show-o&lt;/strong&gt;：在同一个 Transformer 中结合文本自回归建模和图像 token 的离散扩散。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a class="link" href="../../AIGC%e6%a8%a1%e5%9e%8b/HunyuanImage%203.0/HunyuanImage%203.0%20Technical%20Report.md" &gt;HunyuanImage 3.0&lt;/a&gt;&lt;/strong&gt;：进一步引入 MoE decoder，同时处理文本 next-token prediction 和图像 token 的 diffusion prediction。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HunyuanImage 3.0&lt;/strong&gt;：进一步引入 MoE decoder，同时处理文本 next-token prediction 和图像 token 的 diffusion prediction。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;BAGEL&lt;/strong&gt;：使用 Mixture-of-Transformer-Experts 架构，不同理解/生成专家通过共享 self-attention 交互。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Lumina-DiMOO&lt;/strong&gt;：放弃自回归预测，使用统一离散 masked diffusion 目标建模文本和视觉 token。&lt;/li&gt;
 &lt;/ul&gt;
@@ -1307,9 +1309,9 @@ data-flex-basis="460px"
 &lt;li&gt;&lt;strong&gt;UniVideo&lt;/strong&gt;：将 MLLM Hidden States 与视频扩散模型结合，实现统一的视频生成与编辑框架。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;VInO&lt;/strong&gt;：结合 MLLM、VAE Latent 和视频扩散模型，统一支持 Subject-to-Video 与 Instruction-based Video Editing。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;特别地，Bernini 不直接使用 MLLM 的 output hidden states 作为接口，而是将&lt;strong&gt;接口锚定在 MLLM 自身的 ViT embedding space&lt;/strong&gt;。这使它和普通“MLLM 给扩散模型提供条件”的方法拉开了差异：Planner 不是只提供一段语义提示，而是在视觉语义空间里规划目标输出。&lt;/p&gt;
+&lt;p&gt;特别地，Bernini 不直接使用 MLLM 的 output hidden states 作为接口，而是将&lt;strong&gt;接口锚定在 MLLM 自身的 ViT embedding space&lt;/strong&gt;。Planner 不是只提供一段语义提示，而是在视觉语义空间里规划目标输出。&lt;/p&gt;
 &lt;h2 id="局限性与总结"&gt;局限性与总结
-&lt;/h2&gt;&lt;p&gt;Bernini 最值得看的地方，不只是它把几个模块拼在了一起，而是它重新划分了生成任务里的责任边界：MLLM 不直接生成像素，而是负责语义规划；DiT 不负责深层推理，而是专注高保真渲染。这个分工让两个已经很强的模型各自留在更擅长的位置上。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;Bernini的最大贡献是将两者用ViT embedding进行连接：MLLM 不直接生成像素，而是负责语义规划；DiT 不负责深层推理，而是专注高保真渲染。这个分工让两个已经很强的模型各自留在更擅长的位置上。&lt;/p&gt;
 &lt;h3 id="主要贡献"&gt;主要贡献
 &lt;/h3&gt;&lt;p&gt;本文提出了 &lt;strong&gt;Bernini&lt;/strong&gt;，一种统一的视频生成与编辑框架。它的主要贡献包括：&lt;/p&gt;
 &lt;ul&gt;
@@ -1325,7 +1327,7 @@ data-flex-basis="460px"
 &lt;li&gt;主体驱动视频生成的视觉质量与更强的闭源系统（如Wan2.7）仍有差距&lt;/li&gt;
 &lt;li&gt;基础模型的选择（MLLM planner和DiT renderer）对最终效果有较大制约&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;总体来看，Bernini 的路线很清晰：不要强行让一个模型同时完成理解、规划和渲染，而是把“看懂要生成什么”和“生成得足够好”拆开，再用一个合适的视觉语义空间把它们接起来。对于视频生成和视频编辑来说，这可能比单纯扩大模型规模更有启发。&lt;/p&gt;</description></item><item><title>论文阅读 | QwenImage技术报告</title><link>https://ionfeather.github.io/2026/qwenimage/</link><pubDate>Sat, 16 May 2026 18:44:45 +0800</pubDate><guid>https://ionfeather.github.io/2026/qwenimage/</guid><description>
+&lt;p&gt;总体来看，Bernini 的思想是：不要强行让一个模型同时完成理解、规划和渲染，而是把步骤拆开使用各自擅长的模型进行处理，再用一个合适的视觉语义空间把它们接起来。对于视频生成和视频编辑来说，这可能比单纯扩大模型规模更有启发。&lt;/p&gt;</description></item><item><title>论文阅读 | QwenImage技术报告</title><link>https://ionfeather.github.io/2026/qwenimage/</link><pubDate>Sat, 16 May 2026 18:44:45 +0800</pubDate><guid>https://ionfeather.github.io/2026/qwenimage/</guid><description>
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;论文：&lt;/strong&gt; &lt;a class="link" href="https://arxiv.org/abs/2508.02324" target="_blank" rel="noopener"
 &gt;Qwen-Image Technical Report&lt;/a&gt;&lt;/p&gt;
@@ -5889,7 +5891,6 @@ data-flex-basis="644px"
 &lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/" target="_blank" rel="noopener"
 &gt;Improving drug repositioning with negative data labeling using large language models&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;这篇思路最巧。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;背景痛点&lt;/strong&gt;：药物重定位的监督模型缺乏可靠的阴性数据。药物在临床试验中失败，不代表它对这种疾病无效——终止原因可能是资金不足、样本量不够、适应症选错。直接把&amp;quot;未被验证有效&amp;quot;当负例，引入的噪声比想象的大。&lt;/p&gt;
 &lt;p&gt;传统 PU Learning 要么把所有未标注数据当负例（class imbalance 爆炸），要么随机下采样（丢掉真实信息）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方案&lt;/strong&gt;：让 GPT-4 读临床试验记录，判断&amp;quot;这个试验的失败是否真的说明药物对该疾病无效&amp;quot;。从 AACT 数据库的 2539 个前列腺癌试验里，排除结果未公布和非疗效原因终止后，剩余 1442 个由 GPT-4 分析，最终识别出 26 个真阳性和 54 个高质量真阴性。&lt;/p&gt;
@@ -5964,7 +5965,7 @@ data-flex-basis="326px"
 &lt;hr&gt;
 &lt;h2 id="个人判断"&gt;个人判断
 &lt;/h2&gt;&lt;p&gt;三条路线里，&lt;strong&gt;路线二&lt;/strong&gt;（数据标注）最被低估。路线一的增量有限——LLM 嵌入 + GNN 确实比纯 GNN 好，但好多少取决于数据集，且引入了 GPT-4 API 调用的额外成本。路线三还不成熟。&lt;/p&gt;
-&lt;p&gt;路线二的逻辑更干净：与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
+&lt;p&gt;与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
 &lt;p&gt;药物重定位里真正稀缺的不是模型能力，而是&lt;strong&gt;高质量的标注数据&lt;/strong&gt;，尤其是可靠的阴性。这个方向如果能扩展到其他适应症，比前两条路线更有实用价值。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
 &lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;

@@ -155,7 +155,6 @@ data-flex-basis="644px"
 &lt;p&gt;&lt;a class="link" href="https://pubmed.ncbi.nlm.nih.gov/39905466/" target="_blank" rel="noopener"
 &gt;Improving drug repositioning with negative data labeling using large language models&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;这篇思路最巧。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;背景痛点&lt;/strong&gt;：药物重定位的监督模型缺乏可靠的阴性数据。药物在临床试验中失败，不代表它对这种疾病无效——终止原因可能是资金不足、样本量不够、适应症选错。直接把&amp;quot;未被验证有效&amp;quot;当负例，引入的噪声比想象的大。&lt;/p&gt;
 &lt;p&gt;传统 PU Learning 要么把所有未标注数据当负例（class imbalance 爆炸），要么随机下采样（丢掉真实信息）。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方案&lt;/strong&gt;：让 GPT-4 读临床试验记录，判断&amp;quot;这个试验的失败是否真的说明药物对该疾病无效&amp;quot;。从 AACT 数据库的 2539 个前列腺癌试验里，排除结果未公布和非疗效原因终止后，剩余 1442 个由 GPT-4 分析，最终识别出 26 个真阳性和 54 个高质量真阴性。&lt;/p&gt;
@@ -230,7 +229,7 @@ data-flex-basis="326px"
 &lt;hr&gt;
 &lt;h2 id="个人判断"&gt;个人判断
 &lt;/h2&gt;&lt;p&gt;三条路线里，&lt;strong&gt;路线二&lt;/strong&gt;（数据标注）最被低估。路线一的增量有限——LLM 嵌入 + GNN 确实比纯 GNN 好，但好多少取决于数据集，且引入了 GPT-4 API 调用的额外成本。路线三还不成熟。&lt;/p&gt;
-&lt;p&gt;路线二的逻辑更干净：与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
+&lt;p&gt;与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
 &lt;p&gt;药物重定位里真正稀缺的不是模型能力，而是&lt;strong&gt;高质量的标注数据&lt;/strong&gt;，尤其是可靠的阴性。这个方向如果能扩展到其他适应症，比前两条路线更有实用价值。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
 &lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;
