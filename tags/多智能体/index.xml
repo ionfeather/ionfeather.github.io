@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多智能体 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</link><description>Recent content in 多智能体 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml"/><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时，一直有个绕不过去的问题：agent 生成的内容质量怎么评？人工标注太慢，让 LLM 直接打分又不知道该不该信。后来想到学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是&amp;quot;用 LLM 做复杂内容的质量判断&amp;quot;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？哪条路线更值得押注？&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>多智能体 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/</link><description>Recent content in 多智能体 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 30 Jul 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E5%A4%9A%E6%99%BA%E8%83%BD%E4%BD%93/index.xml" rel="self" type="application/rss+xml"/><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时容易遇到这个问题：agent 生成的内容质量是否可信？如果进行人工标注太慢，而让 LLM 直接打分又不知道是否可信。&lt;/p&gt;
+&lt;p&gt;大模型辅助学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是用 LLM 做复杂内容的质量判断。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;通用 LLM的「谄媚」&lt;/strong&gt;：GPT-4o 平均给分 7.7，Claude-3.5 给 7.6，而人类评审平均只有 5.4。专门训练的模型反而更像人类——更会挑毛病、更会压分。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;信息越多不一定越好&lt;/strong&gt;：只给摘要时 accuracy 是 0.237，给全文反而掉到 0.138。怎么喂数据，比喂多少数据更关键。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;多智能体的价值&lt;/strong&gt;：它的收益不一定在于提高 raw accuracy，而在于让决策更校准——尤其是更准确地识别该拒的稿。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通用 LLM的「谄媚」&lt;/strong&gt;：GPT-4o 平均给分 7.7，Claude-3.5 给 7.6，而人类评审平均只有 5.4。专门训练的模型反而更像人类，相对来说更会挑毛病而不是一昧吹捧。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信息越多不一定越好&lt;/strong&gt;：只给摘要时 accuracy 是 0.237，给全文反而掉到 0.138。怎么喂数据比喂多少数据可能更加关键。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多智能体的作用&lt;/strong&gt;：收益不一定在于提高 raw accuracy，还有对于文章的关键的识别和拒绝应该拒绝的稿。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;本文主要分为两部分：&lt;/p&gt;
@@ -155,10 +156,10 @@
 &lt;li&gt;不对review进行处理&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="我的判断"&gt;我的判断
-&lt;/h2&gt;&lt;p&gt;梳理完这些工作之后，如果让我选一条路来实现一个实际可用的系统，我会选 &lt;strong&gt;DeepReview 的结构化流程 + OpenReviewer 的专门训练&lt;/strong&gt; 这个组合——前者解决&amp;quot;怎么想&amp;quot;的问题，后者解决&amp;quot;打分不可信&amp;quot;的问题。&lt;/p&gt;
-&lt;p&gt;但我觉得这个方向真正的瓶颈不是模型能力，而是&lt;strong&gt;评估指标本身&lt;/strong&gt;。现在大家用 MSE、decision accuracy 来衡量，但人类评审本来就不一致——两个人类 reviewer 给同一篇论文打分差 2 分是常态。在这个&amp;quot;ground truth 本身就有噪声&amp;quot;的情况下，模型和人类的分数对齐，到底意味着模型变好了，还是只是学会了迎合某种偏见？&lt;/p&gt;
-&lt;p&gt;这个问题目前没有好答案。但如果把这套思路迁移到 agent 输出质量评估上，反而会好做一点——因为你可以自己定义什么是&amp;quot;好的输出&amp;quot;，不用依赖有噪声的人类标注作为唯一标准。&lt;/p&gt;
+&lt;h2 id="结尾"&gt;结尾
+&lt;/h2&gt;&lt;p&gt;梳理完这些工作之后，相对来说可以逐渐看出LLM辅助论文评审这条路会走向何方。从之前到现在的路线就是越来越专业化和思维深度上升。目前来说 &lt;strong&gt;DeepReview 的结构化流程 + OpenReviewer 的专门训练&lt;/strong&gt;是未来的方向。&lt;/p&gt;
+&lt;p&gt;这个方向真正的瓶颈并非模型能力，而是&lt;strong&gt;评估指标本身&lt;/strong&gt;。现在大家用 MSE、decision accuracy 来衡量，但人类评审本来就不一致——两个人类 reviewer 给同一篇论文打分差 2 分是常态。在这个&amp;quot;ground truth 本身就有噪声&amp;quot;的情况下，模型和人类的分数对齐，到底意味着模型变好了，还是只是学会了迎合某种偏见？&lt;/p&gt;
+&lt;p&gt;这个问题目前没有好答案。但如果把这套思路迁移到 agent 输出质量评估上，反而会好做一点——因为可以自己定义什么是&amp;quot;好的输出&amp;quot;，不用依赖有噪声的人类标注作为唯一标准。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="参考文献"&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
@@ -182,10 +183,13 @@
 &gt;MARG: Multi-Agent Review Generation (2024)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="link" href="https://aclanthology.org/N18-1149/" target="_blank" rel="noopener"
 &gt;PeerRead (NAACL 2018)&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;h2 id="实习准备与经验总结"&gt;实习准备与经验总结
-&lt;/h2&gt;&lt;p&gt;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
-&lt;h3 id="最新项目经验"&gt;最新项目经验
-&lt;/h3&gt;&lt;h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---至今"&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+&lt;/ol&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;p&gt;准备找实习&amp;hellip;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2026/07/30注：当时的简历是适合找第一段实习的时候使用，用的基本都是一些粗糙的论文设计和竞赛经历。相对来说，如果有一些实习经历，优先程度会高很多。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="实习准备"&gt;实习准备
+&lt;/h2&gt;&lt;h3 id="简历中的项目准备截止20260210"&gt;简历中的项目准备（截止2026/02/10）
+&lt;/h3&gt;&lt;h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---202511"&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 2025.11）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;核心技术&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -211,7 +215,7 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;项目成果&lt;/strong&gt;：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="技术深度微调与agent系统"&gt;技术深度：微调与Agent系统
+&lt;h2 id="技术详解微调与agent系统"&gt;技术详解：微调与Agent系统
 &lt;/h2&gt;&lt;h3 id="微调技术详解"&gt;微调技术详解
 &lt;/h3&gt;&lt;h4 id="loralow-rank-adaptation-of-llm"&gt;LoRA：Low-Rank Adaptation of LLM
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心优势&lt;/strong&gt;：&lt;/p&gt;
@@ -435,12 +439,12 @@
 &lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
 &lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
 &lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;这篇笔记整理了两篇相关论文：&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;多智能体协作的方案有很多，是应该合作、竞争还是如何进行？这是目前较为完善的论文。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;综述&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2501.06322" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）——系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制&lt;/li&gt;
+&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）：系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2306.03314" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）——提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统&lt;/li&gt;
+&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）：提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
@@ -726,7 +730,7 @@ data-flex-basis="222px"
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="四几点观察"&gt;四、几点观察
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。但现实任务往往是混合的——谈判、政策制定这类场景天然就是合作竞争，这个方向的研究潜力还没被充分挖掘。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠，也比人工盯着省力。这个机制简单但实用，在工程落地上价值很高。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。单个任务的准确率能测，但&amp;quot;协作质量&amp;quot;怎么测、&amp;ldquo;分工是否合理&amp;quot;怎么量化，目前没有标准答案。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作是推理时的&amp;quot;外挂&amp;rdquo;，而不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身，天花板比较明显。&lt;/p&gt;</description></item></channel></rss>
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCTS on ionfeather'Log</title><link>https://ionfeather.github.io/tags/mcts/</link><description>Recent content in MCTS on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 23 Sep 2025 17:22:57 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/mcts/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS
+&lt;/h2&gt;&lt;h2 id="mc-dml"&gt;MC-DML
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
+&gt;[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="主要解决的问题"&gt;主要解决的问题
+&lt;/h3&gt;&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
+&lt;h3 id="面临挑战"&gt;面临挑战
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;游戏环境很复杂&lt;/li&gt;
+&lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
+&lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp"
+width="1600"
+height="449"
+srcset="https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_1f33033cea39861b.webp 800w, https://ionfeather.github.io/2025/mcts-llm/assets/IMG-20251008192705223_hu_ae6e8a9d5b6366ac.webp 1600w"
+loading="lazy"
+alt="Zork1游戏。这种游戏需要的不能只是短期决策，而是需要长远规划。"
+data-original="/2025/mcts-llm/assets/IMG-20251008192705223_hu_f9febf283cfc8194.webp"
+data-lightbox-width="890"
+data-lightbox-height="250"
+class="gallery-image"
+data-flex-grow="356"
+data-flex-basis="854px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="核心方法"&gt;核心方法
+&lt;/h3&gt;&lt;p&gt;MC-DML（Monte Carlo planning with Dynamic Memory-guided Large language model）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;四阶段规划流程&lt;/strong&gt;：沿用 MCTS 的Selection, Expansion, Simulation, Backpropagation四阶段。在扩展阶段引入 LLM 作为先验策略，让 LLM 基于场景文本为可选动作分配非均匀搜索优先级；模拟阶段通过多轮推演评估动作结果，回溯阶段更新节点价值与访问次数。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;双动态记忆机制&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;「 trial 内记忆（$M_i$）」：存储当前轨迹历史（如 “前一观测 - 动作 - 当前观测”），帮 LLM 结合当下语境生成动作概率分布；&lt;/li&gt;
+&lt;li&gt;「 trial 间记忆（$M_c$）」：存储过去失败轨迹的反思（如 “无光源时勿入黑暗区域”），动态调整动作价值评估，避免重复犯错。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动作选择公式优化&lt;/strong&gt;：在 PUCT（改进型 MCTS）公式基础上，将 LLM 生成的动作概率（结合双记忆）融入计算，确保选择既符合语言逻辑又兼顾探索-利用平衡。&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

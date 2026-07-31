@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>论文阅读 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link><description>Recent content in 论文阅读 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;这篇笔记整理了两篇相关论文：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>论文阅读 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link><description>Recent content in 论文阅读 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;多智能体协作的方案有很多，是应该合作、竞争还是如何进行？这是目前较为完善的论文。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;综述&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2501.06322" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）——系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制&lt;/li&gt;
+&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）：系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2306.03314" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）——提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统&lt;/li&gt;
+&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）：提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
@@ -289,7 +289,7 @@ data-flex-basis="222px"
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="四几点观察"&gt;四、几点观察
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。但现实任务往往是混合的——谈判、政策制定这类场景天然就是合作竞争，这个方向的研究潜力还没被充分挖掘。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠，也比人工盯着省力。这个机制简单但实用，在工程落地上价值很高。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。单个任务的准确率能测，但&amp;quot;协作质量&amp;quot;怎么测、&amp;ldquo;分工是否合理&amp;quot;怎么量化，目前没有标准答案。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作是推理时的&amp;quot;外挂&amp;rdquo;，而不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身，天花板比较明显。&lt;/p&gt;</description></item></channel></rss>
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身。&lt;/p&gt;</description></item></channel></rss>

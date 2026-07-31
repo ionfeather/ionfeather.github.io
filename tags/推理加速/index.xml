@@ -1,333 +1,345 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>推理加速 on ionfeather'Log</title><link>http://localhost:1313/tags/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/</link><description>Recent content in 推理加速 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 28 Apr 2026 14:14:41 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>实习 | 大模型推理加速技术探索</title><link>http://localhost:1313/2026/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/</link><pubDate>Tue, 28 Apr 2026 14:14:41 +0800</pubDate><guid>http://localhost:1313/2026/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/</guid><description>&lt;h2 id="1-简介"&gt;1. 简介
-&lt;/h2&gt;&lt;p&gt;大模型推理加速的目标是在保证模型效果的同时提高吞吐量、降低延迟。目前业务上有非常迫切的模型推理加速需求，因此我们探索了推理加速的前沿技术，主要包括&lt;strong&gt;投机采样&lt;/strong&gt;和&lt;strong&gt;模型量化&lt;/strong&gt;，并且落地到具体的业务场景（舆情分析、涉价值观），取得了不错的推理效果。&lt;/p&gt;
-&lt;h2 id="2-技术原理与实验"&gt;2. 技术原理与实验
-&lt;/h2&gt;&lt;h3 id="21-投机采样解决的业务问题"&gt;2.1 投机采样解决的业务问题
-&lt;/h3&gt;&lt;p&gt;目前各个业务场景所使用的大模型，其参数量通常在百亿、千亿级，要把这样大的模型加载进 GPU 中，并且能够在高并发的情况下快速进行推理是非常困难的。我们发现在实际业务场景中，请求模型的 prompt 大部分情况下是相同的，模型在进行 attention 计算时，对这些相同的内容进行了重复计算。因此我们设想能否利用小模型推理速度快、GPU 占用少的特点，先用小模型进行推理，从而释放大模型的压力。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;投机采样&lt;/strong&gt;就是这样一种技术：利用小模型多次推理单个字，让大模型进行多字预测，从而提升整体推理效率。每次小模型的单字推理耗时远远小于大模型，因此投机采样能够有效提高推理效率。其优势在于，通过蒸馏学习和投机采样，可以在减小模型规模的同时，保持较高的预测效果和推理速度，从而在实际部署中获得更好的性能优化。&lt;/p&gt;
-&lt;h3 id="22-投机采样介绍"&gt;2.2 投机采样介绍
-&lt;/h3&gt;&lt;p&gt;投机采样的过程如下：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>推理加速 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/</link><description>Recent content in 推理加速 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 07 May 2026 20:25:35 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;尽管LM程序被广泛使用，但当前用于表达和执行它们的系统仍然低效。论文确定了与高效使用LM程序相关的两个主要挑战：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;使用小模型自回归采样生成 n 个 token&lt;/li&gt;
-&lt;li&gt;把生成的 n 个 token 和前缀给到大模型执行一次 forward&lt;/li&gt;
-&lt;li&gt;对比大小模型的结果，如果发现某个 token 小模型生成的不好，重新采样这个 token，重复步骤 1&lt;/li&gt;
-&lt;li&gt;如果小模型生成的 token 都满意，那么接受，继续采样，重复步骤 1&lt;/li&gt;
+&lt;li&gt;编写LM程序既繁琐又困难。开发LM程序通常需要大量的字符串处理、提示的实验性调整、脆弱的输出解析、处理多种输入模态以及实现并行机制。&lt;/li&gt;
+&lt;li&gt;由于大量计算和内存浪费，启动LM程序效率不高。
+&lt;ul&gt;
+&lt;li&gt;Key-Value的重用策略不佳&lt;/li&gt;
+&lt;li&gt;结构化输出一个一个token预测，太慢了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;接受和修正的逻辑&lt;/strong&gt;（对于每个 token，小模型的预测概率为 q，大模型的预测概率为 p）：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;若 p ≥ q，则接受当前 token，继续下一个 token 的判断&lt;/li&gt;
-&lt;li&gt;若 p &amp;lt; q，则以 p/q 的概率接受当前 token，以 (1 - p/q) 的概率拒绝。拒绝之后调整 p 的分布为 &lt;code&gt;norm(max(0, p-q))&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;为了保证高接受率，小模型需要使用大模型的训练集（SFT 数据和 pretrain 数据集）重新训练一次才可以与大模型对齐。因此投机采样的缺点就是要维持一个小模型的训练，训练成本较高。另一方面，投机采样的采样方式为 Token-Level 采样，其小模型的输入是 Token Embedding。Token Embedding 是一个浅层特征，很难通过一个轻量模型拟合出具备原始 LLM 模型的概率分布，限制了小模型的准确率，意味着验证阶段的接受率也难以提高。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[图片：投机采样示意图]&lt;/p&gt;
+&lt;p&gt;SGLang, a Structured Generation Language for LLMs&lt;/p&gt;
+&lt;p&gt;论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
+&gt;[2312.07104] SGLang: Efficient Execution of Structured Language Model Programs&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3 id="23-投机采样实验"&gt;2.3 投机采样实验
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;大模型&lt;/strong&gt;：涉价值观模型 qwen2.5-14B（量化和非量化版本）&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;小模型&lt;/strong&gt;：ngram&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;测试数据&lt;/strong&gt;：涉价值观测试数据&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：vLLM&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;速度指标&lt;/strong&gt;：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Concurrency：并发数（1, 10, 50, 100）&lt;/li&gt;
-&lt;li&gt;Latency：延迟&lt;/li&gt;
-&lt;li&gt;tokens_per_second：每秒 token 生成速度&lt;/li&gt;
-&lt;li&gt;p50、p95、p99（50/95/99 分位）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;业务指标&lt;/strong&gt;：不良信息类别准确率、内容导向准确率、研判结果准确率&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;性能测试结果&lt;/strong&gt;：在涉价值观模型上，单并发推理速度提升 15%，多并发下速度没有提升。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[图片：性能测试图表]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;业务指标测试结果&lt;/strong&gt;：投机采样在有 CoT 的测试样本上有涨点，在没有 CoT 的样本上有轻微掉点。&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;涉价值观&lt;/th&gt;
-&lt;th&gt;SFT-Full&lt;/th&gt;
-&lt;th&gt;不良信息类别准确率&lt;/th&gt;
-&lt;th&gt;内容导向准确率&lt;/th&gt;
-&lt;th&gt;研判结果准确率&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;原模型（没有 CoT）&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;99.67&lt;/td&gt;
-&lt;td&gt;79.00&lt;/td&gt;
-&lt;td&gt;78.83&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;投机采样（没有 CoT）&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;99.58&lt;/td&gt;
-&lt;td&gt;76.75&lt;/td&gt;
-&lt;td&gt;76.67&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;原模型（有 CoT）&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;98.92&lt;/td&gt;
-&lt;td&gt;87.92&lt;/td&gt;
-&lt;td&gt;87.67&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;投机采样（有 CoT）&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;99.00&lt;/td&gt;
-&lt;td&gt;88.08&lt;/td&gt;
-&lt;td&gt;87.67&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id="24-eagle-要解决的业务痛点"&gt;2.4 EAGLE 要解决的业务痛点
-&lt;/h3&gt;&lt;p&gt;使用投机采样需要训练小模型，且小模型需与大模型的训练数据分布一致。目前业务上使用的大模型（如 Qwen）训练数据不公开，收集训练数据困难，导致训练小模型成本较高。另一方面，投机采样使用 token-level 采样，信息较少，小模型推理的接受率低。因此需要一种训练成本低、采样接受率高的方法。经过调研，&lt;strong&gt;EAGLE&lt;/strong&gt; 可以解决这些问题。EAGLE 也是一种投机采样方法，使用 Token-Level &amp;amp; Feature-Level 方式进行 token 采样，且训练成本很低。&lt;/p&gt;
-&lt;h3 id="25-eagle-介绍"&gt;2.5 EAGLE 介绍
-&lt;/h3&gt;&lt;p&gt;EAGLE 的 Draft 模型是一个同构的轻量 LLM，其中 Embedding 层和 LM Head 层均复用原始 LLM 模型，中间的 One Auto-regression Head（AR Head）由一层 FC 层以及一层 Transformer Layer 组成。AR Head 是唯一需要微调的网络层，训练成本极低。EAGLE 使用 Draft 模型通过自回归采样生成 Draft Tokens，并且为了提升接收率，在运行 AR Head 前会融合上一个 Token 的隐状态与当前 Token 的 Embedding 层，并通过 AR Head 的 FC 层融合。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[图片：EAGLE 架构示意图]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;EAGLE v1&lt;/strong&gt; 的 draft 树是静态树。token 接受率除了与 Token 所在位置相关，还和上文相关（树中的祖宗节点），v1 的静态树没有利用这一信息。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;EAGLE v2&lt;/strong&gt; 在 v1 的基础上，生成 draft 树时每个节点包含路径的概率信息（通过将路径上边的权重相乘得到）。Expand 过程中，当展开节点的概率值小于阈值时，则停止该节点继续展开，否则继续展开。ReRank 阶段保留概率最高的 K 个节点，其余删除。当不同节点概率相等时，保留浅层节点，以保证树的结构。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[图片：EAGLE v1 静态树 / v2 动态树对比]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="26-eagle-实验"&gt;2.6 EAGLE 实验
-&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;大模型&lt;/strong&gt;：普通模型 qwen2.5-7B&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;数据&lt;/strong&gt;：通用英文数据和中文数据&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：vLLM&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;速度指标&lt;/strong&gt;：同前（并发数、延迟、tokens_per_秒、p50/p95/p99）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;性能测试结果&lt;/strong&gt;：EAGLE 在 vLLM 框架上，英文数据低并发速度提升 50%，高并发速度提升 180%~230%。中文数据上，高并发（50, 100）速度提升 30%~50%，低并发（1, 10）速度降低。原因在于 EAGLE 官方模型在英文数据集上训练，draft 模型在英文数据上接受率高，中文数据上接受率低。若在中文数据上重新训练，效果会改善。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[图片：通用数据性能图]
-[图片：业务数据性能图]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="27-模型量化要解决的业务痛点"&gt;2.7 模型量化要解决的业务痛点
-&lt;/h3&gt;&lt;p&gt;投机采样及其系列方法（EAGLE）使用小模型替代部分大模型推理工作，但缺点是小模型同样占用显存与内存，且无法部署在移动设备、物联网等资源受限环境中。&lt;strong&gt;模型量化&lt;/strong&gt;可以在加速的同时降低模型大小、显存和内存占用。其核心是对模型进行压缩，可能降低一定效果，但能实现加速和节省资源。&lt;/p&gt;
-&lt;h3 id="28-模型量化介绍"&gt;2.8 模型量化介绍
-&lt;/h3&gt;&lt;p&gt;大模型训练时，主权重为 FP32。推理时 FP16 权重通常能提供与 FP32 相似的精度，仅需一半 GPU 显存。若要进一步减少显存消耗，可使用 INT8 量化。量化后模型大小降低，推理速度变快，效果不掉点或轻微掉点。&lt;/p&gt;
-&lt;p&gt;INT8 量化将浮点数 f 通过缩放因子 scale 映射到范围 [-128, 127] 内的 8bit 表示 q：&lt;/p&gt;
-$$ q = \text{Clip}(\text{Round}(f \times \text{scale})) $$&lt;p&gt;其中 Round 表示四舍五入取整，Clip 将离群值截断到 [-128, 127]。scale 通常按如下方式计算：&lt;/p&gt;
-$$ \text{amax} = \max(|x_f|) $$&lt;p&gt;
+&lt;h2 id="基本框架"&gt;基本框架
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_b49e6e3acc698c16.webp"
+width="1600"
+height="322"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_31e4615c340815ef.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_b49e6e3acc698c16.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628650_hu_34bd412715dd18c5.webp"
+data-lightbox-width="915"
+data-lightbox-height="184"
+class="gallery-image"
+data-flex-grow="497"
+data-flex-basis="1193px"
+&gt;
 &lt;/p&gt;
-$$ \text{scale} = 127 / \text{amax} $$&lt;p&gt;反量化过程为：&lt;/p&gt;
-$$ x_f' = x_q / \text{scale} $$
-&lt;blockquote&gt;
-&lt;p&gt;[图片：量化和反量化示例]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id="29-模型量化实验"&gt;2.9 模型量化实验
-&lt;/h3&gt;&lt;h4 id="291-效果实验"&gt;2.9.1 效果实验
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;模型&lt;/strong&gt;：涉价值观模型&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;测试数据&lt;/strong&gt;：公共数据集 + 涉价值观测试数据&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：vLLM&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;速度指标&lt;/strong&gt;：同前&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;业务指标&lt;/strong&gt;：不良信息类别准确率、内容导向准确率、研判结果准确率&lt;/li&gt;
+&lt;h3 id="frontend"&gt;Frontend
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;SGLang 是一种嵌入在 Python 中的领域特定语言（DSL，Domain Specific Language）&lt;/li&gt;
+&lt;li&gt;提供了针对 LLM 编程的原语，支持并行性、控制流、嵌套调用和外部调用&lt;/li&gt;
+&lt;li&gt;SGLang 的设计目标是简化 LLM 程序的编写，并通过解释器、编译器和高性能运行时来提高执行效率&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="2911-公共数据集"&gt;2.9.1.1 公共数据集
-&lt;/h4&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;模型&lt;/th&gt;
-&lt;th&gt;openbookqa acc&lt;/th&gt;
-&lt;th&gt;hellaswag acc&lt;/th&gt;
-&lt;th&gt;piqa acc&lt;/th&gt;
-&lt;th&gt;winogrande acc&lt;/th&gt;
-&lt;th&gt;gsm8k flexible-extract&lt;/th&gt;
-&lt;th&gt;gsm8k strict-extract&lt;/th&gt;
-&lt;th&gt;lambada_openai acc&lt;/th&gt;
-&lt;th&gt;perplexity&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;7b量化 no cot&lt;/td&gt;
-&lt;td&gt;0.404±0.0311&lt;/td&gt;
-&lt;td&gt;0.524±0.0316&lt;/td&gt;
-&lt;td&gt;0.560±0.0314&lt;/td&gt;
-&lt;td&gt;0.684±0.0294&lt;/td&gt;
-&lt;td&gt;0.788±0.0259&lt;/td&gt;
-&lt;td&gt;0.844±0.0230&lt;/td&gt;
-&lt;td&gt;0.772±0.0266&lt;/td&gt;
-&lt;td&gt;5.251±0.696&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;7b非量化 no cot&lt;/td&gt;
-&lt;td&gt;0.404±0.0311&lt;/td&gt;
-&lt;td&gt;0.512±0.0317&lt;/td&gt;
-&lt;td&gt;0.564±0.0314&lt;/td&gt;
-&lt;td&gt;0.684±0.0295&lt;/td&gt;
-&lt;td&gt;0.792±0.0257&lt;/td&gt;
-&lt;td&gt;0.840±0.0232&lt;/td&gt;
-&lt;td&gt;0.756±0.0272&lt;/td&gt;
-&lt;td&gt;4.936±0.656&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;7b量化 cot&lt;/td&gt;
-&lt;td&gt;0.396±0.0310&lt;/td&gt;
-&lt;td&gt;0.525±0.0316&lt;/td&gt;
-&lt;td&gt;0.596±0.0311&lt;/td&gt;
-&lt;td&gt;0.688±0.0294&lt;/td&gt;
-&lt;td&gt;0.764±0.0269&lt;/td&gt;
-&lt;td&gt;0.836±0.0235&lt;/td&gt;
-&lt;td&gt;0.748±0.0275&lt;/td&gt;
-&lt;td&gt;4.437±0.606&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;7b非量化 cot&lt;/td&gt;
-&lt;td&gt;0.412±0.0312&lt;/td&gt;
-&lt;td&gt;0.524±0.0316&lt;/td&gt;
-&lt;td&gt;0.596±0.0311&lt;/td&gt;
-&lt;td&gt;0.700±0.0290&lt;/td&gt;
-&lt;td&gt;0.760±0.0271&lt;/td&gt;
-&lt;td&gt;0.844±0.0230&lt;/td&gt;
-&lt;td&gt;0.740±0.0278&lt;/td&gt;
-&lt;td&gt;4.136±0.568&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14b量化 no cot&lt;/td&gt;
-&lt;td&gt;0.428±0.0314&lt;/td&gt;
-&lt;td&gt;0.564±0.0314&lt;/td&gt;
-&lt;td&gt;0.596±0.0311&lt;/td&gt;
-&lt;td&gt;0.736±0.0279&lt;/td&gt;
-&lt;td&gt;0.812±0.0248&lt;/td&gt;
-&lt;td&gt;0.876±0.0209&lt;/td&gt;
-&lt;td&gt;0.816±0.0246&lt;/td&gt;
-&lt;td&gt;4.273±0.435&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14b非量化 no cot&lt;/td&gt;
-&lt;td&gt;0.424±0.0313&lt;/td&gt;
-&lt;td&gt;0.580±0.0313&lt;/td&gt;
-&lt;td&gt;0.592±0.0311&lt;/td&gt;
-&lt;td&gt;0.736±0.0279&lt;/td&gt;
-&lt;td&gt;0.824±0.0241&lt;/td&gt;
-&lt;td&gt;0.872±0.0212&lt;/td&gt;
-&lt;td&gt;0.828±0.0239&lt;/td&gt;
-&lt;td&gt;4.218±0.436&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14b量化 cot&lt;/td&gt;
-&lt;td&gt;0.416±0.0312&lt;/td&gt;
-&lt;td&gt;0.580±0.0313&lt;/td&gt;
-&lt;td&gt;0.604±0.0310&lt;/td&gt;
-&lt;td&gt;0.752±0.0274&lt;/td&gt;
-&lt;td&gt;0.804±0.0252&lt;/td&gt;
-&lt;td&gt;0.840±0.0232&lt;/td&gt;
-&lt;td&gt;0.776±0.0264&lt;/td&gt;
-&lt;td&gt;3.571±0.360&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14b非量化 cot&lt;/td&gt;
-&lt;td&gt;0.428±0.0314&lt;/td&gt;
-&lt;td&gt;0.588±0.0312&lt;/td&gt;
-&lt;td&gt;0.592±0.0311&lt;/td&gt;
-&lt;td&gt;0.740±0.0278&lt;/td&gt;
-&lt;td&gt;0.812±0.0248&lt;/td&gt;
-&lt;td&gt;0.844±0.0230&lt;/td&gt;
-&lt;td&gt;0.788±0.0259&lt;/td&gt;
-&lt;td&gt;3.528±0.360&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id="2912-涉价值观数据集"&gt;2.9.1.2 涉价值观数据集
-&lt;/h4&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;SFT&lt;/th&gt;
-&lt;th&gt;是否有 CoT&lt;/th&gt;
-&lt;th&gt;模型&lt;/th&gt;
-&lt;th&gt;不良信息类别准确率&lt;/th&gt;
-&lt;th&gt;内容导向准确率&lt;/th&gt;
-&lt;th&gt;研判结果准确率&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;Qwen2.5-7B&lt;/td&gt;
-&lt;td&gt;99.58&lt;/td&gt;
-&lt;td&gt;64.92&lt;/td&gt;
-&lt;td&gt;64.50&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;7B-量化&lt;/td&gt;
-&lt;td&gt;99.58&lt;/td&gt;
-&lt;td&gt;68.75&lt;/td&gt;
-&lt;td&gt;68.17&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;Qwen2.5-14B&lt;/td&gt;
-&lt;td&gt;99.67&lt;/td&gt;
-&lt;td&gt;79.00&lt;/td&gt;
-&lt;td&gt;78.83&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;N&lt;/td&gt;
-&lt;td&gt;14B-量化&lt;/td&gt;
-&lt;td&gt;99.58&lt;/td&gt;
-&lt;td&gt;77.50&lt;/td&gt;
-&lt;td&gt;77.25&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Qwen2.5-7B&lt;/td&gt;
-&lt;td&gt;99.17&lt;/td&gt;
-&lt;td&gt;88.00&lt;/td&gt;
-&lt;td&gt;87.83&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;7B-量化&lt;/td&gt;
-&lt;td&gt;97.17&lt;/td&gt;
-&lt;td&gt;87.17&lt;/td&gt;
-&lt;td&gt;86.83&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Qwen2.5-14B&lt;/td&gt;
-&lt;td&gt;98.92 / 99.59&lt;/td&gt;
-&lt;td&gt;87.92 / 87.19&lt;/td&gt;
-&lt;td&gt;87.67 / 86.91&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;Y&lt;/td&gt;
-&lt;td&gt;14B-量化&lt;/td&gt;
-&lt;td&gt;99.08&lt;/td&gt;
-&lt;td&gt;87.42&lt;/td&gt;
-&lt;td&gt;87.00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id="292-性能实验涉价值观数据集"&gt;2.9.2 性能实验（涉价值观数据集）
-&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;[图片：7b 无 cot 性能图]
-[图片：7b 有 cot 性能图]
-[图片：14b 无 cot 性能图]
-[图片：14b 有 cot 性能图]&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id="293-实验结论"&gt;2.9.3 实验结论
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;效果上&lt;/strong&gt;：量化后的涉价值观模型在公共数据集和业务测试集上表现稳定。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;性能上&lt;/strong&gt;：量化后的涉价值观模型在各种并发环境下能提升速度 &lt;strong&gt;40%&lt;/strong&gt;。&lt;/li&gt;
+&lt;h3 id="interpreter"&gt;Interpreter
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;将前端代码转换为流式操作序列，异步提交给运行时&lt;/li&gt;
+&lt;li&gt;维护提示（Prompt）的中间状态（如对话历史、生成结果），确保多轮调用间的上下文一致性&lt;/li&gt;
+&lt;li&gt;支持将程序编译为静态计算图，进一步优化执行性能（如减少冗余计算)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id="3-量化工作上线情况"&gt;3. 量化工作上线情况
+&lt;h3 id="backend"&gt;Backend
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;RadixAttention：用于在运行时自动重用 Key-Value（KV）缓存。该技术通过在基数树（radix tree）中维护一个最近最少使用（LRU）缓存，实现了多个生成调用之间的自动 KV 缓存重用。（在现有的推理引擎中，请求的KV缓存在处理完成后会被丢弃，这阻止了KV缓存在多次调用之间的重用，并显著减慢了执行速度）&lt;/li&gt;
+&lt;li&gt;Compressed finite state machines（压缩有限状态机）：实现更快的结构化输出解码。在可能的情况下将多标记路径压缩为单步路径，允许一次性解码多个标记，从而实现更快的解码速度（现有的系统仅遵循下一个标记的约束，通过屏蔽不允许的标记的概率来实现，这使得它们每次只能解码一个标记）&lt;/li&gt;
+&lt;li&gt;API speculative execution （API 推测性执行）：API推测性执行，以优化仅API模型的多调用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总的来说，后端的用处是解决加速问题。&lt;/p&gt;
+&lt;h2 id="programming-model"&gt;Programming Model
+&lt;/h2&gt;&lt;h3 id="运行实例"&gt;运行实例
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_d1b9c3ec09b50b56.webp"
+width="1600"
+height="1123"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_e1562b1cad05019b.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628664_hu_d1b9c3ec09b50b56.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628664_hu_c8eb89672850adee.webp"
+data-lightbox-width="1049"
+data-lightbox-height="736"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="342px"
+&gt;
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;函数 &lt;code&gt;multi_dimensional_judge&lt;/code&gt; 接受三个参数：&lt;code&gt;s&lt;/code&gt;、&lt;code&gt;path&lt;/code&gt; 和 &lt;code&gt;essay&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;其中，&lt;code&gt;s&lt;/code&gt; 管理提示状态，&lt;code&gt;path&lt;/code&gt; 是图像文件路径，&lt;code&gt;essay&lt;/code&gt; 是论文文本。&lt;/li&gt;
+&lt;li&gt;可以使用 &lt;code&gt;+=&lt;/code&gt; 操作符将新字符串和 SGLang 原语追加到状态 &lt;code&gt;s&lt;/code&gt; 中以执行。&lt;/li&gt;
+&lt;li&gt;该函数首先将图像和论文添加到提示中，然后使用 &lt;code&gt;select&lt;/code&gt; 检查论文是否与图像相关，将结果存储在 &lt;code&gt;s[&amp;quot;related&amp;quot;]&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;如果相关，则将 &lt;code&gt;fork&lt;/code&gt; 三个副本以并行评估不同维度，使用 &lt;code&gt;gen&lt;/code&gt; 将结果存储在 &lt;code&gt;f[&amp;quot;judgment&amp;quot;]&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;接下来，它合并评估结果，生成摘要，并分配字母等级。&lt;/li&gt;
+&lt;li&gt;最后，它以 &lt;code&gt;JSON&lt;/code&gt; 格式返回结果，遵循由正则表达式约束 &lt;code&gt;regex&lt;/code&gt; 定义的模式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="原语"&gt;原语
+&lt;/h3&gt;&lt;p&gt;SGLang 提供了用于控制提示状态、生成和并行性的原语。它们可以与 Python 语法和库一起使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gen&lt;/code&gt;：调用模型进行生产并存储在第一个参数指定的名称命名的变量中。支持正则实现结构化输出。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;select&lt;/code&gt;：调用模型从列表中选择概率最高的选项&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;+=&lt;/code&gt; / &lt;code&gt;extend&lt;/code&gt;：将字符串追加到 &lt;code&gt;prompt&lt;/code&gt; 中&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[variable name]&lt;/code&gt;：获取生成的结果&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fork&lt;/code&gt;：并行分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;join&lt;/code&gt;：重新连接提示状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;image&lt;/code&gt; / &lt;code&gt;video&lt;/code&gt;：图像/视频输入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="执行模式"&gt;执行模式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;eager&lt;/code&gt;：最简单的是通过 Compiler，将 Prompt 视为异步执行流。像 &lt;code&gt;extend&lt;/code&gt;、&lt;code&gt;gen&lt;/code&gt; 和 &lt;code&gt;select&lt;/code&gt; 这样的原语被提交到流中以异步执行。这些非阻塞调用允许 Python 代码继续运行，而无需等待生成完成，类似于异步启动 CUDA 内核。每个提示由后台线程中的流执行器管理，实现程序内并行性。获取生成结果会阻塞，直到结果准备好，以确保正确的同步。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;graph&lt;/code&gt;：可以被编译为计算图，通过图执行器执行，从而实现更多的优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="efficient-kv-cache-reuse-with-radixattention"&gt;Efficient KV Cache Reuse with RadixAttention
+&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_64e2fb6b62290d59.webp"
+width="1600"
+height="856"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_df7a7a921549964c.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628671_hu_64e2fb6b62290d59.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628671_hu_8d0a4bec38ea7ed3.webp"
+data-lightbox-width="1282"
+data-lightbox-height="686"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="448px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="radixattention"&gt;RadixAttention
+&lt;/h3&gt;&lt;p&gt;KV cache经常需要重复使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SGLang 程序可以将多个生成调用进行链式组合，并通过 &lt;code&gt;fork&lt;/code&gt; 原语创建并行副本。此外，不同的程序实例通常会共享一些公共部分（例如系统 Prompt）。这些场景在执行过程中会产生许多共享的 token 前缀，从而为 KV 缓存的重用提供了大量机会。&lt;/li&gt;
+&lt;li&gt;使用树结构维护历史的 KV cache，从而减少 prefix KV cache 的计算，达到减少 prefill 计算的效果；&lt;/li&gt;
+&lt;li&gt;KV 缓存的计算仅仅取决于所有先前的 token，所以前缀相同的不同序列可以重复使用前缀标记的 KV 缓存，避免冗余计算。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_5b05ebce8aab7874.webp"
+width="1600"
+height="1204"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_121e2923881b914b.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628692_hu_5b05ebce8aab7874.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628692_hu_3fe2a1b8c2b9d7bc.webp"
+data-lightbox-width="937"
+data-lightbox-height="705"
+class="gallery-image"
+data-flex-grow="132"
+data-flex-basis="318px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;节点采用颜色编码以反映不同的状态：绿色表示新添加的节点，蓝色表示在该时间点访问的缓存节点，红色表示已被驱逐的节点。&lt;/p&gt;
+&lt;p&gt;在步骤(1)中，基数树最初是空的。&lt;/p&gt;
+&lt;p&gt;在步骤(2)中，服务器处理传入的用户消息“Hello”并以LLM输出“Hi”进行响应。系统提示“您是一个有用的助手”，用户留言“您好！”，LLM回复“您好！”作为链接到新节点的单边合并到树中。&lt;/p&gt;
+&lt;p&gt;在步骤(3)中，新的提示到达，服务器在基数树中找到该提示的前缀（即会话的第一轮）并重用其KV缓存。新的回合作为新节点附加到树中。&lt;/p&gt;
+&lt;p&gt;在步骤(4)中，新的聊天会话开始。 (3) 中的节点“b”被分成两个节点，以允许两个聊天会话共享系统提示。&lt;/p&gt;
+&lt;p&gt;在步骤(5)中，第二聊天会话继续。然而，由于内存限制，(4) 中的节点“c”必须被逐出。新的回合被附加在(4)中的节点“d”之后。&lt;/p&gt;
+&lt;p&gt;在步骤(6)中，服务器接收小样本学习查询，对其进行处理，并将其插入到树中。根节点被拆分，因为新查询不与现有节点共享任何前缀。&lt;/p&gt;
+&lt;p&gt;在步骤（7）中，服务器接收一批额外的小样本学习查询。这些查询共享同一组少数样本示例，因此我们从 (6) 中拆分节点“e”以实现共享。&lt;/p&gt;
+&lt;p&gt;在步骤(8)中，服务器从第一聊天会话接收新消息。它从第二个聊天会话中驱逐所有节点（节点“g”和“h”），因为它们最近最少使用。&lt;/p&gt;
+&lt;p&gt;在步骤(9)中，服务器接收到对来自(8)的节点“j”中的问题采样更多答案的请求，可能是为了自我一致性提示。为了为这些请求腾出空间，我们在 (8) 中逐出节点“i”、“k”和“l”。&lt;/p&gt;
+&lt;h3 id="缓存感知"&gt;缓存感知
+&lt;/h3&gt;&lt;p&gt;对于请求的前缀长度排序，按深度优先搜索（DFS）顺序获得最佳的缓存命中率。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当等待队列中有许多请求时，它们的执行顺序对缓存命中率有显著影响。例如，如果请求调度器频繁地在不同的、不相关的请求之间切换，可能会导致缓存抖动和低命中率。&lt;/li&gt;
+&lt;li&gt;缓存感知调度策略的目的是提高缓存命中率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;也就是说，策略是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在批处理设置中，按照匹配的前缀长度对请求进行排序，并优先处理匹配前缀较长的请求，而不是采用先到先得的调度方式；&lt;/li&gt;
+&lt;li&gt;最长共享前缀优先顺序等同于深度优先搜索顺序（DFS）；&lt;/li&gt;
+&lt;li&gt;在线情况下，DFS顺序会被破坏，但调度仍然近似于在完整基数树的扩展部分上的DFS行为。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="基于缓存感知的radixattention连续批处理调度"&gt;基于缓存感知的RadixAttention连续批处理调度
+&lt;/h3&gt;&lt;p&gt;算法如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_ce942a7f0ef40769.webp"
+width="1600"
+height="1725"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_1d0f04fd21c7ab07.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628697_hu_ce942a7f0ef40769.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628697_hu_16a3e921955eaa68.webp"
+data-lightbox-width="744"
+data-lightbox-height="802"
+class="gallery-image"
+data-flex-grow="92"
+data-flex-basis="222px"
+&gt;
+&lt;/p&gt;
+&lt;h2 id="data-parallel-distributed-radixattention"&gt;Data-Parallel Distributed RadixAttention
 &lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;量化模型已应用到&lt;strong&gt;舆情快速分析的思维导图生成&lt;/strong&gt;场景上。&lt;/li&gt;
-&lt;li&gt;量化模型将要替换线上的&lt;strong&gt;涉价值观模型&lt;/strong&gt;。&lt;/li&gt;
-&lt;/ul&gt;</description></item></channel></rss>
+&lt;li&gt;Worker：维护自己的子树&lt;/li&gt;
+&lt;li&gt;Router：负责管理一个元树，这个元树负责充当一个字典树，用于跟踪所有的子树和关联设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体来说：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新的请求到达 Router 时，会在元树上执行前缀匹配&lt;/li&gt;
+&lt;li&gt;根据每个请求的 affinity（通过与特定 Worker 和同一组中其他请求共享前缀的长度来衡量），Router 实施各种策略来做出高效的调度决策，以最小化冗余计算&lt;/li&gt;
+&lt;li&gt;每次处理新请求时，路由器和工作器都会独立更新各自的树。&lt;/li&gt;
+&lt;li&gt;如果 Worker 节点发生逐出（eviction），它会将此逐出提交到一个队列中。Router 会在活动量较低的时期处理此队列，以更新元树。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="压缩有限状态机"&gt;压缩有限状态机
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://oi-wiki.org/misc/fsm/" target="_blank" rel="noopener"
+&gt;有限状态自动机 - OI Wiki&lt;/a&gt;这篇wiki介绍了有限状态自动机，以及其和正则表达式之间的关系。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_3bb7878ab59a0eef.webp"
+width="1600"
+height="746"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_1d11b973e3cde515.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628703_hu_3bb7878ab59a0eef.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628703_hu_ac0303d1e993419d.webp"
+data-lightbox-width="912"
+data-lightbox-height="425"
+class="gallery-image"
+data-flex-grow="214"
+data-flex-basis="515px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;用户经常希望遵循约束模型的输出，如 JSON 格式，目前的系统基本用的方法是 &lt;code&gt;Normal FSM&lt;/code&gt;，其解决方案是 decode 的时候将下一个状态的非法 token 的可能性设置为 0。&lt;/p&gt;
+&lt;p&gt;但是这存在一些问题：这个方法是逐个词元（token-by-token）地进行解码的。这意味着即使像 {&amp;ldquo;summary&amp;rdquo;: &amp;quot; 这种固定不变的字符串序列，它在模型内部可能由多个词元组成，现有系统也必须一个词元一个词元地处理，这非常低效。&lt;/p&gt;
+&lt;p&gt;而 SGLang 通过一个 fast constrained decoding runtime with a compressed FSM 解决此问题。把 FSM 中相邻的、只有一个转换路径的边（singular-transition edges）压缩成一条单一的边。这样就可以一次 decode 生成多个 token，大大加快了速度。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.lmsys.org/blog/2024-02-05-compressed-fsm/" target="_blank" rel="noopener"
+&gt;Fast JSON Decoding for Local LLMs with Compressed Finite State Machine - LMSYS Blog | LMSYS Org&lt;/a&gt;这里有一个博客可以参考，以供更深入的理解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_249771119bd12b15.webp"
+width="1600"
+height="469"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_d7dd4b32e35d54c4.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628709_hu_249771119bd12b15.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628709_hu_ce59d86d377e96b1.webp"
+data-lightbox-width="921"
+data-lightbox-height="270"
+class="gallery-image"
+data-flex-grow="341"
+data-flex-basis="818px"
+&gt;
+&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_7d27768669d8bf50.webp"
+width="1600"
+height="791"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_ebe67fe3b66fce43.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628727_hu_7d27768669d8bf50.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628727_hu_50c45af1b846f532.webp"
+data-lightbox-width="922"
+data-lightbox-height="456"
+class="gallery-image"
+data-flex-grow="202"
+data-flex-basis="485px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;SGLang 提供了 &lt;code&gt;regex&lt;/code&gt; 参数来提供正则表达式选择。&lt;/p&gt;
+&lt;h2 id="api-speculative-execution"&gt;API Speculative Execution
+&lt;/h2&gt;&lt;p&gt;前面的都是应用于开放权重模型，这里介绍了API调用情况下的优化。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在第一次 API 调用时延长生成： 当 SGLang 发出第一个 &lt;code&gt;gen&lt;/code&gt; 请求（例如，生成 &lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt;）时，它会忽略通常的停止条件。这意味着它会指示模型在生成完 &lt;code&gt;&amp;quot;name&amp;quot;&lt;/code&gt; 之后，继续生成更多的 token，而不是立即停止。&lt;/li&gt;
+&lt;li&gt;解释器存储额外输出： SGLang 的解释器会捕获并存储模型在这次延长生成中产生的所有额外输出。&lt;/li&gt;
+&lt;li&gt;后续请求重用： 当程序遇到后续的 &lt;code&gt;gen&lt;/code&gt; 请求（例如，生成 &lt;code&gt;&amp;quot;job&amp;quot;&lt;/code&gt;）时，SGLang 的解释器会首先检查它之前存储的额外输出。如果这些额外输出中包含了后续请求所需的信息（比如已经生成了 &lt;code&gt;&amp;quot;job&amp;quot;&lt;/code&gt;），那么它就会直接重用这些已有的输出。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="性能评估"&gt;性能评估
+&lt;/h2&gt;&lt;p&gt;SGLang 是使用 PyTorch 实现的，并使用了来自 FlashInfer 和 Triton 的自定义 CUDA 内核。&lt;/p&gt;
+&lt;h3 id="开源模型结果"&gt;开源模型结果
+&lt;/h3&gt;&lt;p&gt;吞吐提高了6.4倍，延迟减少了3.7倍。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RadixAttention：通过共享 KV 缓存减少总内存使用，从而支持更大的批处理量以提高吞吐量。它还减少了预填充（prefill）计算，降低了首个 token 的延迟。&lt;/li&gt;
+&lt;li&gt;MMLU：利用 RadixAttention 重用 5-shot 示例的 KV 缓存。&lt;/li&gt;
+&lt;li&gt;HellaSwag：对 few-shot 示例和多选问题的共同前缀进行 KV 缓存重用，实现了两级共享。&lt;/li&gt;
+&lt;li&gt;ReAct 和生成式代理：重用代理模板和之前调用的 KV 缓存。&lt;/li&gt;
+&lt;li&gt;Tree-of-thought 和 Skeleton-of-thought：在单个程序中并行化生成调用，并尽可能重用 KV 缓存。&lt;/li&gt;
+&lt;li&gt;JSON 解码：通过压缩的有限状态机（FSM）同时解码多个 token，加速了解码过程。&lt;/li&gt;
+&lt;li&gt;多轮对话：重用聊天历史的 KV 缓存。这种加速对于短输出更为明显，因为 KV 缓存重用主要有助于减少前缀时间；对于长输出，由于共享较少且解码时间占主导，加速效果不显著。&lt;/li&gt;
+&lt;li&gt;DSPy RAG 管道：重用通用上下文示例的 KV 缓存。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_42605b675fd2fc58.webp"
+width="1600"
+height="352"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_5d7cab2077537670.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628736_hu_42605b675fd2fc58.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628736_hu_6a3d59909b6dc466.webp"
+data-lightbox-width="924"
+data-lightbox-height="203"
+class="gallery-image"
+data-flex-grow="455"
+data-flex-basis="1092px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_e688fc90e5ed7481.webp"
+width="1600"
+height="393"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_10ab8838273812ec.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628742_hu_e688fc90e5ed7481.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628742_hu_370113745b909c5d.webp"
+data-lightbox-width="900"
+data-lightbox-height="221"
+class="gallery-image"
+data-flex-grow="407"
+data-flex-basis="977px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="多模态张量并行结果"&gt;多模态张量并行结果
+&lt;/h3&gt;&lt;p&gt;Mixtral-8x7B 和 Llama70B，结果呈现出和上面的开源小模型相当的加速。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_45ddf7eff6b0cede.webp"
+width="1600"
+height="331"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_165c691be37da573.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628759_hu_45ddf7eff6b0cede.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628759_hu_6d03fdb68068022a.webp"
+data-lightbox-width="927"
+data-lightbox-height="192"
+class="gallery-image"
+data-flex-grow="482"
+data-flex-basis="1158px"
+&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_e026b7fdab64e773.webp"
+width="1600"
+height="388"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_cd099c7803943c3.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628764_hu_e026b7fdab64e773.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628764_hu_e9b50bb80e79bf19.webp"
+data-lightbox-width="919"
+data-lightbox-height="223"
+class="gallery-image"
+data-flex-grow="412"
+data-flex-basis="989px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="多模态大模型结果"&gt;多模态大模型结果
+&lt;/h3&gt;&lt;p&gt;SGLang 天然支持 &lt;code&gt;image&lt;/code&gt; 和 &lt;code&gt;video&lt;/code&gt; 的原语（将 image 计算 hash，将其 key 存入 Radix Tree 中，从而可以重复使用 KV cache）。&lt;/p&gt;
+&lt;p&gt;最高达到了6倍的加速。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_4522648d1fc09b35.webp"
+width="1600"
+height="266"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_f602c3b1f57ff4d8.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628769_hu_4522648d1fc09b35.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628769_hu_b896bc4c46bffcec.webp"
+data-lightbox-width="757"
+data-lightbox-height="126"
+class="gallery-image"
+data-flex-grow="600"
+data-flex-basis="1441px"
+&gt;
+&lt;/p&gt;
+&lt;h3 id="生产部署"&gt;生产部署
+&lt;/h3&gt;&lt;p&gt;Chatbot Arena中已经部署，有些模型流量较低，因此只有一个SGLang worker提供服务。一个月后，发现缓存命中率较高。&lt;/p&gt;
+&lt;h3 id="api模型结果"&gt;API模型结果
+&lt;/h3&gt;&lt;p&gt;测试了一个使用 OpenAI 的 GPT-3.5 模型从维基百科页面提取三个字段的提示。通过使用few-shot提示，API推测执行的准确性很高，并且由于提取了三个字段，因此将输入令牌的成本降低了约三倍。&lt;/p&gt;
+&lt;h3 id="消融实验"&gt;消融实验
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_2b3ea4a1bc165210.webp"
+width="1600"
+height="427"
+srcset="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_37b41c4a5a3738ac.webp 800w, https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628775_hu_2b3ea4a1bc165210.webp 1600w"
+loading="lazy"
+data-original="/2026/sglang/assets/IMG-20260507213628775_hu_3ebcea86d2a83ab3.webp"
+data-lightbox-width="824"
+data-lightbox-height="220"
+class="gallery-image"
+data-flex-grow="374"
+data-flex-basis="898px"
+&gt;
+&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;h3 id="sglang的主要优势"&gt;SGLang的主要优势
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;前端可以优化LLM应用的编程模型，通过DSL和原语来简化编程&lt;/li&gt;
+&lt;li&gt;后端大幅优化运行速度&lt;/li&gt;
+&lt;li&gt;Radix Attention机制：使用Radix Tree高效自动复用KV cache&lt;/li&gt;
+&lt;li&gt;压缩FSM：对有限状态机进行压缩&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="和其他框架的比较"&gt;和其他框架的比较
+&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;未完待续&lt;/p&gt;
+&lt;/blockquote&gt;</description></item></channel></rss>

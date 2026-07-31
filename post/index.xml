@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ionfeather'Log</title><link>https://ionfeather.github.io/post/</link><description>Recent content in Posts on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 18 Jun 2026 00:46:23 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ionfeather'Log</title><link>https://ionfeather.github.io/post/</link><description>Recent content in Posts on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 30 Jul 2026 18:15:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>立秋 | 逐渐意识到学生时代的落幕</title><link>https://ionfeather.github.io/2026/beginning-of-autumn/</link><pubDate>Thu, 30 Jul 2026 16:14:30 +0800</pubDate><guid>https://ionfeather.github.io/2026/beginning-of-autumn/</guid><description/></item><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>
 &lt;blockquote&gt;
 &lt;p&gt;论文链接：&lt;a class="link" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener"
 &gt;arXiv:2605.22344&lt;/a&gt;&lt;/p&gt;
@@ -1978,16 +1978,21 @@ data-flex-basis="545px"
 &lt;li&gt;&lt;strong&gt;四阶段渐进式预训练&lt;/strong&gt;：从 256px 到 1024px+，逐步集成文字渲染能力，辅以精细的数据构建，确保生成质量。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;两阶段后训练（SFT → DPO + GRPO）&lt;/strong&gt;：离线偏好对齐 + 在线策略优化的组合，系统性提升美学质量、文字渲染精度和编辑一致性。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description></item><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;SGLang, a Structured Generation Language for LLMs，论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
-&gt;[2312.07104] SGLang: Efficient Execution of Structured Language Model Programs&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id="解决的问题"&gt;解决的问题
-&lt;/h2&gt;&lt;p&gt;尽管LM程序被广泛使用，但当前用于表达和执行它们的系统仍然低效。我们确定了与高效使用LM程序相关的两个主要挑战：&lt;/p&gt;
+&lt;/div&gt;</description></item><item><title>论文阅读 | SGLang-结构化语言模型程序高效执行框架</title><link>https://ionfeather.github.io/2026/sglang/</link><pubDate>Thu, 07 May 2026 20:25:35 +0800</pubDate><guid>https://ionfeather.github.io/2026/sglang/</guid><description>&lt;p&gt;尽管LM程序被广泛使用，但当前用于表达和执行它们的系统仍然低效。论文确定了与高效使用LM程序相关的两个主要挑战：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;编写LM程序既繁琐又困难。开发LM程序通常需要大量的字符串处理、提示的实验性调整、脆弱的输出解析、处理多种输入模态以及实现并行机制。&lt;/li&gt;
-&lt;li&gt;由于大量计算和内存浪费，启动LM程序效率不高。&lt;/li&gt;
+&lt;li&gt;由于大量计算和内存浪费，启动LM程序效率不高。
+&lt;ul&gt;
 &lt;li&gt;Key-Value的重用策略不佳&lt;/li&gt;
 &lt;li&gt;结构化输出一个一个token预测，太慢了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SGLang, a Structured Generation Language for LLMs&lt;/p&gt;
+&lt;p&gt;论文如下：&lt;a class="link" href="https://arxiv.org/abs/2312.07104" target="_blank" rel="noopener"
+&gt;[2312.07104] SGLang: Efficient Execution of Structured Language Model Programs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id="基本框架"&gt;基本框架
 &lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2026/sglang/assets/IMG-20260507213628650_hu_b49e6e3acc698c16.webp"
 width="1600"
@@ -2773,17 +2778,16 @@ console.warn('[imgloop] GLightbox failed to load');
 })();
 &lt;/script&gt;
 &lt;p&gt;山桃花确实开得不管不顾。不是江南那种依着粉墙黛瓦、配着烟雨朦胧的含蓄，是北方独有的野性——开在石头缝里，开在悬崖边上。在背阴处还是花骨朵，翻过山，迎接我们下山的才是绽放的花。&lt;/p&gt;
-&lt;p&gt;山顶的风还是很大，但阳光晒得人发懒。我们坐在大石头上休息，讨论着前方路还有多远。又累又饿的时候突然看到有小孩拿着棒冰，我们一下子抖擞精神——山上的烤肠补给点不可多得。&lt;/p&gt;
+&lt;p&gt;山顶的风还是很大，但阳光晒得人发懒。我们坐在大石头上休息，讨论着前方路还有多远。又累又饿的时候突然看到有小孩拿着棒冰，我们一下子抖擞精神——所谓有烤肠的山才能爬（&lt;/p&gt;
 &lt;p&gt;终于爬到最高的山峰，有一个飞来石塔，它真的像是天外来物。在这里留下了大疆Pocket 3我们五个人的合照。休整一下，坐在石头上，我看着远处的城市轮廓，忽然觉得北京也没那么冷漠了——至少在这一刻，在这块被山桃花包围的石头上。&lt;/p&gt;
-&lt;p&gt;下山的时候天已经擦黑了。山桃花变成了灰色的影子，路灯亮起来的时候，像一场没做完的梦。&lt;/p&gt;
-&lt;p&gt;去年此时我在济南，今年此时我们在北京。明年此时呢？也许是另一座山，另一杯茶，另一场花事。&lt;/p&gt;
-&lt;p&gt;但无论如何，春天总会来的。&lt;/p&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时，一直有个绕不过去的问题：agent 生成的内容质量怎么评？人工标注太慢，让 LLM 直接打分又不知道该不该信。后来想到学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是&amp;quot;用 LLM 做复杂内容的质量判断&amp;quot;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？哪条路线更值得押注？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;下山的时候天已经擦黑了。山桃花变成了灰色的影子。去年此时我在济南，今年此时我们在北京。明年此时呢？也许是另一座山，另一杯茶，另一场花事。但无论如何，春天总会来的。&lt;/p&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时容易遇到这个问题：agent 生成的内容质量是否可信？如果进行人工标注太慢，而让 LLM 直接打分又不知道是否可信。&lt;/p&gt;
+&lt;p&gt;大模型辅助学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是用 LLM 做复杂内容的质量判断。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;这些系统真的可靠吗？&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;通用 LLM的「谄媚」&lt;/strong&gt;：GPT-4o 平均给分 7.7，Claude-3.5 给 7.6，而人类评审平均只有 5.4。专门训练的模型反而更像人类——更会挑毛病、更会压分。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;信息越多不一定越好&lt;/strong&gt;：只给摘要时 accuracy 是 0.237，给全文反而掉到 0.138。怎么喂数据，比喂多少数据更关键。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;多智能体的价值&lt;/strong&gt;：它的收益不一定在于提高 raw accuracy，而在于让决策更校准——尤其是更准确地识别该拒的稿。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通用 LLM的「谄媚」&lt;/strong&gt;：GPT-4o 平均给分 7.7，Claude-3.5 给 7.6，而人类评审平均只有 5.4。专门训练的模型反而更像人类，相对来说更会挑毛病而不是一昧吹捧。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信息越多不一定越好&lt;/strong&gt;：只给摘要时 accuracy 是 0.237，给全文反而掉到 0.138。怎么喂数据比喂多少数据可能更加关键。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多智能体的作用&lt;/strong&gt;：收益不一定在于提高 raw accuracy，还有对于文章的关键的识别和拒绝应该拒绝的稿。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;本文主要分为两部分：&lt;/p&gt;
@@ -2934,10 +2938,10 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;li&gt;不对review进行处理&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="我的判断"&gt;我的判断
-&lt;/h2&gt;&lt;p&gt;梳理完这些工作之后，如果让我选一条路来实现一个实际可用的系统，我会选 &lt;strong&gt;DeepReview 的结构化流程 + OpenReviewer 的专门训练&lt;/strong&gt; 这个组合——前者解决&amp;quot;怎么想&amp;quot;的问题，后者解决&amp;quot;打分不可信&amp;quot;的问题。&lt;/p&gt;
-&lt;p&gt;但我觉得这个方向真正的瓶颈不是模型能力，而是&lt;strong&gt;评估指标本身&lt;/strong&gt;。现在大家用 MSE、decision accuracy 来衡量，但人类评审本来就不一致——两个人类 reviewer 给同一篇论文打分差 2 分是常态。在这个&amp;quot;ground truth 本身就有噪声&amp;quot;的情况下，模型和人类的分数对齐，到底意味着模型变好了，还是只是学会了迎合某种偏见？&lt;/p&gt;
-&lt;p&gt;这个问题目前没有好答案。但如果把这套思路迁移到 agent 输出质量评估上，反而会好做一点——因为你可以自己定义什么是&amp;quot;好的输出&amp;quot;，不用依赖有噪声的人类标注作为唯一标准。&lt;/p&gt;
+&lt;h2 id="结尾"&gt;结尾
+&lt;/h2&gt;&lt;p&gt;梳理完这些工作之后，相对来说可以逐渐看出LLM辅助论文评审这条路会走向何方。从之前到现在的路线就是越来越专业化和思维深度上升。目前来说 &lt;strong&gt;DeepReview 的结构化流程 + OpenReviewer 的专门训练&lt;/strong&gt;是未来的方向。&lt;/p&gt;
+&lt;p&gt;这个方向真正的瓶颈并非模型能力，而是&lt;strong&gt;评估指标本身&lt;/strong&gt;。现在大家用 MSE、decision accuracy 来衡量，但人类评审本来就不一致——两个人类 reviewer 给同一篇论文打分差 2 分是常态。在这个&amp;quot;ground truth 本身就有噪声&amp;quot;的情况下，模型和人类的分数对齐，到底意味着模型变好了，还是只是学会了迎合某种偏见？&lt;/p&gt;
+&lt;p&gt;这个问题目前没有好答案。但如果把这套思路迁移到 agent 输出质量评估上，反而会好做一点——因为可以自己定义什么是&amp;quot;好的输出&amp;quot;，不用依赖有噪声的人类标注作为唯一标准。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id="参考文献"&gt;参考文献
 &lt;/h2&gt;&lt;ol&gt;
@@ -2961,10 +2965,13 @@ console.warn('[imgloop] GLightbox failed to load');
 &gt;MARG: Multi-Agent Review Generation (2024)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="link" href="https://aclanthology.org/N18-1149/" target="_blank" rel="noopener"
 &gt;PeerRead (NAACL 2018)&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;h2 id="实习准备与经验总结"&gt;实习准备与经验总结
-&lt;/h2&gt;&lt;p&gt;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
-&lt;h3 id="最新项目经验"&gt;最新项目经验
-&lt;/h3&gt;&lt;h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---至今"&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 至今）
+&lt;/ol&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;p&gt;准备找实习&amp;hellip;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2026/07/30注：当时的简历是适合找第一段实习的时候使用，用的基本都是一些粗糙的论文设计和竞赛经历。相对来说，如果有一些实习经历，优先程度会高很多。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="实习准备"&gt;实习准备
+&lt;/h2&gt;&lt;h3 id="简历中的项目准备截止20260210"&gt;简历中的项目准备（截止2026/02/10）
+&lt;/h3&gt;&lt;h4 id="1-基于思考帽认知模型的多智能体学术评审系统202505---202511"&gt;1. 基于思考帽认知模型的多智能体学术评审系统（2025.05 - 2025.11）
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;项目背景&lt;/strong&gt;：针对学术评审反馈周期长、反馈建议模糊的痛点，开发了一套融合六项思考帽认知模型和强化学习博弈的自动化评审框架。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;核心技术&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -2990,7 +2997,7 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;项目成果&lt;/strong&gt;：复赛13/336（前5%），在学术多选题上达到52%的准确率，与第一名差距仅4%&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="技术深度微调与agent系统"&gt;技术深度：微调与Agent系统
+&lt;h2 id="技术详解微调与agent系统"&gt;技术详解：微调与Agent系统
 &lt;/h2&gt;&lt;h3 id="微调技术详解"&gt;微调技术详解
 &lt;/h3&gt;&lt;h4 id="loralow-rank-adaptation-of-llm"&gt;LoRA：Low-Rank Adaptation of LLM
 &lt;/h4&gt;&lt;p&gt;&lt;strong&gt;核心优势&lt;/strong&gt;：&lt;/p&gt;
@@ -3214,15 +3221,18 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;li&gt;继续深化在多智能体学术评审领域的研究&lt;/li&gt;
 &lt;li&gt;探索教育大模型的实际应用场景&lt;/li&gt;
 &lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;h2 id="rag-的本质"&gt;RAG 的本质
-&lt;/h2&gt;&lt;p&gt;RAG（Retrieval-Augmented Generation）的核心问题是：**如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？**我认为本质上是一种上下文工程（Context Engineering）。&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;p&gt;RAG（Retrieval-Augmented Generation）的核心问题是：如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？&lt;a class="link" href="https://kirigaya.cn/blog/article?seq=356" target="_blank" rel="noopener"
+&gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;目前来看，对于AI Coding来说，RAG可能成为了一个较为过时的技术，以cursor使用的内部向量库为例的RAG方法被目前的Claude Code、Codex等使用的Agentic Search超越。其让agent内置一些grep、read、edit等工具，结合CLAUDE.md等让模型自主查询。但是如果是对于一些文档量较大的其他下游任务中，不一定是Agentic Search较好。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;从这个角度理解，RAG 要解决的是三个子问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;知识存储&lt;/strong&gt;：外部知识以什么形式存储，才能既保留语义又支持高效检索？&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;知识检索&lt;/strong&gt;：给定用户问题，如何精准召回最相关的知识片段？&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;知识利用&lt;/strong&gt;：召回的片段如何组织进 Prompt，才能让 LLM 真正用上，而不是忽略或 hallucinate？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id="rag-的演进路线"&gt;RAG 的演进路线
+&lt;h2 id="rag-的发展"&gt;RAG 的发展
 &lt;/h2&gt;&lt;p&gt;通常把 RAG 的发展分为四个阶段：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -3257,7 +3267,7 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;/table&gt;
 &lt;p&gt;下面这个项目属于 Naive RAG 到 Advanced RAG 之间的实现，用来理解基础链路。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="项目复现local_pdf_chat_rag"&gt;项目复现：Local_Pdf_Chat_RAG
+&lt;h2 id="以项目为例"&gt;以项目为例
 &lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/weiwill88/Local_Pdf_Chat_RAG" target="_blank" rel="noopener"
 &gt;Github: weiwill88/Local_Pdf_Chat_RAG&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="环境配置"&gt;环境配置
@@ -3270,7 +3280,7 @@ console.warn('[imgloop] GLightbox failed to load');
 &lt;li&gt;配置 Siliconflow 和 SerpAPI 的 API Key&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="核心模块详解"&gt;核心模块详解
+&lt;h2 id="rag核心模块"&gt;RAG核心模块
 &lt;/h2&gt;&lt;h3 id="文档处理层indexing"&gt;文档处理层（Indexing）
 &lt;/h3&gt;&lt;p&gt;文档处理层的目标是把非结构化的 PDF 转化为可供检索的结构化表示。关键函数是 &lt;code&gt;process_multiple_pdfs&lt;/code&gt;，其流程如下：&lt;/p&gt;
 &lt;h4 id="文本提取与清洗"&gt;文本提取与清洗
@@ -3912,7 +3922,7 @@ RRF 不需要分数归一化，对排名敏感而非绝对分数，实现简单�
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h2 id="总结"&gt;总结
-&lt;/h2&gt;&lt;p&gt;RAG 远不是&amp;quot;Embedding + 向量检索 + Prompt 拼接&amp;quot;那么简单。用Kimi-2.6来总结：&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;RAG 没有那么简单。用Kimi-2.6来总结：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;文档理解的深度&lt;/strong&gt;：布局解析、多粒度分块、多模态处理&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;表示学习的精度&lt;/strong&gt;：Embedding 选型、混合检索、重排序&lt;/li&gt;
@@ -4048,16 +4058,7 @@ data-flex-basis="378px"
 &lt;/h2&gt;&lt;p&gt;冰演是在五棵松华熙Live中心表演的，我还是第一次去那里，发现五棵松竟然有着杭州和上海的味道！那种精致的、繁华的感觉，和我在平时逛的沙河县城完全不同，昌平县城里卖的都是10元盒饭，而在华熙Live中心买了一杯水要了我10块钱。有一种乡下人进城的感觉，看什么都有点新奇。&lt;/p&gt;
 &lt;p&gt;这是我人生中第一场冰演，原计划是和唐老师一起看，她本来还准备好了望远镜和讲解。只可惜甲流的威力太大，唐老师在出发前一天直接被击倒了——高烧不退，最终去昌平县城挂水了。还好冰演的票并不算贵，因此她也并不是特别懊恼，只是稍微有点觉得最近自己运气实在不好。&lt;/p&gt;
 &lt;p&gt;本来是完全没有看过这种演出的——前两天我、唐老师和SH一起吃饭的时候，据SH说她还以为我患上了文艺病——但是真的好像有点意思。&lt;/p&gt;
-&lt;p&gt;大概的剧情是这样的：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;精灵王国的精灵和人类王子相爱了，他俩都觉得这份跨种族的爱恋特别美好，能一直甜下去。&lt;/p&gt;
-&lt;p&gt;可谁也没想到，王子的父王 —— 那个老国王，打从一开始就没安好心。他看上了精灵那双能翱翔天际的翅膀，想占为己有，所以才故意放任王子和精灵来往，就是想用这份爱情当诱饵。这天，老国王设下陷阱，把沉醉在甜蜜里的两人都迷晕了。等精灵再醒过来，后背钻心地疼——她的翅膀，已经被老国王生生夺走了。精灵族的人都围过来，看着她血肉模糊的样子，全都认定是王子伙同老国王骗了她，爱情从头到尾都是一场骗局。精灵又痛又恨，心里的光彻底灭了，整个人都黑化了。另一边的人类王国，老国王美滋滋地把精灵翅膀绑在自己身上，跑到最高的城楼上，使劲扑腾着想飞。还真让他晃晃悠悠升到半空了，可这翅膀没一会儿就没了力气。老国王尖叫着从高空摔下来，当场就没气了。&lt;/p&gt;
-&lt;p&gt;王后一看这情形，眼珠子一转，就对刚醒过来、正急着找精灵的王子撒了谎：“是那个精灵干的！她恨陛下抢了她的翅膀，就把陛下从半空中推下去摔死了！”王子听完，整个人都崩溃了。他怎么也没法相信，自己深爱之人会做出这种事，可又找不到证据反驳。父亲惨死、爱人 “背叛” 的双重打击，把他的魂儿都抽走了。他就像个没知觉的木偶，任由王后安排，娶了王后指定的女人，后来还生下了一个小公主 —— 她就是咱们后来知道的睡美人。&lt;/p&gt;
-&lt;p&gt;而那个黑化的精灵，早就恨透了这一切。在小公主的洗礼宴上，她现身放下诅咒：“等这孩子十七岁的时候，会被玫瑰刺破手指，然后陷入永远的长眠！”小公主就在这样的阴影里一天天长大，被安排在密林的城堡中，由一群巨怪照料着。日子慢慢过，她也长成了漂亮姑娘，还遇到了一位温柔的白马王子。转眼到了小公主十七岁的那天，阳光特别好，白马王子捧着一束红玫瑰向她告白。小公主伸手去接玫瑰，指尖一下子就被花刺划破了。血珠刚渗出来，她就眼前一黑，直直地昏了过去。这时候，当年的王子早就成了国王。得知女儿应验了诅咒，他积压多年的恨意彻底爆发，立刻带人去找精灵算账。&lt;/p&gt;
-&lt;p&gt;时隔这么多年，昔日的爱人终于再次相见，可身份却变成了不共戴天的仇人。两人拔剑相向，可真到了要下手的那一刻，却都僵住了 —— 恨有多深，当年的爱就有多刻骨，谁也狠不下心伤害对方。最后，精灵看着国王，眼里满是疲惫和痛苦，轻声说：“杀了我吧，只要我死了，诅咒就能解除。”国王握着剑的手抖得厉害，他看着眼前这个被仇恨折磨得变了模样，却依旧是他心底牵挂的人，终究还是扔下了剑。他大步上前，一把将精灵拥进怀里。这么多年的误会、怨恨，在这个拥抱里一下子全散了。&lt;/p&gt;
-&lt;p&gt;两人含泪相吻，就在这一刻，小公主，缓缓睁开了眼睛。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;剧情是其中的一环，但我觉得最核心的还是情绪感染能力。如果单论剧情来说，其实是和动画片差不多，不会设计一个特别复杂烧脑的精巧剧情，但结合剧院里播出的字幕，演员的表演神态，旁边大家的屏息凝神和掌声，我觉得那种看到公主醒来的欣喜很难用语言来形容。&lt;/p&gt;
+&lt;p&gt;我觉得最核心的还是情绪感染能力。如果单论剧情来说，其实是和动画片差不多，不会设计一个特别复杂烧脑的精巧剧情，但结合剧院里播出的字幕，演员的表演神态，旁边大家的屏息凝神和掌声，体会到了看剧的乐趣。&lt;/p&gt;
 &lt;p&gt;跳舞或许是最能接近看剧的快乐，是一种纯粹的乐趣。&lt;/p&gt;</description></item><item><title>寒露 | 这茶桌樟木的横切面
 ，年轮有二十三圈</title><link>https://ionfeather.github.io/2025/cold-dew/</link><pubDate>Wed, 08 Oct 2025 10:56:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/cold-dew/</guid><description>&lt;img src="https://ionfeather.github.io/2025/cold-dew/assets/cover.jpg" alt="Featured image of post 寒露 | 这茶桌樟木的横切面
 ，年轮有二十三圈" /&gt;
@@ -5993,12 +5994,7 @@ data-flex-basis="326px"
 &gt;生物医学领域的预训练语言模型&lt;/a&gt;，LBMFF 等工作的上游依赖&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;LLM 化学任务基准&lt;/strong&gt;：&lt;a class="link" href="https://proceedings.neurips.cc/paper_files/paper/2023/file/bbb330189ce02be00cf7346167028ab1-Paper-Datasets_and_Benchmarks.pdf" target="_blank" rel="noopener"
 &gt;八项化学任务评测&lt;/a&gt;，零/少样本设定下 GPT-4 最优，Davinci-003 次之&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id="个人判断"&gt;个人判断
-&lt;/h2&gt;&lt;p&gt;三条路线里，&lt;strong&gt;路线二&lt;/strong&gt;（数据标注）最被低估。路线一的增量有限——LLM 嵌入 + GNN 确实比纯 GNN 好，但好多少取决于数据集，且引入了 GPT-4 API 调用的额外成本。路线三还不成熟。&lt;/p&gt;
-&lt;p&gt;与其设计更复杂的模型架构，不如先把训练数据清干净。临床试验记录里藏着大量被误标的数据，LLM 正好有能力读懂这些非结构化文本并做出判断。这和 RLHF 里用 LLM 做偏好标注是同一个思路——用语言模型的语义理解提升数据质量，而不是直接用它做预测。&lt;/p&gt;
-&lt;p&gt;药物重定位里真正稀缺的不是模型能力，而是&lt;strong&gt;高质量的标注数据&lt;/strong&gt;，尤其是可靠的阴性。这个方向如果能扩展到其他适应症，比前两条路线更有实用价值。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
+&lt;/ul&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
 &lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp"
@@ -10313,12 +10309,12 @@ allowfullscreen="true"
 &gt;LM Studio&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;基础模型Base Models&lt;/strong&gt; → Explore &lt;a class="link" href="https://app.hyperbolic.xyz/" target="_blank" rel="noopener"
 &gt;Hyperbolic&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;这篇笔记整理了两篇相关论文：&lt;/p&gt;
+&lt;/ul&gt;</description></item><item><title>论文阅读 | 多智能体协作机制：大语言模型综述</title><link>https://ionfeather.github.io/2025/multiagentcollaboration/</link><pubDate>Sat, 15 Feb 2025 21:58:31 +0800</pubDate><guid>https://ionfeather.github.io/2025/multiagentcollaboration/</guid><description>&lt;p&gt;多智能体协作的方案有很多，是应该合作、竞争还是如何进行？这是目前较为完善的论文。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;综述&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2501.06322" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）——系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制&lt;/li&gt;
+&gt;Multi-Agent Collaboration Mechanisms: A Survey of LLMs&lt;/a&gt;（Tran et al., 2025）：系统梳理 LLM-based 多智能体系统的协作类型、结构、策略和协调机制。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;框架&lt;/strong&gt;：&lt;a class="link" href="https://arxiv.org/abs/2306.03314" target="_blank" rel="noopener"
-&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）——提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统&lt;/li&gt;
+&gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）：提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
@@ -10604,10 +10600,10 @@ data-flex-basis="222px"
 &lt;/table&gt;
 &lt;hr&gt;
 &lt;h2 id="四几点观察"&gt;四、几点观察
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。但现实任务往往是混合的——谈判、政策制定这类场景天然就是合作竞争，这个方向的研究潜力还没被充分挖掘。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠，也比人工盯着省力。这个机制简单但实用，在工程落地上价值很高。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。单个任务的准确率能测，但&amp;quot;协作质量&amp;quot;怎么测、&amp;ldquo;分工是否合理&amp;quot;怎么量化，目前没有标准答案。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作是推理时的&amp;quot;外挂&amp;rdquo;，而不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身，天花板比较明显。&lt;/p&gt;</description></item><item><title>雨水 | 北京的「雨水」是艳阳高照</title><link>https://ionfeather.github.io/2025/rainwater/</link><pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate><guid>https://ionfeather.github.io/2025/rainwater/</guid><description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 雨水 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;协作类型的研究严重不均衡。&lt;/strong&gt; Cooperation 有大量工作，Competition 有一些，Coopetition 几乎空白。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Supervisor Agent 是最实用的设计。&lt;/strong&gt; Auto-GPT 卡死循环是众所周知的问题，用一个独立 agent 监控主流程、发现异常就干预，比靠 prompt engineering 防止循环更可靠。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;评估指标是整个方向的核心瓶颈。&lt;/strong&gt; 论文里提到，传统的任务评估指标很难衡量多 agent 系统整体的表现——输出是多个 agent 协作的结果，归因本身就很难。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM 本身不是为协作训练的。&lt;/strong&gt; 综述最后指出一个根本性问题：现有 LLM 是作为独立模型训练的，多 agent 协作不是训练目标。这意味着 agent 之间的协调行为（谈判、妥协、信任建立）依赖 prompt 工程而非模型能力本身。&lt;/p&gt;</description></item><item><title>雨水 | 北京的「雨水」是艳阳高照</title><link>https://ionfeather.github.io/2025/rainwater/</link><pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate><guid>https://ionfeather.github.io/2025/rainwater/</guid><description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 雨水 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
 &lt;p&gt;北京最近的天气确实是这样。在北京能感受到24节气的准确，能感受到四季分明是什么感觉。&lt;/p&gt;
 &lt;p&gt;但是！！雨水，雨水，北京来点儿雨吧。自从去年的12月以来，我没有见过一滴雨落到北京的地表，这里的晴天就像是默认背景，太阳和月亮每天都是固定角色出现在地平线和天空中。北京的「雨水」是艳阳高照。&lt;/p&gt;
 &lt;hr&gt;
