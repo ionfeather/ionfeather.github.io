@@ -2765,15 +2765,22 @@ data-flex-basis="898px"
 &lt;li&gt;参与开源社区贡献，分享技术经验&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;p&gt;RAG（Retrieval-Augmented Generation）的核心问题是：如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？&lt;a class="link" href="https://kirigaya.cn/blog/article?seq=356" target="_blank" rel="noopener"
 &gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;目前来看，对于AI Coding来说，RAG可能成为了一个较为过时的技术，以cursor使用的内部向量库为例的RAG方法被目前的Claude Code、Codex等使用的Agentic Search超越。其让agent内置一些grep、read、edit等工具，结合CLAUDE.md等让模型自主查询。但是如果是对于一些文档量较大的其他下游任务中，不一定是Agentic Search较好。&lt;/p&gt;
-&lt;/blockquote&gt;
 &lt;p&gt;从这个角度理解，RAG 要解决的是三个子问题：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;知识存储&lt;/strong&gt;：外部知识以什么形式存储，才能既保留语义又支持高效检索？&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;知识检索&lt;/strong&gt;：给定用户问题，如何精准召回最相关的知识片段？&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;知识利用&lt;/strong&gt;：召回的片段如何组织进 Prompt，才能让 LLM 真正用上，而不是忽略或 hallucinate？&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id="rag真的可行吗"&gt;RAG真的可行吗？
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/pdf/2508.21038" target="_blank" rel="noopener"
+&gt;ON THE THEORETICAL LIMITATIONS OF EMBEDDING-BASED RETRIEVAL&lt;/a&gt; 认为&lt;strong&gt;单向量嵌入（dense retrieval）存在根本性的理论上限，这个限制与嵌入维度直接相关，且无法通过更多训练数据或更大的模型来克服。&lt;/strong&gt; 作者构建了一个极其简单的数据集LIMIT，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;查询&lt;/strong&gt;：&amp;ldquo;Who likes Quokkas?&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt;：&amp;ldquo;Jon Durbin likes Quokkas and Apples.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;任务是从 46 个相关文档中，为 1000 个查询找出所有正确的 top-2 组合。
+然而，就是这么简单的任务，当前 SOTA 嵌入模型（Gemini Embed、GritLM、Promptriever 等）表现极差——Recall@2 不到 20%。原因不是语言理解能力不足，而是&lt;strong&gt;单向量嵌入的维度无法编码所有可能的文档组合&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目前来看，对于AI Coding来说，RAG可能成为了一个较为过时的技术，以cursor使用的内部向量库为例的RAG方法被目前的Claude Code、Codex等使用的&lt;strong&gt;Agentic Search&lt;/strong&gt;超越。让agent内置一些grep、read、edit等工具，结合CLAUDE.md等让模型自主查询。但是如果是对于一些文档量较大的其他下游任务中，不一定是Agentic Search较好。&lt;/p&gt;
 &lt;h2 id="rag-的发展"&gt;RAG 的发展
 &lt;/h2&gt;&lt;p&gt;通常把 RAG 的发展分为四个阶段：&lt;/p&gt;
 &lt;table&gt;
