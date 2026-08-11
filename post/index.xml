@@ -10790,7 +10790,7 @@ data-flex-basis="346px"
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Advanced Tables：对写表格比较有帮助。&lt;/li&gt;
 &lt;li&gt;Customizable Menu：自定义右键快捷键。&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/cover.png" alt="Featured image of post 书籍阅读 | 《动手学深度学习》" /&gt;&lt;h2 id="全书结构"&gt;全书结构
+&lt;/ul&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;h2 id="全书结构"&gt;全书结构
 &lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp"
 width="1600"
 height="1221"
@@ -10965,7 +10965,7 @@ data-flex-basis="248px"
 &gt;
 &lt;/p&gt;
 &lt;p&gt;使用反向传递的时候，在我们计算$y$关于$x$的梯度之前，需要一个地方来存储梯度。&lt;/p&gt;
-&lt;p&gt;重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量$x$的梯度是向量，并且与$x$具有相同的形状。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;img src="https://ionfeather.github.io/2024/virtual-environment-config/cover.jpg" alt="Featured image of post 操作记录 | 虚拟环境配置操作记录" /&gt;&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历
+&lt;p&gt;重要的是，我们不会在每次对一个参数求导时都分配新的内存。 因为我们经常会成千上万次地更新相同的参数，每次都分配新的内存可能很快就会将内存耗尽。 注意，一个标量函数关于向量$x$的梯度是向量，并且与$x$具有相同的形状。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历
 &lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;
 &lt;p&gt;但是我一顿操作之后，原本配置好的环境现在也没办法使用了。此时我庆幸自己想到用&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件保存。但是在进行&lt;code&gt;pip install -r vllm_requirements.txt&lt;/code&gt;的时候，出现了报错的情况，竟然说里面有一个包的版本是yanked version（撤回版本），无法下载，给我气晕了。&lt;/p&gt;
 &lt;p&gt;吃一堑，长一智。配置好的环境就不要变了，应该另外复制一个环境，在复制的环境上进行修改。&lt;/p&gt;
@@ -11009,8 +11009,20 @@ data-flex-basis="248px"
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;jupyter kernelspec list
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;删除指定的jupyter内核&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-shell" data-lang="shell"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;jupyter kernelspec remove &amp;lt;your_kernel_name&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="封面"&gt;封面
-&lt;/h2&gt;&lt;p&gt;照片是2024/12/7的时候同门团建的时候我拿大疆Pocket3拍的。拍的建筑是东郊民巷的圣弥厄尔大教堂。非常开心的一天。&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;img src="https://ionfeather.github.io/2024/langchain-learning/cover.png" alt="Featured image of post 博客阅读 | LangChain学习笔记" /&gt;&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;照片是2024/12/7的时候同门团建的时候我拿大疆Pocket3拍的。拍的建筑是东郊民巷的圣弥厄尔大教堂。非常开心的一天。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2024/virtual-environment-config/cover_hu_e46e239410597ddd.webp"
+width="1600"
+height="900"
+srcset="https://ionfeather.github.io/2024/virtual-environment-config/cover_hu_d06a891d01b70ae2.webp 800w, https://ionfeather.github.io/2024/virtual-environment-config/cover_hu_e46e239410597ddd.webp 1600w"
+loading="lazy"
+data-original="/2024/virtual-environment-config/cover_hu_bf251444a2420c64.webp"
+data-lightbox-width="2276"
+data-lightbox-height="1280"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+&gt;
+&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
 &lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 &lt;div class="chat --other"&gt;
 &lt;div class="chat__inner"&gt;
