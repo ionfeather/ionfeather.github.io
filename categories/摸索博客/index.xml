@@ -1086,6 +1086,73 @@ allowfullscreen="true"
 &lt;h2 id="网易云音乐"&gt;网易云音乐
 &lt;/h2&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&amp;id=557578993&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt;
 &lt;!-- 歌曲的id;是否自动播放(1为自动播放，0为手动播放) --&gt;
+&lt;h2 id="neodb"&gt;NeoDB
+&lt;/h2&gt;&lt;p&gt;灵感来自&lt;a class="link" href="https://mantyke.icu/posts/2025/blogglowup/" target="_blank" rel="noopener"
+&gt;小球飞鱼的 NeoDB 装修&lt;/a&gt;。填入条目的 NeoDB 链接，构建时自动拉取我的标记状态和封面；正文可留空（显示 NeoDB 上的评论），也可以自己写：&lt;/p&gt;
+&lt;div class="db-card"&gt;
+&lt;div class="db-card-subject"&gt;
+&lt;div class="db-card-post"&gt;
+&lt;img src=""
+alt="封面加载中"
+style="max-width: 100%; height: auto;"
+id="coverImage-4ehThaQvoClePUiNK5E1J3"
+class="db-placeholder"&gt;
+&lt;/div&gt;
+&lt;div class="db-card-content"&gt;
+&lt;div class="db-card-title"&gt;
+&lt;a href="https://neodb.social/movie/4ehThaQvoClePUiNK5E1J3" target="_blank" rel="noreferrer"&gt;Groundhog Day&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="db-card-comment"&gt;
+&lt;div class="db-card-meta"&gt;
+2026-08-14 看过
+&lt;span class="db-card-cate"&gt;#Movie&lt;/span&gt;
+&lt;/div&gt;
+&lt;p&gt;「今天就是明天。」—— 土拨鼠反复横跳的那一天，我也想再过一次。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function() {
+const img = document.getElementById('coverImage-4ehThaQvoClePUiNK5E1J3');
+const newImgSrc = 'https:\/\/neodb.social\/m\/item\/imdb\/2023\/09\/24\/96e1fb7f-67f0-4a17-bd27-e1d59fbb30c6.jpg';
+if (newImgSrc) {
+const tempImg = new Image();
+tempImg.src = newImgSrc;
+tempImg.onload = function() {
+img.src = newImgSrc;
+img.classList.remove('db-placeholder');
+};
+}
+});
+&lt;/script&gt;
+&lt;!-- 需要在 hugo.yaml 的 params.neodb.token 或环境变量 HUGO_PARAMS_NEODB_TOKEN 里配置 Token；实际使用记得双括号。 --&gt;
+&lt;h2 id="mermaid-图表"&gt;Mermaid 图表
+&lt;/h2&gt;&lt;p&gt;这个不是 shortcode，直接用 &lt;code&gt;```mermaid&lt;/code&gt; 代码块就行，构建时会自动渲染成图表（只有用到的页面才加载 mermaid.js，明暗主题自动跟随）：&lt;/p&gt;
+&lt;pre class="mermaid"&gt;graph LR
+A[写下一行文字] --&amp;gt; B{构建}
+B --&amp;gt; C[变成一张图]&lt;/pre&gt;
+&lt;script type="module"&gt;
+(async () =&gt; {
+if (window.__mermaidBoot) return;
+window.__mermaidBoot = true;
+const { default: mermaid } = await import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs');
+const sources = new Map();
+async function renderAll() {
+const dark = document.documentElement.dataset.scheme === 'dark';
+mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: dark ? 'neutral' : 'default' });
+const nodes = document.querySelectorAll('pre.mermaid');
+for (const n of nodes) {
+if (!sources.has(n)) sources.set(n, n.textContent);
+n.removeAttribute('data-processed');
+n.textContent = sources.get(n);
+try { await mermaid.run({ nodes: [n] }); } catch (e) { console.error('mermaid render:', e); }
+}
+}
+await renderAll();
+new MutationObserver(renderAll).observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme'] });
+})();
+&lt;/script&gt;
 &lt;h2 id="标签墙"&gt;标签墙
 &lt;/h2&gt;&lt;p&gt;其实这个不算是shortcodes，但是我不知道把这个放在哪里。所以这个犄角旮旯就不错！&lt;/p&gt;
 &lt;p&gt;特别感谢：&lt;/p&gt;
