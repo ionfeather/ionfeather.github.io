@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工作台 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/</link><description>Recent content in 工作台 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 18 Feb 2025 13:40:27 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>博客探索 | 搬运一些Shortcodes</title><link>https://ionfeather.github.io/2025/shortcodes/</link><pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate><guid>https://ionfeather.github.io/2025/shortcodes/</guid><description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工作台 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/</link><description>Recent content in 工作台 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Sat, 29 Aug 2026 02:42:30 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E6%91%B8%E7%B4%A2%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>博客探索 | 搬运一些Shortcodes</title><link>https://ionfeather.github.io/2025/shortcodes/</link><pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate><guid>https://ionfeather.github.io/2025/shortcodes/</guid><description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。现在每个示例都会先显示源码，把鼠标悬停在代码块右上角就会出现「Copy」按钮，点击即可复制。&lt;/p&gt;
 &lt;p&gt;特别感谢：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://www.sleepymoon.cyou/2023/hugo-shortcodes/#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90" target="_blank" rel="noopener"
@@ -12,26 +12,97 @@
 &lt;/ul&gt;
 &lt;h2 id="文字"&gt;文字
 &lt;/h2&gt;&lt;h3 id="重点标记"&gt;重点标记
-&lt;/h3&gt;&lt;div class="mark-card"&gt;好喜欢蓝色！&lt;/div&gt;
-&lt;!-- //实际使用时应为双括号 --&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; mark text=&amp;#34;好喜欢蓝色！&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;div class="mark-card"&gt;好喜欢蓝色！&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="文本折叠"&gt;文本折叠
-&lt;/h3&gt;&lt;details&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; detail &amp;#34;点击展开&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;p&amp;gt;这是第一个段落的内容。&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;p&amp;gt;这是第二个段落的内容，位于折叠部分，实际使用别忘了双括号！&amp;lt;/p&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /detail &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;details&gt;
 &lt;summary&gt;点击展开&lt;/summary&gt;
 &lt;p&gt;这是第一个段落的内容。&lt;/p&gt;
 &lt;p&gt;这是第二个段落的内容，位于折叠部分，实际使用别忘了双括号！&lt;/p&gt;
 &lt;/details&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="文字黑幕"&gt;文字黑幕
-&lt;/h3&gt;&lt;p&gt;&lt;span class="shady"&gt;数据删除！数据删除！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;span class=&amp;#34;shady&amp;#34;&amp;gt;数据删除！数据删除！&amp;lt;br&amp;gt;但总之换行的话就加个空标签。&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;span class="shady"&gt;数据删除！数据删除！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="高斯模糊"&gt;高斯模糊
-&lt;/h3&gt;&lt;p&gt;&lt;span class="blur"&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;span class=&amp;#34;blur&amp;#34;&amp;gt;一些手动打码效果！&amp;lt;br&amp;gt;但总之换行的话就加个空标签。&amp;lt;/span&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;span class="blur"&gt;一些手动打码效果！&lt;br&gt;但总之换行的话就加个空标签。&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="文本位置"&gt;文本位置
-&lt;/h3&gt;&lt;p&gt;
-&lt;p style="text-align:left"&gt;文字居左&lt;/p&gt;&lt;br&gt;
-&lt;p style="text-align:center"&gt;文字居中&lt;/p&gt;&lt;br&gt;
-&lt;p style="text-align:right"&gt;文字居右&lt;/p&gt;&lt;/p&gt;
-&lt;!-- //实际使用记得换成双括号。 --&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; align left &amp;#34;文字居左&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;p style="text-align:left"&gt;文字居左&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; align center &amp;#34;文字居中&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;p style="text-align:center"&gt;文字居中&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; align right &amp;#34;文字居右&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;p style="text-align:right"&gt;文字居右&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="摘录引用"&gt;摘录引用
-&lt;/h3&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; blockquote author=&amp;#34;加西亚·马尔克斯&amp;#34; link=&amp;#34;也可以不加啦&amp;#34; title=&amp;#34;《百年孤独》&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;羊皮卷上所载一切自永远至永远不会再重复，因为注定经受百年孤独的家族不会有第二次机会出现在大地上出现。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /blockquote &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;blockquote&gt;
 &lt;p&gt;羊皮卷上所载一切自永远至永远不会再重复，因为注定经受百年孤独的家族不会有第二次机会出现在大地上出现。&lt;/p&gt;
 &lt;footer style="text-align:right"&gt;
@@ -41,28 +112,116 @@
 &lt;/cite&gt;
 &lt;/footer&gt;
 &lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="居中引用"&gt;居中引用
-&lt;/h3&gt;&lt;blockquote class="quote-center"&gt;&lt;/p&gt;&lt;p&gt;有些人说&lt;br&gt;换行敲多了&lt;br&gt;就是&lt;br&gt;诗&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; quote-center &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;有些人说&amp;lt;br&amp;gt;换行敲多了&amp;lt;br&amp;gt;就是&amp;lt;br&amp;gt;诗
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /quote-center &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;blockquote class="quote-center"&gt;&lt;/p&gt;&lt;p&gt;有些人说&lt;br&gt;换行敲多了&lt;br&gt;就是&lt;br&gt;诗&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="键盘样式"&gt;键盘样式
-&lt;/h3&gt;&lt;p&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&amp;lt;kbd&amp;gt;Ctrl&amp;lt;/kbd&amp;gt;+&amp;lt;kbd&amp;gt;Alt&amp;lt;/kbd&amp;gt;+&amp;lt;kbd&amp;gt;Del&amp;lt;/kbd&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Alt&lt;/kbd&gt;+&lt;kbd&gt;Del&lt;/kbd&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="卡片"&gt;卡片
-&lt;/h3&gt;&lt;div class="mycard"&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; card &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;可以在这里插入链接假装是卡片式链接。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;好像不能插入图片？
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;换行需要空标签。实际使用需要双括号。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /card &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;div class="mycard"&gt;
 &lt;div class="content"&gt;&lt;p&gt;可以在这里插入链接假装是卡片式链接。&lt;/p&gt;
 &lt;p&gt;好像不能插入图片？&lt;/p&gt;
 &lt;p&gt;换行需要空标签。实际使用需要双括号。&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="标签块"&gt;标签块
-&lt;/h3&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; notice notice-warning &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;Warning：需要双括号。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /notice &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="notice notice-warning" &gt;
 &lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 576 512" fill="#704343"&gt;&lt;path d="M570 440c18 32-5 72-42 72H48c-37 0-60-40-42-72L246 24c19-32 65-32 84 0l240 416zm-282-86a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;Warning：需要双括号。&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; notice notice-info &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;info：这是一条信息。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /notice &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="notice notice-info" &gt;
 &lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#705943"&gt;&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;info：这是一条信息。&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; notice notice-note &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;note：可以标注一下，但是没必要。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /notice &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="notice notice-note" &gt;
 &lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#436170"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;note：可以标注一下，但是没必要。&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; notice notice-tip &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;tip：在示例里胡说八道会使观看者会心一笑。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /notice &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="notice notice-tip" &gt;
 &lt;div class="notice-title"&gt;&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512" fill="#437052"&gt;&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zM227 387l184-184c7-6 7-16 0-22l-22-23c-7-6-17-6-23 0L216 308l-70-70c-6-6-16-6-23 0l-22 23c-7 6-7 16 0 22l104 104c6 7 16 7 22 0z"/&gt;&lt;/svg&gt;&lt;/div&gt;&lt;p&gt;tip：在示例里胡说八道会使观看者会心一笑。&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="对话框"&gt;对话框
-&lt;/h3&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; chat position=&amp;#34;left&amp;#34; name=&amp;#34;导师&amp;#34; timestamp=&amp;#34;2024-10-12 14:30&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;做一个论文阅读的大模型。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /chat &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="chat --other"&gt;
 &lt;div class="chat__inner"&gt;
 &lt;div class="chat__meta"&gt;导师&amp;nbsp;&amp;nbsp;&amp;nbsp;2024-10-12 14:30&lt;/div&gt;
@@ -150,6 +309,17 @@ html[data-scheme="dark"] .chat__meta {
 color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; chat position=&amp;#34;right&amp;#34; name=&amp;#34;我&amp;#34; timestamp=&amp;#34;2024-10-12 14:45&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;好的老师。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /chat &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="chat --self"&gt;
 &lt;div class="chat__inner"&gt;
 &lt;div class="chat__meta" style="text-align: right;"&gt;2024-10-12 14:45&amp;nbsp;&amp;nbsp;&amp;nbsp;我&lt;/div&gt;
@@ -237,8 +407,17 @@ html[data-scheme="dark"] .chat__meta {
 color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h3 id="时间轴"&gt;时间轴
-&lt;/h3&gt;&lt;p&gt;&lt;div class="timeline__row"&gt;
+&lt;/h3&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; timeline date=&amp;#34;2024-10-20&amp;#34; title=&amp;#34;创建ionfeather&amp;#39;Log&amp;#34; description=&amp;#34;使用Hugo的Stack主题&amp;#34; tags=&amp;#34;博客&amp;#34; url=&amp;#34;&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;div class="timeline__row"&gt;
 &lt;div class="timeline__time"&gt;
 &lt;div class="timeline__time"&gt;2024-10-20&lt;/div&gt;
 &lt;div class="timeline__split-line"&gt;&lt;/div&gt;
@@ -407,7 +586,15 @@ font-size: 14px;
 }
 }
 &lt;/style&gt;
-&lt;br&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; timeline date=&amp;#34;2024-11-04&amp;#34; title=&amp;#34;增加评论区&amp;#34; description=&amp;#34;部署Waline，但还有一些问题&amp;#34; tags=&amp;#34;博客&amp;#34; url=&amp;#34;&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="timeline__row"&gt;
 &lt;div class="timeline__time"&gt;
 &lt;div class="timeline__time"&gt;2024-11-04&lt;/div&gt;
@@ -577,7 +764,15 @@ font-size: 14px;
 }
 }
 &lt;/style&gt;
-&lt;br&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; timeline date=&amp;#34;2025-02-13&amp;#34; title=&amp;#34;Bug修复&amp;#34; description=&amp;#34;修复了一些bug，如邮箱显示错误、搜索功能失效等&amp;#34; tags=&amp;#34;博客&amp;#34; url=&amp;#34;&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="timeline__row"&gt;
 &lt;div class="timeline__time"&gt;
 &lt;div class="timeline__time"&gt;2025-02-13&lt;/div&gt;
@@ -747,23 +942,31 @@ font-size: 14px;
 }
 }
 &lt;/style&gt;
-&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2 id="图片滚动"&gt;图片滚动
-&lt;/h2&gt;&lt;div class="imgloop-wrap imgloop-has-multiple" id="imgloop-17"&gt;
+&lt;/h2&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; imgloop &amp;#34;DSC_3245.jpg,DSC_3248.jpg,DSC_3304.jpg&amp;#34; &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;div class="imgloop-wrap imgloop-has-multiple" id="imgloop-0"&gt;
 &lt;div class="imgloop-track"&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_ff15e20163d4fb20.webp" data-desc="DSC_3245.jpg" data-imgloop="imgloop-17"&gt;
-&lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3245_hu_69bf5f62009e9829.webp" loading="lazy" alt="DSC_3245.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="DSC_3245.jpg" data-desc="DSC_3245.jpg" data-imgloop="imgloop-0"&gt;
+&lt;img src="DSC_3245.jpg" loading="lazy" alt="DSC_3245.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_b367f6af80c5a4bd.webp" data-desc="DSC_3248.jpg" data-imgloop="imgloop-17"&gt;
-&lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3248_hu_7b92918258791bed.webp" loading="lazy" alt="DSC_3248.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="DSC_3248.jpg" data-desc="DSC_3248.jpg" data-imgloop="imgloop-0"&gt;
+&lt;img src="DSC_3248.jpg" loading="lazy" alt="DSC_3248.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="imgloop-slide"&gt;
-&lt;a class="glightbox-imgloop-17" href="https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_575f320135889499.webp" data-desc="DSC_3304.jpg" data-imgloop="imgloop-17"&gt;
-&lt;img src="https://ionfeather.github.io/2025/shortcodes/DSC_3304_hu_37fc8b79e72a7666.webp" loading="lazy" alt="DSC_3304.jpg"&gt;
+&lt;a class="glightbox-imgloop-0" href="DSC_3304.jpg" data-desc="DSC_3304.jpg" data-imgloop="imgloop-0"&gt;
+&lt;img src="DSC_3304.jpg" loading="lazy" alt="DSC_3304.jpg"&gt;
 &lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -928,7 +1131,7 @@ display: block;
 &lt;/style&gt;
 &lt;script&gt;
 (function () {
-var wrap = document.getElementById('imgloop-17');
+var wrap = document.getElementById('imgloop-0');
 if (!wrap) return;
 var track = wrap.querySelector('.imgloop-track');
 var slides = wrap.querySelectorAll('.imgloop-slide');
@@ -992,7 +1195,7 @@ return Promise.reject(new Error('GLightbox loader is unavailable'));
 }
 function initLightbox() {
 if (typeof GLightbox === 'undefined') return;
-var sel = '.glightbox-imgloop-17';
+var sel = '.glightbox-imgloop-0';
 var anchors = wrap.querySelectorAll(sel);
 if (!anchors.length) return;
 var options = window.IonLightbox &amp;&amp; window.IonLightbox.options
@@ -1072,10 +1275,18 @@ console.warn('[imgloop] GLightbox failed to load');
 });
 })();
 &lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2 id="bilibili"&gt;Bilibili
-&lt;/h2&gt;
+&lt;/h2&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; bilibili BV1bKg46nE7k 0 0 &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
 &lt;div class="video-wrapper"&gt;
-&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1V7411d7iW"
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1bKg46nE7k"
 scrolling="no"
 frameborder="no"
 framespacing="0"
@@ -1083,49 +1294,36 @@ allowfullscreen="true"
 &gt;
 &lt;/iframe&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h2 id="网易云音乐"&gt;网易云音乐
-&lt;/h2&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&amp;id=557578993&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt;
+&lt;/h2&gt;&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; netease 557578993 0 &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&amp;id=557578993&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;!-- 歌曲的id;是否自动播放(1为自动播放，0为手动播放) --&gt;
 &lt;h2 id="neodb"&gt;NeoDB
 &lt;/h2&gt;&lt;p&gt;灵感来自&lt;a class="link" href="https://mantyke.icu/posts/2025/blogglowup/" target="_blank" rel="noopener"
 &gt;小球飞鱼的 NeoDB 装修&lt;/a&gt;。填入条目的 NeoDB 链接，构建时自动拉取我的标记状态和封面；正文可留空（显示 NeoDB 上的评论），也可以自己写：&lt;/p&gt;
-&lt;div class="db-card"&gt;
-&lt;div class="db-card-subject"&gt;
-&lt;div class="db-card-post"&gt;
-&lt;img src=""
-alt="封面加载中"
-style="max-width: 100%; height: auto;"
-id="coverImage-4ehThaQvoClePUiNK5E1J3"
-class="db-placeholder"&gt;
+&lt;div class="shortcode-demo"&gt;
+&lt;div class="shortcode-source"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-markdown" data-lang="markdown"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; neodb &amp;#34;https://neodb.social/movie/4ehThaQvoClePUiNK5E1J3&amp;#34; &amp;gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;「今天就是明天。」—— 土拨鼠反复横跳的那一天，我也想再过一次。
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;{{&amp;lt; /neodb &amp;gt;}}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="db-card-content"&gt;
-&lt;div class="db-card-title"&gt;
-&lt;a href="https://neodb.social/movie/4ehThaQvoClePUiNK5E1J3" target="_blank" rel="noreferrer"&gt;Groundhog Day&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="db-card-comment"&gt;
-&lt;div class="db-card-meta"&gt;
-2026-08-14 看过
-&lt;span class="db-card-cate"&gt;#Movie&lt;/span&gt;
-&lt;/div&gt;
-&lt;p&gt;「今天就是明天。」—— 土拨鼠反复横跳的那一天，我也想再过一次。&lt;/p&gt;
+&lt;div class="shortcode-preview"&gt;
+&lt;div class="shortcode-preview-content"&gt;
+&lt;p style="text-align: center;"&gt;&lt;small&gt;NeoDB 数据加载失败，请检查 Token、网络与 URL 是否有效。&lt;/small&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
-const img = document.getElementById('coverImage-4ehThaQvoClePUiNK5E1J3');
-const newImgSrc = 'https:\/\/neodb.social\/m\/item\/imdb\/2023\/09\/24\/96e1fb7f-67f0-4a17-bd27-e1d59fbb30c6.jpg';
-if (newImgSrc) {
-const tempImg = new Image();
-tempImg.src = newImgSrc;
-tempImg.onload = function() {
-img.src = newImgSrc;
-img.classList.remove('db-placeholder');
-};
-}
-});
-&lt;/script&gt;
 &lt;!-- 需要在 hugo.yaml 的 params.neodb.token 或环境变量 HUGO_PARAMS_NEODB_TOKEN 里配置 Token；实际使用记得双括号。 --&gt;
 &lt;h2 id="mermaid-图表"&gt;Mermaid 图表
 &lt;/h2&gt;&lt;p&gt;这个不是 shortcode，直接用 &lt;code&gt;```mermaid&lt;/code&gt; 代码块就行，构建时会自动渲染成图表（只有用到的页面才加载 mermaid.js，明暗主题自动跟随）：&lt;/p&gt;
