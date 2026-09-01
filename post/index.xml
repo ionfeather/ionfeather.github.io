@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ionfeather'Log</title><link>https://ionfeather.github.io/post/</link><description>Recent content in Posts on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 01 Sep 2026 13:50:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="1-linux历史与基本命令"&gt;1. Linux历史与基本命令
-&lt;/h2&gt;&lt;h3 id="1-linux操作系统发展历史"&gt;1. Linux操作系统发展历史
-&lt;/h3&gt;&lt;ol&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on ionfeather'Log</title><link>https://ionfeather.github.io/post/</link><description>Recent content in Posts on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 01 Sep 2026 13:50:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="linux历史与基本命令"&gt;Linux历史与基本命令&lt;a href="#linux%e5%8e%86%e5%8f%b2%e4%b8%8e%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="linux操作系统发展历史"&gt;Linux操作系统发展历史&lt;a href="#linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%8f%91%e5%b1%95%e5%8e%86%e5%8f%b2" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;1965 麻省理工学院开发multics；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;1969 Ken Thompson, Dennis Ritchie和Douglas Mcllroy发明早期Unix系统，且1972年用C语言重写内核；&lt;/p&gt;</description></item><item><title>立秋 | 逐渐意识到学生时代的落幕</title><link>https://ionfeather.github.io/2026/beginning-of-autumn/</link><pubDate>Mon, 10 Aug 2026 16:14:30 +0800</pubDate><guid>https://ionfeather.github.io/2026/beginning-of-autumn/</guid><description>&lt;img src="https://ionfeather.github.io/2026/beginning-of-autumn/cover.jpeg" alt="Featured image of post 立秋 | 逐渐意识到学生时代的落幕" /&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&amp;id=2114161073&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt;
+&lt;p&gt;1969 Ken Thompson, Dennis Ritchie和Douglas Mcllroy发明早期Unix系统，且1972年用C语言重写内核；&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ken Thompson, Dennis Ritchie为 Unix之父&lt;/p&gt;</description></item><item><title>立秋 | 逐渐意识到学生时代的落幕</title><link>https://ionfeather.github.io/2026/beginning-of-autumn/</link><pubDate>Mon, 10 Aug 2026 16:14:30 +0800</pubDate><guid>https://ionfeather.github.io/2026/beginning-of-autumn/</guid><description>&lt;img src="https://ionfeather.github.io/2026/beginning-of-autumn/cover.jpeg" alt="Featured image of post 立秋 | 逐渐意识到学生时代的落幕" /&gt;&lt;iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=86 src="//music.163.com/outchain/player?type=2&amp;id=2114161073&amp;auto=0&amp;height=66"&gt;&lt;/iframe&gt;
 &lt;p&gt;讲讲我从小到大的通勤。&lt;/p&gt;
 &lt;p&gt;在我小小的时候，爸爸妈妈还没有出门打工，妈妈全职在家带我。这么小的孩子，原本也没有什么通勤可言。那时候还没有推车，我的坐骑是一个木工师傅做的小椅子——有点硬，也不会动。但小时候的我好像很喜欢，因为家里现在能找到的老照片我总是坐在上面笑着。&lt;/p&gt;</description></item><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;论文链接：&lt;a class="link" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener"
@@ -47,8 +49,8 @@
 &lt;/blockquote&gt;
 &lt;p&gt;说来也巧合，正好是我和唐老师认识大约一周年了。唐老师喜欢苏轼。去年此时我在济南欣赏春景，大明湖畔有一座出名的楼叫超然楼，和她随口提起，她立刻回复：「超然台！我刚才就在想超然楼是不是超然台，如果是的话这必须得去追个星（怀个古）」。&lt;/p&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时容易遇到这个问题：agent 生成的内容质量是否可信？如果进行人工标注太慢，而让 LLM 直接打分又不知道是否可信。&lt;/p&gt;
 &lt;p&gt;大模型辅助学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是用 LLM 做复杂内容的质量判断。&lt;/p&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;p&gt;准备找实习&amp;hellip;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;p&gt;RAG（Retrieval-Augmented Generation）的核心问题是：如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？&lt;a class="link" href="https://kirigaya.cn/blog/article?seq=356" target="_blank" rel="noopener"
-&gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>霜降 | 一百年前的故事</title><link>https://ionfeather.github.io/2025/frosts-descent/</link><pubDate>Thu, 23 Oct 2025 19:37:29 +0800</pubDate><guid>https://ionfeather.github.io/2025/frosts-descent/</guid><description>&lt;img src="https://ionfeather.github.io/2025/frosts-descent/cover.jpg" alt="Featured image of post 霜降 | 一百年前的故事" /&gt;&lt;h2 id="没写博客的日子在玩和学习"&gt;没写博客的日子在玩和学习
-&lt;/h2&gt;&lt;p&gt;一直想着说要写一下博客，但是总是故意忘记这回事——输出总是一件需要耗能的事情，有点儿像是摄影中的后期（？）&lt;/p&gt;
+&gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>霜降 | 一百年前的故事</title><link>https://ionfeather.github.io/2025/frosts-descent/</link><pubDate>Thu, 23 Oct 2025 19:37:29 +0800</pubDate><guid>https://ionfeather.github.io/2025/frosts-descent/</guid><description>&lt;img src="https://ionfeather.github.io/2025/frosts-descent/cover.jpg" alt="Featured image of post 霜降 | 一百年前的故事" /&gt;&lt;h2 id="没写博客的日子在玩和学习"&gt;没写博客的日子在玩和学习&lt;a href="#%e6%b2%a1%e5%86%99%e5%8d%9a%e5%ae%a2%e7%9a%84%e6%97%a5%e5%ad%90%e5%9c%a8%e7%8e%a9%e5%92%8c%e5%ad%a6%e4%b9%a0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;一直想着说要写一下博客，但是总是故意忘记这回事——输出总是一件需要耗能的事情，有点儿像是摄影中的后期（？）&lt;/p&gt;
 &lt;p&gt;按下快门、找到美景的时候真的超级开心，但后期的时候就会需要一些兴致，一般是一个想发朋友圈的噱头或者是看到自己的超级好看的照片希望分享才会动身。总而言之言而总之，今天又找到了一些小小的动力，于是开始写！&lt;/p&gt;</description></item><item><title>寒露 | 这茶桌樟木的横切面
 ，年轮有二十三圈</title><link>https://ionfeather.github.io/2025/cold-dew/</link><pubDate>Wed, 08 Oct 2025 10:56:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/cold-dew/</guid><description>&lt;img src="https://ionfeather.github.io/2025/cold-dew/assets/cover.jpg" alt="Featured image of post 寒露 | 这茶桌樟木的横切面
 ，年轮有二十三圈" /&gt;&lt;blockquote&gt;
@@ -68,14 +70,14 @@
 &lt;/cite&gt;
 &lt;/footer&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;中秋之夜我在听《爷爷泡的茶》，看天边的月亮，我看到的月亮和浙江看到的是一样的。在357000公里之外的月亮看起来，地球上的我和家人应该是贴在一起的吧？暑假的时候，妹妹说爷爷不泡茶这个奶茶店为什么叫爷爷不泡茶呢——因为「爷爷」不泡茶，那就是「奶茶」。&lt;/p&gt;</description></item><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS
-&lt;/h2&gt;&lt;h2 id="mc-dml"&gt;MC-DML
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
+&lt;p&gt;中秋之夜我在听《爷爷泡的茶》，看天边的月亮，我看到的月亮和浙江看到的是一样的。在357000公里之外的月亮看起来，地球上的我和家人应该是贴在一起的吧？暑假的时候，妹妹说爷爷不泡茶这个奶茶店为什么叫爷爷不泡茶呢——因为「爷爷」不泡茶，那就是「奶茶」。&lt;/p&gt;</description></item><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS&lt;a href="#mcts" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="mc-dml"&gt;MC-DML&lt;a href="#mc-dml" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
 &gt;[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="主要解决的问题"&gt;主要解决的问题
-&lt;/h3&gt;&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
-&lt;h3 id="面临挑战"&gt;面临挑战
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="主要解决的问题"&gt;主要解决的问题&lt;a href="#%e4%b8%bb%e8%a6%81%e8%a7%a3%e5%86%b3%e7%9a%84%e9%97%ae%e9%a2%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
+&lt;h3 id="面临挑战"&gt;面临挑战&lt;a href="#%e9%9d%a2%e4%b8%b4%e6%8c%91%e6%88%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;游戏环境很复杂&lt;/li&gt;
 &lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
 &lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;
@@ -94,28 +96,28 @@ data-flex-grow="356"
 data-flex-basis="854px"
 &gt;
 &lt;/p&gt;</description></item><item><title>白露 | 露从今夜白，月是故乡明</title><link>https://ionfeather.github.io/2025/white-dew/</link><pubDate>Wed, 10 Sep 2025 18:52:06 +0800</pubDate><guid>https://ionfeather.github.io/2025/white-dew/</guid><description>&lt;img src="https://ionfeather.github.io/2025/white-dew/moon.jpg" alt="Featured image of post 白露 | 露从今夜白，月是故乡明" /&gt;&lt;p&gt;和唐老师和Tim Ding拍月食。9月6日的晚上是中元节，9月7日则是白露，还将会有月全食。&lt;/p&gt;
-&lt;p&gt;我开玩笑地说：「真的有点鬼影憧憧的。」唐老师告诉我，北航在中元节那天还在凌晨2点到6点进行了拉练，那天月亮西垂在树梢，被大气层折射成了红月亮。在红月亮下，一群军训学生在训练——真的很有恐怖小说的开头的味道。如果是恐怖小说，之后的视角就要切换到学生，说他从来不信这些，但是那天营地里发生了一些事，实在是无法解释&amp;hellip;&amp;hellip;&lt;/p&gt;</description></item><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction
-&lt;/h2&gt;&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
+&lt;p&gt;我开玩笑地说：「真的有点鬼影憧憧的。」唐老师告诉我，北航在中元节那天还在凌晨2点到6点进行了拉练，那天月亮西垂在树梢，被大气层折射成了红月亮。在红月亮下，一群军训学生在训练——真的很有恐怖小说的开头的味道。如果是恐怖小说，之后的视角就要切换到学生，说他从来不信这些，但是那天营地里发生了一些事，实在是无法解释&amp;hellip;&amp;hellip;&lt;/p&gt;</description></item><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction&lt;a href="#introduction" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
 &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记。&lt;/p&gt;
-&lt;h2 id="words-and-tokens"&gt;Words and Tokens
-&lt;/h2&gt;&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
-&lt;h3 id="words"&gt;Words
-&lt;/h3&gt;&lt;p&gt;为什么不用词？&lt;/p&gt;
+&lt;h2 id="words-and-tokens"&gt;Words and Tokens&lt;a href="#words-and-tokens" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
+&lt;h3 id="words"&gt;Words&lt;a href="#words" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;为什么不用词？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;有些语言没有orthographic words&lt;/li&gt;
 &lt;li&gt;词的数量会随着文章增长，词汇表永远都会覆盖不足&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="morphemes"&gt;Morphemes
-&lt;/h3&gt;&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>处暑 |
+&lt;h3 id="morphemes"&gt;Morphemes&lt;a href="#morphemes" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>处暑 |
 江南好，风景旧曾谙</title><link>https://ionfeather.github.io/2025/the-end-of-heat/</link><pubDate>Tue, 26 Aug 2025 19:08:55 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-end-of-heat/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-end-of-heat/cover.jpg" alt="Featured image of post 处暑 |
 江南好，风景旧曾谙" /&gt;&lt;p&gt;江南好，风景旧曾谙。日出江花红胜火，春来江水绿如蓝。能不忆江南？&lt;/p&gt;
-&lt;p&gt;在离开浙江之前，我没有想过我会思念它那炙热的夏天，寒冷的冬天，无休止的蝉鸣或者是家旁边平平无奇的山。这次回家是边旅游边回家，从北京一路向南（离开有你的季节），第一站是湖南长沙，第二站是江西南昌，第三站才是家。&lt;/p&gt;</description></item><item><title>大暑 | Shall I compare thee to a summer's day?</title><link>https://ionfeather.github.io/2025/greater-heat/</link><pubDate>Tue, 22 Jul 2025 15:44:41 +0800</pubDate><guid>https://ionfeather.github.io/2025/greater-heat/</guid><description>&lt;img src="https://ionfeather.github.io/2025/greater-heat/cover.jpg" alt="Featured image of post 大暑 | Shall I compare thee to a summer's day?" /&gt;&lt;h2 id="日常"&gt;日常
-&lt;/h2&gt;&lt;p&gt;进入了健身的关键时刻！感觉最近的效果还是蛮不错的，好像有那么一些些形状要出来了。可能这就是那些大佬说的新手福利期？&lt;/p&gt;
+&lt;p&gt;在离开浙江之前，我没有想过我会思念它那炙热的夏天，寒冷的冬天，无休止的蝉鸣或者是家旁边平平无奇的山。这次回家是边旅游边回家，从北京一路向南（离开有你的季节），第一站是湖南长沙，第二站是江西南昌，第三站才是家。&lt;/p&gt;</description></item><item><title>大暑 | Shall I compare thee to a summer's day?</title><link>https://ionfeather.github.io/2025/greater-heat/</link><pubDate>Tue, 22 Jul 2025 15:44:41 +0800</pubDate><guid>https://ionfeather.github.io/2025/greater-heat/</guid><description>&lt;img src="https://ionfeather.github.io/2025/greater-heat/cover.jpg" alt="Featured image of post 大暑 | Shall I compare thee to a summer's day?" /&gt;&lt;h2 id="日常"&gt;日常&lt;a href="#%e6%97%a5%e5%b8%b8" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;进入了健身的关键时刻！感觉最近的效果还是蛮不错的，好像有那么一些些形状要出来了。可能这就是那些大佬说的新手福利期？&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;周五和彭打球，她问我有没有看过《罗小黑战记2》，我果断摇了摇头——虽然我大学有一个同学超级喜欢，在QQ空间里天天发它的二创——但我确实没有自己看过，只是知道它那个一年一集动漫的「龟速传说」。她非常推荐：「那你必须去看看，真的很好看。」我：「好的，收到。」&lt;/p&gt;</description></item><item><title>小暑 | 在热浪的中心呼唤：嗯呢？</title><link>https://ionfeather.github.io/2025/lesser-heat/</link><pubDate>Tue, 15 Jul 2025 15:00:41 +0800</pubDate><guid>https://ionfeather.github.io/2025/lesser-heat/</guid><description>&lt;img src="https://ionfeather.github.io/2025/lesser-heat/cover.jpg" alt="Featured image of post 小暑 | 在热浪的中心呼唤：嗯呢？" /&gt;&lt;p&gt;最近迷上了绝区零。&lt;/p&gt;
-&lt;p&gt;嗯呢？嗯嗯呢！（可能是太久没玩过这种养成+动作类的游戏了，每天上线打一打，玩的时候不仅有一些弹刀、割草的爽感，而且还有和游戏里角色谈恋爱的期待。不仅如此，期待2.1版本到来抽星见雅的过程我感觉很有成就感。之前玩皇室战争，那个奖励简直&amp;hellip;&amp;hellip;我特别想把12级卡升级到14级，等压实在是严重得离谱，但是升级一张卡可能就要花费我的一个月之久，而且如果要算上觉醒卡的话，皇室战争的强度实在是高得离谱。绝区零相比于皇室战争的奖励要大方太多。）&lt;/p&gt;</description></item><item><title>夏至 | 摄影大师再出世</title><link>https://ionfeather.github.io/2025/the-summer-solstice/</link><pubDate>Wed, 25 Jun 2025 22:16:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-summer-solstice/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-summer-solstice/DSCF1934.jpg" alt="Featured image of post 夏至 | 摄影大师再出世" /&gt;&lt;h2 id="日常"&gt;日常
-&lt;/h2&gt;&lt;p&gt;学校里的杏子成熟了。路上可以看到杏子挂满枝头，虽然旁边还会悬挂一个「喷洒农药，请勿采摘」的标语，但是事实上标语是吓唬人用的，书院都会举办采摘的活动。&lt;/p&gt;</description></item><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
-&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
+&lt;p&gt;嗯呢？嗯嗯呢！（可能是太久没玩过这种养成+动作类的游戏了，每天上线打一打，玩的时候不仅有一些弹刀、割草的爽感，而且还有和游戏里角色谈恋爱的期待。不仅如此，期待2.1版本到来抽星见雅的过程我感觉很有成就感。之前玩皇室战争，那个奖励简直&amp;hellip;&amp;hellip;我特别想把12级卡升级到14级，等压实在是严重得离谱，但是升级一张卡可能就要花费我的一个月之久，而且如果要算上觉醒卡的话，皇室战争的强度实在是高得离谱。绝区零相比于皇室战争的奖励要大方太多。）&lt;/p&gt;</description></item><item><title>夏至 | 摄影大师再出世</title><link>https://ionfeather.github.io/2025/the-summer-solstice/</link><pubDate>Wed, 25 Jun 2025 22:16:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-summer-solstice/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-summer-solstice/DSCF1934.jpg" alt="Featured image of post 夏至 | 摄影大师再出世" /&gt;&lt;h2 id="日常"&gt;日常&lt;a href="#%e6%97%a5%e5%b8%b8" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;学校里的杏子成熟了。路上可以看到杏子挂满枝头，虽然旁边还会悬挂一个「喷洒农药，请勿采摘」的标语，但是事实上标语是吓唬人用的，书院都会举办采摘的活动。&lt;/p&gt;</description></item><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;a href="#%e4%bb%8b%e7%bb%8d" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp"
 width="1600"
@@ -130,16 +132,16 @@ class="gallery-image"
 data-flex-grow="100"
 data-flex-basis="240px"
 &gt;
-&lt;/p&gt;</description></item><item><title>芒种 | 时间像是仓鼠轮子越跑越快</title><link>https://ionfeather.github.io/2025/grain-in-beard/</link><pubDate>Tue, 03 Jun 2025 12:41:41 +0800</pubDate><guid>https://ionfeather.github.io/2025/grain-in-beard/</guid><description>&lt;img src="https://ionfeather.github.io/2025/grain-in-beard/cover.jpg" alt="Featured image of post 芒种 | 时间像是仓鼠轮子越跑越快" /&gt;&lt;p&gt;妹妹很喜欢养一只小动物，她养过乌龟、绿萝，最想养的是一只小猫咪。但是毕竟妈妈并不是特别喜欢，所以最后养了一只金丝熊。具体来说应该是卷毛波利，但是在一个冬天又一个夏天之后，毛已经变得直直的，不知道还是不是应该这么叫它。妹妹也没有给它取名字，所以还是叫它仓鼠吧。&lt;/p&gt;</description></item><item><title>小满 | 春天一晃而过，夏天已然到来</title><link>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</link><pubDate>Wed, 21 May 2025 20:34:06 +0800</pubDate><guid>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</guid><description>&lt;img src="https://ionfeather.github.io/2025/lesser-fullness-of-grain/cover.jpg" alt="Featured image of post 小满 | 春天一晃而过，夏天已然到来" /&gt;&lt;p&gt;好久没写博客了，错过了立夏和谷雨。沉迷拍照和发朋友圈，博客大业被落下了——仔细看一下照片目录里：郁金香、济南旅游、运动会、国家植物园、雁栖湖、广东旅游、蔷薇花、China P&amp;amp;E展览&amp;hellip;事情好像变得不妙，博客写完这些好像有点费劲。&lt;/p&gt;</description></item><item><title>清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」</title><link>https://ionfeather.github.io/2025/pure-brightness/</link><pubDate>Fri, 04 Apr 2025 21:18:11 +0800</pubDate><guid>https://ionfeather.github.io/2025/pure-brightness/</guid><description>&lt;img src="https://ionfeather.github.io/2025/pure-brightness/cover.jpg" alt="Featured image of post 清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」" /&gt;&lt;p&gt;在三月的某一天，SH突然问我：「清明要不要去沙漠？」我有点诧异——这个主意好酷，但是会不会有点难？或者说有点什么问题？报团嘛？会不会有什么不好玩的地方？在考虑了一周之后，还是决定出发——因为这个沙漠的主意听起来确实是太酷了好嘛！于是SH的室友唐老师以及我们四个同门踏上了这场包头-库布齐之旅。&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述
-&lt;/h2&gt;&lt;ul&gt;
+&lt;/p&gt;</description></item><item><title>芒种 | 时间像是仓鼠轮子越跑越快</title><link>https://ionfeather.github.io/2025/grain-in-beard/</link><pubDate>Tue, 03 Jun 2025 12:41:41 +0800</pubDate><guid>https://ionfeather.github.io/2025/grain-in-beard/</guid><description>&lt;img src="https://ionfeather.github.io/2025/grain-in-beard/cover.jpg" alt="Featured image of post 芒种 | 时间像是仓鼠轮子越跑越快" /&gt;&lt;p&gt;妹妹很喜欢养一只小动物，她养过乌龟、绿萝，最想养的是一只小猫咪。但是毕竟妈妈并不是特别喜欢，所以最后养了一只金丝熊。具体来说应该是卷毛波利，但是在一个冬天又一个夏天之后，毛已经变得直直的，不知道还是不是应该这么叫它。妹妹也没有给它取名字，所以还是叫它仓鼠吧。&lt;/p&gt;</description></item><item><title>小满 | 春天一晃而过，夏天已然到来</title><link>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</link><pubDate>Wed, 21 May 2025 20:34:06 +0800</pubDate><guid>https://ionfeather.github.io/2025/lesser-fullness-of-grain/</guid><description>&lt;img src="https://ionfeather.github.io/2025/lesser-fullness-of-grain/cover.jpg" alt="Featured image of post 小满 | 春天一晃而过，夏天已然到来" /&gt;&lt;p&gt;好久没写博客了，错过了立夏和谷雨。沉迷拍照和发朋友圈，博客大业被落下了——仔细看一下照片目录里：郁金香、济南旅游、运动会、国家植物园、雁栖湖、广东旅游、蔷薇花、China P&amp;amp;E展览&amp;hellip;事情好像变得不妙，博客写完这些好像有点费劲。&lt;/p&gt;</description></item><item><title>清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」</title><link>https://ionfeather.github.io/2025/pure-brightness/</link><pubDate>Fri, 04 Apr 2025 21:18:11 +0800</pubDate><guid>https://ionfeather.github.io/2025/pure-brightness/</guid><description>&lt;img src="https://ionfeather.github.io/2025/pure-brightness/cover.jpg" alt="Featured image of post 清明 | 在雨纷纷的节气中见到「大漠孤烟直，长河落日圆」" /&gt;&lt;p&gt;在三月的某一天，SH突然问我：「清明要不要去沙漠？」我有点诧异——这个主意好酷，但是会不会有点难？或者说有点什么问题？报团嘛？会不会有什么不好玩的地方？在考虑了一周之后，还是决定出发——因为这个沙漠的主意听起来确实是太酷了好嘛！于是SH的室友唐老师以及我们四个同门踏上了这场包头-库布齐之旅。&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述&lt;a href="#%e9%98%85%e8%af%bb%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
 &lt;li&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods&lt;/li&gt;
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="可用的模型"&gt;可用的模型
-&lt;/h3&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库
-&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
+&lt;h3 id="可用的模型"&gt;可用的模型&lt;a href="#%e5%8f%af%e7%94%a8%e7%9a%84%e6%a8%a1%e5%9e%8b" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库&lt;a href="#%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
 width="1600"
 height="2163"
 srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w"
@@ -152,8 +154,8 @@ data-flex-grow="73"
 data-flex-basis="177px"
 &gt;
 &lt;/p&gt;
-&lt;h3 id="ttd"&gt;TTD
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="ttd"&gt;TTD&lt;a href="#ttd" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://db.idrblab.net/ttd/" target="_blank" rel="noopener"
 &gt;TTD&lt;/a&gt;
 &lt;ul&gt;
@@ -206,8 +208,8 @@ data-flex-basis="407px"
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action
-&lt;/h4&gt;&lt;table&gt;
+&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action&lt;a href="#%e8%a1%a8%e4%b8%80target-to-drug-mapping-with-mode-of-action" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;TargetID&lt;/th&gt;
@@ -225,8 +227,8 @@ data-flex-basis="407px"
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;这个表格表示：ID为D00RRU的药物能够以调节剂的方式作用ID为T87024的疾病，并且已经被批准。&lt;/p&gt;</description></item><item><title>春分 | 拍堤春水四垂天，红墙白塔，小花杨柳</title><link>https://ionfeather.github.io/2025/the-spring-equinox/</link><pubDate>Sat, 22 Mar 2025 14:39:56 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-spring-equinox/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/cover.jpg" alt="Featured image of post 春分 | 拍堤春水四垂天，红墙白塔，小花杨柳" /&gt;&lt;h2 id="北海公园"&gt;北海公园
-&lt;/h2&gt;&lt;p&gt;周四晴朗，趁着早上刚开完会的懈怠，去北海公园探春。春色正好，看到了索尼、尼康、富士、佳能相机不下十余只对着阐福寺的牌匾和桃花「咔咔咔」地按下快门。&lt;/p&gt;</description></item><item><title>惊蛰 | 漫长的冬天终于到达了尾声</title><link>https://ionfeather.github.io/2025/the-waking-of-insects/</link><pubDate>Wed, 05 Mar 2025 14:37:00 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-waking-of-insects/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/cover.jpg" alt="Featured image of post 惊蛰 | 漫长的冬天终于到达了尾声" /&gt;&lt;p&gt;盼望着，盼望着，春天的脚步近了。飞快，羽绒服已经太热，食堂门口的桃花准备抽枝，路过图书馆时望见乌鸦「哇——哇——」地向北飞。&lt;/p&gt;
+&lt;p&gt;这个表格表示：ID为D00RRU的药物能够以调节剂的方式作用ID为T87024的疾病，并且已经被批准。&lt;/p&gt;</description></item><item><title>春分 | 拍堤春水四垂天，红墙白塔，小花杨柳</title><link>https://ionfeather.github.io/2025/the-spring-equinox/</link><pubDate>Sat, 22 Mar 2025 14:39:56 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-spring-equinox/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-spring-equinox/cover.jpg" alt="Featured image of post 春分 | 拍堤春水四垂天，红墙白塔，小花杨柳" /&gt;&lt;h2 id="北海公园"&gt;北海公园&lt;a href="#%e5%8c%97%e6%b5%b7%e5%85%ac%e5%9b%ad" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;周四晴朗，趁着早上刚开完会的懈怠，去北海公园探春。春色正好，看到了索尼、尼康、富士、佳能相机不下十余只对着阐福寺的牌匾和桃花「咔咔咔」地按下快门。&lt;/p&gt;</description></item><item><title>惊蛰 | 漫长的冬天终于到达了尾声</title><link>https://ionfeather.github.io/2025/the-waking-of-insects/</link><pubDate>Wed, 05 Mar 2025 14:37:00 +0800</pubDate><guid>https://ionfeather.github.io/2025/the-waking-of-insects/</guid><description>&lt;img src="https://ionfeather.github.io/2025/the-waking-of-insects/cover.jpg" alt="Featured image of post 惊蛰 | 漫长的冬天终于到达了尾声" /&gt;&lt;p&gt;盼望着，盼望着，春天的脚步近了。飞快，羽绒服已经太热，食堂门口的桃花准备抽枝，路过图书馆时望见乌鸦「哇——哇——」地向北飞。&lt;/p&gt;
 &lt;p&gt;已经摸上我的相机，快乐地订好了出游计划。&lt;/p&gt;</description></item><item><title>论文阅读 | AI辅助药物设计</title><link>https://ionfeather.github.io/2025/ai-assist-drug-design/</link><pubDate>Wed, 26 Feb 2025 22:17:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/ai-assist-drug-design/</guid><description>&lt;p&gt;开展一些AI-assist Drug Design 的方向探索，需要进行一些论文阅读和调研，形成调研报告。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;参考&lt;/strong&gt;：&lt;/p&gt;
 &lt;ul&gt;
@@ -235,19 +237,19 @@ data-flex-basis="407px"
 &lt;li&gt;&lt;a class="link" href="https://zhouh.github.io/" target="_blank" rel="noopener"
 &gt;Hao Zhou（周浩)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>博客探索 | 搬运一些Shortcodes</title><link>https://ionfeather.github.io/2025/shortcodes/</link><pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate><guid>https://ionfeather.github.io/2025/shortcodes/</guid><description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。现在每个示例都会先显示源码，把鼠标悬停在代码块右上角就会出现「Copy」按钮，点击即可复制。&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>博客探索 | 搬运一些Shortcodes</title><link>https://ionfeather.github.io/2025/shortcodes/</link><pubDate>Tue, 18 Feb 2025 13:40:27 +0800</pubDate><guid>https://ionfeather.github.io/2025/shortcodes/</guid><description>&lt;p&gt;一直想用一些shortcodes来优化一下页面的呈现方式。现在每个示例都会先显示源码，把鼠标悬停在代码块右上角就会出现「Copy」按钮，点击即可复制。&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs&lt;a href="#%e6%b7%b1%e5%85%a5llms" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
 &gt;Deep dive into LLMs like ChatGPT by Andrej Karpathy (TL;DR) | Anfal Mushtaq&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="预训练"&gt;预训练
-&lt;/h3&gt;&lt;h4 id="tokenization"&gt;Tokenization
-&lt;/h4&gt;&lt;h4 id="naural-network-io"&gt;Naural Network I/O
-&lt;/h4&gt;&lt;h4 id="open-base-models"&gt;Open Base Models
-&lt;/h4&gt;&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training
-&lt;/h3&gt;&lt;h4 id="sft"&gt;SFT
-&lt;/h4&gt;&lt;h5 id="data-conversations"&gt;Data Conversations
-&lt;/h5&gt;&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆
-&lt;/h5&gt;&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？
-&lt;/h6&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;h3 id="预训练"&gt;预训练&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="tokenization"&gt;Tokenization&lt;a href="#tokenization" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="naural-network-io"&gt;Naural Network I/O&lt;a href="#naural-network-io" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="open-base-models"&gt;Open Base Models&lt;a href="#open-base-models" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83%e5%88%b0post-training" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="sft"&gt;SFT&lt;a href="#sft" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="data-conversations"&gt;Data Conversations&lt;a href="#data-conversations" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆&lt;a href="#%e5%b9%bb%e8%a7%89tool-use%e5%92%8c%e8%ae%b0%e5%bf%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？&lt;a href="#%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e5%b9%bb%e8%a7%89" class="header-anchor"&gt;&lt;/a&gt;&lt;/h6&gt;
+&lt;p&gt;方法一：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;提取一段训练数据。&lt;/li&gt;
 &lt;li&gt;使用 Llama 3 生成一个关于它的事实问题。&lt;/li&gt;
@@ -263,12 +265,12 @@ data-flex-basis="407px"
 &gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）：提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
-&lt;/h2&gt;&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;</description></item><item><title>雨水 | 北京的「雨水」是艳阳高照</title><link>https://ionfeather.github.io/2025/rainwater/</link><pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate><guid>https://ionfeather.github.io/2025/rainwater/</guid><description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 雨水 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
+&lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）&lt;a href="#%e4%b8%80%e7%bb%bc%e8%bf%b0%e6%a1%86%e6%9e%b6tran-et-al-2025" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;</description></item><item><title>雨水 | 北京的「雨水」是艳阳高照</title><link>https://ionfeather.github.io/2025/rainwater/</link><pubDate>Fri, 14 Feb 2025 14:36:39 +0800</pubDate><guid>https://ionfeather.github.io/2025/rainwater/</guid><description>&lt;img src="https://ionfeather.github.io/2025/rainwater/cover.jpg" alt="Featured image of post 雨水 | 北京的「雨水」是艳阳高照" /&gt;&lt;p&gt;雨水：表示降水开始，雨量逐步增多。雨水节气天气变化不定，是全年寒潮过程出现最多的时节之一，忽冷忽热，天气乍暖还寒。&lt;/p&gt;
 &lt;p&gt;北京最近的天气确实是这样。在北京能感受到24节气的准确，能感受到四季分明是什么感觉。&lt;/p&gt;</description></item><item><title>元宵节 | 东风夜放花千树，更吹落、星如雨</title><link>https://ionfeather.github.io/2025/lanternfestival/</link><pubDate>Wed, 12 Feb 2025 17:51:19 +0800</pubDate><guid>https://ionfeather.github.io/2025/lanternfestival/</guid><description>&lt;img src="https://ionfeather.github.io/2025/lanternfestival/cover.jpg" alt="Featured image of post 元宵节 | 东风夜放花千树，更吹落、星如雨" /&gt;&lt;p&gt;春节快乐！&lt;/p&gt;
 &lt;p&gt;工科研究生的假期有点短暂了。我已经回校了。&lt;/p&gt;
-&lt;p&gt;到学校了感觉自己好多东西需要购置。Apple Watch的表带现在明显太松了，但是官方太贵，第三方又有点儿硬，计划看一下Bilibili上的测评，进行一波购置。还有看上了影视飓风的一款帽子，上面可以贴上你的mbti，这对我这个enfp根本无法拒绝。&lt;/p&gt;</description></item><item><title>博客探索 | 使用Obsidian来写博客</title><link>https://ionfeather.github.io/2025/obsidian/</link><pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate><guid>https://ionfeather.github.io/2025/obsidian/</guid><description>&lt;p&gt;之前一直在用Typora来写文章，发现有的时候也太难用了，不仅插件少，还要付费。这个时候看到很多的博客都用Obsidian来写，不得不心动了。&lt;/p&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;h2 id="全书结构"&gt;全书结构
-&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp"
+&lt;p&gt;到学校了感觉自己好多东西需要购置。Apple Watch的表带现在明显太松了，但是官方太贵，第三方又有点儿硬，计划看一下Bilibili上的测评，进行一波购置。还有看上了影视飓风的一款帽子，上面可以贴上你的mbti，这对我这个enfp根本无法拒绝。&lt;/p&gt;</description></item><item><title>博客探索 | 使用Obsidian来写博客</title><link>https://ionfeather.github.io/2025/obsidian/</link><pubDate>Wed, 12 Feb 2025 15:59:30 +0800</pubDate><guid>https://ionfeather.github.io/2025/obsidian/</guid><description>&lt;p&gt;之前一直在用Typora来写文章，发现有的时候也太难用了，不仅插件少，还要付费。这个时候看到很多的博客都用Obsidian来写，不得不心动了。&lt;/p&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;h2 id="全书结构"&gt;全书结构&lt;a href="#%e5%85%a8%e4%b9%a6%e7%bb%93%e6%9e%84" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp"
 width="1600"
 height="1221"
 srcset="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_482676b02a8fb6d0.webp 800w, https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp 1600w"
@@ -282,12 +284,12 @@ data-flex-grow="131"
 data-flex-basis="314px"
 &gt;
 &lt;/p&gt;
-&lt;h2 id="预备知识"&gt;预备知识
-&lt;/h2&gt;&lt;h3 id="张量"&gt;张量
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;张量表示一个由数值组成的数组，这个数组可能有多个维度&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;具有一个轴的张量对应数学上的&lt;em&gt;向量&lt;/em&gt;（vector）； 具有两个轴的张量对应数学上的&lt;em&gt;矩阵&lt;/em&gt;（matrix）； 具有两个轴以上的张量没有特殊的数学名称。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历
-&lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
-&lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
+&lt;h2 id="预备知识"&gt;预备知识&lt;a href="#%e9%a2%84%e5%a4%87%e7%9f%a5%e8%af%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="张量"&gt;张量&lt;a href="#%e5%bc%a0%e9%87%8f" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;张量表示一个由数值组成的数组，这个数组可能有多个维度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;具有一个轴的张量对应数学上的&lt;em&gt;向量&lt;/em&gt;（vector）； 具有两个轴的张量对应数学上的&lt;em&gt;矩阵&lt;/em&gt;（matrix）； 具有两个轴以上的张量没有特殊的数学名称。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历&lt;a href="#%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%e7%bb%8f%e5%8e%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain&lt;a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%b9%a0langchain" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 &lt;div class="chat --other"&gt;
 &lt;div class="chat__inner"&gt;
 &lt;div class="chat__meta"&gt;导师&amp;nbsp;&amp;nbsp;&amp;nbsp;2024-10-12 14:30&lt;/div&gt;
@@ -462,5 +464,5 @@ html[data-scheme="dark"] .chat__meta {
 color: rgba(190, 200, 210, 0.78);
 }
 &lt;/style&gt;
-&lt;p&gt;使用LangChain听说比较方便。&lt;/p&gt;</description></item><item><title>梦 | 三国阴阳师</title><link>https://ionfeather.github.io/2024/dream/</link><pubDate>Sun, 20 Oct 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/dream/</guid><description>&lt;img src="https://ionfeather.github.io/2024/dream/cover.jpg" alt="Featured image of post 梦 | 三国阴阳师" /&gt;&lt;h2 id="梦"&gt;梦
-&lt;/h2&gt;&lt;p&gt;这是一个英雄辈出的时代。所谓阴阳师，就是使用牌组与其他人对战来决定胜负的职业。在这里，国之阴阳师是一国中最强的阴阳师，中日韩三国每年都会选拔国之阴阳师，并且对战，决出最后的冠军。&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;使用LangChain听说比较方便。&lt;/p&gt;</description></item><item><title>梦 | 三国阴阳师</title><link>https://ionfeather.github.io/2024/dream/</link><pubDate>Sun, 20 Oct 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/dream/</guid><description>&lt;img src="https://ionfeather.github.io/2024/dream/cover.jpg" alt="Featured image of post 梦 | 三国阴阳师" /&gt;&lt;h2 id="梦"&gt;梦&lt;a href="#%e6%a2%a6" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;这是一个英雄辈出的时代。所谓阴阳师，就是使用牌组与其他人对战来决定胜负的职业。在这里，国之阴阳师是一国中最强的阴阳师，中日韩三国每年都会选拔国之阴阳师，并且对战，决出最后的冠军。&lt;/p&gt;</description></item></channel></rss>

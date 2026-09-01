@@ -1,28 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM基础 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm%E5%9F%BA%E7%A1%80/</link><description>Recent content in LLM基础 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 28 Aug 2025 19:28:49 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml"/><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction
-&lt;/h2&gt;&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LLM基础 on ionfeather'Log</title><link>https://ionfeather.github.io/tags/llm%E5%9F%BA%E7%A1%80/</link><description>Recent content in LLM基础 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Thu, 28 Aug 2025 19:28:49 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/llm%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml"/><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction&lt;a href="#introduction" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
 &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记。&lt;/p&gt;
-&lt;h2 id="words-and-tokens"&gt;Words and Tokens
-&lt;/h2&gt;&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
-&lt;h3 id="words"&gt;Words
-&lt;/h3&gt;&lt;p&gt;为什么不用词？&lt;/p&gt;
+&lt;h2 id="words-and-tokens"&gt;Words and Tokens&lt;a href="#words-and-tokens" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
+&lt;h3 id="words"&gt;Words&lt;a href="#words" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;为什么不用词？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;有些语言没有orthographic words&lt;/li&gt;
 &lt;li&gt;词的数量会随着文章增长，词汇表永远都会覆盖不足&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="morphemes"&gt;Morphemes
-&lt;/h3&gt;&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
+&lt;h3 id="morphemes"&gt;Morphemes&lt;a href="#morphemes" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs&lt;a href="#%e6%b7%b1%e5%85%a5llms" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
 &gt;Deep dive into LLMs like ChatGPT by Andrej Karpathy (TL;DR) | Anfal Mushtaq&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="预训练"&gt;预训练
-&lt;/h3&gt;&lt;h4 id="tokenization"&gt;Tokenization
-&lt;/h4&gt;&lt;h4 id="naural-network-io"&gt;Naural Network I/O
-&lt;/h4&gt;&lt;h4 id="open-base-models"&gt;Open Base Models
-&lt;/h4&gt;&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training
-&lt;/h3&gt;&lt;h4 id="sft"&gt;SFT
-&lt;/h4&gt;&lt;h5 id="data-conversations"&gt;Data Conversations
-&lt;/h5&gt;&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆
-&lt;/h5&gt;&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？
-&lt;/h6&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;h3 id="预训练"&gt;预训练&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="tokenization"&gt;Tokenization&lt;a href="#tokenization" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="naural-network-io"&gt;Naural Network I/O&lt;a href="#naural-network-io" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="open-base-models"&gt;Open Base Models&lt;a href="#open-base-models" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83%e5%88%b0post-training" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="sft"&gt;SFT&lt;a href="#sft" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="data-conversations"&gt;Data Conversations&lt;a href="#data-conversations" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆&lt;a href="#%e5%b9%bb%e8%a7%89tool-use%e5%92%8c%e8%ae%b0%e5%bf%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？&lt;a href="#%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e5%b9%bb%e8%a7%89" class="header-anchor"&gt;&lt;/a&gt;&lt;/h6&gt;
+&lt;p&gt;方法一：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;提取一段训练数据。&lt;/li&gt;
 &lt;li&gt;使用 Llama 3 生成一个关于它的事实问题。&lt;/li&gt;

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCTS on ionfeather'Log</title><link>https://ionfeather.github.io/tags/mcts/</link><description>Recent content in MCTS on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 23 Sep 2025 17:22:57 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/mcts/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS
-&lt;/h2&gt;&lt;h2 id="mc-dml"&gt;MC-DML
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCTS on ionfeather'Log</title><link>https://ionfeather.github.io/tags/mcts/</link><description>Recent content in MCTS on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 23 Sep 2025 17:22:57 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/mcts/index.xml" rel="self" type="application/rss+xml"/><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS&lt;a href="#mcts" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="mc-dml"&gt;MC-DML&lt;a href="#mc-dml" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
 &gt;[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="主要解决的问题"&gt;主要解决的问题
-&lt;/h3&gt;&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
-&lt;h3 id="面临挑战"&gt;面临挑战
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="主要解决的问题"&gt;主要解决的问题&lt;a href="#%e4%b8%bb%e8%a6%81%e8%a7%a3%e5%86%b3%e7%9a%84%e9%97%ae%e9%a2%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
+&lt;h3 id="面临挑战"&gt;面临挑战&lt;a href="#%e9%9d%a2%e4%b8%b4%e6%8c%91%e6%88%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;游戏环境很复杂&lt;/li&gt;
 &lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
 &lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI4Science on ionfeather'Log</title><link>https://ionfeather.github.io/tags/ai4science/</link><description>Recent content in AI4Science on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/ai4science/index.xml" rel="self" type="application/rss+xml"/><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
-&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI4Science on ionfeather'Log</title><link>https://ionfeather.github.io/tags/ai4science/</link><description>Recent content in AI4Science on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Wed, 22 Apr 2026 12:00:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/ai4science/index.xml" rel="self" type="application/rss+xml"/><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;a href="#%e4%bb%8b%e7%bb%8d" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp"
 width="1600"
@@ -14,16 +14,16 @@ class="gallery-image"
 data-flex-grow="100"
 data-flex-basis="240px"
 &gt;
-&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述
-&lt;/h2&gt;&lt;ul&gt;
+&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述&lt;a href="#%e9%98%85%e8%af%bb%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
 &lt;li&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods&lt;/li&gt;
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="可用的模型"&gt;可用的模型
-&lt;/h3&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库
-&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
+&lt;h3 id="可用的模型"&gt;可用的模型&lt;a href="#%e5%8f%af%e7%94%a8%e7%9a%84%e6%a8%a1%e5%9e%8b" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库&lt;a href="#%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
 width="1600"
 height="2163"
 srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w"
@@ -36,8 +36,8 @@ data-flex-grow="73"
 data-flex-basis="177px"
 &gt;
 &lt;/p&gt;
-&lt;h3 id="ttd"&gt;TTD
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="ttd"&gt;TTD&lt;a href="#ttd" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://db.idrblab.net/ttd/" target="_blank" rel="noopener"
 &gt;TTD&lt;/a&gt;
 &lt;ul&gt;
@@ -90,8 +90,8 @@ data-flex-basis="407px"
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action
-&lt;/h4&gt;&lt;table&gt;
+&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action&lt;a href="#%e8%a1%a8%e4%b8%80target-to-drug-mapping-with-mode-of-action" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;TargetID&lt;/th&gt;

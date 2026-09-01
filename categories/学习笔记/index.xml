@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 01 Sep 2026 13:50:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="1-linux历史与基本命令"&gt;1. Linux历史与基本命令
-&lt;/h2&gt;&lt;h3 id="1-linux操作系统发展历史"&gt;1. Linux操作系统发展历史
-&lt;/h3&gt;&lt;ol&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather'Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather'Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 01 Sep 2026 13:50:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="linux历史与基本命令"&gt;Linux历史与基本命令&lt;a href="#linux%e5%8e%86%e5%8f%b2%e4%b8%8e%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="linux操作系统发展历史"&gt;Linux操作系统发展历史&lt;a href="#linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%8f%91%e5%b1%95%e5%8e%86%e5%8f%b2" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;1965 麻省理工学院开发multics；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;1969 Ken Thompson, Dennis Ritchie和Douglas Mcllroy发明早期Unix系统，且1972年用C语言重写内核；&lt;/p&gt;</description></item><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;1969 Ken Thompson, Dennis Ritchie和Douglas Mcllroy发明早期Unix系统，且1972年用C语言重写内核；&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ken Thompson, Dennis Ritchie为 Unix之父&lt;/p&gt;</description></item><item><title>论文阅读 | Bernini技术报告</title><link>https://ionfeather.github.io/2026/bernini/</link><pubDate>Thu, 18 Jun 2026 00:46:23 +0800</pubDate><guid>https://ionfeather.github.io/2026/bernini/</guid><description>&lt;blockquote&gt;
 &lt;p&gt;论文链接：&lt;a class="link" href="https://arxiv.org/abs/2605.22344" target="_blank" rel="noopener"
 &gt;arXiv:2605.22344&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;项目主页：&lt;a class="link" href="https://bernini-ai.github.io/" target="_blank" rel="noopener"
@@ -30,14 +32,14 @@
 &lt;blockquote&gt;
 &lt;p&gt;SGLang, a Structured Generation Language for LLMs&lt;/p&gt;</description></item><item><title>论文评审 | LLM-based评审方法研究</title><link>https://ionfeather.github.io/2026/automated-peer-review/</link><pubDate>Sun, 11 Jan 2026 19:53:10 +0800</pubDate><guid>https://ionfeather.github.io/2026/automated-peer-review/</guid><description>&lt;p&gt;做 agent 相关的项目时容易遇到这个问题：agent 生成的内容质量是否可信？如果进行人工标注太慢，而让 LLM 直接打分又不知道是否可信。&lt;/p&gt;
 &lt;p&gt;大模型辅助学术同行评审其实是个类似的场景——让模型评价一篇论文的质量，本质上和让它评价 agent 输出没有太大区别，都是用 LLM 做复杂内容的质量判断。&lt;/p&gt;</description></item><item><title>实习 | 兽人永不为奴，但偶尔可以</title><link>https://ionfeather.github.io/2026/intern/</link><pubDate>Thu, 08 Jan 2026 17:14:41 +0800</pubDate><guid>https://ionfeather.github.io/2026/intern/</guid><description>&lt;p&gt;准备找实习&amp;hellip;本文记录实习准备过程中的技术积累、面试经验以及实际项目心得。随着在LLM和多智能体领域研究的深入，这里更新了最新的项目经验和技能总结。&lt;/p&gt;</description></item><item><title>RAG | 从Demo到进阶</title><link>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</link><pubDate>Thu, 11 Dec 2025 18:59:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/rag-%E4%BB%8Edemo%E5%88%B0%E8%BF%9B%E9%98%B6/</guid><description>&lt;p&gt;RAG（Retrieval-Augmented Generation）的核心问题是：如何在生成阶段让 LLM 访问到它参数中没有的知识，同时保持其推理和泛化能力？&lt;a class="link" href="https://kirigaya.cn/blog/article?seq=356" target="_blank" rel="noopener"
-&gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS
-&lt;/h2&gt;&lt;h2 id="mc-dml"&gt;MC-DML
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
+&gt;如果论RAG的本质，其实际上是一种上下文工程（Context Engineering，CE）&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>论文阅读 | 基于LLM的文本游戏Agent蒙特卡洛规划</title><link>https://ionfeather.github.io/2025/mcts-llm/</link><pubDate>Tue, 23 Sep 2025 17:22:57 +0800</pubDate><guid>https://ionfeather.github.io/2025/mcts-llm/</guid><description>&lt;h2 id="mcts"&gt;MCTS&lt;a href="#mcts" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="mc-dml"&gt;MC-DML&lt;a href="#mc-dml" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://arxiv.org/abs/2504.16855" target="_blank" rel="noopener"
 &gt;[2504.16855] Monte Carlo Planning with Large Language Model for Text-Based Game Agents&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="主要解决的问题"&gt;主要解决的问题
-&lt;/h3&gt;&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
-&lt;h3 id="面临挑战"&gt;面临挑战
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="主要解决的问题"&gt;主要解决的问题&lt;a href="#%e4%b8%bb%e8%a6%81%e8%a7%a3%e5%86%b3%e7%9a%84%e9%97%ae%e9%a2%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;解决了文字冒险游戏中 AI 规划效率低、缺乏语言理解与经验记忆能力。&lt;/p&gt;
+&lt;h3 id="面临挑战"&gt;面临挑战&lt;a href="#%e9%9d%a2%e4%b8%b4%e6%8c%91%e6%88%98" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;游戏环境很复杂&lt;/li&gt;
 &lt;li&gt;传统的MCTS有局限性&lt;/li&gt;
 &lt;li&gt;LLM难以将规划转化成可执行动作，且无法平衡探索与利用&lt;/li&gt;
@@ -55,20 +57,20 @@ class="gallery-image"
 data-flex-grow="356"
 data-flex-basis="854px"
 &gt;
-&lt;/p&gt;</description></item><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction
-&lt;/h2&gt;&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
+&lt;/p&gt;</description></item><item><title>书籍阅读 | Speech and Language Processing</title><link>https://ionfeather.github.io/2025/speech-and-language-processing/</link><pubDate>Thu, 28 Aug 2025 19:28:49 +0800</pubDate><guid>https://ionfeather.github.io/2025/speech-and-language-processing/</guid><description>&lt;h2 id="introduction"&gt;Introduction&lt;a href="#introduction" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;阅读&lt;a class="link" href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" rel="noopener"
 &gt;Speech and Language Processing&lt;/a&gt;这本书的一些笔记。&lt;/p&gt;
-&lt;h2 id="words-and-tokens"&gt;Words and Tokens
-&lt;/h2&gt;&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
-&lt;h3 id="words"&gt;Words
-&lt;/h3&gt;&lt;p&gt;为什么不用词？&lt;/p&gt;
+&lt;h2 id="words-and-tokens"&gt;Words and Tokens&lt;a href="#words-and-tokens" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我们需要一个东西来建模语言，下面是我们的选择：&lt;/p&gt;
+&lt;h3 id="words"&gt;Words&lt;a href="#words" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;为什么不用词？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;有些语言没有orthographic words&lt;/li&gt;
 &lt;li&gt;词的数量会随着文章增长，词汇表永远都会覆盖不足&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="morphemes"&gt;Morphemes
-&lt;/h3&gt;&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍
-&lt;/h2&gt;&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
+&lt;h3 id="morphemes"&gt;Morphemes&lt;a href="#morphemes" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;语素类型&lt;/p&gt;</description></item><item><title>AIDR | Reasoning-based Drug Repurposing</title><link>https://ionfeather.github.io/2025/rbdr/</link><pubDate>Tue, 10 Jun 2025 14:24:22 +0800</pubDate><guid>https://ionfeather.github.io/2025/rbdr/</guid><description>&lt;p&gt;开发一种新药平均需要十年和十亿美元。Drug repurposing（药物重定位）走了一条捷径：已知安全性的老药，找新用途。阿司匹林从止痛药变成了心血管预防药，沙利度胺从镇静剂变成了多发性骨髓瘤治疗药。&lt;/p&gt;</description></item><item><title>AIDR | 基于网络的方法</title><link>https://ionfeather.github.io/2025/aidr-network-method/</link><pubDate>Thu, 05 Jun 2025 21:24:53 +0800</pubDate><guid>https://ionfeather.github.io/2025/aidr-network-method/</guid><description>&lt;h2 id="介绍"&gt;介绍&lt;a href="#%e4%bb%8b%e7%bb%8d" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;基于网络的AIDR方法基本都是利用网络的拓扑结构进行探索。一般来说是在异构网络上进行处理，对于异构网络，有这么一个&lt;a class="link" href="https://onlinelibrary.wiley.com/doi/10.1002/minf.202100200" target="_blank" rel="noopener"
 &gt;表示图&lt;/a&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/aidr-network-method/assets/2025/06-05-AIDD/index/IMG-20250605213040777_hu_bccd122846d63424.webp"
 width="1600"
@@ -83,16 +85,16 @@ class="gallery-image"
 data-flex-grow="100"
 data-flex-basis="240px"
 &gt;
-&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述
-&lt;/h2&gt;&lt;ul&gt;
+&lt;/p&gt;</description></item><item><title>AIDR | 综述与论文</title><link>https://ionfeather.github.io/2025/moleculerepurposing-2/</link><pubDate>Fri, 04 Apr 2025 01:42:58 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing-2/</guid><description>&lt;h2 id="阅读综述"&gt;阅读综述&lt;a href="#%e9%98%85%e8%af%bb%e7%bb%bc%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
 &lt;li&gt;Ai-Driven Drug Repurposing: Uncovering Hidden Potentials OfEstablished Medications For Rare Disease Treatment&lt;/li&gt;
 &lt;li&gt;Structure-based drug repurposing: Traditional and advanced AI/ML-aided methods&lt;/li&gt;
 &lt;li&gt;Artificial intelligence for drug repurposing against infectious diseases | &lt;em&gt;Artificial Intelligence Chemistry 2024&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;Artificial intelligence in COVID-19 drug repurposing | &lt;em&gt;The Lancet Digital Health&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="可用的模型"&gt;可用的模型
-&lt;/h3&gt;&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库
-&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
+&lt;h3 id="可用的模型"&gt;可用的模型&lt;a href="#%e5%8f%af%e7%94%a8%e7%9a%84%e6%a8%a1%e5%9e%8b" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;目前的再利用方法的实例主要集中在&lt;strong&gt;网络医学和大规模的患者数据分析&lt;/strong&gt;上。这里有&lt;strong&gt;CoV-KGE、BenevolentAI、异质有向生物医学图&lt;/strong&gt;等。&lt;/p&gt;</description></item><item><title>AIDR | 数据库探索</title><link>https://ionfeather.github.io/2025/moleculerepurposing/</link><pubDate>Sun, 23 Mar 2025 17:15:44 +0800</pubDate><guid>https://ionfeather.github.io/2025/moleculerepurposing/</guid><description>&lt;h2 id="数据库"&gt;数据库&lt;a href="#%e6%95%b0%e6%8d%ae%e5%ba%93" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp"
 width="1600"
 height="2163"
 srcset="https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_f31fcfa746e6b084.webp 800w, https://ionfeather.github.io/2025/moleculerepurposing/assets/%E6%95%B0%E6%8D%AE%E5%BA%93_hu_2ff06630c902896.webp 1600w"
@@ -105,8 +107,8 @@ data-flex-grow="73"
 data-flex-basis="177px"
 &gt;
 &lt;/p&gt;
-&lt;h3 id="ttd"&gt;TTD
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="ttd"&gt;TTD&lt;a href="#ttd" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;a class="link" href="https://db.idrblab.net/ttd/" target="_blank" rel="noopener"
 &gt;TTD&lt;/a&gt;
 &lt;ul&gt;
@@ -159,8 +161,8 @@ data-flex-basis="407px"
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action
-&lt;/h4&gt;&lt;table&gt;
+&lt;h4 id="表一target-to-drug-mapping-with-mode-of-action"&gt;表一：Target to drug mapping with mode of action&lt;a href="#%e8%a1%a8%e4%b8%80target-to-drug-mapping-with-mode-of-action" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;TargetID&lt;/th&gt;
@@ -186,19 +188,19 @@ data-flex-basis="407px"
 &lt;li&gt;&lt;a class="link" href="https://zhouh.github.io/" target="_blank" rel="noopener"
 &gt;Hao Zhou（周浩)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs
-&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
+&lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt;：&lt;/p&gt;</description></item><item><title>博客阅读 | 深入LLMs</title><link>https://ionfeather.github.io/2025/deepdiveintollms/</link><pubDate>Mon, 17 Feb 2025 13:33:33 +0800</pubDate><guid>https://ionfeather.github.io/2025/deepdiveintollms/</guid><description>&lt;h2 id="深入llms"&gt;深入LLMs&lt;a href="#%e6%b7%b1%e5%85%a5llms" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://anfalmushtaq.com/articles/deep-dive-into-llms-like-chatgpt-tldr" target="_blank" rel="noopener"
 &gt;Deep dive into LLMs like ChatGPT by Andrej Karpathy (TL;DR) | Anfal Mushtaq&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="预训练"&gt;预训练
-&lt;/h3&gt;&lt;h4 id="tokenization"&gt;Tokenization
-&lt;/h4&gt;&lt;h4 id="naural-network-io"&gt;Naural Network I/O
-&lt;/h4&gt;&lt;h4 id="open-base-models"&gt;Open Base Models
-&lt;/h4&gt;&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training
-&lt;/h3&gt;&lt;h4 id="sft"&gt;SFT
-&lt;/h4&gt;&lt;h5 id="data-conversations"&gt;Data Conversations
-&lt;/h5&gt;&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆
-&lt;/h5&gt;&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？
-&lt;/h6&gt;&lt;p&gt;方法一：&lt;/p&gt;
+&lt;h3 id="预训练"&gt;预训练&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="tokenization"&gt;Tokenization&lt;a href="#tokenization" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="naural-network-io"&gt;Naural Network I/O&lt;a href="#naural-network-io" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="open-base-models"&gt;Open Base Models&lt;a href="#open-base-models" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id="预训练到post-training"&gt;预训练到Post-Training&lt;a href="#%e9%a2%84%e8%ae%ad%e7%bb%83%e5%88%b0post-training" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id="sft"&gt;SFT&lt;a href="#sft" class="header-anchor"&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id="data-conversations"&gt;Data Conversations&lt;a href="#data-conversations" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id="幻觉tool-use和记忆"&gt;幻觉，Tool use和记忆&lt;a href="#%e5%b9%bb%e8%a7%89tool-use%e5%92%8c%e8%ae%b0%e5%bf%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h5&gt;
+&lt;h6 id="如何解决幻觉"&gt;如何解决幻觉？&lt;a href="#%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e5%b9%bb%e8%a7%89" class="header-anchor"&gt;&lt;/a&gt;&lt;/h6&gt;
+&lt;p&gt;方法一：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;提取一段训练数据。&lt;/li&gt;
 &lt;li&gt;使用 Llama 3 生成一个关于它的事实问题。&lt;/li&gt;
@@ -214,9 +216,9 @@ data-flex-basis="407px"
 &gt;Multi-Agent Collaboration: Harnessing the Power of Intelligent LLM Agents&lt;/a&gt;（Talebirad &amp;amp; Nadiri, 2023）：提出一套具体的多智能体系统构建方案，并分析 Auto-GPT、BabyAGI 等系统。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）
-&lt;/h2&gt;&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;h2 id="全书结构"&gt;全书结构
-&lt;/h2&gt;&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp"
+&lt;h2 id="一综述框架tran-et-al-2025"&gt;一、综述框架（Tran et al., 2025）&lt;a href="#%e4%b8%80%e7%bb%bc%e8%bf%b0%e6%a1%86%e6%9e%b6tran-et-al-2025" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;单个 LLM 的上限很明显：幻觉、慢思考、知识边界。多智能体系统（MAS）的思路是分工协作：把复杂任务分解，让多个 agent 各司其职，通过协作达成单个模型难以完成的目标。&lt;/p&gt;</description></item><item><title>书籍阅读 | 《动手学深度学习》</title><link>https://ionfeather.github.io/2025/d2l-01/</link><pubDate>Wed, 08 Jan 2025 16:00:34 +0800</pubDate><guid>https://ionfeather.github.io/2025/d2l-01/</guid><description>&lt;h2 id="全书结构"&gt;全书结构&lt;a href="#%e5%85%a8%e4%b9%a6%e7%bb%93%e6%9e%84" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp"
 width="1600"
 height="1221"
 srcset="https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_482676b02a8fb6d0.webp 800w, https://ionfeather.github.io/2025/d2l-01/assets/image-20250108163545542_hu_63fb9920712dfaa4.webp 1600w"
@@ -230,12 +232,12 @@ data-flex-grow="131"
 data-flex-basis="314px"
 &gt;
 &lt;/p&gt;
-&lt;h2 id="预备知识"&gt;预备知识
-&lt;/h2&gt;&lt;h3 id="张量"&gt;张量
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;张量表示一个由数值组成的数组，这个数组可能有多个维度&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;具有一个轴的张量对应数学上的&lt;em&gt;向量&lt;/em&gt;（vector）； 具有两个轴的张量对应数学上的&lt;em&gt;矩阵&lt;/em&gt;（matrix）； 具有两个轴以上的张量没有特殊的数学名称。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历
-&lt;/h2&gt;&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain
-&lt;/h2&gt;&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
+&lt;h2 id="预备知识"&gt;预备知识&lt;a href="#%e9%a2%84%e5%a4%87%e7%9f%a5%e8%af%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="张量"&gt;张量&lt;a href="#%e5%bc%a0%e9%87%8f" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;张量表示一个由数值组成的数组，这个数组可能有多个维度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;具有一个轴的张量对应数学上的&lt;em&gt;向量&lt;/em&gt;（vector）； 具有两个轴的张量对应数学上的&lt;em&gt;矩阵&lt;/em&gt;（matrix）； 具有两个轴以上的张量没有特殊的数学名称。&lt;/p&gt;</description></item><item><title>操作记录 | 虚拟环境配置操作记录</title><link>https://ionfeather.github.io/2024/virtual-environment-config/</link><pubDate>Sun, 15 Dec 2024 20:24:19 +0800</pubDate><guid>https://ionfeather.github.io/2024/virtual-environment-config/</guid><description>&lt;h2 id="虚拟环境配置经历"&gt;虚拟环境配置经历&lt;a href="#%e8%99%9a%e6%8b%9f%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae%e7%bb%8f%e5%8e%86" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我之前配置好了一个虚拟环境名为&lt;code&gt;vllm&lt;/code&gt;，专门用于vllm的启动，我还特意将其中的虚拟环境中的所有包的版本保存到&lt;code&gt;vllm_requirements.txt&lt;/code&gt;文件中。&lt;/p&gt;</description></item><item><title>博客阅读 | LangChain学习笔记</title><link>https://ionfeather.github.io/2024/langchain-learning/</link><pubDate>Tue, 26 Nov 2024 13:45:58 +0800</pubDate><guid>https://ionfeather.github.io/2024/langchain-learning/</guid><description>&lt;h2 id="为什么要学习langchain"&gt;为什么要学习LangChain&lt;a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%ad%a6%e4%b9%a0langchain" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;我希望能够构建一个能阅读PDF论文的Agent，并且能够输出对论文优缺点的评价。&lt;/p&gt;
 &lt;div class="chat --other"&gt;
 &lt;div class="chat__inner"&gt;
 &lt;div class="chat__meta"&gt;导师&amp;nbsp;&amp;nbsp;&amp;nbsp;2024-10-12 14:30&lt;/div&gt;
