@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RL on ionfeather' Log</title><link>https://ionfeather.github.io/tags/rl/</link><description>Recent content in RL on ionfeather' Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Mon, 14 Sep 2026 21:03:44 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/tags/rl/index.xml" rel="self" type="application/rss+xml"/><item><title>书籍阅读 | 强化学习入门</title><link>https://ionfeather.github.io/2026/rl/</link><pubDate>Mon, 14 Sep 2026 21:03:44 +0800</pubDate><guid>https://ionfeather.github.io/2026/rl/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://www.bilibili.com/video/BV1kb411i7KG/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=def42f0229df2650994ec2dc4854c7b4" target="_blank" rel="noopener"
+&gt;【中文字幕】David Silver深度强化算法学习 +项目讲解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://spinningup.qiwihui.com/zh-cn/latest/spinningup/rl_intro.html" target="_blank" rel="noopener"
+&gt;OpenAI Spinning Up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://hrl.boyuai.com/" target="_blank" rel="noopener"
+&gt;动手学深度学习&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="强化学习概述"&gt;强化学习概述&lt;a href="#%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e6%a6%82%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;强化学习是机器通过与环境交互来实现目标的一种方法。&lt;/p&gt;</description></item></channel></rss>

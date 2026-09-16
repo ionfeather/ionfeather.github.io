@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather' Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather' Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Tue, 01 Sep 2026 13:50:00 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="linux历史与基本命令"&gt;Linux历史与基本命令&lt;a href="#linux%e5%8e%86%e5%8f%b2%e4%b8%8e%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>学习札记 on ionfeather' Log</title><link>https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><description>Recent content in 学习札记 on ionfeather' Log</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>ionfeather'Log</copyright><lastBuildDate>Mon, 14 Sep 2026 21:03:44 +0800</lastBuildDate><atom:link href="https://ionfeather.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>书籍阅读 | 强化学习入门</title><link>https://ionfeather.github.io/2026/rl/</link><pubDate>Mon, 14 Sep 2026 21:03:44 +0800</pubDate><guid>https://ionfeather.github.io/2026/rl/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://www.bilibili.com/video/BV1kb411i7KG/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=def42f0229df2650994ec2dc4854c7b4" target="_blank" rel="noopener"
+&gt;【中文字幕】David Silver深度强化算法学习 +项目讲解&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://spinningup.qiwihui.com/zh-cn/latest/spinningup/rl_intro.html" target="_blank" rel="noopener"
+&gt;OpenAI Spinning Up&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://hrl.boyuai.com/" target="_blank" rel="noopener"
+&gt;动手学深度学习&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="强化学习概述"&gt;强化学习概述&lt;a href="#%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e6%a6%82%e8%bf%b0" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;强化学习是机器通过与环境交互来实现目标的一种方法。&lt;/p&gt;</description></item><item><title>学习笔记 | C++ 学习笔记</title><link>https://ionfeather.github.io/2026/cpp-learning/</link><pubDate>Tue, 01 Sep 2026 13:50:00 +0800</pubDate><guid>https://ionfeather.github.io/2026/cpp-learning/</guid><description>&lt;h2 id="linux历史与基本命令"&gt;Linux历史与基本命令&lt;a href="#linux%e5%8e%86%e5%8f%b2%e4%b8%8e%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" class="header-anchor"&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;h3 id="linux操作系统发展历史"&gt;Linux操作系统发展历史&lt;a href="#linux%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e5%8f%91%e5%b1%95%e5%8e%86%e5%8f%b2" class="header-anchor"&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
