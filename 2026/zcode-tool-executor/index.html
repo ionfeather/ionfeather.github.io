@@ -1,0 +1,516 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="沿一次真实工具调用的生命周期，理解 ZCode 如何把模型提出的操作转化为经过校验、调度、授权与记录的可控执行"><title>源码研读 | ZCode 工具执行器</title><link rel=canonical href=https://ionfeather.github.io/2026/zcode-tool-executor/><link rel=preload href=/scss/style.min.bc14f8e1679165876a91b0030da13ca993dfb453b567eac2d3cc0093932c3af8.css as=style><link rel=stylesheet href=/scss/style.min.bc14f8e1679165876a91b0030da13ca993dfb453b567eac2d3cc0093932c3af8.css><meta property='og:title' content="源码研读 | ZCode 工具执行器"><meta property='og:description' content="沿一次真实工具调用的生命周期，理解 ZCode 如何把模型提出的操作转化为经过校验、调度、授权与记录的可控执行"><meta property='og:url' content='https://ionfeather.github.io/2026/zcode-tool-executor/'><meta property='og:site_name' content="ionfeather' Log"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Agent'><meta property='article:tag' content='源码研读'><meta property='article:tag' content='ZCode'><meta property='article:published_time' content='2026-09-23T01:00:00+08:00'><meta property='article:modified_time' content='2026-09-23T01:00:00+08:00'><meta name=twitter:title content="源码研读 | ZCode 工具执行器"><meta name=twitter:description content="沿一次真实工具调用的生命周期，理解 ZCode 如何把模型提出的操作转化为经过校验、调度、授权与记录的可控执行"><link rel="shortcut icon" href=/ion-32.png><script>sessionStorage.getItem("siteVisited")?document.documentElement.classList.add("no-menu-anim"):sessionStorage.setItem("siteVisited","1")</script><script>(function(){var e=localStorage.getItem("StackColorScheme"),t=window.matchMedia("(prefers-color-scheme: dark)").matches,n=e==="dark"||e==="auto"&&t||!e&&t;document.documentElement.dataset.scheme=n?"dark":"light"})()</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap"></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css media=print onload='this.media="all"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css></noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap"></noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap"></noscript><link rel=stylesheet href=https://unpkg.com/applause-button/dist/applause-button.css><script type=speculationrules>
+{
+  "prerender": [
+    {
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "*\\?*" } },
+          { "not": { "selector_matches": "[target=_blank], [download], .glightbox" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
+</script><link rel=preload href=/ts/main.9e8ceefd1b112fd9edb2658418ee82afdcb1d906c195fa0a09c0af91a2f326c3.js as=script><link rel=preload href="/js/site.js?v=96b8394732c534959ef6c359c2fdb242" as=script><script src="/js/site.js?v=96b8394732c534959ef6c359c2fdb242" defer></script><script>(function(){var e=document.createElement("div");e.id="page-loading",e.innerHTML='<div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div>',document.addEventListener("DOMContentLoaded",function(){document.body.insertBefore(e,document.body.firstChild);var t,n,o=new URL(window.location.toString()),s=o.searchParams.get("keyword");s&&(t=document.querySelector(".search-form"),n=t?t.querySelector('input[name="keyword"]'):null,t&&n&&(n.value=s,t.classList.add("has-keyword")))}),document.addEventListener("DOMContentLoaded",function(){window.requestAnimationFrame(function(){window.setTimeout(function(){e&&e.classList.add("is-done")},160)})}),window.setTimeout(function(){e&&e.classList.add("is-done")},1200)})()</script></head><body class=article-page><script>(function(){localStorage.getItem("article-sidebar-rail")==="1"&&document.body.classList.add("is-sidebar-rail")})()</script><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_346bcac48b777fa1.jpg width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>ionfeather' Log</a></h1></div></header><div class=sidebar-social-bar><ol class=menu-social><li><a href=https://github.com/ionfeather target=_blank title=GitHub rel=me><svg t="1732597946058" class="icon" viewBox="0 0 1024 1024" p-id="3746" width="24" height="24"><path d="M850.346667 155.008a42.666667 42.666667.0 00-22.741334-23.509333c-8.704-3.754667-85.717333-33.322667-200.32 39.168H396.714667c-114.773333-72.618667-191.701333-42.922667-200.32-39.168a42.88 42.88.0 00-22.741334 23.466666c-26.197333 66.218667-18.048 136.448-7.850666 176.896C134.272 374.016 128 413.098667 128 469.333333c0 177.877333 127.104 227.882667 226.730667 246.272a189.568 189.568.0 00-13.013334 46.549334A44.373333 44.373333.0 00341.333333 768v38.613333c-19.498667-4.138667-41.002667-11.946667-55.168-26.112C238.08 732.416 188.330667 682.666667 128 682.666667V768c25.002667.0 65.365333 40.362667 97.834667 72.832 51.029333 51.029333 129.066667 55.253333 153.386666 55.253333 3.114667.0 5.376-.085333 6.528-.128A42.666667 42.666667.0 00426.666667 853.333333v-82.090666c4.266667-24.746667 20.224-49.621333 27.946666-56.362667A42.666667 42.666667.0 00431.488 640.298667c-138.154667-15.744-218.154667-48.810667-218.154667-170.965334.0-53.12 5.632-70.741333 31.573334-99.285333 11.008-12.117333 14.08-29.568 7.978666-44.8C248.064 313.344 234.112 259.797333 246.4 207.701333c20.650667-1.578667 59.904 4.565333 113.706667 40.96C367.104 253.44 375.466667 256 384 256h256a42.666667 42.666667.0 0023.936-7.338667c54.016-36.522667 92.970667-41.770667 113.664-41.130666 12.330667 52.224-1.578667 105.770667-6.4 117.674666a42.666667 42.666667.0 008.021333 44.928C805.077333 398.464 810.666667 416.085333 810.666667 469.333333c0 122.581333-79.957333 155.52-218.069334 170.922667A42.666667 42.666667.0 00569.472 714.965333C589.269333 732.032 597.333333 747.434666 597.333333 768v128h85.333334V768c0-20.437333-3.925333-38.101333-9.770667-53.12C769.92 695.765333 896 643.712 896 469.333333c0-56.362667-6.272-95.530667-37.76-137.514666C868.437333 291.413334 876.501333 221.312 850.346667 155.008z" fill="currentColor" p-id="3747"/></svg></a></li><li><a href=mailto:lizishadowmay@gmail.com target=_blank title=Email rel=me><svg t="1732597869588" class="icon" viewBox="0 0 1024 1024" p-id="23464" width="24" height="24"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857.0 01-73.142857 73.142857H170.666667A73.142857 73.142857.0 0197.52381 780.190476V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952.0 0126.087619 4.778666A72.704 72.704.0 01910.043429 197.632a73.508571 73.508571.0 0110.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857.0 01-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048.0 0140.155428-65.292191A72.97219 72.97219.0 01170.666667 170.666667h682.666666zm-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="23465" fill="currentColor"/></svg></a></li><li><a href=index.xml target=_blank title=RSS rel=me><svg class="icon" viewBox="0 0 1024 1024" width="200" height="200"><path d="M170.666667 426.666667c-25.6.0-42.666667 17.066667-42.666667 42.666666S145.066667 512 170.666667 512C358.4 512 512 665.6 512 853.333333 512 878.933333 529.066667 896 554.666667 896s42.666667-17.066667 42.666666-42.666667c0-234.666667-192-426.666667-426.666666-426.666666z" stroke="currentColor" fill="currentColor" stroke-width="0"/><path d="M170.666667 128C145.066667 128 128 145.066667 128 170.666667s17.066667 42.666667 42.666667 42.666666c354.133333.0 640 285.866667 640 640 0 25.6 17.066667 42.666667 42.666666 42.666667S896 878.933333 896 853.333333C896 452.266666 571.733333 128 170.666667 128z" stroke="currentColor" fill="currentColor" stroke-width="0"/><path d="M213.333333 810.666667m-85.333333.0a85.333333 85.333333.0 10170.666667.0 85.333333 85.333333.0 10-170.666667.0z" stroke="currentColor" fill="currentColor" stroke-width="0"/></svg></a></li></ol><button class=sidebar-rail-toggle type=button aria-label=收起侧边栏>
+<svg class="icon icon-tabler icon-sidebar-toggle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
+</button>
+<span id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828A4 4 0 109.172 9.172a4 4 0 005.656 5.656z"/><path d="M6.343 17.657l-1.414 1.414"/><path d="M6.343 6.343 4.929 4.929"/><path d="M17.657 6.343l1.414-1.414"/><path d="M17.657 17.657l1.414 1.414"/><path d="M4 12H2"/><path d="M12 4V2"/><path d="M20 12h2"/><path d="M12 20v2"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132.0.263.0.393.0a7.5 7.5.0 007.92 12.446A9 9 0 1112 2.992z"/></svg></span></div><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-nav-home" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 00-1-1h-4a1 1 0 00-1 1v8"/><path d="M3 10a2 2 0 01.709-1.528l7-6a2 2 0 012.582.0l7 6A2 2 0 0121 10v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+<span>主页</span></a></li><li><a href=/about/><svg class="icon icon-nav-about" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21A8 8 0 004 21"/></svg>
+<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-nav-archive" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 002 2h12a2 2 0 002-2V8"/><path d="M10 12h4"/></svg>
+<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-nav-search" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+<span>搜索</span></a></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives toc-widget"><div class=toc-widget-bar><a href=# class=toc-widget-header onclick='event.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})'><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2></a><button type=button class=toc-number-toggle aria-label=显示编号 title=显示编号>
+<svg class="glyph-number" viewBox="0 0 1024 1024" width="16" height="16"><path d="M341.333333 170.666667H896V256H341.333333V170.666667zM213.333333 128v128H256v42.666667H128V256h42.666667V170.666667H128V128h85.333333zM128 597.333333V490.666667h85.333333V469.333333H128v-42.666666h128v106.666666H170.666667v21.333334H256v42.666666H128zM213.333333 832H128v-42.666667h85.333333V768H128v-42.666667h128V896H128v-42.666667h85.333333V832zm128-362.666667H896v85.333334H341.333333v-85.333334zm0 298.666667H896v85.333333H341.333333V768z" fill="currentColor"/></svg>
+<svg class="glyph-lines" viewBox="0 0 1024 1024" width="16" height="16"><path d="M341.333333 170.666667h568.888889v113.777777H341.333333zm-227.555555.0h113.777778v113.777777H113.777778zm0 284.444444h113.777778v113.777778H113.777778zm0 284.444445h113.777778v113.777777H113.777778zm227.555555.0h568.888889v113.777777H341.333333zm0-284.444445h568.888889v113.777778H341.333333z" fill="currentColor"/></svg>
+</button>
+<button type=button class=toc-filter-toggle aria-label=筛选标题 title=筛选标题>
+<svg viewBox="0 0 1024 1024" width="16" height="16"><path d="M646.037333 511.509333 870.912 204.128A74.741333 74.741333.0 00854.837333 99.765333 74.485333 74.485333.0 00810.773333 85.333333H213.226667c-41.173334.0-74.56 33.429334-74.56 74.666667.0 15.872 5.045333 31.328 14.410666 44.128l224.885334 307.381333V906.666667c0 17.674667 14.304 32 31.957333 32a31.978667 31.978667.0 0031.946667-32v-405.632c0-6.794667-2.165333-13.418667-6.176-18.912L204.629333 166.304A10.677333 10.677333.0 01213.226667 149.333333h597.546666A10.666667 10.666667.0 01819.36 166.304L588.298667 482.122667a32.032 32.032.0 00-6.176 18.912V816.448c0 17.674667 14.304 32 31.957333 32a31.978667 31.978667.0 0031.957333-32V511.509333z" fill="currentColor"/></svg></button><div class=toc-filter-panel><div class=toc-filter-panel__title>筛选标题</div><label class=toc-filter-option><span>显示前</span>
+<input type=number class=toc-filter-depth min=1 max=5 step=1 value=3>
+<span>级</span></label></div></div><div class="widget--toc toc-collapsible"><nav id=TableOfContents><ol><li><a href=#从一行-run_tools-说起>从一行 <code>run_tools</code> 说起</a></li><li><a href=#调用准入模型输出只是提案>调用准入：模型输出只是提案</a><ol><li><a href=#名称与调用-id先建立身份>名称与调用 ID：先建立身份</a></li><li><a href=#工具状态先记录再执行>工具状态：先记录，再执行</a></li></ol></li><li><a href=#参数边界从原始输入到执行事实>参数边界：从原始输入到执行事实</a><ol><li><a href=#结构处理兼容不稳定的适配器输出>结构处理：兼容不稳定的适配器输出</a></li><li><a href=#语义检查结构正确仍不代表可执行>语义检查：结构正确仍不代表可执行</a></li><li><a href=#输入解析权限必须看到真正会执行的内容>输入解析：权限必须看到真正会执行的内容</a></li><li><a href=#hook-改写修改之后必须重新校验>Hook 改写：修改之后必须重新校验</a></li></ol></li><li><a href=#工具调度并行是一项证明责任>工具调度：并行是一项证明责任</a><ol><li><a href=#调度依据从元数据推导而不是猜测名称>调度依据：从元数据推导，而不是猜测名称</a></li><li><a href=#执行计划拓扑排序与并行组>执行计划：拓扑排序与并行组</a></li><li><a href=#结果归并并发完成顺序不等于历史顺序>结果归并：并发完成顺序不等于历史顺序</a></li></ol></li><li><a href=#权限协议从策略判断到用户决定>权限协议：从策略判断到用户决定</a><ol><li><a href=#策略判断allow--ask--deny-三态>策略判断：<code>allow / ask / deny</code> 三态</a></li><li><a href=#确认等待hook-与界面并发竞赛>确认等待：Hook 与界面并发竞赛</a></li><li><a href=#参数修改再次确认执行边界>参数修改：再次确认执行边界</a></li></ol></li><li><a href=#受控执行超时取消与环境端口>受控执行：超时、取消与环境端口</a><ol><li><a href=#取消信号沿调用链传递>取消信号：沿调用链传递</a></li><li><a href=#超时预算只计算真正属于工具的等待>超时预算：只计算真正属于工具的等待</a></li><li><a href=#环境访问handler-只拿到受控端口>环境访问：handler 只拿到受控端口</a></li><li><a href=#失败收口把异常转换为结果>失败收口：把异常转换为结果</a></li></ol></li><li><a href=#结果边界同一次输出的四种视图>结果边界：同一次输出的四种视图</a><ol><li><a href=#模型内容不是原始输出的机械复制>模型内容：不是原始输出的机械复制</a></li><li><a href=#结果预算截断或转存-artifact>结果预算：截断或转存 artifact</a></li><li><a href=#展示与推理分别构造>展示与推理：分别构造</a></li></ol></li><li><a href=#历史闭合所有路径都必须产生结果>历史闭合：所有路径都必须产生结果</a><ol><li><a href=#取消发生在工具批次中间>取消发生在工具批次中间</a></li><li><a href=#普通失败不终止整个批次>普通失败不终止整个批次</a></li></ol></li><li><a href=#流式执行模型还未结束工具已经开始>流式执行：模型还未结束，工具已经开始</a></li><li><a href=#总结工具执行器是一条可信边界>总结：工具执行器是一条可信边界</a></li><li><a href=#阅读路线>阅读路线</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ style=--cat-bg:#5A7A60;--cat-fg:#fff>学习札记</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2026/zcode-tool-executor/>源码研读 | ZCode 工具执行器</a></h2><h3 class=article-subtitle>沿一次真实工具调用的生命周期，理解 ZCode 如何把模型提出的操作转化为经过校验、调度、授权与记录的可控执行</h3></div><footer class=article-time><div><svg class="icon" viewBox="0 0 1024 1024" width="24" height="24"><path d="M379.199 366.816c16.515.0 29.903 13.381 29.903 29.888.0 16.271-13.008 29.506-29.198 29.88l-.705.009h-146.18c-55.677.0-100.311 41.796-101.199 92.89l-.013 1.551v6.544c0 51.278 44.077 93.587 99.528 94.428l1.684.013h548.068c3.01.0 5.918.445 8.658 1.272C868.611 633.031 930 697.493 930 776.238v6.543l-.022 2.561C928.55 869.682 856.682 937 768.981 937H177.812l-.706-.008c-16.189-.375-29.197-13.61-29.197-29.88.0-16.508 13.388-29.89 29.903-29.89h591.17l1.683-.012c55.45-.841 99.528-43.15 99.528-94.429v-6.543l-.013-1.551c-.888-51.094-45.522-92.89-101.199-92.89H233.02c-87.7.0-159.569-67.318-160.997-151.658L72 527.578v-6.544c0-84.68 70.99-152.843 158.366-154.198l2.653-.02h146.18zm369.413-254.877c41.302-41.301 108.282-41.285 149.604.037 41.323 41.323 41.34 108.303.037 149.605L722.115 437.719A199.956 199.956.0 01615.27 493.276l-51.658 9.062c-28.77 5.047-56.196-14.187-61.257-42.96a52.89 52.89.0 01.674-21.564l12.327-51.104a199.95 199.95.0 0152.989-94.503zm107.335 42.306c-17.966-17.966-47.088-17.973-65.045-.016L610.634 334.497a140.195 140.195.0 00-37.152 66.26l-9.858 40.868 41.287-7.242a140.2 140.2.0 0073.776-37.829l1.138-1.125 176.138-176.138c17.958-17.958 17.95-47.08-.016-65.046z" fill="currentColor"/></svg>
+<time class=article-time--published>Sep 23, 2026</time></div><div class=article-time--reading><svg class="icon" viewBox="0 0 1024 1024" width="24" height="24"><path d="M896 149.333333H646.186667A179.413333 179.413333.0 00577.28 163.2a187.306667 187.306667.0 00-30.08 16.426667A157.013333 157.013333.0 00521.173333 200.96c-3.2 3.2-6.186667 6.4-9.173333 9.813333-2.986667-3.413333-5.973333-6.613333-9.173333-9.813333A157.013333 157.013333.0 00476.8 179.626667 187.306667 187.306667.0 00446.72 163.2 179.413333 179.413333.0 00377.813333 149.333333H128a85.333333 85.333333.0 00-85.333333 85.333334v129.066666a42.666667 42.666667.0 0085.333333.0V234.666667h249.813333a91.306667 91.306667.0 0118.56 1.92A83.2 83.2.0 01413.44 241.92a91.306667 91.306667.0 0115.573333 8.32A93.013333 93.013333.0 01453.76 274.986667 91.306667 91.306667.0 01462.08 290.56a83.2 83.2.0 015.333333 17.066667 91.306667 91.306667.0 011.92 18.56V469.333333a42.666667 42.666667.0 0085.333334.0V326.186667a91.306667 91.306667.0 011.92-18.56A83.2 83.2.0 01561.92 290.56a91.306667 91.306667.0 018.32-15.573333A102.186667 102.186667.0 01594.986667 250.24 91.306667 91.306667.0 01610.56 241.92a83.2 83.2.0 0117.066667-5.333333 91.306667 91.306667.0 0118.56-1.92H896v510.72H597.333333A42.666667 42.666667.0 00563.2 762.24a61.44 61.44.0 01-4.693333 5.76 58.24 58.24.0 01-5.333334 4.906667 39.68 39.68.0 01-5.973333 4.48 36.053333 36.053333.0 01-6.186667 3.626666A36.906667 36.906667.0 01534.4 784l-7.04 2.346667-7.253333 1.28a61.653333 61.653333.0 01-15.36.0l-7.253334-1.28-6.826666-1.066667-6.613334-2.773333a112.853333 112.853333.0 01-12.16-8.106667L466.56 769.28a61.44 61.44.0 01-4.693333-5.76A42.666667 42.666667.0 00426.666667 746.666667H128v-192a42.666667 42.666667.0 00-85.333333.0v192A85.333333 85.333333.0 00128 832h280.106667l8.106666 7.466667a122.24 122.24.0 0013.44 10.026666 128 128 0 0014.72 8.746667c4.906667 2.56 10.24 4.906667 15.573334 7.04s10.88 3.626667 16.64 5.12a122.88 122.88.0 0017.28 3.2A168.96 168.96.0 00512 874.666667a161.706667 161.706667.0 0017.92.0 120.32 120.32.0 0017.493333-3.2q8.533333-2.346667 16.64-5.12c5.333333-2.133333 10.666667-4.48 15.786667-7.04A145.493333 145.493333.0 00594.346667 850.56a122.24 122.24.0 0013.44-10.026667l8.106666-7.466666H896a85.333333 85.333333.0 0085.333333-85.333334V234.666667A85.333333 85.333333.0 00896 149.333333z" fill="currentColor"/></svg>
+<time>阅读时长约为 23 分钟</time></div><div class=article-card-tags><a href=/tags/agent/>Agent</a>
+<a href=/tags/zcode/>ZCode</a>
+<a href=/tags/%E6%BA%90%E7%A0%81%E7%A0%94%E8%AF%BB/>源码研读</a></div><div class=article-time--applause><applause-button url=https://ionfeather.github.io/2026/zcode-tool-executor/ color=#e74c3c></applause-button></div><div class=article-meta-tags><a href=/tags/agent/>Agent</a>
+<a href=/tags/zcode/>ZCode</a>
+<a href=/tags/%E6%BA%90%E7%A0%81%E7%A0%94%E8%AF%BB/>源码研读</a></div></footer></div></header><details class=toc-mobile><summary><span>目录</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></summary><div class=toc-mobile-body><nav id=TableOfContentsMobile><ol><li><a href=#从一行-run_tools-说起>从一行 <code>run_tools</code> 说起</a></li><li><a href=#调用准入模型输出只是提案>调用准入：模型输出只是提案</a><ol><li><a href=#名称与调用-id先建立身份>名称与调用 ID：先建立身份</a></li><li><a href=#工具状态先记录再执行>工具状态：先记录，再执行</a></li></ol></li><li><a href=#参数边界从原始输入到执行事实>参数边界：从原始输入到执行事实</a><ol><li><a href=#结构处理兼容不稳定的适配器输出>结构处理：兼容不稳定的适配器输出</a></li><li><a href=#语义检查结构正确仍不代表可执行>语义检查：结构正确仍不代表可执行</a></li><li><a href=#输入解析权限必须看到真正会执行的内容>输入解析：权限必须看到真正会执行的内容</a></li><li><a href=#hook-改写修改之后必须重新校验>Hook 改写：修改之后必须重新校验</a></li></ol></li><li><a href=#工具调度并行是一项证明责任>工具调度：并行是一项证明责任</a><ol><li><a href=#调度依据从元数据推导而不是猜测名称>调度依据：从元数据推导，而不是猜测名称</a></li><li><a href=#执行计划拓扑排序与并行组>执行计划：拓扑排序与并行组</a></li><li><a href=#结果归并并发完成顺序不等于历史顺序>结果归并：并发完成顺序不等于历史顺序</a></li></ol></li><li><a href=#权限协议从策略判断到用户决定>权限协议：从策略判断到用户决定</a><ol><li><a href=#策略判断allow--ask--deny-三态>策略判断：<code>allow / ask / deny</code> 三态</a></li><li><a href=#确认等待hook-与界面并发竞赛>确认等待：Hook 与界面并发竞赛</a></li><li><a href=#参数修改再次确认执行边界>参数修改：再次确认执行边界</a></li></ol></li><li><a href=#受控执行超时取消与环境端口>受控执行：超时、取消与环境端口</a><ol><li><a href=#取消信号沿调用链传递>取消信号：沿调用链传递</a></li><li><a href=#超时预算只计算真正属于工具的等待>超时预算：只计算真正属于工具的等待</a></li><li><a href=#环境访问handler-只拿到受控端口>环境访问：handler 只拿到受控端口</a></li><li><a href=#失败收口把异常转换为结果>失败收口：把异常转换为结果</a></li></ol></li><li><a href=#结果边界同一次输出的四种视图>结果边界：同一次输出的四种视图</a><ol><li><a href=#模型内容不是原始输出的机械复制>模型内容：不是原始输出的机械复制</a></li><li><a href=#结果预算截断或转存-artifact>结果预算：截断或转存 artifact</a></li><li><a href=#展示与推理分别构造>展示与推理：分别构造</a></li></ol></li><li><a href=#历史闭合所有路径都必须产生结果>历史闭合：所有路径都必须产生结果</a><ol><li><a href=#取消发生在工具批次中间>取消发生在工具批次中间</a></li><li><a href=#普通失败不终止整个批次>普通失败不终止整个批次</a></li></ol></li><li><a href=#流式执行模型还未结束工具已经开始>流式执行：模型还未结束，工具已经开始</a></li><li><a href=#总结工具执行器是一条可信边界>总结：工具执行器是一条可信边界</a></li><li><a href=#阅读路线>阅读路线</a></li></ol></nav></div></details><section class=article-content><blockquote><p>研读对象：ZCode 开源仓库（本地检出 <code>~/ionfeather/ZCode</code>）。本文是《源码研读 | ZCode Agent 运行时》的续篇。
+本文所有文件路径均相对仓库根目录；行号基于研读时的版本，代码演进后请以符号搜索为准。</p></blockquote><h2 id=从一行-run_tools-说起>从一行 <code>run_tools</code> 说起<a href=#%e4%bb%8e%e4%b8%80%e8%a1%8c-run_tools-%e8%af%b4%e8%b5%b7 class=header-anchor></a></h2><p>在最朴素的 Agent 循环中，工具执行通常只有一行：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>reply</span> <span class=o>=</span> <span class=n>model</span><span class=o>.</span><span class=n>chat</span><span class=p>(</span><span class=n>history</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>results</span> <span class=o>=</span> <span class=n>run_tools</span><span class=p>(</span><span class=n>reply</span><span class=o>.</span><span class=n>tool_calls</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>history</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>results</span><span class=p>)</span>
+</span></span></code></pre></div><p>如果只看这三行，模型给出工具名和参数，程序找到对应函数并执行即可。然而，一旦工具能够修改文件、运行命令或访问网络，<code>run_tools</code> 就不再是普通的函数分发器。</p><p>设想用户提出如下任务：</p><blockquote><p>把 <code>server.ts</code> 中写死的端口改为读取环境变量，然后运行测试。</p></blockquote><p>模型可能一次返回两个调用：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Edit({
+</span></span><span class=line><span class=cl>  file_path: &#34;server.ts&#34;,
+</span></span><span class=line><span class=cl>  old_string: &#34;const port = 3000;&#34;,
+</span></span><span class=line><span class=cl>  new_string: &#34;const port = Number(process.env.PORT ?? 3000);&#34;
+</span></span><span class=line><span class=cl>})
+</span></span><span class=line><span class=cl>Bash({ command: &#34;pnpm test&#34; })
+</span></span></code></pre></div><p>如果运行时收到后立即执行，会出现一系列问题：</p><div class=table-wrapper><table><thead><tr><th>看似自然的做法</th><th>实际问题</th></tr></thead><tbody><tr><td>相信模型给出的工具名</td><td>工具可能不存在，名称也可能为空</td></tr><tr><td>把参数直接交给函数</td><td>参数可能是 JSON 字符串、缺少字段，或语义上无法执行</td></tr><tr><td>两个调用一起 <code>Promise.all</code></td><td>测试可能在文件修改完成前开始</td></tr><tr><td>权限弹窗展示模型原始参数</td><td>真正执行的规范化参数可能已经不同</td></tr><tr><td>用户拒绝后直接抛异常</td><td>对话历史会留下没有结果的 <code>tool_use</code></td></tr><tr><td>把命令输出完整发回模型</td><td>数百 KB 的日志会迅速占满上下文</td></tr><tr><td>用户取消后立即退出</td><td>同一批其他工具仍可能没有配对结果</td></tr></tbody></table></div><p>因此，模型输出的并不是一项可以直接执行的命令，而是一份<strong>操作提案</strong>。运行时必须先把提案转化成确定的执行事实，再决定它是否安全、何时执行，以及将哪些结果分别交给模型和用户。</p><p>ZCode 中，这条完整路径从 <code>executeToolCallsForModelStep()</code>（<code>core/src/runtime/methods/turn-tools.ts:43</code>）开始，经过调度器与 <code>ToolExecutor</code>，最后重新回到对话历史：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart LR
+    A[&#34;模型生成 tool_use&#34;] --&gt; B[&#34;准入&lt;br/&gt;名称与调用 ID&#34;]
+    B --&gt; C[&#34;参数处理&lt;br/&gt;解析、校验、规范化&#34;]
+    C --&gt; D[&#34;调度&lt;br/&gt;并行组与执行顺序&#34;]
+    D --&gt; E[&#34;策略&lt;br/&gt;扩展钩子与权限判断&#34;]
+    E --&gt; F[&#34;执行&lt;br/&gt;超时、取消、端口注入&#34;]
+    F --&gt; G[&#34;结果处理&lt;br/&gt;校验、预算、展示&#34;]
+    G --&gt; H[&#34;历史闭合&lt;br/&gt;tool_result 与持久化&#34;]</pre></div><p>为了避免被内部类型和函数名淹没，可以先把这条链分成三段：</p><div class=table-wrapper><table><thead><tr><th>阶段</th><th>核心问题</th><th>对应机制</th></tr></thead><tbody><tr><td>执行前</td><td>这是什么操作，何时执行，能否执行？</td><td>准入、参数规范化、调度、权限</td></tr><tr><td>执行中</td><td>如何限制它，并在需要时停止？</td><td>环境端口、超时、取消</td></tr><tr><td>执行后</td><td>哪些内容交给用户和模型，如何保证历史完整？</td><td>结果投影、容量限制、配对持久化</td></tr></tbody></table></div><p>后文虽然会进入具体源码，但始终围绕这三个问题展开。</p><h2 id=调用准入模型输出只是提案>调用准入：模型输出只是提案<a href=#%e8%b0%83%e7%94%a8%e5%87%86%e5%85%a5%e6%a8%a1%e5%9e%8b%e8%be%93%e5%87%ba%e5%8f%aa%e6%98%af%e6%8f%90%e6%a1%88 class=header-anchor></a></h2><h3 id=名称与调用-id先建立身份>名称与调用 ID：先建立身份<a href=#%e5%90%8d%e7%a7%b0%e4%b8%8e%e8%b0%83%e7%94%a8-id%e5%85%88%e5%bb%ba%e7%ab%8b%e8%ba%ab%e4%bb%bd class=header-anchor></a></h3><p>工具调用首先要有稳定的身份：<code>toolCallId</code> 标识这一次调用，<code>name</code> 决定去注册表中查找哪个 <code>ToolEntry</code>（工具的注册档案）。无论后面经历权限等待、并行执行还是失败恢复，系统都依靠这个 ID 把事件、界面状态和最终结果关联起来。</p><p>非流式响应在 <code>model.ts:145</code> 统一经过 <code>normalizeModelToolCallsForRuntime()</code>；流式响应则在收到完整 <code>tool_call</code> 事件时执行同样的规范化。流式路径还维护一个 <code>toolCallIds</code> 集合（<code>model.ts:390</code>）：如果适配器重复投递同一个 ID，运行时只接受第一次，避免同一次模型响应触发重复执行。</p><p>名称为空时有一个不直观的例外。对于已经带有调用 ID、并且需要由客户端执行的调用，运行时不会立刻终止整个 Turn，而是保留原始空名称，让执行器走“工具未注册”的失败路径。这样模型仍能收到与该 <code>tool_use</code> 配对的错误结果。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=nx>entry</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=nx>createErrorResult</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=nx>toolCall</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>createCoreError</span><span class=p>(</span><span class=nx>CoreErrorType</span><span class=p>.</span><span class=nx>ToolNotFound</span><span class=p>,</span> <span class=p>...),</span>
+</span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>这里反映了一条贯穿全文的规则：<strong>一旦模型已经声明了工具调用，错误也必须成为一个工具结果。</strong> 如果此处只抛出异常，模型下一次收到的历史将只有 <code>tool_use</code>、没有 <code>tool_result</code>，整个会话可能被提供商拒绝。</p><h3 id=工具状态先记录再执行>工具状态：先记录，再执行<a href=#%e5%b7%a5%e5%85%b7%e7%8a%b6%e6%80%81%e5%85%88%e8%ae%b0%e5%bd%95%e5%86%8d%e6%89%a7%e8%a1%8c class=header-anchor></a></h3><p>调用身份确定后，运行时先为每个工具创建并持久化一个 pending part，即一条“等待执行的工具记录”（<code>turn-tools.ts:99</code> 起），随后才进行调度和执行。工具在界面和存储中的状态大致按以下顺序变化：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>stateDiagram-v2
+    [*] --&gt; Pending: tool_use 已闭合
+    Pending --&gt; Queued: 已进入调度计划
+    Queued --&gt; Running: 所属批次开始
+    Running --&gt; Completed: 成功结果
+    Running --&gt; Error: 失败或取消结果</pre></div><p>为什么需要在真正执行前保存 pending 状态？因为执行可能在任意位置中断。如果只有函数返回后才记录，进程退出时系统甚至无法回答“模型是否曾经发起过这次调用”。先记录调用，再逐步更新状态，界面显示、冷恢复与流式恢复才共享同一份事实。</p><blockquote><p><strong>Q：工具不存在时，为什么不在注册表查询失败后直接终止 Turn？</strong></p><p>A：因为“工具不存在”是模型可以理解并修正的业务失败，而不是运行时无法继续的内部故障。将它包装成结构化结果，既能关闭 <code>tool_use/tool_result</code> 配对，也能让模型在下一轮改用真实存在的工具。错误在这里不是历史之外的异常，而是历史中的一条合法记录。</p></blockquote><p>至此，运行时只确认了“这是哪一次调用”，还没有确认“它究竟要做什么”。下一步是把模型给出的参数收敛为唯一的执行事实。</p><h2 id=参数边界从原始输入到执行事实>参数边界：从原始输入到执行事实<a href=#%e5%8f%82%e6%95%b0%e8%be%b9%e7%95%8c%e4%bb%8e%e5%8e%9f%e5%a7%8b%e8%be%93%e5%85%a5%e5%88%b0%e6%89%a7%e8%a1%8c%e4%ba%8b%e5%ae%9e class=header-anchor></a></h2><p>回到开头的 Edit：模型给出的路径和替换文本看似完整，但“可以解析”与“可以执行”之间还有很长的距离。ZCode 在执行函数（handler）之前依次设置了四道边界。</p><h3 id=结构处理兼容不稳定的适配器输出>结构处理：兼容不稳定的适配器输出<a href=#%e7%bb%93%e6%9e%84%e5%a4%84%e7%90%86%e5%85%bc%e5%ae%b9%e4%b8%8d%e7%a8%b3%e5%ae%9a%e7%9a%84%e9%80%82%e9%85%8d%e5%99%a8%e8%be%93%e5%87%ba class=header-anchor></a></h3><p>第一步是 <code>prepareInitialToolExecutionInput()</code>（<code>tool/input-normalization.ts</code>）。某些模型适配器会把参数对象作为 JSON 字符串返回，因此运行时先尝试解析顶层字符串：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>&#34;{\&#34;file_path\&#34;:\&#34;server.ts\&#34;,\&#34;old_string\&#34;:\&#34;...\&#34;,\&#34;new_string\&#34;:\&#34;...\&#34;}&#34;
+</span></span><span class=line><span class=cl>                                  ↓
+</span></span><span class=line><span class=cl>{ file_path: &#34;server.ts&#34;, old_string: &#34;...&#34;, new_string: &#34;...&#34; }
+</span></span></code></pre></div><p>解析失败不会让执行器本身崩溃，而是保留原值，随后由统一校验路径生成可恢复的参数错误。</p><p>如果工具提供了 <code>runtimeInputSchema</code>，运行时接着调用它的 <code>safeParse</code>。以 Zod 为例，这一步不仅检查类型，还可以完成默认值填充与预处理。之后，<code>validateInitialModelToolInput()</code> 再依据提供给模型的 JSON Schema 校验规范化结果。</p><p>这两套 schema 的职责并不重复：</p><div class=table-wrapper><table><thead><tr><th>schema</th><th>面向谁</th><th>主要职责</th></tr></thead><tbody><tr><td><code>inputSchema</code></td><td>模型与通用运行时</td><td>描述公开参数契约，并生成模型可见的校验错误</td></tr><tr><td><code>runtimeInputSchema</code></td><td>工具实现</td><td>执行运行时转换、默认值与更严格的类型检查</td></tr></tbody></table></div><p>首次参数校验失败时，错误内容会明确告诉模型哪些字段不符合要求，使模型能够在下一轮自行修正。</p><h3 id=语义检查结构正确仍不代表可执行>语义检查：结构正确仍不代表可执行<a href=#%e8%af%ad%e4%b9%89%e6%a3%80%e6%9f%a5%e7%bb%93%e6%9e%84%e6%ad%a3%e7%a1%ae%e4%bb%8d%e4%b8%8d%e4%bb%a3%e8%a1%a8%e5%8f%af%e6%89%a7%e8%a1%8c class=header-anchor></a></h3><p>JSON Schema 只能判断“字段是否存在、类型是否正确”，无法回答更具体的问题。例如，一个任务 ID 的格式可能正确，但它对应的后台任务已经结束；一个工作流模型名称可能是字符串，却不在当前模型目录中。</p><p>因此，<code>ToolEntry</code> 还可以提供 <code>validateInput</code>。它位于 Hook 和权限判断之前（<code>call-runner.ts:187</code>）：无效调用无需触发扩展逻辑，更不应让用户批准一项注定失败的操作。</p><p>这种校验返回的是 <code>ToolHandlerFailure</code>，而不是任意异常：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=kr>interface</span> <span class=nx>ToolHandlerFailure</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>result</span>: <span class=kt>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>errorCode</span>: <span class=kt>number</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=nx>message</span>: <span class=kt>string</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>它代表可预期、可向模型说明的业务失败。执行器会把它转换为统一的工具错误事件和模型可见结果，而不另外建立一套失败生命周期。</p><h3 id=输入解析权限必须看到真正会执行的内容>输入解析：权限必须看到真正会执行的内容<a href=#%e8%be%93%e5%85%a5%e8%a7%a3%e6%9e%90%e6%9d%83%e9%99%90%e5%bf%85%e9%a1%bb%e7%9c%8b%e5%88%b0%e7%9c%9f%e6%ad%a3%e4%bc%9a%e6%89%a7%e8%a1%8c%e7%9a%84%e5%86%85%e5%ae%b9 class=header-anchor></a></h3><p>通过结构与语义检查之后，工具还可以通过 <code>resolveInput</code> 把参数解析成规范形（<code>call-runner.ts:207</code>）。这一步刻意放在 PreToolUse 扩展钩子（Hook）和权限判断之前。</p><p>原因可以用相对路径说明。模型给出的可能是：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span> <span class=nt>&#34;file_path&#34;</span><span class=p>:</span> <span class=s2>&#34;src/server.ts&#34;</span> <span class=p>}</span>
+</span></span></code></pre></div><p>真正的执行目标却取决于当前工作目录。若权限系统看到的是相对路径，而 handler 最终操作的是规范化后的绝对目标，用户批准的内容与实际执行的内容就不一致。ZCode 的顺序是：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>模型原始输入
+</span></span><span class=line><span class=cl>  → runtime schema 解析
+</span></span><span class=line><span class=cl>  → JSON Schema 校验
+</span></span><span class=line><span class=cl>  → 工具语义校验
+</span></span><span class=line><span class=cl>  → resolveInput 得到执行事实
+</span></span><span class=line><span class=cl>  → Hook 与权限判断
+</span></span><span class=line><span class=cl>  → handler 使用同一份输入
+</span></span></code></pre></div><p>这样，策略读取的参数、确认界面展示的参数与 handler 最终接收的参数才是同一份数据；不同版本的输入表达也会在执行前收敛到同一种形式。</p><h3 id=hook-改写修改之后必须重新校验>Hook 改写：修改之后必须重新校验<a href=#hook-%e6%94%b9%e5%86%99%e4%bf%ae%e6%94%b9%e4%b9%8b%e5%90%8e%e5%bf%85%e9%a1%bb%e9%87%8d%e6%96%b0%e6%a0%a1%e9%aa%8c class=header-anchor></a></h3><p>PreToolUse Hook 可以拒绝调用、补充上下文，也可以修改输入。修改后的输入会再次经过规范化和 schema 校验（<code>call-runner.ts:256</code>）。这是必要的，因为扩展代码与模型一样，都不能绕过工具的输入边界。</p><p>权限阶段的 Hook 甚至可能修改目标路径。此时仅做 schema 校验仍然不够：<strong>输入变了，原先的权限判断也失效了。</strong> <code>recheckPermissionHookModifiedInput()</code> 会针对新参数重新计算权限（<code>permission-flow.ts:250</code>），防止“批准 A，执行 B”。</p><blockquote><p><strong>Q：为什么 <code>resolveInput</code> 必须发生在权限确认之前，而不是让 handler 自己处理？</strong></p><p>A：权限确认保护的不是模型写下的字符串，而是真实副作用。如果参数解析留在 handler 内部，策略与用户只能批准一个近似描述，执行时却可能得到不同的目标。先把输入解析成唯一的执行事实，再让所有策略读取同一份数据，权限才具有实际意义。</p></blockquote><p>参数边界解决了“实际要做什么”。接下来，开头的 Edit 和 Bash 仍然面临另一个问题：两者能否同时开始？</p><h2 id=工具调度并行是一项证明责任>工具调度：并行是一项证明责任<a href=#%e5%b7%a5%e5%85%b7%e8%b0%83%e5%ba%a6%e5%b9%b6%e8%a1%8c%e6%98%af%e4%b8%80%e9%a1%b9%e8%af%81%e6%98%8e%e8%b4%a3%e4%bb%bb class=header-anchor></a></h2><p>模型一次响应可以包含多个工具调用。运行时不能简单地全部串行——这会浪费互不影响的读取时间；也不能全部并行——例如开头的测试命令必须等文件修改完成，两个写操作也可能相互覆盖。</p><h3 id=调度依据从元数据推导而不是猜测名称>调度依据：从元数据推导，而不是猜测名称<a href=#%e8%b0%83%e5%ba%a6%e4%be%9d%e6%8d%ae%e4%bb%8e%e5%85%83%e6%95%b0%e6%8d%ae%e6%8e%a8%e5%af%bc%e8%80%8c%e4%b8%8d%e6%98%af%e7%8c%9c%e6%b5%8b%e5%90%8d%e7%a7%b0 class=header-anchor></a></h3><p><code>scheduleTools()</code>（<code>runtime/methods/tools.ts:38</code>）从注册表读取每个工具的元数据，转换成 <code>ToolDependency</code>：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>toolCallId</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>toolName</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>dependsOn</span><span class=o>:</span> <span class=p>[],</span>
+</span></span><span class=line><span class=cl>  <span class=nx>readOnly</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>destructive</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>concurrentSafe</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nx>sideEffectScope</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p><code>ToolScheduler.canRunInParallel()</code>（<code>tool/scheduler.ts:85</code>）再按以下规则判断：</p><ul><li>破坏性工具不能并行；</li><li><code>concurrentSafe: true</code> 明确允许并行；</li><li><code>concurrentSafe: false</code> 明确禁止并行；</li><li>只读工具可以并行；</li><li>没有副作用（<code>sideEffectScope === "none"</code>）的工具可以并行。</li></ul><p>对比三个内置工具即可看出差异：</p><div class=table-wrapper><table><thead><tr><th>工具</th><th style=text-align:right><code>readOnly</code></th><th style=text-align:right><code>concurrentSafe</code></th><th>副作用范围</th><th>调度结果</th></tr></thead><tbody><tr><td>Glob</td><td style=text-align:right>true</td><td style=text-align:right>true</td><td>none</td><td>可与同组安全工具并行</td></tr><tr><td>Edit</td><td style=text-align:right>false</td><td style=text-align:right>false</td><td>workspace</td><td>单独执行</td></tr><tr><td>Bash</td><td style=text-align:right>false</td><td style=text-align:right>false</td><td>system</td><td>单独执行</td></tr></tbody></table></div><p>即使某一条 Bash 命令只是 <code>git status</code>，调度器仍采用 Bash 的静态声明，保守地把它串行执行。输入相关的只读命令识别主要服务于权限判断，不会反过来扩大调度并发。这种不对称是有意的：权限误判通常多一次确认，而并发误判可能改变执行结果。</p><h3 id=执行计划拓扑排序与并行组>执行计划：拓扑排序与并行组<a href=#%e6%89%a7%e8%a1%8c%e8%ae%a1%e5%88%92%e6%8b%93%e6%89%91%e6%8e%92%e5%ba%8f%e4%b8%8e%e5%b9%b6%e8%a1%8c%e7%bb%84 class=header-anchor></a></h3><p><code>ToolScheduler</code> 支持显式依赖、拓扑排序与环检测（<code>tool/scheduler.ts:105</code>），然后按依赖层级生成并行组（第 154 行）。不过，当前模型调用接入路径为每个调用传入的 <code>dependsOn</code> 都是空数组。也就是说，调度器具备依赖图能力，但本路径的实际排序主要由调用声明顺序和并发安全元数据决定。</p><p>假设模型按以下顺序返回：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>Glob A, Glob B, Edit C, Bash D
+</span></span></code></pre></div><p>得到的执行组近似为：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>[Glob A, Glob B] → [Edit C] → [Bash D]
+</span></span></code></pre></div><p>同一并行组内部通过 <code>Promise.all</code> 执行，但并发数默认不超过 10；组与组之间严格按顺序推进。</p><p>普通工具失败不会自动跳过所有后续组。<code>batch-runner.ts:130</code> 的注释记录了旧策略的问题：过去，一个非并发安全工具失败后会截断后续调用，结果是 TodoWrite 一类局部失败也可能阻止后面的子 Agent 工作。现在只有结果明确携带 <code>stopTurnAfterResult</code> 时，后续组才会被转换为取消结果。</p><h3 id=结果归并并发完成顺序不等于历史顺序>结果归并：并发完成顺序不等于历史顺序<a href=#%e7%bb%93%e6%9e%9c%e5%bd%92%e5%b9%b6%e5%b9%b6%e5%8f%91%e5%ae%8c%e6%88%90%e9%a1%ba%e5%ba%8f%e4%b8%8d%e7%ad%89%e4%ba%8e%e5%8e%86%e5%8f%b2%e9%a1%ba%e5%ba%8f class=header-anchor></a></h3><p>并行工具的完成顺序是不确定的。若直接按完成先后写回历史，同一份模型输出可能在不同机器上形成不同的消息顺序。</p><p>ZCode 在 <code>turn-tools.ts:242</code> 按模型最初声明的 <code>coreToolCalls</code> 顺序重新取回结果：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=kr>const</span> <span class=nx>results</span> <span class=o>=</span> <span class=nx>coreToolCalls</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>map</span><span class=p>((</span><span class=nx>toolCall</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>resultById</span><span class=p>.</span><span class=kr>get</span><span class=p>(</span><span class=nx>toolCall</span><span class=p>.</span><span class=nx>id</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>  <span class=p>.</span><span class=nx>filter</span><span class=p>((</span><span class=nx>result</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=nx>result</span> <span class=o>!==</span> <span class=kc>undefined</span><span class=p>);</span>
+</span></span></code></pre></div><p>因此，并发只影响等待时间，不改变对话历史的确定顺序。</p><blockquote><p><strong>Q：为什么不根据工具名维护一张“可以并行”的白名单？</strong></p><p>A：工具名只是标识，不能完整表达行为。真正与并发相关的是它是否只读、是否具有副作用、作者是否明确保证并发安全。把这些事实声明在 <code>ToolEntry</code> 中，调度器才能对内置工具、MCP 工具和未来扩展使用同一套规则。</p></blockquote><p>调度器回答的是“何时执行”，不是“是否允许执行”。即使 Edit 已经被安排在 Bash 之前，它仍要经过权限系统的判断。</p><h2 id=权限协议从策略判断到用户决定>权限协议：从策略判断到用户决定<a href=#%e6%9d%83%e9%99%90%e5%8d%8f%e8%ae%ae%e4%bb%8e%e7%ad%96%e7%95%a5%e5%88%a4%e6%96%ad%e5%88%b0%e7%94%a8%e6%88%b7%e5%86%b3%e5%ae%9a class=header-anchor></a></h2><p>工具通过参数校验并进入执行组之后，仍不代表可以执行。<code>resolveToolPermission()</code>（<code>tool/executor/permission-flow.ts:41</code>）需要回答两个不同的问题：</p><ol><li>当前规则判断是什么：允许、询问还是拒绝？</li><li>如果需要询问，谁来作出最终决定？</li></ol><p>将两者分开，是理解 ZCode 权限系统的关键。</p><h3 id=策略判断allow--ask--deny-三态>策略判断：<code>allow / ask / deny</code> 三态<a href=#%e7%ad%96%e7%95%a5%e5%88%a4%e6%96%adallow--ask--deny-%e4%b8%89%e6%80%81 class=header-anchor></a></h3><p><code>PermissionService.checkPermission()</code>（<code>permission/service.ts:97</code>）综合以下信息：</p><ul><li>工具声明的风险等级、副作用范围和交互要求；</li><li>当前协作模式，例如 plan、edit、build；</li><li>项目级 allow、ask、deny 规则；</li><li>针对 <code>alwaysAsk</code> 工具在本会话临时授予的规则；</li><li>针对 WebFetch、工作流草稿等能力的专门规则；</li><li>PreToolUse Hook 给出的权限倾向。</li></ul><p>返回结果不是简单的布尔值，而是包含来源的结构化决定：</p><div class=table-wrapper><table><thead><tr><th>决定</th><th>含义</th><th>后续行为</th></tr></thead><tbody><tr><td><code>allow</code></td><td>已有规则明确允许</td><td>直接进入执行阶段</td></tr><tr><td><code>deny</code></td><td>硬性规则拒绝</td><td>生成权限错误结果</td></tr><tr><td><code>ask</code></td><td>需要外部决定</td><td>发出权限请求并等待应答</td></tr></tbody></table></div><p>规则有明确优先级。例如，项目 deny/ask 位于普通项目 allow 之前；plan 模式会在写操作放行之前介入；工具声明的 <code>alwaysAsk</code> 也不能被常规放行路径轻易覆盖。权限结果携带 <code>ruleId</code>、<code>riskLevel</code> 与 <code>sideEffectScope</code>，日志和界面因而可以解释“为什么询问”或“为什么拒绝”。</p><h3 id=确认等待hook-与界面并发竞赛>确认等待：Hook 与界面并发竞赛<a href=#%e7%a1%ae%e8%ae%a4%e7%ad%89%e5%be%85hook-%e4%b8%8e%e7%95%8c%e9%9d%a2%e5%b9%b6%e5%8f%91%e7%ab%9e%e8%b5%9b class=header-anchor></a></h3><p>当决定为 <code>ask</code> 时，运行时先发出 <code>PermissionRequested</code> 事件，使界面能够展示工具名、参数、风险等级和建议的规则更新。随后有两个潜在的应答方：</p><ul><li><strong>Permission Broker（权限交互通道）</strong>：承接桌面界面或终端中的用户选择；</li><li><strong>PermissionRequest Hook（权限请求钩子）</strong>：允许外部审批系统或扩展程序作出决定。</li></ul><p>二者不是串行执行，而是通过 <code>racePermissionResponders()</code>（<code>permission-responder-race.ts:38</code>）并发竞赛：谁先给出有效结果，谁就生效，另一方立即收到取消信号。</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>sequenceDiagram
+    participant E as Tool Executor
+    participant B as Permission Broker
+    participant H as PermissionRequest Hook
+    participant U as 用户界面
+
+    E-&gt;&gt;U: PermissionRequested
+    par 同时启动
+        E-&gt;&gt;B: 注册应答请求
+        B-&gt;&gt;U: 等待用户选择
+    and
+        E-&gt;&gt;H: 运行权限 Hook
+    end
+    alt 用户先决定
+        U--&gt;&gt;B: allow / deny / modify
+        B--&gt;&gt;E: 成为有效结果
+        E-xH: 取消 Hook
+    else Hook 先决定
+        H--&gt;&gt;E: allow / deny / modify
+        E-xB: 取消 Broker 等待
+    end</pre></div><p>源码注释记录了这套竞赛的由来：旧路径先等待 Hook 链结束，再向 Broker 注册应答。如果同步 Hook 本身正在等待外部审批，确认界面虽然已经出现，用户点击却没有已注册的接收方，Turn 会永久等待。现在 Broker 在竞赛内部优先同步建立应答通道，Hook 与它并发运行。</p><p>竞赛的收尾顺序同样经过设计：先兑现胜者结果，再取消败者（<code>permission-responder-race.ts:54</code>）。否则，如果败者的清理过程阻塞，胜者已经作出的决定也无法继续向下推进。</p><p>Hook 自身发生故障时不会替用户作出拒绝决定，而是退出竞赛，让 Broker 继续等待。这体现了权限系统中的“故障时保持原有决策者”：辅助审批渠道失效，不应擅自代替用户选择。</p><h3 id=参数修改再次确认执行边界>参数修改：再次确认执行边界<a href=#%e5%8f%82%e6%95%b0%e4%bf%ae%e6%94%b9%e5%86%8d%e6%ac%a1%e7%a1%ae%e8%ae%a4%e6%89%a7%e8%a1%8c%e8%be%b9%e7%95%8c class=header-anchor></a></h3><p>权限应答除了 allow 和 deny，还可以返回 <code>modify</code>。例如，用户可以将一条命令修改为更安全的形式后允许执行。</p><p>修改后的参数必须重新规范化并校验。如果修改来自 PermissionRequest Hook，系统还会重新运行权限判断，因为新的路径或命令可能匹配不同规则。只有新输入也通过校验和策略检查，才会成为 handler 最终接收的 <code>executionInput</code>。</p><p>权限选择还可能产生两种不同生命周期的规则：</p><div class=table-wrapper><table><thead><tr><th>规则</th><th>保存位置</th><th>生命周期</th></tr></thead><tbody><tr><td>本会话不再重复询问 <code>alwaysAsk</code> 工具</td><td><code>PermissionService</code> 内存规则集</td><td>随当前会话实例结束</td></tr><tr><td>项目级规则更新</td><td>session store 中的项目权限</td><td>后续会话继续有效</td></tr></tbody></table></div><p>两者不能混为一谈。一次临时授权不应悄然变成项目的长期政策；长期规则也必须在确认后可靠保存，否则界面显示“以后允许”而实际没有生效。</p><blockquote><p><strong>Q：为什么权限确认不能只返回一个 <code>true/false</code>？</strong></p><p>A：权限不仅要决定能否执行，还要解释规则来源、支持修改参数、记录用户选择的适用范围，并允许多个应答渠道协作。布尔值只能表达结果，无法承载这段协议。结构化决定使 UI、Hook、持久化与执行器共享同一种语义。</p></blockquote><p>经过这一步，开头的 Edit 才从“模型建议修改文件”变成“运行时允许修改这个确定文件”。下面才进入真正产生副作用的阶段。</p><h2 id=受控执行超时取消与环境端口>受控执行：超时、取消与环境端口<a href=#%e5%8f%97%e6%8e%a7%e6%89%a7%e8%a1%8c%e8%b6%85%e6%97%b6%e5%8f%96%e6%b6%88%e4%b8%8e%e7%8e%af%e5%a2%83%e7%ab%af%e5%8f%a3 class=header-anchor></a></h2><p>只有在权限允许之后，执行器才发出 <code>ToolCallStarted</code> 事件（<code>call-runner.ts:329</code>）。这条边界很重要：pending 和 permission 表示“准备执行”，started 才表示工具即将产生真实行为。</p><h3 id=取消信号沿调用链传递>取消信号：沿调用链传递<a href=#%e5%8f%96%e6%b6%88%e4%bf%a1%e5%8f%b7%e6%b2%bf%e8%b0%83%e7%94%a8%e9%93%be%e4%bc%a0%e9%80%92 class=header-anchor></a></h3><p>执行器为当前调用创建独立的 <code>AbortController</code>，再通过 <code>linkAbortSignal()</code> 将 Turn 的取消信号连接进来：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart LR
+    A[&#34;用户停止 Turn&#34;] --&gt; B[&#34;Turn AbortSignal&#34;]
+    B --&gt; C[&#34;工具调用 AbortController&#34;]
+    C --&gt; D[&#34;ToolExecutionContext.abortSignal&#34;]
+    D --&gt; E[&#34;文件 / 命令 / 网络适配器&#34;]</pre></div><p>handler 不是被运行时从外部强制终止，而是在文件、命令或网络操作的可取消边界处收到信号并退出。以 Glob 为例，<code>fileSystemPort.searchFiles()</code> 会同时接收这个取消信号。</p><p>这也是为什么取消能力必须成为全链路约定：只要某一层没有继续传递信号，该层下面的操作就无法及时响应用户停止。</p><h3 id=超时预算只计算真正属于工具的等待>超时预算：只计算真正属于工具的等待<a href=#%e8%b6%85%e6%97%b6%e9%a2%84%e7%ae%97%e5%8f%aa%e8%ae%a1%e7%ae%97%e7%9c%9f%e6%ad%a3%e5%b1%9e%e4%ba%8e%e5%b7%a5%e5%85%b7%e7%9a%84%e7%ad%89%e5%be%85 class=header-anchor></a></h3><p>普通 <code>Promise.race([handler, timeout])</code> 使用固定墙钟时间，但 ZCode 的 <code>ToolDeadline</code>（工具截止计时器，<code>tool/executor/timeout.ts:19</code>）可以暂停。</p><p>考虑 WebSearch 工具：handler 内部可能再次请求模型，而模型请求需要先等待进程级的网络准入。如果系统限流使它在内部队列等待 30 秒，这 30 秒不应被算作提供商执行超时，否则并发越受限，工具越容易被错误取消。</p><p><code>observeToolAdmissionClock()</code> 监听当前工具的模型网络状态：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>model_request_queued   → 暂停 deadline
+</span></span><span class=line><span class=cl>model_request_admitted → 恢复 deadline
+</span></span></code></pre></div><p>因此，超时约束的是工具自身的执行预算，而不是系统内部的排队时间。退避等待仍会计时，因为那反映的是提供商当前不可用；只有运行时自己的准入等待会被扣除。</p><p>不同工具还可以声明不同的超时政策：默认时长、最大时长、是否允许调用方覆盖，以及取消后的清理宽限期。Bash 允许在政策上限内请求更长时间，Edit 则固定为 30 秒。</p><h3 id=环境访问handler-只拿到受控端口>环境访问：handler 只拿到受控端口<a href=#%e7%8e%af%e5%a2%83%e8%ae%bf%e9%97%aehandler-%e5%8f%aa%e6%8b%bf%e5%88%b0%e5%8f%97%e6%8e%a7%e7%ab%af%e5%8f%a3 class=header-anchor></a></h3><p>权限通过之后，<code>call-runner.ts</code> 才构造 <code>ToolExecutionContext</code>，其中包含：</p><ul><li><code>fileSystemPort</code>、<code>executionPort</code>、<code>httpClientPort</code> 等环境端口；</li><li>工作目录、工作区根目录与 <code>workspaceIdentity</code>；</li><li>当前 session、Turn 与 trace 标识；</li><li>取消信号与事件出口；</li><li>仅在相应运行环境存在时才注入的子 Agent、浏览器、工作流等能力。</li></ul><p>handler 不需要知道当前运行在桌面、本地测试还是远程工作区。它只依赖端口，并且只能使用装配层实际提供的能力。端口缺失时，工具返回配置错误，而不是自行寻找另一条未经控制的访问路径。</p><h3 id=失败收口把异常转换为结果>失败收口：把异常转换为结果<a href=#%e5%a4%b1%e8%b4%a5%e6%94%b6%e5%8f%a3%e6%8a%8a%e5%bc%82%e5%b8%b8%e8%bd%ac%e6%8d%a2%e4%b8%ba%e7%bb%93%e6%9e%9c class=header-anchor></a></h3><p>handler 执行、输出序列化或 PostToolUse Hook 都可能失败。<code>call-runner.ts:561</code> 的统一失败路径会：</p><ol><li>运行 PostToolUseFailure Hook；</li><li>将异常投影为结构化 <code>ToolExecutionResult</code>；</li><li>发出 <code>ToolCallError</code> 事件；</li><li>按失败阶段记录遥测；</li><li>返回失败结果，而不是让这一次工具调用消失。</li></ol><p>执行器同时区分两个时间指标：<code>durationMs</code> 主要表示 handler 的执行时间，<code>totalMs</code> 则包含注册表查询、校验、Hook、权限等待、执行、序列化和后置 Hook。前者用于分析工具本身，后者更接近用户感知的等待。</p><blockquote><p><strong>Q：为什么工具超时后还要向 handler 传递取消信号？Promise 已经可以先返回超时错误。</strong></p><p>A：先返回只能结束等待，不能停止真实副作用。子进程、文件操作或网络请求仍可能在后台继续。超时路径先中止当前调用的 <code>AbortController</code>，再返回结构化错误，使底层适配器有机会终止工作并执行清理。</p></blockquote><p>此时工具已经得到成功或失败的原始结果，但原始结果还不适合直接交给用户和模型。执行链由此进入最后一段：结果如何表达。</p><h2 id=结果边界同一次输出的四种视图>结果边界：同一次输出的四种视图<a href=#%e7%bb%93%e6%9e%9c%e8%be%b9%e7%95%8c%e5%90%8c%e4%b8%80%e6%ac%a1%e8%be%93%e5%87%ba%e7%9a%84%e5%9b%9b%e7%a7%8d%e8%a7%86%e5%9b%be class=header-anchor></a></h2><p>handler 返回以后，结果还不能直接进入对话历史。它首先通过 <code>runtimeOutputSchema</code> 或 <code>outputSchema</code> 校验（<code>call-runner.ts:456</code>），防止工具实现违反自己声明的返回契约。</p><p>校验通过后，同一份结果会形成至少四种用途不同的视图。这里的“投影”并不是复制四份业务状态，而是从同一执行事实生成四种表达：</p><div class=table-wrapper><table><thead><tr><th>视图</th><th>面向对象</th><th>关注点</th></tr></thead><tbody><tr><td><code>output</code></td><td>运行时内部</td><td>保留结构化原始结果，供工作区检查点、后台任务等机制使用</td></tr><tr><td><code>display</code></td><td>用户界面</td><td>工具标题、摘要、差异或 MCP 展示信息</td></tr><tr><td><code>modelContent</code></td><td>下一轮模型请求</td><td>紧凑、可行动，并受上下文预算约束</td></tr><tr><td><code>serialization</code></td><td>事件与观测</td><td>截断状态、原始字节数、返回字节数、artifact 路径</td></tr></tbody></table></div><p>这解释了为什么 <code>ToolExecutionResult</code> 不能只有一个字符串。用户、模型、恢复机制和观测系统消费的是同一次执行事实，但所需表达不同。</p><h3 id=模型内容不是原始输出的机械复制>模型内容：不是原始输出的机械复制<a href=#%e6%a8%a1%e5%9e%8b%e5%86%85%e5%ae%b9%e4%b8%8d%e6%98%af%e5%8e%9f%e5%a7%8b%e8%be%93%e5%87%ba%e7%9a%84%e6%9c%ba%e6%a2%b0%e5%a4%8d%e5%88%b6 class=header-anchor></a></h3><p>工具可以通过 <code>formatModelContent</code> 将结构化输出转成适合模型继续推理的内容。例如 Edit 成功后，模型需要知道文件已更新、当前文件状态是否仍可继续编辑，而不需要再次接收完整文件。</p><p>如果格式化结果为空，<code>serializeOutput()</code>（<code>tool/executor/result-serialization.ts:46</code>）会生成明确占位：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>(Bash completed with no output)
+</span></span></code></pre></div><p>空字符串不能直接表示成功，因为模型可能把它误解为工具结果缺失。</p><h3 id=结果预算截断或转存-artifact>结果预算：截断或转存 artifact<a href=#%e7%bb%93%e6%9e%9c%e9%a2%84%e7%ae%97%e6%88%aa%e6%96%ad%e6%88%96%e8%bd%ac%e5%ad%98-artifact class=header-anchor></a></h3><p>每个工具可以声明 <code>resultBudget</code>。以三个工具为例：</p><div class=table-wrapper><table><thead><tr><th>工具</th><th style=text-align:right>模型预算</th><th>策略</th><th>预览方向</th></tr></thead><tbody><tr><td>Glob</td><td style=text-align:right>100 KB</td><td>超出后转存 artifact</td><td>头部</td></tr><tr><td>Edit</td><td style=text-align:right>100 KB</td><td>截断</td><td>头部</td></tr><tr><td>Bash</td><td style=text-align:right>30 KB</td><td>超出后转存 artifact</td><td>尾部</td></tr></tbody></table></div><p>Bash 保留尾部是因为命令报错、测试总结和退出原因通常出现在末尾；Glob 保留头部则便于先看到最靠前的一批匹配结果。预算不是统一截取前 N 个字符，而是工具契约的一部分。</p><p>当结果超出预算且策略为 artifact（独立保存的完整结果）时，完整内容由 <code>artifactStore</code> 保存，模型收到预览、原始大小与引用位置。如果 artifact 写入失败，系统不会把一次成功的工具执行改判为失败，而是回到统一截断路径（<code>result-serialization.ts:294</code>）：结果仍然可见，同时避免大体积内容直接进入上下文。</p><p>PostToolUse Hook 补充的诊断上下文也必须服从同一预算。它不能因为发生在序列化之后，就绕过前面建立的大小限制。</p><h3 id=展示与推理分别构造>展示与推理：分别构造<a href=#%e5%b1%95%e7%a4%ba%e4%b8%8e%e6%8e%a8%e7%90%86%e5%88%86%e5%88%ab%e6%9e%84%e9%80%a0 class=header-anchor></a></h3><p><code>createToolResultDisplay()</code> 根据工具类型构造界面展示；<code>serializeOutput()</code> 构造模型内容。两条路径读取同一原始输出，却互不冒充：</p><ul><li>UI 可以展示结构化差异、运行状态或媒体信息；</li><li>模型只接收继续任务所需的紧凑内容；</li><li>观测事件记录是否截断和字节统计；</li><li>artifact 保存超出上下文预算但可能需要回查的原文。</li></ul><blockquote><p><strong>Q：为什么不把 UI 中显示的结果原样发给模型？</strong></p><p>A：界面展示追求可读性和交互性，模型输入追求信息密度与协议稳定性。一个差异视图可能适合人类展开查看，却不适合作为数万 token 的下一轮输入。分别投影可以让两者共享执行事实，又不共享不合适的表示形式。</p></blockquote><p>结果的多种表达已经准备完成，最后还差一步：把它们按正确顺序提交，使本轮对话重新成为一段完整历史。</p><h2 id=历史闭合所有路径都必须产生结果>历史闭合：所有路径都必须产生结果<a href=#%e5%8e%86%e5%8f%b2%e9%97%ad%e5%90%88%e6%89%80%e6%9c%89%e8%b7%af%e5%be%84%e9%83%bd%e5%bf%85%e9%a1%bb%e4%ba%a7%e7%94%9f%e7%bb%93%e6%9e%9c class=header-anchor></a></h2><p>工具执行完成后，运行时按模型声明顺序遍历结果，并为每个调用完成以下工作（<code>turn-tools.ts:280</code> 起）：</p><ol><li>记录工具用量；</li><li>将持久化 part 更新为 completed 或 error；</li><li>把 <code>modelContent</code> 作为 <code>tool_result</code> 提交到下一轮请求历史；</li><li>对文件修改生成工作区检查点（workspace checkpoint）；</li><li>发出流式恢复锚点与工具账本事件；</li><li>处理工具结果附带的后续用户输入。</li></ol><p>其中最重要的顺序是：<strong>先关闭工具结果，再处理附加工作。</strong> checkpoint 创建失败不应让已经成功的工具重新变成没有结果的调用。</p><h3 id=取消发生在工具批次中间>取消发生在工具批次中间<a href=#%e5%8f%96%e6%b6%88%e5%8f%91%e7%94%9f%e5%9c%a8%e5%b7%a5%e5%85%b7%e6%89%b9%e6%ac%a1%e4%b8%ad%e9%97%b4 class=header-anchor></a></h3><p>假设模型一次调用三个工具，用户在第二个工具执行期间停止 Turn。此时 assistant 的三个 <code>tool_use</code> 已经进入历史，运行时不能立即抛出取消错误。</p><p><code>turn-tools.ts:142</code> 的注释明确要求：继续把取消信号交给执行器，由每个尚未完成的调用产生 <code>ToolCancelled</code> 结果；全部配对结果提交之后，Turn 循环才能感知取消并退出。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>tool_use A ── tool_result A（成功）
+</span></span><span class=line><span class=cl>tool_use B ── tool_result B（已取消）
+</span></span><span class=line><span class=cl>tool_use C ── tool_result C（已取消）
+</span></span></code></pre></div><p>甚至取消发生在 checkpoint 阶段时，运行时也会先记住这次取消，继续提交同批其他工具的结果，最后再抛出取消（<code>turn-tools.ts:280-421</code>）。这是为了避免一个附加操作阻止其余工具完成协议闭合。</p><h3 id=普通失败不终止整个批次>普通失败不终止整个批次<a href=#%e6%99%ae%e9%80%9a%e5%a4%b1%e8%b4%a5%e4%b8%8d%e7%bb%88%e6%ad%a2%e6%95%b4%e4%b8%aa%e6%89%b9%e6%ac%a1 class=header-anchor></a></h3><p>一个工具参数错误或执行失败，并不等于后续工具都必须取消。普通失败会作为结果返回模型，调度器继续后续组。只有工具结果明确请求 <code>stopTurnAfterResult</code>——例如某些终态提交工具——后续调用才统一生成取消结果。</p><p>因此，执行失败与控制流终止是两个独立维度：</p><div class=table-wrapper><table><thead><tr><th>工具结果</th><th>当前结果</th><th>后续组</th></tr></thead><tbody><tr><td>成功</td><td>正常提交</td><td>继续</td></tr><tr><td>普通失败</td><td>错误结果提交</td><td>继续</td></tr><tr><td>请求终止 Turn</td><td>当前结果提交</td><td>后续调用生成取消结果</td></tr><tr><td>用户取消</td><td>所有未完成调用生成取消结果</td><td>配对完成后退出</td></tr></tbody></table></div><p>这避免了用“异常是否抛出”来间接控制整个 Turn。</p><blockquote><p><strong>Q：为什么 checkpoint 要放在 <code>tool_result</code> 提交之后？</strong></p><p>A：checkpoint 是工具成功后的增强能力，而 <code>tool_result</code> 是模型协议要求的不变式。增强能力失败可以降级，协议闭合不能被阻断。先完成必要事实，再执行附加记录，故障边界才清晰。</p></blockquote><p>至此，常规工具调用已经走完了从提案到历史记录的全过程。最后再看一个更苛刻的场景：工具在模型响应尚未结束时就提前执行。</p><h2 id=流式执行模型还未结束工具已经开始>流式执行：模型还未结束，工具已经开始<a href=#%e6%b5%81%e5%bc%8f%e6%89%a7%e8%a1%8c%e6%a8%a1%e5%9e%8b%e8%bf%98%e6%9c%aa%e7%bb%93%e6%9d%9f%e5%b7%a5%e5%85%b7%e5%b7%b2%e7%bb%8f%e5%bc%80%e5%a7%8b class=header-anchor></a></h2><p>到目前为止，我们默认模型完整返回所有工具调用后才开始执行。ZCode 还有一项更进一步的优化：<strong>满足严格条件的只读工具，可以在模型响应流仍未结束时提前执行。</strong></p><p>入口是 <code>createStreamingToolCoordinator()</code>（<code>runtime/methods/streaming-tool-coordinator.ts</code>）。当流中出现一个完整的 <code>tool_call</code> 事件时，<code>shouldExecuteToolDuringStream()</code>（第 339 行）检查：</p><ul><li>工具不是由提供商代为执行；</li><li>开启了模型流式输出与流式工具执行；</li><li><code>readOnly</code> 为 true；</li><li><code>concurrentSafe</code> 为 true；</li><li><code>destructive</code> 为 false；</li><li>不需要批准或用户交互；</li><li><code>sideEffectScope</code> 为 <code>none</code>。</li></ul><p>只有全部满足，工具才会在流结束前进入调度。Glob 符合这一条件，Edit 与 Bash 不符合。</p><p>这样做可以把“模型继续生成后续内容”的时间与“只读工具执行”的时间重叠，但它同时引入了新的恢复问题：如果工具已经执行完成，模型流随后中断，该怎么办？</p><p>ZCode 的恢复步骤是：</p><ol><li>收集已经完成的流式工具结果；</li><li>对执行状态不明确或尚未执行的调用生成合成错误结果；</li><li>将 assistant tool-call 与所有结果一起提交到请求历史；</li><li>以最近一个已提交工具结果为恢复锚点，重新发起模型请求。</li></ol><p>也就是说，性能优化不能改变历史不变式。即使模型流在最不利的位置断开，运行时仍要构造一段自洽历史，再尝试恢复。</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>sequenceDiagram
+    participant M as 模型流
+    participant C as Streaming Coordinator
+    participant G as Glob
+    participant H as 请求历史
+
+    M-&gt;&gt;C: 完整 Glob tool_call
+    C-&gt;&gt;G: 提前执行
+    G--&gt;&gt;C: 成功结果
+    M--xC: 流式连接中断
+    C-&gt;&gt;H: assistant tool_use
+    C-&gt;&gt;H: tool_result（已完成结果）
+    C-&gt;&gt;M: 从恢复锚点重新请求</pre></div><blockquote><p><strong>Q：为什么流式提前执行只允许无副作用工具？</strong></p><p>A：流尚未结束时，模型的最终响应还没有稳定下来，连接也可能失败并重试。只读、并发安全且无需授权的工具即使提前执行，最多造成重复计算；写文件或运行命令若在恢复中重复，可能产生不可逆的环境变化。性能优化的适用范围必须由可重复执行性约束。</p></blockquote><h2 id=总结工具执行器是一条可信边界>总结：工具执行器是一条可信边界<a href=#%e6%80%bb%e7%bb%93%e5%b7%a5%e5%85%b7%e6%89%a7%e8%a1%8c%e5%99%a8%e6%98%af%e4%b8%80%e6%9d%a1%e5%8f%af%e4%bf%a1%e8%be%b9%e7%95%8c class=header-anchor></a></h2><p>回看开头的一行 <code>run_tools</code>，ZCode 实际建立了六层保护：</p><ol><li><strong>模型输出是提案，不是执行事实</strong>：名称、ID、参数与工具存在性都需要准入。</li><li><strong>先规范化，再应用策略</strong>：Hook、权限界面与 handler 必须看到同一份执行参数。</li><li><strong>并行需要显式证明安全</strong>：调度依据是副作用与并发元数据，完成后仍按声明顺序归并。</li><li><strong>权限是一套多参与方协议</strong>：规则、用户界面和 Hook 共同形成 allow、ask、deny、modify 的决策过程。</li><li><strong>结果需要按消费者分别投影</strong>：运行时、UI、模型与观测系统不应共享一个未经约束的字符串。</li><li><strong>每条路径都要关闭历史</strong>：未知工具、拒绝、超时、取消和断流最终都必须形成配对结果。</li></ol><p>因此，工具执行器的核心职责不是“找到函数并调用”，而是建立一条可信边界：左侧是不稳定、不可直接信任的模型输出，右侧是真实文件、进程与网络；中间每一层都在缩小不确定性，直到一次操作可以被安全执行并准确记录。</p><h2 id=阅读路线>阅读路线<a href=#%e9%98%85%e8%af%bb%e8%b7%af%e7%ba%bf class=header-anchor></a></h2><p>如果要按本文顺序继续研读源码，可以从以下文件进入：</p><div class=table-wrapper><table><thead><tr><th>顺序</th><th>文件</th><th>阅读目标</th></tr></thead><tbody><tr><td>1</td><td><code>core/src/runtime/methods/turn-tools.ts:43</code></td><td>看模型工具调用如何进入调度、再回到历史</td></tr><tr><td>2</td><td><code>core/src/runtime/methods/tools.ts:38</code></td><td>看运行时如何构造调度输入与执行计划</td></tr><tr><td>3</td><td><code>core/src/tool/scheduler.ts:50</code></td><td>理解并行组、拓扑排序与并发安全判断</td></tr><tr><td>4</td><td><code>core/src/tool/executor/call-runner.ts:65</code></td><td>沿单次工具调用走完全部生命周期</td></tr><tr><td>5</td><td><code>core/src/tool/executor/permission-flow.ts:41</code></td><td>理解权限三态、交互等待与参数修改</td></tr><tr><td>6</td><td><code>core/src/tool/executor/permission-responder-race.ts:38</code></td><td>查看 Hook 与 Broker 的竞赛实现</td></tr><tr><td>7</td><td><code>core/src/tool/executor/result-serialization.ts:46</code></td><td>理解模型内容、预算与 artifact 后备路径</td></tr><tr><td>8</td><td><code>core/src/runtime/methods/streaming-tool-coordinator.ts:49</code></td><td>理解流式提前执行与断流恢复</td></tr></tbody></table></div></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>All rights reserved.</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/2026/zcode-agent-runtime/><div class=article-details><h2 class=article-title>源码研读 | ZCode Agent 运行时</h2></div></a></article><article><a href=/2026/rl/><div class=article-details><h2 class=article-title>书籍阅读 | 强化学习入门</h2></div></a></article><article><a href=/2026/cpp-learning/><div class=article-details><h2 class=article-title>学习笔记 | C++ 学习笔记</h2></div></a></article></div></div></aside><script src=https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css><div id=waline class=waline-container></div><style>.waline-container{--waline-font-size:1.5rem;--waline-theme-color:#5a6e3a;--waline-active-color:#5a6e3a;--waline-border-radius:var(--radius-lg)}html[data-scheme=dark] .waline-container{--waline-theme-color:#7da0b0;--waline-active-color:#7da0b0;--waline-color:#c5cdd6;--waline-bgcolor:#252830;--waline-bgcolor-light:#2a2d32;--waline-bgcolor-hover:#323844;--waline-border-color:rgba(100, 110, 125, 0.3);--waline-disable-bgcolor:#323844;--waline-disable-color:rgba(160, 170, 185, 0.35);--waline-bq-color:rgba(125, 160, 176, 0.15);--waline-info-bgcolor:#2a2d32;--waline-info-color:rgba(160, 170, 185, 0.6);--waline-dark-grey:#c5cdd6;--waline-light-grey:rgba(140, 150, 165, 0.5)}html[data-scheme=dark] .waline-container .wl-count{color:#c5cdd6}</style><script>(function(){var t="/stickers/capoo-5.gif",e=!1;function n(){var e=document.createElement("img");e.src=t,e.alt="",Object.assign(e.style,{position:"fixed",bottom:"40px",right:"40px",width:"100px",height:"100px",borderRadius:"20px",opacity:"0",transform:"scale(0.4) rotate(-12deg) translateY(20px)",transition:"opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",pointerEvents:"none",zIndex:"9999",boxShadow:"0 8px 24px rgba(0,0,0,0.15)"}),document.body.appendChild(e),requestAnimationFrame(function(){e.style.opacity="1",e.style.transform="scale(1) rotate(0deg) translateY(0)",setTimeout(function(){e.style.opacity="0",e.style.transform="scale(0.8) rotate(5deg) translateY(-12px)",setTimeout(function(){e.remove()},500)},3e3)})}window.addEventListener("load",function(){setTimeout(function(){var s,t=document.getElementById("waline");if(!t)return;t.addEventListener("click",function(t){t.target.closest(".wl-btn[type=submit], button.primary, .wl-submit-btn")&&(e=!0)}),s=new MutationObserver(function(t){if(!e)return;for(var o of t)for(var s of o.addedNodes)if(s.nodeType===1&&(s.classList&&s.classList.contains("wl-item")||s.querySelector&&s.querySelector(".wl-item"))){e=!1,n();return}}),setTimeout(function(){s.observe(t,{childList:!0,subtree:!0})},800)},200)})})(),window.addEventListener("load",function(){setTimeout(function(){Waline.init({el:"#waline",serverURL:"https://waline-ruby-one.vercel.app",dark:'html[data-scheme="dark"]',emoji:[window.location.origin+"/stickers/azuki","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/bmoji","https://cdn.jsdelivr.net/npm/sticker-heo@2022.7.5/Sticker-100/","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/tieba","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/alus"],avatar:"mp",requiredMeta:[],pageSize:10,locale:{placeholder:"说点什么吧..."}})},100)})</script><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 ionfeather'Log
+· <span id=site-runtime></span>
+<script>(function(){var e=new Date("2024-10-20"),t=new Date,n=Math.floor((t-e)/(1e3*60*60*24));document.getElementById("site-runtime").textContent=n+" 天"})()</script></section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.29.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><script src=/js/pangu.min.js defer></script><script>window.addEventListener("load",function(){if(typeof pangu=="undefined")return;["article-content","article-title","article-subtitle","welcome","tagCloud","site-footer","widget--toc","toc-mobile"].forEach(function(e){pangu.spacingElementByClassName(e)})})</script></main></div><script type=module>
+(async () => {
+  if (window.__mermaidBoot) return;
+  window.__mermaidBoot = true;
+
+  
+  if (document.readyState === 'loading') {
+    await new Promise((resolve) => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
+  }
+
+  const blocks = Array.from(document.querySelectorAll('[data-mermaid-block]'));
+  const sources = new Map();
+  blocks.forEach((block, index) => {
+    const node = block.querySelector('pre.mermaid');
+    if (!node) return;
+    sources.set(node, node.textContent || '');
+    block.dataset.diagramIndex = String(index + 1);
+  });
+
+  
+  
+  
+  const lightGlyphs = {
+    red: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5.5 5.5 L10.5 10.5 M10.5 5.5 L5.5 10.5" stroke="rgba(0,0,0,0.6)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>',
+    yellow: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5 8 H11" stroke="rgba(0,0,0,0.6)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>',
+    green: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5.5 5.5 H9.5 L5.5 9.5 Z M10.5 10.5 H6.5 L10.5 6.5 Z" fill="rgba(0,0,0,0.62)"/></svg>'
+  };
+  const lightStates = ['mermaid-closed', 'mermaid-minimized'];
+  blocks.forEach((block) => {
+    const lights = block.querySelector('.mermaid-lights');
+    if (!lights) return;
+    const toggleState = (cls) => {
+      const wasOn = block.classList.contains(cls);
+      block.classList.remove(...lightStates);
+      if (!wasOn) block.classList.add(cls);
+    };
+    [
+      { cls: 'mermaid-light-red', title: '折叠图表', glyph: lightGlyphs.red, action: () => toggleState('mermaid-closed') },
+      { cls: 'mermaid-light-yellow', title: '最小化为预览', glyph: lightGlyphs.yellow, action: () => toggleState('mermaid-minimized') },
+      { cls: 'mermaid-light-green', title: '大图预览', glyph: lightGlyphs.green, action: () => { if (block.dataset.state === 'ready') openPreview(block); } }
+    ].forEach(({ cls, title, glyph, action }) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `mermaid-light ${cls}`;
+      btn.title = title;
+      btn.setAttribute('aria-label', title);
+      btn.innerHTML = glyph;
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        action();
+      });
+      lights.appendChild(btn);
+    });
+  });
+
+  const mermaidFontFamily = "'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif";
+  const themes = {
+    light: {
+      darkMode: false,
+      background: 'transparent',
+      fontFamily: mermaidFontFamily,
+      primaryColor: '#edf3e5',
+      primaryTextColor: '#28311f',
+      primaryBorderColor: '#6f8450',
+      secondaryColor: '#e8f1f4',
+      secondaryTextColor: '#263840',
+      secondaryBorderColor: '#7da0b0',
+      tertiaryColor: '#f6f0e2',
+      tertiaryTextColor: '#3f3828',
+      tertiaryBorderColor: '#b9a16c',
+      textColor: '#31372d',
+      lineColor: '#64705d',
+      mainBkg: '#edf3e5',
+      nodeBorder: '#6f8450',
+      clusterBkg: '#f3f6ef',
+      clusterBorder: '#b9c6a8',
+      edgeLabelBackground: 'transparent',
+      noteBkgColor: '#fff7d6',
+      noteTextColor: '#403923',
+      noteBorderColor: '#c8ad54',
+      actorBkg: '#edf3e5',
+      actorBorder: '#6f8450',
+      actorTextColor: '#28311f',
+      signalColor: '#56614e',
+      signalTextColor: '#31372d',
+      labelBoxBkgColor: '#f3f6ef',
+      labelBoxBorderColor: '#aab89a',
+      labelTextColor: '#31372d',
+      loopTextColor: '#31372d',
+      activationBkgColor: '#dce8d0',
+      activationBorderColor: '#6f8450',
+      sequenceNumberColor: '#ffffff'
+    },
+    dark: {
+      darkMode: true,
+      background: 'transparent',
+      fontFamily: mermaidFontFamily,
+      primaryColor: '#34454d',
+      primaryTextColor: '#edf4f6',
+      primaryBorderColor: '#8db2c2',
+      secondaryColor: '#394633',
+      secondaryTextColor: '#eef3e9',
+      secondaryBorderColor: '#93aa72',
+      tertiaryColor: '#4b4234',
+      tertiaryTextColor: '#fff3d9',
+      tertiaryBorderColor: '#c1a673',
+      textColor: '#dce4e8',
+      lineColor: '#aebbc1',
+      mainBkg: '#34454d',
+      nodeBorder: '#8db2c2',
+      clusterBkg: '#2b323c',
+      clusterBorder: '#596674',
+      edgeLabelBackground: 'transparent',
+      noteBkgColor: '#4c4329',
+      noteTextColor: '#fff2c2',
+      noteBorderColor: '#c1a653',
+      actorBkg: '#34454d',
+      actorBorder: '#8db2c2',
+      actorTextColor: '#edf4f6',
+      signalColor: '#b8c5ca',
+      signalTextColor: '#dce4e8',
+      labelBoxBkgColor: '#2b323c',
+      labelBoxBorderColor: '#667482',
+      labelTextColor: '#dce4e8',
+      loopTextColor: '#dce4e8',
+      activationBkgColor: '#3f555f',
+      activationBorderColor: '#8db2c2',
+      sequenceNumberColor: '#20262d'
+    }
+  };
+
+  const preview = document.createElement('dialog');
+  preview.className = 'mermaid-preview';
+  preview.setAttribute('aria-label', 'Mermaid 图表大图预览');
+  preview.innerHTML = `
+    <div class="mermaid-preview__panel">
+      <header class="mermaid-preview__header">
+        <span>图表预览</span>
+        <div class="mermaid-preview__actions">
+          <button class="mermaid-action mermaid-preview__download" type="button" title="下载 SVG" aria-label="下载当前 Mermaid SVG">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+          </button>
+          <button class="mermaid-action mermaid-preview__close" type="button" title="关闭" aria-label="关闭图表预览">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+          </button>
+        </div>
+      </header>
+      <div class="mermaid-preview__canvas"></div>
+    </div>`;
+  document.body.appendChild(preview);
+
+  let activeBlock = null;
+  const previewCanvas = preview.querySelector('.mermaid-preview__canvas');
+
+  function getRenderedSvg(block) {
+    return block ? block.querySelector('pre.mermaid > svg') : null;
+  }
+
+  function makeFilename(block) {
+    const page = location.pathname.split('/').filter(Boolean).pop() || 'diagram';
+    const safePage = page.replace(/[^a-zA-Z0-9\u4e00-\u9fff_-]+/g, '-');
+    const index = String(block.dataset.diagramIndex || '1').padStart(2, '0');
+    return `${safePage}-diagram-${index}.svg`;
+  }
+
+  function downloadSvg(block) {
+    const svg = getRenderedSvg(block);
+    if (!svg) return;
+    const clone = svg.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+    const source = `<?xml version="1.0" encoding="UTF-8"?>\n${new XMLSerializer().serializeToString(clone)}`;
+    const url = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = makeFilename(block);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function openPreview(block) {
+    const svg = getRenderedSvg(block);
+    if (!svg || !previewCanvas) return;
+    activeBlock = block;
+    previewCanvas.replaceChildren(svg.cloneNode(true));
+    preview.showModal();
+  }
+
+  preview.querySelector('.mermaid-preview__close').addEventListener('click', () => preview.close());
+  preview.querySelector('.mermaid-preview__download').addEventListener('click', () => {
+    if (activeBlock) downloadSvg(activeBlock);
+  });
+  preview.addEventListener('click', (event) => {
+    if (event.target === preview) preview.close();
+  });
+  preview.addEventListener('close', () => {
+    previewCanvas.replaceChildren();
+    activeBlock = null;
+  });
+
+  blocks.forEach((block) => {
+    block.querySelector('.mermaid-preview-trigger')?.addEventListener('click', () => openPreview(block));
+    block.querySelector('.mermaid-download-trigger')?.addEventListener('click', () => downloadSvg(block));
+    block.querySelector('pre.mermaid')?.addEventListener('dblclick', () => {
+      if (block.dataset.state === 'ready') openPreview(block);
+    });
+  });
+
+  
+  blocks.forEach((block) => {
+    const node = block.querySelector('pre.mermaid');
+    if (!node) return;
+    let dragging = false;
+    let moved = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    node.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = node.scrollLeft;
+      startTop = node.scrollTop;
+    });
+    node.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (!moved && Math.hypot(dx, dy) < 4) return;
+      if (!moved) {
+        moved = true;
+        node.classList.add('mermaid--panning');
+        node.setPointerCapture(event.pointerId);
+      }
+      node.scrollLeft = startLeft - dx;
+      node.scrollTop = startTop - dy;
+    });
+    const endPan = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      node.classList.remove('mermaid--panning');
+      if (moved && node.hasPointerCapture(event.pointerId)) node.releasePointerCapture(event.pointerId);
+    };
+    node.addEventListener('pointerup', endPan);
+    node.addEventListener('pointercancel', endPan);
+  });
+
+  function setBlockState(block, state) {
+    block.dataset.state = state;
+    const status = block.querySelector('.mermaid-status');
+    const previewButton = block.querySelector('.mermaid-preview-trigger');
+    const downloadButton = block.querySelector('.mermaid-download-trigger');
+    if (status) {
+      status.textContent = state === 'loading'
+        ? '图表加载中…'
+        : state === 'error'
+          ? '图表暂时无法渲染，已显示源码。'
+          : '';
+    }
+    if (previewButton) previewButton.disabled = state !== 'ready';
+    if (downloadButton) downloadButton.disabled = state !== 'ready';
+  }
+
+  function showFallback(node, error) {
+    const block = node.closest('[data-mermaid-block]');
+    const source = sources.get(node) || '';
+    node.removeAttribute('data-processed');
+    node.textContent = source;
+    node.classList.add('mermaid--fallback');
+    if (block) setBlockState(block, 'error');
+    console.warn('[mermaid] render failed; source preserved', error);
+  }
+
+  function sizeDiagram(node) {
+    const svg = node.querySelector('svg');
+    const viewBox = svg?.viewBox?.baseVal;
+    if (!svg || !viewBox) return;
+    
+    if (viewBox.width > node.clientWidth) {
+      svg.style.width = `${Math.ceil(viewBox.width)}px`;
+      svg.style.maxWidth = 'none';
+    }
+  }
+
+  let mermaid;
+  let importTimeout;
+  try {
+    ({ default: mermaid } = await Promise.race([
+      import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'),
+      new Promise((_resolve, reject) => {
+        importTimeout = window.setTimeout(() => reject(new Error('Mermaid 加载超时')), 15000);
+      })
+    ]));
+  } catch (error) {
+    sources.forEach((_source, node) => showFallback(node, error));
+    return;
+  } finally {
+    window.clearTimeout(importTimeout);
+  }
+
+  let renderRevision = 0;
+  let renderQueue = Promise.resolve();
+  async function renderAll(revision) {
+    if (revision !== renderRevision) return;
+    const dark = document.documentElement.dataset.scheme === 'dark';
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: themes[dark ? 'dark' : 'light']
+    });
+
+    for (const [node, source] of sources) {
+      if (revision !== renderRevision) return;
+      const block = node.closest('[data-mermaid-block]');
+      if (!block) continue;
+      setBlockState(block, 'loading');
+      node.classList.remove('mermaid--fallback');
+      node.classList.toggle('mermaid--vertical', /^\s*(?:flowchart|graph)\s+(?:TD|TB)\b/im.test(source));
+      node.removeAttribute('data-processed');
+      node.textContent = source;
+      try {
+        await mermaid.run({ nodes: [node] });
+        if (revision !== renderRevision) return;
+        sizeDiagram(node);
+        setBlockState(block, 'ready');
+      } catch (error) {
+        if (revision !== renderRevision) return;
+        showFallback(node, error);
+      }
+    }
+  }
+
+  function scheduleRender() {
+    const revision = ++renderRevision;
+    renderQueue = renderQueue.then(() => renderAll(revision)).catch((error) => {
+      sources.forEach((_source, node) => showFallback(node, error));
+    });
+  }
+
+  
+  new MutationObserver(scheduleRender).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-scheme']
+  });
+  scheduleRender();
+})();
+</script><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.9e8ceefd1b112fd9edb2658418ee82afdcb1d906c195fa0a09c0af91a2f326c3.js defer></script><script src=https://unpkg.com/applause-button/dist/applause-button.js defer></script><script>document.addEventListener("DOMContentLoaded",function(){const e=document.querySelector("#TableOfContents");if(!e)return;e.querySelectorAll('a[href^="#"]').forEach(function(e){e.textContent=e.textContent.replace(/^(?!\d{4}(?:\.\d{2}){2})\d+(?:\.\d+)*\.?\s+/,"")})})</script></body></html>

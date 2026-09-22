@@ -1,0 +1,646 @@
+<!doctype html><html lang=en-us dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="以 ZCode 开源代码为样本，从一个 20 行的循环出发，理解一个生产级 Coding Agent 的运行时是如何被真实问题塑造出来的"><title>源码研读 | ZCode Agent 运行时</title><link rel=canonical href=http://localhost:1314/2026/zcode-agent-runtime/><link rel=preload href=/scss/style.min.bc14f8e1679165876a91b0030da13ca993dfb453b567eac2d3cc0093932c3af8.css as=style><link rel=stylesheet href=/scss/style.min.bc14f8e1679165876a91b0030da13ca993dfb453b567eac2d3cc0093932c3af8.css><meta property='og:title' content="源码研读 | ZCode Agent 运行时"><meta property='og:description' content="以 ZCode 开源代码为样本，从一个 20 行的循环出发，理解一个生产级 Coding Agent 的运行时是如何被真实问题塑造出来的"><meta property='og:url' content='http://localhost:1314/2026/zcode-agent-runtime/'><meta property='og:site_name' content="ionfeather' Log"><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Agent'><meta property='article:tag' content='源码研读'><meta property='article:tag' content='ZCode'><meta property='article:published_time' content='2026-09-22T01:30:00+08:00'><meta property='article:modified_time' content='2026-09-22T19:08:00+08:00'><meta name=twitter:title content="源码研读 | ZCode Agent 运行时"><meta name=twitter:description content="以 ZCode 开源代码为样本，从一个 20 行的循环出发，理解一个生产级 Coding Agent 的运行时是如何被真实问题塑造出来的"><link rel="shortcut icon" href=/ion-32.png><script>sessionStorage.getItem("siteVisited")?document.documentElement.classList.add("no-menu-anim"):sessionStorage.setItem("siteVisited","1")</script><script>(function(){var e=localStorage.getItem("StackColorScheme"),t=window.matchMedia("(prefers-color-scheme: dark)").matches,n=e==="dark"||e==="auto"&&t||!e&&t;document.documentElement.dataset.scheme=n?"dark":"light"})()</script><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap"></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css media=print onload='this.media="all"'><noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-regular.css></noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&display=swap"></noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap"></noscript><link rel=stylesheet href=https://unpkg.com/applause-button/dist/applause-button.css><script type=speculationrules>
+{
+  "prerender": [
+    {
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "*\\?*" } },
+          { "not": { "selector_matches": "[target=_blank], [download], .glightbox" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
+</script><link rel=preload href=/ts/main.0fc6cac9d242ccbdee4aa249f4e96539b07c557c9068f70cd60627e5c4403fd0.js as=script><link rel=preload href="/js/site.js?v=96b8394732c534959ef6c359c2fdb242" as=script><script src="/js/site.js?v=96b8394732c534959ef6c359c2fdb242" defer></script><script>(function(){var e=document.createElement("div");e.id="page-loading",e.innerHTML='<div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div>',document.addEventListener("DOMContentLoaded",function(){document.body.insertBefore(e,document.body.firstChild);var t,n,o=new URL(window.location.toString()),s=o.searchParams.get("keyword");s&&(t=document.querySelector(".search-form"),n=t?t.querySelector('input[name="keyword"]'):null,t&&n&&(n.value=s,t.classList.add("has-keyword")))}),document.addEventListener("DOMContentLoaded",function(){window.requestAnimationFrame(function(){window.setTimeout(function(){e&&e.classList.add("is-done")},160)})}),window.setTimeout(function(){e&&e.classList.add("is-done")},1200)})()</script></head><body class=article-page><script>(function(){localStorage.getItem("article-sidebar-rail")==="1"&&document.body.classList.add("is-sidebar-rail")})()</script><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_346bcac48b777fa1.jpg width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>ionfeather' Log</a></h1></div></header><div class=sidebar-social-bar><ol class=menu-social><li><a href=https://github.com/ionfeather target=_blank title=GitHub rel=me><svg t="1732597946058" class="icon" viewBox="0 0 1024 1024" p-id="3746" width="24" height="24"><path d="M850.346667 155.008a42.666667 42.666667.0 00-22.741334-23.509333c-8.704-3.754667-85.717333-33.322667-200.32 39.168H396.714667c-114.773333-72.618667-191.701333-42.922667-200.32-39.168a42.88 42.88.0 00-22.741334 23.466666c-26.197333 66.218667-18.048 136.448-7.850666 176.896C134.272 374.016 128 413.098667 128 469.333333c0 177.877333 127.104 227.882667 226.730667 246.272a189.568 189.568.0 00-13.013334 46.549334A44.373333 44.373333.0 00341.333333 768v38.613333c-19.498667-4.138667-41.002667-11.946667-55.168-26.112C238.08 732.416 188.330667 682.666667 128 682.666667V768c25.002667.0 65.365333 40.362667 97.834667 72.832 51.029333 51.029333 129.066667 55.253333 153.386666 55.253333 3.114667.0 5.376-.085333 6.528-.128A42.666667 42.666667.0 00426.666667 853.333333v-82.090666c4.266667-24.746667 20.224-49.621333 27.946666-56.362667A42.666667 42.666667.0 00431.488 640.298667c-138.154667-15.744-218.154667-48.810667-218.154667-170.965334.0-53.12 5.632-70.741333 31.573334-99.285333 11.008-12.117333 14.08-29.568 7.978666-44.8C248.064 313.344 234.112 259.797333 246.4 207.701333c20.650667-1.578667 59.904 4.565333 113.706667 40.96C367.104 253.44 375.466667 256 384 256h256a42.666667 42.666667.0 0023.936-7.338667c54.016-36.522667 92.970667-41.770667 113.664-41.130666 12.330667 52.224-1.578667 105.770667-6.4 117.674666a42.666667 42.666667.0 008.021333 44.928C805.077333 398.464 810.666667 416.085333 810.666667 469.333333c0 122.581333-79.957333 155.52-218.069334 170.922667A42.666667 42.666667.0 00569.472 714.965333C589.269333 732.032 597.333333 747.434666 597.333333 768v128h85.333334V768c0-20.437333-3.925333-38.101333-9.770667-53.12C769.92 695.765333 896 643.712 896 469.333333c0-56.362667-6.272-95.530667-37.76-137.514666C868.437333 291.413334 876.501333 221.312 850.346667 155.008z" fill="currentColor" p-id="3747"/></svg></a></li><li><a href=mailto:lizishadowmay@gmail.com target=_blank title=Email rel=me><svg t="1732597869588" class="icon" viewBox="0 0 1024 1024" p-id="23464" width="24" height="24"><path d="M926.47619 355.644952V780.190476a73.142857 73.142857.0 01-73.142857 73.142857H170.666667A73.142857 73.142857.0 0197.52381 780.190476V355.644952l73.142857 62.000762V780.190476h682.666666V417.645714l73.142857-62.000762zM853.333333 170.666667a74.044952 74.044952.0 0126.087619 4.778666A72.704 72.704.0 01910.043429 197.632a73.508571 73.508571.0 0110.678857 17.67619c3.169524 7.509333 5.12 15.652571 5.607619 24.210286L926.47619 243.809524v24.380952L559.469714 581.241905a73.142857 73.142857.0 01-91.306666 2.901333l-3.632762-2.925714L97.52381 268.190476v-24.380952a72.899048 72.899048.0 0140.155428-65.292191A72.97219 72.97219.0 01170.666667 170.666667h682.666666zm-10.971428 73.142857H181.638095L512 525.58019 842.361905 243.809524z" p-id="23465" fill="currentColor"/></svg></a></li><li><a href=index.xml target=_blank title=RSS rel=me><svg class="icon" viewBox="0 0 1024 1024" width="200" height="200"><path d="M170.666667 426.666667c-25.6.0-42.666667 17.066667-42.666667 42.666666S145.066667 512 170.666667 512C358.4 512 512 665.6 512 853.333333 512 878.933333 529.066667 896 554.666667 896s42.666667-17.066667 42.666666-42.666667c0-234.666667-192-426.666667-426.666666-426.666666z" stroke="currentColor" fill="currentColor" stroke-width="0"/><path d="M170.666667 128C145.066667 128 128 145.066667 128 170.666667s17.066667 42.666667 42.666667 42.666666c354.133333.0 640 285.866667 640 640 0 25.6 17.066667 42.666667 42.666666 42.666667S896 878.933333 896 853.333333C896 452.266666 571.733333 128 170.666667 128z" stroke="currentColor" fill="currentColor" stroke-width="0"/><path d="M213.333333 810.666667m-85.333333.0a85.333333 85.333333.0 10170.666667.0 85.333333 85.333333.0 10-170.666667.0z" stroke="currentColor" fill="currentColor" stroke-width="0"/></svg></a></li></ol><button class=sidebar-rail-toggle type=button aria-label=收起侧边栏>
+<svg class="icon icon-tabler icon-sidebar-toggle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
+</button>
+<span id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-sun-high"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.828 14.828A4 4 0 109.172 9.172a4 4 0 005.656 5.656z"/><path d="M6.343 17.657l-1.414 1.414"/><path d="M6.343 6.343 4.929 4.929"/><path d="M17.657 6.343l1.414-1.414"/><path d="M17.657 17.657l1.414 1.414"/><path d="M4 12H2"/><path d="M12 4V2"/><path d="M20 12h2"/><path d="M12 20v2"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132.0.263.0.393.0a7.5 7.5.0 007.92 12.446A9 9 0 1112 2.992z"/></svg></span></div><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-nav-home" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 21v-8a1 1 0 00-1-1h-4a1 1 0 00-1 1v8"/><path d="M3 10a2 2 0 01.709-1.528l7-6a2 2 0 012.582.0l7 6A2 2 0 0121 10v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+<span>主页</span></a></li><li><a href=/about/><svg class="icon icon-nav-about" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M20 21A8 8 0 004 21"/></svg>
+<span>关于</span></a></li><li><a href=/archives/><svg class="icon icon-nav-archive" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 002 2h12a2 2 0 002-2V8"/><path d="M10 12h4"/></svg>
+<span>归档</span></a></li><li><a href=/search/><svg class="icon icon-nav-search" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+<span>搜索</span></a></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives toc-widget"><div class=toc-widget-bar><a href=# class=toc-widget-header onclick='event.preventDefault(),window.scrollTo({top:0,behavior:"smooth"})'><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2></a><button type=button class=toc-number-toggle aria-label=显示编号 title=显示编号>
+<svg class="glyph-number" viewBox="0 0 1024 1024" width="16" height="16"><path d="M341.333333 170.666667H896V256H341.333333V170.666667zM213.333333 128v128H256v42.666667H128V256h42.666667V170.666667H128V128h85.333333zM128 597.333333V490.666667h85.333333V469.333333H128v-42.666666h128v106.666666H170.666667v21.333334H256v42.666666H128zM213.333333 832H128v-42.666667h85.333333V768H128v-42.666667h128V896H128v-42.666667h85.333333V832zm128-362.666667H896v85.333334H341.333333v-85.333334zm0 298.666667H896v85.333333H341.333333V768z" fill="currentColor"/></svg>
+<svg class="glyph-lines" viewBox="0 0 1024 1024" width="16" height="16"><path d="M341.333333 170.666667h568.888889v113.777777H341.333333zm-227.555555.0h113.777778v113.777777H113.777778zm0 284.444444h113.777778v113.777778H113.777778zm0 284.444445h113.777778v113.777777H113.777778zm227.555555.0h568.888889v113.777777H341.333333zm0-284.444445h568.888889v113.777778H341.333333z" fill="currentColor"/></svg>
+</button>
+<button type=button class=toc-filter-toggle aria-label=筛选标题 title=筛选标题>
+<svg viewBox="0 0 1024 1024" width="16" height="16"><path d="M646.037333 511.509333 870.912 204.128A74.741333 74.741333.0 00854.837333 99.765333 74.485333 74.485333.0 00810.773333 85.333333H213.226667c-41.173334.0-74.56 33.429334-74.56 74.666667.0 15.872 5.045333 31.328 14.410666 44.128l224.885334 307.381333V906.666667c0 17.674667 14.304 32 31.957333 32a31.978667 31.978667.0 0031.946667-32v-405.632c0-6.794667-2.165333-13.418667-6.176-18.912L204.629333 166.304A10.677333 10.677333.0 01213.226667 149.333333h597.546666A10.666667 10.666667.0 01819.36 166.304L588.298667 482.122667a32.032 32.032.0 00-6.176 18.912V816.448c0 17.674667 14.304 32 31.957333 32a31.978667 31.978667.0 0031.957333-32V511.509333z" fill="currentColor"/></svg></button><div class=toc-filter-panel><div class=toc-filter-panel__title>筛选标题</div><label class=toc-filter-option><span>显示前</span>
+<input type=number class=toc-filter-depth min=1 max=5 step=1 value=3>
+<span>级</span></label></div></div><div class="widget--toc toc-collapsible"><nav id=TableOfContents><ol><li><a href=#从-20-行-agent-循环说起>从 20 行 Agent 循环说起</a></li><li><a href=#仓库地图>仓库地图</a><ol><li><a href=#启动日志运行时拓扑>启动日志：运行时拓扑</a></li></ol></li><li><a href=#工具连接-agent-与环境>工具：连接 Agent 与环境</a><ol><li><a href=#工具定义三个组成部分>工具定义：三个组成部分</a></li><li><a href=#工具设计三个问题>工具设计：三个问题</a></li></ol></li><li><a href=#turn一次对话如何推进>Turn：一次对话如何推进</a><ol><li><a href=#turn-流程准入到收尾>Turn 流程：准入到收尾</a></li><li><a href=#状态所有权谁负责修改>状态所有权：谁负责修改</a></li><li><a href=#主循环模型请求如何推进>主循环：模型请求如何推进</a><ol><li><a href=#模型为什么记得任务清单>模型为什么"记得"任务清单</a></li><li><a href=#每一轮开始前的检查单>每一轮开始前的检查单</a></li><li><a href=#一次请求中途失败会怎样>一次请求中途失败会怎样</a></li><li><a href=#为什么取消不能随意打断>为什么"取消"不能随意打断</a></li><li><a href=#循环什么时候才真正结束>循环什么时候才真正结束</a></li></ol></li></ol></li><li><a href=#并发输入排队插话与取消>并发输入：排队、插话与取消</a><ol><li><a href=#命令队列串行化输入>命令队列：串行化输入</a></li><li><a href=#steering处理中途输入>Steering：处理中途输入</a><ol><li><a href=#插话的入口五项检查>插话的入口：五项检查</a></li><li><a href=#guide-的消费三条规则>guide 的消费：三条规则</a></li></ol></li><li><a href=#取消信号如何传递>取消：信号如何传递</a></li></ol></li><li><a href=#上下文压缩>上下文：压缩</a><ol><li><a href=#压缩入口四种触发方式>压缩入口：四种触发方式</a></li><li><a href=#压缩阈值何时触发>压缩阈值：何时触发</a></li><li><a href=#摘要提示词保留什么>摘要提示词：保留什么</a></li><li><a href=#压缩结果摘要与近期消息>压缩结果：摘要与近期消息</a></li><li><a href=#压缩防护熔断与失败>压缩防护：熔断与失败</a></li></ol></li><li><a href=#持久化崩溃后如何恢复>持久化：崩溃后如何恢复</a><ol><li><a href=#事件流统一进程内顺序>事件流：统一进程内顺序</a></li><li><a href=#持久化范围哪些事件需要保留>持久化范围：哪些事件需要保留</a></li><li><a href=#冷恢复从消息表重建会话>冷恢复：从消息表重建会话</a></li><li><a href=#内存管理淘汰瞬态事件>内存管理：淘汰瞬态事件</a></li></ol></li><li><a href=#故障恢复常见失败与对策>故障恢复：常见失败与对策</a></li><li><a href=#子-agent隔离探索过程>子 Agent：隔离探索过程</a><ol><li><a href=#前后台两种运行方式>前后台：两种运行方式</a></li><li><a href=#转入后台三方竞赛>转入后台：三方竞赛</a></li><li><a href=#运行限制看门狗与派生边界>运行限制：看门狗与派生边界</a></li><li><a href=#完成通知为何需要排队>完成通知：为何需要排队</a></li></ol></li><li><a href=#总结运行时的六条原则>总结：运行时的六条原则</a></li><li><a href=#阅读路线>阅读路线</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ style=--cat-bg:#5A7A60;--cat-fg:#fff>学习札记</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/2026/zcode-agent-runtime/>源码研读 | ZCode Agent 运行时</a></h2><h3 class=article-subtitle>以 ZCode 开源代码为样本，从一个 20 行的循环出发，理解一个生产级 Coding Agent 的运行时是如何被真实问题塑造出来的</h3></div><footer class=article-time><div><svg class="icon" viewBox="0 0 1024 1024" width="24" height="24"><path d="M379.199 366.816c16.515.0 29.903 13.381 29.903 29.888.0 16.271-13.008 29.506-29.198 29.88l-.705.009h-146.18c-55.677.0-100.311 41.796-101.199 92.89l-.013 1.551v6.544c0 51.278 44.077 93.587 99.528 94.428l1.684.013h548.068c3.01.0 5.918.445 8.658 1.272C868.611 633.031 930 697.493 930 776.238v6.543l-.022 2.561C928.55 869.682 856.682 937 768.981 937H177.812l-.706-.008c-16.189-.375-29.197-13.61-29.197-29.88.0-16.508 13.388-29.89 29.903-29.89h591.17l1.683-.012c55.45-.841 99.528-43.15 99.528-94.429v-6.543l-.013-1.551c-.888-51.094-45.522-92.89-101.199-92.89H233.02c-87.7.0-159.569-67.318-160.997-151.658L72 527.578v-6.544c0-84.68 70.99-152.843 158.366-154.198l2.653-.02h146.18zm369.413-254.877c41.302-41.301 108.282-41.285 149.604.037 41.323 41.323 41.34 108.303.037 149.605L722.115 437.719A199.956 199.956.0 01615.27 493.276l-51.658 9.062c-28.77 5.047-56.196-14.187-61.257-42.96a52.89 52.89.0 01.674-21.564l12.327-51.104a199.95 199.95.0 0152.989-94.503zm107.335 42.306c-17.966-17.966-47.088-17.973-65.045-.016L610.634 334.497a140.195 140.195.0 00-37.152 66.26l-9.858 40.868 41.287-7.242a140.2 140.2.0 0073.776-37.829l1.138-1.125 176.138-176.138c17.958-17.958 17.95-47.08-.016-65.046z" fill="currentColor"/></svg>
+<time class=article-time--published>Sep 22, 2026</time></div><div class=article-time--reading><svg class="icon" viewBox="0 0 1024 1024" width="24" height="24"><path d="M896 149.333333H646.186667A179.413333 179.413333.0 00577.28 163.2a187.306667 187.306667.0 00-30.08 16.426667A157.013333 157.013333.0 00521.173333 200.96c-3.2 3.2-6.186667 6.4-9.173333 9.813333-2.986667-3.413333-5.973333-6.613333-9.173333-9.813333A157.013333 157.013333.0 00476.8 179.626667 187.306667 187.306667.0 00446.72 163.2 179.413333 179.413333.0 00377.813333 149.333333H128a85.333333 85.333333.0 00-85.333333 85.333334v129.066666a42.666667 42.666667.0 0085.333333.0V234.666667h249.813333a91.306667 91.306667.0 0118.56 1.92A83.2 83.2.0 01413.44 241.92a91.306667 91.306667.0 0115.573333 8.32A93.013333 93.013333.0 01453.76 274.986667 91.306667 91.306667.0 01462.08 290.56a83.2 83.2.0 015.333333 17.066667 91.306667 91.306667.0 011.92 18.56V469.333333a42.666667 42.666667.0 0085.333334.0V326.186667a91.306667 91.306667.0 011.92-18.56A83.2 83.2.0 01561.92 290.56a91.306667 91.306667.0 018.32-15.573333A102.186667 102.186667.0 01594.986667 250.24 91.306667 91.306667.0 01610.56 241.92a83.2 83.2.0 0117.066667-5.333333 91.306667 91.306667.0 0118.56-1.92H896v510.72H597.333333A42.666667 42.666667.0 00563.2 762.24a61.44 61.44.0 01-4.693333 5.76 58.24 58.24.0 01-5.333334 4.906667 39.68 39.68.0 01-5.973333 4.48 36.053333 36.053333.0 01-6.186667 3.626666A36.906667 36.906667.0 01534.4 784l-7.04 2.346667-7.253333 1.28a61.653333 61.653333.0 01-15.36.0l-7.253334-1.28-6.826666-1.066667-6.613334-2.773333a112.853333 112.853333.0 01-12.16-8.106667L466.56 769.28a61.44 61.44.0 01-4.693333-5.76A42.666667 42.666667.0 00426.666667 746.666667H128v-192a42.666667 42.666667.0 00-85.333333.0v192A85.333333 85.333333.0 00128 832h280.106667l8.106666 7.466667a122.24 122.24.0 0013.44 10.026666 128 128 0 0014.72 8.746667c4.906667 2.56 10.24 4.906667 15.573334 7.04s10.88 3.626667 16.64 5.12a122.88 122.88.0 0017.28 3.2A168.96 168.96.0 00512 874.666667a161.706667 161.706667.0 0017.92.0 120.32 120.32.0 0017.493333-3.2q8.533333-2.346667 16.64-5.12c5.333333-2.133333 10.666667-4.48 15.786667-7.04A145.493333 145.493333.0 00594.346667 850.56a122.24 122.24.0 0013.44-10.026667l8.106666-7.466666H896a85.333333 85.333333.0 0085.333333-85.333334V234.666667A85.333333 85.333333.0 00896 149.333333z" fill="currentColor"/></svg>
+<time>阅读时长约为 40 分钟</time></div><div class=article-card-tags><a href=/tags/agent/>Agent</a>
+<a href=/tags/zcode/>ZCode</a>
+<a href=/tags/%E6%BA%90%E7%A0%81%E7%A0%94%E8%AF%BB/>源码研读</a></div><div class=article-time--applause><applause-button url=http://localhost:1314/2026/zcode-agent-runtime/ color=#e74c3c></applause-button></div><div class=article-meta-tags><a href=/tags/agent/>Agent</a>
+<a href=/tags/zcode/>ZCode</a>
+<a href=/tags/%E6%BA%90%E7%A0%81%E7%A0%94%E8%AF%BB/>源码研读</a></div></footer></div></header><details class=toc-mobile><summary><span>目录</span>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></summary><div class=toc-mobile-body><nav id=TableOfContentsMobile><ol><li><a href=#从-20-行-agent-循环说起>从 20 行 Agent 循环说起</a></li><li><a href=#仓库地图>仓库地图</a><ol><li><a href=#启动日志运行时拓扑>启动日志：运行时拓扑</a></li></ol></li><li><a href=#工具连接-agent-与环境>工具：连接 Agent 与环境</a><ol><li><a href=#工具定义三个组成部分>工具定义：三个组成部分</a></li><li><a href=#工具设计三个问题>工具设计：三个问题</a></li></ol></li><li><a href=#turn一次对话如何推进>Turn：一次对话如何推进</a><ol><li><a href=#turn-流程准入到收尾>Turn 流程：准入到收尾</a></li><li><a href=#状态所有权谁负责修改>状态所有权：谁负责修改</a></li><li><a href=#主循环模型请求如何推进>主循环：模型请求如何推进</a><ol><li><a href=#模型为什么记得任务清单>模型为什么"记得"任务清单</a></li><li><a href=#每一轮开始前的检查单>每一轮开始前的检查单</a></li><li><a href=#一次请求中途失败会怎样>一次请求中途失败会怎样</a></li><li><a href=#为什么取消不能随意打断>为什么"取消"不能随意打断</a></li><li><a href=#循环什么时候才真正结束>循环什么时候才真正结束</a></li></ol></li></ol></li><li><a href=#并发输入排队插话与取消>并发输入：排队、插话与取消</a><ol><li><a href=#命令队列串行化输入>命令队列：串行化输入</a></li><li><a href=#steering处理中途输入>Steering：处理中途输入</a><ol><li><a href=#插话的入口五项检查>插话的入口：五项检查</a></li><li><a href=#guide-的消费三条规则>guide 的消费：三条规则</a></li></ol></li><li><a href=#取消信号如何传递>取消：信号如何传递</a></li></ol></li><li><a href=#上下文压缩>上下文：压缩</a><ol><li><a href=#压缩入口四种触发方式>压缩入口：四种触发方式</a></li><li><a href=#压缩阈值何时触发>压缩阈值：何时触发</a></li><li><a href=#摘要提示词保留什么>摘要提示词：保留什么</a></li><li><a href=#压缩结果摘要与近期消息>压缩结果：摘要与近期消息</a></li><li><a href=#压缩防护熔断与失败>压缩防护：熔断与失败</a></li></ol></li><li><a href=#持久化崩溃后如何恢复>持久化：崩溃后如何恢复</a><ol><li><a href=#事件流统一进程内顺序>事件流：统一进程内顺序</a></li><li><a href=#持久化范围哪些事件需要保留>持久化范围：哪些事件需要保留</a></li><li><a href=#冷恢复从消息表重建会话>冷恢复：从消息表重建会话</a></li><li><a href=#内存管理淘汰瞬态事件>内存管理：淘汰瞬态事件</a></li></ol></li><li><a href=#故障恢复常见失败与对策>故障恢复：常见失败与对策</a></li><li><a href=#子-agent隔离探索过程>子 Agent：隔离探索过程</a><ol><li><a href=#前后台两种运行方式>前后台：两种运行方式</a></li><li><a href=#转入后台三方竞赛>转入后台：三方竞赛</a></li><li><a href=#运行限制看门狗与派生边界>运行限制：看门狗与派生边界</a></li><li><a href=#完成通知为何需要排队>完成通知：为何需要排队</a></li></ol></li><li><a href=#总结运行时的六条原则>总结：运行时的六条原则</a></li><li><a href=#阅读路线>阅读路线</a></li></ol></nav></div></details><section class=article-content><blockquote><p>研读对象：ZCode 开源仓库（本地检出 <code>~/ionfeather/ZCode</code>），核心代码位于 <code>apps/zcode-cli</code>。
+本文所有文件路径均相对仓库根目录，可直接在编辑器中跳转验证；行号基于研读时的版本，代码演进后请以符号搜索为准。</p></blockquote><h2 id=从-20-行-agent-循环说起>从 20 行 Agent 循环说起<a href=#%e4%bb%8e-20-%e8%a1%8c-agent-%e5%be%aa%e7%8e%af%e8%af%b4%e8%b5%b7 class=header-anchor></a></h2><p>任何一个学过 LLM API 的人，都能在一小时内编写出一个可以运行的 Agent。其核心只是一个循环：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>reply</span> <span class=o>=</span> <span class=n>model</span><span class=o>.</span><span class=n>chat</span><span class=p>(</span><span class=n>history</span><span class=p>)</span>          <span class=c1># 把对话历史发给模型</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>reply</span><span class=o>.</span><span class=n>has_tool_calls</span><span class=p>:</span>             <span class=c1># 模型想调工具？</span>
+</span></span><span class=line><span class=cl>        <span class=n>results</span> <span class=o>=</span> <span class=n>run_tools</span><span class=p>(</span><span class=n>reply</span><span class=o>.</span><span class=n>tool_calls</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>history</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>reply</span><span class=p>,</span> <span class=n>results</span><span class=p>)</span>   <span class=c1># 结果追加进历史，继续循环</span>
+</span></span><span class=line><span class=cl>    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>reply</span><span class=o>.</span><span class=n>text</span>                <span class=c1># 模型给出回答，结束</span>
+</span></span></code></pre></div><p>这段代码没有错误，在演示场景中也能正常工作。问题在于，它隐含了一系列假设，而这些假设只有在真实使用中才会失效：</p><div class=table-wrapper><table><thead><tr><th>朴素循环的假设</th><th>真实世界</th></tr></thead><tbody><tr><td>对话永远装得进上下文窗口</td><td>长对话必然溢出</td></tr><tr><td>模型生成的工具参数总是合法</td><td>模型的幻觉可能产生编造的、不合法的参数</td></tr><tr><td>用户会耐心等待 Agent 完成</td><td>用户会中途插话、要求取消</td></tr><tr><td>每次模型调用都会成功</td><td>流会中断、输出会截断、服务会繁忙</td></tr><tr><td>进程永远不会退出</td><td>进程会崩溃，用户会关闭电脑</td></tr><tr><td>工具返回的结果都不大</td><td>一次 <code>grep</code> 可能返回数百 KB</td></tr></tbody></table></div><p>本文的主线即这张表：<strong>ZCode 运行时的几乎每个模块，都对应着某一条假设失效之后所建立的工程机制。</strong> 理解这些机制比理解循环本身更为重要——循环的写法人尽皆知，而这些机制才是演示程序与产品之间的分水岭。</p><blockquote><p>研读方法：大型代码库无法通读。本文的做法是每次只抓住一条线索并走完全程。阅读源码时如果迷失方向，就回到一个问题上来：<strong>这段代码，是在保护上面那个循环的哪一步？</strong></p></blockquote><h2 id=仓库地图>仓库地图<a href=#%e4%bb%93%e5%ba%93%e5%9c%b0%e5%9b%be class=header-anchor></a></h2><p>ZCode 是一个 pnpm monorepo，Agent 引擎与各端外壳相互分离：</p><div class=table-wrapper><table><thead><tr><th>位置</th><th>角色</th></tr></thead><tbody><tr><td><code>apps/zcode-cli</code></td><td><strong>Agent 引擎本体</strong>，本文的主要研读对象</td></tr><tr><td><code>packages/desktop</code></td><td>Electron 桌面壳：窗口管理、进程调度、消息转发，不承载业务状态</td></tr><tr><td><code>packages/server</code></td><td>远程部署与连接（SSH/WSL/Docker）</td></tr><tr><td><code>packages/services</code> / <code>packages/rpc</code> / <code>packages/shared</code></td><td>业务服务、RPC 框架、协议类型</td></tr><tr><td><code>packages/ui</code> / <code>packages/web</code></td><td>共享 React 组件与 Web 端</td></tr></tbody></table></div><p><code>apps/zcode-cli</code> 内部再分为四层，依赖只能指向下层，不能反向：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>graph TD
+    contracts[&#34;contracts&lt;br/&gt;类型与 schema 的单一事实来源&#34;]
+    core[&#34;core&lt;br/&gt;运行时核心：循环、工具、压缩&#34;]
+    adapters[&#34;adapters&lt;br/&gt;把端口落地为真实实现，如 SQLite&#34;]
+    bootstrap[&#34;bootstrap&lt;br/&gt;装配成可运行进程，stdio 协议&#34;]
+    cli[&#34;cli&lt;br/&gt;命令行入口&#34;]
+
+    cli --&gt; bootstrap --&gt; adapters --&gt; core --&gt; contracts</pre></div><p>这一分层并非出于代码洁癖，而是复用的前提：<strong>core 不依赖任何具体环境</strong>（不直接操作文件系统、不直接写数据库），因此同一套运行时可以同时被桌面应用、远程服务器和单元测试复用。具体的实现方式，下一节即可看到。</p><h3 id=启动日志运行时拓扑>启动日志：运行时拓扑<a href=#%e5%90%af%e5%8a%a8%e6%97%a5%e5%bf%97%e8%bf%90%e8%a1%8c%e6%97%b6%e6%8b%93%e6%89%91 class=header-anchor></a></h3><p>目录结构是静态的，它回答"代码在哪里"，却回答不了"这些代码如何组装成一个运行中的系统"。在仓库根目录执行 <code>pnpm dev:desktop</code>，启动日志恰好把地图上的每个方框逐一激活。以下日志均来自一次真实启动，为阅读清晰做了节选。</p><p>第一组日志是<strong>构建链</strong>。<code>apps/zcode-cli</code> 下的各包按依赖顺序依次编译，最终由 cli 打包出单个文件 <code>dist/zcode.cjs</code>（约 15.9 MB），随后被复制到桌面应用的随包目录下：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>&gt; @zcode/core@0.1.0 build /Users/lizi/ionfeather/ZCode/apps/zcode-cli/packages/core
+</span></span><span class=line><span class=cl>&gt; tsc
+</span></span><span class=line><span class=cl>...（shared-types、contracts、core、adapters 等十余个包依次构建）...
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>&gt; @zcode/cli@0.1.0 build:desktop-agent
+</span></span><span class=line><span class=cl>  dist/zcode.cjs  15.9mb ⚠️
+</span></span><span class=line><span class=cl>[stage:agent-bundle] staged .../packages/desktop/bundled-agents/darwin-arm64/glm/zcode.cjs
+</span></span></code></pre></div><p>这一步回答了一个重要的架构问题：<strong>桌面版的 Agent 引擎不是云端服务，而是随应用一同分发的本地程序</strong>。上一段所说的"同一套运行时被桌面端复用"，在这里落到了实物上——那个 15.9 MB 的单文件，就是本文要研读的引擎本体。</p><p>第二组日志是<strong>进程派生</strong>。Electron 主进程创建窗口之后，为这个窗口派生了一个独立的 Host 进程；与此同时，Vite 在 <code>localhost:5174</code> 启动了渲染进程的页面：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>[main] [startup] 创建主窗口
+</span></span><span class=line><span class=cl>[main] [spawnHostProcess] forked host process for (local-1)
+</span></span><span class=line><span class=cl>[main] [spawnHostProcess] host module path: .../packages/desktop/out/host/index.js
+</span></span><span class=line><span class=cl>[zcode-host] initializing local services
+</span></span></code></pre></div><p>这是桌面端的关键拓扑：<strong>每个窗口对应一个 Host 进程</strong>。主进程负责窗口管理与消息转发，与窗口相关的业务服务主要运行在 Host 进程内。窗口、界面与业务逻辑由不同进程承载，进程隔离可以限制故障相互扩散的范围。</p><p>结合启动日志与进程创建代码，桌面端的运行时拓扑可以概括如下。Electron Main 创建窗口及其 Host；Host 中的进程管理器再启动 <code>zcode.cjs app-server --stdio</code>，并通过 ZCode Protocol 与 Agent Runtime 通信：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart LR
+    R[&#34;Renderer&lt;br/&gt;React 界面&#34;] &lt;--&gt;|&#34;IPC / RPC&#34;| M[&#34;Electron Main&lt;br/&gt;窗口管理与消息转发&#34;]
+    M &lt;--&gt;|&#34;MessagePort&#34;| H[&#34;Window-scoped Host&lt;br/&gt;业务服务与 RPC channel&#34;]
+    H &lt;--&gt;|&#34;stdio&lt;br/&gt;ZCode Protocol&#34;| A[&#34;zcode.cjs&lt;br/&gt;Agent Runtime&#34;]
+    A --&gt; L[&#34;本地工作区&lt;br/&gt;文件 / Git / Terminal&#34;]
+    A --&gt; P[&#34;模型提供方&lt;br/&gt;本地或远程&#34;]</pre></div><p>这张图展示的是进程关系，前文的仓库地图展示的是代码依赖关系。两者不应混为一谈：<code>core</code> 在代码层只依赖抽象端口，运行时则由 Host 启动独立 Agent 进程，并为这些端口接入真实能力。</p><p>第三组日志是<strong>能力注册</strong>。Host 进程启动后，向 RPC 框架逐一注册了一组 channel：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>[zcode-host] exposing services on ChannelServer...
+</span></span><span class=line><span class=cl>[zcode-host] [rpc:register] channel &#34;file&#34;
+</span></span><span class=line><span class=cl>[zcode-host] [rpc:register] channel &#34;git&#34;
+</span></span><span class=line><span class=cl>[zcode-host] [rpc:register] channel &#34;zcode-agent&#34;
+</span></span><span class=line><span class=cl>[zcode-host] [rpc:register] channel &#34;zcode-session&#34;
+</span></span><span class=line><span class=cl>...（共三十余个，含 terminal、skills、subagents、memory 等）...
+</span></span><span class=line><span class=cl>[zcode-host] service connection ready mode=desktop-continuous
+</span></span></code></pre></div><p>这份 channel 清单，就是渲染进程能够调用的全部后端能力。界面不直接引用任何服务实现，一切调用都经由这些命名通道——仓库地图中 <code>packages/rpc</code> 与 <code>packages/shared</code> 两个方框的职责，在运行时体现为这张注册表。最后一行的 <code>desktop-continuous</code> 是桌面端的实时链路模式，与手机端的可恢复链路相区分；本文聚焦引擎本体，链路差异不再展开。</p><p>最后还有一行需要单独说明：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>[zcode-agent-service] 开始初始化 ZCode agent {
+</span></span><span class=line><span class=cl>  workspaceKey: &#39;/Users/lizi/.zcode/workspace/default&#39;,
+</span></span><span class=line><span class=cl>  workspacePath: &#39;/Users/lizi/.zcode/workspace/default&#39;
+</span></span><span class=line><span class=cl>}
+</span></span></code></pre></div><p>Agent 服务初始化时同时接收 <code>workspaceKey</code> 与 <code>workspacePath</code> 两个标识：前者用于身份隔离（缓存、队列、持久化都按它归类），后者用于实际的文件操作。本地场景下二者恰好相同，远程场景下才会分道扬镳。此处只需记住：<strong>涉及远程工作区时，需要同时检查身份标识与文件路径</strong>。</p><p>至此，地图上的每个方框都在日志里找到了对应物：构建产物对应 cli 层，Host 进程对应 services 与 rpc，channel 清单对应 shared 中的协议类型。后文要深入研读的，正是那个被打包成 <code>zcode.cjs</code> 的引擎本体。</p><blockquote><p><strong>思考</strong>：为什么桌面版要把 Agent 引擎打包成本地进程，而不是让界面调用云端服务？</p><p>最直接的原因藏在工具里：Coding Agent 的绝大多数工具（读写文件、执行命令、检索代码）操作的都是<strong>用户本机的文件系统</strong>，引擎必须在本机或能够直接访问工作区的环境中运行。由此形成的边界是：文件读取、命令执行和会话存储可以留在本地；模型调用是否依赖网络、选入上下文的代码是否发送给模型提供方，则取决于所选模型及其部署方式。</p></blockquote><h2 id=工具连接-agent-与环境>工具：连接 Agent 与环境<a href=#%e5%b7%a5%e5%85%b7%e8%bf%9e%e6%8e%a5-agent-%e4%b8%8e%e7%8e%af%e5%a2%83 class=header-anchor></a></h2><p>朴素循环中有一行 <code>run_tools(reply.tool_calls)</code>。围绕这一行可以提出三个问题：模型如何知道有哪些工具可以调用？参数传错了怎么办？工具返回数百 KB 的结果怎么办？这三个问题的答案，构成了 ZCode 工具系统的基本单元。</p><h3 id=工具定义三个组成部分>工具定义：三个组成部分<a href=#%e5%b7%a5%e5%85%b7%e5%ae%9a%e4%b9%89%e4%b8%89%e4%b8%aa%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86 class=header-anchor></a></h3><p>以 Glob（按文件名模式搜索文件）为例，它的全部定义只有一个 164 行的文件：</p><blockquote><p><code>apps/zcode-cli/packages/core/src/tool/handlers/glob.ts</code></p></blockquote><p>文件分为三段：<strong>handler（执行）、entry（自述档案）、formatModelContent（结果转译）</strong>。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=c1>// 第一段：handler，真正执行的函数
+</span></span></span><span class=line><span class=cl><span class=kr>const</span> <span class=nx>globHandler</span>: <span class=kt>ToolHandler</span> <span class=o>=</span> <span class=kr>async</span> <span class=p>(</span><span class=nx>input</span><span class=p>,</span> <span class=nx>context</span><span class=p>)</span> <span class=o>=&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=p>{</span> <span class=nx>pattern</span><span class=p>,</span> <span class=nx>path</span> <span class=p>}</span> <span class=o>=</span> <span class=nx>GlobInputSchema</span><span class=p>.</span><span class=nx>parse</span><span class=p>(</span><span class=nx>input</span><span class=p>);</span>  <span class=c1>// ① 运行时校验
+</span></span></span><span class=line><span class=cl>  <span class=c1>// ② 通过注入的端口搜索文件，而不是直接调用 fs
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>result</span> <span class=o>=</span> <span class=k>await</span> <span class=nx>context</span><span class=p>.</span><span class=nx>fileSystemPort</span><span class=p>.</span><span class=nx>searchFiles</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span> <span class=nx>path</span>: <span class=kt>searchPath</span><span class=p>,</span> <span class=nx>pattern</span><span class=p>,</span> <span class=nx>maxResults</span>: <span class=kt>100</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span> <span class=nx>signal</span>: <span class=kt>context.abortSignal</span> <span class=p>},</span>                        <span class=c1>// ③ 取消信号一路传递到底
+</span></span></span><span class=line><span class=cl>  <span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=p>{</span> <span class=nx>numFiles</span><span class=p>,</span> <span class=nx>filenames</span><span class=p>,</span> <span class=nx>truncated</span> <span class=p>}</span> <span class=nx>satisfies</span> <span class=nx>GlobOutput</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 第二段：ToolEntry，工具向系统声明的&#34;档案&#34;
+</span></span></span><span class=line><span class=cl><span class=kr>export</span> <span class=kr>const</span> <span class=nx>globToolEntry</span>: <span class=kt>ToolEntry</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>metadata</span><span class=o>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>name</span><span class=o>:</span> <span class=s2>&#34;Glob&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nx>readOnly</span>: <span class=kt>true</span><span class=p>,</span>          <span class=c1>// 只读
+</span></span></span><span class=line><span class=cl>    <span class=nx>destructive</span>: <span class=kt>false</span><span class=p>,</span>      <span class=c1>// 无破坏性
+</span></span></span><span class=line><span class=cl>    <span class=nx>concurrentSafe</span>: <span class=kt>true</span><span class=p>,</span>    <span class=c1>// 可与其他工具并行
+</span></span></span><span class=line><span class=cl>    <span class=nx>timeoutMs</span>: <span class=kt>30000</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>inputSchema</span>: <span class=kt>GlobInputJsonSchema</span><span class=p>,</span>     <span class=c1>// 提供给模型的
+</span></span></span><span class=line><span class=cl>  <span class=nx>runtimeInputSchema</span>: <span class=kt>GlobInputSchema</span><span class=p>,</span>  <span class=c1>// 供运行时校验的
+</span></span></span><span class=line><span class=cl>  <span class=nx>permission</span><span class=o>:</span> <span class=p>{</span> <span class=nx>needsApproval</span>: <span class=kt>false</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>resultBudget</span><span class=o>:</span> <span class=p>{</span> <span class=nx>maxModelBytes</span>: <span class=kt>100_000</span><span class=p>,</span> <span class=nx>strategy</span><span class=o>:</span> <span class=s2>&#34;artifact&#34;</span> <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nx>handler</span>: <span class=kt>globHandler</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><h3 id=工具设计三个问题>工具设计：三个问题<a href=#%e5%b7%a5%e5%85%b7%e8%ae%be%e8%ae%a1%e4%b8%89%e4%b8%aa%e9%97%ae%e9%a2%98 class=header-anchor></a></h3><p><strong>（1）同一份参数，为什么需要两套 schema？</strong></p><p><code>inputSchema</code> 是 JSON Schema，随 system prompt 发送给模型，是<strong>对模型的承诺</strong>：&ldquo;调用我时请传这些参数&rdquo;。<code>runtimeInputSchema</code> 是 Zod schema，在模型真正发起调用之后对参数进行校验，是<strong>对模型的防御</strong>。</p><p>为什么需要防御？因为模型的输出不可信：它可能把 <code>path</code> 写成数字，可能遗漏必填项，甚至可能幻觉出不存在的参数。如果不加校验直接执行，错误将在深层代码中以难以定位的方式暴露。在边界处校验，错误被拦截在原地，并且清晰的报错可以反馈给模型，使其有机会自我修正。</p><p><strong>（2）handler 中为什么没有权限检查？</strong></p><p>通读 <code>globHandler</code> 可以发现，它只负责搜索，不包含任何"这个操作是否安全"的判断。因为安全性并非通过代码检查，而是通过<strong>声明</strong>来表达的：</p><div class=table-wrapper><table><thead><tr><th>声明</th><th>消费它的系统</th><th>产生的行为</th></tr></thead><tbody><tr><td><code>readOnly: true</code></td><td>权限系统</td><td>无需弹窗询问用户，直接执行</td></tr><tr><td><code>concurrentSafe: true</code></td><td>工具调度器</td><td>可与其他只读工具并行执行</td></tr><tr><td><code>timeoutMs: 30000</code></td><td>执行器</td><td>30 秒强制超时</td></tr><tr><td><code>resultBudget</code></td><td>结果处理器</td><td>超过 100KB 则写入磁盘保存为 artifact，仅向模型提供头部预览</td></tr></tbody></table></div><p>可以对比另一种写法：在每个 handler 中手写 <code>if (!hasPermission()) ...</code>。这种做法的问题在于，策略分散在数十个工具之中，修改一次权限规则就需要改动数十处，并且难免有所遗漏。声明式设计将"事实"与"策略"分离：<strong>工具作者只负责如实描述"我是谁"，由系统统一决定"你能做什么"。</strong></p><p><strong>（3）为什么搜索文件需要经过 <code>fileSystemPort</code>？</strong></p><p>handler 不直接调用 Node 的 <code>fs</code> 模块，而是调用 <code>context.fileSystemPort</code>——一个由外部注入的接口（Port）。本地运行时它是真实文件系统；远程 workspace 场景下它被替换为基于网络的实现；单元测试中则替换为内存中的假实现。</p><p>这体现了依赖注入在 Agent 工程中的标准用法，也是"core 不依赖具体环境"的落地方式：<strong>core 只依赖抽象，环境差异由装配层注入。</strong></p><blockquote><p><strong>Q：如果要给 Glob 增加一条规则"禁止搜索 <code>.git</code> 目录"，应当修改哪里？</strong></p><p>A：不是 handler——handler 不应承载策略，否则又会退化为分散各处的条件判断；也不能只在工具描述中写一句"请不要搜索 .git"——模型对描述的遵守是不可靠的，提示词无法真正约束行为。正确的位置是<strong>路径解析层</strong>（<code>tool/path-policy.ts</code>）：所有工具的路径都要经过它进行归一化与校验，在那里拦截只需一处改动，且对所有工具生效。</p></blockquote><h2 id=turn一次对话如何推进>Turn：一次对话如何推进<a href=#turn%e4%b8%80%e6%ac%a1%e5%af%b9%e8%af%9d%e5%a6%82%e4%bd%95%e6%8e%a8%e8%bf%9b class=header-anchor></a></h2><p>用户输入一句"帮我重构这个函数"，到 Agent 给出回答，中间经历的全部过程称为一个 <strong>Turn</strong>。朴素循环中没有这个概念，但它是运行时调度的基本单位——取消、持久化、统计，全都建立在 Turn 之上。</p><h3 id=turn-流程准入到收尾>Turn 流程：准入到收尾<a href=#turn-%e6%b5%81%e7%a8%8b%e5%87%86%e5%85%a5%e5%88%b0%e6%94%b6%e5%b0%be class=header-anchor></a></h3><p>主流程位于 <code>executeTurnCommand()</code>（<code>runtime/methods/turn.ts:93</code>）：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart TD
+    A[&#34;1. 准入 Admission&lt;br/&gt;冻结本 Turn 的模型选择与配置&#34;] --&gt; B[&#34;2. 上下文准备&lt;br/&gt;首个 Turn 初始化，后续重建前缀&#34;]
+    B --&gt; C[&#34;3. 创建 ActiveTurn&lt;br/&gt;建立 steering 状态与 abort 作用域&#34;]
+    C --&gt; D[&#34;4. 持久化&lt;br/&gt;写入会话记录与用户输入&#34;]
+    D --&gt; E[&#34;5. 主循环 runRegularTurnLoop&lt;br/&gt;模型 → 工具 → 模型 → …&#34;]
+    E --&gt; F[&#34;6. 收尾&lt;br/&gt;TurnComplete 事件、生成标题、释放资源&#34;]</pre></div><p>其中第 1 步关系到单次执行的一致性。Turn 开始时，运行时会冻结模型与输出配置。之后即使用户切换模型，本次 Turn 仍沿用原有快照；否则同一个 Turn 的前后步骤可能使用不同模型，其定价、上下文窗口和能力边界都无法保持一致。</p><blockquote><p>这体现了并发编程中的一个通用原则：<strong>配置可以变化，但单次执行必须基于一个一致的快照。</strong> 数据库事务的 MVCC、React 单次渲染中读取到固定的 props，都是同一思想的不同形态。</p></blockquote><h3 id=状态所有权谁负责修改>状态所有权：谁负责修改<a href=#%e7%8a%b6%e6%80%81%e6%89%80%e6%9c%89%e6%9d%83%e8%b0%81%e8%b4%9f%e8%b4%a3%e4%bf%ae%e6%94%b9 class=header-anchor></a></h3><p>阅读运行时代码最大的障碍是"状态究竟在哪里"。ZCode 对此的答案十分整齐：</p><div class=table-wrapper><table><thead><tr><th>状态</th><th>所有者</th><th>生命周期</th></tr></thead><tbody><tr><td>全部运行时状态</td><td><code>AgentRuntimeInternal</code>（<code>runtime/internal.ts:60</code>）</td><td>随会话</td></tr><tr><td>待执行的工作</td><td><code>RuntimeCommandQueue</code>（<code>runtime/command-queue.ts:117</code>）</td><td>随会话</td></tr><tr><td>对话历史（内存）</td><td><code>MessageHistoryImpl</code>（<code>agent/message-history.ts:135</code>）</td><td>随会话</td></tr><tr><td>对话历史（磁盘）</td><td>SQLite session store（<code>adapters/.../sqlite-session-store.ts</code>）</td><td>永久</td></tr><tr><td>单个 Turn 的状态</td><td><code>ActiveTurnSteeringState</code></td><td>随 Turn，结束即销毁</td></tr></tbody></table></div><p>这一原则可以概括为：<strong>每块可变状态有且只有一个所有者，其他组件只能通过方法调用间接修改。</strong> 这一纪律使得任何 bug 的排查都有了明确的起点——状态不正确，就检查它的所有者。</p><h3 id=主循环模型请求如何推进>主循环：模型请求如何推进<a href=#%e4%b8%bb%e5%be%aa%e7%8e%af%e6%a8%a1%e5%9e%8b%e8%af%b7%e6%b1%82%e5%a6%82%e4%bd%95%e6%8e%a8%e8%bf%9b class=header-anchor></a></h3><p>现在打开主循环本体 <code>runRegularTurnLoop()</code>（<code>runtime/methods/turn-loop.ts:43</code>）。出乎意料的是，它的骨架与开头的伪代码几乎一致：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=k>while</span> <span class=p>(</span><span class=kc>true</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nx>throwIfTurnAborted</span><span class=p>(</span><span class=nx>state</span><span class=p>.</span><span class=nx>turnAbortSignal</span><span class=p>);</span>        <span class=c1>// 每一轮先检查：用户取消了吗？
+</span></span></span><span class=line><span class=cl>  <span class=c1>// ……准备并执行一次模型请求……
+</span></span></span><span class=line><span class=cl>  <span class=kr>const</span> <span class=nx>result</span> <span class=o>=</span> <span class=k>await</span> <span class=nx>runModelBackedTurnStep</span><span class=p>(</span><span class=nx>state</span><span class=p>,</span> <span class=p>{</span> <span class=p>...</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>  <span class=k>if</span> <span class=p>(</span><span class=nx>result</span> <span class=o>===</span> <span class=s2>&#34;break&#34;</span><span class=p>)</span> <span class=k>break</span><span class=p>;</span>                    <span class=c1>// 由&#34;这一步&#34;决定循环是否继续
+</span></span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>这里要先分清两个角色。<strong>循环负责"一轮接一轮地转"，但每一轮具体做什么、做完之后该不该停，由 <code>runModelBackedTurnStep</code>（一次模型步骤）决定</strong>。它返回三种结果之一：<code>"continue"</code>（继续下一轮）、<code>"output_continuation"</code>（输出被截断，需要续写一轮）、<code>"break"</code>（结束）。循环只服从，不决策。</p><blockquote><p>可以类比接力赛：裁判（循环）只看旗语决定要不要发下一棒，至于这一棒怎么跑、跑完是否完赛，由选手（每一步）自己判断。</p></blockquote><p>下面的内容以五个递进的疑问展开，每个疑问都对应朴素循环没有回答、而真实代码必须处理的一件事。</p><h4 id=模型为什么记得任务清单>模型为什么"记得"任务清单<a href=#%e6%a8%a1%e5%9e%8b%e4%b8%ba%e4%bb%80%e4%b9%88%e8%ae%b0%e5%be%97%e4%bb%bb%e5%8a%a1%e6%b8%85%e5%8d%95 class=header-anchor></a></h4><p>从一个具体场景说起。让 Agent 修改 5 个文件，它会先用 TodoWrite 工具建立一张任务清单，然后逐项执行。问题在于：模型本身是<strong>无状态</strong>的，它不像程序一样把变量存在内存里。那么第五轮请求时，它为什么还知道清单做到哪一项了？</p><p>答案不是模型记住了，而是<strong>运行时每一轮都把最新的任务清单重新写进请求</strong>（<code>turn-loop.ts:138-156</code>）。每一轮请求发出前，运行时读取任务列表的当前状态，生成一段提醒文本注入进去。同类机制还有当前的运行模式、输出风格等。</p><p>于是可以得到一个重要结论：<strong>模型看到的上下文 = 对话历史 + 每轮重建的系统状态投影。</strong> 每一轮请求都像新员工入职第一天，运行时负责把"当前进展"贴在工位上，模型照单执行即可。这也顺带回答了"信息到底存在哪"：任务清单的权威版本在 store 里，对话中出现的那份只是每轮生成的快照。</p><h4 id=每一轮开始前的检查单>每一轮开始前的检查单<a href=#%e6%af%8f%e4%b8%80%e8%bd%ae%e5%bc%80%e5%a7%8b%e5%89%8d%e7%9a%84%e6%a3%80%e6%9f%a5%e5%8d%95 class=header-anchor></a></h4><p>飞行员每次起飞前都要过一遍检查单，无论已经飞过多少次。主循环的每一轮迭代也有一段固定的"检查单"，按顺序执行：</p><ol><li><strong>检查取消信号</strong>——用户是否按下了停止；</li><li><strong>收集中途到达的消息</strong>——后台子 Agent 完成、后台任务通知等，追加进本次请求；</li><li><strong>压缩检查</strong>——微压缩与自动压缩（详见后文"上下文装不下"一节），确保上下文装得下；</li><li><strong>裁剪工具表</strong>——按本轮 Turn 的类型决定哪些工具可见。</li></ol><p>最后一项可以用定时任务说明：定时任务的执行轮会被隐藏所有"创建、修改任务"的工具（<code>turn-loop.ts:221-237</code>）。原因很简单：<strong>不能让一个定时任务反过来修改它自己的定义</strong>，否则任务可以在执行中自我复制，失去控制。工具并非全部可见，而是在每次请求的边界处动态裁剪的。</p><h4 id=一次请求中途失败会怎样>一次请求中途失败会怎样<a href=#%e4%b8%80%e6%ac%a1%e8%af%b7%e6%b1%82%e4%b8%ad%e9%80%94%e5%a4%b1%e8%b4%a5%e4%bc%9a%e6%80%8e%e6%a0%b7 class=header-anchor></a></h4><p>一次模型步骤的内部流程如下：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart TD
+    A[&#34;先把&#39;开始处理&#39;记入存储&lt;br/&gt;（assistant 占位消息）&#34;] --&gt; B[&#34;发起流式模型请求&#34;]
+    B --&gt; C{模型返回了什么？}
+    C --&gt;|&#34;工具调用&#34;| D[&#34;执行工具，结果写回历史&lt;br/&gt;→ continue，继续下一轮&#34;]
+    C --&gt;|&#34;输出被截断&#34;| E[&#34;保留已生成部分&lt;br/&gt;→ 续写一轮&#34;]
+    C --&gt;|&#34;纯文本回答&#34;| F[&#34;检查是否真正结束&lt;br/&gt;（见下文）&#34;]
+    C --&gt;|&#34;请求失败&#34;| G[&#34;按失败类型恢复：&lt;br/&gt;断流重试 / 压缩后重试 / 稍候重试&#34;]</pre></div><p>注意第一步的顺序：<strong>先写入存储，再发起请求</strong>——assistant 占位消息在发起请求之前就已持久化（<code>turn-model-step.ts:175-191</code>）。为什么要先写？因为请求可能中途崩溃。先持久化，存储中就永远留有"这次请求曾经发起"的痕迹，崩溃恢复才有据可依。这是后文"持久化与崩溃恢复"的一个伏笔。</p><p>失败分支（图中的 G）体现了后文"恢复机制"的主题：请求失败不会直接报错给用户，而是按失败类型选择恢复路径，恢复成功就当作无事发生，返回 <code>continue</code> 进入下一轮。</p><h4 id=为什么取消不能随意打断>为什么"取消"不能随意打断<a href=#%e4%b8%ba%e4%bb%80%e4%b9%88%e5%8f%96%e6%b6%88%e4%b8%8d%e8%83%bd%e9%9a%8f%e6%84%8f%e6%89%93%e6%96%ad class=header-anchor></a></h4><p>这是本节最重要的一个发现，需要从模型 API 的一条硬性规定说起：<strong>对话历史中，每一次工具调用（tool_use）都必须有配对的工具结果（tool_result）</strong>。对 API 而言，对话历史像一本一问一答的账本——有问无答的账本会被整本拒收，后续所有请求都会报错。</p><p>现在设想：模型已经决定调用三个工具（三个 tool_use 已记入历史），工具正在执行，用户此时按下取消。系统能不能直接中断？不能——那会在账本上留下三笔"有问无答"。正确的做法是换一种方式执行取消（<code>turn-tools.ts:142-144</code>）：为每个未完成的调用补写一条"已取消"的结果（ToolCancelled），把账本补平，然后才结束。</p><p>这种"任何路径都不能破坏的结构要求"称为<strong>不变式（invariant）</strong>。历史的配对完整就是一条不变式，它值得付出代价来维护，因为对话历史不只是给用户看的记录——<strong>它同时是下一轮请求的输入</strong>。</p><h4 id=循环什么时候才真正结束>循环什么时候才真正结束<a href=#%e5%be%aa%e7%8e%af%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e6%89%8d%e7%9c%9f%e6%ad%a3%e7%bb%93%e6%9d%9f class=header-anchor></a></h4><p>直觉的答案是"模型不再调用工具时"。实际情况更谨慎：模型给出纯文本回答后，系统还要依次询问两个"还有没有人要补充"（<code>turn-stop.ts:157</code>）：</p><ol><li><strong>用户中途的插话（guide）还有没有？</strong> 有——插话作为一条新的用户消息进入历史，循环<strong>继续</strong>；</li><li><strong>Stop hook（插件的收尾钩子）是否要补充上下文？</strong> 要——补充内容注入历史，循环<strong>继续</strong>；</li><li>两者都没有——返回 <code>"break"</code>，循环真正结束。</li></ol><p>因此，&ldquo;结束"不是被动到达的终点，而是一个需要确认的决策点。</p><blockquote><p><strong>Q：为什么循环自己不判断"该不该停&rdquo;，而要把决定权交给每一步？</strong></p><p>A：因为判断所需的信息只在步骤内部——这一轮有没有工具调用、输出是否被截断、有没有插话涌入，循环在外面无从知晓。把决策封装在步骤里，循环才得以保持朴素。这正是开头的 20 行伪代码与真实代码骨架一致的原因：<strong>复杂度没有被消灭，而是被安放在了正确的位置。</strong></p></blockquote><h2 id=并发输入排队插话与取消>并发输入：排队、插话与取消<a href=#%e5%b9%b6%e5%8f%91%e8%be%93%e5%85%a5%e6%8e%92%e9%98%9f%e6%8f%92%e8%af%9d%e4%b8%8e%e5%8f%96%e6%b6%88 class=header-anchor></a></h2><p>朴素循环最深层的假设是：循环运行期间，世界是静止的。真实用户并非如此。Agent 执行任务期间，用户可能做三件事：<strong>发送新消息</strong>、<strong>对正在执行的任务插话</strong>、<strong>要求取消</strong>。本章依次讨论这三种情形。精读源码还会发现，每种情形的背后都至少保留着一条真实的竞态修复记录。</p><h3 id=命令队列串行化输入>命令队列：串行化输入<a href=#%e5%91%bd%e4%bb%a4%e9%98%9f%e5%88%97%e4%b8%b2%e8%a1%8c%e5%8c%96%e8%be%93%e5%85%a5 class=header-anchor></a></h3><p>设想 Agent 正在执行第一轮，用户连续发送了两条消息。如果允许它们并发进入循环，对话历史将被交错写坏——两个 Turn 同时向历史中追加消息，模型所看到的上下文将变得混乱。</p><p>ZCode 的做法是将"已被系统接受的用户输入"抽象为 <code>RuntimeCommand</code>（<code>runtime/command-queue.ts:109</code>），排入队列并<strong>串行</strong>消费。队列中的命令不止用户消息一种：</p><div class=table-wrapper><table><thead><tr><th>命令类型</th><th>来源</th></tr></thead><tbody><tr><td><code>prompt</code></td><td>正常的用户提交</td></tr><tr><td><code>task-notification</code></td><td>后台任务（如后台子 Agent）完成，唤醒主会话</td></tr><tr><td><code>subagent-message</code></td><td>子 Agent 的回复，作为用户消息注入</td></tr><tr><td><code>control-only-turn</code></td><td>仅记录一次配置变更</td></tr></tbody></table></div><p>所有命令由 <code>drainRuntimeCommandQueue()</code>（<code>runtime-command-queue.ts:37</code>）依次取出执行，同一时刻只有一个前台命令在运行。所谓"准入（admission）"，就是<strong>在入口处消除并发，使循环内部可以假设自己独占执行</strong>。</p><blockquote><p>这是并发设计中最常用的手段之一：与其在循环内部到处加锁，不如在边界处统一排队。队列将"同时到达的多件事"转化为"依次处理的一件件事"，内部代码因此可以写得像单线程一样直白。操作系统的调度器、Redis 的单线程命令处理，都是同一思想。</p></blockquote><p>精读这个队列消费函数，还能发现两个朴素实现不会有的细节。</p><p><strong>（1）后台通知会被合并。</strong> 如果队列中连续积压了多条后台任务通知，它们会被合并成<strong>一个</strong>模型轮次统一处理（<code>runtime-command-queue.ts:43</code> 的注释说明了原因：避免每条通知都单独发起一次模型请求）。十条通知若逐条处理需要发起十次模型请求，合并后只需一次。</p><p><strong>（2）&ldquo;立即执行排队消息"需要租约（lease）。</strong> 界面支持把一条正在排队的消息提前执行。这个操作的步骤是：停止当前任务 → 把目标消息出队 → 启动它。看似简单的三步，源码注释却记录了一个真实竞态（<code>runtime-command-queue.ts:83-84</code>）：&ldquo;停止当前任务"与"目标命令出队"之间存在空窗期——停止只是发出信号，真正停下要等执行方感知——在此期间，一条不相关的后台通知可能抢先出队，占据本属于被提升消息的执行位置。修复方法是引入租约：先登记"前台提升租约&rdquo;，再在<strong>同一个同步步骤</strong>内完成"匹配命令出队"与"消费租约"两个动作，使任何第三者都没有插入的空隙。</p><p>竞态问题的修复往往不是加锁，而是<strong>把两个动作合并为一个不可分割的步骤</strong>——数据库中称之为原子性，这里是同一种思想。</p><h3 id=steering处理中途输入>Steering：处理中途输入<a href=#steering%e5%a4%84%e7%90%86%e4%b8%ad%e9%80%94%e8%be%93%e5%85%a5 class=header-anchor></a></h3><p>排队解决的是"Turn 之外"的输入。还有一类输入发生在 <strong>Turn 进行中</strong>，称为 steering（<code>runtime/methods/steering.ts:57</code>），又分为两种：</p><ul><li><strong>guide（引导）</strong>：在下一个工具批次的边界处被内联消费，立即影响当前 Turn——通俗地说，是"对正在做的事情插嘴&rdquo;；</li><li><strong>queue（排队）</strong>：等当前 Turn 结束后作为新命令处理——即"等它做完再说"。</li></ul><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>sequenceDiagram
+    participant U as 用户
+    participant Q as 命令队列
+    participant L as Turn 主循环
+    participant T as 工具执行
+
+    U-&gt;&gt;Q: 消息 A
+    Q-&gt;&gt;L: 出队，开始 Turn A
+    L-&gt;&gt;T: 执行工具
+    U-&gt;&gt;L: 中途插话（guide）
+    Note over L: 工具批次边界处&lt;br/&gt;内联消费
+    U-&gt;&gt;Q: 消息 B（queue）
+    Note over Q: 排队等待
+    T--&gt;&gt;L: 工具结果
+    L--&gt;&gt;U: Turn A 完成
+    Q-&gt;&gt;L: 出队，开始 Turn B</pre></div><h4 id=插话的入口五项检查>插话的入口：五项检查<a href=#%e6%8f%92%e8%af%9d%e7%9a%84%e5%85%a5%e5%8f%a3%e4%ba%94%e9%a1%b9%e6%a3%80%e6%9f%a5 class=header-anchor></a></h4><p><code>steerTurn()</code> 接受一条插话之前，需要依次通过五项检查（<code>steering.ts:57-114</code>），任何一项不通过都会带着结构化的原因码被拒绝：</p><ol><li>输入不能为空；</li><li>输入不能超过大小上限；</li><li>当前必须有正在运行的 Turn；</li><li>调用方声明的目标 Turn 必须与实际运行的一致；</li><li>当前 Turn 必须允许插话。</li></ol><p>最后一项说明，并非所有 Turn 都可以插话——例如执行压缩的 Turn 就声明自己不可打断。</p><p>这套检查的意义在于：<strong>拒绝也是协议的一部分。</strong> 调用方得到的不是异常，而是明确的拒绝原因，界面可以据此决定是提示用户，还是改为排队。</p><h4 id=guide-的消费三条规则>guide 的消费：三条规则<a href=#guide-%e7%9a%84%e6%b6%88%e8%b4%b9%e4%b8%89%e6%9d%a1%e8%a7%84%e5%88%99 class=header-anchor></a></h4><p>guide 在工具批次边界处由 <code>drainPendingInput()</code>（<code>steering.ts:1140</code>）消费，源码注释中写着三条不直观的规则：</p><ol><li><strong>只取最早的一条 guide</strong>，普通排队消息不会被顺带取出——注释写明了理由：不能让未来的排队消息"偷跑"进当前 Turn；</li><li><strong>已被预约的输入不能取</strong>——如果某条输入已被"立即执行"操作预约，普通消费必须暂停，否则同一条输入可能被消费两次；</li><li><strong>消费后必须切换 queryId</strong>——下一次模型请求必须归属于这条新插话，否则后续的工具调用会被错误地归属于上一条用户消息（<code>steering.ts:1175-1176</code>）。</li></ol><p>第三条处理的是归因一致性：<strong>消息不仅要进入历史，还必须归属于正确的来源。</strong></p><p>此外，排队中的输入在消费之前仍可管理：删除、编辑重发、调整顺序分别有独立的入口（<code>removePendingInputById</code>、<code>editPendingInputById</code>、<code>reorderPendingInput</code>）。</p><h3 id=取消信号如何传递>取消：信号如何传递<a href=#%e5%8f%96%e6%b6%88%e4%bf%a1%e5%8f%b7%e5%a6%82%e4%bd%95%e4%bc%a0%e9%80%92 class=header-anchor></a></h3><p>取消并非"删除一个任务"那么简单——工具可能正在写文件、正在等待网络响应。ZCode 的实现是一条<strong>信号链</strong>：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart LR
+    A[&#34;UI 触发&lt;br/&gt;stopActiveForegroundExecution&#34;] --&gt; B[&#34;中止前台命令的&lt;br/&gt;AbortController&#34;]
+    B --&gt; C[&#34;信号沿调用链传递到&lt;br/&gt;每个 handler 的 context.abortSignal&#34;]
+    C --&gt; D[&#34;工具在下一个检查点&lt;br/&gt;感知信号，主动退出&#34;]</pre></div><p>回看"工具"一节中 Glob 的 handler，那句 <code>searchFiles(..., { signal: context.abortSignal })</code> 在此获得了完整的含义：<strong>取消能力不是某个模块的功能，而是全体代码共同维护的约定。</strong> 链路上的任何一环丢弃了这个信号，取消就会在那一环失效。</p><p>精读 <code>stopActiveForegroundExecution()</code> 的实现（<code>runtime-command-queue.ts:446</code>），还能看到两个防护细节。</p><p><strong>（1）取消意图需要校验目标。</strong> 调用方可以声明 <code>expectedForegroundExecutionId</code>，即"我要停止的是那一次执行"。如果当前正在运行的已不是它（例如旧执行刚好结束、新执行已经开始），取消请求将被拒绝，而不是误伤新任务。这是<strong>过期请求防护</strong>：在异步系统中，&ldquo;迟到的操作"与"越权的操作"需要以同等的谨慎对待。</p><p><strong>（2）内部抢占与用户取消必须区分。</strong> 源码注释（<code>runtime-command-queue.ts:463-465</code>）记录了一个真实问题：&ldquo;立即执行排队消息"需要先停止当前任务，这种内部停止与用户手动按下 Stop，过去共享同一种 cancelled 状态——导致系统误以为用户取消了整个队列，把自动消费队列的授权也一并关闭了。修复方法是把调用意图固定在当前这次执行上，使迟到的完成事件无法再篡改队列授权。</p><p>这两个细节共同说明：<strong>取消不是一次信号的传递，而是状态机中一次需要精确归因的转移。</strong></p><blockquote><p><strong>Q：为什么"立即执行排队消息"这种看似简单的操作会引出租约机制？</strong></p><p>A：因为"停止当前任务"和"开始新任务"之间存在异步空窗：停止是发出信号，真正的停止要等执行方感知；而入队、出队、通知唤醒都是并发的参与者。只要两个动作之间存在任何异步等待，第三者就可能插入。租约的本质是把"意图"显式登记为状态——先声明"接下来这个位置属于谁&rdquo;，再执行——使抢占者即使到达，也能发现自己无权行动。</p></blockquote><h2 id=上下文压缩>上下文：压缩<a href=#%e4%b8%8a%e4%b8%8b%e6%96%87%e5%8e%8b%e7%bc%a9 class=header-anchor></a></h2><p>模型的上下文窗口是有限的，而对话是单调增长的，因此长对话<strong>必然</strong>溢出——这不是概率问题，而是时间问题。这是 Agent 产品化的第一道关卡。</p><p>朴素的做法是"装不下就截掉最早的&rdquo;。但对话历史不是普通的文本流：工具调用与工具结果是成对出现的，截断操作容易留下"有结果、无调用"的孤儿消息，多数模型 API 会直接报错；况且早期消息中往往包含关键的原始需求。</p><p>ZCode 的方案是<strong>压缩（compaction）</strong>：用模型将过长的历史总结为摘要，以摘要替换原文。下面依次回答五个问题：什么时候触发、怎么判断"装不下"、压缩时模型收到了什么、压缩之后历史变成什么样、压缩机制自身失灵了怎么办。</p><h3 id=压缩入口四种触发方式>压缩入口：四种触发方式<a href=#%e5%8e%8b%e7%bc%a9%e5%85%a5%e5%8f%a3%e5%9b%9b%e7%a7%8d%e8%a7%a6%e5%8f%91%e6%96%b9%e5%bc%8f class=header-anchor></a></h3><p>ZCode 提供四条触发路径，并将它们全部汇聚到同一个执行函数 <code>compactActiveConversation()</code>（<code>runtime/methods/compact-active.ts</code>）：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart TD
+    M[&#34;手动压缩&lt;br/&gt;用户输入 /compact&#34;] --&gt; C[&#34;compactActiveConversation&lt;br/&gt;压缩执行的唯一入口&#34;]
+    A[&#34;自动压缩&lt;br/&gt;每次模型请求前估算 token，超过阈值则触发&#34;] --&gt; C
+    R[&#34;反应式压缩&lt;br/&gt;请求被提供商以&#39;上下文溢出&#39;拒绝后，压缩并重试&#34;] --&gt; C
+    U[&#34;微压缩&lt;br/&gt;仅清理最近消息中冗长的旧工具输出&#34;] --&gt; C</pre></div><p>四条路径的分工如下：</p><ul><li><strong>自动压缩是常态</strong>：每次请求前检查，防患于未然；</li><li><strong>反应式压缩是兜底</strong>：token 估算不可能完全准确（提供商真实的 tokenizer 是黑盒），总会有漏网之鱼，因此捕获溢出错误后压缩并重试；恢复成功时无需用户介入；</li><li><strong>微压缩是轻量路径</strong>：完整压缩需要调用模型生成摘要，既慢又有成本；先清理冗长的旧工具输出，往往已经足够。</li></ul><blockquote><p><strong>设计要点</strong>：四条路径不是四个功能的堆砌，而是同一件事的四种触发时机。其中重要的工程决策是让它们<strong>汇聚到同一个执行函数</strong>——压缩逻辑只有一份，四条路径永远不会发生行为上的漂移。</p></blockquote><h3 id=压缩阈值何时触发>压缩阈值：何时触发<a href=#%e5%8e%8b%e7%bc%a9%e9%98%88%e5%80%bc%e4%bd%95%e6%97%b6%e8%a7%a6%e5%8f%91 class=header-anchor></a></h3><p>第一个问题是：运行时如何知道当前的对话占了多少 token？本地并没有模型真实的 tokenizer。ZCode 的答案是一个<strong>两级估算</strong>（<code>compact.ts:313</code> 的 <code>buildProviderUsageTokenOverride</code>）：</p><ol><li><strong>优先使用真实值</strong>：模型每次响应都会报告本次请求实际消耗的 token 数（usage）。运行时找到最近一次 assistant 响应中的这个真实数字，作为基数；</li><li><strong>真实值之后的新消息，用粗估补足</strong>：本地估算的规则相当朴素——<strong>字符数 ÷ 3</strong>（<code>ESTIMATED_TOKEN_CHAR_DIVISOR</code>，<code>shared/src/usage-stats.ts:9</code>）。这个近似看似粗糙，但源码注释记录了一次真实的修正：旧版估算只统计消息正文，<strong>漏掉了工具调用的入参</strong>，导致大型工具参数实际占用了大量上下文，在估算里却被计为 0（<code>compact/manual.ts:105-106</code>）。</li></ol><p>也就是说，估算的策略是"<strong>能拿到真值就用真值，拿不到的部分用粗估兜底</strong>"。</p><p>第二个问题是：超过多少算"装不下"？阈值并非一个经验常数，而是由一条公式算出（<code>compact/policy.ts:67-88</code>）：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>有效窗口 = 上下文窗口 − 输出预留
+</span></span><span class=line><span class=cl>阈值     = 有效窗口 − 13,000（安全缓冲）
+</span></span></code></pre></div><p>以默认的 200K 窗口为例：输出预留取 21,000（源码注释说明了原因——早期版本按模型的最大输出完整预留，导致<strong>过早压缩</strong>，后来统一收敛到 21K），于是阈值约为 200,000 − 21,000 − 13,000 ≈ <strong>166,000 token</strong>，即窗口的 83% 左右。</p><p>为什么必须预留输出空间？因为提供商声明的上下文窗口是<strong>输入与输出共享</strong>的：如果输入占满整个窗口，模型连一个字都输出不了。压缩只能压缩输入侧，所以阈值的分母必须先扣掉输出。</p><h3 id=摘要提示词保留什么>摘要提示词：保留什么<a href=#%e6%91%98%e8%a6%81%e6%8f%90%e7%a4%ba%e8%af%8d%e4%bf%9d%e7%95%99%e4%bb%80%e4%b9%88 class=header-anchor></a></h3><p>压缩本身需要再次调用模型。这次调用成本较高——它是上下文耗尽前的最后一次机会，失败就意味着任务中断。因此摘要 prompt（<code>compact/prompt.ts</code>）对输出形式和信息保留作了严格约束。以下保留主体原文；用户通过 <code>/compact</code> 附带的自定义指令会拼接在末尾的 Additional Instructions 处：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>CRITICAL: Respond with TEXT ONLY. Do NOT call any tools.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>- Do NOT use Read, Bash, Grep, Glob, Edit, Write, or ANY other tool.
+</span></span><span class=line><span class=cl>- You already have all the context you need in the conversation above.
+</span></span><span class=line><span class=cl>- Tool calls will be REJECTED and will waste your only turn — you will fail the task.
+</span></span><span class=line><span class=cl>- Your entire response must be plain text: an &lt;analysis&gt; block followed by a &lt;summary&gt; block.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Your task is to create a detailed summary of the conversation so far, paying close
+</span></span><span class=line><span class=cl>attention to the user&#39;s explicit requests and your previous actions.
+</span></span><span class=line><span class=cl>This summary should be thorough in capturing technical details, code patterns, and
+</span></span><span class=line><span class=cl>architectural decisions that would be essential for continuing development work
+</span></span><span class=line><span class=cl>without losing context.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Before providing your final summary, wrap your analysis in &lt;analysis&gt; tags to
+</span></span><span class=line><span class=cl>organize your thoughts and ensure you&#39;ve covered all necessary points. In your
+</span></span><span class=line><span class=cl>analysis process:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>1. Chronologically analyze each message and section of the conversation. For each
+</span></span><span class=line><span class=cl>   section thoroughly identify:
+</span></span><span class=line><span class=cl>   - The user&#39;s explicit requests and intents
+</span></span><span class=line><span class=cl>   - Your approach to addressing the user&#39;s requests
+</span></span><span class=line><span class=cl>   - Key decisions, technical concepts and code patterns
+</span></span><span class=line><span class=cl>   - Specific details like:
+</span></span><span class=line><span class=cl>     - file names
+</span></span><span class=line><span class=cl>     - full code snippets
+</span></span><span class=line><span class=cl>     - function signatures
+</span></span><span class=line><span class=cl>     - file edits
+</span></span><span class=line><span class=cl>   - Errors that you ran into and how you fixed them
+</span></span><span class=line><span class=cl>   - Pay special attention to specific user feedback that you received, especially
+</span></span><span class=line><span class=cl>     if the user told you to do something differently.
+</span></span><span class=line><span class=cl>   - Note any security-relevant instructions or constraints the user stated (e.g.,
+</span></span><span class=line><span class=cl>     sensitive files or data to avoid, operations that must not be performed,
+</span></span><span class=line><span class=cl>     credential or secret handling rules). These MUST be preserved verbatim in the
+</span></span><span class=line><span class=cl>     summary so they continue to apply after compaction.
+</span></span><span class=line><span class=cl>2. Double-check for technical accuracy and completeness, addressing each required
+</span></span><span class=line><span class=cl>   element thoroughly.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Your summary should include the following sections:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>1. Primary Request and Intent: Capture all of the user&#39;s explicit requests and
+</span></span><span class=line><span class=cl>   intents in detail
+</span></span><span class=line><span class=cl>2. Key Technical Concepts: List all important technical concepts, technologies,
+</span></span><span class=line><span class=cl>   and frameworks discussed.
+</span></span><span class=line><span class=cl>3. Files and Code Sections: Enumerate specific files and code sections examined,
+</span></span><span class=line><span class=cl>   modified, or created. Pay special attention to the most recent messages and
+</span></span><span class=line><span class=cl>   include full code snippets where applicable and include a summary of why this
+</span></span><span class=line><span class=cl>   file read or edit is important.
+</span></span><span class=line><span class=cl>4. Errors and fixes: List all errors that you ran into, and how you fixed them.
+</span></span><span class=line><span class=cl>   Pay special attention to specific user feedback that you received, especially
+</span></span><span class=line><span class=cl>   if the user told you to do something differently.
+</span></span><span class=line><span class=cl>5. Problem Solving: Document problems solved and any ongoing troubleshooting
+</span></span><span class=line><span class=cl>   efforts.
+</span></span><span class=line><span class=cl>6. All user messages: List ALL user messages that are not tool results. These are
+</span></span><span class=line><span class=cl>   critical for understanding the users&#39; feedback and changing intent. Preserve
+</span></span><span class=line><span class=cl>   any security-relevant instructions or constraints verbatim so they remain in
+</span></span><span class=line><span class=cl>   effect after compaction.
+</span></span><span class=line><span class=cl>7. Pending Tasks: Outline any pending tasks that you have explicitly been asked
+</span></span><span class=line><span class=cl>   to work on.
+</span></span><span class=line><span class=cl>8. Current Work: Describe in detail precisely what was being worked on immediately
+</span></span><span class=line><span class=cl>   before this summary request, paying special attention to the most recent
+</span></span><span class=line><span class=cl>   messages from both user and assistant. Include file names and code snippets
+</span></span><span class=line><span class=cl>   where applicable.
+</span></span><span class=line><span class=cl>9. Optional Next Step: List the next step that you will take that is related to
+</span></span><span class=line><span class=cl>   the most recent work you were doing. IMPORTANT: ensure that this step is
+</span></span><span class=line><span class=cl>   DIRECTLY in line with the user&#39;s most recent explicit requests, and the task
+</span></span><span class=line><span class=cl>   you were working on immediately before this summary request. If your last task
+</span></span><span class=line><span class=cl>   was concluded, then only list next steps if they are explicitly in line with
+</span></span><span class=line><span class=cl>   the users request. Do not start on tangential requests or really old requests
+</span></span><span class=line><span class=cl>   that were already completed without confirming with the user first. If there
+</span></span><span class=line><span class=cl>   is a next step, include direct quotes from the most recent conversation showing
+</span></span><span class=line><span class=cl>   exactly what task you were working on and where you left off. This should be
+</span></span><span class=line><span class=cl>   verbatim to ensure there&#39;s no drift in task interpretation.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Please provide your summary based on the conversation so far, following this
+</span></span><span class=line><span class=cl>structure and ensuring precision and thoroughness in your response.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>There may be additional summarization instructions provided in the included
+</span></span><span class=line><span class=cl>context. If so, remember to follow these instructions when creating the above
+</span></span><span class=line><span class=cl>summary.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>REMINDER: Do NOT call any tools. Respond with plain text only — an &lt;analysis&gt;
+</span></span><span class=line><span class=cl>block followed by a &lt;summary&gt; block. Tool calls will be rejected and you will
+</span></span><span class=line><span class=cl>fail the task.
+</span></span></code></pre></div><p>（原文还带有一个输出格式的 <code>&lt;example></code> 示例，此处略去。）逐条分析如下：</p><p><strong>（1）首尾双重警告：禁止调用工具。</strong> prompt 的开头和结尾各有一段强硬声明：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>CRITICAL</span><span class=p>:</span> <span class=n>Respond</span> <span class=n>with</span> <span class=n>TEXT</span> <span class=n>ONLY</span><span class=o>.</span> <span class=n>Do</span> <span class=n>NOT</span> <span class=n>call</span> <span class=n>any</span> <span class=n>tools</span><span class=o>.</span>
+</span></span><span class=line><span class=cl><span class=o>...</span>
+</span></span><span class=line><span class=cl><span class=n>Tool</span> <span class=n>calls</span> <span class=n>will</span> <span class=n>be</span> <span class=n>REJECTED</span> <span class=ow>and</span> <span class=n>will</span> <span class=n>waste</span> <span class=n>your</span> <span class=n>only</span> <span class=n>turn</span> <span class=err>—</span> <span class=n>you</span> <span class=n>will</span> <span class=n>fail</span> <span class=n>the</span> <span class=n>task</span><span class=o>.</span>
+</span></span></code></pre></div><p>为什么要如此强硬？因为这次调用是"唯一的一轮"：模型若习惯性地去调工具，回合就浪费了，压缩失败。</p><p><strong>（2）先分析，再总结。</strong> 要求模型先把分析过程写进 <code>&lt;analysis></code> 标签——按时间顺序逐段梳理对话——然后才输出 <code>&lt;summary></code>。这与"先想后答"的提示工程实践一致：显式的中间步骤能显著降低遗漏。</p><p><strong>（3）九个固定小节。</strong> 摘要必须包含：用户的主要意图、关键技术概念、涉及的文件与代码片段、遇到的错误及修复、问题解决过程、<strong>全部用户消息</strong>、待办任务、当前工作、下一步。其中两条需要单独说明：</p><ul><li><strong>用户消息必须逐条保留</strong>。模型做摘要时天然倾向于详细保留自己生成的内容、淡化用户的原话；但用户的原话承载着意图与约束，恰恰是压缩中最不能丢失的信息，所以 prompt 用一整节强制要求；</li><li><strong>下一步必须引用原文</strong>。prompt 要求"下一步"直接引用最近对话的原文（verbatim），并明确警告不要节外生枝——这是为了防止<strong>任务漂移</strong>：压缩之后 Agent 换了个方向自行其是，是摘要机制最典型的失败模式。</li></ul><p><strong>（4）安全约束逐字保留。</strong> 用户说过的"不要碰某类文件"&ldquo;禁止某类操作"等约束，必须在摘要中原样保留——压缩不能成为绕过用户约束的漏洞。</p><h3 id=压缩结果摘要与近期消息>压缩结果：摘要与近期消息<a href=#%e5%8e%8b%e7%bc%a9%e7%bb%93%e6%9e%9c%e6%91%98%e8%a6%81%e4%b8%8e%e8%bf%91%e6%9c%9f%e6%b6%88%e6%81%af class=header-anchor></a></h3><p>压缩不是"摘要替换一切&rdquo;，而是<strong>摘要 + 最近消息原样保留</strong>的两段式结构：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>压缩前：  [系统提示] [消息1] [消息2] …… [消息97]        （约 166K tokens）
+</span></span><span class=line><span class=cl>压缩后：  [系统提示] [摘要消息] [最近若干条消息原样保留]  （远小于阈值）
+</span></span></code></pre></div><p>摘要消息本身也有精心的设计（<code>buildCompactSummaryMessage</code>，<code>compact/prompt.ts:133</code>）。它以这样一段话开头：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>This session is being continued from a previous conversation that ran out of
+</span></span><span class=line><span class=cl>context. The summary below covers the earlier portion of the conversation.
+</span></span></code></pre></div><p>摘要末尾还附上了<strong>完整对话记录的磁盘路径</strong>，告诉模型：如果摘要里的细节不够用，可以去读完整的原始记录：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>If you need specific details from before compaction (like exact code snippets,
+</span></span><span class=line><span class=cl>error messages, or content you generated), read the full transcript at: ...
+</span></span></code></pre></div><p>这意味着压缩并未真正"丢弃"信息，而是把信息<strong>降级</strong>了：摘要是随身的笔记，写入磁盘的完整轨迹是可以随时回查的档案。摘要保存的是"大概率还会用到"的内容，档案保管的是"万一需要"的内容。</p><h3 id=压缩防护熔断与失败>压缩防护：熔断与失败<a href=#%e5%8e%8b%e7%bc%a9%e9%98%b2%e6%8a%a4%e7%86%94%e6%96%ad%e4%b8%8e%e5%a4%b1%e8%b4%a5 class=header-anchor></a></h3><p>压缩机制自身也可能失灵，ZCode 为它设置了两道相互独立的防护措施。</p><p><strong>其一，rapid-refill 熔断器</strong>（<code>compact.ts:230</code>、<code>turn-model-step.ts:753</code>）。设想如下恶性循环：压缩 → 工具输出又把上下文填满 → 再次压缩 → 再次被填满……每一轮压缩摘要都在消耗模型调用成本，而上下文始终装不下。熔断器检测到"压缩后上下文被快速重新填满"这一模式，即停止压缩，避免无效循环。</p><p><strong>其二，连续失败熔断</strong>（<code>compact/policy.ts:14</code>）。压缩本身是一次模型调用，同样可能失败。连续失败达到 3 次，<code>shouldAutoCompact</code> 直接返回 <code>circuit_breaker</code>，不再尝试——与其反复失败空耗，不如把错误尽快暴露出来。</p><p>两道防护措施应对的是两种不同的失效模式：前者防"压缩成功了但没有用"，后者防"压缩本身一直失败"。</p><blockquote><p><strong>Q：为什么摘要 prompt 要求列出"全部用户消息"，而不是让模型自己判断哪些重要？</strong></p><p>A：因为摘要是模型写的，而模型的注意力分配与压缩的目标并不一致。模型倾向于详细保留"技术含量高的内容"（代码、方案），而用户的短消息——&ldquo;不对，我要的是另一种方案&rdquo;——在模型眼中可能显得不重要，却恰恰是意图纠偏的唯一记录。这类信息一旦丢失，压缩后的 Agent 会沿着被用户否决过的方向继续走。用结构化的强制要求替代模型的自由裁量，是把"已知会丢的东西"写进 checklist 的防御式提示工程。</p></blockquote><h2 id=持久化崩溃后如何恢复>持久化：崩溃后如何恢复<a href=#%e6%8c%81%e4%b9%85%e5%8c%96%e5%b4%a9%e6%ba%83%e5%90%8e%e5%a6%82%e4%bd%95%e6%81%a2%e5%a4%8d class=header-anchor></a></h2><p>会话不能只存在于内存之中：进程会崩溃，用户会关闭电脑。朴素的做法是每隔一段时间将内存状态快照存盘，但若在两次快照之间崩溃，中间的操作就全部丢失了。</p><p>一种经典的解法是<strong>事件溯源（Event Sourcing）</strong>：不存"当前状态"，而是存"发生的每一件事"，就像记账不只记余额、而是记下每一笔流水，余额永远可以从流水推导出来。ZCode 的持久化设计可以从这个直觉出发来理解，但精读源码后会发现一个更准确的事实：<strong>ZCode 采用的是分层设计——事件流负责进程内的顺序与一致性，规范化的数据库表负责崩溃后的恢复。</strong> 两者各司其职。下面分四个问题展开讨论。</p><h3 id=事件流统一进程内顺序>事件流：统一进程内顺序<a href=#%e4%ba%8b%e4%bb%b6%e6%b5%81%e7%bb%9f%e4%b8%80%e8%bf%9b%e7%a8%8b%e5%86%85%e9%a1%ba%e5%ba%8f class=header-anchor></a></h3><p>运行时发生的一切——用户输入、模型输出、工具调用、压缩边界——都会产生一个<strong>事件</strong>，并经过唯一入口 <code>appendEvent()</code>（<code>runtime/methods/events.ts:81</code>）。这个函数做四件事：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart LR
+    A[&#34;事件发生&#34;] --&gt; B[&#34;eventStore.append&lt;br/&gt;分配全局递增序号&#34;]
+    B --&gt; C[&#34;选择性持久化&lt;br/&gt;仅少数有长期语义的事件&#34;]
+    C --&gt; D[&#34;记录工具用量&#34;]
+    D --&gt; E[&#34;通知监听方&lt;br/&gt;（UI 实时更新）&#34;]</pre></div><p>第一步解决的是事件排序：<strong>事件序号只由事件存储分配</strong>。源码里保留着一条修正记录（<code>events.ts:86-88</code>）：过去实时推送的事件带着默认序号 0，而重放路径读到的是存储分配的真实序号——同一个会话存在<strong>两套顺序事实</strong>。修复方式是让所有消费者只见到已分配序号的事件。这正是"状态各有其主"原则在顺序问题上的体现：序号只能有一个分配者。</p><h3 id=持久化范围哪些事件需要保留>持久化范围：哪些事件需要保留<a href=#%e6%8c%81%e4%b9%85%e5%8c%96%e8%8c%83%e5%9b%b4%e5%93%aa%e4%ba%9b%e4%ba%8b%e4%bb%b6%e9%9c%80%e8%a6%81%e4%bf%9d%e7%95%99 class=header-anchor></a></h3><p>注意上面流程图的第二步是"<strong>选择性</strong>持久化"。事件存储本身是进程内的（<code>contracts/src/events/in-memory-session-event-store.ts</code>），只有三类事件会写入持久存储（<code>persistDurableSessionEvent</code>，<code>events.ts:263</code>）：checkpoint 的创建、rewind 的触发、用户输入的排队台账——它们都具有长期语义，是崩溃之后必须被保留的事实。</p><p>对话的主体内容走的是另一条更直接的路径：用户消息、助手消息、工具结果随着 Turn 的推进<strong>直接写入 SQLite</strong>（回忆前文"先写入存储、再发起请求"——assistant 占位消息在模型请求发出之前就已持久化）。SQLite 中的主要表如下（<code>adapters/.../migrations.ts</code> 的 0001 基线）：</p><div class=table-wrapper><table><thead><tr><th>表</th><th>内容</th></tr></thead><tbody><tr><td><code>session</code></td><td>会话元数据：目录、标题、创建时间</td></tr><tr><td><code>message</code> / <code>part</code></td><td>消息及其组成部分（文本、推理、工具调用），对话的主体</td></tr><tr><td><code>todo</code></td><td>任务清单</td></tr><tr><td><code>session_input</code></td><td>用户输入台账：排队与插话的生命周期</td></tr><tr><td><code>session_entry</code></td><td>通用条目：checkpoint、rewind 记录等</td></tr><tr><td><code>model_usage</code> / <code>turn_usage</code> / <code>tool_usage</code></td><td>用量统计</td></tr></tbody></table></div><h3 id=冷恢复从消息表重建会话>冷恢复：从消息表重建会话<a href=#%e5%86%b7%e6%81%a2%e5%a4%8d%e4%bb%8e%e6%b6%88%e6%81%af%e8%a1%a8%e9%87%8d%e5%bb%ba%e4%bc%9a%e8%af%9d class=header-anchor></a></h3><p>进程重启后的冷恢复（<code>runtime/methods/resume.ts</code>）并不重放事件流——内存中的事件流早已随进程消失。恢复的数据来源是消息表：</p><ol><li>从 SQLite 读出该会话的全部 message 与 part；</li><li><code>hydrateMessageHistoryFromSession</code> 将它们重建为内存中的对话历史（大体积工具结果按引用从 artifact 存储取回）；</li><li>恢复 shell 环境、已读文件状态、压缩时间线、最近一条 assistant 消息的锚点等。</li></ol><p>既然崩溃恢复不依赖事件流，那么前文提到的 <code>rebuildProjection()</code>（<code>message-persistence.ts:385</code>）这个重放事件的函数又是做什么的？它的完整实现只有两行：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ts data-lang=ts><span class=line><span class=cl><span class=kr>const</span> <span class=nx>events</span> <span class=o>=</span> <span class=k>await</span> <span class=k>this</span><span class=p>.</span><span class=nx>eventStore</span><span class=p>.</span><span class=nx>getEvents</span><span class=p>(</span><span class=k>this</span><span class=p>.</span><span class=nx>sessionId</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=k>return</span> <span class=k>this</span><span class=p>.</span><span class=nx>eventReducer</span><span class=p>.</span><span class=nx>reduce</span><span class=p>(</span><span class=nx>events</span><span class=p>);</span>
+</span></span></code></pre></div><p>它服务的是<strong>进程存活期间</strong>的一致性：rewind、压缩、配置变更之后，用内存中的事件流重建一次会话投影，确保所有消费者看到一致的状态。两层分工由此明确：<strong>事件流保证进程存活期间的顺序与一致，消息表保证进程崩溃之后的恢复。</strong></p><h3 id=内存管理淘汰瞬态事件>内存管理：淘汰瞬态事件<a href=#%e5%86%85%e5%ad%98%e7%ae%a1%e7%90%86%e6%b7%98%e6%b1%b0%e7%9e%ac%e6%80%81%e4%ba%8b%e4%bb%b6 class=header-anchor></a></h3><p>事件流常驻内存，长会话中它自己也会膨胀——源码注释直接写明了这一担忧：如果追加时全量拷贝且永不淘汰，内存会随 token 线性增长（<code>in-memory-session-event-store.ts:31</code>）。解决办法是<strong>按 Turn 窗口淘汰瞬态事件</strong>：流式 chunk 这类只在当轮有意义的事件，在 Turn 结束并被下一轮取代后从内存清除；而序号计数器只增不减（第 65 行注释），淘汰不会造成序号重复。</p><blockquote><p><strong>Q：为什么不把事件流全部持久化，做成"纯粹的"事件溯源？</strong></p><p>A：可以从"崩溃后谁来读"这个角度分析。恢复路径需要的是按时间排列的消息列表；UI 查询、rewind、删除操作面对的也都是消息——规范化表天然支撑这些需求。而事件的职责是进程内的顺序与一致性，把流式 chunk 这类高频瞬态事件全部持久化只会放大写入开销，对恢复没有帮助。只有具备长期语义的事件才值得被持久保存。<strong>选择持久化什么，取决于谁会在崩溃之后来读它。</strong></p></blockquote><h2 id=故障恢复常见失败与对策>故障恢复：常见失败与对策<a href=#%e6%95%85%e9%9a%9c%e6%81%a2%e5%a4%8d%e5%b8%b8%e8%a7%81%e5%a4%b1%e8%b4%a5%e4%b8%8e%e5%af%b9%e7%ad%96 class=header-anchor></a></h2><p>回到开头的 20 行循环。其中只有一步网络调用 <code>model.chat(history)</code>，但这一步在现实中可能以十几种方式失败。ZCode 对每种失败都设有一条对应的恢复路径：</p><div class=table-wrapper><table><thead><tr><th>失败</th><th>恢复策略</th><th>位置</th></tr></thead><tbody><tr><td>上下文溢出</td><td>反应式压缩后重试，恢复成功时无需用户介入</td><td><code>compact.ts:352</code></td></tr><tr><td>输出 token 达到上限</td><td>提交已生成的部分，以续写提示开启新的一步</td><td><code>turn-output-token-continuation.ts</code></td></tr><tr><td>流式连接中断</td><td>重试，且重试次数越多 idle 超时窗口越大</td><td><code>streaming-recovery.ts</code></td></tr><tr><td>模型返回 busy</td><td>重新准入该 Turn</td><td><code>turn-model-step.ts</code></td></tr><tr><td>压缩陷入循环</td><td>rapid-refill 熔断器介入</td><td><code>compact.ts</code></td></tr><tr><td>进程崩溃</td><td>从 SQLite 消息表重建会话（冷恢复）</td><td><code>resume.ts</code></td></tr></tbody></table></div><p>观察这张表可以发现一个共同点：<strong>运行时会优先在内部尝试恢复。</strong> 如果重试、压缩或重新准入成功，用户无需处理其中的失败；只有恢复手段耗尽后，错误才会上浮给用户。</p><blockquote><p>这是演示程序与产品级运行时的最后一道分界：<strong>demo 处理顺利路径（happy path），产品处理失败矩阵。</strong> 填满这张表依靠的不是聪明才智，而是线上坏案例的积累——表中每一行的背后，很可能都对应过一次真实的用户反馈。</p></blockquote><h2 id=子-agent隔离探索过程>子 Agent：隔离探索过程<a href=#%e5%ad%90-agent%e9%9a%94%e7%a6%bb%e6%8e%a2%e7%b4%a2%e8%bf%87%e7%a8%8b class=header-anchor></a></h2><p>前文反复出现一个问题：主 Agent 的上下文是稀缺资源——&ldquo;压缩"一章的全部机制都在为它服务。而一个长任务中最占上下文的，往往不是关键决策，而是<strong>探索过程的中间输出</strong>：读文件、搜索、试错。子 Agent（Sub-agent）正是为解决这一问题而设计的：<strong>把探索性工作隔离到独立的上下文中执行，只把结论带回主会话。</strong> 入口位于 <code>core/src/subagent/runner.ts:131</code>。</p><h3 id=前后台两种运行方式>前后台：两种运行方式<a href=#%e5%89%8d%e5%90%8e%e5%8f%b0%e4%b8%a4%e7%a7%8d%e8%bf%90%e8%a1%8c%e6%96%b9%e5%bc%8f class=header-anchor></a></h3><p>子 Agent 有两种形态，由 <code>launch()</code> 在入口处分流（<code>runner.ts:141</code>）：</p><div class=table-wrapper><table><thead><tr><th></th><th>前台子 Agent</th><th>后台子 Agent</th></tr></thead><tbody><tr><td>父 Turn</td><td>阻塞等待</td><td>继续执行</td></tr><tr><td>Abort 信号</td><td>继承父 Turn 的</td><td>独立的</td></tr><tr><td>结果返回</td><td>直接作为工具结果</td><td>完成时以 <code>task-notification</code> 命令唤醒主会话</td></tr><tr><td>追踪</td><td>无需额外机制</td><td>注册进 <code>RuntimeTaskRegistry</code></td></tr></tbody></table></div><p>子 Agent 并非全能：它的可用工具由 profile 决定（例如 Explore 类型的子 Agent 只有只读工具）——与主循环一章"工具表按 Turn 类型裁剪"是同一思想的延伸。</p><h3 id=转入后台三方竞赛>转入后台：三方竞赛<a href=#%e8%bd%ac%e5%85%a5%e5%90%8e%e5%8f%b0%e4%b8%89%e6%96%b9%e7%ab%9e%e8%b5%9b class=header-anchor></a></h3><p>前台与后台的区分并非一成不变：以前台启动的子 Agent，可以在运行过程中转入后台。实现方式是一场三方竞赛（<code>runner.ts:309-316</code> 的 <code>Promise.race</code>）：</p><div class=mermaid-block data-mermaid-block data-state=loading><div class=mermaid-header><span class=mermaid-lights aria-hidden=true></span><div class=mermaid-toolbar aria-label=图表操作><button class="mermaid-action mermaid-preview-trigger" type=button title=查看大图 aria-label="查看 Mermaid 大图" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+</button>
+<button class="mermaid-action mermaid-download-trigger" type=button title="下载 SVG" aria-label="下载 Mermaid SVG" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg></button></div></div><p class=mermaid-status role=status>图表加载中…</p><pre class=mermaid>flowchart TD
+    A[&#34;前台子 Agent 运行中&#34;] --&gt; B{&#34;三方竞赛，谁先发生？&#34;}
+    B --&gt;|&#34;执行完成&#34;| C[&#34;作为工具结果&lt;br/&gt;返回父 Turn&#34;]
+    B --&gt;|&#34;用户/系统请求转后台&#34;| D[&#34;转入后台&#34;]
+    B --&gt;|&#34;超过自动转后台时限&#34;| D
+    D --&gt; E[&#34;脱离父级的取消信号&lt;br/&gt;detachParent&#34;]
+    E --&gt; F[&#34;在后台继续执行&lt;br/&gt;完成后以 task-notification&lt;br/&gt;唤醒主会话&#34;]</pre></div><p>转后台时最关键的一步是 <code>detachParent()</code>：<strong>把子任务的取消信号从父级断开</strong>。原因在于：前台子 Agent 的取消信号继承自父 Turn，父级一旦取消，子任务随之终止；而它转入后台之后，语义上已经独立，父级的取消不应再波及它。所有权转移必须显式完成，否则就会出现"用户在主会话按下取消，却终止了后台中毫不相干的任务"这样的互相干扰。</p><h3 id=运行限制看门狗与派生边界>运行限制：看门狗与派生边界<a href=#%e8%bf%90%e8%a1%8c%e9%99%90%e5%88%b6%e7%9c%8b%e9%97%a8%e7%8b%97%e4%b8%8e%e6%b4%be%e7%94%9f%e8%be%b9%e7%95%8c class=header-anchor></a></h3><p>子 Agent 也是 Agent，同样可能陷入死循环或长时间无响应。运行时为它安装了<strong>看门狗</strong>（watchdog，<code>runner.ts:208</code>）：超过不活跃时限（默认与模型流式空闲超时一致）即强制中止。</p><p>看门狗的覆盖边界从启动阶段开始（<code>runner.ts:217-218</code>）：看门狗与取消保护不能等"会话就绪"之后再安装，因为子任务的持久化与恢复可能在就绪之前就永久挂起。<strong>保护机制的覆盖范围必须包含启动阶段本身</strong>，否则最危险的窗口恰好没有保护。</p><p>此外还有一种"预防式"的限制：闲时任务（idle-time task）被<strong>禁止</strong>派生后台子 Agent（<code>runner.ts:150-151</code>），注释说明了原因——单次执行的模型授权与动态鉴权不能脱离父循环的生命周期进入后台。有些并发不是实现不了，而是不允许发生。</p><h3 id=完成通知为何需要排队>完成通知：为何需要排队<a href=#%e5%ae%8c%e6%88%90%e9%80%9a%e7%9f%a5%e4%b8%ba%e4%bd%95%e9%9c%80%e8%a6%81%e6%8e%92%e9%98%9f class=header-anchor></a></h3><p>后台子 Agent 完成时，结果不是通过回调函数直接交给主循环，而是包装成一条 <code>task-notification</code> 命令，<strong>排入"用户不等人"一章介绍过的主会话命令队列</strong>。系统没有为此引入新的并发机制：子 Agent 的回调、后台任务的唤醒、用户的新消息，在系统眼中是同一类东西，都是排队等待准入的命令。新功能复用旧机制，是系统复杂度保持可控的关键。</p><blockquote><p><strong>Q：为什么完成通知要走命令队列，而不是让子任务直接回调主循环？</strong></p><p>A：直接回调会把并发重新引入主循环——回调可能发生在主循环的任意一个异步等待点上，主循环内部的"单线程假设"随之失效。排入队列后，通知只会在主循环的回合边界被消费，处理时机是确定的。这与"用户不等人"一章的准入思想完全一致：<strong>并发在入口处即被消除，无论并发的来源是用户还是子 Agent。</strong></p></blockquote><h2 id=总结运行时的六条原则>总结：运行时的六条原则<a href=#%e6%80%bb%e7%bb%93%e8%bf%90%e8%a1%8c%e6%97%b6%e7%9a%84%e5%85%ad%e6%9d%a1%e5%8e%9f%e5%88%99 class=header-anchor></a></h2><p>ZCode 运行时的设计可以概括为六条：</p><ol><li><strong>核心是一个朴素的循环</strong>：模型 → 工具 → 模型。所有复杂度都是这个循环的保护层。</li><li><strong>状态各有其主</strong>：会话级、Turn 级、队列级状态严格分离，每块可变状态只有一个所有者。</li><li><strong>并发在边界处消除</strong>：命令队列串行化外部输入，steering 处理中途插入，内部代码按单线程假设书写。</li><li><strong>行为依靠声明</strong>：工具的安全性、超时、结果预算都是元数据，策略由系统统一实施。</li><li><strong>失败就地消化</strong>：每种已知的失败模式都设有一条不打扰用户的恢复路径。</li><li><strong>事件与存储分层</strong>：进程内的事件流统一顺序与投影，磁盘上的规范化表承担崩溃恢复——每层只承担一种职责。</li></ol><h2 id=阅读路线>阅读路线<a href=#%e9%98%85%e8%af%bb%e8%b7%af%e7%ba%bf class=header-anchor></a></h2><p>按以下顺序阅读源码，每一步都能在本文中找到对应章节：</p><div class=table-wrapper><table><thead><tr><th>顺序</th><th>文件</th><th>目标</th></tr></thead><tbody><tr><td>1</td><td><code>core/src/tool/handlers/glob.ts</code></td><td>看清一个工具与系统的全部接触面</td></tr><tr><td>2</td><td><code>core/src/tool/types.ts</code></td><td><code>ToolEntry</code> 的完整类型定义</td></tr><tr><td>3</td><td><code>core/src/runtime/methods/turn.ts:93</code></td><td>一个 Turn 的编排流程</td></tr><tr><td>4</td><td><code>core/src/runtime/methods/turn-loop.ts:43</code></td><td>Agent 主循环本体</td></tr><tr><td>5</td><td><code>core/src/runtime/command-queue.ts</code> + <code>methods/steering.ts</code></td><td>命令的串行化模型与插话的准入</td></tr><tr><td>6</td><td><code>core/src/runtime/methods/compact.ts</code></td><td>压缩的四种触发与汇聚</td></tr><tr><td>7</td><td><code>core/src/subagent/runner.ts:131</code></td><td>子 Agent 的前后台形态与生命周期</td></tr><tr><td>8</td><td><code>core/src/runtime/methods/events.ts:81</code></td><td>事件流的唯一入口与持久化分工</td></tr></tbody></table></div></section><footer class=article-footer><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>All rights reserved.</span></section><section class=article-lastmod><svg class="icon" viewBox="0 0 1024 1024" width="24" height="24"><path d="M896 149.333333H646.186667A179.413333 179.413333.0 00577.28 163.2a187.306667 187.306667.0 00-30.08 16.426667A157.013333 157.013333.0 00521.173333 200.96c-3.2 3.2-6.186667 6.4-9.173333 9.813333-2.986667-3.413333-5.973333-6.613333-9.173333-9.813333A157.013333 157.013333.0 00476.8 179.626667 187.306667 187.306667.0 00446.72 163.2 179.413333 179.413333.0 00377.813333 149.333333H128a85.333333 85.333333.0 00-85.333333 85.333334v129.066666a42.666667 42.666667.0 0085.333333.0V234.666667h249.813333a91.306667 91.306667.0 0118.56 1.92A83.2 83.2.0 01413.44 241.92a91.306667 91.306667.0 0115.573333 8.32A93.013333 93.013333.0 01453.76 274.986667 91.306667 91.306667.0 01462.08 290.56a83.2 83.2.0 015.333333 17.066667 91.306667 91.306667.0 011.92 18.56V469.333333a42.666667 42.666667.0 0085.333334.0V326.186667a91.306667 91.306667.0 011.92-18.56A83.2 83.2.0 01561.92 290.56a91.306667 91.306667.0 018.32-15.573333A102.186667 102.186667.0 01594.986667 250.24 91.306667 91.306667.0 01610.56 241.92a83.2 83.2.0 0117.066667-5.333333 91.306667 91.306667.0 0118.56-1.92H896v510.72H597.333333A42.666667 42.666667.0 00563.2 762.24a61.44 61.44.0 01-4.693333 5.76 58.24 58.24.0 01-5.333334 4.906667 39.68 39.68.0 01-5.973333 4.48 36.053333 36.053333.0 01-6.186667 3.626666A36.906667 36.906667.0 01534.4 784l-7.04 2.346667-7.253333 1.28a61.653333 61.653333.0 01-15.36.0l-7.253334-1.28-6.826666-1.066667-6.613334-2.773333a112.853333 112.853333.0 01-12.16-8.106667L466.56 769.28a61.44 61.44.0 01-4.693333-5.76A42.666667 42.666667.0 00426.666667 746.666667H128v-192a42.666667 42.666667.0 00-85.333333.0v192A85.333333 85.333333.0 00128 832h280.106667l8.106666 7.466667a122.24 122.24.0 0013.44 10.026666 128 128 0 0014.72 8.746667c4.906667 2.56 10.24 4.906667 15.573334 7.04s10.88 3.626667 16.64 5.12a122.88 122.88.0 0017.28 3.2A168.96 168.96.0 00512 874.666667a161.706667 161.706667.0 0017.92.0 120.32 120.32.0 0017.493333-3.2q8.533333-2.346667 16.64-5.12c5.333333-2.133333 10.666667-4.48 15.786667-7.04A145.493333 145.493333.0 00594.346667 850.56a122.24 122.24.0 0013.44-10.026667l8.106666-7.466666H896a85.333333 85.333333.0 0085.333333-85.333334V234.666667A85.333333 85.333333.0 00896 149.333333z" fill="currentColor"/></svg>
+<span>最后更新于 Sep 22, 2026</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/2026/rl/><div class=article-details><h2 class=article-title>书籍阅读 | 强化学习入门</h2></div></a></article><article><a href=/2026/cpp-learning/><div class=article-details><h2 class=article-title>学习笔记 | C++ 学习笔记</h2></div></a></article><article><a href=/2026/bernini/><div class=article-details><h2 class=article-title>论文阅读 | Bernini技术报告</h2></div></a></article></div></div></aside><script src=https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.js></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@waline/client@v2/dist/waline.css><div id=waline class=waline-container></div><style>.waline-container{--waline-font-size:1.5rem;--waline-theme-color:#5a6e3a;--waline-active-color:#5a6e3a;--waline-border-radius:var(--radius-lg)}html[data-scheme=dark] .waline-container{--waline-theme-color:#7da0b0;--waline-active-color:#7da0b0;--waline-color:#c5cdd6;--waline-bgcolor:#252830;--waline-bgcolor-light:#2a2d32;--waline-bgcolor-hover:#323844;--waline-border-color:rgba(100, 110, 125, 0.3);--waline-disable-bgcolor:#323844;--waline-disable-color:rgba(160, 170, 185, 0.35);--waline-bq-color:rgba(125, 160, 176, 0.15);--waline-info-bgcolor:#2a2d32;--waline-info-color:rgba(160, 170, 185, 0.6);--waline-dark-grey:#c5cdd6;--waline-light-grey:rgba(140, 150, 165, 0.5)}html[data-scheme=dark] .waline-container .wl-count{color:#c5cdd6}</style><script>(function(){var t="/stickers/capoo-5.gif",e=!1;function n(){var e=document.createElement("img");e.src=t,e.alt="",Object.assign(e.style,{position:"fixed",bottom:"40px",right:"40px",width:"100px",height:"100px",borderRadius:"20px",opacity:"0",transform:"scale(0.4) rotate(-12deg) translateY(20px)",transition:"opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",pointerEvents:"none",zIndex:"9999",boxShadow:"0 8px 24px rgba(0,0,0,0.15)"}),document.body.appendChild(e),requestAnimationFrame(function(){e.style.opacity="1",e.style.transform="scale(1) rotate(0deg) translateY(0)",setTimeout(function(){e.style.opacity="0",e.style.transform="scale(0.8) rotate(5deg) translateY(-12px)",setTimeout(function(){e.remove()},500)},3e3)})}window.addEventListener("load",function(){setTimeout(function(){var s,t=document.getElementById("waline");if(!t)return;t.addEventListener("click",function(t){t.target.closest(".wl-btn[type=submit], button.primary, .wl-submit-btn")&&(e=!0)}),s=new MutationObserver(function(t){if(!e)return;for(var o of t)for(var s of o.addedNodes)if(s.nodeType===1&&(s.classList&&s.classList.contains("wl-item")||s.querySelector&&s.querySelector(".wl-item"))){e=!1,n();return}}),setTimeout(function(){s.observe(t,{childList:!0,subtree:!0})},800)},200)})})(),window.addEventListener("load",function(){setTimeout(function(){Waline.init({el:"#waline",serverURL:"https://waline-ruby-one.vercel.app",dark:'html[data-scheme="dark"]',emoji:[window.location.origin+"/stickers/azuki","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/bmoji","https://cdn.jsdelivr.net/npm/sticker-heo@2022.7.5/Sticker-100/","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/tieba","https://cdn.jsdelivr.net/npm/@waline/emojis@1.2.0/alus"],avatar:"mp",requiredMeta:[],pageSize:10,locale:{placeholder:"说点什么吧..."}})},100)})</script><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 ionfeather'Log
+· <span id=site-runtime></span>
+<script>(function(){var e=new Date("2024-10-20"),t=new Date,n=Math.floor((t-e)/(1e3*60*60*24));document.getElementById("site-runtime").textContent=n+" 天"})()</script></section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.29.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><script src=/js/pangu.min.js defer></script><script>window.addEventListener("load",function(){if(typeof pangu=="undefined")return;["article-content","article-title","article-subtitle","welcome","tagCloud","site-footer","widget--toc","toc-mobile"].forEach(function(e){pangu.spacingElementByClassName(e)})})</script></main></div><script type=module>
+(async () => {
+  if (window.__mermaidBoot) return;
+  window.__mermaidBoot = true;
+
+  
+  if (document.readyState === 'loading') {
+    await new Promise((resolve) => document.addEventListener('DOMContentLoaded', resolve, { once: true }));
+  }
+
+  const blocks = Array.from(document.querySelectorAll('[data-mermaid-block]'));
+  const sources = new Map();
+  blocks.forEach((block, index) => {
+    const node = block.querySelector('pre.mermaid');
+    if (!node) return;
+    sources.set(node, node.textContent || '');
+    block.dataset.diagramIndex = String(index + 1);
+  });
+
+  
+  
+  
+  const lightGlyphs = {
+    red: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5.5 5.5 L10.5 10.5 M10.5 5.5 L5.5 10.5" stroke="rgba(0,0,0,0.6)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>',
+    yellow: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5 8 H11" stroke="rgba(0,0,0,0.6)" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>',
+    green: '<svg viewBox="0 0 16 16" width="16" height="16"><path d="M5.5 5.5 H9.5 L5.5 9.5 Z M10.5 10.5 H6.5 L10.5 6.5 Z" fill="rgba(0,0,0,0.62)"/></svg>'
+  };
+  const lightStates = ['mermaid-closed', 'mermaid-minimized'];
+  blocks.forEach((block) => {
+    const lights = block.querySelector('.mermaid-lights');
+    if (!lights) return;
+    const toggleState = (cls) => {
+      const wasOn = block.classList.contains(cls);
+      block.classList.remove(...lightStates);
+      if (!wasOn) block.classList.add(cls);
+    };
+    [
+      { cls: 'mermaid-light-red', title: '折叠图表', glyph: lightGlyphs.red, action: () => toggleState('mermaid-closed') },
+      { cls: 'mermaid-light-yellow', title: '最小化为预览', glyph: lightGlyphs.yellow, action: () => toggleState('mermaid-minimized') },
+      { cls: 'mermaid-light-green', title: '大图预览', glyph: lightGlyphs.green, action: () => { if (block.dataset.state === 'ready') openPreview(block); } }
+    ].forEach(({ cls, title, glyph, action }) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `mermaid-light ${cls}`;
+      btn.title = title;
+      btn.setAttribute('aria-label', title);
+      btn.innerHTML = glyph;
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        action();
+      });
+      lights.appendChild(btn);
+    });
+  });
+
+  const mermaidFontFamily = "'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif";
+  const themes = {
+    light: {
+      darkMode: false,
+      background: 'transparent',
+      fontFamily: mermaidFontFamily,
+      primaryColor: '#edf3e5',
+      primaryTextColor: '#28311f',
+      primaryBorderColor: '#6f8450',
+      secondaryColor: '#e8f1f4',
+      secondaryTextColor: '#263840',
+      secondaryBorderColor: '#7da0b0',
+      tertiaryColor: '#f6f0e2',
+      tertiaryTextColor: '#3f3828',
+      tertiaryBorderColor: '#b9a16c',
+      textColor: '#31372d',
+      lineColor: '#64705d',
+      mainBkg: '#edf3e5',
+      nodeBorder: '#6f8450',
+      clusterBkg: '#f3f6ef',
+      clusterBorder: '#b9c6a8',
+      edgeLabelBackground: 'transparent',
+      noteBkgColor: '#fff7d6',
+      noteTextColor: '#403923',
+      noteBorderColor: '#c8ad54',
+      actorBkg: '#edf3e5',
+      actorBorder: '#6f8450',
+      actorTextColor: '#28311f',
+      signalColor: '#56614e',
+      signalTextColor: '#31372d',
+      labelBoxBkgColor: '#f3f6ef',
+      labelBoxBorderColor: '#aab89a',
+      labelTextColor: '#31372d',
+      loopTextColor: '#31372d',
+      activationBkgColor: '#dce8d0',
+      activationBorderColor: '#6f8450',
+      sequenceNumberColor: '#ffffff'
+    },
+    dark: {
+      darkMode: true,
+      background: 'transparent',
+      fontFamily: mermaidFontFamily,
+      primaryColor: '#34454d',
+      primaryTextColor: '#edf4f6',
+      primaryBorderColor: '#8db2c2',
+      secondaryColor: '#394633',
+      secondaryTextColor: '#eef3e9',
+      secondaryBorderColor: '#93aa72',
+      tertiaryColor: '#4b4234',
+      tertiaryTextColor: '#fff3d9',
+      tertiaryBorderColor: '#c1a673',
+      textColor: '#dce4e8',
+      lineColor: '#aebbc1',
+      mainBkg: '#34454d',
+      nodeBorder: '#8db2c2',
+      clusterBkg: '#2b323c',
+      clusterBorder: '#596674',
+      edgeLabelBackground: 'transparent',
+      noteBkgColor: '#4c4329',
+      noteTextColor: '#fff2c2',
+      noteBorderColor: '#c1a653',
+      actorBkg: '#34454d',
+      actorBorder: '#8db2c2',
+      actorTextColor: '#edf4f6',
+      signalColor: '#b8c5ca',
+      signalTextColor: '#dce4e8',
+      labelBoxBkgColor: '#2b323c',
+      labelBoxBorderColor: '#667482',
+      labelTextColor: '#dce4e8',
+      loopTextColor: '#dce4e8',
+      activationBkgColor: '#3f555f',
+      activationBorderColor: '#8db2c2',
+      sequenceNumberColor: '#20262d'
+    }
+  };
+
+  const preview = document.createElement('dialog');
+  preview.className = 'mermaid-preview';
+  preview.setAttribute('aria-label', 'Mermaid 图表大图预览');
+  preview.innerHTML = `
+    <div class="mermaid-preview__panel">
+      <header class="mermaid-preview__header">
+        <span>图表预览</span>
+        <div class="mermaid-preview__actions">
+          <button class="mermaid-action mermaid-preview__download" type="button" title="下载 SVG" aria-label="下载当前 Mermaid SVG">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+          </button>
+          <button class="mermaid-action mermaid-preview__close" type="button" title="关闭" aria-label="关闭图表预览">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+          </button>
+        </div>
+      </header>
+      <div class="mermaid-preview__canvas"></div>
+    </div>`;
+  document.body.appendChild(preview);
+
+  let activeBlock = null;
+  const previewCanvas = preview.querySelector('.mermaid-preview__canvas');
+
+  function getRenderedSvg(block) {
+    return block ? block.querySelector('pre.mermaid > svg') : null;
+  }
+
+  function makeFilename(block) {
+    const page = location.pathname.split('/').filter(Boolean).pop() || 'diagram';
+    const safePage = page.replace(/[^a-zA-Z0-9\u4e00-\u9fff_-]+/g, '-');
+    const index = String(block.dataset.diagramIndex || '1').padStart(2, '0');
+    return `${safePage}-diagram-${index}.svg`;
+  }
+
+  function downloadSvg(block) {
+    const svg = getRenderedSvg(block);
+    if (!svg) return;
+    const clone = svg.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink');
+    const source = `<?xml version="1.0" encoding="UTF-8"?>\n${new XMLSerializer().serializeToString(clone)}`;
+    const url = URL.createObjectURL(new Blob([source], { type: 'image/svg+xml;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = makeFilename(block);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function openPreview(block) {
+    const svg = getRenderedSvg(block);
+    if (!svg || !previewCanvas) return;
+    activeBlock = block;
+    previewCanvas.replaceChildren(svg.cloneNode(true));
+    preview.showModal();
+  }
+
+  preview.querySelector('.mermaid-preview__close').addEventListener('click', () => preview.close());
+  preview.querySelector('.mermaid-preview__download').addEventListener('click', () => {
+    if (activeBlock) downloadSvg(activeBlock);
+  });
+  preview.addEventListener('click', (event) => {
+    if (event.target === preview) preview.close();
+  });
+  preview.addEventListener('close', () => {
+    previewCanvas.replaceChildren();
+    activeBlock = null;
+  });
+
+  blocks.forEach((block) => {
+    block.querySelector('.mermaid-preview-trigger')?.addEventListener('click', () => openPreview(block));
+    block.querySelector('.mermaid-download-trigger')?.addEventListener('click', () => downloadSvg(block));
+    block.querySelector('pre.mermaid')?.addEventListener('dblclick', () => {
+      if (block.dataset.state === 'ready') openPreview(block);
+    });
+  });
+
+  
+  blocks.forEach((block) => {
+    const node = block.querySelector('pre.mermaid');
+    if (!node) return;
+    let dragging = false;
+    let moved = false;
+    let startX = 0;
+    let startY = 0;
+    let startLeft = 0;
+    let startTop = 0;
+    node.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragging = true;
+      moved = false;
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = node.scrollLeft;
+      startTop = node.scrollTop;
+    });
+    node.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (!moved && Math.hypot(dx, dy) < 4) return;
+      if (!moved) {
+        moved = true;
+        node.classList.add('mermaid--panning');
+        node.setPointerCapture(event.pointerId);
+      }
+      node.scrollLeft = startLeft - dx;
+      node.scrollTop = startTop - dy;
+    });
+    const endPan = (event) => {
+      if (!dragging) return;
+      dragging = false;
+      node.classList.remove('mermaid--panning');
+      if (moved && node.hasPointerCapture(event.pointerId)) node.releasePointerCapture(event.pointerId);
+    };
+    node.addEventListener('pointerup', endPan);
+    node.addEventListener('pointercancel', endPan);
+  });
+
+  function setBlockState(block, state) {
+    block.dataset.state = state;
+    const status = block.querySelector('.mermaid-status');
+    const previewButton = block.querySelector('.mermaid-preview-trigger');
+    const downloadButton = block.querySelector('.mermaid-download-trigger');
+    if (status) {
+      status.textContent = state === 'loading'
+        ? '图表加载中…'
+        : state === 'error'
+          ? '图表暂时无法渲染，已显示源码。'
+          : '';
+    }
+    if (previewButton) previewButton.disabled = state !== 'ready';
+    if (downloadButton) downloadButton.disabled = state !== 'ready';
+  }
+
+  function showFallback(node, error) {
+    const block = node.closest('[data-mermaid-block]');
+    const source = sources.get(node) || '';
+    node.removeAttribute('data-processed');
+    node.textContent = source;
+    node.classList.add('mermaid--fallback');
+    if (block) setBlockState(block, 'error');
+    console.warn('[mermaid] render failed; source preserved', error);
+  }
+
+  function sizeDiagram(node) {
+    const svg = node.querySelector('svg');
+    const viewBox = svg?.viewBox?.baseVal;
+    if (!svg || !viewBox) return;
+    
+    if (viewBox.width > node.clientWidth) {
+      svg.style.width = `${Math.ceil(viewBox.width)}px`;
+      svg.style.maxWidth = 'none';
+    }
+  }
+
+  let mermaid;
+  let importTimeout;
+  try {
+    ({ default: mermaid } = await Promise.race([
+      import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'),
+      new Promise((_resolve, reject) => {
+        importTimeout = window.setTimeout(() => reject(new Error('Mermaid 加载超时')), 15000);
+      })
+    ]));
+  } catch (error) {
+    sources.forEach((_source, node) => showFallback(node, error));
+    return;
+  } finally {
+    window.clearTimeout(importTimeout);
+  }
+
+  let renderRevision = 0;
+  let renderQueue = Promise.resolve();
+  async function renderAll(revision) {
+    if (revision !== renderRevision) return;
+    const dark = document.documentElement.dataset.scheme === 'dark';
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: themes[dark ? 'dark' : 'light']
+    });
+
+    for (const [node, source] of sources) {
+      if (revision !== renderRevision) return;
+      const block = node.closest('[data-mermaid-block]');
+      if (!block) continue;
+      setBlockState(block, 'loading');
+      node.classList.remove('mermaid--fallback');
+      node.classList.toggle('mermaid--vertical', /^\s*(?:flowchart|graph)\s+(?:TD|TB)\b/im.test(source));
+      node.removeAttribute('data-processed');
+      node.textContent = source;
+      try {
+        await mermaid.run({ nodes: [node] });
+        if (revision !== renderRevision) return;
+        sizeDiagram(node);
+        setBlockState(block, 'ready');
+      } catch (error) {
+        if (revision !== renderRevision) return;
+        showFallback(node, error);
+      }
+    }
+  }
+
+  function scheduleRender() {
+    const revision = ++renderRevision;
+    renderQueue = renderQueue.then(() => renderAll(revision)).catch((error) => {
+      sources.forEach((_source, node) => showFallback(node, error));
+    });
+  }
+
+  
+  new MutationObserver(scheduleRender).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-scheme']
+  });
+  scheduleRender();
+})();
+</script><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.0fc6cac9d242ccbdee4aa249f4e96539b07c557c9068f70cd60627e5c4403fd0.js defer></script><script src=https://unpkg.com/applause-button/dist/applause-button.js defer></script><script>document.addEventListener("DOMContentLoaded",function(){const e=document.querySelector("#TableOfContents");if(!e)return;e.querySelectorAll('a[href^="#"]').forEach(function(e){e.textContent=e.textContent.replace(/^(?!\d{4}(?:\.\d{2}){2})\d+(?:\.\d+)*\.?\s+/,"")})})</script></body></html>
